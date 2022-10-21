@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://bb5eqsdgiryu6"]
+
+[ext_resource type="PackedScene" uid="uid://drjvp8wkafx0f" path="res://scenes/battle/battlefield/test_battle/Battlefield.tscn" id="1_bwsjw"]
+[ext_resource type="PackedScene" uid="uid://c62edjm82au26" path="res://scenes/battle/characters/base_scenes/CharacterMarker3D.tscn" id="3_d06qx"]
+[ext_resource type="Script" path="res://tests/battle/Camera3d.gd" id="3_r1vdo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jcdvp"]
+
+[node name="TestBattle" type="Node3D"]
+
+[node name="Camera3d" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 6, 9)
+current = true
+fov = 40.0
+script = ExtResource("3_r1vdo")
+
+[node name="Battlefield" parent="." instance=ExtResource("1_bwsjw")]
+
+[node name="Characters" type="Node3D" parent="."]
+
+[node name="CharacterMarker3D" parent="Characters" instance=ExtResource("3_d06qx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.15129, 0, 0)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Characters/CharacterMarker3D"]
+transform = Transform3D(0.100006, 0, 0, 0, 0.100006, 0, 0, 0, 0.100006, 0, 0, 0)
+shape = SubResource("BoxShape3D_jcdvp")

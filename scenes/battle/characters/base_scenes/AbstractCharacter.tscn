@@ -1,0 +1,71 @@
+[gd_scene load_steps=13 format=3 uid="uid://cncmr1f7c8sp7"]
+
+[ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/AbstractCharacter.gd" id="1_hqiae"]
+[ext_resource type="PackedScene" uid="uid://c2kpsw7ftth40" path="res://scenes/UI/battle_UI/characters_UI/health_bars/subcharacter_bars/SubcharacterBars.tscn" id="2_u63yi"]
+[ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/neutrophil/block.png" id="3_iyeja"]
+[ext_resource type="Texture2D" uid="uid://xq2xyd4ivpm" path="res://sprites/battle/characters/neutrophil/blunt_attack.png" id="4_ku1mu"]
+[ext_resource type="Texture2D" uid="uid://dcp5tnyjlkg4x" path="res://sprites/battle/characters/neutrophil/default.png" id="5_s8cco"]
+[ext_resource type="Texture2D" uid="uid://cr5rqv0uv64p3" path="res://sprites/battle/characters/neutrophil/evade.png" id="6_ylkl4"]
+[ext_resource type="Texture2D" uid="uid://drltmipr5lo2a" path="res://sprites/battle/characters/neutrophil/movement.png" id="7_0kpwq"]
+[ext_resource type="Texture2D" uid="uid://65xy6foolauq" path="res://sprites/battle/characters/neutrophil/pierce_attack.png" id="8_3kjjs"]
+[ext_resource type="Texture2D" uid="uid://c3fque8a4ik0j" path="res://sprites/battle/characters/neutrophil/slash_attack.png" id="9_ohg18"]
+[ext_resource type="Texture2D" uid="uid://c6bir2rcubwy2" path="res://sprites/battle/characters/neutrophil/stun.png" id="10_bgnad"]
+[ext_resource type="PackedScene" uid="uid://cwme2vy4rssis" path="res://scenes/UI/battle_UI/characters_UI/speed_dice/speed_dice_manager/SpeedDiceManager.tscn" id="11_dixm2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8r1a"]
+animations = [{
+"frames": [ExtResource("3_iyeja")],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [ExtResource("4_ku1mu")],
+"loop": false,
+"name": &"blunt_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("5_s8cco")],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [ExtResource("6_ylkl4")],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [ExtResource("7_0kpwq")],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [ExtResource("8_3kjjs")],
+"loop": false,
+"name": &"pierce_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("9_ohg18")],
+"loop": false,
+"name": &"slash_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("10_bgnad")],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="AbstractCharacter" type="Node2D"]
+script = ExtResource("1_hqiae")
+
+[node name="SubcharacterBars" parent="." instance=ExtResource("2_u63yi")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Actions" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+frames = SubResource("SpriteFrames_b8r1a")
+offset = Vector2(0, -27)
+
+[node name="SpeedDiceManager" parent="." instance=ExtResource("11_dixm2")]
+offset_top = -86.0
+offset_bottom = -86.0

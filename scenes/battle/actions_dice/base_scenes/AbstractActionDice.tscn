@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://fedk1qd4fo0t"]
+
+[ext_resource type="Script" path="res://scripts/battle/actions_dice/base_scripts/AbstractActionDice.gd" id="1_c33ci"]
+[ext_resource type="FontFile" uid="uid://bjpyveek057b3" path="res://fonts/ITC Serif Gothic LT Black.ttf" id="2_pb4ir"]
+
+[node name="AbstractActionDice" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_c33ci")
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 0
+offset_right = 168.0
+offset_bottom = 193.0
+theme_override_fonts/font = ExtResource("2_pb4ir")
+theme_override_font_sizes/font_size = 100
+horizontal_alignment = 1
+vertical_alignment = 1

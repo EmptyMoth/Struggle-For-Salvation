@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://drjvp8wkafx0f"]
+
+[ext_resource type="Texture2D" uid="uid://cds5a8f5r86uh" path="res://sprites/battle/battlefield/test_battle/up_side.png" id="1_r1j7y"]
+[ext_resource type="Texture2D" uid="uid://cyghqq4nsq06a" path="res://sprites/battle/battlefield/test_battle/right_side.png" id="2_6kxsj"]
+[ext_resource type="Texture2D" uid="uid://dyeb7qnwwivis" path="res://sprites/battle/battlefield/test_battle/left_side.png" id="3_ndt80"]
+[ext_resource type="Texture2D" uid="uid://c21bvjqto0c8o" path="res://sprites/battle/battlefield/test_battle/bottom_side.png" id="4_4f275"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufrac"]
+
+[node name="Battlefield" type="Node3D"]
+
+[node name="VisualPart" type="Node3D" parent="."]
+
+[node name="UpSide" type="Sprite3D" parent="VisualPart"]
+pixel_size = 0.015
+axis = 1
+no_depth_test = true
+render_priority = -10
+texture = ExtResource("1_r1j7y")
+
+[node name="RightSide" type="Sprite3D" parent="VisualPart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42, 1.59)
+pixel_size = 0.015
+no_depth_test = true
+render_priority = -10
+texture = ExtResource("2_6kxsj")
+
+[node name="LeftSide" type="Sprite3D" parent="VisualPart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.42, -1.59)
+pixel_size = 0.015
+no_depth_test = true
+render_priority = -11
+texture = ExtResource("3_ndt80")
+
+[node name="BottomSide" type="Sprite3D" parent="VisualPart"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.84, 0)
+pixel_size = 0.015
+axis = 1
+no_depth_test = true
+render_priority = -11
+texture = ExtResource("4_4f275")
+
+[node name="Borders" type="Node3D" parent="."]
+
+[node name="StaticBody3d" type="StaticBody3D" parent="Borders"]
+transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 3.1, -6.5, 0, 0)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Borders/StaticBody3d"]
+shape = SubResource("BoxShape3D_ufrac")
+
+[node name="StaticBody3d2" type="StaticBody3D" parent="Borders"]
+transform = Transform3D(0.1, 0, 0, 0, 0.3, 0, 0, 0, 3.1, 6.5, 0, 0)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Borders/StaticBody3d2"]
+shape = SubResource("BoxShape3D_ufrac")
+
+[node name="StaticBody3d3" type="StaticBody3D" parent="Borders"]
+transform = Transform3D(-4.37114e-09, 0, 6, 0, 0.3, 0, -0.1, 0, -2.62268e-07, 0, 0, -1.6)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Borders/StaticBody3d3"]
+transform = Transform3D(0.355595, 0, 0, 0, 1, 0, 0, 0, 3.18689, 0, 0, 0)
+shape = SubResource("BoxShape3D_ufrac")
+
+[node name="StaticBody3d4" type="StaticBody3D" parent="Borders"]
+transform = Transform3D(-4.37114e-09, 0, 6, 0, 0.3, 0, -0.1, 0, -2.62268e-07, 0, 0, 1.6)
+
+[node name="CollisionShape3d" type="CollisionShape3D" parent="Borders/StaticBody3d4"]
+transform = Transform3D(0.355595, 0, 0, 0, 1, 0, 0, 0, 3.18689, 0, 0, 0)
+shape = SubResource("BoxShape3D_ufrac")

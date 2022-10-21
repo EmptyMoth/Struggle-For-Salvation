@@ -1,0 +1,71 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8eqfkbulfrko"]
+
+[ext_resource type="Script" path="res://scripts/battle/base_scripts/BaseBattle.gd" id="1_0jq3y"]
+[ext_resource type="Script" path="res://tests/battle/BattleCamera.gd" id="1_yx35k"]
+[ext_resource type="PackedScene" uid="uid://bb5eqsdgiryu6" path="res://tests/battle/TestBattle.tscn" id="2_2dvx1"]
+[ext_resource type="PackedScene" path="res://scenes/battle/characters/neutrophil/Neutrophil.tscn" id="3_pjflq"]
+[ext_resource type="PackedScene" uid="uid://hfbldugxdj87" path="res://tests/GUI/ActionSwitcher.tscn" id="4_ry78m"]
+[ext_resource type="Script" path="res://tests/battle/RemoteTransform.gd" id="5_6xkrx"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0v880"]
+viewport_path = NodePath("SubViewport")
+
+[node name="TestBattle2D" type="Node2D"]
+script = ExtResource("1_0jq3y")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1280, 720)
+size_2d_override = Vector2i(1280, 720)
+render_target_clear_mode = 1
+render_target_update_mode = 4
+
+[node name="TestBattle" parent="SubViewport" instance=ExtResource("2_2dvx1")]
+
+[node name="BattleCamera" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+current = true
+smoothing_enabled = true
+script = ExtResource("1_yx35k")
+
+[node name="Battlefield" type="Sprite2D" parent="."]
+texture = SubResource("ViewportTexture_0v880")
+centered = false
+
+[node name="Characters" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Enemies" type="Node2D" parent="Characters"]
+
+[node name="Allies" type="Node2D" parent="Characters"]
+
+[node name="Neutrophil" parent="Characters/Allies" instance=ExtResource("3_pjflq")]
+max_physical_health = 100.0
+max_mental_health = 50.0
+max_speed = 7.0
+speed_dice_count = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ActionSwitcher" parent="CanvasLayer" instance=ExtResource("4_ry78m")]
+
+[node name="RemoteTransform2d" type="RemoteTransform2D" parent="CanvasLayer/ActionSwitcher"]
+remote_path = NodePath("../../../Characters/Allies/Neutrophil")
+script = ExtResource("5_6xkrx")
+
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/Stand" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_stand_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/Movement" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_movement_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/Stunning" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_stunning_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/Block" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_block_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/Evade" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_evade_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/SlashAttack" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_slash_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/PierceAttack" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_pierce_attack_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/GridContainer/BluntAttack" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_blunt_attack_pressed"]
+[connection signal="toggled" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/FlipH" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_flip_h_toggled"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/DealDamage" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_deal_damage_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer2/RollSpeedDice" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_roll_speed_dice_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/Die" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_die_pressed"]
+[connection signal="pressed" from="CanvasLayer/ActionSwitcher/MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/Stun" to="CanvasLayer/ActionSwitcher/RemoteTransform2d" method="_on_stun_pressed"]
+
+[editable path="SubViewport/TestBattle"]
+[editable path="CanvasLayer/ActionSwitcher"]

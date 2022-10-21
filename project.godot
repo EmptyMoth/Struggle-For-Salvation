@@ -1,0 +1,191 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Node",
+"class": &"AbstractAbility",
+"language": &"GDScript",
+"path": "res://scripts/battle/abilities/AbstractAbility.gd"
+}, {
+"base": "Control",
+"class": &"AbstractActionDice",
+"language": &"GDScript",
+"path": "res://scripts/battle/actions_dice/base_scripts/AbstractActionDice.gd"
+}, {
+"base": "Node",
+"class": &"AbstractCard",
+"language": &"GDScript",
+"path": "res://scripts/battle/cards/base_scripts/AbstractCard.gd"
+}, {
+"base": "Node2D",
+"class": &"AbstractCharacter",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/base_scripts/AbstractCharacter.gd"
+}, {
+"base": "Node",
+"class": &"AbstractHealth",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/AbstractHealth.gd"
+}, {
+"base": "Node",
+"class": &"AbstractStatusEffect",
+"language": &"GDScript",
+"path": "res://scripts/battle/status_effects/AbstractStatusEffect.gd"
+}, {
+"base": "Node",
+"class": &"Action",
+"language": &"GDScript",
+"path": "res://scripts/battle/base_scripts/Action.gd"
+}, {
+"base": "AbstractAbility",
+"class": &"ActionDiceAbility",
+"language": &"GDScript",
+"path": "res://scripts/battle/abilities/ActionDiceAbility.gd"
+}, {
+"base": "AbstractActionDice",
+"class": &"AttackDice",
+"language": &"GDScript",
+"path": "res://scripts/battle/actions_dice/attack_dice/AttackDice.gd"
+}, {
+"base": "Node2D",
+"class": &"BaseBattle",
+"language": &"GDScript",
+"path": "res://scripts/battle/base_scripts/BaseBattle.gd"
+}, {
+"base": "TextureProgressBar",
+"class": &"BaseHealthBar",
+"language": &"GDScript",
+"path": "res://scripts/UI/battle_UI/characters_UI/health_bars/base_scripts/BaseHealthBar.gd"
+}, {
+"base": "Button",
+"class": &"BaseSpeedDice",
+"language": &"GDScript",
+"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/BaseSpeedDice.gd"
+}, {
+"base": "AbstractActionDice",
+"class": &"BlockDice",
+"language": &"GDScript",
+"path": "res://scripts/battle/actions_dice/block_dice/BlockDice.gd"
+}, {
+"base": "AbstractAbility",
+"class": &"CardAbility",
+"language": &"GDScript",
+"path": "res://scripts/battle/abilities/CardAbility.gd"
+}, {
+"base": "AbstractAbility",
+"class": &"CharacterAbility",
+"language": &"GDScript",
+"path": "res://scripts/battle/abilities/CharacterAbility.gd"
+}, {
+"base": "Node",
+"class": &"CombatManager",
+"language": &"GDScript",
+"path": "res://scripts/battle/base_scripts/ClashManager.gd"
+}, {
+"base": "AbstractActionDice",
+"class": &"CounterDice",
+"language": &"GDScript",
+"path": "res://scripts/battle/actions_dice/counter_dice/CounterDice.gd"
+}, {
+"base": "Node",
+"class": &"CurrentEffects",
+"language": &"GDScript",
+"path": "res://scripts/battle/base_scripts/CurrentEffects.gd"
+}, {
+"base": "AbstractActionDice",
+"class": &"EvadeDice",
+"language": &"GDScript",
+"path": "res://scripts/battle/actions_dice/evade_dice/EvadeDice.gd"
+}, {
+"base": "AbstractHealth",
+"class": &"MentalHealth",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/MentalHealth.gd"
+}, {
+"base": "AbstractHealth",
+"class": &"PhysicalHealth",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/PhysicalHealth.gd"
+}, {
+"base": "Control",
+"class": &"SpeedDiceManager",
+"language": &"GDScript",
+"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice_manager/SpeedDiceManager.gd"
+}, {
+"base": "Control",
+"class": &"SubcharacterBars",
+"language": &"GDScript",
+"path": "res://scripts/UI/battle_UI/characters_UI/health_bars/subcharacter_bar/SubcharacterBars.gd"
+}]
+_global_script_class_icons={
+"AbstractAbility": "",
+"AbstractActionDice": "",
+"AbstractCard": "",
+"AbstractCharacter": "",
+"AbstractHealth": "",
+"AbstractStatusEffect": "",
+"Action": "",
+"ActionDiceAbility": "",
+"AttackDice": "",
+"BaseBattle": "",
+"BaseHealthBar": "",
+"BaseSpeedDice": "",
+"BlockDice": "",
+"CardAbility": "",
+"CharacterAbility": "",
+"CombatManager": "",
+"CounterDice": "",
+"CurrentEffects": "",
+"EvadeDice": "",
+"MentalHealth": "",
+"PhysicalHealth": "",
+"SpeedDiceManager": "",
+"SubcharacterBars": ""
+}
+
+[application]
+
+config/name="Struggle For Salvation"
+run/main_scene="res://tests/battle/TestBattle2D.tscn"
+config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalParameters="*res://scripts/global_scripts/GlobalParameters.gd"
+BattleParameters="*res://scripts/battle/base_scripts/BattleParameters.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/channel_pack": 0,
+"compress/hdr_compression": 1,
+"compress/lossy_quality": 1.0,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d/compress_to": 0,
+"mipmaps/generate": true,
+"mipmaps/limit": -1,
+"process/fix_alpha_border": true,
+"process/hdr_as_srgb": false,
+"process/hdr_clamp_exposure": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"process/size_limit": 0,
+"roughness/mode": 0,
+"roughness/src_normal": ""
+}

@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=3 uid="uid://claostjbovwkw"]
+
+[ext_resource type="PackedScene" uid="uid://fedk1qd4fo0t" path="res://scenes/battle/actions_dice/base_scenes/AbstractActionDice.tscn" id="1_l6plh"]
+[ext_resource type="Texture2D" uid="uid://n0mv0pwdeaes" path="res://sprites/battle/actions_dice/block_dice/block_dice.png" id="2_jxfh8"]
+[ext_resource type="Script" path="res://scripts/battle/actions_dice/block_dice/BlockDice.gd" id="3_4n27a"]
+
+[node name="BlockDice" instance=ExtResource("1_l6plh")]
+texture = ExtResource("2_jxfh8")
+script = ExtResource("3_4n27a")
