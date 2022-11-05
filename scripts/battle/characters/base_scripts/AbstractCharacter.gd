@@ -12,37 +12,59 @@ enum Resistance {
 }
 
 @export var name_character: String = ''
+
+@export_group("Health")
 @export_range(1, 1000, 1) var max_physical_health: int = 1
 @export_range(1, 1000, 1) var max_mental_health: int = 1
+
+@export_group("Resistances")
 @export var physical_resistance: Resistance = Resistance.NORMAL
 @export var mental_resistance: Resistance = Resistance.NORMAL
 
+@export_group("Speed Dice")
 @export_range(1, 99, 1) var min_speed: int = 1
 @export_range(1, 99, 1) var max_speed: int = 1
 @export_range(1, 10, 1) var speed_dice_count: int = 1
 
+var is_themself_placement_cards: bool = false
+
+@onready var is_ally: bool = self in get_tree().get_nodes_in_group("allies")
+
 @onready var physical_health: PhysicalHealth = PhysicalHealth.new(max_physical_health)
 @onready var mental_health: MentalHealth = MentalHealth.new(max_mental_health)
+
+@onready var character_marker_3d: CharacterMarker3D = preload(
+		"res://scenes/battle/characters/base_scenes/CharacterMarker3D.tscn").instantiate()
 
 @onready var subcharacter_bar: SubcharacterBars = $SubcharacterBars
 @onready var actions_animations: AnimatedSprite2D = $Actions
 @onready var speed_dice_manager: SpeedDiceManager = $SpeedDiceManager
 
 
+
 func _ready() -> void:
+	@warning_ignore(return_value_discarded)
 	physical_health.died.connect(_on_died)
+	@warning_ignore(return_value_discarded)
 	mental_health.stunned.connect(_on_stunned)
 	subcharacter_bar.init(physical_health, mental_health)
 	
 	speed_dice_manager.set_speed(min_speed, max_speed)
-	speed_dice_manager.change_speed_dice_count(speed_dice_count)
+	speed_dice_manager.change_speed_dice_count(speed_dice_count, is_ally)
 
 
 func _process(_delta: float) -> void:
-	#return
-	var character_marker_3d: CharacterBody3D = $"../../../SubViewport/TestBattle"\
-		.get_node("Characters/CharacterMarker3D")
-	position = character_marker_3d.get_position_on_camera()
+	position = character_marker_3d.get_current_position_on_camera()
+
+
+func prepare_for_card_placement() -> void:
+	character_marker_3d.return_to_starting_position()
+	flip_to_starting_position()
+	roll_speed_dice()
+
+
+func prepare_for_combat() -> void:
+	pass
 
 
 func roll_speed_dice() -> void:
@@ -72,7 +94,21 @@ func stun() -> void:
 	take_mantal_damage(max_mental_health)
 
 
-func switch_view_direction() -> void:
+func place_cards_themself() -> Dictionary:
+	return {}
+
+
+func flip_to_starting_position() -> void:
+	var window_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
+	var start_position: Vector2 = character_marker_3d.get_start_position_on_camera()
+	actions_animations.flip_h = start_position.x < window_width / 2.0
+
+
+func flip_to_specified_point(point_position: Vector2) -> void:
+	actions_animations.flip_h = position < point_position
+
+
+func flip_view_direction() -> void:
 	actions_animations.flip_h = !actions_animations.flip_h
 
 

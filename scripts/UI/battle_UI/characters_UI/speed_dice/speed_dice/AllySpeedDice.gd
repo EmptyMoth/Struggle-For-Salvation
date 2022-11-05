@@ -1,0 +1,2 @@
+class_name AllySpeedDice
+extends AbstractSpeedDice

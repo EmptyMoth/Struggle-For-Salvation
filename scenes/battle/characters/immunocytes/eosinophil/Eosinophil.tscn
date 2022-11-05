@@ -1,0 +1,60 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6xevm0nklql0"]
+
+[ext_resource type="PackedScene" uid="uid://nh0vtbqe4d5u" path="res://scenes/battle/characters/immunocytes/base_scenes/AbstractImmunocyte.tscn" id="1_qy4ss"]
+[ext_resource type="Texture2D" uid="uid://d0ssaqxemv1bc" path="res://sprites/battle/characters/immunocytes/eosinophil/block.png" id="2_l1xd6"]
+[ext_resource type="Texture2D" uid="uid://dharqnti1vq37" path="res://sprites/battle/characters/immunocytes/eosinophil/blunt_attack.png" id="3_qpp56"]
+[ext_resource type="Texture2D" uid="uid://cwnn3w3ovq0xu" path="res://sprites/battle/characters/immunocytes/eosinophil/default.png" id="4_65eec"]
+[ext_resource type="Texture2D" uid="uid://l37dlehvev0x" path="res://sprites/battle/characters/immunocytes/eosinophil/evade.png" id="5_apb7u"]
+[ext_resource type="Texture2D" uid="uid://cuurbqqc4wagr" path="res://sprites/battle/characters/immunocytes/eosinophil/movement.png" id="6_cff5k"]
+[ext_resource type="Texture2D" uid="uid://pi8xw0ec6xiy" path="res://sprites/battle/characters/immunocytes/eosinophil/pierce_attack.png" id="7_mgi44"]
+[ext_resource type="Texture2D" uid="uid://dtesmuwl6gtxx" path="res://sprites/battle/characters/immunocytes/eosinophil/slash_attack.png" id="8_eqyfu"]
+[ext_resource type="Texture2D" uid="uid://oauhvqcq2572" path="res://sprites/battle/characters/immunocytes/eosinophil/stun.png" id="9_ubetf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a7ege"]
+animations = [{
+"frames": [ExtResource("2_l1xd6")],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [ExtResource("3_qpp56")],
+"loop": false,
+"name": &"blunt_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("4_65eec")],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [ExtResource("5_apb7u")],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [ExtResource("6_cff5k")],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [ExtResource("7_mgi44")],
+"loop": false,
+"name": &"pierce_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("8_eqyfu")],
+"loop": false,
+"name": &"slash_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("9_ubetf")],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="Eosinophil" instance=ExtResource("1_qy4ss")]
+
+[node name="Actions" parent="." index="1"]
+position = Vector2(-4, -60)
+frames = SubResource("SpriteFrames_a7ege")

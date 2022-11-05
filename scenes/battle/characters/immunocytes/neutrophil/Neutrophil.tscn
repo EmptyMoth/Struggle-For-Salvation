@@ -1,0 +1,65 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbuxkeoxkkpd"]
+
+[ext_resource type="PackedScene" uid="uid://nh0vtbqe4d5u" path="res://scenes/battle/characters/immunocytes/base_scenes/AbstractImmunocyte.tscn" id="1_mrw1i"]
+[ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/immunocytes/neutrophil/block.png" id="2_lwaj3"]
+[ext_resource type="Texture2D" uid="uid://xq2xyd4ivpm" path="res://sprites/battle/characters/immunocytes/neutrophil/blunt_attack.png" id="3_c4y0x"]
+[ext_resource type="Texture2D" uid="uid://dcp5tnyjlkg4x" path="res://sprites/battle/characters/immunocytes/neutrophil/default.png" id="4_a2fqt"]
+[ext_resource type="Texture2D" uid="uid://cr5rqv0uv64p3" path="res://sprites/battle/characters/immunocytes/neutrophil/evade.png" id="5_aypv6"]
+[ext_resource type="Texture2D" uid="uid://drltmipr5lo2a" path="res://sprites/battle/characters/immunocytes/neutrophil/movement.png" id="6_dy3qf"]
+[ext_resource type="Texture2D" uid="uid://65xy6foolauq" path="res://sprites/battle/characters/immunocytes/neutrophil/pierce_attack.png" id="7_xwi4a"]
+[ext_resource type="Texture2D" uid="uid://c3fque8a4ik0j" path="res://sprites/battle/characters/immunocytes/neutrophil/slash_attack.png" id="8_rwieq"]
+[ext_resource type="Texture2D" uid="uid://c6bir2rcubwy2" path="res://sprites/battle/characters/immunocytes/neutrophil/stun.png" id="9_bhwur"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qfi4c"]
+animations = [{
+"frames": [ExtResource("2_lwaj3")],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [ExtResource("3_c4y0x")],
+"loop": false,
+"name": &"blunt_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("4_a2fqt")],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [ExtResource("5_aypv6")],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [ExtResource("6_dy3qf")],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [ExtResource("7_xwi4a")],
+"loop": false,
+"name": &"pierce_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("8_rwieq")],
+"loop": false,
+"name": &"slash_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("9_bhwur")],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="Neutrophil" instance=ExtResource("1_mrw1i")]
+max_physical_health = 100.0
+max_mental_health = 50.0
+min_speed = 3.0
+max_speed = 6.0
+speed_dice_count = 3.0
+
+[node name="Actions" parent="." index="1"]
+position = Vector2(0, -27)
+frames = SubResource("SpriteFrames_qfi4c")

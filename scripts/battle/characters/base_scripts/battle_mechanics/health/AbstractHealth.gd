@@ -11,6 +11,7 @@ var current_health: int = 0
 func _init(max_value: int) -> void:
 	max_health = max_value
 	current_health = max_value
+	@warning_ignore(return_value_discarded)
 	emit_signal("health_changed", current_health)
 
 
@@ -25,6 +26,7 @@ func decrease(count: int) -> void:
 	if current_health <= 0:
 		_reached_zero()
 	
+	@warning_ignore(return_value_discarded)
 	emit_signal("health_changed", current_health)
 
 
@@ -33,6 +35,7 @@ func restore(count: int) -> void:
 	if current_health > max_health:
 		current_health = max_health
 	
+	@warning_ignore(return_value_discarded)
 	emit_signal("health_changed", current_health)
 
 

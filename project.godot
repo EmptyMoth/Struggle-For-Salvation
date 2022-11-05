@@ -34,6 +34,21 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/AbstractHealth.gd"
 }, {
+"base": "AbstractCharacter",
+"class": &"AbstractImmunocyte",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/immunocytes/AbstractImmunocyte.gd"
+}, {
+"base": "AbstractCharacter",
+"class": &"AbstractPathogen",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/pathogens/AbstractPathogen.gd"
+}, {
+"base": "Button",
+"class": &"AbstractSpeedDice",
+"language": &"GDScript",
+"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/base_scripts/AbstractSpeedDice.gd"
+}, {
 "base": "Node",
 "class": &"AbstractStatusEffect",
 "language": &"GDScript",
@@ -48,6 +63,11 @@ _global_script_classes=[{
 "class": &"ActionDiceAbility",
 "language": &"GDScript",
 "path": "res://scripts/battle/abilities/ActionDiceAbility.gd"
+}, {
+"base": "AbstractSpeedDice",
+"class": &"AllySpeedDice",
+"language": &"GDScript",
+"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/AllySpeedDice.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"AttackDice",
@@ -64,11 +84,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/UI/battle_UI/characters_UI/health_bars/base_scripts/BaseHealthBar.gd"
 }, {
-"base": "Button",
-"class": &"BaseSpeedDice",
-"language": &"GDScript",
-"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/BaseSpeedDice.gd"
-}, {
 "base": "AbstractActionDice",
 "class": &"BlockDice",
 "language": &"GDScript",
@@ -79,15 +94,25 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/abilities/CardAbility.gd"
 }, {
+"base": "Node",
+"class": &"CardPlacementBattlePhaseHandler",
+"language": &"GDScript",
+"path": "res://scripts/battle/base_scripts/CardPlacementBattlePhaseHandler.gd"
+}, {
 "base": "AbstractAbility",
 "class": &"CharacterAbility",
 "language": &"GDScript",
 "path": "res://scripts/battle/abilities/CharacterAbility.gd"
 }, {
+"base": "CharacterBody3D",
+"class": &"CharacterMarker3D",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/base_scripts/CharacterMarker3D.gd"
+}, {
 "base": "Node",
 "class": &"CombatManager",
 "language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/ClashManager.gd"
+"path": "res://scripts/ClashManager.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"CounterDice",
@@ -99,10 +124,20 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/base_scripts/CurrentEffects.gd"
 }, {
+"base": "AbstractSpeedDice",
+"class": &"EnemySpeedDice",
+"language": &"GDScript",
+"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/EnemySpeedDice.gd"
+}, {
 "base": "AbstractActionDice",
 "class": &"EvadeDice",
 "language": &"GDScript",
 "path": "res://scripts/battle/actions_dice/evade_dice/EvadeDice.gd"
+}, {
+"base": "Node3D",
+"class": &"Formation",
+"language": &"GDScript",
+"path": "res://scripts/battle/formations/Formation.gd"
 }, {
 "base": "AbstractHealth",
 "class": &"MentalHealth",
@@ -130,20 +165,27 @@ _global_script_class_icons={
 "AbstractCard": "",
 "AbstractCharacter": "",
 "AbstractHealth": "",
+"AbstractImmunocyte": "",
+"AbstractPathogen": "",
+"AbstractSpeedDice": "",
 "AbstractStatusEffect": "",
 "Action": "",
 "ActionDiceAbility": "",
+"AllySpeedDice": "",
 "AttackDice": "",
 "BaseBattle": "",
 "BaseHealthBar": "",
-"BaseSpeedDice": "",
 "BlockDice": "",
 "CardAbility": "",
+"CardPlacementBattlePhaseHandler": "",
 "CharacterAbility": "",
+"CharacterMarker3D": "",
 "CombatManager": "",
 "CounterDice": "",
 "CurrentEffects": "",
+"EnemySpeedDice": "",
 "EvadeDice": "",
+"Formation": "",
 "MentalHealth": "",
 "PhysicalHealth": "",
 "SpeedDiceManager": "",
@@ -154,7 +196,7 @@ _global_script_class_icons={
 
 config/name="Struggle For Salvation"
 run/main_scene="res://tests/battle/TestBattle2D.tscn"
-config/features=PackedStringArray("4.0", "Vulkan Clustered")
+config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -167,6 +209,7 @@ BattleParameters="*res://scripts/battle/base_scripts/BattleParameters.gd"
 window/size/viewport_width=1280
 window/size/viewport_height=720
 window/stretch/mode="canvas_items"
+window/size/fullscreen=true
 
 [importer_defaults]
 
@@ -188,4 +231,17 @@ texture={
 "process/size_limit": 0,
 "roughness/mode": 0,
 "roughness/src_normal": ""
+}
+
+[input]
+
+ui_menu={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_switch_battle_phase={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
+]
 }

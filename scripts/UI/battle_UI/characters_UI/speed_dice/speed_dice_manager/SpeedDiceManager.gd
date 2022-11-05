@@ -16,32 +16,37 @@ func set_speed(min_value: int, max_value: int) -> void:
 	max_speed = max_value
 
 
-func change_speed_dice_count(new_count: int) -> void:
+func change_speed_dice_count(new_count: int, is_ally: bool) -> void:
 	if new_count == speed_dice_count and new_count <= 0:
 		return
 	
-	if new_count > speed_dice_count:
-		add_speed_dice(new_count - speed_dice_count)
+	var difference: int =  new_count - speed_dice_count
+	if difference > 0:
+		add_speed_dice(difference, is_ally)
 	else:
-		remove_speed_dice(speed_dice_count - new_count)
+		remove_speed_dice(-difference)
 
 
-func add_speed_dice(count: int) -> void:
+func add_speed_dice(count: int, is_ally: bool) -> void:
 	for i in count:
-		var speed_dice: BaseSpeedDice = preload("res://scenes/UI/battle_UI/characters_UI/speed_dice/speed_dice/BaseSpeedDice.tscn").instantiate()
+		var speed_dice: AbstractSpeedDice = (
+			preload("res://scenes/UI/battle_UI/characters_UI/speed_dice/speed_dice/AllySpeedDice.tscn").instantiate()
+			if is_ally 
+			else preload("res://scenes/UI/battle_UI/characters_UI/speed_dice/speed_dice/EnemySpeedDice.tscn").instantiate()
+		)
 		_speed_dice_container.add_child(speed_dice)
 
 
 func remove_speed_dice(count: int) -> void:
 	for i in count:
-		var speed_dice: BaseSpeedDice = _speed_dice_container.get_child(0)
+		var speed_dice: AbstractSpeedDice = _speed_dice_container.get_child(0)
 		_speed_dice_container.remove_child(speed_dice)
 
 
 func roll_speed_dice() -> void:
 	var speed_dice_values: Array[int] = _get_sorted_speed()
 	for i in speed_dice_count:
-		var speed_dice: BaseSpeedDice = _speed_dice_container.get_child(i)
+		var speed_dice: AbstractSpeedDice = _speed_dice_container.get_child(i)
 		var speed: int = speed_dice_values[i]
 		speed_dice.set_speed(speed)
 

@@ -42,4 +42,5 @@ func _set_zoom_level(value: Vector2) -> void:
 	_zoom_level.y = clampf(value.y, min_zoom.y, max_zoom.y)
 	
 	var tween := get_tree().create_tween()
+	@warning_ignore(return_value_discarded)
 	tween.tween_property(self, "zoom", _zoom_level, zoom_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)

@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dwwkkht1bqdkj"]
+
+[ext_resource type="PackedScene" uid="uid://dgparyig5qss5" path="res://scenes/battle/characters/pathogens/base_scenes/AbstractPathogen.tscn" id="1_20coe"]
+[ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="2_qc4uu"]
+[ext_resource type="Texture2D" uid="uid://dqfqm3a3rl4ek" path="res://sprites/battle/characters/pathogens/influenza_virus/attack.png" id="3_r32mm"]
+[ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_w7tie"]
+[ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="5_m6siu"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w4g8r"]
+animations = [{
+"frames": [ExtResource("2_qc4uu")],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [ExtResource("3_r32mm")],
+"loop": false,
+"name": &"blunt_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("2_qc4uu")],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [ExtResource("2_qc4uu")],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [ExtResource("4_w7tie")],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [ExtResource("3_r32mm")],
+"loop": false,
+"name": &"pierce_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("3_r32mm")],
+"loop": false,
+"name": &"slash_attack",
+"speed": 0.0
+}, {
+"frames": [ExtResource("5_m6siu")],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="InfluenzaVirus" instance=ExtResource("1_20coe")]
+max_physical_health = 25.0
+max_mental_health = 10.0
+mental_resistance = 150
+max_speed = 3.0
+
+[node name="Actions" parent="." index="1"]
+position = Vector2(0, -39)
+frames = SubResource("SpriteFrames_w4g8r")

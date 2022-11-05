@@ -20,6 +20,7 @@ func _update_bars(new_value: int) -> void:
 	var tween: Tween = create_tween()\
 		.set_ease(Tween.EASE_OUT)\
 		.set_trans(Tween.TRANS_CUBIC)
+	@warning_ignore(return_value_discarded)
 	tween.tween_property(self, "value", new_value, _animation_time)
 
 
