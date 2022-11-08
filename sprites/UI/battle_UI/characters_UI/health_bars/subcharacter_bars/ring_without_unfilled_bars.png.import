@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpbm6oogrb127"
-path="res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"
+uid="uid://bw7segam2h6ud"
+path="res://.godot/imported/ring_without_unfilled_bars.png-324993f0475701f587369959865e2c13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/border_when_selecting.png"
-dest_files=["res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/ring_without_unfilled_bars.png"
+dest_files=["res://.godot/imported/ring_without_unfilled_bars.png-324993f0475701f587369959865e2c13.ctex"]
 
 [params]
 

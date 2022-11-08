@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpbm6oogrb127"
-path="res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"
+uid="uid://bj46ejdk28n3n"
+path="res://.godot/imported/mhp_icon.png-84e8de34c7901213aafe32fd3c4bcf9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/border_when_selecting.png"
-dest_files=["res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/mhp_icon.png"
+dest_files=["res://.godot/imported/mhp_icon.png-84e8de34c7901213aafe32fd3c4bcf9c.ctex"]
 
 [params]
 

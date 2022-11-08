@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/abstract_subcharacter_bar.tscn" id="1_rddj2"]
+[ext_resource type="Texture2D" uid="uid://jmstp1qgratd" path="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/php_bar_unfilled.png" id="1_v3pis"]
+[ext_resource type="Texture2D" uid="uid://bppvahaoairu7" path="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/php_bar_filled.png" id="2_ojfx0"]
+
+[node name="PhysicalHealthBar" instance=ExtResource("1_rddj2")]
+offset_left = -35.0
+offset_right = 0.0
+offset_bottom = 39.0
+pivot_offset = Vector2(35, 0)
+fill_mode = 4
+texture_under = ExtResource("1_v3pis")
+texture_progress = ExtResource("2_ojfx0")
+radial_center_offset = Vector2(17, -3)
+
+[node name="Counter" parent="." index="0"]
+offset_left = 17.0
+offset_top = 25.0
+offset_right = 18.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(0.85, 0.119, 0.143367, 1)
+horizontal_alignment = 2

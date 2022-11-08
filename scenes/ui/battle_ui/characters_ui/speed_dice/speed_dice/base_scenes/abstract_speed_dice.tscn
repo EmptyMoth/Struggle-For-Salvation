@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd" id="1_5mron"]
+[ext_resource type="FontFile" uid="uid://bjpyveek057b3" path="res://fonts/itc_serif_gothic_lt_black.ttf" id="6_21rbd"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_wicam"]
+resource_local_to_scene = true
+frames = 3
+pause = true
+one_shot = true
+frame_0/duration = 0.0
+frame_1/duration = 0.0
+frame_2/duration = 0.0
+
+[sub_resource type="FontVariation" id="FontVariation_ut7p0"]
+base_font = ExtResource("6_21rbd")
+
+[node name="AbstractSpeedDice" type="Button"]
+custom_minimum_size = Vector2(181, 205)
+offset_right = 181.0
+offset_bottom = 205.0
+focus_mode = 0
+mouse_force_pass_scroll_events = false
+toggle_mode = true
+flat = true
+script = ExtResource("1_5mron")
+
+[node name="States" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = -22.0
+offset_right = 202.0
+offset_bottom = 228.0
+pivot_offset = Vector2(109, 125)
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_wicam")
+
+[node name="Border" type="TextureRect" parent="States"]
+texture_filter = 6
+layout_mode = 0
+offset_right = 218.0
+offset_bottom = 250.0
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="SpeedValue" type="Label" parent="States"]
+texture_filter = 2
+layout_mode = 0
+offset_left = 16.0
+offset_top = 22.0
+offset_right = 194.0
+offset_bottom = 225.0
+theme_override_fonts/font = SubResource("FontVariation_ut7p0")
+theme_override_font_sizes/font_size = 115
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_speed_dice_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_speed_dice_mouse_exited"]
+[connection signal="toggled" from="." to="." method="_on_speed_dice_toggled"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpbm6oogrb127"
-path="res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"
+uid="uid://ccvbca41ylo3"
+path="res://.godot/imported/full_malaise_point.png-92dd5dff514fcda768baa1e5375f1c36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/border_when_selecting.png"
-dest_files=["res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/bottom_corner_bars/full_malaise_point.png"
+dest_files=["res://.godot/imported/full_malaise_point.png-92dd5dff514fcda768baa1e5375f1c36.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpbm6oogrb127"
-path="res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"
+uid="uid://b2u7t7kuw3fj3"
+path="res://.godot/imported/malaise_bar_unfilled_for_teammate.png-489a477f8815b1d257b6a1dbedf9371f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/border_when_selecting.png"
-dest_files=["res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/malaise_bar_unfilled_for_teammate.png"
+dest_files=["res://.godot/imported/malaise_bar_unfilled_for_teammate.png-489a477f8815b1d257b6a1dbedf9371f.ctex"]
 
 [params]
 

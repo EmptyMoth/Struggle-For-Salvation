@@ -1,0 +1,62 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/abstract_character.gd" id="1_hqiae"]
+[ext_resource type="PackedScene" uid="uid://cho2dia7j60ab" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.tscn" id="2_u63yi"]
+[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.tscn" id="11_dixm2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b8r1a"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"blunt_attack",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"pierce_attack",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"slash_attack",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="AbstractCharacter" type="Node2D" groups=["characters"]]
+script = ExtResource("1_hqiae")
+
+[node name="SubcharacterBars" parent="." instance=ExtResource("2_u63yi")]
+metadata/_edit_use_anchors_ = true
+
+[node name="Actions" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+frames = SubResource("SpriteFrames_b8r1a")
+
+[node name="SpeedDiceManager" parent="." instance=ExtResource("11_dixm2")]
+offset_top = -86.0
+offset_bottom = -86.0

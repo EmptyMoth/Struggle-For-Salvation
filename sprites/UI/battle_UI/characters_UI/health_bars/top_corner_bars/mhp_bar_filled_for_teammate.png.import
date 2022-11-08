@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpbm6oogrb127"
-path="res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"
+uid="uid://cknotsbn0pcxv"
+path="res://.godot/imported/mhp_bar_filled_for_teammate.png-2a672548f041f932e2115d368618b060.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/border_when_selecting.png"
-dest_files=["res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/mhp_bar_filled_for_teammate.png"
+dest_files=["res://.godot/imported/mhp_bar_filled_for_teammate.png-2a672548f041f932e2115d368618b060.ctex"]
 
 [params]
 

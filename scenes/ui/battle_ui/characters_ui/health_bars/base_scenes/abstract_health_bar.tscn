@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd" id="1_xlk41"]
+
+[node name="AbstractHealthBar" type="TextureProgressBar"]
+offset_right = 1.0
+offset_bottom = 1.0
+mouse_filter = 2
+value = 100.0
+rounded = true
+script = ExtResource("1_xlk41")
+
+[node name="Counter" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1.0
+offset_bottom = 23.0

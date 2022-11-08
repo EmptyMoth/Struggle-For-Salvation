@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpbm6oogrb127"
-path="res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"
+uid="uid://dxkcvu4v1tf"
+path="res://.godot/imported/php_bar_filled_for_enemy.png-24776bdbbfec703630408a2bd213969c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/border_when_selecting.png"
-dest_files=["res://.godot/imported/border_when_selecting.png-3c26ea1537d033fd256442c73c826a74.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/bottom_corner_bars/php_bar_filled_for_enemy.png"
+dest_files=["res://.godot/imported/php_bar_filled_for_enemy.png-24776bdbbfec703630408a2bd213969c.ctex"]
 
 [params]
 

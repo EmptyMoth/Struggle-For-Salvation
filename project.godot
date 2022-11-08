@@ -12,152 +12,152 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"AbstractAbility",
 "language": &"GDScript",
-"path": "res://scripts/battle/abilities/AbstractAbility.gd"
+"path": "res://scripts/battle/abilities/abstract_ability.gd"
 }, {
 "base": "Control",
 "class": &"AbstractActionDice",
 "language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/base_scripts/AbstractActionDice.gd"
+"path": "res://scripts/battle/actions_dice/base_scripts/abstract_action_dice.gd"
 }, {
 "base": "Node",
 "class": &"AbstractCard",
 "language": &"GDScript",
-"path": "res://scripts/battle/cards/base_scripts/AbstractCard.gd"
+"path": "res://scripts/battle/cards/base_scripts/abstract_card.gd"
 }, {
 "base": "Node2D",
 "class": &"AbstractCharacter",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/AbstractCharacter.gd"
+"path": "res://scripts/battle/characters/base_scripts/abstract_character.gd"
 }, {
 "base": "Node",
 "class": &"AbstractHealth",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/AbstractHealth.gd"
+"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/abstract_health.gd"
 }, {
 "base": "AbstractCharacter",
 "class": &"AbstractImmunocyte",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/immunocytes/AbstractImmunocyte.gd"
+"path": "res://scripts/battle/characters/immunocytes/base_scripts/abstract_immunocyte.gd"
 }, {
 "base": "AbstractCharacter",
 "class": &"AbstractPathogen",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/pathogens/AbstractPathogen.gd"
+"path": "res://scripts/battle/characters/pathogens/base_scripts/abstract_pathogen.gd"
 }, {
 "base": "Button",
 "class": &"AbstractSpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/base_scripts/AbstractSpeedDice.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd"
 }, {
 "base": "Node",
 "class": &"AbstractStatusEffect",
 "language": &"GDScript",
-"path": "res://scripts/battle/status_effects/AbstractStatusEffect.gd"
+"path": "res://scripts/battle/status_effects/abstract_status_effect.gd"
 }, {
 "base": "Node",
 "class": &"Action",
 "language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/Action.gd"
+"path": "res://scripts/battle/base_scripts/action.gd"
 }, {
 "base": "AbstractAbility",
 "class": &"ActionDiceAbility",
 "language": &"GDScript",
-"path": "res://scripts/battle/abilities/ActionDiceAbility.gd"
+"path": "res://scripts/battle/abilities/action_dice_ability.gd"
 }, {
 "base": "AbstractSpeedDice",
 "class": &"AllySpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/AllySpeedDice.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"AttackDice",
 "language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/attack_dice/AttackDice.gd"
+"path": "res://scripts/battle/actions_dice/attack_dice/attack_dice.gd"
 }, {
 "base": "Node2D",
 "class": &"BaseBattle",
 "language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/BaseBattle.gd"
+"path": "res://scripts/battle/base_scripts/base_battle.gd"
 }, {
 "base": "TextureProgressBar",
 "class": &"BaseHealthBar",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_UI/characters_UI/health_bars/base_scripts/BaseHealthBar.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"BlockDice",
 "language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/block_dice/BlockDice.gd"
+"path": "res://scripts/battle/actions_dice/block_dice/block_dice.gd"
 }, {
 "base": "AbstractAbility",
 "class": &"CardAbility",
 "language": &"GDScript",
-"path": "res://scripts/battle/abilities/CardAbility.gd"
+"path": "res://scripts/battle/abilities/card_ability.gd"
 }, {
 "base": "Node",
 "class": &"CardPlacementBattlePhaseHandler",
 "language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/CardPlacementBattlePhaseHandler.gd"
+"path": "res://scripts/battle/base_scripts/card_placement_battle_phase_handler.gd"
 }, {
 "base": "AbstractAbility",
 "class": &"CharacterAbility",
 "language": &"GDScript",
-"path": "res://scripts/battle/abilities/CharacterAbility.gd"
+"path": "res://scripts/battle/abilities/character_ability.gd"
 }, {
 "base": "CharacterBody3D",
 "class": &"CharacterMarker3D",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/CharacterMarker3D.gd"
+"path": "res://scripts/battle/characters/base_scripts/character_marker_3d.gd"
 }, {
 "base": "Node",
 "class": &"CombatManager",
 "language": &"GDScript",
-"path": "res://scripts/ClashManager.gd"
+"path": "res://scripts/clash_manager.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"CounterDice",
 "language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/counter_dice/CounterDice.gd"
+"path": "res://scripts/battle/actions_dice/counter_dice/counter_dice.gd"
 }, {
 "base": "Node",
 "class": &"CurrentEffects",
 "language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/CurrentEffects.gd"
+"path": "res://scripts/battle/base_scripts/current_effects.gd"
 }, {
 "base": "AbstractSpeedDice",
 "class": &"EnemySpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice/EnemySpeedDice.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/enemy_speed_dice.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"EvadeDice",
 "language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/evade_dice/EvadeDice.gd"
+"path": "res://scripts/battle/actions_dice/evade_dice/evade_dice.gd"
 }, {
 "base": "Node3D",
 "class": &"Formation",
 "language": &"GDScript",
-"path": "res://scripts/battle/formations/Formation.gd"
+"path": "res://scripts/battle/formations/formation.gd"
 }, {
 "base": "AbstractHealth",
 "class": &"MentalHealth",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/MentalHealth.gd"
+"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/mental_health.gd"
 }, {
 "base": "AbstractHealth",
 "class": &"PhysicalHealth",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/PhysicalHealth.gd"
+"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/physical_health.gd"
 }, {
 "base": "Control",
 "class": &"SpeedDiceManager",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_UI/characters_UI/speed_dice/speed_dice_manager/SpeedDiceManager.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd"
 }, {
 "base": "Control",
 "class": &"SubcharacterBars",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_UI/characters_UI/health_bars/subcharacter_bar/SubcharacterBars.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd"
 }]
 _global_script_class_icons={
 "AbstractAbility": "",
@@ -195,14 +195,14 @@ _global_script_class_icons={
 [application]
 
 config/name="Struggle For Salvation"
-run/main_scene="res://tests/battle/TestBattle2D.tscn"
+run/main_scene="res://tests/battle/test_battle_2d.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalParameters="*res://scripts/global_scripts/GlobalParameters.gd"
-BattleParameters="*res://scripts/battle/base_scripts/BattleParameters.gd"
+GlobalParameters="*res://scripts/global_scripts/global_parameters.gd"
+BattleParameters="*res://scripts/battle/base_scripts/battle_parameters.gd"
 
 [display]
 

@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgparyig5qss5"]
-
-[ext_resource type="PackedScene" uid="uid://cncmr1f7c8sp7" path="res://scenes/battle/characters/base_scenes/AbstractCharacter.tscn" id="1_fmfyf"]
-[ext_resource type="Script" path="res://scripts/battle/characters/pathogens/AbstractPathogen.gd" id="2_mka6m"]
-
-[node name="AbstractPathogen" groups=["enemies"] instance=ExtResource("1_fmfyf")]
-script = ExtResource("2_mka6m")

@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd" id="1_m3g44"]
+[ext_resource type="Texture2D" uid="uid://bw7segam2h6ud" path="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/ring_without_unfilled_bars.png" id="2_hn5p6"]
+[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/physical_health_bar.tscn" id="3_6v0li"]
+[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/mental_health_bar.tscn" id="4_kyblk"]
+
+[node name="SubcharacterBars" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_m3g44")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -35.0
+offset_top = -18.0
+offset_right = 35.0
+offset_bottom = 22.0
+mouse_filter = 2
+texture = ExtResource("2_hn5p6")
+
+[node name="Bars" type="HBoxContainer" parent="."]
+offset_left = -35.0
+offset_top = -18.0
+offset_right = 35.0
+offset_bottom = 22.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="PhysicalHealthBar" parent="Bars" instance=ExtResource("3_6v0li")]
+offset_left = 0.0
+offset_right = 35.0
+offset_bottom = 40.0
+
+[node name="MentalHealthBar" parent="Bars" instance=ExtResource("4_kyblk")]
+offset_left = 35.0
+offset_right = 70.0
+offset_bottom = 40.0
