@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4quiejejsxos"
-path="res://.godot/imported/mhp_bar_unfilled_for_teammate.png-462025733079e72693a7dd55ffa4c71e.ctex"
+path="res://.godot/imported/mhp_bar_unfilled_for_teammate.png-77f7907247650a99457a3cb216a19add.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/mhp_bar_unfilled_for_teammate.png"
-dest_files=["res://.godot/imported/mhp_bar_unfilled_for_teammate.png-462025733079e72693a7dd55ffa4c71e.ctex"]
+source_file="res://sprites/UI/battle_UI/characters_UI/health_bars/top_corner_bars/mhp_bar_unfilled_for_teammate.png"
+dest_files=["res://.godot/imported/mhp_bar_unfilled_for_teammate.png-77f7907247650a99457a3cb216a19add.ctex"]
 
 [params]
 

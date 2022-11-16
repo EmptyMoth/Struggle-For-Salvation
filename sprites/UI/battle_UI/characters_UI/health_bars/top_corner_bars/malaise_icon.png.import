@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4808poc22yb1"
-path="res://.godot/imported/malaise_icon.png-8375136bcfe8c31b57efdf4bccc9522f.ctex"
+path="res://.godot/imported/malaise_icon.png-116a6fe3a963870f572be9b2f3ec3161.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/malaise_icon.png"
-dest_files=["res://.godot/imported/malaise_icon.png-8375136bcfe8c31b57efdf4bccc9522f.ctex"]
+source_file="res://sprites/UI/battle_UI/characters_UI/health_bars/top_corner_bars/malaise_icon.png"
+dest_files=["res://.godot/imported/malaise_icon.png-116a6fe3a963870f572be9b2f3ec3161.ctex"]
 
 [params]
 
