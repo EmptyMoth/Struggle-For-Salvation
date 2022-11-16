@@ -16,13 +16,12 @@ var enemy_team: Array[Node] :
 var turns_count: int = 0
 var current_phase: BattlePhase = BattlePhase.COMBAT
 
-@onready var _battlefield: Node3D = $SubViewport/Battle3D
-
-@onready var formation: Formation = _packed_formation.instantiate()
+@onready var _battlefield: BaseBattlefield = $SubViewport/Battle3D
+@onready var _formation: Formation = _packed_formation.instantiate()
 
 
 func _ready() -> void:
-	_battlefield.add_child(formation)
+	_battlefield.set_formation(_formation)
 	
 	for ally in ally_team:
 		_set_ally_start_position_on_battlefield(ally)
@@ -36,6 +35,10 @@ func _input(_event: InputEvent) -> void:
 	if current_phase == BattlePhase.CARD_PLACEMENT \
 			and Input.is_action_just_pressed("ui_switch_battle_phase"):
 		_switch_battle_phase()
+
+
+func end() -> void:
+	pass
 
 
 func _switch_battle_phase() -> void:
@@ -61,12 +64,12 @@ func _implements_combat_phase() -> void:
 func _set_ally_start_position_on_battlefield(ally: AbstractCharacter) -> void:
 	var ally_marker: CharacterMarker3D = ally.character_marker_3d
 	var allies: Node3D = _battlefield.get_node("Characters/Allies")
+	_formation.set_ally_start_position(ally_marker, ally.get_index())
 	allies.add_child(ally_marker)
-	formation.set_ally_start_position(ally_marker, ally.get_index())
 
 
 func _set_enemy_start_position_on_battlefield(enemy: AbstractCharacter) -> void:
 	var enemy_marker: CharacterMarker3D = enemy.character_marker_3d
 	var enemies: Node3D = _battlefield.get_node("Characters/Enemies")
+	_formation.set_enemy_start_position(enemy_marker, enemy.get_index())
 	enemies.add_child(enemy_marker)
-	formation.set_enemy_start_position(enemy_marker, enemy.get_index())

@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://bgylwmmvsejd1"]
 
 [ext_resource type="Script" path="res://scripts/battle/formations/formation.gd" id="1_utn23"]
 
@@ -29,3 +29,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 1)
 
 [node name="EnemyPositions" type="Node3D" parent="."]
+
+[node name="Character1" type="Marker3D" parent="EnemyPositions"]

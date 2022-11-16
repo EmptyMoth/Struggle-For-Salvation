@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3]
+[gd_scene load_steps=6 format=3 uid="uid://dl8haap1scn22"]
 
 [ext_resource type="Script" path="res://tests/ui/action_switcher.gd" id="1_taynt"]
 
@@ -53,6 +53,7 @@ custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
 offset_right = 75.0
 offset_bottom = 75.0
+focus_mode = 0
 text = "Stand"
 
 [node name="Movement" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -61,6 +62,7 @@ layout_mode = 2
 offset_left = 80.0
 offset_right = 181.0
 offset_bottom = 75.0
+focus_mode = 0
 text = "Movement"
 
 [node name="Stunning" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -69,6 +71,7 @@ layout_mode = 2
 offset_left = 186.0
 offset_right = 294.0
 offset_bottom = 75.0
+focus_mode = 0
 text = "Stun"
 
 [node name="Block" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -77,6 +80,7 @@ layout_mode = 2
 offset_left = 299.0
 offset_right = 403.0
 offset_bottom = 75.0
+focus_mode = 0
 text = "Block"
 
 [node name="Evade" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -85,6 +89,7 @@ layout_mode = 2
 offset_top = 80.0
 offset_right = 75.0
 offset_bottom = 155.0
+focus_mode = 0
 text = "Evade"
 
 [node name="SlashAttack" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -94,6 +99,7 @@ offset_left = 80.0
 offset_top = 80.0
 offset_right = 181.0
 offset_bottom = 155.0
+focus_mode = 0
 text = "Slash attack"
 
 [node name="PierceAttack" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -103,6 +109,7 @@ offset_left = 186.0
 offset_top = 80.0
 offset_right = 294.0
 offset_bottom = 155.0
+focus_mode = 0
 text = "Pierce attack"
 
 [node name="BluntAttack" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
@@ -112,6 +119,7 @@ offset_left = 299.0
 offset_top = 80.0
 offset_right = 403.0
 offset_bottom = 155.0
+focus_mode = 0
 text = "Blunt Attack"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
@@ -125,6 +133,7 @@ layout_mode = 2
 offset_right = 92.0
 offset_bottom = 31.0
 size_flags_horizontal = 2
+focus_mode = 0
 text = "Flip H"
 metadata/_edit_use_anchors_ = true
 
@@ -135,6 +144,7 @@ offset_left = 300.0
 offset_right = 403.0
 offset_bottom = 31.0
 size_flags_horizontal = 10
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_tuj3c")
 text = "Deal damage"
 icon_alignment = 1
@@ -152,6 +162,7 @@ layout_mode = 2
 offset_right = 158.0
 offset_bottom = 155.0
 size_flags_vertical = 0
+focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_avrx8")
 text = "Roll Speed dice"
@@ -168,6 +179,7 @@ custom_minimum_size = Vector2(77, 30)
 layout_mode = 2
 offset_right = 77.0
 offset_bottom = 30.0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_1tvk1")
 text = "Die"
 
@@ -177,6 +189,7 @@ layout_mode = 2
 offset_left = 81.0
 offset_right = 158.0
 offset_bottom = 30.0
+focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_g16cc")
 text = "Stun"
 

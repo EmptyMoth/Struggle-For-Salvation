@@ -57,7 +57,7 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"Action",
 "language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/action.gd"
+"path": "res://scripts/battle/actions/base_scripts/action.gd"
 }, {
 "base": "AbstractAbility",
 "class": &"ActionDiceAbility",
@@ -79,6 +79,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/base_scripts/base_battle.gd"
 }, {
+"base": "Node3D",
+"class": &"BaseBattlefield",
+"language": &"GDScript",
+"path": "res://scripts/battle/battlefields/base_scripts/base_battlefields.gd"
+}, {
 "base": "TextureProgressBar",
 "class": &"BaseHealthBar",
 "language": &"GDScript",
@@ -94,11 +99,6 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/abilities/card_ability.gd"
 }, {
-"base": "Node",
-"class": &"CardPlacementBattlePhaseHandler",
-"language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/card_placement_battle_phase_handler.gd"
-}, {
 "base": "AbstractAbility",
 "class": &"CharacterAbility",
 "language": &"GDScript",
@@ -112,7 +112,7 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"CombatManager",
 "language": &"GDScript",
-"path": "res://scripts/clash_manager.gd"
+"path": "res://scripts/battle/base_scripts/phase_managers/clash_manager.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"CounterDice",
@@ -122,7 +122,7 @@ _global_script_classes=[{
 "base": "Node",
 "class": &"CurrentEffects",
 "language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/current_effects.gd"
+"path": "res://scripts/battle/effects/current_effects.gd"
 }, {
 "base": "AbstractSpeedDice",
 "class": &"EnemySpeedDice",
@@ -174,10 +174,10 @@ _global_script_class_icons={
 "AllySpeedDice": "",
 "AttackDice": "",
 "BaseBattle": "",
+"BaseBattlefield": "",
 "BaseHealthBar": "",
 "BlockDice": "",
 "CardAbility": "",
-"CardPlacementBattlePhaseHandler": "",
 "CharacterAbility": "",
 "CharacterMarker3D": "",
 "CombatManager": "",
@@ -203,6 +203,8 @@ config/icon="res://icon.svg"
 
 GlobalParameters="*res://scripts/global_scripts/global_parameters.gd"
 BattleParameters="*res://scripts/battle/base_scripts/battle_parameters.gd"
+CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_placement_manager.gd"
+ClashManager="*res://scripts/battle/base_scripts/phase_managers/clash_manager.gd"
 
 [display]
 

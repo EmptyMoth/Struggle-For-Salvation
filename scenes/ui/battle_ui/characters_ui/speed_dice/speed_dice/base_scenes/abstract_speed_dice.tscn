@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bj1hu84ove811"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd" id="1_5mron"]
 [ext_resource type="FontFile" uid="uid://bjpyveek057b3" path="res://fonts/itc_serif_gothic_lt_black.ttf" id="6_21rbd"]

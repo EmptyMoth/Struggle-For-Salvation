@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://bfprcu7bjw781"]
 
 [ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/abstract_character.gd" id="1_hqiae"]
-[ext_resource type="PackedScene" uid="uid://cho2dia7j60ab" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.tscn" id="2_u63yi"]
+[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.tscn" id="2_u63yi"]
 [ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.tscn" id="11_dixm2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b8r1a"]

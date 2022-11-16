@@ -41,7 +41,6 @@ var is_themself_placement_cards: bool = false
 @onready var speed_dice_manager: SpeedDiceManager = $SpeedDiceManager
 
 
-
 func _ready() -> void:
 	@warning_ignore(return_value_discarded)
 	physical_health.died.connect(_on_died)
@@ -65,6 +64,14 @@ func prepare_for_card_placement() -> void:
 
 func prepare_for_combat() -> void:
 	pass
+
+
+func make_selected() -> void:
+	z_index = 1
+
+
+func cancel_selected() -> void:
+	z_index = 0
 
 
 func roll_speed_dice() -> void:

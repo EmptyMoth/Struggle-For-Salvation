@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://nw5sutqe2ey"]
 
 [ext_resource type="Script" path="res://tests/battle/camera_3d.gd" id="1_ausfl"]
+[ext_resource type="Script" path="res://scripts/battle/battlefields/base_scripts/base_battlefields.gd" id="1_n7e8g"]
 [ext_resource type="PackedScene" uid="uid://drjvp8wkafx0f" path="res://scenes/battle/battlefield/test_battle/battlefield.tscn" id="2_pub4r"]
 
 [node name="TestBattle" type="Node3D"]
+script = ExtResource("1_n7e8g")
 
 [node name="Camera3d" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 6, 9)
