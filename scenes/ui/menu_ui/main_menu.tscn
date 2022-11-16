@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3grqfmlnhc8d"]
+
+[ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos-sil.ttf" id="1_8ntov"]
+[ext_resource type="Script" path="res://scripts/UI/menu_UI/main_menu.gd" id="2_ffkkq"]
+[ext_resource type="PackedScene" uid="uid://b5cx4c5ht3cw6" path="res://scenes/UI/common_UI/MenuSettings/MenuSettings.tscn" id="3_lo666"]
+
+[sub_resource type="Theme" id="Theme_n0nuu"]
+default_font = ExtResource("1_8ntov")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_n0nuu")
+script = ExtResource("2_ffkkq")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+offset_left = 584.0
+offset_top = 305.0
+offset_right = 695.0
+offset_bottom = 415.0
+
+[node name="ButtonStartGame" type="Button" parent="CenterContainer/Menu"]
+layout_mode = 2
+offset_right = 111.0
+offset_bottom = 34.0
+text = "Начать игру"
+flat = true
+
+[node name="ButtonSettings" type="Button" parent="CenterContainer/Menu"]
+layout_mode = 2
+offset_top = 38.0
+offset_right = 111.0
+offset_bottom = 72.0
+text = "Настройки"
+flat = true
+
+[node name="ButtonExit" type="Button" parent="CenterContainer/Menu"]
+layout_mode = 2
+offset_top = 76.0
+offset_right = 111.0
+offset_bottom = 110.0
+text = "Выйти из игры"
+flat = true
+
+[node name="MenuSettings" parent="CenterContainer" instance=ExtResource("3_lo666")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 640.0
+offset_top = 360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[connection signal="pressed" from="CenterContainer/Menu/ButtonStartGame" to="." method="_on_button_start_game_pressed"]
+[connection signal="pressed" from="CenterContainer/Menu/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="CenterContainer/Menu/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="exit_menu" from="CenterContainer/MenuSettings" to="." method="_on_menu_settings_exit_menu"]
