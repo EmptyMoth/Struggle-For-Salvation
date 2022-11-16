@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dufi5egwve2s1" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_vudjs"]
 [ext_resource type="PackedScene" uid="uid://nw5sutqe2ey" path="res://tests/battle/test_battle.tscn" id="3_w28j6"]
 [ext_resource type="Script" path="res://tests/battle/battle_camera.gd" id="4_3guli"]
-[ext_resource type="PackedScene" uid="uid://b3h1cl0nm17cs" path="res://scenes/battle/characters/immunocytes/neutrophil/neutrophil.tscn" id="5_5rgua"]
+[ext_resource type="PackedScene" uid="uid://b3h1cl0nm17cs" path="res://scenes/battle/characters/immunocytes/neutrophil/Neutrophil.tscn" id="5_5rgua"]
 [ext_resource type="PackedScene" uid="uid://c4agosjfjp30g" path="res://scenes/battle/characters/pathogens/influenza_virus/influenza_virus.tscn" id="6_5y3td"]
 [ext_resource type="PackedScene" uid="uid://dl8haap1scn22" path="res://tests/ui/action_switcher.tscn" id="7_g7w2u"]
 
@@ -40,28 +40,12 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Neutrophil" parent="Characters/Allies" instance=ExtResource("5_5rgua")]
-name_character = null
-physical_resistance = null
-mental_resistance = null
-max_speed = 7.0
 
 [node name="Neutrophil2" parent="Characters/Allies" instance=ExtResource("5_5rgua")]
-name_character = null
-physical_resistance = null
-mental_resistance = null
-max_speed = 7.0
 
 [node name="Neutrophil3" parent="Characters/Allies" instance=ExtResource("5_5rgua")]
-name_character = null
-physical_resistance = null
-mental_resistance = null
-max_speed = 7.0
 
 [node name="Neutrophil4" parent="Characters/Allies" instance=ExtResource("5_5rgua")]
-name_character = null
-physical_resistance = null
-mental_resistance = null
-max_speed = 7.0
 
 [node name="Enemies" type="Node2D" parent="Characters"]
 y_sort_enabled = true

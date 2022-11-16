@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scenes/abstract_speed_dice.tscn" id="1_rkfx0"]
+[ext_resource type="PackedScene" uid="uid://bj1hu84ove811" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scenes/abstract_speed_dice.tscn" id="1_rkfx0"]
 [ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd" id="2_p34dw"]
 [ext_resource type="Texture2D" uid="uid://c3xdcbpdq5i6k" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/ally_speed_dice/default.png" id="3_5145t"]
 [ext_resource type="Texture2D" uid="uid://btjotx601jjj2" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/ally_speed_dice/used.png" id="4_v6c8n"]
