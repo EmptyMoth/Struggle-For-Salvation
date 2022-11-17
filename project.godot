@@ -147,7 +147,7 @@ _global_script_classes=[{
 "base": "Node3D",
 "class": &"Formation",
 "language": &"GDScript",
-"path": "res://scripts/battle/formations/formation.gd"
+"path": "res://scripts/battle/formations/Formation.gd"
 }, {
 "base": "AbstractHealth",
 "class": &"MentalHealth",

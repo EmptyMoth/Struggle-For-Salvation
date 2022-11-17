@@ -1,0 +1,157 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkum2k6vrud1n"]
+
+[ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_cictb"]
+[ext_resource type="Script" path="res://scripts/story/story_scene.gd" id="2_glmgb"]
+
+[sub_resource type="Theme" id="Theme_g2seh"]
+default_font = ExtResource("1_cictb")
+
+[node name="StoryScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_g2seh")
+script = ExtResource("2_glmgb")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -90.5
+offset_top = -38.0
+offset_right = 90.5
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="SpeakerName" type="RichTextLabel" parent="VBoxContainer"]
+custom_minimum_size = Vector2i(0, 24)
+layout_mode = 2
+offset_right = 695.0
+offset_bottom = 24.0
+fit_content_height = true
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2i(500, 150)
+layout_mode = 2
+offset_top = 28.0
+offset_right = 695.0
+offset_bottom = 178.0
+color = Color(0, 0, 0, 0.784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/ColorRect/MarginContainer"]
+layout_mode = 2
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 685.0
+offset_bottom = 140.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 182.0
+offset_right = 695.0
+offset_bottom = 216.0
+
+[node name="ButtonLog" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_right = 127.0
+offset_bottom = 34.0
+size_flags_horizontal = 10
+text = "Запись разговора"
+
+[node name="ButtonSkip" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 131.0
+offset_right = 220.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+text = "Пропустить"
+
+[node name="ButtonFastForward" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 224.0
+offset_right = 312.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+text = "Перемотать"
+
+[node name="ButtonAutoplay" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 316.0
+offset_right = 427.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+text = "Воспроизвести"
+
+[node name="ButtonBack" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 431.0
+offset_right = 480.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+text = "Назад"
+flat = true
+
+[node name="ButtonRepeat" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 484.0
+offset_right = 565.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+text = "Повторить"
+
+[node name="ButtonNext" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 569.0
+offset_right = 627.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+text = "Вперёд"
+flat = true
+
+[node name="ButtonHide" type="Button" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 631.0
+offset_right = 695.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+text = "Закрыть"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonLog" to="." method="_on_button_log_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonSkip" to="." method="_on_button_skip_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonFastForward" to="." method="_on_button_fast_forward_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAutoplay" to="." method="_on_button_autoplay_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonRepeat" to="." method="_on_button_repeat_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonNext" to="." method="_on_button_next_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonHide" to="." method="_on_button_hide_pressed"]
