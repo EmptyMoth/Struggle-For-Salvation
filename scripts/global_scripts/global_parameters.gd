@@ -10,6 +10,6 @@ func _ready() -> void:
 	_random.randomize()
 
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_pressed("ui_menu"):
-		get_tree().quit()
+#func _input(_event: InputEvent) -> void:
+#	if Input.is_action_pressed("ui_menu"):
+#		get_tree().quit()

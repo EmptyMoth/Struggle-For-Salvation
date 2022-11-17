@@ -48,6 +48,7 @@ func set_resolution() -> void:
 			#DisplayServer.window_set_position(Vector2i(0, 0))
 		Config.Display.DISPLAY_FULLSCREEN:
 			get_viewport().size = Config.get_resolution()
+			DisplayServer.window_set_size(Config.get_resolution())
 			#DisplayServer.window_set_size(get_resolution(config.get_value("graphics", "resolution")))
 
 func set_display_mode() -> void:

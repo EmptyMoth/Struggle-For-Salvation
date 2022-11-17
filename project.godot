@@ -47,7 +47,7 @@ _global_script_classes=[{
 "base": "Button",
 "class": &"AbstractSpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd"
+"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd"
 }, {
 "base": "Node",
 "class": &"AbstractStatusEffect",
@@ -67,7 +67,7 @@ _global_script_classes=[{
 "base": "AbstractSpeedDice",
 "class": &"AllySpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd"
+"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"AttackDice",
@@ -87,7 +87,7 @@ _global_script_classes=[{
 "base": "TextureProgressBar",
 "class": &"BaseHealthBar",
 "language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd"
+"path": "res://scripts/UI/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"BlockDice",
@@ -127,7 +127,7 @@ _global_script_classes=[{
 "base": "AbstractSpeedDice",
 "class": &"EnemySpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/enemy_speed_dice.gd"
+"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice/enemy_speed_dice.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"EvadeDice",
@@ -152,12 +152,12 @@ _global_script_classes=[{
 "base": "Control",
 "class": &"SpeedDiceManager",
 "language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd"
+"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd"
 }, {
 "base": "Control",
 "class": &"SubcharacterBars",
 "language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd"
+"path": "res://scripts/UI/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd"
 }]
 _global_script_class_icons={
 "AbstractAbility": "",
@@ -195,12 +195,13 @@ _global_script_class_icons={
 [application]
 
 config/name="Struggle For Salvation"
-run/main_scene="res://tests/battle/test_battle_2d.tscn"
+run/main_scene="res://scenes/ui/menu_ui/main_menu.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
 [autoload]
 
+Config="*res://scripts/global_scripts/config.gd"
 GlobalParameters="*res://scripts/global_scripts/global_parameters.gd"
 BattleParameters="*res://scripts/battle/base_scripts/battle_parameters.gd"
 CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_placement_manager.gd"
@@ -210,7 +211,6 @@ ClashManager="*res://scripts/battle/base_scripts/phase_managers/clash_manager.gd
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
-window/stretch/mode="canvas_items"
 window/size/fullscreen=true
 
 [importer_defaults]

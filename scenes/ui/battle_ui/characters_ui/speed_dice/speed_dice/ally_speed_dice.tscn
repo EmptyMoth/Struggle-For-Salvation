@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=7 format=3 uid="uid://ce4toka8amjn0"]
 
 [ext_resource type="PackedScene" uid="uid://bj1hu84ove811" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scenes/abstract_speed_dice.tscn" id="1_rkfx0"]
-[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd" id="2_p34dw"]
-[ext_resource type="Texture2D" uid="uid://c3xdcbpdq5i6k" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/ally_speed_dice/default.png" id="3_5145t"]
-[ext_resource type="Texture2D" uid="uid://btjotx601jjj2" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/ally_speed_dice/used.png" id="4_v6c8n"]
-[ext_resource type="Texture2D" uid="uid://bou4hxiwptjso" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/ally_speed_dice/broken.png" id="5_ps2qf"]
-[ext_resource type="Texture2D" uid="uid://dsgyxtvbo0onp" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/ally_speed_dice/border_when_selecting.png" id="6_p61ln"]
+[ext_resource type="Texture2D" uid="uid://c3xdcbpdq5i6k" path="res://sprites/UI/battle_UI/characters_UI/speed_dice/ally_speed_dice/default.png" id="3_5145t"]
+[ext_resource type="Texture2D" uid="uid://btjotx601jjj2" path="res://sprites/UI/battle_UI/characters_UI/speed_dice/ally_speed_dice/used.png" id="4_v6c8n"]
+[ext_resource type="Texture2D" uid="uid://bou4hxiwptjso" path="res://sprites/UI/battle_UI/characters_UI/speed_dice/ally_speed_dice/broken.png" id="5_ps2qf"]
+[ext_resource type="Texture2D" uid="uid://dsgyxtvbo0onp" path="res://sprites/UI/battle_UI/characters_UI/speed_dice/ally_speed_dice/border_when_selecting.png" id="6_p61ln"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_m5gdx"]
 resource_local_to_scene = true
@@ -20,7 +19,6 @@ frame_2/texture = ExtResource("5_ps2qf")
 frame_2/duration = 0.0
 
 [node name="AllySpeedDice" instance=ExtResource("1_rkfx0")]
-script = ExtResource("2_p34dw")
 
 [node name="States" parent="." index="0"]
 texture = SubResource("AnimatedTexture_m5gdx")

@@ -35,6 +35,9 @@ func _input(_event: InputEvent) -> void:
 	if current_phase == BattlePhase.CARD_PLACEMENT \
 			and Input.is_action_just_pressed("ui_switch_battle_phase"):
 		_switch_battle_phase()
+	
+	if Input.is_action_just_released("ui_menu"):
+		$CanvasLayer/PauseMenu.pause_game()
 
 
 func end() -> void:

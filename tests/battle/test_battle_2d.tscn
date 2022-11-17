@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cltupwkte107h"]
+[gd_scene load_steps=10 format=3 uid="uid://cltupwkte107h"]
 
 [ext_resource type="Script" path="res://scripts/battle/base_scripts/base_battle.gd" id="1_le2iy"]
 [ext_resource type="PackedScene" uid="uid://dufi5egwve2s1" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_vudjs"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3h1cl0nm17cs" path="res://scenes/battle/characters/immunocytes/neutrophil/Neutrophil.tscn" id="5_5rgua"]
 [ext_resource type="PackedScene" uid="uid://c4agosjfjp30g" path="res://scenes/battle/characters/pathogens/influenza_virus/influenza_virus.tscn" id="6_5y3td"]
 [ext_resource type="PackedScene" uid="uid://dl8haap1scn22" path="res://tests/ui/action_switcher.tscn" id="7_g7w2u"]
+[ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu_ui/menu_pause.tscn" id="8_4dveh"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_kqnd5"]
 viewport_path = NodePath("SubViewport")
@@ -63,3 +64,6 @@ y_sort_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ActionSwitcher" parent="CanvasLayer" instance=ExtResource("7_g7w2u")]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_4dveh")]
+visible = false

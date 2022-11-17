@@ -6,7 +6,7 @@ func _ready():
 
 
 func _on_button_start_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://tests/battle/TestBattle2D.tscn")
+	get_tree().change_scene_to_file("res://tests/battle/test_battle_2d.tscn")
 
 func _on_button_settings_pressed() -> void:
 	$CenterContainer/MenuSettings.visible = true

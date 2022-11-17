@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b5cx4c5ht3cw6"]
 
-[ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos-sil.ttf" id="1_8uk6y"]
-[ext_resource type="Script" path="res://scripts/UI/menu_UI/MenuSettings.gd" id="1_d8gkx"]
+[ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_8uk6y"]
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/menu_settings.gd" id="2_aql52"]
 
 [sub_resource type="Theme" id="Theme_xhy1n"]
 default_font = ExtResource("1_8uk6y")
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_xhy1n")
-script = ExtResource("1_d8gkx")
+script = ExtResource("2_aql52")
 
 [node name="MenuSettings" type="CenterContainer" parent="."]
 anchors_preset = 15
