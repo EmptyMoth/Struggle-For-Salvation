@@ -8,6 +8,7 @@ func _ready() -> void:
 	init()
 
 func init() -> void:
+	@warning_ignore(return_value_discarded)
 	Config.validate_config()
 	
 	$MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/Language/OptionButton.selected = Config.get_value("gameplay", "language")
@@ -134,4 +135,5 @@ func _on_enemy_damage_value_changed(value: float) -> void:
 
 
 func _on_back_button_pressed():
+	@warning_ignore(return_value_discarded)
 	emit_signal("exit_menu")

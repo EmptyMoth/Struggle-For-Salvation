@@ -47,7 +47,7 @@ _global_script_classes=[{
 "base": "Button",
 "class": &"AbstractSpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd"
 }, {
 "base": "Node",
 "class": &"AbstractStatusEffect",
@@ -67,7 +67,7 @@ _global_script_classes=[{
 "base": "AbstractSpeedDice",
 "class": &"AllySpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"AttackDice",
@@ -87,7 +87,7 @@ _global_script_classes=[{
 "base": "TextureProgressBar",
 "class": &"BaseHealthBar",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"BlockDice",
@@ -127,7 +127,7 @@ _global_script_classes=[{
 "base": "AbstractSpeedDice",
 "class": &"EnemySpeedDice",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice/enemy_speed_dice.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/enemy_speed_dice.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"EvadeDice",
@@ -152,12 +152,12 @@ _global_script_classes=[{
 "base": "Control",
 "class": &"SpeedDiceManager",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd"
 }, {
 "base": "Control",
 "class": &"SubcharacterBars",
 "language": &"GDScript",
-"path": "res://scripts/UI/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd"
 }]
 _global_script_class_icons={
 "AbstractAbility": "",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3]
+[gd_scene load_steps=2 format=3 uid="uid://dd5hub8wm1jqr"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd" id="1_lgja3"]
 

@@ -82,6 +82,7 @@ func validate_config() -> bool:
 	return true
 
 func save_config() -> void:
+	@warning_ignore(return_value_discarded)
 	config.save("user://config.cfg")
 
 func get_value(section: String, key: String) -> Variant:

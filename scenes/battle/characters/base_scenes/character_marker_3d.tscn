@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3]
+[gd_scene load_steps=3 format=3 uid="uid://mf5va8bcv2bu"]
 
 [ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/character_marker_3d.gd" id="1_8383r"]
 

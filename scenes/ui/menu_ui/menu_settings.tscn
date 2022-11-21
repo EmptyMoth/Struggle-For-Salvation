@@ -75,7 +75,7 @@ offset_bottom = 29.0
 text = "Считать кубики действий"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/ActionDice"]
-custom_minimum_size = Vector2i(100, 0)
+custom_minimum_size = Vector2(100, 0)
 offset_left = 251.0
 offset_right = 351.0
 offset_bottom = 29.0
@@ -92,7 +92,7 @@ offset_bottom = 29.0
 text = "Воспроизведение музыки при паузе"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/MusicWhenPaused"]
-custom_minimum_size = Vector2i(100, 0)
+custom_minimum_size = Vector2(100, 0)
 offset_left = 251.0
 offset_right = 351.0
 offset_bottom = 29.0
@@ -109,7 +109,7 @@ offset_bottom = 29.0
 text = "Включить свои правила"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/CustomRules"]
-custom_minimum_size = Vector2i(100, 0)
+custom_minimum_size = Vector2(100, 0)
 offset_left = 251.0
 offset_right = 351.0
 offset_bottom = 29.0
@@ -126,7 +126,7 @@ offset_bottom = 29.0
 text = "Здоровье патогенов"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/EnemyHealth"]
-custom_minimum_size = Vector2i(200, 0)
+custom_minimum_size = Vector2(200, 0)
 offset_left = 151.0
 offset_right = 351.0
 offset_bottom = 16.0
@@ -148,7 +148,7 @@ offset_bottom = 29.0
 text = "Урон патогенов"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/EnemyDamage"]
-custom_minimum_size = Vector2i(200, 0)
+custom_minimum_size = Vector2(200, 0)
 offset_left = 151.0
 offset_right = 351.0
 offset_bottom = 16.0
@@ -174,7 +174,7 @@ offset_bottom = 29.0
 text = "Общая громкость"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeMaster"]
-custom_minimum_size = Vector2i(200, 0)
+custom_minimum_size = Vector2(200, 0)
 offset_left = 126.0
 offset_right = 326.0
 offset_bottom = 16.0
@@ -191,7 +191,7 @@ offset_bottom = 29.0
 text = "Музыка"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeMusic"]
-custom_minimum_size = Vector2i(200, 0)
+custom_minimum_size = Vector2(200, 0)
 offset_left = 126.0
 offset_right = 326.0
 offset_bottom = 16.0
@@ -208,7 +208,7 @@ offset_bottom = 29.0
 text = "Эффекты"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeEffects"]
-custom_minimum_size = Vector2i(200, 0)
+custom_minimum_size = Vector2(200, 0)
 offset_left = 126.0
 offset_right = 326.0
 offset_bottom = 16.0
@@ -230,7 +230,7 @@ offset_bottom = 31.0
 text = "Качество текстур"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/TextureQuality"]
-custom_minimum_size = Vector2i(175, 0)
+custom_minimum_size = Vector2(175, 0)
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
@@ -255,7 +255,7 @@ offset_bottom = 31.0
 text = "Разрешение"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Resolution"]
-custom_minimum_size = Vector2i(175, 0)
+custom_minimum_size = Vector2(175, 0)
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
@@ -294,7 +294,7 @@ offset_bottom = 31.0
 text = "Экран"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Display"]
-custom_minimum_size = Vector2i(175, 0)
+custom_minimum_size = Vector2(175, 0)
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
@@ -319,7 +319,7 @@ offset_bottom = 31.0
 text = "Лимит кадров в секунду"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/FramerateCap"]
-custom_minimum_size = Vector2i(175, 0)
+custom_minimum_size = Vector2(175, 0)
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
