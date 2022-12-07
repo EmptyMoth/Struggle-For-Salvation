@@ -216,7 +216,7 @@ grow_vertical = 0
 
 [node name="SpeakerRole" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-offset_right = 690.0
+offset_right = 700.0
 offset_bottom = 19.0
 size_flags_horizontal = 3
 size_flags_vertical = 10
@@ -228,7 +228,7 @@ scroll_active = false
 [node name="SpeakerName" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
 offset_top = 23.0
-offset_right = 690.0
+offset_right = 700.0
 offset_bottom = 49.0
 size_flags_vertical = 10
 text = "Name"
@@ -236,10 +236,10 @@ fit_content_height = true
 scroll_active = false
 
 [node name="ColourRect" type="ColorRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2i(500, 150)
+custom_minimum_size = Vector2i(700, 150)
 layout_mode = 2
 offset_top = 53.0
-offset_right = 690.0
+offset_right = 700.0
 offset_bottom = 203.0
 color = Color(0, 0, 0, 0.784314)
 
@@ -260,81 +260,93 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 680.0
+offset_right = 690.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
 offset_top = 207.0
-offset_right = 690.0
+offset_right = 700.0
 offset_bottom = 241.0
 
-[node name="ButtonLog" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
+layout_mode = 2
+offset_left = 151.0
+offset_right = 548.0
+offset_bottom = 34.0
+
+[node name="ButtonLog" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
 offset_right = 127.0
 offset_bottom = 34.0
-size_flags_horizontal = 10
+size_flags_horizontal = 8
 focus_mode = 0
 text = "Запись разговора"
 flat = true
 
-[node name="ButtonSkip" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonSkip" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
-offset_left = 131.0
-offset_right = 220.0
-offset_bottom = 34.0
+offset_left = 305.0
+offset_top = -38.0
+offset_right = 394.0
+offset_bottom = -4.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Пропустить"
 flat = true
 
-[node name="ButtonFastForward" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonFastForward" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 224.0
-offset_right = 312.0
+offset_left = 131.0
+offset_right = 219.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Перемотать"
 flat = true
 
-[node name="ButtonAutoplay" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonAutoplay" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
-offset_left = 316.0
-offset_right = 427.0
-offset_bottom = 34.0
+offset_left = 294.0
+offset_top = -38.0
+offset_right = 405.0
+offset_bottom = -4.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Воспроизвести"
 flat = true
 
-[node name="ButtonBack" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonBack" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 431.0
-offset_right = 480.0
+offset_left = 223.0
+offset_right = 272.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Назад"
 flat = true
 
-[node name="ButtonRepeat" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonRepeat" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
+visible = false
 layout_mode = 2
-offset_left = 484.0
-offset_right = 565.0
-offset_bottom = 34.0
+offset_left = 309.0
+offset_top = -38.0
+offset_right = 390.0
+offset_bottom = -4.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Повторить"
 flat = true
 
-[node name="ButtonNext" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonNext" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 569.0
-offset_right = 627.0
+offset_left = 276.0
+offset_right = 334.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
@@ -342,10 +354,10 @@ shortcut = SubResource("Shortcut_wopwx")
 text = "Вперёд"
 flat = true
 
-[node name="ButtonHide" type="Button" parent="VBoxContainer/HBoxContainer"]
+[node name="ButtonHide" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 631.0
-offset_right = 690.0
+offset_left = 338.0
+offset_right = 397.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
@@ -474,12 +486,12 @@ color = Color(0.980392, 1, 0.662745, 1)
 [connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
 [connection signal="gui_input" from="Speakers" to="." method="_on_color_rect_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/ColourRect" to="." method="_on_color_rect_gui_input"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonLog" to="." method="_on_button_log_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonSkip" to="." method="_on_button_skip_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonFastForward" to="." method="_on_button_fast_forward_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonAutoplay" to="." method="_on_button_autoplay_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonRepeat" to="." method="_on_button_repeat_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonNext" to="." method="_on_button_next_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonHide" to="." method="_on_button_hide_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonLog" to="." method="_on_button_log_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonSkip" to="." method="_on_button_skip_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonFastForward" to="." method="_on_button_fast_forward_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonAutoplay" to="." method="_on_button_autoplay_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonBack" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonRepeat" to="." method="_on_button_repeat_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonNext" to="." method="_on_button_next_pressed"]
+[connection signal="pressed" from="VBoxContainer/CenterContainer/HBoxContainer/ButtonHide" to="." method="_on_button_hide_pressed"]
 [connection signal="pressed" from="Log/PanelContainer/VBoxContainer/HBoxContainer/ButtonCloseLog" to="." method="_on_button_close_log_pressed"]

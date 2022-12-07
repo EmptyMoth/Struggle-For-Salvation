@@ -55,7 +55,7 @@ func _ready() -> void:
 	speaker_name = ui_main.get_node("SpeakerName")
 	speech = ui_main.get_node("ColourRect/MarginContainer/Text")
 	
-	var path = ui_main.get_node("HBoxContainer")
+	var path = ui_main.get_node("CenterContainer/HBoxContainer")
 	button_next = path.get_node("ButtonNext")
 	button_back = path.get_node("ButtonBack")
 	
