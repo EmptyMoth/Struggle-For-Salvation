@@ -134,6 +134,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/effects/current_effects.gd"
 }, {
+"base": "Resource",
+"class": &"Dialogue",
+"language": &"GDScript",
+"path": "res://scripts/story/dialogue.gd"
+}, {
+"base": "Resource",
+"class": &"DialogueLine",
+"language": &"GDScript",
+"path": "res://scripts/story/dialogue_line.gd"
+}, {
 "base": "AbstractSpeedDice",
 "class": &"EnemySpeedDice",
 "language": &"GDScript",
@@ -149,6 +159,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/formations/Formation.gd"
 }, {
+"base": "VBoxContainer",
+"class": &"LogEntry",
+"language": &"GDScript",
+"path": "res://scripts/story/log_entry.gd"
+}, {
 "base": "AbstractHealth",
 "class": &"MentalHealth",
 "language": &"GDScript",
@@ -158,6 +173,11 @@ _global_script_classes=[{
 "class": &"PhysicalHealth",
 "language": &"GDScript",
 "path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/physical_health.gd"
+}, {
+"base": "Resource",
+"class": &"Speaker",
+"language": &"GDScript",
+"path": "res://scripts/story/speaker.gd"
 }, {
 "base": "Control",
 "class": &"SpeedDiceManager",
@@ -195,11 +215,15 @@ _global_script_class_icons={
 "CombatManager": "",
 "CounterDice": "",
 "CurrentEffects": "",
+"Dialogue": "",
+"DialogueLine": "",
 "EnemySpeedDice": "",
 "EvadeDice": "",
 "Formation": "",
+"LogEntry": "",
 "MentalHealth": "",
 "PhysicalHealth": "",
+"Speaker": "",
 "SpeedDiceManager": "",
 "SubcharacterBars": ""
 }

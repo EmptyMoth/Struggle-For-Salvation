@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://bitk8m5v1371e"]
+
+[ext_resource type="Script" path="res://scripts/story/log_entry.gd" id="1_v1rsk"]
+
+[node name="LogEntry" type="VBoxContainer"]
+visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+script = ExtResource("1_v1rsk")
+
+[node name="Blank" type="ColorRect" parent="."]
+custom_minimum_size = Vector2i(0, 20)
+offset_right = 1920.0
+offset_bottom = 20.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+color = Color(1, 1, 1, 0)
+
+[node name="Line" type="ColorRect" parent="."]
+custom_minimum_size = Vector2i(0, 2)
+offset_top = 24.0
+offset_right = 1920.0
+offset_bottom = 26.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color(0.980392, 1, 0.662745, 1)
+
+[node name="Name" type="RichTextLabel" parent="."]
+offset_top = 30.0
+offset_right = 1920.0
+offset_bottom = 53.0
+size_flags_vertical = 3
+bbcode_enabled = true
+text = "Name, role:"
+fit_content_height = true
+scroll_active = false
+
+[node name="Speech" type="RichTextLabel" parent="."]
+offset_top = 57.0
+offset_right = 1920.0
+offset_bottom = 80.0
+text = "Words"
+fit_content_height = true

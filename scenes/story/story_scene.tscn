@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkum2k6vrud1n"]
+[gd_scene load_steps=7 format=3 uid="uid://bkum2k6vrud1n"]
 
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_cictb"]
 [ext_resource type="Script" path="res://scripts/story/story_scene.gd" id="2_glmgb"]
 
 [sub_resource type="Theme" id="Theme_g2seh"]
 default_font = ExtResource("1_cictb")
+
+[sub_resource type="InputEventAction" id="InputEventAction_42bwv"]
+action = &"ui_select"
+
+[sub_resource type="Shortcut" id="Shortcut_wopwx"]
+events = [SubResource("InputEventAction_42bwv")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w73ps"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="StoryScene" type="Control"]
 layout_mode = 3
@@ -25,6 +34,173 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
 
+[node name="Speakers" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker3" type="TextureRect" parent="Speakers"]
+layout_mode = 2
+offset_top = 1080.0
+offset_right = 270.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Expression" type="TextureRect" parent="Speakers/Speaker3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Speakers/Speaker3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker2" type="TextureRect" parent="Speakers"]
+layout_mode = 2
+offset_left = 274.0
+offset_top = 1080.0
+offset_right = 545.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Expression" type="TextureRect" parent="Speakers/Speaker2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Speakers/Speaker2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker1" type="TextureRect" parent="Speakers"]
+layout_mode = 2
+offset_left = 549.0
+offset_top = 1080.0
+offset_right = 820.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Expression" type="TextureRect" parent="Speakers/Speaker1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Speakers/Speaker1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Speakers"]
+layout_mode = 2
+offset_left = 824.0
+offset_top = 1080.0
+offset_right = 1095.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color(1, 1, 1, 0)
+
+[node name="Speaker0" type="TextureRect" parent="Speakers"]
+layout_mode = 2
+offset_left = 1099.0
+offset_top = 1080.0
+offset_right = 1370.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Expression" type="TextureRect" parent="Speakers/Speaker0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Speakers/Speaker0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker4" type="TextureRect" parent="Speakers"]
+layout_mode = 2
+offset_left = 1374.0
+offset_top = 1080.0
+offset_right = 1645.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Expression" type="TextureRect" parent="Speakers/Speaker4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Speakers/Speaker4"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Speaker5" type="TextureRect" parent="Speakers"]
+layout_mode = 2
+offset_left = 1649.0
+offset_top = 1080.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="Expression" type="TextureRect" parent="Speakers/Speaker5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shadow" type="TextureRect" parent="Speakers/Speaker5"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
@@ -38,22 +214,36 @@ offset_right = 90.5
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="SpeakerName" type="RichTextLabel" parent="VBoxContainer"]
-custom_minimum_size = Vector2i(0, 24)
+[node name="SpeakerRole" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-offset_right = 695.0
-offset_bottom = 24.0
+offset_right = 690.0
+offset_bottom = 19.0
+size_flags_horizontal = 3
+size_flags_vertical = 10
+theme_override_font_sizes/normal_font_size = 12
+text = "Role"
 fit_content_height = true
+scroll_active = false
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer"]
+[node name="SpeakerName" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+offset_top = 23.0
+offset_right = 690.0
+offset_bottom = 49.0
+size_flags_vertical = 10
+text = "Name"
+fit_content_height = true
+scroll_active = false
+
+[node name="ColourRect" type="ColorRect" parent="VBoxContainer"]
 custom_minimum_size = Vector2i(500, 150)
 layout_mode = 2
-offset_top = 28.0
-offset_right = 695.0
-offset_bottom = 178.0
+offset_top = 53.0
+offset_right = 690.0
+offset_bottom = 203.0
 color = Color(0, 0, 0, 0.784314)
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ColorRect"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ColourRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,27 +256,30 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Text" type="RichTextLabel" parent="VBoxContainer/ColorRect/MarginContainer"]
+[node name="Text" type="RichTextLabel" parent="VBoxContainer/ColourRect/MarginContainer"]
 layout_mode = 2
 offset_left = 10.0
 offset_top = 10.0
-offset_right = 685.0
+offset_right = 680.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
-offset_top = 182.0
-offset_right = 695.0
-offset_bottom = 216.0
+offset_top = 207.0
+offset_right = 690.0
+offset_bottom = 241.0
 
 [node name="ButtonLog" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 offset_right = 127.0
 offset_bottom = 34.0
 size_flags_horizontal = 10
+focus_mode = 0
 text = "Запись разговора"
+flat = true
 
 [node name="ButtonSkip" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -94,7 +287,9 @@ offset_left = 131.0
 offset_right = 220.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
+focus_mode = 0
 text = "Пропустить"
+flat = true
 
 [node name="ButtonFastForward" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -102,7 +297,9 @@ offset_left = 224.0
 offset_right = 312.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
+focus_mode = 0
 text = "Перемотать"
+flat = true
 
 [node name="ButtonAutoplay" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -110,7 +307,9 @@ offset_left = 316.0
 offset_right = 427.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
+focus_mode = 0
 text = "Воспроизвести"
+flat = true
 
 [node name="ButtonBack" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -118,6 +317,7 @@ offset_left = 431.0
 offset_right = 480.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
+focus_mode = 0
 text = "Назад"
 flat = true
 
@@ -127,7 +327,9 @@ offset_left = 484.0
 offset_right = 565.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
+focus_mode = 0
 text = "Повторить"
+flat = true
 
 [node name="ButtonNext" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
@@ -135,18 +337,143 @@ offset_left = 569.0
 offset_right = 627.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
+focus_mode = 0
+shortcut = SubResource("Shortcut_wopwx")
 text = "Вперёд"
 flat = true
 
 [node name="ButtonHide" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 offset_left = 631.0
-offset_right = 695.0
+offset_right = 690.0
 offset_bottom = 34.0
 size_flags_horizontal = 8
+focus_mode = 0
+text = "Скрыть"
+flat = true
+
+[node name="Log" type="MarginContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 150
+
+[node name="PanelContainer" type="PanelContainer" parent="Log"]
+layout_mode = 2
+offset_left = 300.0
+offset_top = 150.0
+offset_right = 1620.0
+offset_bottom = 930.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w73ps")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Log/PanelContainer"]
+layout_mode = 2
+offset_right = 1320.0
+offset_bottom = 780.0
+
+[node name="ColorRect3" type="ColorRect" parent="Log/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2i(0, 3)
+layout_mode = 2
+offset_right = 1320.0
+offset_bottom = 3.0
+color = Color(0.980392, 1, 0.662745, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Log/PanelContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 7.0
+offset_right = 1320.0
+offset_bottom = 41.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Log/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 594.0
+offset_top = 1.0
+offset_right = 594.0
+offset_bottom = 32.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 20
+text = "Запись Разговора"
+fit_content_height = true
+scroll_active = false
+
+[node name="ColorRect" type="ColorRect" parent="Log/PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2i(60, 0)
+layout_mode = 2
+offset_left = 1192.0
+offset_right = 1252.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+color = Color(1, 1, 1, 0)
+
+[node name="ButtonCloseLog" type="Button" parent="Log/PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+offset_left = 1256.0
+offset_right = 1320.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+focus_mode = 0
 text = "Закрыть"
 flat = true
 
+[node name="ColorRect" type="ColorRect" parent="Log/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2i(0, 3)
+layout_mode = 2
+offset_top = 45.0
+offset_right = 1320.0
+offset_bottom = 48.0
+color = Color(0.980392, 1, 0.662745, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Log/PanelContainer/VBoxContainer"]
+layout_mode = 2
+offset_top = 52.0
+offset_right = 1320.0
+offset_bottom = 773.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Log/PanelContainer/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+offset_right = 1320.0
+offset_bottom = 721.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Log/PanelContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+layout_mode = 2
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 1270.0
+offset_bottom = 711.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="Log/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2i(0, 3)
+layout_mode = 2
+offset_top = 777.0
+offset_right = 1320.0
+offset_bottom = 780.0
+color = Color(0.980392, 1, 0.662745, 1)
+
+[connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
+[connection signal="gui_input" from="Speakers" to="." method="_on_color_rect_gui_input"]
+[connection signal="gui_input" from="VBoxContainer/ColourRect" to="." method="_on_color_rect_gui_input"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonLog" to="." method="_on_button_log_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonSkip" to="." method="_on_button_skip_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonFastForward" to="." method="_on_button_fast_forward_pressed"]
@@ -155,3 +482,4 @@ flat = true
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonRepeat" to="." method="_on_button_repeat_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonNext" to="." method="_on_button_next_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/ButtonHide" to="." method="_on_button_hide_pressed"]
+[connection signal="pressed" from="Log/PanelContainer/VBoxContainer/HBoxContainer/ButtonCloseLog" to="." method="_on_button_close_log_pressed"]

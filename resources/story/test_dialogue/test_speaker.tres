@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=6 format=3 uid="uid://cbbxsdc3rmme2"]
+
+[ext_resource type="Texture2D" uid="uid://clf05djfnwg0x" path="res://sprites/UI/story_ui/characters/expressions/test_char_default.png" id="1_2kntn"]
+[ext_resource type="Script" path="res://scripts/story/speaker.gd" id="1_q5cg8"]
+[ext_resource type="Texture2D" uid="uid://7gvulrm346vr" path="res://sprites/UI/story_ui/characters/expressions/test_char_angry.png" id="2_jaftr"]
+[ext_resource type="Texture2D" uid="uid://q1mhvdgdv75l" path="res://sprites/UI/story_ui/characters/test_char.png" id="3_nvf35"]
+[ext_resource type="Texture2D" uid="uid://bclesiol4uwrw" path="res://sprites/UI/story_ui/characters/test_char_shadow.png" id="5_gyhym"]
+
+[resource]
+script = ExtResource("1_q5cg8")
+name = "Test Speaker"
+role = "Tester"
+key = "TestSpeaker"
+image = ExtResource("3_nvf35")
+shadow = ExtResource("5_gyhym")
+expressions = {
+0: ExtResource("1_2kntn"),
+1: ExtResource("2_jaftr")
+}

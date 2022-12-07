@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cei63xs65wumf"]
+
+[ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="1_1fp1p"]
+
+[resource]
+script = ExtResource("1_1fp1p")
+speaker = null
+expression = null
+line = null

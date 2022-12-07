@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bwh3dsln3xu1n"]
+
+[ext_resource type="Script" path="res://scripts/story/speaker.gd" id="1_2y12c"]
+
+[resource]
+script = ExtResource("1_2y12c")
+name = ""
+role = ""
+expressions = null
