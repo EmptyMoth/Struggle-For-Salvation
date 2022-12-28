@@ -43,8 +43,15 @@ func set_speed(new_speed: int) -> void:
 	_speed_value_label.text = str(new_speed)
 
 
+func get_character() -> AbstractCharacter:
+	return get_speed_dice_manager().get_character()
+
+
+func get_speed_dice_manager() -> SpeedDiceManager:
+	return get_parent().get_parent()
+
+
 func _on_speed_dice_toggled(_button_pressed: bool) -> void:
-	print(name)
 #	if (Input.is_action_just_pressed("ui_cancel") && character.is_teammate):
 #		character.is_character_selected = false
 #		character.cancel_selected_card(self)

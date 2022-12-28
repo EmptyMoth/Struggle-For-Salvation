@@ -7,7 +7,7 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_lgja3")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="SpeedDiceContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1783, 0)
 offset_left = -891.0
 offset_top = -205.0

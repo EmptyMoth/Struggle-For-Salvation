@@ -11,9 +11,11 @@ func init() -> void:
 	@warning_ignore(return_value_discarded)
 	Config.validate_config()
 	
-	$MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/Language/OptionButton.selected = Config.get_value("gameplay", "language")
-	$MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/ActionDice/CheckButton.button_pressed = Config.get_value("gameplay", "action_dice_count")
-	$MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/MusicWhenPaused/CheckButton.button_pressed = Config.get_value("gameplay", "music_when_paused")
+	var path: HBoxContainer = $MenuSettings/VBoxContainer/HBoxContainer
+	var settings_gameplay: VBoxContainer = path.get_node("SettingsGameplay")
+	settings_gameplay.get_node("Language/OptionButton").selected = Config.get_value("gameplay", "language")
+	settings_gameplay.get_node("ActionDice/CheckButton").button_pressed = Config.get_value("gameplay", "action_dice_count")
+	settings_gameplay.get_node("MusicWhenPaused/CheckButton").button_pressed = Config.get_value("gameplay", "music_when_paused")
 	
 	$MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/CustomRules/CheckButton.button_pressed = Config.get_value("custom", "custom_rules_enabled")
 	$MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/EnemyHealth/HSlider.value = Config.get_value("custom", "enemy_health")

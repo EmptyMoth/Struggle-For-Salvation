@@ -1,60 +1,62 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6xevm0nklql0"]
+[gd_scene load_steps=12 format=3 uid="uid://bjgvh0i6td31n"]
 
-[ext_resource type="PackedScene" uid="uid://nh0vtbqe4d5u" path="res://scenes/battle/characters/immunocytes/base_scenes/AbstractImmunocyte.tscn" id="1_qy4ss"]
-[ext_resource type="Texture2D" uid="uid://d0ssaqxemv1bc" path="res://sprites/battle/characters/immunocytes/eosinophil/block.png" id="2_l1xd6"]
-[ext_resource type="Texture2D" uid="uid://dharqnti1vq37" path="res://sprites/battle/characters/immunocytes/eosinophil/blunt_attack.png" id="3_qpp56"]
-[ext_resource type="Texture2D" uid="uid://cwnn3w3ovq0xu" path="res://sprites/battle/characters/immunocytes/eosinophil/default.png" id="4_65eec"]
-[ext_resource type="Texture2D" uid="uid://l37dlehvev0x" path="res://sprites/battle/characters/immunocytes/eosinophil/evade.png" id="5_apb7u"]
-[ext_resource type="Texture2D" uid="uid://cuurbqqc4wagr" path="res://sprites/battle/characters/immunocytes/eosinophil/movement.png" id="6_cff5k"]
-[ext_resource type="Texture2D" uid="uid://pi8xw0ec6xiy" path="res://sprites/battle/characters/immunocytes/eosinophil/pierce_attack.png" id="7_mgi44"]
-[ext_resource type="Texture2D" uid="uid://dtesmuwl6gtxx" path="res://sprites/battle/characters/immunocytes/eosinophil/slash_attack.png" id="8_eqyfu"]
-[ext_resource type="Texture2D" uid="uid://oauhvqcq2572" path="res://sprites/battle/characters/immunocytes/eosinophil/stun.png" id="9_ubetf"]
+[ext_resource type="PackedScene" uid="uid://dyreq7f6guld1" path="res://scenes/battle/characters/immunocytes/base_scenes/abstract_immunocyte.tscn" id="1_scxeo"]
+[ext_resource type="Resource" uid="uid://bs8lqkjgmqkrf" path="res://resources/battle/characters/cards_decks/eosinophil_deck.tres" id="2_qem2j"]
+[ext_resource type="Texture2D" uid="uid://d0ssaqxemv1bc" path="res://sprites/battle/characters/immunocytes/eosinophil/block.png" id="2_qenl4"]
+[ext_resource type="Texture2D" uid="uid://dharqnti1vq37" path="res://sprites/battle/characters/immunocytes/eosinophil/blunt_attack.png" id="3_n68cy"]
+[ext_resource type="Texture2D" uid="uid://cwnn3w3ovq0xu" path="res://sprites/battle/characters/immunocytes/eosinophil/default.png" id="4_3u7m4"]
+[ext_resource type="Texture2D" uid="uid://l37dlehvev0x" path="res://sprites/battle/characters/immunocytes/eosinophil/evade.png" id="5_rw8ev"]
+[ext_resource type="Texture2D" uid="uid://cuurbqqc4wagr" path="res://sprites/battle/characters/immunocytes/eosinophil/movement.png" id="6_723mq"]
+[ext_resource type="Texture2D" uid="uid://pi8xw0ec6xiy" path="res://sprites/battle/characters/immunocytes/eosinophil/pierce_attack.png" id="7_1fr5s"]
+[ext_resource type="Texture2D" uid="uid://dtesmuwl6gtxx" path="res://sprites/battle/characters/immunocytes/eosinophil/slash_attack.png" id="8_ad4sm"]
+[ext_resource type="Texture2D" uid="uid://oauhvqcq2572" path="res://sprites/battle/characters/immunocytes/eosinophil/stun.png" id="9_3grrh"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_a7ege"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3nbpn"]
 animations = [{
-"frames": [ExtResource("2_l1xd6")],
+"frames": [ExtResource("2_qenl4")],
 "loop": false,
 "name": &"block",
 "speed": 0.0
 }, {
-"frames": [ExtResource("3_qpp56")],
+"frames": [ExtResource("3_n68cy")],
 "loop": false,
 "name": &"blunt_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("4_65eec")],
+"frames": [ExtResource("4_3u7m4")],
 "loop": false,
 "name": &"default",
 "speed": 0.0
 }, {
-"frames": [ExtResource("5_apb7u")],
+"frames": [ExtResource("5_rw8ev")],
 "loop": false,
 "name": &"evade",
 "speed": 0.0
 }, {
-"frames": [ExtResource("6_cff5k")],
+"frames": [ExtResource("6_723mq")],
 "loop": false,
 "name": &"movement",
 "speed": 0.0
 }, {
-"frames": [ExtResource("7_mgi44")],
+"frames": [ExtResource("7_1fr5s")],
 "loop": false,
 "name": &"pierce_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("8_eqyfu")],
+"frames": [ExtResource("8_ad4sm")],
 "loop": false,
 "name": &"slash_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("9_ubetf")],
+"frames": [ExtResource("9_3grrh")],
 "loop": false,
 "name": &"stun",
 "speed": 0.0
 }]
 
-[node name="Eosinophil" instance=ExtResource("1_qy4ss")]
+[node name="Eosinophil" instance=ExtResource("1_scxeo")]
+cards_deck = ExtResource("2_qem2j")
 
 [node name="Actions" parent="." index="1"]
 position = Vector2(-4, -60)
-frames = SubResource("SpriteFrames_a7ege")
+frames = SubResource("SpriteFrames_3nbpn")

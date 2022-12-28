@@ -17,10 +17,13 @@ var turns_count: int = 0
 var current_phase: BattlePhase = BattlePhase.COMBAT
 
 @onready var _battlefield: BaseBattlefield = $SubViewport/Battle3D
+@onready var _card_manager: CardManager = $CanvasLayer/CardManager
 @onready var _formation: Formation = _packed_formation.instantiate()
 
 
 func _ready() -> void:
+	CardPlacementManager.current_battle = self
+	
 	_battlefield.set_formation(_formation)
 	
 	for ally in ally_team:
@@ -42,6 +45,10 @@ func _input(_event: InputEvent) -> void:
 
 func end() -> void:
 	pass
+
+
+func set_cards_in_card_manager(cards_deck: CardsDeck) -> void:
+	_card_manager.put_cards(cards_deck)
 
 
 func _switch_battle_phase() -> void:

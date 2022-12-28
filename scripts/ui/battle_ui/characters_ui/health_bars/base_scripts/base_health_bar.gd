@@ -2,7 +2,7 @@ class_name BaseHealthBar
 extends TextureProgressBar
 
 
-var _animation_time: float = 0.6
+@export var _animation_time: float = 0.6
 
 @onready var _counter_label: Label = $Counter
 
@@ -11,9 +11,9 @@ func _process(_delta: float) -> void:
 	_counter_label.text = str(value)
 
 
-func set_initial_values(max_health: int, current_hralth: int) -> void:
+func set_initial_values(max_health: int, current_health: int) -> void:
 	max_value = max_health
-	_update_bars(current_hralth)
+	_update_bars(current_health)
 
 
 func _update_bars(new_value: int) -> void:

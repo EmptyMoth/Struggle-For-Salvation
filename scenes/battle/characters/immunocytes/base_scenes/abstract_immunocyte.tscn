@@ -5,3 +5,4 @@
 
 [node name="AbstractImmunocyte" groups=["allies"] instance=ExtResource("1_qm6ic")]
 script = ExtResource("2_wpmte")
+cards = null

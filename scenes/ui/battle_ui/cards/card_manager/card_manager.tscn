@@ -1,0 +1,157 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxjtbeqsrgd76"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/cards/cards_manager/card_manager.gd" id="1_0faf1"]
+[ext_resource type="PackedScene" uid="uid://b3blubyk5u8ys" path="res://scenes/battle/cards/base_scenes/abstract_card.tscn" id="1_ffypu"]
+
+[node name="CardsManager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_0faf1")
+
+[node name="CardsContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -916.0
+offset_top = -325.0
+offset_right = 916.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(916, 325)
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="Cards2" type="HBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -916.0
+offset_top = -325.0
+offset_right = 916.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(916, 325)
+theme_override_constants/separation = 3
+alignment = 1
+
+[node name="AbstractCard" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 4.0
+offset_top = 0.0
+offset_right = 204.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard2" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 207.0
+offset_top = 0.0
+offset_right = 407.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard3" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 410.0
+offset_top = 0.0
+offset_right = 610.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard4" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 613.0
+offset_top = 0.0
+offset_right = 813.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard5" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 816.0
+offset_top = 0.0
+offset_right = 1016.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard6" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1019.0
+offset_top = 0.0
+offset_right = 1219.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard7" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1222.0
+offset_top = 0.0
+offset_right = 1422.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard8" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1425.0
+offset_top = 0.0
+offset_right = 1625.0
+offset_bottom = 325.0
+size_flags_vertical = 8
+
+[node name="AbstractCard9" parent="Cards2" instance=ExtResource("1_ffypu")]
+layout_mode = 2
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1628.0
+offset_top = 0.0
+offset_right = 1828.0
+offset_bottom = 325.0
+size_flags_vertical = 8

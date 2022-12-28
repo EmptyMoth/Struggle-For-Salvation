@@ -1,59 +1,61 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3h1cl0nm17cs"]
+[gd_scene load_steps=12 format=3 uid="uid://b3h1cl0nm17cs"]
 
-[ext_resource type="PackedScene" path="res://scenes/battle/characters/immunocytes/base_scenes/abstract_immunocyte.tscn" id="1_mrw1i"]
-[ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/immunocytes/neutrophil/block.png" id="2_lwaj3"]
-[ext_resource type="Texture2D" uid="uid://xq2xyd4ivpm" path="res://sprites/battle/characters/immunocytes/neutrophil/blunt_attack.png" id="3_c4y0x"]
-[ext_resource type="Texture2D" uid="uid://dcp5tnyjlkg4x" path="res://sprites/battle/characters/immunocytes/neutrophil/default.png" id="4_a2fqt"]
-[ext_resource type="Texture2D" uid="uid://cr5rqv0uv64p3" path="res://sprites/battle/characters/immunocytes/neutrophil/evade.png" id="5_aypv6"]
-[ext_resource type="Texture2D" uid="uid://drltmipr5lo2a" path="res://sprites/battle/characters/immunocytes/neutrophil/movement.png" id="6_dy3qf"]
-[ext_resource type="Texture2D" uid="uid://65xy6foolauq" path="res://sprites/battle/characters/immunocytes/neutrophil/pierce_attack.png" id="7_xwi4a"]
-[ext_resource type="Texture2D" uid="uid://c3fque8a4ik0j" path="res://sprites/battle/characters/immunocytes/neutrophil/slash_attack.png" id="8_rwieq"]
-[ext_resource type="Texture2D" uid="uid://c6bir2rcubwy2" path="res://sprites/battle/characters/immunocytes/neutrophil/stun.png" id="9_bhwur"]
+[ext_resource type="PackedScene" uid="uid://dyreq7f6guld1" path="res://scenes/battle/characters/immunocytes/base_scenes/abstract_immunocyte.tscn" id="1_woqay"]
+[ext_resource type="Resource" uid="uid://dcprlv1qqnofr" path="res://resources/battle/characters/cards_decks/neutrophil_deck.tres" id="2_edhvg"]
+[ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/immunocytes/neutrophil/block.png" id="3_7y4d3"]
+[ext_resource type="Texture2D" uid="uid://xq2xyd4ivpm" path="res://sprites/battle/characters/immunocytes/neutrophil/blunt_attack.png" id="4_onhjv"]
+[ext_resource type="Texture2D" uid="uid://dcp5tnyjlkg4x" path="res://sprites/battle/characters/immunocytes/neutrophil/default.png" id="5_02jej"]
+[ext_resource type="Texture2D" uid="uid://cr5rqv0uv64p3" path="res://sprites/battle/characters/immunocytes/neutrophil/evade.png" id="6_ee6u0"]
+[ext_resource type="Texture2D" uid="uid://drltmipr5lo2a" path="res://sprites/battle/characters/immunocytes/neutrophil/movement.png" id="7_cxyft"]
+[ext_resource type="Texture2D" uid="uid://65xy6foolauq" path="res://sprites/battle/characters/immunocytes/neutrophil/pierce_attack.png" id="8_t8eh2"]
+[ext_resource type="Texture2D" uid="uid://c3fque8a4ik0j" path="res://sprites/battle/characters/immunocytes/neutrophil/slash_attack.png" id="9_fwbch"]
+[ext_resource type="Texture2D" uid="uid://c6bir2rcubwy2" path="res://sprites/battle/characters/immunocytes/neutrophil/stun.png" id="10_6gr1h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qfi4c"]
 animations = [{
-"frames": [ExtResource("2_lwaj3")],
+"frames": [ExtResource("3_7y4d3")],
 "loop": false,
 "name": &"block",
 "speed": 0.0
 }, {
-"frames": [ExtResource("3_c4y0x")],
+"frames": [ExtResource("4_onhjv")],
 "loop": false,
 "name": &"blunt_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("4_a2fqt")],
+"frames": [ExtResource("5_02jej")],
 "loop": false,
 "name": &"default",
 "speed": 0.0
 }, {
-"frames": [ExtResource("5_aypv6")],
+"frames": [ExtResource("6_ee6u0")],
 "loop": false,
 "name": &"evade",
 "speed": 0.0
 }, {
-"frames": [ExtResource("6_dy3qf")],
+"frames": [ExtResource("7_cxyft")],
 "loop": false,
 "name": &"movement",
 "speed": 0.0
 }, {
-"frames": [ExtResource("7_xwi4a")],
+"frames": [ExtResource("8_t8eh2")],
 "loop": false,
 "name": &"pierce_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("8_rwieq")],
+"frames": [ExtResource("9_fwbch")],
 "loop": false,
 "name": &"slash_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("9_bhwur")],
+"frames": [ExtResource("10_6gr1h")],
 "loop": false,
 "name": &"stun",
 "speed": 0.0
 }]
 
-[node name="Neutrophil" instance=ExtResource("1_mrw1i")]
+[node name="Neutrophil" instance=ExtResource("1_woqay")]
+cards_deck = ExtResource("2_edhvg")
 max_physical_health = 100.0
 max_mental_health = 50.0
 min_speed = 3.0

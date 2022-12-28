@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bs8lqkjgmqkrf"]
+
+[ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/battle_mechanics/cards_deck/cards_deck.gd" id="1_04jnr"]
+[ext_resource type="PackedScene" uid="uid://cnqt7bc46l2wf" path="res://scenes/battle/cards/cards/test_card_2.tscn" id="1_o0jn5"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_04jnr")
+_packed_cards = [ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5")]

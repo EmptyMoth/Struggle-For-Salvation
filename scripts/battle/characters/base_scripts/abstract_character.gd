@@ -12,6 +12,7 @@ enum Resistance {
 }
 
 @export var name_character: String = ''
+@export var cards_deck: CardsDeck
 
 @export_group("Health")
 @export_range(1, 1000, 1) var max_physical_health: int = 1
@@ -78,6 +79,13 @@ func roll_speed_dice() -> void:
 	speed_dice_manager.roll_speed_dice()
 
 
+func die() -> void:
+	take_physical_damage(max_physical_health)
+
+func stun() -> void:
+	take_mantal_damage(max_mental_health)
+
+
 func take_damage(damage: int) -> void:
 	take_physical_damage(damage)
 	take_mantal_damage(damage)
@@ -85,20 +93,11 @@ func take_damage(damage: int) -> void:
 
 func take_physical_damage(damage: int) -> void:
 	var physical_damage: int = roundi(damage * physical_resistance / 100.0)
-	physical_health.decrease(physical_damage)
-
+	physical_health.take_damage(physical_damage)
 
 func take_mantal_damage(damage: int) -> void:
 	var mental_damage: int = roundi(damage * mental_resistance / 100.0)
-	mental_health.decrease(mental_damage)
-
-
-func die() -> void:
-	take_physical_damage(max_physical_health)
-
-
-func stun() -> void:
-	take_mantal_damage(max_mental_health)
+	mental_health.take_damage(mental_damage)
 
 
 func place_cards_themself() -> Dictionary:
@@ -120,25 +119,11 @@ func flip_view_direction() -> void:
 
 
 func actions_switcher(action: BattleParameters.Action) -> void:
-	match action:
-		BattleParameters.Action.DEFAULT:
-			actions_animations.play("default")
-		BattleParameters.Action.STUN:
-			actions_animations.play("stun")
-		BattleParameters.Action.MOVEMENT:
-			actions_animations.play("movement")
-		BattleParameters.Action.BLOCK:
-			actions_animations.play("block")
-		BattleParameters.Action.EVADE:
-			actions_animations.play("evade")
-		BattleParameters.Action.SLASH_ATTACK:
-			actions_animations.play("slash_attack")
-		BattleParameters.Action.PIERCE_ATTACK:
-			actions_animations.play("pierce_attack")
-		BattleParameters.Action.BLUNT_ATTACK:
-			actions_animations.play("blunt_attack")
-		_:
-			actions_animations.play("default")
+	actions_animations.play(_get_action_name(action))
+
+func _get_action_name(action: BattleParameters.Action) -> String:
+	var action_name: String = BattleParameters.Action.find_key(action)
+	return action_name.to_lower() if action_name != null else "default"
 
 
 func _on_died() -> void:

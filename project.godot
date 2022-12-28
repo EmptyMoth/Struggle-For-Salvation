@@ -29,7 +29,7 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/characters/base_scripts/abstract_character.gd"
 }, {
-"base": "Node",
+"base": "Resource",
 "class": &"AbstractHealth",
 "language": &"GDScript",
 "path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/abstract_health.gd"
@@ -98,6 +98,16 @@ _global_script_classes=[{
 "class": &"CardAbility",
 "language": &"GDScript",
 "path": "res://scripts/battle/abilities/card_ability.gd"
+}, {
+"base": "Control",
+"class": &"CardManager",
+"language": &"GDScript",
+"path": "res://scripts/ui/battle_ui/cards/cards_manager/card_manager.gd"
+}, {
+"base": "Resource",
+"class": &"CardsDeck",
+"language": &"GDScript",
+"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/cards_deck/cards_deck.gd"
 }, {
 "base": "AbstractAbility",
 "class": &"CharacterAbility",
@@ -178,6 +188,8 @@ _global_script_class_icons={
 "BaseHealthBar": "",
 "BlockDice": "",
 "CardAbility": "",
+"CardManager": "",
+"CardsDeck": "",
 "CharacterAbility": "",
 "CharacterMarker3D": "",
 "CombatManager": "",
@@ -211,6 +223,8 @@ ClashManager="*res://scripts/battle/base_scripts/phase_managers/clash_manager.gd
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 window/size/fullscreen=true
 
 [importer_defaults]

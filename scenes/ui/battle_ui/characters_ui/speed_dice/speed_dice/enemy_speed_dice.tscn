@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3]
+[gd_scene load_steps=8 format=3 uid="uid://d12n6xi1lreih"]
 
 [ext_resource type="PackedScene" uid="uid://bj1hu84ove811" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scenes/abstract_speed_dice.tscn" id="1_fodvb"]
 [ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/enemy_speed_dice.gd" id="2_jjtqn"]

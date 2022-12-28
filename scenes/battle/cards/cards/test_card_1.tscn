@@ -1,0 +1,70 @@
+[gd_scene load_steps=4 format=3 uid="uid://c1xg7t56f1erv"]
+
+[ext_resource type="PackedScene" uid="uid://b3blubyk5u8ys" path="res://scenes/battle/cards/base_scenes/abstract_card.tscn" id="1_fsns1"]
+[ext_resource type="Texture2D" uid="uid://bgwgtfdtcukhb" path="res://sprites/battle/cards/base_sprites/dice_description_background_smoll.png" id="2_dhayh"]
+[ext_resource type="PackedScene" path="res://scenes/battle/actions_dice/attack_dice/attack_dice.tscn" id="3_ow6bc"]
+
+[node name="TestCard1" instance=ExtResource("1_fsns1")]
+
+[node name="Background" parent="." index="0"]
+layout_mode = 3
+
+[node name="Name" parent="Background" index="0"]
+layout_mode = 3
+text = "Test Card 1"
+
+[node name="ActionDice" parent="Background" index="1"]
+layout_mode = 3
+
+[node name="HBoxContainer" parent="Background/ActionDice/DiceDescriptionBackground" index="0"]
+layout_mode = 3
+
+[node name="DiceDescriptionBackground2" type="TextureRect" parent="Background/ActionDice" index="2"]
+layout_mode = 2
+offset_top = 83.0
+offset_right = 191.0
+offset_bottom = 135.0
+mouse_filter = 2
+texture = ExtResource("2_dhayh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/ActionDice/DiceDescriptionBackground2" index="0"]
+custom_minimum_size = Vector2(185, 50)
+layout_mode = 0
+offset_left = 5.0
+offset_top = 1.0
+offset_right = 194.0
+offset_bottom = 51.0
+mouse_filter = 2
+theme_override_constants/separation = 2
+
+[node name="AttackDice" parent="Background/ActionDice/DiceDescriptionBackground2/HBoxContainer" index="0" instance=ExtResource("3_ow6bc")]
+layout_mode = 2
+offset_top = 7.0
+offset_right = 30.0
+offset_bottom = 42.0
+
+[node name="DiceValues" type="Label" parent="Background/ActionDice/DiceDescriptionBackground2/HBoxContainer" index="1"]
+layout_mode = 2
+offset_left = 32.0
+offset_right = 77.0
+offset_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 12
+text = "123-123"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiceAbility" type="Label" parent="Background/ActionDice/DiceDescriptionBackground2/HBoxContainer" index="2"]
+custom_minimum_size = Vector2(110, 48)
+layout_mode = 2
+offset_left = 79.0
+offset_top = 1.0
+offset_right = 189.0
+offset_bottom = 49.0
+size_flags_horizontal = 10
+theme_override_constants/line_spacing = -3
+theme_override_font_sizes/font_size = 9
+text = "On Hit Test dice break"
+vertical_alignment = 1
+autowrap_mode = 2
