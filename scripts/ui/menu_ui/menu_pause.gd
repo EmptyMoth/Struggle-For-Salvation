@@ -1,8 +1,13 @@
 extends Control
 
 
+var menu_pause: CenterContainer
+var menu_settings: Control
+
+
 func _ready():
-	pass#get_tree().paused = true
+	menu_pause = $Margins/MenuPause
+	menu_settings = $Margins/MenuSettings
 
 
 func pause_game() -> void:
@@ -21,12 +26,12 @@ func _on_button_manual_pressed():
 	pass # Replace with function body.
 
 func _on_button_settings_pressed() -> void:
-	$Margins/MenuPause.visible = false
-	$Margins/MenuSettings.visible = true
+	menu_pause.hide()
+	menu_settings.show()
 
 func _on_menu_settings_exit_menu() -> void:
-	$Margins/MenuPause.visible = true
-	$Margins/MenuSettings.visible = false
+	menu_pause.show()
+	menu_settings.hide()
 
 func _on_button_level_select_pressed() -> void:
 	pass # Replace with function body.
