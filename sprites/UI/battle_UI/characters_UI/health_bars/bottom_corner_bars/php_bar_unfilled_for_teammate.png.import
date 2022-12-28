@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ciidec68u25bc"
-path="res://.godot/imported/php_bar_unfilled_for_teammate.png-ffeb68e02a1f3eaeceb6f3c0e6f52dad.ctex"
+path="res://.godot/imported/php_bar_unfilled_for_teammate.png-ab18183a95afa7175d2c15bc62151ef6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/bottom_corner_bars/php_bar_unfilled_for_teammate.png"
-dest_files=["res://.godot/imported/php_bar_unfilled_for_teammate.png-ffeb68e02a1f3eaeceb6f3c0e6f52dad.ctex"]
+source_file="res://sprites/UI/battle_UI/characters_UI/health_bars/bottom_corner_bars/php_bar_unfilled_for_teammate.png"
+dest_files=["res://.godot/imported/php_bar_unfilled_for_teammate.png-ab18183a95afa7175d2c15bc62151ef6.ctex"]
 
 [params]
 
