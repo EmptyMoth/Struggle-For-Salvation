@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bfprcu7bjw781"]
+[gd_scene load_steps=6 format=3 uid="uid://4xjdxkyjcxhy"]
 
 [ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/abstract_character.gd" id="1_hqiae"]
-[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.tscn" id="2_u63yi"]
+[ext_resource type="PackedScene" uid="uid://ctv5g5gejbuh" path="res://scenes/ui/battle_ui/characters_ui/huds/subcharacter_hud/subcharacter_hud.tscn" id="2_qg1gw"]
 [ext_resource type="PackedScene" uid="uid://dd5hub8wm1jqr" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.tscn" id="11_dixm2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_b8r1a"]
@@ -47,11 +47,14 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir2ha"]
+resource_local_to_scene = true
+size = Vector2(31, 67)
+
 [node name="AbstractCharacter" type="Node2D" groups=["characters"]]
 script = ExtResource("1_hqiae")
 
-[node name="SubcharacterBars" parent="." instance=ExtResource("2_u63yi")]
-metadata/_edit_use_anchors_ = true
+[node name="SubcharacterHUD" parent="." instance=ExtResource("2_qg1gw")]
 
 [node name="Actions" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -60,3 +63,15 @@ frames = SubResource("SpriteFrames_b8r1a")
 [node name="SpeedDiceManager" parent="." instance=ExtResource("11_dixm2")]
 offset_top = -86.0
 offset_bottom = -86.0
+
+[node name="ClickArea" type="Area2D" parent="."]
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+shape = SubResource("RectangleShape2D_ir2ha")
+debug_color = Color(1, 1, 1, 0.419608)
+
+[connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
+[connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]
+[connection signal="mouse_exited" from="ClickArea" to="." method="_on_click_area_mouse_exited"]

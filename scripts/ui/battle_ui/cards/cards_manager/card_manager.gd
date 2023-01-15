@@ -2,17 +2,17 @@ class_name CardManager
 extends Control
 
 
-var cards: Array[Node] = [] :
+var cards: Array[Node] :
 	get: return cards_container.get_children()
 
 @onready var cards_container: HBoxContainer = $CardsContainer
 
 
-func put_cards(cards_deck: CardsDeck) -> void:
+func put_cards(new_cards: Array[AbstractCard]) -> void:
 	for card in cards:
 		cards_container.remove_child(card)
 	
-	for card in cards_deck.cards:
+	for card in new_cards:
 		cards_container.add_child(card)
 	
 	await get_tree().process_frame

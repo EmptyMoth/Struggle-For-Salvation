@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3blubyk5u8ys"]
+[gd_scene load_steps=8 format=3 uid="uid://b3blubyk5u8ys"]
 
 [ext_resource type="Script" path="res://scripts/battle/cards/base_scripts/abstract_card.gd" id="1_ufbrf"]
 [ext_resource type="Texture2D" uid="uid://dcrwm5iahprs4" path="res://sprites/battle/cards/base_sprites/card_background.png" id="2_ni000"]
 [ext_resource type="Texture2D" uid="uid://bgwgtfdtcukhb" path="res://sprites/battle/cards/base_sprites/dice_description_background_smoll.png" id="3_6cbrq"]
 [ext_resource type="PackedScene" path="res://scenes/battle/actions_dice/attack_dice/attack_dice.tscn" id="4_pjbg2"]
+[ext_resource type="Texture2D" uid="uid://3x5jlpaaqvfd" path="res://sprites/battle/cards/base_sprites/uses_count_background.png" id="5_lii6q"]
+[ext_resource type="FontFile" uid="uid://bjpyveek057b3" path="res://fonts/itc_serif_gothic_lt_black.ttf" id="6_ufv35"]
+[ext_resource type="Texture2D" uid="uid://cju3y5r7bga3e" path="res://sprites/battle/cards/base_sprites/cooldown_background.png" id="7_odsu8"]
 
 [node name="AbstractCard" type="Button"]
 custom_minimum_size = Vector2(200, 325)
@@ -22,7 +25,6 @@ size_flags_vertical = 4
 focus_mode = 0
 flat = true
 script = ExtResource("1_ufbrf")
-card_name = "Test card"
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 200.0
@@ -39,6 +41,7 @@ offset_right = 165.0
 offset_bottom = 28.0
 text = "Name"
 vertical_alignment = 1
+metadata/_edit_lock_ = true
 
 [node name="ActionDice" type="VBoxContainer" parent="Background"]
 offset_left = 5.0
@@ -99,3 +102,58 @@ theme_override_font_sizes/font_size = 9
 text = "On Hit Test dice break"
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Counters" type="HBoxContainer" parent="Background"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 47.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+
+[node name="UsesCount" type="TextureRect" parent="Background/Counters"]
+offset_left = 114.0
+offset_right = 157.0
+offset_bottom = 47.0
+size_flags_horizontal = 10
+size_flags_stretch_ratio = 4.0
+texture = ExtResource("5_lii6q")
+metadata/_edit_group_ = true
+
+[node name="Count" type="Label" parent="Background/Counters/UsesCount"]
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 43.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.109804, 0.564706, 0.831373, 1)
+theme_override_fonts/font = ExtResource("6_ufv35")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CooldownTime" type="TextureRect" parent="Background/Counters"]
+offset_left = 157.0
+offset_right = 200.0
+offset_bottom = 47.0
+size_flags_horizontal = 10
+texture = ExtResource("7_odsu8")
+metadata/_edit_group_ = true
+
+[node name="Time" type="Label" parent="Background/Counters/CooldownTime"]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 42.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.129412, 0.74902, 0.521569, 1)
+theme_override_fonts/font = ExtResource("6_ufv35")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RemainingCooldownTime" type="Label" parent="."]
+offset_right = 201.0
+offset_bottom = 323.0
+theme_override_fonts/font = ExtResource("6_ufv35")
+theme_override_font_sizes/font_size = 128
+text = "10"
+horizontal_alignment = 1
+vertical_alignment = 1

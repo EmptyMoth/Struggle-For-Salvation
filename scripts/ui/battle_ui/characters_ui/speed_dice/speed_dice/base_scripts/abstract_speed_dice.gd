@@ -2,6 +2,10 @@ class_name AbstractSpeedDice
 extends Button
 
 
+signal selected
+signal deselected
+
+
 enum SpeedDiceState { 
 	DEFAULT = 0,
 	SELECTED = 1, 
@@ -51,6 +55,12 @@ func get_speed_dice_manager() -> SpeedDiceManager:
 	return get_parent().get_parent()
 
 
+func set_card(card: AbstractCard) -> void:
+	if card != null:
+		card.remaining_uses_count_in_turn -= 1
+	installed_card = card
+
+
 func _on_speed_dice_toggled(_button_pressed: bool) -> void:
 #	if (Input.is_action_just_pressed("ui_cancel") && character.is_teammate):
 #		character.is_character_selected = false
@@ -72,6 +82,8 @@ func _on_speed_dice_toggled(_button_pressed: bool) -> void:
 	
 func _on_speed_dice_mouse_entered() -> void:
 	current_state = SpeedDiceState.USED
+	make_selected()
+	emit_signal("selected")
 #	_turn_on_selected()
 #
 #	if (character.is_teammate):
@@ -90,6 +102,8 @@ func _on_speed_dice_mouse_entered() -> void:
 
 func _on_speed_dice_mouse_exited() -> void:
 	current_state = SpeedDiceState.DEFAULT
+	cancel_selected()
+	emit_signal("deselected")
 #	if (!self.pressed):
 #		_turn_off_selected()
 #

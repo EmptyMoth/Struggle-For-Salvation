@@ -1,9 +1,0 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bviyo38ocqb3a"]
-
-[ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/battle_mechanics/cards_deck/cards_deck.gd" id="1_ixu7v"]
-[ext_resource type="PackedScene" uid="uid://lxelf4vsaei5" path="res://scenes/battle/cards/cards/test_card_3.tscn" id="1_q602j"]
-
-[resource]
-resource_local_to_scene = true
-script = ExtResource("1_ixu7v")
-_packed_cards = [ExtResource("1_q602j"), ExtResource("1_q602j"), ExtResource("1_q602j")]

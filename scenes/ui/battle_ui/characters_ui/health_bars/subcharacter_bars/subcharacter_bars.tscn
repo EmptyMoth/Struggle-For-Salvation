@@ -1,38 +1,20 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://drxp468mge6s"]
 
-[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd" id="1_m3g44"]
-[ext_resource type="Texture2D" uid="uid://bw7segam2h6ud" path="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/ring_without_unfilled_bars.png" id="2_hn5p6"]
-[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/physical_health_bar.tscn" id="3_6v0li"]
-[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/mental_health_bar.tscn" id="4_kyblk"]
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_container_bars.gd" id="1_6lyhv"]
+[ext_resource type="PackedScene" uid="uid://bci1n6s5ljlyj" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/php_bar.tscn" id="3_1u0yb"]
+[ext_resource type="PackedScene" uid="uid://2e47rgonbe3b" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/mhp_bar.tscn" id="4_x1ush"]
 
-[node name="SubcharacterBars" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 2
-script = ExtResource("1_m3g44")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_left = -35.0
-offset_top = -18.0
-offset_right = 35.0
-offset_bottom = 22.0
-mouse_filter = 2
-texture = ExtResource("2_hn5p6")
-
-[node name="Bars" type="HBoxContainer" parent="."]
+[node name="SubcharacterBars" type="HBoxContainer"]
 offset_left = -35.0
 offset_top = -18.0
 offset_right = 35.0
 offset_bottom = 22.0
 mouse_filter = 2
 theme_override_constants/separation = 0
+script = ExtResource("1_6lyhv")
 
-[node name="PhysicalHealthBar" parent="Bars" instance=ExtResource("3_6v0li")]
-offset_left = 0.0
-offset_right = 35.0
-offset_bottom = 40.0
+[node name="PHPBar" parent="." instance=ExtResource("3_1u0yb")]
+layout_mode = 2
 
-[node name="MentalHealthBar" parent="Bars" instance=ExtResource("4_kyblk")]
-offset_left = 35.0
-offset_right = 70.0
-offset_bottom = 40.0
+[node name="MHPBar" parent="." instance=ExtResource("4_x1ush")]
+layout_mode = 2

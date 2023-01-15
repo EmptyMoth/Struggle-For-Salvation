@@ -1,62 +1,96 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4agosjfjp30g"]
+[gd_scene load_steps=11 format=3 uid="uid://bmcn4eh1lxac2"]
 
 [ext_resource type="PackedScene" uid="uid://c35sfy1hihkrx" path="res://scenes/battle/characters/pathogens/base_scenes/abstract_pathogen.tscn" id="1_20coe"]
-[ext_resource type="Resource" uid="uid://bviyo38ocqb3a" path="res://resources/battle/characters/cards_decks/influenza_virus_deck.tres" id="2_l1crg"]
+[ext_resource type="Resource" uid="uid://d4cmnx4c5lvq4" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="2_kkf8a"]
+[ext_resource type="Resource" uid="uid://dfvrjojo4q15m" path="res://resources/battle/characters/deck_of_cards/influenza_virus_deck.tres" id="2_l1crg"]
 [ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="2_qc4uu"]
 [ext_resource type="Texture2D" uid="uid://dqfqm3a3rl4ek" path="res://sprites/battle/characters/pathogens/influenza_virus/attack.png" id="3_r32mm"]
+[ext_resource type="Texture2D" uid="uid://djjd7jjoal30w" path="res://sprites/ui/battle_ui/characters_ui/character_icons/Influenza_virus_icon.png" id="4_vjdye"]
 [ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_w7tie"]
 [ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="5_m6siu"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_w4g8r"]
 animations = [{
-"frames": [ExtResource("2_qc4uu")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qc4uu")
+}],
 "loop": false,
 "name": &"block",
 "speed": 0.0
 }, {
-"frames": [ExtResource("3_r32mm")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r32mm")
+}],
 "loop": false,
 "name": &"blunt_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("2_qc4uu")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qc4uu")
+}],
 "loop": false,
 "name": &"default",
 "speed": 0.0
 }, {
-"frames": [ExtResource("2_qc4uu")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qc4uu")
+}],
 "loop": false,
 "name": &"evade",
 "speed": 0.0
 }, {
-"frames": [ExtResource("4_w7tie")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_w7tie")
+}],
 "loop": false,
 "name": &"movement",
 "speed": 0.0
 }, {
-"frames": [ExtResource("3_r32mm")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r32mm")
+}],
 "loop": false,
 "name": &"pierce_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("3_r32mm")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_r32mm")
+}],
 "loop": false,
 "name": &"slash_attack",
 "speed": 0.0
 }, {
-"frames": [ExtResource("5_m6siu")],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_m6siu")
+}],
 "loop": false,
 "name": &"stun",
 "speed": 0.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cefb5"]
+resource_local_to_scene = true
+size = Vector2(31, 67)
+
 [node name="InfluenzaVirus" instance=ExtResource("1_20coe")]
-cards_deck = ExtResource("2_l1crg")
-max_physical_health = 25.0
-max_mental_health = 10.0
-mental_resistance = 150
-max_speed = 3.0
+stats = ExtResource("2_kkf8a")
+deck_of_cards = ExtResource("2_l1crg")
+icon = ExtResource("4_vjdye")
 
 [node name="Actions" parent="." index="1"]
 position = Vector2(0, -39)
 frames = SubResource("SpriteFrames_w4g8r")
+
+[node name="ClickArea" parent="." index="3"]
+position = Vector2(0, -34)
+
+[node name="CollisionShape2D" parent="ClickArea" index="0"]
+shape = SubResource("RectangleShape2D_cefb5")

@@ -29,10 +29,15 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/characters/base_scripts/abstract_character.gd"
 }, {
+"base": "Control",
+"class": &"AbstractHUD",
+"language": &"GDScript",
+"path": "res://scripts/ui/battle_ui/characters_ui/huds/base_scripts/abstract_hud.gd"
+}, {
 "base": "Resource",
 "class": &"AbstractHealth",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/abstract_health.gd"
+"path": "res://scripts/resources/character/battle_mechanics/health/abstract_health.gd"
 }, {
 "base": "AbstractCharacter",
 "class": &"AbstractImmunocyte",
@@ -84,10 +89,25 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/battle/battlefields/base_scripts/base_battlefields.gd"
 }, {
+"base": "Control",
+"class": &"BaseContainerBars",
+"language": &"GDScript",
+"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_container_bars.gd"
+}, {
 "base": "TextureProgressBar",
 "class": &"BaseHealthBar",
 "language": &"GDScript",
 "path": "res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd"
+}, {
+"base": "Resource",
+"class": &"BaseResistance",
+"language": &"GDScript",
+"path": "res://scripts/resources/character/battle_mechanics/resistances/base_resistance.gd"
+}, {
+"base": "AbstractHUD",
+"class": &"BaseTopCornerHUD",
+"language": &"GDScript",
+"path": "res://scripts/ui/battle_ui/characters_ui/huds/top_corner_hud/base_top_corner_hud.gd"
 }, {
 "base": "AbstractActionDice",
 "class": &"BlockDice",
@@ -105,9 +125,9 @@ _global_script_classes=[{
 "path": "res://scripts/ui/battle_ui/cards/cards_manager/card_manager.gd"
 }, {
 "base": "Resource",
-"class": &"CardsDeck",
+"class": &"CardParameters",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/cards_deck/cards_deck.gd"
+"path": "res://scripts/resources/cards/cards_parameters/card_parameters.gd"
 }, {
 "base": "AbstractAbility",
 "class": &"CharacterAbility",
@@ -118,6 +138,11 @@ _global_script_classes=[{
 "class": &"CharacterMarker3D",
 "language": &"GDScript",
 "path": "res://scripts/battle/characters/base_scripts/character_marker_3d.gd"
+}, {
+"base": "Resource",
+"class": &"CharacterStats",
+"language": &"GDScript",
+"path": "res://scripts/resources/character/character_stats/character_stats.gd"
 }, {
 "base": "Node",
 "class": &"CombatManager",
@@ -133,6 +158,11 @@ _global_script_classes=[{
 "class": &"CurrentEffects",
 "language": &"GDScript",
 "path": "res://scripts/battle/effects/current_effects.gd"
+}, {
+"base": "Resource",
+"class": &"DeckOfCards",
+"language": &"GDScript",
+"path": "res://scripts/resources/character/deck_of_cards/deck_of_cards.gd"
 }, {
 "base": "Resource",
 "class": &"Dialogue",
@@ -157,7 +187,12 @@ _global_script_classes=[{
 "base": "Node3D",
 "class": &"Formation",
 "language": &"GDScript",
-"path": "res://scripts/battle/formations/Formation.gd"
+"path": "res://scripts/battle/formations/formation.gd"
+}, {
+"base": "Resource",
+"class": &"Hand",
+"language": &"GDScript",
+"path": "res://scripts/resources/character/battle_mechanics/hand/hand.gd"
 }, {
 "base": "VBoxContainer",
 "class": &"LogEntry",
@@ -167,12 +202,32 @@ _global_script_classes=[{
 "base": "AbstractHealth",
 "class": &"MentalHealth",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/mental_health.gd"
+"path": "res://scripts/resources/character/battle_mechanics/health/mental_health.gd"
+}, {
+"base": "BaseResistance",
+"class": &"MentalResistance",
+"language": &"GDScript",
+"path": "res://scripts/resources/character/battle_mechanics/resistances/mental_resistance.gd"
+}, {
+"base": "Resource",
+"class": &"PassiveAbility",
+"language": &"GDScript",
+"path": "res://scripts/resources/character/battle_mechanics/passive_ability/passive_ability.gd"
+}, {
+"base": "MarginContainer",
+"class": &"PassiveAbilityLabels",
+"language": &"GDScript",
+"path": "res://scripts/ui/battle_ui/characters_ui/huds/top_corner_hud/passive_ability_labels/passive_ability_labels.gd"
 }, {
 "base": "AbstractHealth",
 "class": &"PhysicalHealth",
 "language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/battle_mechanics/health/physical_health.gd"
+"path": "res://scripts/resources/character/battle_mechanics/health/physical_health.gd"
+}, {
+"base": "BaseResistance",
+"class": &"PhysicalResistance",
+"language": &"GDScript",
+"path": "res://scripts/resources/character/battle_mechanics/resistances/physical_resistance.gd"
 }, {
 "base": "Resource",
 "class": &"Speaker",
@@ -184,16 +239,17 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd"
 }, {
-"base": "Control",
-"class": &"SubcharacterBars",
+"base": "AbstractHUD",
+"class": &"SubcharacterHUD",
 "language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.gd"
+"path": "res://scripts/ui/battle_ui/characters_ui/huds/subcharacter_hud/subcharacter_hud.gd"
 }]
 _global_script_class_icons={
 "AbstractAbility": "",
 "AbstractActionDice": "",
 "AbstractCard": "",
 "AbstractCharacter": "",
+"AbstractHUD": "",
 "AbstractHealth": "",
 "AbstractImmunocyte": "",
 "AbstractPathogen": "",
@@ -205,27 +261,37 @@ _global_script_class_icons={
 "AttackDice": "",
 "BaseBattle": "",
 "BaseBattlefield": "",
+"BaseContainerBars": "",
 "BaseHealthBar": "",
+"BaseResistance": "",
+"BaseTopCornerHUD": "",
 "BlockDice": "",
 "CardAbility": "",
 "CardManager": "",
-"CardsDeck": "",
+"CardParameters": "",
 "CharacterAbility": "",
 "CharacterMarker3D": "",
+"CharacterStats": "",
 "CombatManager": "",
 "CounterDice": "",
 "CurrentEffects": "",
+"DeckOfCards": "",
 "Dialogue": "",
 "DialogueLine": "",
 "EnemySpeedDice": "",
 "EvadeDice": "",
 "Formation": "",
+"Hand": "",
 "LogEntry": "",
 "MentalHealth": "",
+"MentalResistance": "",
+"PassiveAbility": "",
+"PassiveAbilityLabels": "",
 "PhysicalHealth": "",
+"PhysicalResistance": "",
 "Speaker": "",
 "SpeedDiceManager": "",
-"SubcharacterBars": ""
+"SubcharacterHUD": ""
 }
 
 [application]
@@ -245,8 +311,8 @@ ClashManager="*res://scripts/battle/base_scripts/phase_managers/clash_manager.gd
 
 [display]
 
-window/size/viewport_width=1280
-window/size/viewport_height=720
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/size/fullscreen=true
@@ -283,5 +349,10 @@ ui_menu={
 ui_switch_battle_phase={
 "deadzone": 0.5,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
+]
+}
+ui_pick={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
 ]
 }

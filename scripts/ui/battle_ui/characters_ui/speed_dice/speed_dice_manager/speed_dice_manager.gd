@@ -5,15 +5,23 @@ extends Control
 var min_speed: int = 1
 var max_speed: int = 10
 
-var speed_dice_count: int = 0 :
+var speed_dice_count: int :
 	get: return _speed_dice_container.get_child_count()
 
 @onready var _speed_dice_container: HBoxContainer = $SpeedDiceContainer
 
 
-func set_speed(min_value: int, max_value: int) -> void:
-	min_speed = min_value
-	max_speed = max_value
+func init(new_min_speed: int, new_max_speed: int, new_speed_dice_count: int) -> void:
+	_set_speed(new_min_speed, new_max_speed)
+	change_speed_dice_count(new_speed_dice_count, get_character().is_ally)
+
+
+func get_all_speed_dice() -> Array[Node]:
+	return _speed_dice_container.get_children()
+
+
+func get_speed_dice(position: int) -> AbstractSpeedDice:
+	return _speed_dice_container.get_child(position - 1)
 
 
 func change_speed_dice_count(new_count: int, is_ally: bool) -> void:
@@ -44,15 +52,20 @@ func remove_speed_dice(count: int) -> void:
 
 
 func roll_speed_dice() -> void:
-	var speed_dice_values: Array[int] = _get_sorted_speed()
+	var speeds: Array[int] = _get_sorted_speed()
 	for i in speed_dice_count:
 		var speed_dice: AbstractSpeedDice = _speed_dice_container.get_child(i)
-		var speed: int = speed_dice_values[i]
+		var speed: int = speeds[i]
 		speed_dice.set_speed(speed)
 
 
 func get_character() -> AbstractCharacter:
-	return (get_parent() as AbstractCharacter)
+	return get_parent() as AbstractCharacter
+
+
+func _set_speed(min_value: int, max_value: int) -> void:
+	min_speed = min_value
+	max_speed = max_value
 
 
 func _get_sorted_speed() -> Array[int]:
