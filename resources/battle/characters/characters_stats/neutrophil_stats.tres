@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://clfjmrg2xhxl4"]
+
+[ext_resource type="Script" path="res://scripts/resources/character/character_stats/character_stats.gd" id="1_mcit0"]
+
+[resource]
+script = ExtResource("1_mcit0")
+name_character = "Нейтрофил"
+max_physical_health = 100
+max_mental_health = 50
+physical_resistance = 3
+mental_resistance = 3
+min_speed = 3
+max_speed = 6
+speed_dice_count = 3

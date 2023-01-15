@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://h8qxih5e8lr1"]
+
+[ext_resource type="PackedScene" uid="uid://jp6ysklein1c" path="res://scenes/battle/cards/cards/test_card_1.tscn" id="1_45s1k"]
+[ext_resource type="Script" path="res://scripts/resources/character/deck_of_cards/deck_of_cards.gd" id="1_h75kg"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_h75kg")
+_packed_cards = [ExtResource("1_45s1k"), ExtResource("1_45s1k"), ExtResource("1_45s1k"), ExtResource("1_45s1k"), ExtResource("1_45s1k"), ExtResource("1_45s1k"), ExtResource("1_45s1k"), ExtResource("1_45s1k"), ExtResource("1_45s1k")]

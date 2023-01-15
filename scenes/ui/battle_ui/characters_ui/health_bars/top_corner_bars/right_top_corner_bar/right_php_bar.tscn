@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6llakbrjsbdc"]
+
+[ext_resource type="PackedScene" uid="uid://8y8csb01tjm" path="res://scenes/ui/battle_ui/characters_ui/health_bars/top_corner_bars/base_scenes/abstract_right_top_corner_bar.tscn" id="1_ptd66"]
+[ext_resource type="Texture2D" uid="uid://dltfsrqdqc0q4" path="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/right_top_corner_bars/php_bar_unfilled.png" id="2_yk421"]
+[ext_resource type="Texture2D" uid="uid://bealvpcdwtlup" path="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/right_top_corner_bars/php_bar_filled.png" id="3_y8mhe"]
+[ext_resource type="Texture2D" uid="uid://cy6ronj5khnyo" path="res://sprites/ui/battle_ui/characters_ui/stats_icons/php_icon.png" id="4_ujd21"]
+
+[node name="RightPHPBar" instance=ExtResource("1_ptd66")]
+texture_under = ExtResource("2_yk421")
+texture_progress = ExtResource("3_y8mhe")
+
+[node name="IconStat" parent="." index="0"]
+offset_left = 190.0
+offset_top = 139.0
+offset_right = 340.0
+offset_bottom = 289.0
+texture = ExtResource("4_ujd21")
+
+[node name="Counter" parent="." index="1"]
+offset_left = 126.0
+offset_top = 142.0
+offset_right = 172.0
+offset_bottom = 176.0
+theme_override_colors/font_color = Color(0.968627, 0.270588, 0.270588, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "100"

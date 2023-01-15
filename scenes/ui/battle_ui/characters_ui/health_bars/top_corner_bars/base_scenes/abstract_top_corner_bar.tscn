@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmy1h6qy47p4c"]
+
+[ext_resource type="PackedScene" uid="uid://c4dda6w3tkcxx" path="res://scenes/ui/battle_ui/characters_ui/health_bars/base_scenes/abstract_health_bar.tscn" id="1_2ihle"]
+[ext_resource type="FontFile" uid="uid://bjpyveek057b3" path="res://fonts/itc_serif_gothic_lt_black.ttf" id="2_0bcoi"]
+
+[node name="AbstractTopCornerBar" instance=ExtResource("1_2ihle")]
+fill_mode = 4
+radial_initial_angle = 180.0
+radial_fill_degrees = 90.0
+
+[node name="IconStat" type="TextureRect" parent="." index="0"]
+layout_mode = 0
+offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
+
+[node name="Counter" parent="." index="1"]
+layout_mode = 0
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_0bcoi")
+theme_override_font_sizes/font_size = 25
+vertical_alignment = 1

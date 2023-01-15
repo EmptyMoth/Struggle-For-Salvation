@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctv5g5gejbuh"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/huds/subcharacter_hud/subcharacter_hud.gd" id="1_qn71n"]
+[ext_resource type="Texture2D" uid="uid://bw7segam2h6ud" path="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/ring_without_unfilled_bars.png" id="2_gl56u"]
+[ext_resource type="PackedScene" uid="uid://drxp468mge6s" path="res://scenes/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/subcharacter_bars.tscn" id="3_bvwea"]
+
+[node name="SubcharacterHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("1_qn71n")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -18.0
+offset_right = 35.0
+offset_bottom = 22.0
+mouse_filter = 2
+texture = ExtResource("2_gl56u")
+
+[node name="SubcharacterBars" parent="." instance=ExtResource("3_bvwea")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2

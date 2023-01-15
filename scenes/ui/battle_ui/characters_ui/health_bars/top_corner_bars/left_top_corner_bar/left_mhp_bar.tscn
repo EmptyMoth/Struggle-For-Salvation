@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cdw4ul03w5vxk"]
+
+[ext_resource type="PackedScene" uid="uid://dxu84dql1n5u7" path="res://scenes/ui/battle_ui/characters_ui/health_bars/top_corner_bars/base_scenes/abstract_left_top_corner_bar.tscn" id="1_j6xvk"]
+[ext_resource type="Texture2D" uid="uid://cntlexxw74s8o" path="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/left_top_corner_bars/mhp_bar_unfilled.png" id="2_4lqt1"]
+[ext_resource type="Texture2D" uid="uid://cbikq8i060pxi" path="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/left_top_corner_bars/mhp_bar_filled.png" id="3_d6pnb"]
+[ext_resource type="Texture2D" uid="uid://bj46ejdk28n3n" path="res://sprites/ui/battle_ui/characters_ui/stats_icons/mhp_icon.png" id="4_pqlhu"]
+
+[node name="LeftMHPBar" instance=ExtResource("1_j6xvk")]
+texture_under = ExtResource("2_4lqt1")
+texture_progress = ExtResource("3_d6pnb")
+
+[node name="IconStat" parent="." index="0"]
+offset_left = -80.0
+offset_top = 160.0
+offset_right = 70.0
+offset_bottom = 310.0
+texture = ExtResource("4_pqlhu")
+
+[node name="Counter" parent="." index="1"]
+offset_left = -73.0
+offset_top = 160.0
+offset_right = 13.0
+offset_bottom = 194.0
+theme_override_colors/font_color = Color(0.380392, 0.619608, 0.929412, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+text = "100"

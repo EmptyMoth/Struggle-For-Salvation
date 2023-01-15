@@ -1,0 +1,30 @@
+[gd_scene load_steps=9 format=3 uid="uid://dtys23tnvxxs0"]
+
+[ext_resource type="PackedScene" uid="uid://blmk7aoe5rtjq" path="res://scenes/ui/battle_ui/characters_ui/resistances_ui/abstract_resistance.tscn" id="1_axxgw"]
+[ext_resource type="Texture2D" uid="uid://dm7c0sc82nrwq" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_immunity.png" id="1_sni4d"]
+[ext_resource type="Texture2D" uid="uid://mxk1c5sp524p" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_ineffective.png" id="2_vogf2"]
+[ext_resource type="Texture2D" uid="uid://b3cunopyxbdid" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_weak.png" id="3_2h6dn"]
+[ext_resource type="Texture2D" uid="uid://bsou04d00a4jl" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_normal.png" id="4_42a3b"]
+[ext_resource type="Texture2D" uid="uid://dw2rrv1hvhtrd" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_high.png" id="5_sjj54"]
+[ext_resource type="Texture2D" uid="uid://cqifejujl6dv4" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_fatal.png" id="6_bk6we"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_m1qy0"]
+resource_local_to_scene = true
+frames = 6
+pause = true
+one_shot = true
+frame_0/texture = ExtResource("1_sni4d")
+frame_0/duration = 0.0
+frame_1/texture = ExtResource("2_vogf2")
+frame_1/duration = 0.0
+frame_2/texture = ExtResource("3_2h6dn")
+frame_2/duration = 0.0
+frame_3/texture = ExtResource("4_42a3b")
+frame_3/duration = 0.0
+frame_4/texture = ExtResource("5_sjj54")
+frame_4/duration = 0.0
+frame_5/texture = ExtResource("6_bk6we")
+frame_5/duration = 0.0
+
+[node name="PHPResistance" instance=ExtResource("1_axxgw")]
+texture = SubResource("AnimatedTexture_m1qy0")

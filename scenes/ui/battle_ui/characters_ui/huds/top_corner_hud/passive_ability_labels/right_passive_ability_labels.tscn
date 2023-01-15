@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://h5qwv51wwpl4"]
+
+[ext_resource type="PackedScene" uid="uid://bi05jogj71662" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/passive_ability_labels/abstract_passive_ability_labels.tscn" id="1_2ejl0"]
+
+[node name="RightPassiveAbilityLabels" instance=ExtResource("1_2ejl0")]
+
+[node name="Background" parent="." index="0"]
+flip_h = true
+
+[node name="ScrollContainer" parent="Background" index="0"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -365.0
+offset_right = -20.0
+grow_horizontal = 0

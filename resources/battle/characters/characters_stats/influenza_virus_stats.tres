@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://d4cmnx4c5lvq4"]
+
+[ext_resource type="Script" path="res://scripts/resources/character/character_stats/character_stats.gd" id="1_qs801"]
+
+[resource]
+script = ExtResource("1_qs801")
+name_character = "Вирус Гриппа из Вакцины"
+max_physical_health = 20
+max_mental_health = 10
+physical_resistance = 3
+mental_resistance = 3
+min_speed = 1
+max_speed = 3
+speed_dice_count = 1

@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://bi05jogj71662"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/huds/top_corner_hud/passive_ability_labels/passive_ability_labels.gd" id="1_wqeta"]
+[ext_resource type="Texture2D" uid="uid://b6mgyvwiokufd" path="res://sprites/ui/battle_ui/characters_ui/top_corner_hud/passive_abilities_background.png" id="1_yylpn"]
+[ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="3_0momm"]
+
+[node name="AbstractPassiveAbilityLabels" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -887.0
+offset_bottom = -319.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_wqeta")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_yylpn")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 90
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 80
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 0
+follow_focus = true
+horizontal_scroll_mode = 0
+
+[node name="ContainerPassiveAbilities" type="VBoxContainer" parent="MarginContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="PassiveAbility" type="Label" parent="MarginContainer/ScrollContainer/ContainerPassiveAbilities"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.737255, 0.745098, 0.854902, 1)
+theme_override_constants/line_spacing = -10
+theme_override_fonts/font = ExtResource("3_0momm")
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 2
