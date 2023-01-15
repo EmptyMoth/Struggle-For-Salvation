@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnglfmpetv0ls"]
+
+[ext_resource type="Script" path="res://scripts/story/log.gd" id="1_b3wx2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w73ps"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="Log" type="MarginContainer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 150
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 150
+script = ExtResource("1_b3wx2")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+offset_left = 300.0
+offset_top = 150.0
+offset_right = 980.0
+offset_bottom = 570.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_w73ps")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+offset_right = 1320.0
+offset_bottom = 780.0
+
+[node name="ColorRect3" type="ColorRect" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2i(0, 3)
+offset_right = 1320.0
+offset_bottom = 3.0
+color = Color(0.980392, 1, 0.662745, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+offset_top = 7.0
+offset_right = 1320.0
+offset_bottom = 41.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+offset_left = 594.0
+offset_top = 1.0
+offset_right = 594.0
+offset_bottom = 32.0
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_font_sizes/normal_font_size = 20
+text = "Запись Разговора"
+fit_content_height = true
+scroll_active = false
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2i(60, 0)
+offset_left = 1192.0
+offset_right = 1252.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+color = Color(1, 1, 1, 0)
+
+[node name="ButtonCloseLog" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+offset_left = 1256.0
+offset_right = 1320.0
+offset_bottom = 34.0
+size_flags_horizontal = 8
+focus_mode = 0
+text = "Закрыть"
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2i(0, 3)
+offset_top = 45.0
+offset_right = 1320.0
+offset_bottom = 48.0
+color = Color(0.980392, 1, 0.662745, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/VBoxContainer"]
+offset_top = 52.0
+offset_right = 1320.0
+offset_bottom = 773.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/VBoxContainer/ScrollContainer"]
+offset_right = 1320.0
+offset_bottom = 721.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/ScrollContainer/MarginContainer"]
+offset_left = 50.0
+offset_top = 10.0
+offset_right = 1270.0
+offset_bottom = 711.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ColorRect2" type="ColorRect" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2i(0, 3)
+offset_top = 777.0
+offset_right = 1320.0
+offset_bottom = 780.0
+color = Color(0.980392, 1, 0.662745, 1)
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/ButtonCloseLog" to="." method="_on_button_close_log_pressed"]

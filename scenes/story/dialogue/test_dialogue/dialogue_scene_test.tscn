@@ -1,0 +1,239 @@
+[gd_scene load_steps=41 format=3 uid="uid://cdr0us268epb3"]
+
+[ext_resource type="PackedScene" uid="uid://tsckhc21wjk8" path="res://scenes/story/dialogue/dialogue_scene.tscn" id="1_xgvjs"]
+[ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="2_t55ri"]
+[ext_resource type="Script" path="res://scripts/story/speaker.gd" id="3_ltbg8"]
+[ext_resource type="Texture2D" uid="uid://cygs2310pl6sc" path="res://sprites/UI/story_ui/characters/expressions/neut_thoughtful.png" id="3_vjrky"]
+[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/UI/story_ui/characters/neut.png" id="4_g7cdx"]
+[ext_resource type="Script" path="res://scripts/story/dialogue.gd" id="4_t2ttp"]
+[ext_resource type="Texture2D" uid="uid://b5gdmhlvteq76" path="res://sprites/UI/story_ui/characters/expressions/neut_annoyed.png" id="6_cowxw"]
+[ext_resource type="Texture2D" uid="uid://pp3p7eyphbw1" path="res://sprites/UI/story_ui/characters/expressions/neut_friendly.png" id="7_1rbf3"]
+
+[sub_resource type="Resource" id="Resource_huxpx"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("3_vjrky")
+
+[sub_resource type="Resource" id="Resource_ny45u"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_huxpx")]
+line = "Как только я вышел из костного мозга, мой щит, который мне выдали после обучения, начал светиться синим и вести меня по сосудам."
+
+[sub_resource type="Resource" id="Resource_bpaxc"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("3_vjrky")
+
+[sub_resource type="Resource" id="Resource_a13tb"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_bpaxc")]
+line = "Так, я пришёл сюда, к сооружению, которое выглядит странно - оно то увеличивается, то уменьшается."
+
+[sub_resource type="Resource" id="Resource_ulmwb"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("3_vjrky")
+
+[sub_resource type="Resource" id="Resource_sgmpp"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_ulmwb")]
+line = "Хм. Указатель щита показывает идти вперёд. Прямо внутрь этого места."
+
+[sub_resource type="Resource" id="Resource_486nh"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("3_vjrky")
+
+[sub_resource type="Resource" id="Resource_0h5p1"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_486nh")]
+line = "(Заходит внутрь)"
+
+[sub_resource type="Resource" id="Resource_6g8tn"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("6_cowxw")
+
+[sub_resource type="Resource" id="Resource_gc83g"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_6g8tn")]
+line = "Что происходит? Почему меня привело сюда?"
+
+[sub_resource type="Resource" id="Resource_5ovda"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Что? Ещё одного новобранца отправили на поле боя без стажировки. Да, дела у нас хуже некуда…"
+
+[sub_resource type="Resource" id="Resource_aqh1i"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Слушай меня новобранец: на нас напал патоген – вирус гриппа. Мы находимся в лёгких - там, где он размножается."
+
+[sub_resource type="Resource" id="Resource_pddco"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Вирус уже захватил несколько клеток эпителия дыхательных путей и продолжает распространяться. Мы должны его остановить. Задача предельно проста, выполняй."
+
+[sub_resource type="Resource" id="Resource_78mca"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("3_vjrky")
+
+[sub_resource type="Resource" id="Resource_2lm23"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_78mca")]
+line = "Я ещё ни разу не был в реальном бою. Как мне быть?"
+
+[sub_resource type="Resource" id="Resource_g7spd"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Я это и без тебя понял, лишь по одному твоему поведению."
+
+[sub_resource type="Resource" id="Resource_08nrb"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Похоже это грипп, прибывший через вакцину, вот почему он возник так неожиданно. Это значит, что он в разы слабее своей обычной версии."
+
+[sub_resource type="Resource" id="Resource_l8ba1"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Вот, видишь впереди стоит одна заражённая клетка."
+
+[sub_resource type="Resource" id="Resource_4ybn2"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("3_vjrky")
+
+[sub_resource type="Resource" id="Resource_v5yav"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_4ybn2")]
+line = "Так точно."
+
+[sub_resource type="Resource" id="Resource_tchpk"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Иди и разберись с ней, она тебе по плечу. Заодно получишь реальный опыт в нашей работе. Делай всё так, как тебя учили в костном мозге."
+
+[sub_resource type="Resource" id="Resource_1loyl"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("6_cowxw")
+
+[sub_resource type="Resource" id="Resource_j2mu0"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_1loyl")]
+line = "А вы что, не пойдёте?"
+
+[sub_resource type="Resource" id="Resource_pp0p4"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "Оглянись по сторонам. Вирусов сотни и они заражают другие клетки, хотя и не так быстро, потому что они из вакцины."
+
+[sub_resource type="Resource" id="Resource_0y6gp"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("7_1rbf3")
+
+[sub_resource type="Resource" id="Resource_nirkh"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_0y6gp")]
+line = "Хорошо, я сделаю всё что смогу."
+
+[sub_resource type="Resource" id="Resource_pm8h6"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 480"
+speaker_role = "Нейтрофил"
+speakers = []
+line = "И запомни, новобранец - твоя жизнь не важна, важна лишь целостность Организма."
+
+[sub_resource type="Resource" id="Resource_bdib0"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("6_cowxw")
+
+[sub_resource type="Resource" id="Resource_chfm5"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_bdib0")]
+line = "…"
+
+[sub_resource type="Resource" id="Resource_ykyjc"]
+script = ExtResource("3_ltbg8")
+index = null
+image = ExtResource("4_g7cdx")
+expression = ExtResource("3_vjrky")
+
+[sub_resource type="Resource" id="Resource_wpvlo"]
+script = ExtResource("2_t55ri")
+speaker_name = "Нейтрофил 763"
+speaker_role = "Нейтрофил"
+speakers = [SubResource("Resource_ykyjc")]
+line = "Вас понял."
+
+[sub_resource type="Resource" id="Resource_fmq71"]
+script = ExtResource("4_t2ttp")
+lines = [SubResource("Resource_ny45u"), SubResource("Resource_a13tb"), SubResource("Resource_sgmpp"), SubResource("Resource_0h5p1"), SubResource("Resource_gc83g"), SubResource("Resource_5ovda"), SubResource("Resource_aqh1i"), SubResource("Resource_pddco"), SubResource("Resource_2lm23"), SubResource("Resource_g7spd"), SubResource("Resource_08nrb"), SubResource("Resource_l8ba1"), SubResource("Resource_v5yav"), SubResource("Resource_tchpk"), SubResource("Resource_j2mu0"), SubResource("Resource_pp0p4"), SubResource("Resource_nirkh"), SubResource("Resource_pm8h6"), SubResource("Resource_chfm5"), SubResource("Resource_wpvlo")]
+
+[node name="DialogueScene" instance=ExtResource("1_xgvjs")]
+dialogue = SubResource("Resource_fmq71")
+
+[node name="Neut" type="TextureRect" parent="." index="0"]
+offset_left = 149.0
+offset_top = 198.0
+offset_right = 149.0
+offset_bottom = 198.0
+scale = Vector2(0.1, 0.1)
+stretch_mode = 4
+
+[node name="Expression" type="TextureRect" parent="Neut" index="0"]
+offset_left = 1930.0
+offset_top = 600.0
+offset_right = 1970.0
+offset_bottom = 640.0
+scale = Vector2(1.1, 1.1)
+stretch_mode = 4

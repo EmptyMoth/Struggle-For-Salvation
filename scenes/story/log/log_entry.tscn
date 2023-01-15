@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bitk8m5v1371e"]
 
-[ext_resource type="Script" path="res://scripts/story/log_entry.gd" id="1_v1rsk"]
+[ext_resource type="Script" path="res://scripts/story/log_entry.gd" id="1_5ebc5"]
 
 [node name="LogEntry" type="VBoxContainer"]
 visible = false
@@ -8,7 +8,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 50.0
 grow_horizontal = 2
-script = ExtResource("1_v1rsk")
+script = ExtResource("1_5ebc5")
 
 [node name="Blank" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(0, 20)

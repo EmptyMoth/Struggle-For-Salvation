@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://cwqq3o8eynhvk"]
+
+[ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_eieh3"]
+[ext_resource type="PackedScene" uid="uid://cgvlhwfgtcs6o" path="res://scenes/ui/menu_ui/level_select/button_level_select.tscn" id="2_b7eur"]
+[ext_resource type="PackedScene" uid="uid://b5cx4c5ht3cw6" path="res://scenes/ui/menu_ui/menu_settings.tscn" id="3_a6uab"]
+
+[sub_resource type="Theme" id="Theme_j1bx4"]
+default_font = ExtResource("1_eieh3")
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_j1bx4")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Menu" type="VBoxContainer" parent="CenterContainer"]
+offset_left = 585.0
+offset_top = 302.0
+offset_right = 695.0
+offset_bottom = 418.0
+
+[node name="ButtonBattle" parent="CenterContainer/Menu" instance=ExtResource("2_b7eur")]
+offset_right = 110.0
+offset_bottom = 34.0
+text = "Битва"
+scene_path = "res://tests/battle/test_battle_2d.tscn"
+
+[node name="ButtonStory" parent="CenterContainer/Menu" instance=ExtResource("2_b7eur")]
+offset_top = 38.0
+offset_right = 110.0
+offset_bottom = 72.0
+text = "Сюжет"
+scene_path = "res://scenes/story/story_scene.tscn"
+
+[node name="Line" type="ColorRect" parent="CenterContainer/Menu"]
+custom_minimum_size = Vector2i(0, 2)
+offset_top = 76.0
+offset_right = 110.0
+offset_bottom = 78.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+color = Color(0.980392, 1, 0.662745, 1)
+
+[node name="ButtonMainMenu" parent="CenterContainer/Menu" instance=ExtResource("2_b7eur")]
+offset_top = 82.0
+offset_right = 110.0
+offset_bottom = 116.0
+text = "Главное Меню"
+scene_path = "res://scenes/ui/menu_ui/main_menu.tscn"
+
+[node name="MenuSettings" parent="CenterContainer" instance=ExtResource("3_a6uab")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 640.0
+offset_top = 360.0
+offset_right = 640.0
+offset_bottom = 360.0
+grow_horizontal = 1
+grow_vertical = 1

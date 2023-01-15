@@ -24,7 +24,6 @@ grow_vertical = 2
 script = ExtResource("1_sk15p")
 
 [node name="Background" type="ColorRect" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -33,7 +32,6 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
 
 [node name="Margins" type="MarginContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,22 +45,19 @@ theme_override_constants/margin_bottom = 50
 
 [node name="MenuPause" type="CenterContainer" parent="Margins"]
 clip_contents = true
-layout_mode = 2
 offset_left = 50.0
 offset_top = 50.0
-offset_right = 1870.0
-offset_bottom = 1030.0
+offset_right = 1230.0
+offset_bottom = 670.0
 theme = SubResource("Theme_vl26m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margins/MenuPause"]
-layout_mode = 2
-offset_left = 810.0
-offset_top = 397.0
-offset_right = 1009.0
-offset_bottom = 583.0
+offset_left = 490.0
+offset_top = 236.0
+offset_right = 689.0
+offset_bottom = 384.0
 
 [node name="ButtonContinue" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-layout_mode = 2
 offset_left = 34.0
 offset_right = 164.0
 offset_bottom = 34.0
@@ -72,7 +67,7 @@ text = "Продолжить игру"
 flat = true
 
 [node name="ButtonManual" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-layout_mode = 2
+visible = false
 offset_left = 52.0
 offset_top = 38.0
 offset_right = 147.0
@@ -82,44 +77,40 @@ text = "Руководство"
 flat = true
 
 [node name="ButtonSettings" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-layout_mode = 2
 offset_left = 58.0
-offset_top = 76.0
+offset_top = 38.0
 offset_right = 140.0
-offset_bottom = 110.0
+offset_bottom = 72.0
 size_flags_horizontal = 4
 text = "Настройки"
 flat = true
 
 [node name="ButtonLevelSelect" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-layout_mode = 2
-offset_top = 114.0
+offset_top = 76.0
 offset_right = 199.0
-offset_bottom = 148.0
+offset_bottom = 110.0
 size_flags_horizontal = 4
 text = "Вернуться в выбор уровней"
 flat = true
 
 [node name="ButtonMainMenu" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-layout_mode = 2
 offset_left = 17.0
-offset_top = 152.0
+offset_top = 114.0
 offset_right = 182.0
-offset_bottom = 186.0
+offset_bottom = 148.0
 size_flags_horizontal = 4
 text = "Выйти в главное меню"
 flat = true
 
 [node name="MenuSettings" parent="Margins" instance=ExtResource("3_f6r5f")]
 visible = false
-layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
 offset_left = 50.0
 offset_top = 50.0
-offset_right = 1870.0
-offset_bottom = 1030.0
+offset_right = 1230.0
+offset_bottom = 670.0
 grow_horizontal = 1
 grow_vertical = 1
 

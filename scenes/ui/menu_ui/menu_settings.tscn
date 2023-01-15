@@ -23,7 +23,6 @@ theme = SubResource("Theme_xhy1n")
 script = ExtResource("2_aql52")
 
 [node name="MenuSettings" type="CenterContainer" parent="."]
-layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,36 +30,31 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MenuSettings"]
-layout_mode = 2
-offset_left = 443.0
-offset_top = 382.0
-offset_right = 1476.0
-offset_bottom = 697.0
+offset_left = 466.0
+offset_top = 221.0
+offset_right = 814.0
+offset_bottom = 498.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MenuSettings/VBoxContainer"]
-layout_mode = 2
-offset_right = 1033.0
-offset_bottom = 272.0
+offset_right = 348.0
+offset_bottom = 234.0
 
 [node name="SettingsGameplay" type="VBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer"]
-layout_mode = 2
+visible = false
 offset_right = 351.0
 offset_bottom = 272.0
 
 [node name="Language" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay"]
-layout_mode = 2
 offset_right = 351.0
 offset_bottom = 34.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/Language"]
-layout_mode = 2
 offset_top = 2.0
 offset_right = 35.0
 offset_bottom = 31.0
 text = "Язык"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/Language"]
-layout_mode = 2
 offset_left = 251.0
 offset_right = 351.0
 offset_bottom = 34.0
@@ -72,80 +66,68 @@ popup/item_1/text = "English"
 popup/item_1/id = 1
 
 [node name="ActionDice" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay"]
-layout_mode = 2
 offset_top = 38.0
 offset_right = 351.0
 offset_bottom = 67.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/ActionDice"]
-layout_mode = 2
 offset_right = 177.0
 offset_bottom = 29.0
 text = "Считать кубики действий"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/ActionDice"]
 custom_minimum_size = Vector2i(100, 0)
-layout_mode = 2
 offset_left = 251.0
 offset_right = 351.0
 offset_bottom = 29.0
 size_flags_horizontal = 10
 
 [node name="MusicWhenPaused" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay"]
-layout_mode = 2
 offset_top = 71.0
 offset_right = 351.0
 offset_bottom = 100.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/MusicWhenPaused"]
-layout_mode = 2
 offset_right = 247.0
 offset_bottom = 29.0
 text = "Воспроизведение музыки при паузе"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/MusicWhenPaused"]
 custom_minimum_size = Vector2i(100, 0)
-layout_mode = 2
 offset_left = 251.0
 offset_right = 351.0
 offset_bottom = 29.0
 size_flags_horizontal = 10
 
 [node name="CustomRules" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay"]
-layout_mode = 2
 offset_top = 104.0
 offset_right = 351.0
 offset_bottom = 133.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/CustomRules"]
-layout_mode = 2
 offset_right = 164.0
 offset_bottom = 29.0
 text = "Включить свои правила"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/CustomRules"]
 custom_minimum_size = Vector2i(100, 0)
-layout_mode = 2
 offset_left = 251.0
 offset_right = 351.0
 offset_bottom = 29.0
 size_flags_horizontal = 10
 
 [node name="EnemyHealth" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay"]
-layout_mode = 2
 offset_top = 137.0
 offset_right = 351.0
 offset_bottom = 166.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/EnemyHealth"]
-layout_mode = 2
 offset_right = 136.0
 offset_bottom = 29.0
 text = "Здоровье патогенов"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/EnemyHealth"]
 custom_minimum_size = Vector2i(200, 0)
-layout_mode = 2
 offset_left = 151.0
 offset_right = 351.0
 offset_bottom = 16.0
@@ -157,20 +139,17 @@ value = 1.0
 tick_count = 9
 
 [node name="EnemyDamage" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay"]
-layout_mode = 2
 offset_top = 170.0
 offset_right = 351.0
 offset_bottom = 199.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/EnemyDamage"]
-layout_mode = 2
 offset_right = 109.0
 offset_bottom = 29.0
 text = "Урон патогенов"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGameplay/EnemyDamage"]
 custom_minimum_size = Vector2i(200, 0)
-layout_mode = 2
 offset_left = 151.0
 offset_right = 351.0
 offset_bottom = 16.0
@@ -182,83 +161,70 @@ value = 1.0
 tick_count = 6
 
 [node name="SettingsSound" type="VBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-offset_left = 355.0
-offset_right = 681.0
+visible = false
+offset_right = 326.0
 offset_bottom = 272.0
 
 [node name="VolumeMaster" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound"]
-layout_mode = 2
 offset_right = 326.0
 offset_bottom = 29.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeMaster"]
-layout_mode = 2
 offset_right = 122.0
 offset_bottom = 29.0
 text = "Общая громкость"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeMaster"]
 custom_minimum_size = Vector2i(200, 0)
-layout_mode = 2
 offset_left = 126.0
 offset_right = 326.0
 offset_bottom = 16.0
 size_flags_horizontal = 10
 
 [node name="VolumeMusic" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound"]
-layout_mode = 2
 offset_top = 33.0
 offset_right = 326.0
 offset_bottom = 62.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeMusic"]
-layout_mode = 2
 offset_right = 54.0
 offset_bottom = 29.0
 text = "Музыка"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeMusic"]
 custom_minimum_size = Vector2i(200, 0)
-layout_mode = 2
 offset_left = 126.0
 offset_right = 326.0
 offset_bottom = 16.0
 size_flags_horizontal = 10
 
 [node name="VolumeEffects" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound"]
-layout_mode = 2
 offset_top = 66.0
 offset_right = 326.0
 offset_bottom = 95.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeEffects"]
-layout_mode = 2
 offset_right = 64.0
 offset_bottom = 29.0
 text = "Эффекты"
 
 [node name="HSlider" type="HSlider" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsSound/VolumeEffects"]
 custom_minimum_size = Vector2i(200, 0)
-layout_mode = 2
 offset_left = 126.0
 offset_right = 326.0
 offset_bottom = 16.0
 size_flags_horizontal = 10
 
 [node name="SettingsGraphics" type="VBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-offset_left = 685.0
-offset_right = 1033.0
-offset_bottom = 272.0
+offset_right = 348.0
+offset_bottom = 234.0
 
 [node name="TextureQuality" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics"]
-layout_mode = 2
+visible = false
 offset_right = 348.0
 offset_bottom = 34.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/TextureQuality"]
-layout_mode = 2
 offset_top = 2.0
 offset_right = 119.0
 offset_bottom = 31.0
@@ -266,7 +232,6 @@ text = "Качество текстур"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/TextureQuality"]
 custom_minimum_size = Vector2i(175, 0)
-layout_mode = 2
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
@@ -280,13 +245,10 @@ popup/item_2/text = "Высокое"
 popup/item_2/id = 2
 
 [node name="Resolution" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics"]
-layout_mode = 2
-offset_top = 38.0
 offset_right = 348.0
-offset_bottom = 72.0
+offset_bottom = 34.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Resolution"]
-layout_mode = 2
 offset_top = 2.0
 offset_right = 82.0
 offset_bottom = 31.0
@@ -294,7 +256,6 @@ text = "Разрешение"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Resolution"]
 custom_minimum_size = Vector2i(175, 0)
-layout_mode = 2
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
@@ -322,13 +283,11 @@ popup/item_9/text = "640x480"
 popup/item_9/id = 9
 
 [node name="Display" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics"]
-layout_mode = 2
-offset_top = 76.0
+offset_top = 38.0
 offset_right = 348.0
-offset_bottom = 110.0
+offset_bottom = 72.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Display"]
-layout_mode = 2
 offset_top = 2.0
 offset_right = 43.0
 offset_bottom = 31.0
@@ -336,7 +295,6 @@ text = "Экран"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Display"]
 custom_minimum_size = Vector2i(175, 0)
-layout_mode = 2
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
@@ -350,13 +308,11 @@ popup/item_2/text = "Без Рамок"
 popup/item_2/id = 2
 
 [node name="FramerateCap" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics"]
-layout_mode = 2
-offset_top = 114.0
+offset_top = 76.0
 offset_right = 348.0
-offset_bottom = 148.0
+offset_bottom = 110.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/FramerateCap"]
-layout_mode = 2
 offset_top = 2.0
 offset_right = 169.0
 offset_bottom = 31.0
@@ -364,7 +320,6 @@ text = "Лимит кадров в секунду"
 
 [node name="OptionButton" type="OptionButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/FramerateCap"]
 custom_minimum_size = Vector2i(175, 0)
-layout_mode = 2
 offset_left = 173.0
 offset_right = 348.0
 offset_bottom = 34.0
@@ -379,51 +334,44 @@ popup/item_2/text = "240"
 popup/item_2/id = 3
 
 [node name="Vsync" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics"]
-layout_mode = 2
-offset_top = 152.0
+offset_top = 114.0
 offset_right = 348.0
-offset_bottom = 210.0
+offset_bottom = 172.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Vsync"]
-layout_mode = 2
 offset_right = 108.0
 offset_bottom = 58.0
 text = "Вертикальная
 Синхронизация"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/Vsync"]
-layout_mode = 2
 offset_left = 304.0
 offset_right = 348.0
 offset_bottom = 58.0
 size_flags_horizontal = 10
 
 [node name="MouseLock" type="HBoxContainer" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics"]
-layout_mode = 2
-offset_top = 214.0
+offset_top = 176.0
 offset_right = 348.0
-offset_bottom = 272.0
+offset_bottom = 234.0
 
 [node name="Label" type="Label" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/MouseLock"]
-layout_mode = 2
 offset_right = 122.0
 offset_bottom = 58.0
 text = "Закрепить курсор
 в окне"
 
 [node name="CheckButton" type="CheckButton" parent="MenuSettings/VBoxContainer/HBoxContainer/SettingsGraphics/MouseLock"]
-layout_mode = 2
 offset_left = 304.0
 offset_right = 348.0
 offset_bottom = 58.0
 size_flags_horizontal = 10
 
 [node name="BackButton" type="Button" parent="MenuSettings/VBoxContainer"]
-layout_mode = 2
-offset_left = 487.0
-offset_top = 276.0
-offset_right = 546.0
-offset_bottom = 315.0
+offset_left = 144.0
+offset_top = 238.0
+offset_right = 203.0
+offset_bottom = 277.0
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 20
 shortcut = SubResource("Shortcut_0h21w")
