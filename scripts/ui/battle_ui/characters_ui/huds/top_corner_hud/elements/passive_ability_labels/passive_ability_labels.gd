@@ -8,7 +8,14 @@ extends MarginContainer
 var passive_abilities_count: int = 0
 
 
-func add_passive_abilities(passive_abilities: Array[PassiveAbility]) -> void:
+func set_passive_abilities(passive_abilities) -> void:
+	clear_passive_abilities()
+	add_passive_abilities(passive_abilities)
+	_display_passive_ability_label()
+
+
+#func add_passive_abilities(passive_abilities: Array[PassiveAbility]) -> void:
+func add_passive_abilities(passive_abilities) -> void:
 	if passive_abilities == null or passive_abilities.size() == 0:
 		return
 	
@@ -48,8 +55,12 @@ func clear_passive_abilities() -> void:
 		_container_passive_abilities.remove_child(passive_ability)
 
 
+func _display_passive_ability_label() -> void:
+	visible = passive_abilities_count < 0
+
+
 func _find_passive_ability(passive_ability: PassiveAbility) -> Label:
-	var passive_abilities_labels: Array[Label] = _container_passive_abilities.get_children()
+	var passive_abilities_labels: Array[Label] = _container_passive_abilities.get_children() as Array[Label]
 	var desired_passive_abilities: Array[Label] = passive_abilities_labels.filter(
 		func (pasiive_ability_label: Label): 
 			return pasiive_ability_label.text.begins_with(passive_ability.name)

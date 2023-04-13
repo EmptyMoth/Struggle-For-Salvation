@@ -9,6 +9,7 @@ script = ExtResource("1_lgja3")
 
 [node name="SpeedDiceContainer" type="HBoxContainer" parent="."]
 custom_minimum_size = Vector2(1783, 0)
+layout_mode = 0
 offset_left = -891.0
 offset_top = -205.0
 offset_right = 892.0

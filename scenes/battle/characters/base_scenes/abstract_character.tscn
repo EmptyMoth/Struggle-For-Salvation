@@ -58,7 +58,7 @@ script = ExtResource("1_hqiae")
 
 [node name="Actions" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-frames = SubResource("SpriteFrames_b8r1a")
+sprite_frames = SubResource("SpriteFrames_b8r1a")
 
 [node name="SpeedDiceManager" parent="." instance=ExtResource("11_dixm2")]
 offset_top = -86.0

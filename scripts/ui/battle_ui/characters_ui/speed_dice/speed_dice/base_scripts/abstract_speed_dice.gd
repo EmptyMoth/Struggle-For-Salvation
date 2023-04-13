@@ -2,13 +2,15 @@ class_name AbstractSpeedDice
 extends Button
 
 
-signal selected
-signal deselected
+signal picked(self_speed_dice: AbstractSpeedDice)
+signal selected(self_speed_dice: AbstractSpeedDice)
+signal deselected(self_speed_dice: AbstractSpeedDice)
 
 
 enum SpeedDiceState { 
 	DEFAULT = 0,
-	SELECTED = 1, 
+	VIEWED = -1,
+	SELECTED = -2, 
 	USED = 1, 
 	BROKEN = 2, 
 	INACTIVE = 3, 
@@ -19,32 +21,81 @@ var speed: int = 0
 var _current_state: SpeedDiceState = SpeedDiceState.DEFAULT
 var current_state: SpeedDiceState :
 	set(new_state):
+		if new_state == SpeedDiceState.DEFAULT and is_assaulting():
+			new_state = SpeedDiceState.USED
 		_current_state = new_state
-		_states.texture.current_frame = new_state
+		if new_state >= 0:
+			_states.texture.current_frame = new_state
 	get:
 		return _current_state
 
-var installed_card: AbstractCard
+var installed_card: AbstractCard = null
 
 @onready var _speed_value_label: Label = $States/SpeedValue
+@onready var _border: TextureRect = $States/Border
 @onready var _states: TextureRect = $States
+@onready var _static_arrow_of_assault: BaseArrowOfOneSideAttack = null
 
 
 func _ready() -> void:
 	current_state = SpeedDiceState.DEFAULT
 
 
+func _enter_tree() -> void:
+	await get_tree().process_frame
+
+
+static func calculate_assault_weight(
+			character_speed_dice: AbstractSpeedDice, 
+			opponent_speed_dice: AbstractSpeedDice,
+			assault_type: int) -> int:
+	return 10 * character_speed_dice.speed + assault_type
+
+
+func is_assaulting() -> bool:
+	return is_instance_valid(installed_card)
+
+
+func make_default() -> void:
+	current_state = SpeedDiceState.DEFAULT
+
+
+func make_viewable() -> void:
+	if current_state != SpeedDiceState.SELECTED:
+		current_state = SpeedDiceState.VIEWED
+		_border.show()
+
+func cancel_viewable() -> void:
+	if current_state != SpeedDiceState.SELECTED:
+		make_default()
+		_border.hide()
+
+
 func make_selected() -> void:
 	current_state = SpeedDiceState.SELECTED
-
+	_border.show()
 
 func cancel_selected() -> void:
-	current_state = SpeedDiceState.DEFAULT
+	make_default()
+	_border.hide()
 
 
 func set_speed(new_speed: int) -> void:
 	speed = new_speed
 	_speed_value_label.text = str(new_speed)
+
+
+func set_card(card: AbstractCard) -> void:
+	if not is_instance_valid(card):
+		return
+	
+	card.remaining_uses_count_in_turn -= 1
+	installed_card = card
+	current_state = SpeedDiceState.USED
+
+func remove_card() -> void:
+	installed_card = null
+	current_state = SpeedDiceState.DEFAULT
 
 
 func get_character() -> AbstractCharacter:
@@ -55,67 +106,23 @@ func get_speed_dice_manager() -> SpeedDiceManager:
 	return get_parent().get_parent()
 
 
-func set_card(card: AbstractCard) -> void:
-	if card != null:
-		card.remaining_uses_count_in_turn -= 1
-	installed_card = card
+func _set_arrow_of_assault(arrow_of_assault: BaseArrowOfOneSideAttack) -> void:
+	_static_arrow_of_assault = arrow_of_assault
+	_static_arrow_of_assault.scale /= get_parent().scale
+	add_child(_static_arrow_of_assault)
+	#_static_arrow_of_assault.draw_arrow(Vector2(-1920/2, -1080/2))
 
 
 func _on_speed_dice_toggled(_button_pressed: bool) -> void:
-#	if (Input.is_action_just_pressed("ui_cancel") && character.is_teammate):
-#		character.is_character_selected = false
-#		character.cancel_selected_card(self)
-#		unpin_the_card()
-#		BattleParameters.cancel_teammate_assault(self)
-#		return
-#
-#	character.is_character_selected = !character.is_character_selected
-#
-#	if (character.is_teammate):
-#		BattleParameters.set_selected_teammate(character, self)
-#	else:
-#		BattleParameters.set_selected_enemy(character, self)
-#
-#		BattleParameters.set_teammate_assault(self)
-	pass
+	if Input.is_action_just_released("ui_pick"):
+		emit_signal("picked", self)
 
 	
 func _on_speed_dice_mouse_entered() -> void:
-	current_state = SpeedDiceState.USED
-	make_selected()
-	emit_signal("selected")
-#	_turn_on_selected()
-#
-#	if (character.is_teammate):
-#		BattleParameters.put_teammate_on_view(self)
-#	else:
-#		BattleParameters.put_enemy_on_view(self)
-#
-#	if (_current_state == SpeedDiceState.BROKEN 
-#			|| _current_state == SpeedDiceState.TURN_OFF
-#			|| _current_state == SpeedDiceState.ROLE_VALUES):
-#		return
-#
-#	character.show_elemets_character()
-#	character.show_cards_in_hand(self)
+	make_viewable()
+	emit_signal("selected", self)
 
 
 func _on_speed_dice_mouse_exited() -> void:
-	current_state = SpeedDiceState.DEFAULT
-	cancel_selected()
-	emit_signal("deselected")
-#	if (!self.pressed):
-#		_turn_off_selected()
-#
-#	if (character.is_teammate):
-#		BattleParameters.remove_teammate_for_viewing(self)
-#	else:
-#		BattleParameters.remove_enemy_for_viewing(self)
-#
-#	if (_current_state == SpeedDiceState.BROKEN 
-#			|| _current_state == SpeedDiceState.TURN_OFF
-#			|| _current_state == SpeedDiceState.ROLE_VALUES):
-#		return
-#
-#	character.hide_elemets_character()
-#	character.hide_cards_in_hand(self)
+	cancel_viewable()
+	emit_signal("deselected", self)

@@ -2,26 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD:sprites/UI/story_ui/characters/test_char_shadow.png.import
-uid="uid://bclesiol4uwrw"
-path="res://.godot/imported/test_char_shadow.png-9f1552e02882ebf6c058decc7c2504fc.ctex"
-=======
-uid="uid://rtsmwa8h8ah8"
-path="res://.godot/imported/neut_angry.png-989732631ee356c48594a350e926700a.ctex"
->>>>>>> 7085694 (Dialogue edit, option trimming.):sprites/UI/story_ui/characters/expressions/neut_angry.png.import
+uid="uid://dmyuhd16ieihd"
+path="res://.godot/imported/neut_angry.png-88e75851d72c66d210846e7a15bb8f8c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD:sprites/UI/story_ui/characters/test_char_shadow.png.import
-source_file="res://sprites/ui/story_ui/characters/test_char_shadow.png"
-dest_files=["res://.godot/imported/test_char_shadow.png-9f1552e02882ebf6c058decc7c2504fc.ctex"]
-=======
-source_file="res://sprites/UI/story_ui/characters/expressions/neut_angry.png"
-dest_files=["res://.godot/imported/neut_angry.png-989732631ee356c48594a350e926700a.ctex"]
->>>>>>> 7085694 (Dialogue edit, option trimming.):sprites/UI/story_ui/characters/expressions/neut_angry.png.import
+source_file="res://sprites/ui/story_ui/characters/expressions/neut_angry.png"
+dest_files=["res://.godot/imported/neut_angry.png-88e75851d72c66d210846e7a15bb8f8c.ctex"]
 
 [params]
 

@@ -24,7 +24,7 @@ grow_vertical = 2
 script = ExtResource("1_sk15p")
 
 [node name="Background" type="ColorRect" parent="."]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -32,7 +32,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
 
 [node name="Margins" type="MarginContainer" parent="."]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -45,22 +45,14 @@ theme_override_constants/margin_bottom = 50
 
 [node name="MenuPause" type="CenterContainer" parent="Margins"]
 clip_contents = true
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 1230.0
-offset_bottom = 670.0
+layout_mode = 2
 theme = SubResource("Theme_vl26m")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Margins/MenuPause"]
-offset_left = 490.0
-offset_top = 236.0
-offset_right = 689.0
-offset_bottom = 384.0
+layout_mode = 2
 
 [node name="ButtonContinue" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-offset_left = 34.0
-offset_right = 164.0
-offset_bottom = 34.0
+layout_mode = 2
 size_flags_horizontal = 4
 shortcut = SubResource("Shortcut_ybvfg")
 text = "Продолжить игру"
@@ -68,55 +60,42 @@ flat = true
 
 [node name="ButtonManual" type="Button" parent="Margins/MenuPause/VBoxContainer"]
 visible = false
-offset_left = 52.0
-offset_top = 38.0
-offset_right = 147.0
-offset_bottom = 72.0
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Руководство"
 flat = true
 
 [node name="ButtonSettings" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-offset_left = 58.0
-offset_top = 38.0
-offset_right = 140.0
-offset_bottom = 72.0
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Настройки"
 flat = true
 
 [node name="ButtonLevelSelect" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-offset_top = 76.0
-offset_right = 199.0
-offset_bottom = 110.0
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Вернуться в выбор уровней"
 flat = true
 
 [node name="ButtonMainMenu" type="Button" parent="Margins/MenuPause/VBoxContainer"]
-offset_left = 17.0
-offset_top = 114.0
-offset_right = 182.0
-offset_bottom = 148.0
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Выйти в главное меню"
 flat = true
 
+[node name="ButtonExit" type="Button" parent="Margins/MenuPause/VBoxContainer"]
+layout_mode = 2
+text = "Выход"
+flat = true
+
 [node name="MenuSettings" parent="Margins" instance=ExtResource("3_f6r5f")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 50.0
-offset_top = 50.0
-offset_right = 1230.0
-offset_bottom = 670.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
 
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonManual" to="." method="_on_button_manual_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonLevelSelect" to="." method="_on_button_level_select_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
 [connection signal="exit_menu" from="Margins/MenuSettings" to="." method="_on_menu_settings_exit_menu"]

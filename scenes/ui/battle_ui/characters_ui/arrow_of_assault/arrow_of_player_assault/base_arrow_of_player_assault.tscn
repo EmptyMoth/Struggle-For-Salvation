@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt6n7xsu6aw7o"]
+
+[ext_resource type="PackedScene" uid="uid://clkqjn5n4ruhs" path="res://scenes/ui/battle_ui/characters_ui/arrow_of_assault/static_arrow_of_assault/arrow_of_one_side_attack/base_scenes/base_arrow_of_one_side_attack.tscn" id="1_t8a8o"]
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/arrow_of_assault/arrow_of_player_assault/base_arrow_of_player_assault.gd" id="2_0j5l7"]
+
+[node name="BaseArrowOfPlayerAssault" instance=ExtResource("1_t8a8o")]
+modulate = Color(0.509804, 0.647059, 1, 0.666667)
+script = ExtResource("2_0j5l7")
+
+[node name="PointAtBeginning" parent="." index="2"]
+scale = Vector2(0.5, 0.5)

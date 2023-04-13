@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cu1rx7jqas3ac" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/broken.png" id="5_ckt6c"]
 [ext_resource type="Texture2D" uid="uid://bpbm6oogrb127" path="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/border_when_selecting.png" id="6_ciyeu"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_kgneo"]
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_3kjad"]
 resource_local_to_scene = true
 frames = 3
 pause = true
@@ -23,7 +23,7 @@ frame_2/duration = 0.0
 script = ExtResource("2_jjtqn")
 
 [node name="States" parent="." index="0"]
-texture = SubResource("AnimatedTexture_kgneo")
+texture = SubResource("AnimatedTexture_3kjad")
 
 [node name="Border" parent="States" index="0"]
 texture = ExtResource("6_ciyeu")

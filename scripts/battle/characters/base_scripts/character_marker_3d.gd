@@ -2,14 +2,14 @@ class_name CharacterMarker3D
 extends CharacterBody3D
 
 
-const SPEED = 5.0
+const SPEED: float = 5.0
 
 var start_position: Vector3
 
 
 func _physics_process(_delta: float) -> void:
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	var input_dir: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction: Vector3 = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if direction:
 		velocity.x = direction.x * SPEED
 		velocity.z = direction.z * SPEED
@@ -17,7 +17,7 @@ func _physics_process(_delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	
-	@warning_ignore(unused_variable)
+	@warning_ignore("unused_variable")
 	var is_colided: bool = move_and_slide()
 
 
@@ -58,5 +58,5 @@ func _get_position_on_camera(current_position: Vector3) -> Vector2:
 
 func _move_to_position(new_position: Vector3, duration: float) -> void:
 	var tween: Tween = get_tree().create_tween()
-	@warning_ignore(return_value_discarded)
+	@warning_ignore("return_value_discarded")
 	tween.tween_property(self, "position", new_position, duration)

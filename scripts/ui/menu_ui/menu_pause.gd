@@ -45,5 +45,10 @@ func _on_button_level_select_pressed() -> void:
 
 func _on_button_main_menu_pressed() -> void:
 	get_tree().paused = false
-	@warning_ignore(return_value_discarded)
+	@warning_ignore("return_value_discarded")
 	get_tree().change_scene_to_file("res://scenes/ui/menu_ui/main_menu.tscn")
+
+
+func _on_button_exit_pressed() -> void:
+	get_tree().get_root().propagate_notification(NOTIFICATION_WM_CLOSE_REQUEST)
+	get_tree().quit()

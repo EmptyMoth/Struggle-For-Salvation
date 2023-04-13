@@ -19,8 +19,10 @@ func _init(ability_condition: AbilityCondition,
 
 
 class AbilityCondition:
-	var check: Callable = null
-	var description: String = null
+	#var check: Callable = null
+	var check = null
+	#var description: String = null
+	var description = null
 	
 	
 	func _init(condition_check: Callable, 
@@ -30,8 +32,11 @@ class AbilityCondition:
 
 
 class AbilityInfluence:
-	var apply: Callable = null
-	var description: String = null
+	pass
+	#var apply: Callable = null
+	var apply = null
+	#var description: String = null
+	var description = null
 	var target: Target
 	
 	

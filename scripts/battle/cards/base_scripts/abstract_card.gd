@@ -2,6 +2,8 @@ class_name AbstractCard
 extends Node
 
 
+signal was_selected(self_card: AbstractCard)
+
 @export var parameters: CardParameters = CardParameters.new()
 
 #@onready var label_cooldown_time: Label = $Background/Counters/CooldownTime/Time
@@ -42,10 +44,13 @@ func _init() -> void:
 func _ready() -> void:
 	($Background/Name as Label).text = parameters.card_name
 	($Background/Counters/CooldownTime/Time as Label).text = str(parameters.cooldown_time)
-	#label_cooldown_time.text = str(_remaining_cooldown_time)
 	label_remaining_cooldown_time.text = str(remaining_cooldown_time)
 	label_remaining_cooldown_time.hide()
 	label_uses_count.text = str(_remaining_uses_count_in_turn)
+	
+	#self.was_selected.connect(PlayerState._on_card_was_selected)
+	self.was_selected.connect(
+		HandlerForCardsPlacementByPlayer._on_card_was_selected)
 
 
 func _to_string() -> String:
@@ -56,6 +61,12 @@ func can_use() -> bool:
 	return remaining_cooldown_time == 0 and remaining_uses_count_in_turn > 0
 
 
+func create_duplicate_card() -> AbstractCard:
+	var duplicate_card: AbstractCard = self.duplicate()
+	duplicate_card.mouse_filter = Control.MouseFilter.MOUSE_FILTER_IGNORE
+	return duplicate_card
+
+
 func leave_it_to_recharge() -> void:
 	remaining_cooldown_time = parameters.cooldown_time
 	if label_remaining_cooldown_time != null:
@@ -64,7 +75,6 @@ func leave_it_to_recharge() -> void:
 
 
 func update() -> void:
-	
 	if background != null:
 		background.modulate = Color(1, 1, 1) if can_use() else Color(0.55, 0.55, 0.55)
 	
@@ -77,3 +87,8 @@ func update() -> void:
 	else:
 		if label_remaining_cooldown_time != null:
 			label_remaining_cooldown_time.hide()
+
+
+func _on_pressed() -> void:
+	if can_use():
+		emit_signal("was_selected", self)

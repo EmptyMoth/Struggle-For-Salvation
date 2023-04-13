@@ -15,12 +15,12 @@ func update() -> void:
 
 
 func get_random_card() -> AbstractCard:
+	return cards.pick_random()
+
+
+func get_random_active_card() -> AbstractCard:
 	var active_cards: Array[AbstractCard] = _get_active_cards()
-	if active_cards.size() == 0:
-		return null
-	
-	var random_card: AbstractCard = active_cards.pick_random()
-	return random_card
+	return active_cards.pick_random() if active_cards.size() != 0 else null
 
 
 func _get_active_cards() -> Array[AbstractCard]:

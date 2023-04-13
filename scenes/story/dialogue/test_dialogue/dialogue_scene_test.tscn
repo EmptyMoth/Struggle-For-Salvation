@@ -3,11 +3,11 @@
 [ext_resource type="PackedScene" uid="uid://tsckhc21wjk8" path="res://scenes/story/dialogue/dialogue_scene.tscn" id="1_xgvjs"]
 [ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="2_t55ri"]
 [ext_resource type="Script" path="res://scripts/story/speaker.gd" id="3_ltbg8"]
-[ext_resource type="Texture2D" uid="uid://cygs2310pl6sc" path="res://sprites/UI/story_ui/characters/expressions/neut_thoughtful.png" id="3_vjrky"]
-[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/UI/story_ui/characters/neut.png" id="4_g7cdx"]
+[ext_resource type="Texture2D" uid="uid://cygs2310pl6sc" path="res://sprites/ui/story_ui/characters/expressions/neut_thoughtful.png" id="3_vjrky"]
+[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story_ui/characters/neut.png" id="4_g7cdx"]
 [ext_resource type="Script" path="res://scripts/story/dialogue.gd" id="4_t2ttp"]
-[ext_resource type="Texture2D" uid="uid://b5gdmhlvteq76" path="res://sprites/UI/story_ui/characters/expressions/neut_annoyed.png" id="6_cowxw"]
-[ext_resource type="Texture2D" uid="uid://pp3p7eyphbw1" path="res://sprites/UI/story_ui/characters/expressions/neut_friendly.png" id="7_1rbf3"]
+[ext_resource type="Texture2D" uid="uid://b5gdmhlvteq76" path="res://sprites/ui/story_ui/characters/expressions/neut_annoyed.png" id="6_cowxw"]
+[ext_resource type="Texture2D" uid="uid://pp3p7eyphbw1" path="res://sprites/ui/story_ui/characters/expressions/neut_friendly.png" id="7_1rbf3"]
 
 [sub_resource type="Resource" id="Resource_huxpx"]
 script = ExtResource("3_ltbg8")
@@ -223,14 +223,16 @@ lines = [SubResource("Resource_ny45u"), SubResource("Resource_a13tb"), SubResour
 dialogue = SubResource("Resource_fmq71")
 
 [node name="Neut" type="TextureRect" parent="." index="0"]
-offset_left = 149.0
-offset_top = 198.0
-offset_right = 149.0
-offset_bottom = 198.0
-scale = Vector2(0.1, 0.1)
+layout_mode = 0
+offset_left = 200.0
+offset_top = 270.0
+offset_right = 200.0
+offset_bottom = 270.0
+scale = Vector2(0.15, 0.15)
 stretch_mode = 4
 
 [node name="Expression" type="TextureRect" parent="Neut" index="0"]
+layout_mode = 0
 offset_left = 1930.0
 offset_top = 600.0
 offset_right = 1970.0

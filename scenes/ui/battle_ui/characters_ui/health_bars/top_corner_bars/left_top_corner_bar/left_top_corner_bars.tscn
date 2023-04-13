@@ -5,6 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://d3a6634p63dw7" path="res://scenes/ui/battle_ui/characters_ui/health_bars/top_corner_bars/left_top_corner_bar/left_php_bar.tscn" id="3_71xwc"]
 
 [node name="LeftTopCornerBars" instance=ExtResource("1_w32di")]
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
 [node name="PHPBar" parent="." index="0" instance=ExtResource("3_71xwc")]
 layout_mode = 2

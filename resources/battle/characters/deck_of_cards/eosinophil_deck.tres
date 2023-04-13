@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=3 format=3 uid="uid://40i1ualtstcv"]
+[gd_resource type="Resource" script_class="DeckOfCards" load_steps=3 format=3 uid="uid://40i1ualtstcv"]
 
 [ext_resource type="Script" path="res://scripts/resources/character/deck_of_cards/deck_of_cards.gd" id="1_04jnr"]
 [ext_resource type="PackedScene" uid="uid://jsrso1l2r05v" path="res://scenes/battle/cards/cards/test_card_2.tscn" id="1_o0jn5"]
@@ -6,4 +6,4 @@
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_04jnr")
-_packed_cards = [ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5")]
+_packed_cards = Array[PackedScene]([ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5"), ExtResource("1_o0jn5")])

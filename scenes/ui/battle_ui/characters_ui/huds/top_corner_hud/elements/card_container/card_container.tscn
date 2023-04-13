@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bwr2b3ks3n2q2"]
+
+[node name="CardContainer" type="MarginContainer"]
+size_flags_vertical = 0
+mouse_filter = 2
+mouse_force_pass_scroll_events = false

@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://eljr8vqg47co"]
+
+[ext_resource type="PackedScene" uid="uid://caikpxc726gfb" path="res://scenes/ui/battle_ui/characters_ui/arrow_of_assault/base_scenes/base_arrow_of_assault.tscn" id="1_2c2ih"]
+[ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/arrow_of_assault/static_arrow_of_assault.gd/base_scripts/static_arrow_of_assault.gd" id="2_12shg"]
+
+[node name="StaticArrowOfAssault" instance=ExtResource("1_2c2ih")]
+script = ExtResource("2_12shg")

@@ -1,5 +1,6 @@
 extends MarginContainer
 
+
 signal close_log
 
 

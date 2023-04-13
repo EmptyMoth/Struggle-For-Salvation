@@ -1,46 +1,56 @@
+class_name BattleCamera
 extends Camera2D
 
 
-@export var min_zoom := Vector2(0.9, 0.9)
-@export var max_zoom := Vector2(3, 3)
-@export var zoom_factor := Vector2(0.05, 0.05)
-@export var zoom_duration := 0.2
+const _MIN_ZOOM: Vector2 = Vector2.ONE * 0.9
+const _MAX_ZOOM: Vector2 = Vector2.ONE * 3
+const _ZOOM_FACTOR: Vector2 = Vector2.ONE * 0.03
+const _ZOOM_DURATION: float = 0.4
 
-var _zoom_level: Vector2 = zoom:
-	get:
-		return _zoom_level # TODOConverter40 Non existent get function 
-	set(mod_value):
-		_zoom_level = mod_value  # TODOConverter40 Copy here content of _set_zoom_level
+var _zoom_level: Vector2 = zoom :
+	set(value):
+		_zoom_level = clamp(value, _MIN_ZOOM, _MAX_ZOOM)
+		_animate_zoom_change(_zoom_level)
 
-var _drag := false
-var _cursor_loc := Vector2.ZERO
+var _drag: bool = false
+var _cursor_loc: Vector2 = Vector2.ZERO
 
 
-func _input(event) -> void:
-	if (event is InputEventMouseButton):
-		if (event.button_index == MOUSE_BUTTON_WHEEL_UP):
-			_set_zoom_level(_zoom_level + zoom_factor)
-		if (event.button_index == MOUSE_BUTTON_WHEEL_DOWN):
-			_set_zoom_level(_zoom_level - zoom_factor)
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		_change_zoom(event)
+		_camera_motion_control(event)
+
+	if event is InputEventMouseMotion:
+		_move_camera(event)
+
+
+func _camera_motion_control(event_mouse_button: InputEventMouseButton) -> void:
+	if event_mouse_button.button_index != MOUSE_BUTTON_MIDDLE:
+		return
 	
-	if(event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_MIDDLE):
-		if(!_drag and event.pressed):
-			_drag = true
-			_cursor_loc = event.position
-		elif(_drag and !event.pressed):
-			_drag = false
-
-	if(event is InputEventMouseMotion and _drag):
-		var offset_position: Vector2 = (_cursor_loc - event.position) / 2
-		position += offset_position
-
-		_cursor_loc = event.position
+	_drag = not _drag
+	if event_mouse_button.is_action_pressed("ui_mouse_button_middle"):
+		_cursor_loc = event_mouse_button.position
 
 
-func _set_zoom_level(value: Vector2) -> void:
-	_zoom_level.x = clampf(value.x, min_zoom.x, max_zoom.x)
-	_zoom_level.y = clampf(value.y, min_zoom.y, max_zoom.y)
-	
-	var tween := get_tree().create_tween()
-	@warning_ignore(return_value_discarded)
-	tween.tween_property(self, "zoom", _zoom_level, zoom_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+func _move_camera(event_mouse_motion: InputEventMouseMotion) -> void:
+	if _drag:
+		var offset_position: Vector2 = (_cursor_loc - event_mouse_motion.position) / 2
+		position += offset_position / zoom
+		_cursor_loc = event_mouse_motion.position
+
+
+func _change_zoom(event_mouse_button: InputEventMouseButton) -> void:
+	if event_mouse_button.is_action("ui_mouse_button_wheel_up"):
+		_zoom_level += _ZOOM_FACTOR
+	elif event_mouse_button.is_action("ui_mouse_button_wheel_down"):
+		_zoom_level -= _ZOOM_FACTOR
+
+
+func _animate_zoom_change(new_zoom: Vector2) -> void:
+	var tween: Tween = get_tree().create_tween()
+	@warning_ignore("return_value_discarded")
+	tween.tween_property(self, "zoom", new_zoom, _ZOOM_DURATION)\
+		.set_trans(Tween.TRANS_EXPO)\
+		.set_ease(Tween.EASE_OUT)

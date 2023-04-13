@@ -8,33 +8,54 @@
 [node name="TestCard1" instance=ExtResource("1_fsns1")]
 parameters = ExtResource("2_c5hky")
 
+[node name="Background" parent="." index="0"]
+layout_mode = 0
+
 [node name="Name" parent="Background" index="0"]
+layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 159.0
 offset_bottom = 26.0
 
 [node name="ActionDice" parent="Background" index="1"]
+layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 191.0
 offset_bottom = 290.0
 
+[node name="CardAbility" parent="Background/ActionDice" index="0"]
+layout_mode = 2
+
+[node name="DiceDescriptionBackground" parent="Background/ActionDice" index="1"]
+layout_mode = 2
+
 [node name="HBoxContainer" parent="Background/ActionDice/DiceDescriptionBackground" index="0"]
+layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 189.0
 offset_bottom = 50.0
 
+[node name="AttackDice" parent="Background/ActionDice/DiceDescriptionBackground/HBoxContainer" index="0"]
+layout_mode = 2
+expand_mode = 1
+
+[node name="DiceValues" parent="Background/ActionDice/DiceDescriptionBackground/HBoxContainer" index="1"]
+layout_mode = 2
+
+[node name="DiceAbility" parent="Background/ActionDice/DiceDescriptionBackground/HBoxContainer" index="2"]
+layout_mode = 2
+
 [node name="DiceDescriptionBackground2" type="TextureRect" parent="Background/ActionDice" index="2"]
-offset_top = 83.0
-offset_right = 191.0
-offset_bottom = 135.0
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("2_dhayh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/ActionDice/DiceDescriptionBackground2" index="0"]
 custom_minimum_size = Vector2(185, 50)
+layout_mode = 0
 offset_left = 5.0
 offset_top = 1.0
 offset_right = 194.0
@@ -43,14 +64,11 @@ mouse_filter = 2
 theme_override_constants/separation = 2
 
 [node name="AttackDice" parent="Background/ActionDice/DiceDescriptionBackground2/HBoxContainer" index="0" instance=ExtResource("3_ow6bc")]
-offset_top = 7.0
-offset_right = 30.0
-offset_bottom = 42.0
+layout_mode = 2
+expand_mode = 1
 
 [node name="DiceValues" type="Label" parent="Background/ActionDice/DiceDescriptionBackground2/HBoxContainer" index="1"]
-offset_left = 32.0
-offset_right = 77.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 12
@@ -60,10 +78,7 @@ vertical_alignment = 1
 
 [node name="DiceAbility" type="Label" parent="Background/ActionDice/DiceDescriptionBackground2/HBoxContainer" index="2"]
 custom_minimum_size = Vector2(110, 48)
-offset_left = 79.0
-offset_top = 1.0
-offset_right = 189.0
-offset_bottom = 49.0
+layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/line_spacing = -3
 theme_override_font_sizes/font_size = 9
@@ -71,14 +86,29 @@ text = "On Hit Test dice break"
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Counters" parent="Background" index="2"]
+layout_mode = 0
+anchors_preset = 0
+
+[node name="UsesCount" parent="Background/Counters" index="0"]
+layout_mode = 2
+
 [node name="Count" parent="Background/Counters/UsesCount" index="0"]
+layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 42.0
 offset_bottom = 46.0
 
+[node name="CooldownTime" parent="Background/Counters" index="1"]
+layout_mode = 2
+
 [node name="Time" parent="Background/Counters/CooldownTime" index="0"]
+layout_mode = 0
 offset_left = 0.0
 offset_top = 0.0
 offset_right = 40.0
 offset_bottom = 46.0
+
+[node name="RemainingCooldownTime" parent="." index="1"]
+layout_mode = 0

@@ -1,11 +1,9 @@
 extends Node
 
 
-enum ClashResult {
-	WIN = 1,
-	DRAW  = 2,
-	LOSE = 4,
-}
+enum AssaultType { ONE_SIDE = 0, CLASH = 1 } 
+
+enum ClashResult { WIN, DRAW, LOSE }
 
 enum Action {
 	DEFAULT,

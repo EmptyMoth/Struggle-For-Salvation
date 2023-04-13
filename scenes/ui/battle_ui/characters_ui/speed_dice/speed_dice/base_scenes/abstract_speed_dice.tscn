@@ -22,10 +22,12 @@ offset_bottom = 205.0
 focus_mode = 0
 mouse_force_pass_scroll_events = false
 toggle_mode = true
+button_mask = 3
 flat = true
 script = ExtResource("1_5mron")
 
 [node name="States" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = -16.0
 offset_top = -22.0
 offset_right = 202.0
@@ -35,7 +37,9 @@ mouse_filter = 2
 texture = SubResource("AnimatedTexture_wicam")
 
 [node name="Border" type="TextureRect" parent="States"]
+visible = false
 texture_filter = 6
+layout_mode = 0
 offset_right = 218.0
 offset_bottom = 250.0
 mouse_filter = 2
@@ -43,6 +47,7 @@ metadata/_edit_lock_ = true
 
 [node name="SpeedValue" type="Label" parent="States"]
 texture_filter = 2
+layout_mode = 0
 offset_left = 16.0
 offset_top = 22.0
 offset_right = 194.0
@@ -51,6 +56,17 @@ theme_override_fonts/font = SubResource("FontVariation_ut7p0")
 theme_override_font_sizes/font_size = 115
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="MarkerArrowOfAssault" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_speed_dice_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_speed_dice_mouse_exited"]

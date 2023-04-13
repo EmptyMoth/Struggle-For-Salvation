@@ -5,5 +5,7 @@
 [node name="AbstractTopCornerBars" type="MarginContainer"]
 offset_right = 141.0
 offset_bottom = 213.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 script = ExtResource("1_02hlf")
 metadata/_edit_group_ = true

@@ -1,0 +1,81 @@
+[gd_scene load_steps=17 format=3 uid="uid://r5tgfo4khvo1"]
+
+[ext_resource type="PackedScene" uid="uid://x1mjxmkrhyk6" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/elements/main_element/abstract_main_element.tscn" id="1_xmub6"]
+[ext_resource type="Texture2D" uid="uid://dm7c0sc82nrwq" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_immunity.png" id="2_38we5"]
+[ext_resource type="PackedScene" uid="uid://efc8p0t07j38" path="res://scenes/ui/battle_ui/characters_ui/health_bars/top_corner_bars/right_top_corner_bar/right_top_corner_bars.tscn" id="2_a6spa"]
+[ext_resource type="Texture2D" uid="uid://mxk1c5sp524p" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_ineffective.png" id="3_kx6m2"]
+[ext_resource type="Texture2D" uid="uid://b3cunopyxbdid" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_weak.png" id="4_bmnt7"]
+[ext_resource type="Texture2D" uid="uid://bsou04d00a4jl" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_normal.png" id="5_015n7"]
+[ext_resource type="Texture2D" uid="uid://dw2rrv1hvhtrd" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_high.png" id="6_vefi7"]
+[ext_resource type="Texture2D" uid="uid://cqifejujl6dv4" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_fatal.png" id="7_1x6u0"]
+[ext_resource type="Texture2D" uid="uid://b42n3ype6y8rj" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_immunity.png" id="8_n47rg"]
+[ext_resource type="Texture2D" uid="uid://v5nljvqa5vq2" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_ineffective.png" id="9_diywy"]
+[ext_resource type="Texture2D" uid="uid://bfed4ifkkrb08" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_weak.png" id="10_kj2la"]
+[ext_resource type="Texture2D" uid="uid://d2da7cmjnvnit" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_normal.png" id="11_c3gsu"]
+[ext_resource type="Texture2D" uid="uid://cwyxbf2r7v27i" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_high.png" id="12_ws0jv"]
+[ext_resource type="Texture2D" uid="uid://cl1bnv0lyqix8" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_fatal.png" id="13_qja4n"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_27dwf"]
+resource_local_to_scene = true
+frames = 6
+pause = true
+one_shot = true
+frame_0/texture = ExtResource("2_38we5")
+frame_0/duration = 0.0
+frame_1/texture = ExtResource("3_kx6m2")
+frame_1/duration = 0.0
+frame_2/texture = ExtResource("4_bmnt7")
+frame_2/duration = 0.0
+frame_3/texture = ExtResource("5_015n7")
+frame_3/duration = 0.0
+frame_4/texture = ExtResource("6_vefi7")
+frame_4/duration = 0.0
+frame_5/texture = ExtResource("7_1x6u0")
+frame_5/duration = 0.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_mc16n"]
+resource_local_to_scene = true
+frames = 6
+pause = true
+one_shot = true
+frame_0/texture = ExtResource("8_n47rg")
+frame_0/duration = 0.0
+frame_1/texture = ExtResource("9_diywy")
+frame_1/duration = 0.0
+frame_2/texture = ExtResource("10_kj2la")
+frame_2/duration = 0.0
+frame_3/texture = ExtResource("11_c3gsu")
+frame_3/duration = 0.0
+frame_4/texture = ExtResource("12_ws0jv")
+frame_4/duration = 0.0
+frame_5/texture = ExtResource("13_qja4n")
+frame_5/duration = 0.0
+
+[node name="RightMainElement" instance=ExtResource("1_xmub6")]
+
+[node name="BackgroundForStats" parent="." index="0"]
+flip_h = true
+
+[node name="Stats" parent="." index="1"]
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/margin_right = 10
+
+[node name="CharacterIcon" parent="Stats" index="0"]
+size_flags_horizontal = 8
+
+[node name="TopCornerBars" parent="Stats" index="1" instance=ExtResource("2_a6spa")]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 75
+
+[node name="Resistences" parent="Stats" index="2"]
+size_flags_horizontal = 8
+theme_override_constants/margin_right = 90
+
+[node name="PHPResistance" parent="Stats/Resistences/Resistences" index="0"]
+texture = SubResource("AnimatedTexture_27dwf")
+
+[node name="MHPResistance" parent="Stats/Resistences/Resistences" index="1"]
+texture = SubResource("AnimatedTexture_mc16n")

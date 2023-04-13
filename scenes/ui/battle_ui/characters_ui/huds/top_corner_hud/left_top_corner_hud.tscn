@@ -1,79 +1,25 @@
-[gd_scene load_steps=18 format=3 uid="uid://cmhrmekuko3gg"]
+[gd_scene load_steps=5 format=3 uid="uid://6pkg7eeawcty"]
 
-[ext_resource type="PackedScene" uid="uid://dmpj50ckwn4bi" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/abstract_top_corner_hud.tscn" id="1_2au32"]
-[ext_resource type="PackedScene" uid="uid://chwpkjpe557ul" path="res://scenes/ui/battle_ui/characters_ui/health_bars/top_corner_bars/left_top_corner_bar/left_top_corner_bars.tscn" id="2_msr6i"]
-[ext_resource type="Texture2D" uid="uid://dm7c0sc82nrwq" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_immunity.png" id="3_qot10"]
-[ext_resource type="Texture2D" uid="uid://mxk1c5sp524p" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_ineffective.png" id="4_pdwvi"]
-[ext_resource type="Texture2D" uid="uid://b3cunopyxbdid" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_weak.png" id="5_gch4e"]
-[ext_resource type="Texture2D" uid="uid://bsou04d00a4jl" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_normal.png" id="6_nrstt"]
-[ext_resource type="Texture2D" uid="uid://dw2rrv1hvhtrd" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_high.png" id="7_oou1g"]
-[ext_resource type="Texture2D" uid="uid://cqifejujl6dv4" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_fatal.png" id="8_qm72q"]
-[ext_resource type="Texture2D" uid="uid://b42n3ype6y8rj" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_immunity.png" id="9_6nl3u"]
-[ext_resource type="Texture2D" uid="uid://v5nljvqa5vq2" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_ineffective.png" id="10_w8qba"]
-[ext_resource type="Texture2D" uid="uid://bfed4ifkkrb08" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_weak.png" id="11_5yy1c"]
-[ext_resource type="Texture2D" uid="uid://d2da7cmjnvnit" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_normal.png" id="12_1oxbt"]
-[ext_resource type="Texture2D" uid="uid://cwyxbf2r7v27i" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_high.png" id="13_v6b01"]
-[ext_resource type="Texture2D" uid="uid://cl1bnv0lyqix8" path="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_fatal.png" id="14_vfjss"]
-[ext_resource type="PackedScene" uid="uid://dkju132j4pq67" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/passive_ability_labels/left_passive_ability_labels.tscn" id="15_k2u85"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_ppi8t"]
-resource_local_to_scene = true
-frames = 6
-pause = true
-one_shot = true
-frame_0/texture = ExtResource("3_qot10")
-frame_0/duration = 0.0
-frame_1/texture = ExtResource("4_pdwvi")
-frame_1/duration = 0.0
-frame_2/texture = ExtResource("5_gch4e")
-frame_2/duration = 0.0
-frame_3/texture = ExtResource("6_nrstt")
-frame_3/duration = 0.0
-frame_4/texture = ExtResource("7_oou1g")
-frame_4/duration = 0.0
-frame_5/texture = ExtResource("8_qm72q")
-frame_5/duration = 0.0
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_rywjg"]
-resource_local_to_scene = true
-frames = 6
-pause = true
-one_shot = true
-frame_0/texture = ExtResource("9_6nl3u")
-frame_0/duration = 0.0
-frame_1/texture = ExtResource("10_w8qba")
-frame_1/duration = 0.0
-frame_2/texture = ExtResource("11_5yy1c")
-frame_2/duration = 0.0
-frame_3/texture = ExtResource("12_1oxbt")
-frame_3/duration = 0.0
-frame_4/texture = ExtResource("13_v6b01")
-frame_4/duration = 0.0
-frame_5/texture = ExtResource("14_vfjss")
-frame_5/duration = 0.0
+[ext_resource type="PackedScene" uid="uid://tdwilafdoalt" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/abstract_top_corner_hud.tscn" id="1_2au32"]
+[ext_resource type="PackedScene" uid="uid://defvxsp743qes" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/elements/main_element/left_main_element.tscn" id="2_3h1ny"]
+[ext_resource type="PackedScene" uid="uid://dqbxeakk2x6s8" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/elements/passive_ability_labels/left_passive_ability_labels.tscn" id="15_k2u85"]
+[ext_resource type="PackedScene" uid="uid://bwr2b3ks3n2q2" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/elements/card_container/card_container.tscn" id="16_dl38i"]
 
 [node name="LeftTopCornerHUD" instance=ExtResource("1_2au32")]
-offset_right = 402.0
-offset_bottom = 647.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="CharacterIcon" parent="MainBackgroundStats" index="0"]
-flip_h = true
+[node name="TopCornerHUD" parent="." index="0"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
 
-[node name="TopCornerBars" parent="MainBackgroundStats" index="1" instance=ExtResource("2_msr6i")]
-layout_mode = 0
-offset_left = 90.0
-offset_top = 55.0
-offset_right = 231.0
-offset_bottom = 268.0
-
-[node name="Resistances" parent="MainBackgroundStats" index="2"]
-layout_mode = 3
-
-[node name="PHPResistance" parent="MainBackgroundStats/Resistances" index="0"]
-texture = SubResource("AnimatedTexture_ppi8t")
-
-[node name="MHPResistance" parent="MainBackgroundStats/Resistances" index="1"]
-texture = SubResource("AnimatedTexture_rywjg")
-
-[node name="PassiveAbilityLabels" parent="." index="1" instance=ExtResource("15_k2u85")]
+[node name="MainElement" parent="TopCornerHUD/HUD" index="0" instance=ExtResource("2_3h1ny")]
 layout_mode = 2
+mouse_filter = 2
+
+[node name="PassiveAbilityLabels" parent="TopCornerHUD/HUD" index="1" instance=ExtResource("15_k2u85")]
+layout_mode = 2
+
+[node name="CardContainer" parent="TopCornerHUD" index="1" instance=ExtResource("16_dl38i")]
+layout_mode = 2
+mouse_filter = 2

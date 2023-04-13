@@ -8,302 +8,10 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Node",
-"class": &"AbstractAbility",
-"language": &"GDScript",
-"path": "res://scripts/battle/abilities/abstract_ability.gd"
-}, {
-"base": "Control",
-"class": &"AbstractActionDice",
-"language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/base_scripts/abstract_action_dice.gd"
-}, {
-"base": "Node",
-"class": &"AbstractCard",
-"language": &"GDScript",
-"path": "res://scripts/battle/cards/base_scripts/abstract_card.gd"
-}, {
-"base": "Node2D",
-"class": &"AbstractCharacter",
-"language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/abstract_character.gd"
-}, {
-"base": "Control",
-"class": &"AbstractHUD",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/huds/base_scripts/abstract_hud.gd"
-}, {
-"base": "Resource",
-"class": &"AbstractHealth",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/health/abstract_health.gd"
-}, {
-"base": "AbstractCharacter",
-"class": &"AbstractImmunocyte",
-"language": &"GDScript",
-"path": "res://scripts/battle/characters/immunocytes/base_scripts/abstract_immunocyte.gd"
-}, {
-"base": "AbstractCharacter",
-"class": &"AbstractPathogen",
-"language": &"GDScript",
-"path": "res://scripts/battle/characters/pathogens/base_scripts/abstract_pathogen.gd"
-}, {
-"base": "Button",
-"class": &"AbstractSpeedDice",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/base_scripts/abstract_speed_dice.gd"
-}, {
-"base": "Node",
-"class": &"AbstractStatusEffect",
-"language": &"GDScript",
-"path": "res://scripts/battle/status_effects/abstract_status_effect.gd"
-}, {
-"base": "Node",
-"class": &"Action",
-"language": &"GDScript",
-"path": "res://scripts/battle/actions/base_scripts/action.gd"
-}, {
-"base": "AbstractAbility",
-"class": &"ActionDiceAbility",
-"language": &"GDScript",
-"path": "res://scripts/battle/abilities/action_dice_ability.gd"
-}, {
-"base": "AbstractSpeedDice",
-"class": &"AllySpeedDice",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/ally_speed_dice.gd"
-}, {
-"base": "AbstractActionDice",
-"class": &"AttackDice",
-"language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/attack_dice/attack_dice.gd"
-}, {
-"base": "Node2D",
-"class": &"BaseBattle",
-"language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/base_battle.gd"
-}, {
-"base": "Node3D",
-"class": &"BaseBattlefield",
-"language": &"GDScript",
-"path": "res://scripts/battle/battlefields/base_scripts/base_battlefields.gd"
-}, {
-"base": "Control",
-"class": &"BaseContainerBars",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_container_bars.gd"
-}, {
-"base": "TextureProgressBar",
-"class": &"BaseHealthBar",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/health_bars/base_scripts/base_health_bar.gd"
-}, {
-"base": "Resource",
-"class": &"BaseResistance",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/resistances/base_resistance.gd"
-}, {
-"base": "AbstractHUD",
-"class": &"BaseTopCornerHUD",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/huds/top_corner_hud/base_top_corner_hud.gd"
-}, {
-"base": "AbstractActionDice",
-"class": &"BlockDice",
-"language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/block_dice/block_dice.gd"
-}, {
-"base": "AbstractAbility",
-"class": &"CardAbility",
-"language": &"GDScript",
-"path": "res://scripts/battle/abilities/card_ability.gd"
-}, {
-"base": "Control",
-"class": &"CardManager",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/cards/cards_manager/card_manager.gd"
-}, {
-"base": "Resource",
-"class": &"CardParameters",
-"language": &"GDScript",
-"path": "res://scripts/resources/cards/cards_parameters/card_parameters.gd"
-}, {
-"base": "AbstractAbility",
-"class": &"CharacterAbility",
-"language": &"GDScript",
-"path": "res://scripts/battle/abilities/character_ability.gd"
-}, {
-"base": "CharacterBody3D",
-"class": &"CharacterMarker3D",
-"language": &"GDScript",
-"path": "res://scripts/battle/characters/base_scripts/character_marker_3d.gd"
-}, {
-"base": "Resource",
-"class": &"CharacterStats",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/character_stats/character_stats.gd"
-}, {
-"base": "Node",
-"class": &"CombatManager",
-"language": &"GDScript",
-"path": "res://scripts/battle/base_scripts/phase_managers/clash_manager.gd"
-}, {
-"base": "AbstractActionDice",
-"class": &"CounterDice",
-"language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/counter_dice/counter_dice.gd"
-}, {
-"base": "Node",
-"class": &"CurrentEffects",
-"language": &"GDScript",
-"path": "res://scripts/battle/effects/current_effects.gd"
-}, {
-"base": "Resource",
-"class": &"DeckOfCards",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/deck_of_cards/deck_of_cards.gd"
-}, {
-"base": "Resource",
-"class": &"Dialogue",
-"language": &"GDScript",
-"path": "res://scripts/story/dialogue.gd"
-}, {
-"base": "Resource",
-"class": &"DialogueLine",
-"language": &"GDScript",
-"path": "res://scripts/story/dialogue_line.gd"
-}, {
-"base": "Control",
-"class": &"DialogueScene",
-"language": &"GDScript",
-"path": "res://scripts/story/dialogue_scene.gd"
-}, {
-"base": "AbstractSpeedDice",
-"class": &"EnemySpeedDice",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice/enemy_speed_dice.gd"
-}, {
-"base": "AbstractActionDice",
-"class": &"EvadeDice",
-"language": &"GDScript",
-"path": "res://scripts/battle/actions_dice/evade_dice/evade_dice.gd"
-}, {
-"base": "Node3D",
-"class": &"Formation",
-"language": &"GDScript",
-"path": "res://scripts/battle/formations/formation.gd"
-}, {
-"base": "Resource",
-"class": &"Hand",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/hand/hand.gd"
-}, {
-"base": "VBoxContainer",
-"class": &"LogEntry",
-"language": &"GDScript",
-"path": "res://scripts/story/log_entry.gd"
-}, {
-"base": "AbstractHealth",
-"class": &"MentalHealth",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/health/mental_health.gd"
-}, {
-"base": "BaseResistance",
-"class": &"MentalResistance",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/resistances/mental_resistance.gd"
-}, {
-"base": "Resource",
-"class": &"PassiveAbility",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/passive_ability/passive_ability.gd"
-}, {
-"base": "MarginContainer",
-"class": &"PassiveAbilityLabels",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/huds/top_corner_hud/passive_ability_labels/passive_ability_labels.gd"
-}, {
-"base": "AbstractHealth",
-"class": &"PhysicalHealth",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/health/physical_health.gd"
-}, {
-"base": "BaseResistance",
-"class": &"PhysicalResistance",
-"language": &"GDScript",
-"path": "res://scripts/resources/character/battle_mechanics/resistances/physical_resistance.gd"
-}, {
-"base": "Resource",
-"class": &"Speaker",
-"language": &"GDScript",
-"path": "res://scripts/story/speaker.gd"
-}, {
-"base": "Control",
-"class": &"SpeedDiceManager",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.gd"
-}, {
-"base": "AbstractHUD",
-"class": &"SubcharacterHUD",
-"language": &"GDScript",
-"path": "res://scripts/ui/battle_ui/characters_ui/huds/subcharacter_hud/subcharacter_hud.gd"
-}]
-_global_script_class_icons={
-"AbstractAbility": "",
-"AbstractActionDice": "",
-"AbstractCard": "",
-"AbstractCharacter": "",
-"AbstractHUD": "",
-"AbstractHealth": "",
-"AbstractImmunocyte": "",
-"AbstractPathogen": "",
-"AbstractSpeedDice": "",
-"AbstractStatusEffect": "",
-"Action": "",
-"ActionDiceAbility": "",
-"AllySpeedDice": "",
-"AttackDice": "",
-"BaseBattle": "",
-"BaseBattlefield": "",
-"BaseContainerBars": "",
-"BaseHealthBar": "",
-"BaseResistance": "",
-"BaseTopCornerHUD": "",
-"BlockDice": "",
-"CardAbility": "",
-"CardManager": "",
-"CardParameters": "",
-"CharacterAbility": "",
-"CharacterMarker3D": "",
-"CharacterStats": "",
-"CombatManager": "",
-"CounterDice": "",
-"CurrentEffects": "",
-"DeckOfCards": "",
-"Dialogue": "",
-"DialogueLine": "",
-"DialogueScene": "",
-"EnemySpeedDice": "",
-"EvadeDice": "",
-"Formation": "",
-"Hand": "",
-"LogEntry": "",
-"MentalHealth": "",
-"MentalResistance": "",
-"PassiveAbility": "",
-"PassiveAbilityLabels": "",
-"PhysicalHealth": "",
-"PhysicalResistance": "",
-"Speaker": "",
-"SpeedDiceManager": "",
-"SubcharacterHUD": ""
-}
-
 [application]
 
 config/name="Struggle For Salvation"
-run/main_scene="res://scenes/ui/menu_ui/main_menu.tscn"
+run/main_scene="res://tests/battle/test_battle_2d.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
@@ -312,8 +20,10 @@ config/icon="res://icon.svg"
 Config="*res://scripts/global_scripts/config.gd"
 GlobalParameters="*res://scripts/global_scripts/global_parameters.gd"
 BattleParameters="*res://scripts/battle/base_scripts/battle_parameters.gd"
-CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_placement_manager.gd"
-ClashManager="*res://scripts/battle/base_scripts/phase_managers/clash_manager.gd"
+CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/card_placement_manager.gd"
+CombatManager="*res://scripts/battle/base_scripts/phase_managers/combat_phase/combat_manager.gd"
+PlayerState="*res://scripts/battle/base_scripts/player_state.gd"
+HandlerForCardsPlacementByPlayer="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/handler_for_cards_placement_by_player.gd"
 
 [display]
 
@@ -322,6 +32,11 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/size/fullscreen=true
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [importer_defaults]
 
@@ -347,18 +62,43 @@ texture={
 
 [input]
 
+ui_cancel={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"pressed":false,"double_click":false,"script":null)
+]
+}
 ui_menu={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 ui_switch_battle_phase={
 "deadzone": 0.5,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"unicode":0,"echo":false,"script":null)
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
 ui_pick={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+]
+}
+ui_mouse_button_wheel_up={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"pressed":false,"double_click":false,"script":null)
+]
+}
+ui_mouse_button_wheel_down={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"pressed":false,"double_click":false,"script":null)
+]
+}
+ui_mouse_button_middle={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"pressed":false,"double_click":false,"script":null)
+]
+}
+ui_auto_selecting_cards={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":80,"key_label":0,"unicode":112,"echo":false,"script":null)
 ]
 }

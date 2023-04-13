@@ -11,7 +11,7 @@ var current_health: int = 0 :
 		if health == 0:
 			_reached_zero()
 		
-		@warning_ignore(return_value_discarded)
+		@warning_ignore("return_value_discarded")
 		emit_signal("health_changed", current_health)
 
 

@@ -27,6 +27,7 @@ flat = true
 script = ExtResource("1_ufbrf")
 
 [node name="Background" type="TextureRect" parent="."]
+layout_mode = 0
 offset_right = 200.0
 offset_bottom = 325.0
 pivot_offset = Vector2(100, 325)
@@ -35,6 +36,7 @@ texture = ExtResource("2_ni000")
 stretch_mode = 1
 
 [node name="Name" type="Label" parent="Background"]
+layout_mode = 0
 offset_left = 6.0
 offset_top = 2.0
 offset_right = 165.0
@@ -44,6 +46,7 @@ vertical_alignment = 1
 metadata/_edit_lock_ = true
 
 [node name="ActionDice" type="VBoxContainer" parent="Background"]
+layout_mode = 0
 offset_left = 5.0
 offset_top = 30.0
 offset_right = 196.0
@@ -52,21 +55,19 @@ mouse_filter = 2
 metadata/_edit_group_ = true
 
 [node name="CardAbility" type="Label" parent="Background/ActionDice"]
-offset_right = 191.0
-offset_bottom = 23.0
+layout_mode = 2
 size_flags_vertical = 0
 horizontal_alignment = 1
 autowrap_mode = 1
 
 [node name="DiceDescriptionBackground" type="TextureRect" parent="Background/ActionDice"]
-offset_top = 27.0
-offset_right = 191.0
-offset_bottom = 79.0
+layout_mode = 2
 mouse_filter = 2
 texture = ExtResource("3_6cbrq")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Background/ActionDice/DiceDescriptionBackground"]
 custom_minimum_size = Vector2(185, 50)
+layout_mode = 0
 offset_left = 5.0
 offset_top = 1.0
 offset_right = 194.0
@@ -75,14 +76,11 @@ mouse_filter = 2
 theme_override_constants/separation = 2
 
 [node name="AttackDice" parent="Background/ActionDice/DiceDescriptionBackground/HBoxContainer" instance=ExtResource("4_pjbg2")]
-offset_top = 7.0
-offset_right = 30.0
-offset_bottom = 42.0
+layout_mode = 2
+expand_mode = 1
 
 [node name="DiceValues" type="Label" parent="Background/ActionDice/DiceDescriptionBackground/HBoxContainer"]
-offset_left = 32.0
-offset_right = 77.0
-offset_bottom = 50.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 12
@@ -92,10 +90,7 @@ vertical_alignment = 1
 
 [node name="DiceAbility" type="Label" parent="Background/ActionDice/DiceDescriptionBackground/HBoxContainer"]
 custom_minimum_size = Vector2(110, 48)
-offset_left = 79.0
-offset_top = 1.0
-offset_right = 189.0
-offset_bottom = 49.0
+layout_mode = 2
 size_flags_horizontal = 10
 theme_override_constants/line_spacing = -3
 theme_override_font_sizes/font_size = 9
@@ -104,22 +99,21 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="Counters" type="HBoxContainer" parent="Background"]
-anchors_preset = 10
+layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 47.0
 grow_horizontal = 2
 theme_override_constants/separation = 0
 
 [node name="UsesCount" type="TextureRect" parent="Background/Counters"]
-offset_left = 114.0
-offset_right = 157.0
-offset_bottom = 47.0
+layout_mode = 2
 size_flags_horizontal = 10
 size_flags_stretch_ratio = 4.0
 texture = ExtResource("5_lii6q")
 metadata/_edit_group_ = true
 
 [node name="Count" type="Label" parent="Background/Counters/UsesCount"]
+layout_mode = 0
 offset_left = 1.0
 offset_top = 1.0
 offset_right = 43.0
@@ -131,14 +125,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CooldownTime" type="TextureRect" parent="Background/Counters"]
-offset_left = 157.0
-offset_right = 200.0
-offset_bottom = 47.0
+layout_mode = 2
 size_flags_horizontal = 10
 texture = ExtResource("7_odsu8")
 metadata/_edit_group_ = true
 
 [node name="Time" type="Label" parent="Background/Counters/CooldownTime"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 42.0
@@ -150,10 +143,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="RemainingCooldownTime" type="Label" parent="."]
+layout_mode = 0
 offset_right = 201.0
 offset_bottom = 323.0
 theme_override_fonts/font = ExtResource("6_ufv35")
 theme_override_font_sizes/font_size = 128
-text = "10"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

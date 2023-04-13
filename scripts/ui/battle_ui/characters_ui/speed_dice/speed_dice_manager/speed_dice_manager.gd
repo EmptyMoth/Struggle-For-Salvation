@@ -2,11 +2,13 @@ class_name SpeedDiceManager
 extends Control
 
 
-var min_speed: int = 1
-var max_speed: int = 10
-
 var speed_dice_count: int :
 	get: return _speed_dice_container.get_child_count()
+
+var select_speed_dice: AbstractSpeedDice
+
+var min_speed: int = 1
+var max_speed: int = 10
 
 @onready var _speed_dice_container: HBoxContainer = $SpeedDiceContainer
 
@@ -16,12 +18,24 @@ func init(new_min_speed: int, new_max_speed: int, new_speed_dice_count: int) -> 
 	change_speed_dice_count(new_speed_dice_count, get_character().is_ally)
 
 
-func get_all_speed_dice() -> Array[Node]:
-	return _speed_dice_container.get_children()
+func get_speed_dice(index: int) -> AbstractSpeedDice:
+	return _speed_dice_container.get_child(index)
 
 
-func get_speed_dice(position: int) -> AbstractSpeedDice:
-	return _speed_dice_container.get_child(position - 1)
+
+func get_all_speed_dice() -> Array[AbstractSpeedDice]:
+	var speed_dice_array: Array[AbstractSpeedDice] = []
+	speed_dice_array.assign(_speed_dice_container.get_children())
+	return speed_dice_array
+
+
+func get_assaulting_speed_dice() -> Array[AbstractSpeedDice]:
+	var all_speed_dice: Array[AbstractSpeedDice] = get_all_speed_dice()
+	var assaulting_speed_dice: Array[AbstractSpeedDice] = all_speed_dice.filter(
+		func(speed_dice: AbstractSpeedDice): return speed_dice.is_assaulting()
+	)
+	
+	return assaulting_speed_dice
 
 
 func change_speed_dice_count(new_count: int, is_ally: bool) -> void:
@@ -63,9 +77,9 @@ func get_character() -> AbstractCharacter:
 	return get_parent() as AbstractCharacter
 
 
-func _set_speed(min_value: int, max_value: int) -> void:
-	min_speed = min_value
-	max_speed = max_value
+func _set_speed(new_min_speed: int, new_max_speed: int) -> void:
+	min_speed = new_min_speed
+	max_speed = new_max_speed
 
 
 func _get_sorted_speed() -> Array[int]:

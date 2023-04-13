@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dqbxeakk2x6s8"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/elements/passive_ability_labels/abstract_passive_ability_labels.tscn" id="1_gnrvb"]
+
+[node name="LeftPassiveAbilityLabels" instance=ExtResource("1_gnrvb")]

@@ -8,5 +8,5 @@ var _cards: Array[AbstractCard] = []
 var cards: Array[AbstractCard] :
 	get:
 		if _cards.size() == 0:
-			_cards = _packed_cards.map(func(card): return card.instantiate())
+			_cards.assign(_packed_cards.map(func(card): return card.instantiate()))
 		return _cards.duplicate()

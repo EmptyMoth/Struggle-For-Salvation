@@ -19,49 +19,33 @@ theme = SubResource("Theme_n0nuu")
 script = ExtResource("2_r8lfl")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Menu" type="VBoxContainer" parent="CenterContainer"]
-offset_left = 584.0
-offset_top = 305.0
-offset_right = 695.0
-offset_bottom = 415.0
+layout_mode = 2
 
 [node name="ButtonStartGame" parent="CenterContainer/Menu" instance=ExtResource("3_oangw")]
-offset_right = 111.0
-offset_bottom = 34.0
+layout_mode = 2
 text = "Начать игру"
 scene_path = "res://scenes/ui/menu_ui/level_select/menu_level_select.tscn"
 
 [node name="ButtonSettings" type="Button" parent="CenterContainer/Menu"]
-offset_top = 38.0
-offset_right = 111.0
-offset_bottom = 72.0
+layout_mode = 2
 text = "Настройки"
 flat = true
 
 [node name="ButtonExit" type="Button" parent="CenterContainer/Menu"]
-offset_top = 76.0
-offset_right = 111.0
-offset_bottom = 110.0
+layout_mode = 2
 text = "Выйти из игры"
 flat = true
 
 [node name="MenuSettings" parent="CenterContainer" instance=ExtResource("3_lo666")]
 visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 640.0
-offset_top = 360.0
-offset_right = 640.0
-offset_bottom = 360.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 2
 
 [connection signal="pressed" from="CenterContainer/Menu/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="CenterContainer/Menu/ButtonExit" to="." method="_on_button_exit_pressed"]

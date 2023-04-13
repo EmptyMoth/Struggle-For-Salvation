@@ -11,16 +11,21 @@ func _process(_delta: float) -> void:
 	_counter_label.text = str(value)
 
 
-func set_initial_values(max_health: int, current_health: int) -> void:
-	max_value = max_health
-	_update_bars(current_health)
+func set_initial_values(health: AbstractHealth) -> void:
+	max_value = health.max_health
+	_update_bars(health.current_health)
+
+
+func set_values(health: AbstractHealth) -> void:
+	max_value = health.max_health
+	value = health.current_health
 
 
 func _update_bars(new_value: int) -> void:
 	var tween: Tween = create_tween()\
 		.set_ease(Tween.EASE_OUT)\
 		.set_trans(Tween.TRANS_CUBIC)
-	@warning_ignore(return_value_discarded)
+	@warning_ignore("return_value_discarded")
 	tween.tween_property(self, "value", new_value, _animation_time)
 
 
