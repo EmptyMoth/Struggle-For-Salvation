@@ -6,6 +6,8 @@ const TIME_DURATION: float = 0.15
 
 var fixed: bool = false
 
+var _on_view: bool = false
+
 @onready var _main_element: MainElement = $TopCornerHUD/HUD/MainElement
 @onready var _passive_ability_label: PassiveAbilityLabels = $TopCornerHUD/HUD/PassiveAbilityLabels
 @onready var _card_container: MarginContainer = $TopCornerHUD/CardContainer
@@ -16,31 +18,21 @@ func _ready() -> void:
 	close()
 
 
-func open(character: AbstractCharacter,
-			speed_dice: AbstractSpeedDice = null) -> void:
-	if not is_instance_valid(character):
-		return
-	set_character(character, speed_dice)
-	_appear()
-
-
 func close() -> void:
 	if not fixed:
 		_disappear()
 		remove_card()
 
 
-func set_character(character: AbstractCharacter, 
+func set_character(
+			character: AbstractCharacter, 
 			speed_dice: AbstractSpeedDice = null) -> void:
-	if not is_instance_valid(character):
+	if not _try_set_data_character(character):
 		return
-	if is_instance_valid(speed_dice):
-		set_card(speed_dice.installed_card)
 	
-	bars.set_values_on_bars(character.physical_health, character.mental_health)
-	_main_element.set_icon_character(character.icon)
-	_main_element.set_resistaces(character.physical_resistance, character.mental_resistance)
-	_passive_ability_label.set_passive_abilities(null)
+	_set_speed_dice_card(speed_dice)
+	
+	_appear()
 
 
 func set_card(card: AbstractCard) -> void:
@@ -67,7 +59,27 @@ func unpin() -> void:
 	fixed = false
 
 
+func _try_set_data_character(character: AbstractCharacter) -> bool:
+	if not is_instance_valid(character):
+		return false
+	
+	bars.set_values_on_bars(character.physical_health, character.mental_health)
+	_main_element.set_icon_character(character.icon)
+	_main_element.set_resistaces(character.physical_resistance, character.mental_resistance)
+	_passive_ability_label.set_passive_abilities(null)
+	return true
+
+
+func _set_speed_dice_card(speed_dice: AbstractSpeedDice) -> void:
+	if is_instance_valid(speed_dice):
+		set_card(speed_dice.installed_card)
+
+
 func _appear() -> void:
+	if _on_view:
+		return
+	
+	_on_view = true
 	var tween: Tween = get_tree().create_tween()\
 		.set_parallel(true)\
 		.set_ease(Tween.EASE_IN)\
@@ -76,6 +88,7 @@ func _appear() -> void:
 
 
 func _disappear() -> void:
+	_on_view = false
 	var tween: Tween = get_tree().create_tween().set_parallel(true)
 	_change_display(tween, -size.y, 0)
 
