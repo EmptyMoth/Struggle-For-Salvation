@@ -5,8 +5,8 @@ extends Node
 @export var _top_corner_hud: BaseTopCornerHUD
 @export var _card_manager: CardManager
 
-var characters: Array[AbstractCharacter] :
-	get: return get_children() as Array[AbstractCharacter]
+var characters: Array :
+	get: return get_children()
 
 @onready var _team_model: BaseTeamModel = BaseTeamModel.new(_top_corner_hud, _card_manager)
 
