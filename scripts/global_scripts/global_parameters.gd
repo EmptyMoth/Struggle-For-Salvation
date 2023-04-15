@@ -1,13 +1,16 @@
 extends Node
 
 
-@onready var _random: RandomNumberGenerator = RandomNumberGenerator.new()
-var random: RandomNumberGenerator :
-	get: return _random
+@onready var random: RandomNumberGenerator = RandomNumberGenerator.new() :
+	get: return random
+
+
+@onready var location_of_ally_team_on_battlefield: Config.LocationOfAllyTeamOnBattlefield = \
+		Config.LocationOfAllyTeamOnBattlefield.LEFT
 
 
 func _ready() -> void:
-	_random.randomize()
+	random.randomize()
 
 
 #func _input(_event: InputEvent) -> void:

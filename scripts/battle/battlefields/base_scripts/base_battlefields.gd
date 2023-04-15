@@ -12,15 +12,12 @@ func set_formation(formation: Formation) -> void:
 	add_child(formation)
 
 
-func set_ally_start_position_on_battlefield(ally: AbstractCharacter) -> void:
-	var team: Node3D = $Characters/Allies
-	team.add_child(ally.character_marker_3d)
-	_formation.set_ally_start_position(ally.character_marker_3d, ally.get_index())
-
-func set_enemy_start_position_on_battlefield(enemy: AbstractCharacter) -> void:
-	var team: Node3D = $Characters/Enemies
-	team.add_child(enemy.character_marker_3d)
-	_formation.set_enemy_start_position(enemy.character_marker_3d, enemy.get_index())
+func set_characters_start_position_on_battlefield(
+			allies: Array, enemies: Array) -> void:
+	for ally in allies:
+		_formation.set_ally_start_position(ally.character_marker_3d, ally.get_index())
+	for enemy in enemies:
+		_formation.set_enemy_start_position(enemy.character_marker_3d, enemy.get_index())
 
 
 func _on_battle_turn_start() -> void:

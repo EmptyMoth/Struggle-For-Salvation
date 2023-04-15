@@ -53,7 +53,10 @@ func move_to_new_position(new_position: Vector3) -> void:
 
 
 func _get_position_on_camera(current_position: Vector3) -> Vector2:
-	return get_viewport().get_camera_3d().unproject_position(current_position)
+	var viewport: Viewport = get_viewport()
+	return viewport.get_camera_3d().unproject_position(current_position) \
+		if is_instance_valid(viewport) \
+		else Vector2.ZERO
 
 
 func _move_to_position(new_position: Vector3, duration: float) -> void:

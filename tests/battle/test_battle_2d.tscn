@@ -1,62 +1,60 @@
-[gd_scene load_steps=27 format=3]
+[gd_scene load_steps=25 format=3 uid="uid://d0ukfv0py0eas"]
 
 [ext_resource type="Script" path="res://scripts/battle/base_scripts/base_battle.gd" id="1_le2iy"]
 [ext_resource type="PackedScene" uid="uid://dufi5egwve2s1" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_vudjs"]
-[ext_resource type="PackedScene" uid="uid://nw5sutqe2ey" path="res://tests/battle/test_battle.tscn" id="3_w28j6"]
 [ext_resource type="Script" path="res://tests/battle/battle_camera.gd" id="4_3guli"]
-[ext_resource type="Script" path="res://scripts/battle/teams/base_scripts/base_team.gd" id="5_lt5ti"]
 [ext_resource type="PackedScene" uid="uid://yh2b8tn2xy40" path="res://scenes/battle/characters/immunocytes/neutrophil/neutrophil.tscn" id="5_ogudq"]
 [ext_resource type="PackedScene" uid="uid://bmcn4eh1lxac2" path="res://scenes/battle/characters/pathogens/influenza_virus/influenza_virus.tscn" id="6_5y3td"]
 [ext_resource type="PackedScene" uid="uid://2xhg7u4igdrn" path="res://scenes/battle/characters/immunocytes/eosinophil/eosinophil.tscn" id="6_lhw0n"]
+[ext_resource type="PackedScene" uid="uid://drjvp8wkafx0f" path="res://scenes/battle/battlefield/test_battle/Battlefield.tscn" id="6_yq6h7"]
 [ext_resource type="PackedScene" uid="uid://dl8haap1scn22" path="res://tests/ui/action_switcher.tscn" id="7_g7w2u"]
 [ext_resource type="PackedScene" uid="uid://jp6ysklein1c" path="res://scenes/battle/cards/cards/test_card_1.tscn" id="7_ps6e3"]
 [ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu_ui/menu_pause.tscn" id="8_4dveh"]
 [ext_resource type="Script" path="res://scripts/resources/character/deck_of_cards/deck_of_cards.gd" id="8_qxhiq"]
-[ext_resource type="PackedScene" uid="uid://dxjtbeqsrgd76" path="res://scenes/ui/battle_ui/cards/card_manager/card_manager.tscn" id="9_gjujb"]
+[ext_resource type="PackedScene" uid="uid://crenpfqy7iihc" path="res://scenes/battle/teams/ally_team.tscn" id="10_l2o1k"]
 [ext_resource type="PackedScene" uid="uid://jsrso1l2r05v" path="res://scenes/battle/cards/cards/test_card_2.tscn" id="10_r1vvt"]
 [ext_resource type="PackedScene" uid="uid://b24m6cbrpoww8" path="res://scenes/battle/cards/cards/test_card_3.tscn" id="12_4hram"]
-[ext_resource type="PackedScene" uid="uid://6pkg7eeawcty" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/left_top_corner_hud.tscn" id="13_crtbn"]
-[ext_resource type="PackedScene" uid="uid://b0yjtun2gb5eu" path="res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/right_top_corner_hud.tscn" id="14_o5v63"]
+[ext_resource type="PackedScene" uid="uid://c5864d4hwlkes" path="res://scenes/battle/teams/enemy_team.tscn" id="14_cyr26"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_cjmfp"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_lp0kw"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="Resource" id="Resource_x33yn"]
+[sub_resource type="Resource" id="Resource_cg4m2"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3")])
 
-[sub_resource type="Resource" id="Resource_rks3t"]
+[sub_resource type="Resource" id="Resource_aqxm7"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3"), ExtResource("7_ps6e3")])
 
-[sub_resource type="Resource" id="Resource_jkggv"]
+[sub_resource type="Resource" id="Resource_ys1a4"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt")])
 
-[sub_resource type="Resource" id="Resource_b5ib0"]
+[sub_resource type="Resource" id="Resource_trbgt"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt"), ExtResource("10_r1vvt")])
 
-[sub_resource type="Resource" id="Resource_lhn5u"]
+[sub_resource type="Resource" id="Resource_wacaa"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("12_4hram"), ExtResource("12_4hram"), ExtResource("12_4hram")])
 
-[sub_resource type="Resource" id="Resource_2gyk5"]
+[sub_resource type="Resource" id="Resource_cuisq"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("12_4hram"), ExtResource("12_4hram"), ExtResource("12_4hram")])
 
-[sub_resource type="Resource" id="Resource_pxm8g"]
+[sub_resource type="Resource" id="Resource_ark5e"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("12_4hram"), ExtResource("12_4hram"), ExtResource("12_4hram")])
 
-[sub_resource type="Resource" id="Resource_gx3g2"]
+[sub_resource type="Resource" id="Resource_ensrb"]
 resource_local_to_scene = true
 script = ExtResource("8_qxhiq")
 _packed_cards = Array[PackedScene]([ExtResource("12_4hram"), ExtResource("12_4hram"), ExtResource("12_4hram")])
@@ -64,12 +62,14 @@ _packed_cards = Array[PackedScene]([ExtResource("12_4hram"), ExtResource("12_4hr
 [node name="TestBattle2D" type="Node2D"]
 script = ExtResource("1_le2iy")
 _packed_formation = ExtResource("2_vudjs")
+_packed_allies = [ExtResource("5_ogudq"), ExtResource("5_ogudq"), ExtResource("6_lhw0n"), ExtResource("6_lhw0n")]
+_packed_enemies = [ExtResource("6_5y3td"), ExtResource("6_5y3td"), ExtResource("6_5y3td"), ExtResource("6_5y3td")]
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
 size = Vector2i(1920, 1080)
 
-[node name="Battle3D" parent="SubViewport" instance=ExtResource("3_w28j6")]
+[node name="BaseBattlefield" parent="SubViewport" instance=ExtResource("6_yq6h7")]
 
 [node name="BattleCamera" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
@@ -77,65 +77,9 @@ position_smoothing_enabled = true
 script = ExtResource("4_3guli")
 
 [node name="Battlefield" type="Sprite2D" parent="."]
-texture = SubResource("ViewportTexture_cjmfp")
+visible = false
+texture = SubResource("ViewportTexture_lp0kw")
 centered = false
-
-[node name="Characters" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="Right" type="Node2D" parent="Characters" node_paths=PackedStringArray("_top_corner_hud", "_card_manager")]
-y_sort_enabled = true
-script = ExtResource("5_lt5ti")
-_top_corner_hud = NodePath("../../CharactersHUDs/RightTopCornerHUD")
-_card_manager = NodePath("../../CharactersHUDs/AllyCardManager")
-
-[node name="Neutrophil" parent="Characters/Right" instance=ExtResource("5_ogudq")]
-deck_of_cards = SubResource("Resource_x33yn")
-
-[node name="Neutrophil2" parent="Characters/Right" instance=ExtResource("5_ogudq")]
-deck_of_cards = SubResource("Resource_rks3t")
-
-[node name="Eosinophil" parent="Characters/Right" instance=ExtResource("6_lhw0n")]
-deck_of_cards = SubResource("Resource_jkggv")
-
-[node name="Eosinophil2" parent="Characters/Right" instance=ExtResource("6_lhw0n")]
-deck_of_cards = SubResource("Resource_b5ib0")
-
-[node name="Left" type="Node2D" parent="Characters" node_paths=PackedStringArray("_top_corner_hud", "_card_manager")]
-y_sort_enabled = true
-script = ExtResource("5_lt5ti")
-_top_corner_hud = NodePath("../../CharactersHUDs/LeftTopCornerHUD")
-_card_manager = NodePath("../../CharactersHUDs/EnemyCardManager")
-
-[node name="InfluenzaVirus" parent="Characters/Left" instance=ExtResource("6_5y3td")]
-deck_of_cards = SubResource("Resource_lhn5u")
-
-[node name="InfluenzaVirus2" parent="Characters/Left" instance=ExtResource("6_5y3td")]
-deck_of_cards = SubResource("Resource_2gyk5")
-
-[node name="InfluenzaVirus3" parent="Characters/Left" instance=ExtResource("6_5y3td")]
-deck_of_cards = SubResource("Resource_pxm8g")
-
-[node name="InfluenzaVirus4" parent="Characters/Left" instance=ExtResource("6_5y3td")]
-deck_of_cards = SubResource("Resource_gx3g2")
-
-[node name="CharactersHUDs" type="CanvasLayer" parent="."]
-
-[node name="AllyCardManager" parent="CharactersHUDs" instance=ExtResource("9_gjujb")]
-
-[node name="EnemyCardManager" parent="CharactersHUDs" instance=ExtResource("9_gjujb")]
-
-[node name="CardsContainer" parent="CharactersHUDs/EnemyCardManager" index="0"]
-anchors_preset = 5
-anchor_top = 0.0
-anchor_bottom = 0.0
-offset_top = 0.0
-offset_bottom = 325.0
-grow_vertical = 1
-
-[node name="LeftTopCornerHUD" parent="CharactersHUDs" instance=ExtResource("13_crtbn")]
-
-[node name="RightTopCornerHUD" parent="CharactersHUDs" instance=ExtResource("14_o5v63")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -145,4 +89,32 @@ visible = false
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("8_4dveh")]
 visible = false
 
-[editable path="CharactersHUDs/EnemyCardManager"]
+[node name="Teams" type="Node2D" parent="."]
+
+[node name="AllyTeam" parent="Teams" instance=ExtResource("10_l2o1k")]
+
+[node name="Neutrophil" parent="Teams/AllyTeam" instance=ExtResource("5_ogudq")]
+deck_of_cards = SubResource("Resource_cg4m2")
+
+[node name="Neutrophil2" parent="Teams/AllyTeam" instance=ExtResource("5_ogudq")]
+deck_of_cards = SubResource("Resource_aqxm7")
+
+[node name="Eosinophil" parent="Teams/AllyTeam" instance=ExtResource("6_lhw0n")]
+deck_of_cards = SubResource("Resource_ys1a4")
+
+[node name="Eosinophil2" parent="Teams/AllyTeam" instance=ExtResource("6_lhw0n")]
+deck_of_cards = SubResource("Resource_trbgt")
+
+[node name="EnemyTeam" parent="Teams" instance=ExtResource("14_cyr26")]
+
+[node name="InfluenzaVirus" parent="Teams/EnemyTeam" instance=ExtResource("6_5y3td")]
+deck_of_cards = SubResource("Resource_wacaa")
+
+[node name="InfluenzaVirus2" parent="Teams/EnemyTeam" instance=ExtResource("6_5y3td")]
+deck_of_cards = SubResource("Resource_cuisq")
+
+[node name="InfluenzaVirus3" parent="Teams/EnemyTeam" instance=ExtResource("6_5y3td")]
+deck_of_cards = SubResource("Resource_ark5e")
+
+[node name="InfluenzaVirus4" parent="Teams/EnemyTeam" instance=ExtResource("6_5y3td")]
+deck_of_cards = SubResource("Resource_ensrb")

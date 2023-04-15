@@ -10,28 +10,23 @@ enum BattlePhase { CARD_PLACEMENT, COMBAT }
 
 @export var _packed_formation: PackedScene
 
-var characters: Array[AbstractCharacter] :
-	get: return _left_commander.characters + _right_commander.characters
-var ally_team: Array :
-	get: return get_tree().get_nodes_in_group("allies")
-var enemy_team: Array :
-	get: return get_tree().get_nodes_in_group("enemies")
+@export_group("Characters")
+@export var _packed_allies: Array = []
+@export var _packed_enemies: Array = []
 
 var turns_count: int = 0
 var current_phase: BattlePhase = BattlePhase.COMBAT
 
-@onready var _battlefield: BaseBattlefield = $SubViewport/Battle3D
-@onready var _left_commander: BaseTeam = $Characters/Left
-@onready var _right_commander: BaseTeam = $Characters/Right
+@onready var _battlefield: BaseBattlefield = $SubViewport/BaseBattlefield
+@onready var ally_team: AbstractTeam = $Teams/AllyTeam
+@onready var enemy_team: AbstractTeam = $Teams/EnemyTeam
 
 
 func _ready() -> void:
 	_battlefield.set_formation(_packed_formation.instantiate())
 	
-	for ally in ally_team:
-		_battlefield.set_ally_start_position_on_battlefield(ally)
-	for enemy in enemy_team:
-		_battlefield.set_enemy_start_position_on_battlefield(enemy)
+	_battlefield.set_characters_start_position_on_battlefield(
+		ally_team.characters, enemy_team.characters)
 	
 	#PlayerState.set_assault.connect(_on_player_set_assault)
 	turn_start.connect(CardPlacementManager._on_battle_turn_start)
@@ -49,7 +44,7 @@ func _input(_event: InputEvent) -> void:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
 			_switch_battle_phase()
 		if Input.is_action_just_released("ui_auto_selecting_cards"):
-			CardPlacementManager.allies_auto_selecting_cards(ally_team, enemy_team)
+			CardPlacementManager.allies_auto_selecting_cards(ally_team.characters, enemy_team.characters)
 
 
 func victory() -> void:
@@ -75,7 +70,7 @@ func _switch_battle_phase() -> void:
 func _implements_card_placement_phase() -> void:
 	current_phase = BattlePhase.CARD_PLACEMENT
 	get_tree().call_group("characters", "prepare_for_card_placement")
-	CardPlacementManager.enemies_auto_selecting_cards(enemy_team, ally_team)
+	CardPlacementManager.enemies_auto_selecting_cards(enemy_team.characters, ally_team.characters)
 
 
 func _implements_combat_phase() -> void:

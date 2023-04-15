@@ -33,6 +33,8 @@ enum Language {
 	LANGUAGE_ENG = 1,
 }
 
+enum LocationOfAllyTeamOnBattlefield { RIGHT, LEFT }
+
 const RESOLUTION_BY_INDEX: Dictionary = {
 	Vector2(1920, 1080) : ResolutionIndex.RESOLUTION_1920_1080,
 	Vector2(1600, 900) : ResolutionIndex.RESOLUTION_1600_900,

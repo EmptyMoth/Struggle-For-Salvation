@@ -1,5 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://drjvp8wkafx0f"]
+[gd_scene load_steps=8 format=3 uid="uid://drjvp8wkafx0f"]
 
+[ext_resource type="Script" path="res://tests/battle/camera_3d.gd" id="1_8u7x3"]
+[ext_resource type="Script" path="res://scripts/battle/battlefields/base_scripts/base_battlefields.gd" id="1_n83ug"]
 [ext_resource type="Texture2D" uid="uid://cds5a8f5r86uh" path="res://sprites/battle/battlefield/test_battle/up_side.png" id="1_r1j7y"]
 [ext_resource type="Texture2D" uid="uid://cyghqq4nsq06a" path="res://sprites/battle/battlefield/test_battle/right_side.png" id="2_6kxsj"]
 [ext_resource type="Texture2D" uid="uid://dyeb7qnwwivis" path="res://sprites/battle/battlefield/test_battle/left_side.png" id="3_ndt80"]
@@ -7,7 +9,14 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufrac"]
 
-[node name="Battlefield" type="Node3D"]
+[node name="BaseBattlefield" type="Node3D"]
+script = ExtResource("1_n83ug")
+
+[node name="BattlefieldCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 6, 9)
+current = true
+fov = 45.0
+script = ExtResource("1_8u7x3")
 
 [node name="VisualPart" type="Node3D" parent="."]
 
