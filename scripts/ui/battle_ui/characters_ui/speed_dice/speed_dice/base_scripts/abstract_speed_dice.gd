@@ -41,10 +41,6 @@ func _ready() -> void:
 	current_state = SpeedDiceState.DEFAULT
 
 
-func _enter_tree() -> void:
-	await get_tree().process_frame
-
-
 static func calculate_assault_weight(
 			character_speed_dice: AbstractSpeedDice, 
 			opponent_speed_dice: AbstractSpeedDice,
@@ -109,20 +105,21 @@ func get_speed_dice_manager() -> SpeedDiceManager:
 func _set_arrow_of_assault(arrow_of_assault: BaseArrowOfOneSideAttack) -> void:
 	_static_arrow_of_assault = arrow_of_assault
 	_static_arrow_of_assault.scale /= get_parent().scale
+	_static_arrow_of_assault.position = get_size() / 2
 	add_child(_static_arrow_of_assault)
 	#_static_arrow_of_assault.draw_arrow(Vector2(-1920/2, -1080/2))
 
 
-func _on_speed_dice_toggled(_button_pressed: bool) -> void:
+func _on_pressed() -> void:
 	if Input.is_action_just_released("ui_pick"):
 		emit_signal("picked", self)
 
-	
-func _on_speed_dice_mouse_entered() -> void:
+
+func _on_mouse_entered() -> void:
 	make_viewable()
 	emit_signal("selected", self)
 
 
-func _on_speed_dice_mouse_exited() -> void:
+func _on_mouse_exited() -> void:
 	cancel_viewable()
 	emit_signal("deselected", self)

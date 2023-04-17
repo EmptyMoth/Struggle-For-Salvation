@@ -28,7 +28,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("ui_cancel"):
-		_team_model.cancel_select_character()
+		_team_model.deselect_character()
 
 
 func _get_characters() -> Array:
@@ -39,7 +39,7 @@ func _on_character_picked(
 			character: AbstractCharacter, 
 			speed_dice: AbstractSpeedDice = null) -> void:
 	if _team_model.is_same_selected(character, speed_dice):
-		_team_model.cancel_select_character()
+		_team_model.deselect_character()
 	else:
 		_team_model.select_character(character, speed_dice)
 
@@ -64,9 +64,11 @@ func _on_character_unfolded_cards(cards: Array[AbstractCard]) -> void:
 
 
 func _on_character_folded_cards() -> void:
-	pass
-	#_team_model.hide_deck_of_card()
+	if _team_model.is_selected_character_valid():
+		_team_model.show_deck_of_card_selected_character()
+	else:
+		_team_model.hide_deck_of_card()
 
 
 func _on_assault_was_set() -> void:
-	_team_model.cancel_select_character()
+	_team_model.deselect_character()

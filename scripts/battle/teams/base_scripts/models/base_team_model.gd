@@ -52,7 +52,14 @@ func select_character(
 			speed_dice: AbstractSpeedDice = null) -> void:
 	selected_character = character
 	selected_speed_dice = speed_dice
-	set_character_in_top_corner_hud(character, speed_dice)
+	#set_character_in_top_corner_hud(character, speed_dice)
+	if not is_instance_valid(speed_dice):
+		card_manager.take_cards()
+
+func deselect_character() -> void:
+	selected_character = null
+	selected_speed_dice = null
+	close_ui()
 
 
 func close_ui() -> void:
@@ -60,14 +67,11 @@ func close_ui() -> void:
 	card_manager.take_cards()
 
 
-func cancel_select_character() -> void:
-	selected_character = null
-	selected_speed_dice = null
-	close_ui()
-
-
 func show_deck_of_card(cards: Array[AbstractCard]) -> void:
 	card_manager.put_cards(cards)
+
+func show_deck_of_card_selected_character() -> void:
+	show_deck_of_card(selected_character.hand.cards)
 
 func hide_deck_of_card() -> void:
 	card_manager.take_cards()

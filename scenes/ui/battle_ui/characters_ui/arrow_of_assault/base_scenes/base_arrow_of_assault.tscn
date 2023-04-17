@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/ui/battle_ui/characters_ui/arrow_of_assault/base_scripts/arrow_pointer_of_assault.gd" id="5_d77v5"]
 
 [node name="BaseArrowOfAssault" type="Control"]
+z_index = 10
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4

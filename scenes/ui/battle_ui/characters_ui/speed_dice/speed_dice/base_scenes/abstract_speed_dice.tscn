@@ -21,7 +21,6 @@ offset_right = 181.0
 offset_bottom = 205.0
 focus_mode = 0
 mouse_force_pass_scroll_events = false
-toggle_mode = true
 button_mask = 3
 flat = true
 script = ExtResource("1_5mron")
@@ -68,6 +67,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[connection signal="mouse_entered" from="." to="." method="_on_speed_dice_mouse_entered"]
-[connection signal="mouse_exited" from="." to="." method="_on_speed_dice_mouse_exited"]
-[connection signal="toggled" from="." to="." method="_on_speed_dice_toggled"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

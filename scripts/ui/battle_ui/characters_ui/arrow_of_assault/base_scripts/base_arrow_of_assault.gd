@@ -9,10 +9,6 @@ const ARC_START_ANGLE_RAD: float = deg_to_rad(ARC_START_ANGLE_DEG)
 @onready var _pointer_at_end: ArrowPointerOfAssault = $PointerAtEnd
 
 
-func _enter_tree() -> void:
-	position = get_parent().get_size() / 2
-
-
 func draw_arrow(target: Vector2) -> void:
 	_draw_arrow(target)
 

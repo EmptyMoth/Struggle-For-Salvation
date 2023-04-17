@@ -2,7 +2,7 @@ class_name CardManager
 extends Control
 
 
-var cards: Array[Node] :
+var cards: Array :
 	get: return cards_container.get_children()
 
 @onready var cards_container: HBoxContainer = $CardsContainer
@@ -32,10 +32,11 @@ func _spread_out_cards() -> void:
 			.set_parallel()\
 			.set_ease(Tween.EASE_OUT)\
 			.set_trans(Tween.TRANS_QUART)
+	
 	for card in cards:
 		@warning_ignore("return_value_discarded")
 		tween.tween_property(card, "position", card.position, 0.5)\
-			.from(Vector2.ZERO + offset_card_to_center)
+			.from(offset_card_to_center)
 
 
 func _calculate_offset_card_to_center() -> Vector2:
