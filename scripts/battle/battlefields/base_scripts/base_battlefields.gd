@@ -20,8 +20,8 @@ func set_characters_start_position_on_battlefield(
 		_formation.set_enemy_start_position(enemy.character_marker_3d, enemy.get_index())
 
 
-func _on_battle_turn_start() -> void:
-	_battlefield_camera.move_to_normal_position()
+func _on_battle_turn_started(_turn_number: int) -> void:
+	_battlefield_camera.move_to_start_position()
 
-func _on_battle_combat_start() -> void:
+func _on_battle_combat_started() -> void:
 	_battlefield_camera.move_to_combat_position()

@@ -2,19 +2,15 @@ class_name BaseBattle
 extends Node2D
 
 
-signal turn_start
-signal turn_end
-signal combat_start
+signal turn_started(turn_number: int)
+signal turn_ended
+signal combat_started
 
 enum BattlePhase { CARD_PLACEMENT, COMBAT }
 
 @export var _packed_formation: PackedScene
 
-@export_group("Characters")
-@export var _packed_allies: Array = []
-@export var _packed_enemies: Array = []
-
-var turns_count: int = 0
+var turn_number: int = 0
 var current_phase: BattlePhase = BattlePhase.COMBAT
 
 @onready var _battlefield: BaseBattlefield = $SubViewport/BaseBattlefield
@@ -29,9 +25,9 @@ func _ready() -> void:
 		ally_team.characters, enemy_team.characters)
 	
 	#PlayerState.set_assault.connect(_on_player_set_assault)
-	turn_start.connect(CardPlacementManager._on_battle_turn_start)
-	turn_start.connect(_battlefield._on_battle_turn_start)
-	combat_start.connect(_battlefield._on_battle_combat_start)
+	turn_started.connect(CardPlacementManager._on_battle_turn_started)
+	turn_started.connect(_battlefield._on_battle_turn_started)
+	combat_started.connect(_battlefield._on_battle_combat_started)
 	
 	_switch_battle_phase()
 
@@ -75,19 +71,19 @@ func _implements_card_placement_phase() -> void:
 
 func _implements_combat_phase() -> void:
 	current_phase = BattlePhase.COMBAT
-	emit_signal("combat_start")
+	emit_signal("combat_started")
 	get_tree().call_group("characters", "prepare_for_combat")
 	CombatManager.set_assaults(CardPlacementManager.get_assaults())
 	CombatManager.activate_assaults()
 
 
 func _start_turn() -> void:
-	turns_count += 1
-	emit_signal("turn_start")
+	turn_number += 1
+	emit_signal("turn_started", turn_number)
 
 func _end_turn() -> void:
 	await CombatManager.combat_end
-	emit_signal("turn_end")
+	emit_signal("turn_ended")
 	_switch_battle_phase()
 
 

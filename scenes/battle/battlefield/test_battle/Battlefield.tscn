@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://drjvp8wkafx0f"]
+[gd_scene load_steps=11 format=3 uid="uid://drjvp8wkafx0f"]
 
 [ext_resource type="Script" path="res://tests/battle/camera_3d.gd" id="1_8u7x3"]
 [ext_resource type="Script" path="res://scripts/battle/battlefields/base_scripts/base_battlefields.gd" id="1_n83ug"]
@@ -7,16 +7,81 @@
 [ext_resource type="Texture2D" uid="uid://dyeb7qnwwivis" path="res://sprites/battle/battlefield/test_battle/left_side.png" id="3_ndt80"]
 [ext_resource type="Texture2D" uid="uid://c21bvjqto0c8o" path="res://sprites/battle/battlefield/test_battle/bottom_side.png" id="4_4f275"]
 
+[sub_resource type="Animation" id="Animation_6yeqf"]
+resource_name = "move_camera"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1.68179, 1),
+"update": 0,
+"values": [Vector3(-0.523599, 0, 0), Vector3(-0.523599, 0, 0), Vector3(-0.174533, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [6.0, 2.5]
+}
+
+[sub_resource type="Animation" id="Animation_vix07"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.174533, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 6, 9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cytek"]
+_data = {
+"RESET": SubResource("Animation_vix07"),
+"move_camera": SubResource("Animation_6yeqf")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_ufrac"]
 
 [node name="BaseBattlefield" type="Node3D"]
 script = ExtResource("1_n83ug")
 
 [node name="BattlefieldCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 6, 9)
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 6, 9)
 current = true
 fov = 45.0
 script = ExtResource("1_8u7x3")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BattlefieldCamera"]
+libraries = {
+"": SubResource("AnimationLibrary_cytek")
+}
 
 [node name="VisualPart" type="Node3D" parent="."]
 

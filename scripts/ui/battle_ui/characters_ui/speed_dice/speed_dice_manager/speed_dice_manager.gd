@@ -5,8 +5,6 @@ extends Control
 var speed_dice_count: int :
 	get: return _speed_dice_container.get_child_count()
 
-var select_speed_dice: AbstractSpeedDice
-
 var min_speed: int = 1
 var max_speed: int = 10
 
@@ -20,7 +18,6 @@ func init(new_min_speed: int, new_max_speed: int, new_speed_dice_count: int) -> 
 
 func get_speed_dice(index: int) -> AbstractSpeedDice:
 	return _speed_dice_container.get_child(index)
-
 
 
 func get_all_speed_dice() -> Array[AbstractSpeedDice]:

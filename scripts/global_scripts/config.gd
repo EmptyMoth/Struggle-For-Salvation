@@ -124,7 +124,7 @@ func get_resolution_number(res: Vector2) -> int:
 	return INDEX_BY_RESOLUTION.get(res, ResolutionIndex.RESOLUTION_DEFAULT)
 
 func get_resolution(index: int = -99) -> Vector2:
-	if(index == -99):
+	if index == -99:
 		index = get_value("graphics", "resolution")
 	
 	return RESOLUTION_BY_INDEX.get(index, Vector2(1920, 1080))
@@ -138,4 +138,5 @@ func get_display_mode(index: int) -> int:
 			return DisplayServer.WINDOW_MODE_WINDOWED
 		Display.DISPLAY_BORDERLESS:
 			return DisplayServer.WINDOW_MODE_WINDOWED
-	return DisplayServer.WINDOW_MODE_WINDOWED
+		_:
+			return DisplayServer.WINDOW_MODE_WINDOWED

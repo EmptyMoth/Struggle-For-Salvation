@@ -15,11 +15,15 @@ var _zoom_level: Vector2 = zoom :
 var _drag: bool = false
 var _cursor_loc: Vector2 = Vector2.ZERO
 
+@onready var _battlefield_camera: Camera3D = $"../SubViewport/BaseBattlefield/BattlefieldCamera"
+
 
 func _input(event: InputEvent) -> void:
+	_battlefield_camera._input(event)
+	
 	if event is InputEventMouseButton:
 		_change_zoom(event)
-		_camera_motion_control(event)
+		#_camera_motion_control(event)
 
 	if event is InputEventMouseMotion:
 		_move_camera(event)

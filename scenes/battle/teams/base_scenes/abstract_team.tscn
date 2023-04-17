@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scripts/battle/teams/base_scripts/abstract_team.gd" id="1_tgag2"]
 
 [node name="BaseTeam" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_tgag2")
 
 [node name="CharactersUI" type="CanvasLayer" parent="."]

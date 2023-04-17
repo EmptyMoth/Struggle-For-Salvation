@@ -74,6 +74,6 @@ func _get_other_opponent_for_enemy(enemy_speed_dice: AbstractSpeedDice) -> Abstr
 	return _enemies_auto_assaults.get(enemy_speed_dice)
 
 
-func _on_battle_turn_start() -> void:
+func _on_battle_turn_started(_turn_number: int) -> void:
 	_assaults.clear()
 	_enemies_auto_assaults.clear()
