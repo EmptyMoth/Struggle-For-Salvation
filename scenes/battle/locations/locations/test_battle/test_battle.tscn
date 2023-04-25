@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cplf5sbbg2dh0"]
+
+[ext_resource type="PackedScene" uid="uid://dg0cyfqq0hx38" path="res://scenes/battle/locations/locations/base_scenes/base_location.tscn" id="1_ohtex"]
+[ext_resource type="Texture2D" uid="uid://c12ktw7dwg40v" path="res://sprites/battle/locations/location_elements/vignette/vignette_battlefield.png" id="2_q1sn7"]
+[ext_resource type="Texture2D" uid="uid://0hsawcjble80" path="res://sprites/battle/locations/location_elements/vignette/camera_vignette.png" id="2_qdwur"]
+
+[node name="TestBattle" instance=ExtResource("1_ohtex")]
+
+[node name="BattlefieldVignette" parent="." index="1"]
+texture = ExtResource("2_q1sn7")
+
+[node name="CameraVignette" parent="Camera/Vignette" index="0"]
+texture = ExtResource("2_qdwur")

@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://w13mw6nf3p5r"]
+
+[ext_resource type="Script" path="res://scripts/battle/locations/location_elements/backgrounds/electrocardiogram/cardiogram_graph.gd" id="1_f1b7f"]
+
+[sub_resource type="Gradient" id="1"]
+offsets = PackedFloat32Array(0, 0.0463576, 0.850829, 0.933702, 1)
+colors = PackedColorArray(0.0666667, 0.121569, 0.321569, 0, 0.0471039, 0.0907424, 0.246094, 1, 0.135498, 0.232566, 0.578125, 1, 0.447754, 0.541449, 0.875, 1, 0.76561, 0.788742, 0.871094, 1)
+
+[node name="CardiogramGraph" type="Line2D"]
+points = PackedVector2Array(-960, 0, -560, 0, -537, 43, -516, 0, -396, 0, -353, -88, -266, 87, -224, 0, -102, 0, -52, -415, 45, 421, 96, 0, 218, 0, 269, -192, 367, 201, 415, 0, 537, 0, 559, -38, 577, 0, 960, 0)
+width = 30.0
+default_color = Color(0.294118, 0.32549, 0.741176, 1)
+gradient = SubResource("1")
+sharp_limit = 20.0
+antialiased = true
+script = ExtResource("1_f1b7f")

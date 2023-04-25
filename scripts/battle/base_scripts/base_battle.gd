@@ -9,25 +9,29 @@ signal combat_started
 enum BattlePhase { CARD_PLACEMENT, COMBAT }
 
 @export var _packed_formation: PackedScene
+@export var _packed_location: PackedScene
 
 var turn_number: int = 0
 var current_phase: BattlePhase = BattlePhase.COMBAT
 
-@onready var _battlefield: BaseBattlefield = $SubViewport/BaseBattlefield
+var _location: BaseLocation = null
+var _battlefield: BaseBattlefield = null
+
 @onready var ally_team: AbstractTeam = $Teams/AllyTeam
 @onready var enemy_team: AbstractTeam = $Teams/EnemyTeam
 
 
 func _ready() -> void:
-	_battlefield.set_formation(_packed_formation.instantiate())
+	_location = _packed_location.instantiate()
+	add_child(_location)
+	move_child(_location, 0)
 	
+	_battlefield = _location.battlefield
+	_battlefield.set_formation(_packed_formation.instantiate())
 	_battlefield.set_characters_start_position_on_battlefield(
 		ally_team.characters, enemy_team.characters)
 	
-	#PlayerState.set_assault.connect(_on_player_set_assault)
-	turn_started.connect(CardPlacementManager._on_battle_turn_started)
-	turn_started.connect(_battlefield._on_battle_turn_started)
-	combat_started.connect(_battlefield._on_battle_combat_started)
+	_connect_signals()
 	
 	_switch_battle_phase()
 
@@ -85,6 +89,13 @@ func _end_turn() -> void:
 	await CombatManager.combat_end
 	emit_signal("turn_ended")
 	_switch_battle_phase()
+
+
+func _connect_signals() -> void:
+	#PlayerState.set_assault.connect(_on_player_set_assault)
+	turn_started.connect(CardPlacementManager._on_battle_turn_started)
+	turn_started.connect(_battlefield._on_battle_turn_started)
+	combat_started.connect(_battlefield._on_battle_combat_started)
 
 
 #func _on_player_set_assault() -> void:

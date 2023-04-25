@@ -43,7 +43,7 @@ func _ready() -> void:
 
 static func calculate_assault_weight(
 			character_speed_dice: AbstractSpeedDice, 
-			opponent_speed_dice: AbstractSpeedDice,
+			_opponent_speed_dice: AbstractSpeedDice,
 			assault_type: int) -> int:
 	return 10 * character_speed_dice.speed + assault_type
 

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PoolOfCardiogramGraphs" load_steps=2 format=3 uid="uid://cyw52bowgpici"]
+
+[ext_resource type="Script" path="res://scripts/resources/locations/location_elements/backgrounds/electrocardiogram/pool_of_cardiogram_graphs.gd" id="1_erfnb"]
+
+[resource]
+script = ExtResource("1_erfnb")
+pool_of_cardiogram_graphs = Array[PackedVector2Array]([PackedVector2Array(-960, 0, -560, 0, -537, 43, -516, 0, -396, 0, -353, -88, -266, 87, -224, 0, -102, 0, -52, -415, 45, 421, 96, 0, 218, 0, 269, -192, 367, 201, 415, 0, 537, 0, 559, -38, 577, 0, 960, 0), PackedVector2Array(-960, 0, -751, 0, -719, -73, -667, 112, -590, -430, -510, 255, -466, 4, -399, 4, -337, -146, -267, 39, -224, -50, -193, 0, 202, 0, 236, -72, 287, 110, 367, -430, 444, 249, 489, 4, 554, 4, 617, -146, 687, 35, 730, -51, 761, 0, 958, 0)])

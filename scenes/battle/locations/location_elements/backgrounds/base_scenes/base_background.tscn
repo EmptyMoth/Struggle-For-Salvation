@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b1aso2jwxvlu1"]
+
+[node name="BaseBackground" type="ParallaxBackground"]
+follow_viewport_enabled = true
+
+[node name="MainLayer" type="ParallaxLayer" parent="."]
