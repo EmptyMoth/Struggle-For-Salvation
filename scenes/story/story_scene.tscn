@@ -25,8 +25,7 @@ theme = SubResource("Theme_g2seh")
 script = ExtResource("2_glmgb")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -34,8 +33,7 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0.588235)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -48,54 +46,41 @@ grow_vertical = 0
 
 [node name="SpeakerRole" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-offset_right = 700.0
-offset_bottom = 19.0
 size_flags_horizontal = 3
 size_flags_vertical = 10
 theme_override_font_sizes/normal_font_size = 12
 text = "Role"
-fit_content_height = true
 scroll_active = false
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/SpeakerRole"]
 show_behind_parent = true
-custom_minimum_size = Vector2i(200, 0)
-layout_mode = 1
-anchors_preset = 9
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
 anchor_bottom = 1.0
 grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="SpeakerName" type="RichTextLabel" parent="VBoxContainer"]
 layout_mode = 2
-offset_top = 23.0
-offset_right = 700.0
-offset_bottom = 49.0
 size_flags_vertical = 10
 text = "Name"
-fit_content_height = true
 scroll_active = false
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/SpeakerName"]
 show_behind_parent = true
-custom_minimum_size = Vector2i(200, 0)
-layout_mode = 1
-anchors_preset = 9
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 0
 anchor_bottom = 1.0
 grow_vertical = 2
 color = Color(0, 0, 0, 0.784314)
 
 [node name="ColourRect" type="ColorRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2i(700, 150)
+custom_minimum_size = Vector2(700, 150)
 layout_mode = 2
-offset_top = 53.0
-offset_right = 700.0
-offset_bottom = 203.0
 color = Color(0, 0, 0, 0.784314)
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/ColourRect"]
-layout_mode = 1
-anchors_preset = 15
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -108,30 +93,16 @@ theme_override_constants/margin_bottom = 10
 
 [node name="Text" type="RichTextLabel" parent="VBoxContainer/ColourRect/MarginContainer"]
 layout_mode = 2
-offset_left = 10.0
-offset_top = 10.0
-offset_right = 690.0
-offset_bottom = 140.0
-grow_horizontal = 2
-grow_vertical = 0
 mouse_filter = 1
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
 layout_mode = 2
-offset_top = 207.0
-offset_right = 700.0
-offset_bottom = 241.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/CenterContainer"]
 layout_mode = 2
-offset_left = 197.0
-offset_right = 502.0
-offset_bottom = 34.0
 
 [node name="ButtonLog" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_right = 127.0
-offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Запись разговора"
@@ -140,10 +111,6 @@ flat = true
 [node name="ButtonSkip" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
-offset_left = 305.0
-offset_top = -38.0
-offset_right = 394.0
-offset_bottom = -4.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Пропустить"
@@ -152,9 +119,6 @@ flat = true
 [node name="ButtonFastForward" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
-offset_left = 131.0
-offset_right = 219.0
-offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Перемотать"
@@ -163,10 +127,6 @@ flat = true
 [node name="ButtonAutoplay" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
-offset_left = 294.0
-offset_top = -38.0
-offset_right = 405.0
-offset_bottom = -4.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Воспроизвести"
@@ -174,9 +134,6 @@ flat = true
 
 [node name="ButtonBack" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 131.0
-offset_right = 180.0
-offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Назад"
@@ -185,10 +142,6 @@ flat = true
 [node name="ButtonRepeat" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 visible = false
 layout_mode = 2
-offset_left = 309.0
-offset_top = -38.0
-offset_right = 390.0
-offset_bottom = -4.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Повторить"
@@ -196,9 +149,6 @@ flat = true
 
 [node name="ButtonNext" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 184.0
-offset_right = 242.0
-offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
 shortcut = SubResource("Shortcut_wopwx")
@@ -207,16 +157,18 @@ flat = true
 
 [node name="ButtonHide" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 246.0
-offset_right = 305.0
-offset_bottom = 34.0
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Скрыть"
 flat = true
 
 [node name="Log" parent="." instance=ExtResource("5_hgc4i")]
-layout_mode = 1
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_agyho")]
 visible = false

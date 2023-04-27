@@ -15,7 +15,7 @@ var positions_count: int :
 
 func _ready() -> void:
 	_flip_ally_team_on_right() \
-		if GlobalParameters.location_of_ally_team_on_battlefield == Config.LocationOfAllyTeamOnBattlefield.RIGHT \
+		if GlobalParameters.location_of_ally_team_on_battlefield == GlobalParameters.LocationOfAllyTeamOnBattlefield.RIGHT \
 		else _flip_ally_team_on_left()
 	($Battlefield as MeshInstance3D).hide()
 
