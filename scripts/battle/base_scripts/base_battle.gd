@@ -19,6 +19,7 @@ var _battlefield: BaseBattlefield = null
 
 @onready var ally_team: AbstractTeam = $Teams/AllyTeam
 @onready var enemy_team: AbstractTeam = $Teams/EnemyTeam
+@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 
 func _ready() -> void:
@@ -37,9 +38,10 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_released("ui_menu"):
-		$CanvasLayer/PauseMenu.pause_game()
-		
+	if Input.is_action_just_released("ui_menu") and !pause_menu.just_closed:
+		pause_menu.pause_game()
+	pause_menu.just_closed = false
+	
 	if current_phase == BattlePhase.CARD_PLACEMENT:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
 			_switch_battle_phase()

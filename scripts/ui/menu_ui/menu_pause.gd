@@ -4,8 +4,10 @@ extends Control
 var menu_pause: CenterContainer
 var menu_settings: Control
 
+var just_closed: bool = false
 
-func _ready():
+
+func _ready() -> void:
 	menu_pause = $Margins/MenuPause
 	menu_settings = $Margins/MenuSettings
 
@@ -17,6 +19,7 @@ func pause_game() -> void:
 
 func close_menu() -> void:
 	get_tree().paused = false
+	just_closed = true
 	visible = false
 
 

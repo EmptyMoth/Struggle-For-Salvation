@@ -24,6 +24,7 @@ CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_pla
 CombatManager="*res://scripts/battle/base_scripts/phase_managers/combat_phase/combat_manager.gd"
 PlayerState="*res://scripts/battle/base_scripts/player_state.gd"
 HandlerForCardsPlacementByPlayer="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/handler_for_cards_placement_by_player.gd"
+Settings="*res://scripts/global_scripts/settings.gd"
 
 [display]
 

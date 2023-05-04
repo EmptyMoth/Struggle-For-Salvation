@@ -8,7 +8,7 @@
 default_font = ExtResource("1_veykp")
 
 [sub_resource type="InputEventAction" id="InputEventAction_rh50j"]
-action = &"ui_cancel"
+action = &"ui_menu"
 
 [sub_resource type="Shortcut" id="Shortcut_ybvfg"]
 events = [SubResource("InputEventAction_rh50j")]
