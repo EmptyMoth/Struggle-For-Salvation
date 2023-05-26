@@ -5,9 +5,7 @@ var menu_settings: Control
 var menu: VBoxContainer
 
 
-func _ready():
-	@warning_ignore("return_value_discarded")
-	Config.validate_config()
+func _ready() -> void:
 	menu_settings = $CenterContainer/MenuSettings
 	menu = $CenterContainer/Menu
 

@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://q1mhvdgdv75l"
-path="res://.godot/imported/test_char.png-30d32635a5b74159177acda5558d50ce.ctex"
+path="res://.godot/imported/test_char.png-7d130ae3a663971c31ac5d2bcba80ff0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/story_ui/characters/test_char.png"
-dest_files=["res://.godot/imported/test_char.png-30d32635a5b74159177acda5558d50ce.ctex"]
+source_file="res://sprites/UI/story_ui/characters/test_char.png"
+dest_files=["res://.godot/imported/test_char.png-7d130ae3a663971c31ac5d2bcba80ff0.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

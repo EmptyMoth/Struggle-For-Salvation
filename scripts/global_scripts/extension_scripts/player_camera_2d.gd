@@ -15,6 +15,7 @@ enum CameraDirections { NOT_MOVE, MOVE_BY_X, MOVE_BY_Y, MOVE_BY_X_AND_Y }
 @export var max_shift: Vector2 = Vector2(960, 540)
 
 const _ZOOM_DURATION: float = 0.4
+const _MOVE_DURATION: float = 0.4
 
 var _zoom_level: Vector2 = zoom :
 	set(value):
@@ -87,3 +88,22 @@ func _animate_zoom_change(new_zoom: Vector2) -> void:
 	tween.tween_property(self, "zoom", new_zoom, _ZOOM_DURATION)\
 		.set_trans(Tween.TRANS_EXPO)\
 		.set_ease(Tween.EASE_OUT)
+
+
+func zoom_to(new_position: Vector2, new_zoom: Vector2) -> void:
+	new_position -= Vector2(get_viewport().size / 2)
+	
+	match camera_direction:
+		CameraDirections.MOVE_BY_X_AND_Y:
+			new_position.x = clampf(new_position.x, -max_shift.x, max_shift.x)
+			new_position.y = clampf(new_position.y, -max_shift.y, max_shift.y)
+		CameraDirections.MOVE_BY_X:
+			new_position.x = clampf(new_position.x, -max_shift.x, max_shift.x)
+		CameraDirections.MOVE_BY_Y:
+			new_position.y = clampf(new_position.y, -max_shift.y, max_shift.y)
+	
+	var tween: Tween = get_tree().create_tween()
+	_zoom_level = new_zoom
+	
+	tween.tween_property(self, "position", new_position, _MOVE_DURATION)
+	_animate_zoom_change(_zoom_level)

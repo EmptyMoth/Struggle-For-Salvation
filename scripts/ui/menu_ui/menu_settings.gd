@@ -3,15 +3,13 @@ extends Control
 
 signal exit_menu
 
+var resolution_option_button: OptionButton
+
 
 func _ready() -> void:
 	init()
 
 func init() -> void:
-	@warning_ignore("return_value_discarded")
-	if(!Settings.param_init):
-		Config.validate_config()
-	
 	var path: HBoxContainer = $MenuSettings/VBoxContainer/HBoxContainer
 	var settings: VBoxContainer = path.get_node("SettingsGameplay")
 	settings.get_node("Language/OptionButton").selected = Settings.param_language
@@ -28,48 +26,26 @@ func init() -> void:
 	settings.get_node("VolumeEffects/HSlider").value = Settings.param_volume_effects
 	
 	settings = path.get_node("SettingsGraphics")
-	settings.get_node("Resolution/OptionButton").selected = Settings.param_resolution
 	settings.get_node("Display/OptionButton").selected = Settings.param_display
 	settings.get_node("TextureQuality/OptionButton").selected = Settings.param_texture_quality
 	settings.get_node("Vsync/CheckButton").button_pressed = Settings.param_vsync
-	settings.get_node("FramerateCap/OptionButton").selected = Settings.param_framerate_cap / 60
+	settings.get_node("FramerateCap/OptionButton").selected = Settings.param_framerate_cap / Settings.fps_multiplier
 	settings.get_node("MouseLock/CheckButton").button_pressed = Settings.param_mouse_locked
 	
-	set_display_mode()
-	set_resolution()
-	set_mouse_mode()
-	set_vsync_mode()
-	set_fps()
+	resolution_option_button = settings.get_node("Resolution/OptionButton")
+	add_resolutions()
 
 
-func set_resolution() -> void:
-	get_viewport().size = Settings.get_resolution()
-	DisplayServer.window_set_size(Settings.get_resolution())
-
-func set_display_mode() -> void:
-	var display_mode = Settings.param_display
+func add_resolutions() -> void:
+	var index = 0
 	
-	if(display_mode == Settings.Display.DISPLAY_BORDERLESS):
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-	else:
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-	
-	DisplayServer.window_set_mode(Settings.get_display_mode(display_mode))
-
-func set_mouse_mode() -> void:
-	if(Settings.param_mouse_locked):
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CONFINED)
-	else:
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
-
-func set_vsync_mode() -> void:
-	if(Settings.param_vsync):
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
-
-func set_fps() -> void:
-	ProjectSettings.set_setting("application/run/max_fps", Settings.param_framerate_cap)
+	for res in Settings.Resolutions:
+		resolution_option_button.add_item(res, index)
+		
+		if Settings.Resolutions[res] == Settings.Resolutions[Settings.param_resolution]:
+			resolution_option_button._select_int(index)
+		
+		index += 1
 
 
 func _on_volume_master_value_changed(value: int) -> void:
@@ -83,29 +59,29 @@ func _on_volume_effects_value_changed(value: int) -> void:
 
 
 func _on_resolution_item_selected(index: int) -> void:
-	Settings.param_resolution = index as Settings.ResolutionIndex
-	set_display_mode()
-	set_resolution()
+	Settings.param_resolution = resolution_option_button.get_item_text(index)
+	Settings.apply_display_mode()
+	Settings.apply_resolution()
 
 func _on_display_item_selected(index: int) -> void:
 	Settings.param_display = index as Settings.Display
-	set_display_mode()
-	set_resolution()
+	Settings.apply_display_mode()
+	Settings.apply_resolution()
 
 func _on_texture_quality_item_selected(index: int) -> void:
 	Settings.param_texture_quality = index as Settings.Quality
 
 func _on_vsync_toggled(button_pressed: bool) -> void:
 	Settings.param_vsync = button_pressed
-	set_vsync_mode()
+	Settings.apply_vsync_mode()
 
 func _on_framerate_cap_item_selected(index: int) -> void:
-	Settings.param_framerate_cap = index * 60
-	set_fps()
+	Settings.param_framerate_cap = index * Settings.fps_multiplier
+	Settings.apply_fps()
 
 func _on_mouse_lock_toggled(button_pressed: bool) -> void:
 	Settings.param_mouse_locked = button_pressed
-	set_mouse_mode()
+	Settings.apply_mouse_mode()
 
 
 func _on_language_item_selected(index: int) -> void:
@@ -129,7 +105,7 @@ func _on_enemy_damage_value_changed(value: float) -> void:
 
 
 func _on_back_button_pressed():
-	Config.save_config()
+	Settings.save_settings()
 	
 	@warning_ignore("return_value_discarded")
 	emit_signal("exit_menu")

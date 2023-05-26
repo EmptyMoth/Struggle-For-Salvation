@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7gvulrm346vr"
-path="res://.godot/imported/test_char_angry.png-b97a2dacfd977b625d98af2273cf0195.ctex"
+path="res://.godot/imported/test_char_angry.png-12e21cdccd6089006d9d53e82db613bb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/story_ui/characters/expressions/test_char_angry.png"
-dest_files=["res://.godot/imported/test_char_angry.png-b97a2dacfd977b625d98af2273cf0195.ctex"]
+source_file="res://sprites/UI/story_ui/characters/expressions/test_char_angry.png"
+dest_files=["res://.godot/imported/test_char_angry.png-12e21cdccd6089006d9d53e82db613bb.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

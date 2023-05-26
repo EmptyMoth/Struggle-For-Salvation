@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-Config="*res://scripts/global_scripts/config.gd"
 GlobalParameters="*res://scripts/global_scripts/global_parameters.gd"
 BattleParameters="*res://scripts/battle/base_scripts/battle_parameters.gd"
 CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/card_placement_manager.gd"
@@ -25,13 +24,14 @@ CombatManager="*res://scripts/battle/base_scripts/phase_managers/combat_phase/co
 PlayerState="*res://scripts/battle/base_scripts/player_state.gd"
 HandlerForCardsPlacementByPlayer="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/handler_for_cards_placement_by_player.gd"
 Settings="*res://scripts/global_scripts/settings.gd"
+Saves="*res://scripts/global_scripts/saves.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/resizable=false
 window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 window/size/fullscreen=true
 
 [editor]

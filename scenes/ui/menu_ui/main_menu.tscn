@@ -2,8 +2,8 @@
 
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_8ntov"]
 [ext_resource type="Script" path="res://scripts/ui/menu_ui/main_menu.gd" id="2_r8lfl"]
+[ext_resource type="PackedScene" uid="uid://8nq84a36g3sp" path="res://scenes/ui/menu_ui/level_select/button_switch_scene.tscn" id="3_7nuhl"]
 [ext_resource type="PackedScene" uid="uid://b5cx4c5ht3cw6" path="res://scenes/ui/menu_ui/menu_settings.tscn" id="3_lo666"]
-[ext_resource type="PackedScene" uid="uid://cgvlhwfgtcs6o" path="res://scenes/ui/menu_ui/level_select/button_level_select.tscn" id="3_oangw"]
 
 [sub_resource type="Theme" id="Theme_n0nuu"]
 default_font = ExtResource("1_8ntov")
@@ -28,9 +28,9 @@ grow_vertical = 2
 [node name="Menu" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="ButtonStartGame" parent="CenterContainer/Menu" instance=ExtResource("3_oangw")]
+[node name="ButtonSwitchScene" parent="CenterContainer/Menu" instance=ExtResource("3_7nuhl")]
 layout_mode = 2
-text = "Начать игру"
+text = "Выбор уровня"
 scene_path = "res://scenes/ui/menu_ui/level_select/menu_level_select.tscn"
 
 [node name="ButtonSettings" type="Button" parent="CenterContainer/Menu"]

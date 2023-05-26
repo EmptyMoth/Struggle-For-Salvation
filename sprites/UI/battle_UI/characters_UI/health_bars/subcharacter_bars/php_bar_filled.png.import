@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bppvahaoairu7"
-path="res://.godot/imported/php_bar_filled.png-5a14e919cc0c009ab8b19dad9f9da939.ctex"
+path="res://.godot/imported/php_bar_filled.png-8435dd273b50778117ea4761ec97e619.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/php_bar_filled.png"
-dest_files=["res://.godot/imported/php_bar_filled.png-5a14e919cc0c009ab8b19dad9f9da939.ctex"]
+source_file="res://sprites/UI/battle_UI/characters_UI/health_bars/subcharacter_bars/php_bar_filled.png"
+dest_files=["res://.godot/imported/php_bar_filled.png-8435dd273b50778117ea4761ec97e619.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

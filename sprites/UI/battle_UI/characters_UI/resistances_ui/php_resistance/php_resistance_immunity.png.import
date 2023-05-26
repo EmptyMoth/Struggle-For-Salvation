@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dm7c0sc82nrwq"
-path="res://.godot/imported/php_resistance_immunity.png-9afcf78365cb485359998d36ec2113a0.ctex"
+path="res://.godot/imported/php_resistance_immunity.png-f8315710688cdf8e956d0f46d663152d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_immunity.png"
-dest_files=["res://.godot/imported/php_resistance_immunity.png-9afcf78365cb485359998d36ec2113a0.ctex"]
+source_file="res://sprites/UI/battle_UI/characters_UI/resistances_ui/php_resistance/php_resistance_immunity.png"
+dest_files=["res://.godot/imported/php_resistance_immunity.png-f8315710688cdf8e956d0f46d663152d.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

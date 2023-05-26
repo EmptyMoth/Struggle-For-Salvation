@@ -1,8 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cwqq3o8eynhvk"]
+[gd_scene load_steps=12 format=3 uid="uid://cwqq3o8eynhvk"]
 
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_eieh3"]
-[ext_resource type="PackedScene" uid="uid://cgvlhwfgtcs6o" path="res://scenes/ui/menu_ui/level_select/button_level_select.tscn" id="2_b7eur"]
+[ext_resource type="Texture2D" uid="uid://bytke450hfpbx" path="res://sprites/UI/level_select_ui/lungs_chapter.png" id="3_24d77"]
 [ext_resource type="PackedScene" uid="uid://b5cx4c5ht3cw6" path="res://scenes/ui/menu_ui/menu_settings.tscn" id="3_a6uab"]
+[ext_resource type="Script" path="res://scripts/global_scripts/extension_scripts/player_camera_2d.gd" id="4_hjw2b"]
+[ext_resource type="PackedScene" uid="uid://cgvlhwfgtcs6o" path="res://scenes/ui/menu_ui/level_select/button_level_select.tscn" id="5_svk4l"]
+[ext_resource type="PackedScene" uid="uid://ckklr1w23kwio" path="res://scripts/ui/menu_ui/level_select/texture_button_switch_scene.tscn" id="6_aifxi"]
+[ext_resource type="PackedScene" uid="uid://2j7tvrp3u5j6" path="res://scenes/ui/menu_ui/level_select/chapter_zoom_button.tscn" id="6_q66ru"]
+[ext_resource type="Texture2D" uid="uid://bamaxirwc6qjl" path="res://sprites/UI/level_select_ui/lungs_zoom.png" id="7_0pio2"]
+[ext_resource type="Texture2D" uid="uid://bf2h1w7bnh2fv" path="res://sprites/UI/level_select_ui/main_menu.png" id="7_beh0o"]
+[ext_resource type="Texture2D" uid="uid://id3aj665f2xx" path="res://sprites/UI/level_select_ui/body_zoom.png" id="8_oyt0u"]
 
 [sub_resource type="Theme" id="Theme_j1bx4"]
 default_font = ExtResource("1_eieh3")
@@ -16,56 +23,82 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_j1bx4")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="SettingsMenu" parent="." instance=ExtResource("3_a6uab")]
+visible = false
+layout_mode = 1
+
+[node name="Lungs" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.192708
+anchor_top = 0.268519
+anchor_right = 0.192708
+anchor_bottom = 0.268519
+offset_right = 256.0
+offset_bottom = 256.0
+texture = ExtResource("3_24d77")
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="Lungs"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Menu" type="VBoxContainer" parent="CenterContainer"]
-offset_left = 585.0
-offset_top = 302.0
-offset_right = 695.0
-offset_bottom = 418.0
+[node name="ButtonLevelSelect" parent="Lungs" instance=ExtResource("5_svk4l")]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 24.0
+offset_right = 109.0
+offset_bottom = 88.0
+texture_normal = ExtResource("7_0pio2")
+scene_path = "res://tests/battle/test_battle.tscn"
 
-[node name="ButtonBattle" parent="CenterContainer/Menu" instance=ExtResource("2_b7eur")]
-offset_right = 110.0
-offset_bottom = 34.0
-text = "Битва"
-scene_path = "res://tests/battle/test_battle_2d.tscn"
+[node name="ButtonLevelSelect2" parent="Lungs" instance=ExtResource("5_svk4l")]
+layout_mode = 0
+offset_left = 151.001
+offset_top = 87.9995
+offset_right = 215.001
+offset_bottom = 151.999
+texture_normal = ExtResource("7_0pio2")
+prerequisites = ["lungs test"]
 
-[node name="ButtonStory" parent="CenterContainer/Menu" instance=ExtResource("2_b7eur")]
-offset_top = 38.0
-offset_right = 110.0
-offset_bottom = 72.0
-text = "Сюжет"
-scene_path = "res://scenes/story/story_scene.tscn"
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Line" type="ColorRect" parent="CenterContainer/Menu"]
-custom_minimum_size = Vector2i(0, 2)
-offset_top = 76.0
-offset_right = 110.0
-offset_bottom = 78.0
-size_flags_horizontal = 3
-size_flags_vertical = 8
-color = Color(0.980392, 1, 0.662745, 1)
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
 
-[node name="ButtonMainMenu" parent="CenterContainer/Menu" instance=ExtResource("2_b7eur")]
-offset_top = 82.0
-offset_right = 110.0
-offset_bottom = 116.0
-text = "Главное Меню"
+[node name="MainMenu" parent="CanvasLayer/HBoxContainer" instance=ExtResource("6_aifxi")]
+layout_mode = 2
+texture_normal = ExtResource("7_beh0o")
 scene_path = "res://scenes/ui/menu_ui/main_menu.tscn"
 
-[node name="MenuSettings" parent="CenterContainer" instance=ExtResource("3_a6uab")]
-visible = false
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 640.0
-offset_top = 360.0
-offset_right = 640.0
-offset_bottom = 360.0
-grow_horizontal = 1
-grow_vertical = 1
+[node name="ZoomOut" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("camera", "target") instance=ExtResource("6_q66ru")]
+layout_mode = 2
+texture_normal = ExtResource("8_oyt0u")
+camera = NodePath("../../../PlayerCamera2D")
+target = NodePath("../../..")
+
+[node name="ZoomLungs" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("camera", "target") instance=ExtResource("6_q66ru")]
+layout_mode = 2
+texture_normal = ExtResource("7_0pio2")
+texture_pressed = ExtResource("7_0pio2")
+texture_hover = ExtResource("7_0pio2")
+camera = NodePath("../../../PlayerCamera2D")
+target = NodePath("../../../Lungs/Control")
+target_zoom = Vector2(2, 2)
+
+[node name="PlayerCamera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+script = ExtResource("4_hjw2b")
+can_change_zoom = false
+camera_direction = 0
+max_shift = Vector2(360, 360)

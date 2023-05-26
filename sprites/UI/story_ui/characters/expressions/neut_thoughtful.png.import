@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cygs2310pl6sc"
-path="res://.godot/imported/neut_thoughtful.png-e84b488326933205972c24109b81e127.ctex"
+path="res://.godot/imported/neut_thoughtful.png-dc1eb09b51878a3715b87d5d7e13db45.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/story_ui/characters/expressions/neut_thoughtful.png"
-dest_files=["res://.godot/imported/neut_thoughtful.png-e84b488326933205972c24109b81e127.ctex"]
+source_file="res://sprites/UI/story_ui/characters/expressions/neut_thoughtful.png"
+dest_files=["res://.godot/imported/neut_thoughtful.png-dc1eb09b51878a3715b87d5d7e13db45.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

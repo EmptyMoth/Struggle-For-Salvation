@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckklr1w23kwio"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/level_select/texture_button_switch_scene.gd" id="1_kmnbl"]
+
+[node name="TextureButtonSwitchScene" type="TextureButton"]
+script = ExtResource("1_kmnbl")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

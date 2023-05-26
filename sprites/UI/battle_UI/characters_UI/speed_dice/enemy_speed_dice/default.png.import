@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cieqqua4kws5q"
-path="res://.godot/imported/default.png-605a4b5a77d92b9e01b37c75063dca63.ctex"
+path="res://.godot/imported/default.png-829cf9fe1a72a6e0592cab228876e774.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/default.png"
-dest_files=["res://.godot/imported/default.png-605a4b5a77d92b9e01b37c75063dca63.ctex"]
+source_file="res://sprites/UI/battle_UI/characters_UI/speed_dice/enemy_speed_dice/default.png"
+dest_files=["res://.godot/imported/default.png-829cf9fe1a72a6e0592cab228876e774.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://4jxxfu2olypl"
-path="res://.godot/imported/neut.png-3a7a57bcbb83155ebd78a77f4c7019f0.ctex"
+path="res://.godot/imported/neut.png-ec6b21ccbb75ea5b74446c1f53787be1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/story_ui/characters/neut.png"
-dest_files=["res://.godot/imported/neut.png-3a7a57bcbb83155ebd78a77f4c7019f0.ctex"]
+source_file="res://sprites/UI/story_ui/characters/neut.png"
+dest_files=["res://.godot/imported/neut.png-ec6b21ccbb75ea5b74446c1f53787be1.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

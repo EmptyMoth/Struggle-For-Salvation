@@ -3,22 +3,22 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d2da7cmjnvnit"
-path="res://.godot/imported/mhp_resistance_normal.png-345e90f28ba340d4fe08a2575b4e393e.ctex"
+path="res://.godot/imported/mhp_resistance_normal.png-f13c7f81ade789230852ad229fd297da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/resistances_ui/mhp_resistance/mhp_resistance_normal.png"
-dest_files=["res://.godot/imported/mhp_resistance_normal.png-345e90f28ba340d4fe08a2575b4e393e.ctex"]
+source_file="res://sprites/UI/battle_UI/characters_UI/resistances_ui/mhp_resistance/mhp_resistance_normal.png"
+dest_files=["res://.godot/imported/mhp_resistance_normal.png-f13c7f81ade789230852ad229fd297da.ctex"]
 
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
