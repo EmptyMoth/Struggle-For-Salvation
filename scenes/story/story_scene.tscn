@@ -24,6 +24,16 @@ grow_vertical = 2
 theme = SubResource("Theme_g2seh")
 script = ExtResource("2_glmgb")
 
+[node name="BackgroundTexture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
@@ -50,6 +60,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 10
 theme_override_font_sizes/normal_font_size = 12
 text = "Role"
+fit_content = true
 scroll_active = false
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/SpeakerRole"]
@@ -64,6 +75,7 @@ color = Color(0, 0, 0, 0.784314)
 layout_mode = 2
 size_flags_vertical = 10
 text = "Name"
+fit_content = true
 scroll_active = false
 
 [node name="ColorRect" type="ColorRect" parent="VBoxContainer/SpeakerName"]
@@ -109,7 +121,6 @@ text = "Запись разговора"
 flat = true
 
 [node name="ButtonSkip" type="Button" parent="VBoxContainer/CenterContainer/HBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
@@ -168,6 +179,15 @@ layout_mode = 1
 [node name="PauseMenu" parent="." instance=ExtResource("4_agyho")]
 visible = false
 layout_mode = 1
+
+[node name="LocationName" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 26.0
+grow_horizontal = 0
 
 [connection signal="gui_input" from="ColorRect" to="." method="_on_color_rect_gui_input"]
 [connection signal="gui_input" from="VBoxContainer/SpeakerRole/ColorRect" to="." method="_on_color_rect_gui_input"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://7qmcqm23cndo"]
+[gd_scene load_steps=19 format=3 uid="uid://7qmcqm23cndo"]
 
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_eieh3"]
 [ext_resource type="PackedScene" uid="uid://b4vtn401ruknw" path="res://scenes/ui/menu_ui/level_select/chapters/chapter_lungs.tscn" id="2_fe7ud"]
@@ -18,6 +18,12 @@
 
 [sub_resource type="Theme" id="Theme_j1bx4"]
 default_font = ExtResource("1_eieh3")
+
+[sub_resource type="InputEventAction" id="InputEventAction_h37ue"]
+action = &"ui_menu"
+
+[sub_resource type="Shortcut" id="Shortcut_8r5vu"]
+events = [SubResource("InputEventAction_h37ue")]
 
 [node name="LevelSelect" type="Control"]
 layout_mode = 3
@@ -57,6 +63,8 @@ grow_horizontal = 2
 
 [node name="MainMenu" parent="CanvasLayer/HBoxContainer" instance=ExtResource("6_aifxi")]
 layout_mode = 2
+shortcut = SubResource("Shortcut_8r5vu")
+shortcut_in_tooltip = false
 texture_normal = ExtResource("5_la51u")
 texture_pressed = ExtResource("6_i4jvc")
 texture_hover = ExtResource("7_koekw")

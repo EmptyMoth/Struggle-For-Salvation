@@ -13,6 +13,14 @@ const auto_delay: int = 100
 
 const scene_log_entry = preload("res://scenes/story/log/log_entry.tscn")
 
+
+@export var location_name: String = ""
+@export var level_id: String = ""
+@export var dialogue_scene_path: String = ""
+@export var darken: bool = true
+@export var background_texture: Texture2D
+
+
 @onready var pause_menu = $PauseMenu
 
 var ui_main: VBoxContainer
@@ -53,7 +61,12 @@ func _ready() -> void:
 	button_next = path.get_node("ButtonNext")
 	button_back = path.get_node("ButtonBack")
 	
-	load_dialogue_scene("res://scenes/story/dialogue/test_dialogue/dialogue_scene_test.tscn")
+	$LocationName.text = "Место действия:" + location_name
+	$BackgroundTexture.texture = background_texture
+	if not darken:
+		$ColorRect.hide()
+	
+	load_dialogue_scene(dialogue_scene_path)
 	inc_line(0)
 	display_line()
 
@@ -71,8 +84,11 @@ func _process(delta: float) -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_released("ui_menu") and !pause_menu.just_closed:
-		pause_menu.pause_game()
+	if Input.is_action_just_released("ui_menu"):
+		if ui_log.visible:
+			_on_button_close_log_pressed()
+		elif not pause_menu.just_closed:
+			pause_menu.pause_game()
 	pause_menu.just_closed = false
 
 
@@ -115,7 +131,7 @@ func end_dialogue() -> void:
 func load_dialogue_scene(path: String) -> void:
 	dialogue = load(path).instantiate()
 	add_child(dialogue)
-	move_child(dialogue, 1)
+	move_child(dialogue, 2)
 	dialogue.gui_input.connect(_on_color_rect_gui_input)
 	line_count = dialogue.get_len()
 	_populate_log(dialogue.path_to_script)
@@ -193,8 +209,9 @@ func _on_button_next_pressed() -> void:
 	if line_index >= line_count - 1:
 		speech.visible_characters = -1
 		text_write = Autoplay.NONE
+		finish_dialogue()
 		return
-		
+	
 	match text_write:
 		Autoplay.NONE:
 			inc_line()
@@ -209,8 +226,14 @@ func _on_button_next_pressed() -> void:
 			speech.visible_characters = -1
 
 
+func finish_dialogue() -> void:
+	if level_id != "":
+		Saves.mark_finished(level_id)
+	get_tree().change_scene_to_file("res://scenes/ui/menu_ui/level_select/menu_level_select.tscn")
+
+
 func _on_button_skip_pressed() -> void:
-	pass
+	finish_dialogue()
 
 
 func _on_button_fast_forward_pressed() -> void:

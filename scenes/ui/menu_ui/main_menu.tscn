@@ -28,9 +28,14 @@ grow_vertical = 2
 [node name="Menu" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
 
-[node name="ButtonSwitchScene" parent="CenterContainer/Menu" instance=ExtResource("3_7nuhl")]
+[node name="BattleTest" parent="CenterContainer/Menu" instance=ExtResource("3_7nuhl")]
 layout_mode = 2
-text = "Выбор уровня"
+text = "Битва"
+scene_path = "res://tests/battle/test_battle.tscn"
+
+[node name="LevelSelect" parent="CenterContainer/Menu" instance=ExtResource("3_7nuhl")]
+layout_mode = 2
+text = "История"
 scene_path = "res://scenes/ui/menu_ui/level_select/menu_level_select.tscn"
 
 [node name="ButtonSettings" type="Button" parent="CenterContainer/Menu"]

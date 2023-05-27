@@ -3,6 +3,7 @@ extends TextureButton
 
 
 @export var scene_path: String = ""
+@export var level_id: String = ""
 @export var prerequisites: Array = []
 
 @export_group("Unfinished")
@@ -23,20 +24,22 @@ func _ready():
 	hide()
 	
 	for t in prerequisites:
-		if not Saves.is_completed(t):
+		if not Saves.is_finished(t):
 			unlocked = false
 			break
 	
 	if unlocked:
-		texture_normal = texture_unfinished_default
-		texture_hover = texture_unfinished_hover
-		texture_pressed = texture_unfinished_press
 		disabled = false
 		show()
-	else:
+	
+	if Saves.is_finished(level_id):
 		texture_normal = texture_finished_default
 		texture_hover = texture_finished_hover
 		texture_pressed = texture_finished_press
+	else:
+		texture_normal = texture_unfinished_default
+		texture_hover = texture_unfinished_hover
+		texture_pressed = texture_unfinished_press
 
 
 func _on_pressed() -> void:

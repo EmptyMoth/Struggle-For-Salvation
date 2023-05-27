@@ -1,6 +1,6 @@
-[gd_scene load_steps=41 format=3 uid="uid://cdr0us268epb3"]
+[gd_scene load_steps=41 format=3 uid="uid://b43j7886qc5au"]
 
-[ext_resource type="PackedScene" uid="uid://tsckhc21wjk8" path="res://scenes/story/dialogue/dialogue_scene.tscn" id="1_xgvjs"]
+[ext_resource type="PackedScene" uid="uid://tsckhc21wjk8" path="res://scenes/story/dialogue_scene.tscn" id="1_xgvjs"]
 [ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="2_t55ri"]
 [ext_resource type="Script" path="res://scripts/story/speaker.gd" id="3_ltbg8"]
 [ext_resource type="Texture2D" uid="uid://cygs2310pl6sc" path="res://sprites/UI/story_ui/characters/expressions/neut_thoughtful.png" id="3_vjrky"]
@@ -160,7 +160,7 @@ script = ExtResource("4_t2ttp")
 lines = [SubResource("Resource_ny45u"), SubResource("Resource_a13tb"), SubResource("Resource_sgmpp"), SubResource("Resource_0h5p1"), SubResource("Resource_gc83g"), SubResource("Resource_5ovda"), SubResource("Resource_aqh1i"), SubResource("Resource_pddco"), SubResource("Resource_2lm23"), SubResource("Resource_g7spd"), SubResource("Resource_08nrb"), SubResource("Resource_l8ba1"), SubResource("Resource_v5yav"), SubResource("Resource_tchpk"), SubResource("Resource_j2mu0"), SubResource("Resource_pp0p4"), SubResource("Resource_nirkh"), SubResource("Resource_pm8h6"), SubResource("Resource_chfm5"), SubResource("Resource_wpvlo")]
 
 [node name="DialogueScene" instance=ExtResource("1_xgvjs")]
-path_to_script = "res://resources/story/dialogue_text/test_dialogue.txt"
+path_to_script = "res://tests/story/story_1/test_dialogue.txt"
 dialogue = SubResource("Resource_fmq71")
 
 [node name="Neut" type="TextureRect" parent="." index="0"]

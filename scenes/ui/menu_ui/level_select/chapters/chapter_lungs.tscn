@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bleb28vo22ryu" path="res://scenes/ui/menu_ui/level_select/chapters/chapter.tscn" id="1_kn5ft"]
 [ext_resource type="Texture2D" uid="uid://ciexl2cvyel84" path="res://sprites/UI/level_select_ui/lungs_chapter_default.png" id="2_4iki8"]
 [ext_resource type="PackedScene" uid="uid://cgvlhwfgtcs6o" path="res://scenes/ui/menu_ui/level_select/buttons/button_level_select.tscn" id="3_67ots"]
-[ext_resource type="Texture2D" uid="uid://cpub3dqvpiqay" path="res://sprites/UI/level_select_ui/lungs_chapter_focused.png" id="3_kj7v7"]
+[ext_resource type="Texture2D" uid="uid://b35ix3ovk1blw" path="res://sprites/UI/level_select_ui/lungs_chapter_focused_1.png" id="3_xurhf"]
 
 [node name="Chapter" instance=ExtResource("1_kn5ft")]
 
@@ -13,11 +13,31 @@ texture = ExtResource("2_4iki8")
 [node name="TextureFocused" parent="." index="1"]
 offset_right = 0.0
 offset_bottom = 0.0
-texture = ExtResource("3_kj7v7")
+texture = ExtResource("3_xurhf")
 
-[node name="ButtonLevelSelect" parent="TextureFocused" index="0" instance=ExtResource("3_67ots")]
+[node name="Lungs1" parent="TextureFocused" index="0" instance=ExtResource("3_67ots")]
 layout_mode = 0
-offset_left = 51.0
-offset_top = 46.0
-offset_right = 115.0
-offset_bottom = 110.0
+offset_left = 34.0
+offset_top = 27.0
+offset_right = 98.0
+offset_bottom = 91.0
+scene_path = "res://tests/story/story_1/test_scene_1.tscn"
+level_id = "lungs 1"
+
+[node name="Lungs2" parent="TextureFocused" index="1" instance=ExtResource("3_67ots")]
+layout_mode = 0
+offset_left = 122.0
+offset_top = 62.0
+offset_right = 186.0
+offset_bottom = 126.0
+level_id = "lungs 2"
+prerequisites = ["lungs 1"]
+
+[node name="Lungs3" parent="TextureFocused" index="2" instance=ExtResource("3_67ots")]
+layout_mode = 0
+offset_left = 185.0
+offset_top = 155.0
+offset_right = 249.0
+offset_bottom = 219.0
+level_id = "lungs 3"
+prerequisites = ["lungs 2"]
