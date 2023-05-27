@@ -13,7 +13,7 @@ func _ready():
 	_save.save_config()
 
 
-func is_complete(level: String) -> bool:
+func is_completed(level: String) -> bool:
 	var split_level = level.split(" ", false)
 	return _save.get_value(split_level[0], split_level[1])
 

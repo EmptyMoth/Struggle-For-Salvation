@@ -38,7 +38,7 @@ const SETTING_VALIDATION_ARRAY: Array = [
 	["graphics", "texture_quality", Quality.TEXTURE_QUALITY_HIGH],
 	["graphics", "display", Display.DISPLAY_DEFAULT],
 	["graphics", "vsync", true],
-	["graphics", "framerate_cap", fps_multiplier],
+	["graphics", "framerate_cap", FPS_MULTIPLIER],
 	["graphics", "mouse_locked", true],
 	["sound", "volume_master", 100],
 	["sound", "volume_music", 100],
@@ -51,94 +51,90 @@ const SETTING_VALIDATION_ARRAY: Array = [
 	["custom", "enemy_damage", 1.0]
 ]
 
-const fps_multiplier: int = 60
+const FPS_MULTIPLIER: int = 60
 
-var param_resolution: String = "1920x1080" :
+var resolution: String = "1920x1080" :
 	set(value):
-		param_resolution = value
+		resolution = value
 		_config.set_value("graphics", "resolution", value)
 
-var param_texture_quality: Quality = Quality.TEXTURE_QUALITY_HIGH :
+var texture_quality: Quality = Quality.TEXTURE_QUALITY_HIGH :
 	set(value):
-		param_texture_quality = value
+		texture_quality = value
 		_config.set_value("graphics", "texture_quality", value)
 
-var param_display: Display = Display.DISPLAY_FULLSCREEN :
+var display: Display = Display.DISPLAY_FULLSCREEN :
 	set(value):
-		param_display = value
+		display = value
 		_config.set_value("graphics", "display", value)
 
-var param_vsync: bool = true :
+var vsync: bool = true :
 	set(value):
-		param_vsync = value
+		vsync = value
 		_config.set_value("graphics", "vsync", value)
 
-var param_framerate_cap: int = fps_multiplier :
+var framerate_cap: int = FPS_MULTIPLIER :
 	set(value):
-		param_framerate_cap = value
+		framerate_cap = value
 		_config.set_value("graphics", "framerate_cap", value)
 
-var param_mouse_locked: bool = true :
+var mouse_locked: bool = true :
 	set(value):
-		param_mouse_locked = value
+		mouse_locked = value
 		_config.set_value("graphics", "mouse_locked", value)
 
-var param_volume_master: int = 100 :
+var volume_master: int = 100 :
 	set(value):
-		param_volume_master = value
+		volume_master = value
 		_config.set_value("sound", "volume_master", value)
 
-var param_volume_music: int = 100 :
+var volume_music: int = 100 :
 	set(value):
-		param_volume_music = value
+		volume_music = value
 		_config.set_value("sound", "volume_music", value)
 
-var param_volume_effects: int = 100 :
+var volume_effects: int = 100 :
 	set(value):
-		param_volume_effects = value
+		volume_effects = value
 		_config.set_value("sound", "volume_effects", value)
 
-var param_language: int = Language.LANGUAGE_RUS :
+var language: int = Language.LANGUAGE_RUS :
 	set(value):
-		param_language = value
+		language = value
 		_config.set_value("gameplay", "language", value)
 
-var param_action_dice_count: bool = false :
+var action_dice_count: bool = false :
 	set(value):
-		param_action_dice_count = value
+		action_dice_count = value
 		_config.set_value("gameplay", "action_dice_count", value)
 
-var param_music_when_paused: bool = true :
+var music_when_paused: bool = true :
 	set(value):
-		param_music_when_paused = value
+		music_when_paused = value
 		_config.set_value("gameplay", "music_when_paused", value)
 
-var param_custom_rules_enabled: bool = false :
+var custom_rules_enabled: bool = false :
 	set(value):
-		param_custom_rules_enabled = value
+		custom_rules_enabled = value
 		_config.set_value("custom", "custom_rules_enabled", value)
 
-var param_enemy_health: float = 1.0 :
+var enemy_health: float = 1.0 :
 	set(value):
-		param_enemy_health = value
+		enemy_health = value
 		_config.set_value("custom", "enemy_health", value)
 
-var param_enemy_damage: float = 1.0 :
+var enemy_damage: float = 1.0 :
 	set(value):
-		param_enemy_damage = value
+		enemy_damage = value
 		_config.set_value("custom", "enemy_damage", value)
 
-var _config: ConfigHandler
+@onready var _config: ConfigHandler = ConfigHandler.new("user://settings.cfg", SETTING_VALIDATION_ARRAY)
 
-#@onready var resolution: Vector2 = \
-#	INDEX_BY_RESOLUTION[ResolutionIndex.RESOLUTION_1920_1080]
 @onready var location_of_ally_team_on_battlefield: LocationOfAllyTeamOnBattlefield = \
 	LocationOfAllyTeamOnBattlefield.LEFT
 
 
 func _ready():
-	_config = ConfigHandler.new("user://settings.cfg", SETTING_VALIDATION_ARRAY)
-	
 	initialise_parameters()
 	_config.save_config()
 	
@@ -154,21 +150,21 @@ func save_settings() -> void:
 
 
 func initialise_parameters() -> void:
-	param_resolution = _config.get_value("graphics", "resolution")
-	param_texture_quality = _config.get_value("graphics", "texture_quality")
-	param_display = _config.get_value("graphics", "display")
-	param_vsync = _config.get_value("graphics", "vsync")
-	param_framerate_cap = _config.get_value("graphics", "framerate_cap")
-	param_mouse_locked = _config.get_value("graphics", "mouse_locked")
-	param_volume_master = _config.get_value("sound", "volume_master")
-	param_volume_music = _config.get_value("sound", "volume_music")
-	param_volume_effects = _config.get_value("sound", "volume_effects")
-	param_language = _config.get_value("gameplay", "language")
-	param_action_dice_count = _config.get_value("gameplay", "action_dice_count")
-	param_music_when_paused = _config.get_value("gameplay", "music_when_paused")
-	param_custom_rules_enabled = _config.get_value("custom", "custom_rules_enabled")
-	param_enemy_health = _config.get_value("custom", "enemy_health")
-	param_enemy_damage = _config.get_value("custom", "enemy_damage")
+	resolution = _config.get_value("graphics", "resolution")
+	texture_quality = _config.get_value("graphics", "texture_quality")
+	display = _config.get_value("graphics", "display")
+	vsync = _config.get_value("graphics", "vsync")
+	framerate_cap = _config.get_value("graphics", "framerate_cap")
+	mouse_locked = _config.get_value("graphics", "mouse_locked")
+	volume_master = _config.get_value("sound", "volume_master")
+	volume_music = _config.get_value("sound", "volume_music")
+	volume_effects = _config.get_value("sound", "volume_effects")
+	language = _config.get_value("gameplay", "language")
+	action_dice_count = _config.get_value("gameplay", "action_dice_count")
+	music_when_paused = _config.get_value("gameplay", "music_when_paused")
+	custom_rules_enabled = _config.get_value("custom", "custom_rules_enabled")
+	enemy_health = _config.get_value("custom", "enemy_health")
+	enemy_damage = _config.get_value("custom", "enemy_damage")
 
 
 func apply_resolution(index: String = "") -> void:
@@ -177,7 +173,7 @@ func apply_resolution(index: String = "") -> void:
 
 func get_resolution(index: String = "") -> Vector2:
 	if index == "":
-		index = param_resolution
+		index = resolution
 	
 	return Resolutions[index]
 
@@ -194,29 +190,19 @@ func get_display_mode(index: Display) -> int:
 			return DisplayServer.WINDOW_MODE_WINDOWED
 
 func apply_display_mode() -> void:
-	var display_mode = param_display
-	
-	if(display_mode == Display.DISPLAY_BORDERLESS):
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
-	else:
-		DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-	
-	DisplayServer.window_set_mode(get_display_mode(display_mode))
+	DisplayServer.window_set_flag(
+		DisplayServer.WINDOW_FLAG_BORDERLESS,
+		display == Display.DISPLAY_BORDERLESS)
+	DisplayServer.window_set_mode(get_display_mode(display))
 
 
 func apply_mouse_mode() -> void:
-	if param_mouse_locked:
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CONFINED)
-	else:
-		DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_VISIBLE)
+	DisplayServer.mouse_set_mode(DisplayServer.MOUSE_MODE_CONFINED if mouse_locked else DisplayServer.MOUSE_MODE_VISIBLE)
 
 
 func apply_vsync_mode() -> void:
-	if param_vsync:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED)
-	else:
-		DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_DISABLED)
+	DisplayServer.window_set_vsync_mode(DisplayServer.VSYNC_ENABLED if vsync else DisplayServer.VSYNC_DISABLED)
 
 
 func apply_fps() -> void:
-	ProjectSettings.set_setting("application/run/max_fps", param_framerate_cap)
+	ProjectSettings.set_setting("application/run/max_fps", framerate_cap)

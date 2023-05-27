@@ -13,8 +13,10 @@ const auto_delay: int = 100
 
 const scene_log_entry = preload("res://scenes/story/log/log_entry.tscn")
 
+@onready var pause_menu = $PauseMenu
+
 var ui_main: VBoxContainer
-var ui_log: MarginContainer
+var ui_log: Log
 var ui_log_entries: VBoxContainer
 
 var speaker_role: RichTextLabel
@@ -42,7 +44,7 @@ var ui_hidden: bool = false
 func _ready() -> void:
 	ui_main = $VBoxContainer
 	ui_log = $Log
-	ui_log_entries = ui_log.get_node("PanelContainer/VBoxContainer/ScrollContainer/MarginContainer/VBoxContainer")
+	ui_log_entries = ui_log.log_entries
 	speaker_role = ui_main.get_node("SpeakerRole")
 	speaker_name = ui_main.get_node("SpeakerName")
 	speech = ui_main.get_node("ColourRect/MarginContainer/Text")
@@ -69,8 +71,9 @@ func _process(delta: float) -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_released("ui_menu"):
-		$PauseMenu.pause_game()
+	if Input.is_action_just_released("ui_menu") and !pause_menu.just_closed:
+		pause_menu.pause_game()
+	pause_menu.just_closed = false
 
 
 func autoplay_write() -> void:
@@ -115,13 +118,15 @@ func load_dialogue_scene(path: String) -> void:
 	move_child(dialogue, 1)
 	dialogue.gui_input.connect(_on_color_rect_gui_input)
 	line_count = dialogue.get_len()
-	_populate_log()
+	_populate_log(dialogue.path_to_script)
 
 
-func _populate_log() -> void:
-	for line in dialogue.get_lines():
+func _populate_log(path: String) -> void:
+	var text = FileAccess.open(path, FileAccess.READ).get_as_text().split("\n", false)
+	for line in text:
 		var entry = scene_log_entry.instantiate()
-		entry.init(line.speaker_role, line.speaker_name, line.line)
+		var split_line = line.split(" \\ ")
+		entry.init(split_line[0], split_line[1], split_line[2])
 		log_entries.append(entry)
 		ui_log_entries.add_child(entry)
 

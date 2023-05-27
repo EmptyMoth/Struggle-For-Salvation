@@ -163,12 +163,7 @@ text = "Скрыть"
 flat = true
 
 [node name="Log" parent="." instance=ExtResource("5_hgc4i")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-grow_horizontal = 1
-grow_vertical = 1
+layout_mode = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_agyho")]
 visible = false

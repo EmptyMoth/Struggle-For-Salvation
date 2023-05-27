@@ -1,8 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://c3grqfmlnhc8d"]
+[gd_scene load_steps=6 format=3 uid="uid://cs7nsdvprhb68"]
 
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_8ntov"]
 [ext_resource type="Script" path="res://scripts/ui/menu_ui/main_menu.gd" id="2_r8lfl"]
-[ext_resource type="PackedScene" uid="uid://8nq84a36g3sp" path="res://scenes/ui/menu_ui/level_select/button_switch_scene.tscn" id="3_7nuhl"]
+[ext_resource type="PackedScene" uid="uid://8nq84a36g3sp" path="res://scenes/ui/menu_ui/level_select/buttons/button_switch_scene.tscn" id="3_7nuhl"]
 [ext_resource type="PackedScene" uid="uid://b5cx4c5ht3cw6" path="res://scenes/ui/menu_ui/menu_settings.tscn" id="3_lo666"]
 
 [sub_resource type="Theme" id="Theme_n0nuu"]

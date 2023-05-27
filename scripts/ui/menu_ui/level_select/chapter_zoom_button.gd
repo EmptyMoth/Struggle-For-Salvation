@@ -2,20 +2,19 @@ class_name ChapterZoomButton
 extends TextureButton
 
 
-@export var camera: PlayerCamera2D
+signal zoom(source)
+
+
+@onready var camera: PlayerCamera2D = get_viewport().get_camera_2d()
 @export var target: Node
-#@export var target_location: Vector2 = Vector2.ZERO
 @export var target_zoom: Vector2 = Vector2.ONE
 
 
-func _ready():
-	pass # Replace with function body.
+func _on_pressed() -> void:
+	zoom_to_target()
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
-func _on_pressed():
+func zoom_to_target() -> void:
 	camera.zoom_to(target.get_global_position() + target.size / 2, target_zoom)
+	if target is Chapter:
+		target.focus()
+	zoom.emit(self)

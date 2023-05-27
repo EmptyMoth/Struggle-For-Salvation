@@ -2,11 +2,7 @@ extends Resource
 class_name DialogueLine
 
 
-@export var speaker_name: String = ""
-@export var speaker_role: String = ""
+var speaker_name: String = ""
+var speaker_role: String = ""
 @export var speakers: Array
-@export var line: String = ""
-
-
-func _ready() -> void:
-	pass
+var line: String = ""

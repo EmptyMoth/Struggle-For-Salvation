@@ -55,6 +55,7 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 shortcut = SubResource("Shortcut_ybvfg")
+shortcut_in_tooltip = false
 text = "Продолжить игру"
 flat = true
 

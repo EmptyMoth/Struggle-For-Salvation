@@ -1,0 +1,24 @@
+[gd_scene load_steps=7 format=3 uid="uid://cgvlhwfgtcs6o"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/level_select/button_level_select.gd" id="1_k3kug"]
+[ext_resource type="Texture2D" uid="uid://c2vhxjf6d260c" path="res://sprites/UI/level_select_ui/level_select_unlocked_hovered.png" id="3_dski8"]
+[ext_resource type="Texture2D" uid="uid://bexqlrskkb2q1" path="res://sprites/UI/level_select_ui/level_select_unlocked.png" id="3_fv20f"]
+[ext_resource type="Texture2D" uid="uid://ckab32tg3rmnq" path="res://sprites/UI/level_select_ui/level_select_pressed.png" id="4_4be5b"]
+[ext_resource type="Texture2D" uid="uid://cb7ye1ie0bbno" path="res://sprites/UI/level_select_ui/level_select_finished.png" id="5_nbhni"]
+[ext_resource type="Texture2D" uid="uid://cc6434pcsrf3n" path="res://sprites/UI/level_select_ui/level_select_finished_hovered.png" id="6_fnoce"]
+
+[node name="ButtonLevelSelect" type="TextureButton"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("1_k3kug")
+texture_unfinished_default = ExtResource("3_fv20f")
+texture_unfinished_hover = ExtResource("3_dski8")
+texture_unfinished_press = ExtResource("4_4be5b")
+texture_finished_default = ExtResource("5_nbhni")
+texture_finished_hover = ExtResource("6_fnoce")
+texture_finished_press = ExtResource("4_4be5b")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

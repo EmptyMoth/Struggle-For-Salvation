@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bytke450hfpbx"
-path="res://.godot/imported/lungs_chapter.png-97fd77862fdc34aec55eff8372792822.ctex"
+uid="uid://ducjgb2votg78"
+path="res://.godot/imported/body_zoom_pressed.png-10d77d3e640ec1d5e3df6d45d95de4c5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/level_select_ui/lungs_chapter.png"
-dest_files=["res://.godot/imported/lungs_chapter.png-97fd77862fdc34aec55eff8372792822.ctex"]
+source_file="res://sprites/UI/level_select_ui/body_zoom_pressed.png"
+dest_files=["res://.godot/imported/body_zoom_pressed.png-10d77d3e640ec1d5e3df6d45d95de4c5.ctex"]
 
 [params]
 

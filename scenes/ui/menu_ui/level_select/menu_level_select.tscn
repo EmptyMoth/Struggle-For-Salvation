@@ -1,15 +1,20 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwqq3o8eynhvk"]
+[gd_scene load_steps=17 format=3 uid="uid://7qmcqm23cndo"]
 
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_eieh3"]
-[ext_resource type="Texture2D" uid="uid://bytke450hfpbx" path="res://sprites/UI/level_select_ui/lungs_chapter.png" id="3_24d77"]
-[ext_resource type="PackedScene" uid="uid://b5cx4c5ht3cw6" path="res://scenes/ui/menu_ui/menu_settings.tscn" id="3_a6uab"]
+[ext_resource type="PackedScene" uid="uid://b4vtn401ruknw" path="res://scenes/ui/menu_ui/level_select/chapters/chapter_lungs.tscn" id="2_fe7ud"]
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/level_select/menu_level_select.gd" id="2_xdbpn"]
 [ext_resource type="Script" path="res://scripts/global_scripts/extension_scripts/player_camera_2d.gd" id="4_hjw2b"]
-[ext_resource type="PackedScene" uid="uid://cgvlhwfgtcs6o" path="res://scenes/ui/menu_ui/level_select/button_level_select.tscn" id="5_svk4l"]
-[ext_resource type="PackedScene" uid="uid://ckklr1w23kwio" path="res://scripts/ui/menu_ui/level_select/texture_button_switch_scene.tscn" id="6_aifxi"]
-[ext_resource type="PackedScene" uid="uid://2j7tvrp3u5j6" path="res://scenes/ui/menu_ui/level_select/chapter_zoom_button.tscn" id="6_q66ru"]
-[ext_resource type="Texture2D" uid="uid://bamaxirwc6qjl" path="res://sprites/UI/level_select_ui/lungs_zoom.png" id="7_0pio2"]
-[ext_resource type="Texture2D" uid="uid://bf2h1w7bnh2fv" path="res://sprites/UI/level_select_ui/main_menu.png" id="7_beh0o"]
-[ext_resource type="Texture2D" uid="uid://id3aj665f2xx" path="res://sprites/UI/level_select_ui/body_zoom.png" id="8_oyt0u"]
+[ext_resource type="Texture2D" uid="uid://dq0nbjd8q34pj" path="res://sprites/UI/level_select_ui/main_menu_default.png" id="5_la51u"]
+[ext_resource type="PackedScene" uid="uid://ckklr1w23kwio" path="res://scenes/ui/menu_ui/level_select/buttons/texture_button_switch_scene.tscn" id="6_aifxi"]
+[ext_resource type="Texture2D" uid="uid://c2jhua8g870xk" path="res://sprites/UI/level_select_ui/main_menu_pressed.png" id="6_i4jvc"]
+[ext_resource type="PackedScene" uid="uid://2j7tvrp3u5j6" path="res://scenes/ui/menu_ui/level_select/buttons/chapter_zoom_button.tscn" id="6_q66ru"]
+[ext_resource type="Texture2D" uid="uid://cw5tous7yflhm" path="res://sprites/UI/level_select_ui/main_menu_hovered.png" id="7_koekw"]
+[ext_resource type="Texture2D" uid="uid://dlxh4hee44t8h" path="res://sprites/UI/level_select_ui/lungs_zoom_default.png" id="8_npcqg"]
+[ext_resource type="Texture2D" uid="uid://cilf8ad2a4b1x" path="res://sprites/UI/level_select_ui/lungs_zoom_pressed.png" id="9_nwceb"]
+[ext_resource type="Texture2D" uid="uid://cqm5063vb3gw5" path="res://sprites/UI/level_select_ui/body_zoom_default.png" id="9_oq7mb"]
+[ext_resource type="Texture2D" uid="uid://ducjgb2votg78" path="res://sprites/UI/level_select_ui/body_zoom_pressed.png" id="10_kdx1o"]
+[ext_resource type="Texture2D" uid="uid://jgy3llkvjuht" path="res://sprites/UI/level_select_ui/lungs_zoom_hovered.png" id="10_sfv2q"]
+[ext_resource type="Texture2D" uid="uid://dvnsdmyvy17w7" path="res://sprites/UI/level_select_ui/body_zoom_hovered.png" id="11_blt1h"]
 
 [sub_resource type="Theme" id="Theme_j1bx4"]
 default_font = ExtResource("1_eieh3")
@@ -22,24 +27,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_j1bx4")
+script = ExtResource("2_xdbpn")
 
-[node name="SettingsMenu" parent="." instance=ExtResource("3_a6uab")]
-visible = false
-layout_mode = 1
-
-[node name="Lungs" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.192708
-anchor_top = 0.268519
-anchor_right = 0.192708
-anchor_bottom = 0.268519
-offset_right = 256.0
-offset_bottom = 256.0
-texture = ExtResource("3_24d77")
-metadata/_edit_use_anchors_ = true
-
-[node name="Control" type="Control" parent="Lungs"]
+[node name="Chapters" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,23 +37,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ButtonLevelSelect" parent="Lungs" instance=ExtResource("5_svk4l")]
-layout_mode = 0
-offset_left = 45.0
-offset_top = 24.0
-offset_right = 109.0
-offset_bottom = 88.0
-texture_normal = ExtResource("7_0pio2")
-scene_path = "res://tests/battle/test_battle.tscn"
-
-[node name="ButtonLevelSelect2" parent="Lungs" instance=ExtResource("5_svk4l")]
-layout_mode = 0
-offset_left = 151.001
-offset_top = 87.9995
-offset_right = 215.001
-offset_bottom = 151.999
-texture_normal = ExtResource("7_0pio2")
-prerequisites = ["lungs test"]
+[node name="Lungs" parent="Chapters" node_paths=PackedStringArray("zoom_button") instance=ExtResource("2_fe7ud")]
+offset_left = 832.0
+offset_top = 323.0
+offset_right = 832.0
+offset_bottom = 323.0
+zoom_button = NodePath("../../CanvasLayer/HBoxContainer/ZoomLungs")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -78,22 +57,24 @@ grow_horizontal = 2
 
 [node name="MainMenu" parent="CanvasLayer/HBoxContainer" instance=ExtResource("6_aifxi")]
 layout_mode = 2
-texture_normal = ExtResource("7_beh0o")
+texture_normal = ExtResource("5_la51u")
+texture_pressed = ExtResource("6_i4jvc")
+texture_hover = ExtResource("7_koekw")
 scene_path = "res://scenes/ui/menu_ui/main_menu.tscn"
 
-[node name="ZoomOut" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("camera", "target") instance=ExtResource("6_q66ru")]
+[node name="ZoomOut" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_q66ru")]
 layout_mode = 2
-texture_normal = ExtResource("8_oyt0u")
-camera = NodePath("../../../PlayerCamera2D")
+texture_normal = ExtResource("9_oq7mb")
+texture_pressed = ExtResource("10_kdx1o")
+texture_hover = ExtResource("11_blt1h")
 target = NodePath("../../..")
 
-[node name="ZoomLungs" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("camera", "target") instance=ExtResource("6_q66ru")]
+[node name="ZoomLungs" parent="CanvasLayer/HBoxContainer" node_paths=PackedStringArray("target") instance=ExtResource("6_q66ru")]
 layout_mode = 2
-texture_normal = ExtResource("7_0pio2")
-texture_pressed = ExtResource("7_0pio2")
-texture_hover = ExtResource("7_0pio2")
-camera = NodePath("../../../PlayerCamera2D")
-target = NodePath("../../../Lungs/Control")
+texture_normal = ExtResource("8_npcqg")
+texture_pressed = ExtResource("9_nwceb")
+texture_hover = ExtResource("10_sfv2q")
+target = NodePath("../../../Chapters/Lungs")
 target_zoom = Vector2(2, 2)
 
 [node name="PlayerCamera2D" type="Camera2D" parent="."]

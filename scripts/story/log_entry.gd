@@ -10,8 +10,8 @@ func _ready():
 	pass
 
 
-func init(role: String, s_name: String, line: String):
+func init(s_name: String, role: String, line: String):
 	speaker_name = $Name
 	speaker_line = $Speech
-	speaker_name.text = "%s, %s:" % [role, s_name] if role else "%s:" % [s_name]
+	speaker_name.text = "%s, %s:" % [role, s_name]# if role else "%s:" % [s_name]
 	speaker_line.text = line

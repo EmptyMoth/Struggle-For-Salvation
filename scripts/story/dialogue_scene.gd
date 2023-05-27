@@ -2,6 +2,7 @@ class_name DialogueScene
 extends Control
 
 
+@export var path_to_script: String
 @export var dialogue: Dialogue
 
 var speakers: Array
@@ -12,6 +13,17 @@ func _ready() -> void:
 	speakers = get_children()
 	for t in len(speakers):
 		speakers_active.append(false)
+	
+	var text = FileAccess.open(path_to_script, FileAccess.READ).get_as_text().split("\n", false)
+	var index = 0
+	for line in text:
+		var split_line = line.split(" \\ ")
+		var d_line = dialogue.get_line(index)
+		index += 1
+		
+		d_line.speaker_name = split_line[0]
+		d_line.speaker_role = split_line[1]
+		d_line.line = split_line[2]
 
 
 func get_len() -> int:

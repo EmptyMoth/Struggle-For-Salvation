@@ -6,7 +6,7 @@
 visible = false
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 50.0
+offset_bottom = 79.0
 grow_horizontal = 2
 script = ExtResource("1_5ebc5")
 
@@ -25,12 +25,14 @@ size_flags_vertical = 8
 color = Color(0.980392, 1, 0.662745, 1)
 
 [node name="Name" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(0, 22)
 layout_mode = 2
-size_flags_vertical = 3
 bbcode_enabled = true
 text = "Name, role:"
 scroll_active = false
 
 [node name="Speech" type="RichTextLabel" parent="."]
 layout_mode = 2
+size_flags_vertical = 3
 text = "Words"
+fit_content = true

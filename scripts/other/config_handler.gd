@@ -1,5 +1,5 @@
 class_name ConfigHandler
-extends Control
+extends Node
 
 
 var _config: ConfigFile
