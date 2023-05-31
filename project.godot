@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Struggle For Salvation"
-run/main_scene="res://scenes/base/title_logo/title_logo.tscn"
+run/main_scene="res://tests/battle/test_battle.tscn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.svg"
 
@@ -42,6 +42,10 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[filesystem]
+
+import/blender/enabled=false
 
 [importer_defaults]
 
