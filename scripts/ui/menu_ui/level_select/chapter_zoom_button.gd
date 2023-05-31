@@ -14,7 +14,7 @@ func _on_pressed() -> void:
 	zoom_to_target()
 
 func zoom_to_target() -> void:
-	camera.zoom_to(target.get_global_position() + target.size / 2, target_zoom)
+	camera.zoom_to(target.get_global_position() + (target.size + Settings.get_resolution_difference()) / 2, target_zoom)
 	if target is Chapter:
 		target.focus()
 	zoom.emit(self)

@@ -206,3 +206,9 @@ func apply_vsync_mode() -> void:
 
 func apply_fps() -> void:
 	ProjectSettings.set_setting("application/run/max_fps", framerate_cap)
+
+
+func get_resolution_difference() -> Vector2:
+	if display == Display.DISPLAY_FULLSCREEN:
+		return Vector2.ZERO
+	return get_resolution() - Vector2(1920, 1080)
