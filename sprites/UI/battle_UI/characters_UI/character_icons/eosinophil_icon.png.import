@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://uar4h4qjxuhv"
-path="res://.godot/imported/eosinophil_icon.png-eddc9a8f792920f72826eebf04ac5de5.ctex"
+path="res://.godot/imported/eosinophil_icon.png-e0189ef186bf5fd069aafb9b37f74af5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/battle_UI/characters_UI/character_icons/eosinophil_icon.png"
-dest_files=["res://.godot/imported/eosinophil_icon.png-eddc9a8f792920f72826eebf04ac5de5.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/character_icons/eosinophil_icon.png"
+dest_files=["res://.godot/imported/eosinophil_icon.png-e0189ef186bf5fd069aafb9b37f74af5.ctex"]
 
 [params]
 

@@ -2,28 +2,23 @@ class_name DialogueScene
 extends Control
 
 
-@export var path_to_script: String
 @export var dialogue: Dialogue
+@export_file("*.txt") var path_to_script: String
 
-var speakers: Array
-var speakers_active: Array
+
+@onready var speakers: Array = get_children()
 
 
 func _ready() -> void:
-	speakers = get_children()
-	for t in len(speakers):
-		speakers_active.append(false)
-	
 	var text = FileAccess.open(path_to_script, FileAccess.READ).get_as_text().split("\n", false)
 	var index = 0
 	for line in text:
 		var split_line = line.split(" \\ ")
-		var d_line = dialogue.get_line(index)
+		var speakers: Array = dialogue.get_speakes(index)
+		var dialogue_line: DialogueLine = DialogueLine.new(
+				split_line[0], split_line[1], split_line[2], speakers)
+		dialogue.add_line(dialogue_line)
 		index += 1
-		
-		d_line.speaker_name = split_line[0]
-		d_line.speaker_role = split_line[1]
-		d_line.line = split_line[2]
 
 
 func get_len() -> int:
@@ -31,23 +26,21 @@ func get_len() -> int:
 
 
 func set_speakers(index: int) -> void:
-	var line_speakers = get_line(index).speakers
+	var line: DialogueLine = get_line(index)
+	var line_speakers = line.speakers
+	
+	for speaker in speakers:
+		speaker.hide()
 	
 	for speaker in line_speakers:
-		var t = speaker.index
-		if t == -1:
-			continue
-		speakers[t].texture = line_speakers[t].image
-		speakers[t].get_node("Expression").texture = line_speakers[t].expression
-		speakers_active[t] = true
+		var speaker_node: TextureRect = get_node(speaker)
+		#speaker_node.texture = speaker.image
+		speaker_node.modulate = Color8(50, 50, 50)
+		speaker_node.show()
 	
-	for t in len(speakers_active):
-		if !speakers_active[t]:
-			speakers[t].modulate = Color8(10, 10, 10, 255)
-		else:
-			speakers[t].modulate = Color8(255, 255, 255, 255)
-	
-	reset_activity()
+	var current_speaker: TextureRect = get_node_or_null(line.get_current_speaker())
+	if current_speaker != null:
+		current_speaker.modulate = Color8(255, 255, 255)
 
 
 func get_line(index: int) -> DialogueLine:
@@ -56,8 +49,3 @@ func get_line(index: int) -> DialogueLine:
 
 func get_lines() -> Array:
 	return dialogue.lines
-
-
-func reset_activity() -> void:
-	for t in len(speakers):
-		speakers_active[t] = false

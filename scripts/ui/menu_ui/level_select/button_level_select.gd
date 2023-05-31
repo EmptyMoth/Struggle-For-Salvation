@@ -2,7 +2,7 @@ class_name ButtonLevelSelect
 extends TextureButton
 
 
-@export var scene_path: String = ""
+@export_file(".tscn") var packed_scene: String
 @export var level_id: String = ""
 @export var prerequisites: Array = []
 
@@ -43,4 +43,4 @@ func _ready():
 
 
 func _on_pressed() -> void:
-	get_tree().change_scene_to_file(scene_path)
+	get_tree().change_scene_to_file(packed_scene)

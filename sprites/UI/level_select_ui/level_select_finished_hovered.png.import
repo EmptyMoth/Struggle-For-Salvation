@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc6434pcsrf3n"
-path="res://.godot/imported/level_select_finished_hovered.png-2ff98ba25c91997c30671dae881dc763.ctex"
+path="res://.godot/imported/level_select_finished_hovered.png-a103845299e6e7dbc1c835a342e48057.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/level_select_ui/level_select_finished_hovered.png"
-dest_files=["res://.godot/imported/level_select_finished_hovered.png-2ff98ba25c91997c30671dae881dc763.ctex"]
+source_file="res://sprites/ui/level_select_ui/level_select_finished_hovered.png"
+dest_files=["res://.godot/imported/level_select_finished_hovered.png-a103845299e6e7dbc1c835a342e48057.ctex"]
 
 [params]
 

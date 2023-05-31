@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://15ow0b6447ge"
-path="res://.godot/imported/macrophage_icon.png-a6890947171ebd430682a0edadf9fade.ctex"
+path="res://.godot/imported/macrophage_icon.png-d3a2edf12e798bae878546314d48e361.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/battle_UI/characters_UI/character_icons/macrophage_icon.png"
-dest_files=["res://.godot/imported/macrophage_icon.png-a6890947171ebd430682a0edadf9fade.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/character_icons/macrophage_icon.png"
+dest_files=["res://.godot/imported/macrophage_icon.png-d3a2edf12e798bae878546314d48e361.ctex"]
 
 [params]
 

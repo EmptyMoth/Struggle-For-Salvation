@@ -1,20 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://7qmcqm23cndo"]
+[gd_scene load_steps=20 format=3 uid="uid://7qmcqm23cndo"]
 
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_eieh3"]
 [ext_resource type="PackedScene" uid="uid://b4vtn401ruknw" path="res://scenes/ui/menu_ui/level_select/chapters/chapter_lungs.tscn" id="2_fe7ud"]
 [ext_resource type="Script" path="res://scripts/ui/menu_ui/level_select/menu_level_select.gd" id="2_xdbpn"]
+[ext_resource type="AudioStream" uid="uid://c7d8f6gcv70rc" path="res://music/story/main_menu.mp3" id="3_5o3r8"]
 [ext_resource type="Script" path="res://scripts/global_scripts/extension_scripts/player_camera_2d.gd" id="4_hjw2b"]
-[ext_resource type="Texture2D" uid="uid://dq0nbjd8q34pj" path="res://sprites/UI/level_select_ui/main_menu_default.png" id="5_la51u"]
+[ext_resource type="Texture2D" uid="uid://dq0nbjd8q34pj" path="res://sprites/ui/level_select_ui/main_menu_default.png" id="5_la51u"]
 [ext_resource type="PackedScene" uid="uid://ckklr1w23kwio" path="res://scenes/ui/menu_ui/level_select/buttons/texture_button_switch_scene.tscn" id="6_aifxi"]
-[ext_resource type="Texture2D" uid="uid://c2jhua8g870xk" path="res://sprites/UI/level_select_ui/main_menu_pressed.png" id="6_i4jvc"]
+[ext_resource type="Texture2D" uid="uid://c2jhua8g870xk" path="res://sprites/ui/level_select_ui/main_menu_pressed.png" id="6_i4jvc"]
 [ext_resource type="PackedScene" uid="uid://2j7tvrp3u5j6" path="res://scenes/ui/menu_ui/level_select/buttons/chapter_zoom_button.tscn" id="6_q66ru"]
-[ext_resource type="Texture2D" uid="uid://cw5tous7yflhm" path="res://sprites/UI/level_select_ui/main_menu_hovered.png" id="7_koekw"]
-[ext_resource type="Texture2D" uid="uid://dlxh4hee44t8h" path="res://sprites/UI/level_select_ui/lungs_zoom_default.png" id="8_npcqg"]
-[ext_resource type="Texture2D" uid="uid://cilf8ad2a4b1x" path="res://sprites/UI/level_select_ui/lungs_zoom_pressed.png" id="9_nwceb"]
-[ext_resource type="Texture2D" uid="uid://cqm5063vb3gw5" path="res://sprites/UI/level_select_ui/body_zoom_default.png" id="9_oq7mb"]
-[ext_resource type="Texture2D" uid="uid://ducjgb2votg78" path="res://sprites/UI/level_select_ui/body_zoom_pressed.png" id="10_kdx1o"]
-[ext_resource type="Texture2D" uid="uid://jgy3llkvjuht" path="res://sprites/UI/level_select_ui/lungs_zoom_hovered.png" id="10_sfv2q"]
-[ext_resource type="Texture2D" uid="uid://dvnsdmyvy17w7" path="res://sprites/UI/level_select_ui/body_zoom_hovered.png" id="11_blt1h"]
+[ext_resource type="Texture2D" uid="uid://cw5tous7yflhm" path="res://sprites/ui/level_select_ui/main_menu_hovered.png" id="7_koekw"]
+[ext_resource type="Texture2D" uid="uid://dlxh4hee44t8h" path="res://sprites/ui/level_select_ui/lungs_zoom_default.png" id="8_npcqg"]
+[ext_resource type="Texture2D" uid="uid://cilf8ad2a4b1x" path="res://sprites/ui/level_select_ui/lungs_zoom_pressed.png" id="9_nwceb"]
+[ext_resource type="Texture2D" uid="uid://cqm5063vb3gw5" path="res://sprites/ui/level_select_ui/body_zoom_default.png" id="9_oq7mb"]
+[ext_resource type="Texture2D" uid="uid://ducjgb2votg78" path="res://sprites/ui/level_select_ui/body_zoom_pressed.png" id="10_kdx1o"]
+[ext_resource type="Texture2D" uid="uid://jgy3llkvjuht" path="res://sprites/ui/level_select_ui/lungs_zoom_hovered.png" id="10_sfv2q"]
+[ext_resource type="Texture2D" uid="uid://dvnsdmyvy17w7" path="res://sprites/ui/level_select_ui/body_zoom_hovered.png" id="11_blt1h"]
 
 [sub_resource type="Theme" id="Theme_j1bx4"]
 default_font = ExtResource("1_eieh3")
@@ -34,6 +35,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_j1bx4")
 script = ExtResource("2_xdbpn")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5o3r8")
+autoplay = true
 
 [node name="Chapters" type="Control" parent="."]
 layout_mode = 1
@@ -89,5 +94,4 @@ target_zoom = Vector2(2, 2)
 offset = Vector2(960, 540)
 script = ExtResource("4_hjw2b")
 can_change_zoom = false
-camera_direction = 0
 max_shift = Vector2(360, 360)

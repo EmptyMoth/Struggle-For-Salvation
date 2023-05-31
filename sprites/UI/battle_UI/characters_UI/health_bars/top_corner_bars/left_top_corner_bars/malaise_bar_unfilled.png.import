@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d4mbupf1otoeg"
-path="res://.godot/imported/malaise_bar_unfilled.png-5c5112e9537d7f9f7acc9461cffd183d.ctex"
+path="res://.godot/imported/malaise_bar_unfilled.png-051a471d37fec7d50ee427d5a5f65e5b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/battle_UI/characters_UI/health_bars/top_corner_bars/left_top_corner_bars/malaise_bar_unfilled.png"
-dest_files=["res://.godot/imported/malaise_bar_unfilled.png-5c5112e9537d7f9f7acc9461cffd183d.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/top_corner_bars/left_top_corner_bars/malaise_bar_unfilled.png"
+dest_files=["res://.godot/imported/malaise_bar_unfilled.png-051a471d37fec7d50ee427d5a5f65e5b.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cilf8ad2a4b1x"
-path="res://.godot/imported/lungs_zoom_pressed.png-0ea6639d43c43592bc58d856d41f5e47.ctex"
+path="res://.godot/imported/lungs_zoom_pressed.png-8b3835e96d7c955bd9c0973f124e3756.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/level_select_ui/lungs_zoom_pressed.png"
-dest_files=["res://.godot/imported/lungs_zoom_pressed.png-0ea6639d43c43592bc58d856d41f5e47.ctex"]
+source_file="res://sprites/ui/level_select_ui/lungs_zoom_pressed.png"
+dest_files=["res://.godot/imported/lungs_zoom_pressed.png-8b3835e96d7c955bd9c0973f124e3756.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ccvbca41ylo3"
-path="res://.godot/imported/full_malaise_point.png-3b0e85b531d94037c81f4e53ca1624c9.ctex"
+path="res://.godot/imported/full_malaise_point.png-92dd5dff514fcda768baa1e5375f1c36.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/battle_UI/characters_UI/health_bars/bottom_corner_bars/full_malaise_point.png"
-dest_files=["res://.godot/imported/full_malaise_point.png-3b0e85b531d94037c81f4e53ca1624c9.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/bottom_corner_bars/full_malaise_point.png"
+dest_files=["res://.godot/imported/full_malaise_point.png-92dd5dff514fcda768baa1e5375f1c36.ctex"]
 
 [params]
 

@@ -29,20 +29,12 @@ theme_override_constants/margin_top = 75
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_left = 75.0
-offset_top = 75.0
-offset_right = 640.0
-offset_bottom = 265.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-offset_right = 403.0
-offset_bottom = 190.0
 
 [node name="GridContainer" type="GridContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-offset_right = 403.0
-offset_bottom = 155.0
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 4
@@ -51,98 +43,64 @@ metadata/_edit_use_anchors_ = true
 [node name="Stand" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_right = 75.0
-offset_bottom = 75.0
 focus_mode = 0
 text = "Stand"
 
 [node name="Movement" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_left = 80.0
-offset_right = 181.0
-offset_bottom = 75.0
 focus_mode = 0
 text = "Movement"
 
 [node name="Stunning" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_left = 186.0
-offset_right = 294.0
-offset_bottom = 75.0
 focus_mode = 0
 text = "Stun"
 
 [node name="Block" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_left = 299.0
-offset_right = 403.0
-offset_bottom = 75.0
 focus_mode = 0
 text = "Block"
 
 [node name="Evade" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_top = 80.0
-offset_right = 75.0
-offset_bottom = 155.0
 focus_mode = 0
 text = "Evade"
 
 [node name="SlashAttack" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_left = 80.0
-offset_top = 80.0
-offset_right = 181.0
-offset_bottom = 155.0
 focus_mode = 0
 text = "Slash attack"
 
 [node name="PierceAttack" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_left = 186.0
-offset_top = 80.0
-offset_right = 294.0
-offset_bottom = 155.0
 focus_mode = 0
 text = "Pierce attack"
 
 [node name="BluntAttack" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/GridContainer"]
 custom_minimum_size = Vector2(75, 75)
 layout_mode = 2
-offset_left = 299.0
-offset_top = 80.0
-offset_right = 403.0
-offset_bottom = 155.0
 focus_mode = 0
 text = "Blunt Attack"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
 layout_mode = 2
-offset_top = 159.0
-offset_right = 403.0
-offset_bottom = 190.0
 
-[node name="FlipH" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="FlipHCharacter" type="CheckButton" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-offset_right = 92.0
-offset_bottom = 31.0
 size_flags_horizontal = 2
 focus_mode = 0
-text = "Flip H"
+text = "Flip H Char."
 metadata/_edit_use_anchors_ = true
 
 [node name="DealDamage" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(103, 30)
 layout_mode = 2
-offset_left = 300.0
-offset_right = 403.0
-offset_bottom = 31.0
 size_flags_horizontal = 10
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_tuj3c")
@@ -152,15 +110,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
-offset_left = 407.0
-offset_right = 565.0
-offset_bottom = 190.0
 
 [node name="RollSpeedDice" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 custom_minimum_size = Vector2(155, 155)
 layout_mode = 2
-offset_right = 158.0
-offset_bottom = 155.0
 size_flags_vertical = 0
 focus_mode = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -170,15 +123,10 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
-offset_top = 159.0
-offset_right = 158.0
-offset_bottom = 189.0
 
 [node name="Die" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(77, 30)
 layout_mode = 2
-offset_right = 77.0
-offset_bottom = 30.0
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_1tvk1")
 text = "Die"
@@ -186,9 +134,6 @@ text = "Die"
 [node name="Stun" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer"]
 custom_minimum_size = Vector2(77, 0)
 layout_mode = 2
-offset_left = 81.0
-offset_right = 158.0
-offset_bottom = 30.0
 focus_mode = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_g16cc")
 text = "Stun"
@@ -201,7 +146,7 @@ text = "Stun"
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/GridContainer/SlashAttack" to="." method="_on_slash_attack_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/GridContainer/PierceAttack" to="." method="_on_pierce_attack_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/GridContainer/BluntAttack" to="." method="_on_blunt_attack_pressed"]
-[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/FlipH" to="." method="_on_flip_h_toggled"]
+[connection signal="toggled" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/FlipHCharacter" to="." method="_on_flip_h_toggled"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer/HBoxContainer/DealDamage" to="." method="_on_deal_damage_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/RollSpeedDice" to="." method="_on_roll_speed_dice_pressed"]
 [connection signal="pressed" from="MarginContainer/HBoxContainer/VBoxContainer2/HBoxContainer/Die" to="." method="_on_die_pressed"]

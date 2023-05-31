@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw2rrv1hvhtrd"
-path="res://.godot/imported/php_resistance_high.png-f74312828e6a5ff668de69c86a4942ca.ctex"
+path="res://.godot/imported/php_resistance_high.png-37ab0337d810f9580758637617be29f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/battle_UI/characters_UI/resistances_ui/php_resistance/php_resistance_high.png"
-dest_files=["res://.godot/imported/php_resistance_high.png-f74312828e6a5ff668de69c86a4942ca.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/resistances_ui/php_resistance/php_resistance_high.png"
+dest_files=["res://.godot/imported/php_resistance_high.png-37ab0337d810f9580758637617be29f6.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jmstp1qgratd"
-path="res://.godot/imported/php_bar_unfilled.png-2814bcf2de860881e6d692d103d94160.ctex"
+path="res://.godot/imported/php_bar_unfilled.png-1b25fc512124c36f5bcf18691908f962.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/battle_UI/characters_UI/health_bars/subcharacter_bars/php_bar_unfilled.png"
-dest_files=["res://.godot/imported/php_bar_unfilled.png-2814bcf2de860881e6d692d103d94160.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/health_bars/subcharacter_bars/php_bar_unfilled.png"
+dest_files=["res://.godot/imported/php_bar_unfilled.png-1b25fc512124c36f5bcf18691908f962.ctex"]
 
 [params]
 

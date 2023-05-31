@@ -76,7 +76,7 @@ func _on_vsync_toggled(button_pressed: bool) -> void:
 	Settings.apply_vsync_mode()
 
 func _on_framerate_cap_item_selected(index: int) -> void:
-	Settings.framerate_cap = index * Settings.fps_multiplier
+	Settings.framerate_cap = index * Settings.FPS_MULTIPLIER
 	Settings.apply_fps()
 
 func _on_mouse_lock_toggled(button_pressed: bool) -> void:

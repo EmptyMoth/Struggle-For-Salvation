@@ -128,7 +128,7 @@ var enemy_damage: float = 1.0 :
 		enemy_damage = value
 		_config.set_value("custom", "enemy_damage", value)
 
-@onready var _config: ConfigHandler = ConfigHandler.new("user://settings.cfg", SETTING_VALIDATION_ARRAY)
+@onready var _config: ConfigHandler = ConfigHandler.new("res://settings.cfg", SETTING_VALIDATION_ARRAY)
 
 @onready var location_of_ally_team_on_battlefield: LocationOfAllyTeamOnBattlefield = \
 	LocationOfAllyTeamOnBattlefield.LEFT

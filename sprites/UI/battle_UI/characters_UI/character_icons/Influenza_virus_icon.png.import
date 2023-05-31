@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://djjd7jjoal30w"
-path="res://.godot/imported/Influenza_virus_icon.png-b46cbd15a60c395e59b844f0313bb0d5.ctex"
+path="res://.godot/imported/Influenza_virus_icon.png-d08236e793fbe057a7fa2a9acfa4b1f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/battle_UI/characters_UI/character_icons/Influenza_virus_icon.png"
-dest_files=["res://.godot/imported/Influenza_virus_icon.png-b46cbd15a60c395e59b844f0313bb0d5.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/character_icons/Influenza_virus_icon.png"
+dest_files=["res://.godot/imported/Influenza_virus_icon.png-d08236e793fbe057a7fa2a9acfa4b1f8.ctex"]
 
 [params]
 

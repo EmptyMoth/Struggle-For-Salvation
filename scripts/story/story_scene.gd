@@ -16,7 +16,6 @@ const scene_log_entry = preload("res://scenes/story/log/log_entry.tscn")
 
 @export var location_name: String = ""
 @export var level_id: String = ""
-@export var dialogue_scene_path: String = ""
 @export var darken: bool = true
 @export var background_texture: Texture2D
 
@@ -36,7 +35,6 @@ var log_entries: Array
 var button_back: Button
 var button_next: Button
 
-var dialogue: DialogueScene
 var current_line: DialogueLine
 var line_count: int
 var line_index: int = 0
@@ -47,6 +45,8 @@ var text_write: int = 0
 var auto_counter: int = 0
 var log_line: int = 0
 var ui_hidden: bool = false
+
+@onready var dialogue: DialogueScene = $DialogueScene
 
 
 func _ready() -> void:
@@ -61,12 +61,12 @@ func _ready() -> void:
 	button_next = path.get_node("ButtonNext")
 	button_back = path.get_node("ButtonBack")
 	
-	$LocationName.text = "Место действия:" + location_name
+	$LocationName.text = "Место действия: " + location_name
 	$BackgroundTexture.texture = background_texture
 	if not darken:
 		$ColorRect.hide()
 	
-	load_dialogue_scene(dialogue_scene_path)
+	init_dialogue_scene()
 	inc_line(0)
 	display_line()
 
@@ -128,10 +128,7 @@ func end_dialogue() -> void:
 	text_write = Autoplay.NONE
 
 
-func load_dialogue_scene(path: String) -> void:
-	dialogue = load(path).instantiate()
-	add_child(dialogue)
-	move_child(dialogue, 2)
+func init_dialogue_scene() -> void:
 	dialogue.gui_input.connect(_on_color_rect_gui_input)
 	line_count = dialogue.get_len()
 	_populate_log(dialogue.path_to_script)
@@ -160,7 +157,7 @@ func inc_line(inc: int = 1) -> void:
 	display_line()
 	
 	if line_index >= line_count - 1:
-		button_next.set_disabled(true)
+		#button_next.set_disabled(true)
 		if text_write == Autoplay.AUTO:
 			text_write = Autoplay.WRITE
 	else:

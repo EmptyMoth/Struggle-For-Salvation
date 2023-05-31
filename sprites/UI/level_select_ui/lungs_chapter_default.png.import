@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ciexl2cvyel84"
-path="res://.godot/imported/lungs_chapter_default.png-27aa8d997b2b668e650e1a7b6df826b3.ctex"
+path="res://.godot/imported/lungs_chapter_default.png-f33c6762e6a8b0fe785ebe6be6ee8987.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/UI/level_select_ui/lungs_chapter_default.png"
-dest_files=["res://.godot/imported/lungs_chapter_default.png-27aa8d997b2b668e650e1a7b6df826b3.ctex"]
+source_file="res://sprites/ui/level_select_ui/lungs_chapter_default.png"
+dest_files=["res://.godot/imported/lungs_chapter_default.png-f33c6762e6a8b0fe785ebe6be6ee8987.ctex"]
 
 [params]
 

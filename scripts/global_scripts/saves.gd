@@ -12,7 +12,7 @@ var _save: ConfigHandler
 
 
 func _ready():
-	_save = ConfigHandler.new("user://save.cfg", SAVE_VALIDATION_ARRAY)
+	_save = ConfigHandler.new("res://save.cfg", SAVE_VALIDATION_ARRAY)
 	_save.save_config()
 
 

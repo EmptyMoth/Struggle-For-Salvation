@@ -2,7 +2,7 @@ class_name TextureButtonSwitchScene
 extends TextureButton
 
 
-@export var scene_path: String = ""
+@export_file("*.tscn") var scene_path: String
 
 
 func _on_pressed() -> void:
