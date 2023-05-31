@@ -41,7 +41,7 @@ func _move_point(
 	var start_position: Vector2 = given_points[current_point - 1]
 	var end_position: Vector2 = given_points[current_point]
 	var time_to_draw: float = _get_time_to_draw(start_position, end_position)
-	var tween: Tween = get_tree().create_tween()
+	var tween: Tween = get_tree().create_tween().bind_node(self)
 	tween.tween_method(_set_point_position.bind(point_number), 
 		start_position, end_position, time_to_draw)
 	return tween
