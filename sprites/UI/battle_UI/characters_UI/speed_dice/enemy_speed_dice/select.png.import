@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cui66g4i8pvce"
-path="res://.godot/imported/default.png-605a4b5a77d92b9e01b37c75063dca63.ctex"
+uid="uid://dvy33llcyiveh"
+path="res://.godot/imported/select.png-49c0792e6330673e16868161d5b3be88.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/default.png"
-dest_files=["res://.godot/imported/default.png-605a4b5a77d92b9e01b37c75063dca63.ctex"]
+source_file="res://sprites/ui/battle_ui/characters_ui/speed_dice/enemy_speed_dice/select.png"
+dest_files=["res://.godot/imported/select.png-49c0792e6330673e16868161d5b3be88.ctex"]
 
 [params]
 

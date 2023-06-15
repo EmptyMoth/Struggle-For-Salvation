@@ -14,7 +14,7 @@ func _ready() -> void:
 	
 	var arrow_of_assault = preload("res://scenes/ui/battle_ui/characters_ui/arrow_of_assault/arrow_of_player_assault/base_arrow_of_player_assault.tscn").instantiate()
 	#var arrow_of_assault = preload("res://scenes/ui/battle_ui/characters_ui/arrow_of_assault/static_arrow_of_assault/arrow_of_one_side_attack/ally_arrow_of_one_side_attack.tscn").instantiate()
-	_set_arrow_of_assault(arrow_of_assault)
+	#_set_arrow_of_assault(arrow_of_assault)
 	
 	self.was_selected.connect(
 		HandlerForCardsPlacementByPlayer._on_ally_speed_dice_was_selected)

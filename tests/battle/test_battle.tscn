@@ -16,42 +16,42 @@
 [ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu_ui/menu_pause.tscn" id="15_3iakm"]
 [ext_resource type="PackedScene" uid="uid://cplf5sbbg2dh0" path="res://scenes/battle/locations/locations/test_battle/test_battle.tscn" id="18_kal88"]
 
-[sub_resource type="Resource" id="Resource_coit3"]
+[sub_resource type="Resource" id="Resource_krhh0"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3")])
 
-[sub_resource type="Resource" id="Resource_mp8ri"]
+[sub_resource type="Resource" id="Resource_4pqvt"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3")])
 
-[sub_resource type="Resource" id="Resource_e2mqg"]
+[sub_resource type="Resource" id="Resource_1k1ux"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5")])
 
-[sub_resource type="Resource" id="Resource_4j6jx"]
+[sub_resource type="Resource" id="Resource_jg803"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5")])
 
-[sub_resource type="Resource" id="Resource_07xhp"]
+[sub_resource type="Resource" id="Resource_nd6dt"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
 
-[sub_resource type="Resource" id="Resource_v5b3w"]
+[sub_resource type="Resource" id="Resource_3jvuf"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
 
-[sub_resource type="Resource" id="Resource_qaccf"]
+[sub_resource type="Resource" id="Resource_4dd66"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
 
-[sub_resource type="Resource" id="Resource_nwd8x"]
+[sub_resource type="Resource" id="Resource_p0j8s"]
 resource_local_to_scene = true
 script = ExtResource("8_ckplx")
 _packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
@@ -71,30 +71,30 @@ y_sort_enabled = true
 [node name="AllyTeam" parent="Teams" instance=ExtResource("5_b7ejh")]
 
 [node name="Neutrophil" parent="Teams/AllyTeam" instance=ExtResource("6_x3pmk")]
-deck_of_cards = SubResource("Resource_coit3")
+deck_of_cards = SubResource("Resource_krhh0")
 
 [node name="Neutrophil2" parent="Teams/AllyTeam" instance=ExtResource("6_x3pmk")]
-deck_of_cards = SubResource("Resource_mp8ri")
+deck_of_cards = SubResource("Resource_4pqvt")
 
 [node name="Eosinophil" parent="Teams/AllyTeam" instance=ExtResource("9_68dof")]
-deck_of_cards = SubResource("Resource_e2mqg")
+deck_of_cards = SubResource("Resource_1k1ux")
 
 [node name="Eosinophil2" parent="Teams/AllyTeam" instance=ExtResource("9_68dof")]
-deck_of_cards = SubResource("Resource_4j6jx")
+deck_of_cards = SubResource("Resource_jg803")
 
 [node name="EnemyTeam" parent="Teams" instance=ExtResource("11_7wd7t")]
 
 [node name="InfluenzaVirus" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_07xhp")
+deck_of_cards = SubResource("Resource_nd6dt")
 
 [node name="InfluenzaVirus2" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_v5b3w")
+deck_of_cards = SubResource("Resource_3jvuf")
 
 [node name="InfluenzaVirus3" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_qaccf")
+deck_of_cards = SubResource("Resource_4dd66")
 
 [node name="InfluenzaVirus4" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_nwd8x")
+deck_of_cards = SubResource("Resource_p0j8s")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

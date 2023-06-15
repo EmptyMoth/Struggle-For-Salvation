@@ -25,7 +25,7 @@ location_name = "Легкие"
 level_id = "lungs 2"
 background_texture = ExtResource("2_qwj04")
 
-[node name="DialogueScene" parent="." index="2"]
+[node name="DialogueScene" parent="." index="3"]
 dialogue = SubResource("Resource_1vv5h")
 path_to_script = "res://tests/story/story_2/stage_of_history_1.txt"
 

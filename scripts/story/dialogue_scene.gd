@@ -14,9 +14,9 @@ func _ready() -> void:
 	var index = 0
 	for line in text:
 		var split_line = line.split(" \\ ")
-		var speakers: Array = dialogue.get_speakes(index)
+		var speakers_in_text: Array = dialogue.get_speakes(index)
 		var dialogue_line: DialogueLine = DialogueLine.new(
-				split_line[0], split_line[1], split_line[2], speakers)
+				split_line[0], split_line[1], split_line[2], speakers_in_text)
 		dialogue.add_line(dialogue_line)
 		index += 1
 

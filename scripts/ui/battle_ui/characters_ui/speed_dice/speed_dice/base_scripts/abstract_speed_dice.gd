@@ -24,8 +24,7 @@ var current_state: SpeedDiceState :
 		if new_state == SpeedDiceState.DEFAULT and is_assaulting():
 			new_state = SpeedDiceState.USED
 		_current_state = new_state
-		if new_state >= 0:
-			_states.texture.current_frame = new_state
+		_states.texture.current_frame = max(0, new_state)
 	get:
 		return _current_state
 

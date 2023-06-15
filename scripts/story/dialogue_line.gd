@@ -11,6 +11,7 @@ const SPEAKERS_BY_NAMES: Dictionary = {
 	"Макрофаг": "Macrophage", 
 	"Нейтрофил 480": "Neutrophil480", 
 	"Нейтрофил ???": "Neutrophil",
+	"Эритроцит 945": "Ery",
 }
 
 

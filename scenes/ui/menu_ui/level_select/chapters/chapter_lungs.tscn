@@ -58,6 +58,7 @@ offset_left = 166.0
 offset_top = 79.0
 offset_right = 230.0
 offset_bottom = 143.0
+packed_scene = "res://tests/story/story_3/story_2.tscn"
 level_id = "lungs 3"
 prerequisites = ["lungs 2"]
 texture_unfinished_default = ExtResource("5_17rd4")
