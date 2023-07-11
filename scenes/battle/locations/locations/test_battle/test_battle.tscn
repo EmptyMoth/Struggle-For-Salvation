@@ -5,5 +5,8 @@
 
 [node name="TestBattle" instance=ExtResource("1_ohtex")]
 
+[node name="BattlefieldViewport" parent="Battlefield" index="0"]
+scaling_3d_scale = 0.49
+
 [node name="CameraVignette" parent="Camera/Vignette" index="0"]
 texture = ExtResource("2_qdwur")

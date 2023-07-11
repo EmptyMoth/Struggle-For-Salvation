@@ -1,15 +1,10 @@
 extends Control
 
 
-var menu_pause: CenterContainer
-var menu_settings: Control
-
 var just_closed: bool = false
 
-
-func _ready() -> void:
-	menu_pause = $Margins/MenuPause
-	menu_settings = $Margins/MenuSettings
+@onready var menu_pause: CenterContainer = $Margins/MenuPause
+@onready var settings_menu: Control = $Margins/SettingsMenu
 
 
 func pause_game() -> void:
@@ -33,12 +28,12 @@ func _on_button_manual_pressed():
 
 func _on_button_settings_pressed() -> void:
 	menu_pause.hide()
-	menu_settings.show()
+	settings_menu.show()
 
 
 func _on_menu_settings_exit_menu() -> void:
 	menu_pause.show()
-	menu_settings.hide()
+	settings_menu.hide()
 
 
 func _on_button_level_select_pressed() -> void:

@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b4vtn401ruknw" path="res://scenes/ui/menu_ui/level_select/chapters/chapter_lungs.tscn" id="2_fe7ud"]
 [ext_resource type="Script" path="res://scripts/ui/menu_ui/level_select/menu_level_select.gd" id="2_xdbpn"]
 [ext_resource type="AudioStream" uid="uid://c7d8f6gcv70rc" path="res://music/story/main_menu.mp3" id="3_5o3r8"]
-[ext_resource type="Script" path="res://scripts/global_scripts/extension_scripts/player_camera_2d.gd" id="4_hjw2b"]
+[ext_resource type="Script" path="res://scripts/extension_scripts/player_camera_2d.gd" id="4_hjw2b"]
 [ext_resource type="Texture2D" uid="uid://dq0nbjd8q34pj" path="res://sprites/ui/level_select_ui/main_menu_default.png" id="5_la51u"]
 [ext_resource type="PackedScene" uid="uid://ckklr1w23kwio" path="res://scenes/ui/menu_ui/level_select/buttons/texture_button_switch_scene.tscn" id="6_aifxi"]
 [ext_resource type="Texture2D" uid="uid://c2jhua8g870xk" path="res://sprites/ui/level_select_ui/main_menu_pressed.png" id="6_i4jvc"]

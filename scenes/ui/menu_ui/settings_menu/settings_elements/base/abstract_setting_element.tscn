@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://c8y6pdbfadeh8"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/settings_menu/settings_elements/base/base_setting_element.gd" id="1_adbkk"]
+
+[node name="AbstractSettingElement" type="HBoxContainer"]
+script = ExtResource("1_adbkk")
+
+[node name="SettingName" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 1
+size_flags_stretch_ratio = 7.0
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+size_flags_horizontal = 10

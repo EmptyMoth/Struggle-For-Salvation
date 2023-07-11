@@ -2,8 +2,8 @@ class_name ConfigHandler
 extends Node
 
 
-var _config: ConfigFile
-var _path: String
+var _config: ConfigFile = null
+var _path: String = "res://"
 
 
 func _init(path: String, values: Array = [], force_blank: bool = false) -> void:
@@ -15,8 +15,8 @@ func _init(path: String, values: Array = [], force_blank: bool = false) -> void:
 
 
 func validate_config(targets: Array) -> void:
-	for t in targets:
-		validate_value(t[0], t[1], t[2])
+	for target in targets:
+		validate_value(target[0], target[1], target[2])
 
 
 func load_config(path: String) -> void:

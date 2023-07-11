@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/menu_ui/menu_pause.gd" id="1_sk15p"]
 [ext_resource type="FontFile" uid="uid://c4woi53l5vyy2" path="res://fonts/doulos_sil.ttf" id="1_veykp"]
-[ext_resource type="PackedScene" uid="uid://b5cx4c5ht3cw6" path="res://scenes/ui/menu_ui/menu_settings.tscn" id="3_f6r5f"]
+[ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu_ui/settings_menu/settings_menu.tscn" id="3_hrwj0"]
 
 [sub_resource type="Theme" id="Theme_vl26m"]
 default_font = ExtResource("1_veykp")
@@ -89,8 +89,7 @@ layout_mode = 2
 text = "Выход"
 flat = true
 
-[node name="MenuSettings" parent="Margins" instance=ExtResource("3_f6r5f")]
-visible = false
+[node name="SettingsMenu" parent="Margins" instance=ExtResource("3_hrwj0")]
 layout_mode = 2
 
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
@@ -99,4 +98,3 @@ layout_mode = 2
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonLevelSelect" to="." method="_on_button_level_select_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
-[connection signal="exit_menu" from="Margins/MenuSettings" to="." method="_on_menu_settings_exit_menu"]
