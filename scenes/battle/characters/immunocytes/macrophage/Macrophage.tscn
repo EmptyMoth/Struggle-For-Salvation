@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://2yu3l0ecfrsx"]
-
-[ext_resource type="PackedScene" uid="uid://dyreq7f6guld1" path="res://scenes/battle/characters/immunocytes/base_scenes/abstract_immunocyte.tscn" id="1_1whkq"]
-
-[node name="Macrophage" instance=ExtResource("1_1whkq")]

@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_efkeo")
-name_character = "Эозинофил"
+character_name = ""
+character_type = 0
 max_physical_health = 80
 max_mental_health = 40
 physical_resistance = 3

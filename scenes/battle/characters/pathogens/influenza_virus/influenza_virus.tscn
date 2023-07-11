@@ -1,19 +1,16 @@
-[gd_scene load_steps=11 format=3 uid="uid://bmcn4eh1lxac2"]
+[gd_scene load_steps=7 format=3 uid="uid://5l30c5o4pxqg"]
 
-[ext_resource type="PackedScene" uid="uid://c35sfy1hihkrx" path="res://scenes/battle/characters/pathogens/base_scenes/abstract_pathogen.tscn" id="1_20coe"]
-[ext_resource type="Resource" uid="uid://d4cmnx4c5lvq4" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="2_kkf8a"]
-[ext_resource type="Resource" uid="uid://dfvrjojo4q15m" path="res://resources/battle/characters/deck_of_cards/influenza_virus_deck.tres" id="2_l1crg"]
-[ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="2_qc4uu"]
-[ext_resource type="Texture2D" uid="uid://dqfqm3a3rl4ek" path="res://sprites/battle/characters/pathogens/influenza_virus/attack.png" id="3_r32mm"]
-[ext_resource type="Texture2D" uid="uid://djjd7jjoal30w" path="res://sprites/ui/battle_ui/characters_ui/character_icons/Influenza_virus_icon.png" id="4_vjdye"]
-[ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_w7tie"]
-[ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="5_m6siu"]
+[ext_resource type="PackedScene" uid="uid://4xjdxkyjcxhy" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_qgif7"]
+[ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="2_parvu"]
+[ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="3_75lpw"]
+[ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_u6l0x"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_w4g8r"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_y1igv"]
+resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qc4uu")
+"texture": ExtResource("2_parvu")
 }],
 "loop": false,
 "name": &"block",
@@ -21,15 +18,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_r32mm")
-}],
-"loop": false,
-"name": &"blunt_attack",
-"speed": 0.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_qc4uu")
+"texture": ExtResource("3_75lpw")
 }],
 "loop": false,
 "name": &"default",
@@ -37,7 +26,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_qc4uu")
+"texture": ExtResource("2_parvu")
 }],
 "loop": false,
 "name": &"evade",
@@ -45,7 +34,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_w7tie")
+"texture": ExtResource("4_u6l0x")
 }],
 "loop": false,
 "name": &"movement",
@@ -53,44 +42,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_r32mm")
-}],
-"loop": false,
-"name": &"pierce_attack",
-"speed": 0.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_r32mm")
-}],
-"loop": false,
-"name": &"slash_attack",
-"speed": 0.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_m6siu")
+"texture": ExtResource("2_parvu")
 }],
 "loop": false,
 "name": &"stun",
 "speed": 0.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cefb5"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_80f25"]
 resource_local_to_scene = true
-size = Vector2(31, 67)
+size = Vector2(33, 72)
 
-[node name="InfluenzaVirus" instance=ExtResource("1_20coe")]
-stats = ExtResource("2_kkf8a")
-deck_of_cards = ExtResource("2_l1crg")
-icon = ExtResource("4_vjdye")
+[node name="InfluenzaVirus" instance=ExtResource("1_qgif7")]
 
 [node name="Actions" parent="." index="1"]
 position = Vector2(0, -39)
-frames = SubResource("SpriteFrames_w4g8r")
-
-[node name="ClickArea" parent="." index="3"]
-position = Vector2(0, -34)
+sprite_frames = SubResource("SpriteFrames_y1igv")
 
 [node name="CollisionShape2D" parent="ClickArea" index="0"]
-shape = SubResource("RectangleShape2D_cefb5")
+position = Vector2(2.5, -36)
+shape = SubResource("RectangleShape2D_80f25")

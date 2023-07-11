@@ -2,7 +2,8 @@ class_name CharacterStats
 extends Resource
 
 
-@export var name_character: String = ''
+@export var character_name: String = ''
+@export var character_type: BattleParameters.CharactersTypes
 
 @export_group("Health")
 @export_range(1, 1000, 1) var max_physical_health: int = 1

@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://dyreq7f6guld1"]
-
-[ext_resource type="PackedScene" uid="uid://4xjdxkyjcxhy" path="res://scenes/battle/characters/base_scenes/abstract_character.tscn" id="1_qm6ic"]
-[ext_resource type="Script" path="res://scripts/battle/characters/immunocytes/base_scripts/abstract_immunocyte.gd" id="2_wpmte"]
-
-[node name="AbstractImmunocyte" groups=["allies"] instance=ExtResource("1_qm6ic")]
-script = ExtResource("2_wpmte")

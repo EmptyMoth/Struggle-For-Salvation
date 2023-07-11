@@ -3,12 +3,12 @@ extends Resource
 
 
 enum Resistance {
-	IMMUNITY = 0,
-	INEFFECTIVE = 1, 
-	WEAK = 2,
-	NORMAL = 3, 
-	HIGH = 4, 
-	FATAL = 5,
+	IMMUNITY,
+	INEFFECTIVE, 
+	WEAK,
+	NORMAL, 
+	HIGH, 
+	FATAL,
 }
 
 const RESISTANCE_MULTIPLIERS: Dictionary = {

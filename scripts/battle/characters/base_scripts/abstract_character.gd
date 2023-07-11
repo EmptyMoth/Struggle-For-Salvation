@@ -8,42 +8,54 @@ signal deselected(self_character: AbstractCharacter, self_speed_dice: AbstractSp
 signal folded_cards
 signal unfolded_cards(cards: Array[AbstractCard])
 
-
 @export var stats: CharacterStats = CharacterStats.new()
 @export var deck_of_cards: DeckOfCards = DeckOfCards.new()
 @export var icon: CompressedTexture2D = null
 
-var is_themself_placement_cards : bool = false
+var is_ally : bool :
+	get: return "allies" in get_groups()
+var is_themself_placement_cards : bool :
+	get: return "pathogens" in get_groups()
 
-@onready var is_ally : bool = "allies" in get_groups()
+var is_stunned: bool :
+	get: return mental_health.is_empty()
 
 @onready var physical_health := PhysicalHealth.new(stats.max_physical_health)
 @onready var mental_health := MentalHealth.new(stats.max_mental_health)
-@onready var physical_resistance := PhysicalResistance.new(stats.physical_resistance)
-@onready var mental_resistance := MentalResistance.new(stats.mental_resistance)
+@onready var physical_resistance := BaseResistance.new(stats.physical_resistance)
+@onready var mental_resistance := BaseResistance.new(stats.mental_resistance)
 @onready var hand := Hand.new(deck_of_cards)
 
-@onready var actions_animations: AnimatedSprite2D = $Actions
+@onready var character_poses: AnimatedSprite2D = $Actions
+@onready var actions_animations: AnimationPlayer = $Actions/AnimationPlayer
 @onready var subcharacter_hud: SubcharacterHUD = $SubcharacterHUD
 @onready var speed_dice_manager: SpeedDiceManager = $SpeedDiceManager
 
 @onready var character_marker_3d: CharacterMarker3D = preload(
-		"res://scenes/battle/characters/base_scenes/character_marker_3d.tscn").instantiate()
+		"res://scenes/battle/characters/base/character_marker_3d.tscn").instantiate()
 
 
 func _ready() -> void:
+#	var animation: AnimationPlayer = $AnimationPlayer
+#	var anim: Animation = animation.get_animation("base_characters_actions/default")
+#	var track = anim.find_track("AnimationPlayer/Actions:animation", Animation.TYPE_VALUE)
+#	anim.track_set_path(track, "SubcharacterHUD/AnimatedSprite2D:animation")
+#	track = anim.find_track("SubcharacterHUD/AnimatedSprite2D:animation", Animation.TYPE_VALUE)
+	
+	_set_character_type_group()
 	subcharacter_hud.init(physical_health, mental_health)
 	speed_dice_manager.init(stats.min_speed, stats.max_speed, stats.speed_dice_count)
 	
 	_connect_signals()
+	actions_switcher(BattleParameters.CharactersActions.DEFAULT)
 
 
 func _process(_delta: float) -> void:
 	position = character_marker_3d.get_current_position_on_camera()
 
 
-static func get_action_name(action: BattleParameters.Action) -> String:
-	var action_name: String = BattleParameters.Action.find_key(action)
+static func get_action_name(action: BattleParameters.CharactersActions) -> String:
+	var action_name: String = BattleParameters.CharactersActions.find_key(action)
 	return action_name.to_lower() if action_name != null else "default"
 
 
@@ -82,10 +94,10 @@ func roll_speed_dice() -> void:
 	speed_dice_manager.roll_speed_dice()
 
 
-func die() -> void:
+func to_die() -> void:
 	take_physical_damage(physical_health.max_health)
 
-func stun() -> void:
+func to_stun() -> void:
 	take_mental_damage(mental_health.max_health)
 
 
@@ -94,17 +106,13 @@ func take_damage(damage: int) -> void:
 	take_mental_damage(damage)
 
 func take_physical_damage(damage: int) -> void:
-	_take_damage(damage, physical_resistance.get_value(), physical_health)
+	_take_damage(damage, physical_resistance, physical_health)
 
 func take_mental_damage(damage: int) -> void:
-	_take_damage(damage, mental_resistance.get_value(), mental_health)
+	_take_damage(damage, mental_resistance, mental_health)
 
-func _take_damage(damage: int, resistance_value: float, health: AbstractHealth) -> void:
-	damage = _calculate_damage(damage, resistance_value)
-	health.take_damage(damage)
-
-func _calculate_damage(damage: int, resistance_value: float) -> int:
-	return roundi(damage * resistance_value)
+func _take_damage(damage: int, resistance_value: BaseResistance, health: AbstractHealth) -> void:
+	health.take_damage(damage, resistance_value.get_value())
 
 
 func auto_place_cards() -> void:
@@ -124,33 +132,32 @@ func auto_selecting_assault(opponents: Array) -> Dictionary:
 	return opponent_by_speed_dice
 
 
-func move_to_assault(opponent: AbstractCharacter, assault_type: int) -> void:
-	var new_position: Vector3
-	match assault_type:
-		BattleParameters.AssaultType.ONE_SIDE:
-			new_position = opponent.get_character_marker_position()
-		BattleParameters.AssaultType.CLASH:
-			new_position = (get_character_marker_position() + opponent.get_character_marker_position()) / 2
-	
-	character_marker_3d.move_to_new_position(new_position)
+func move_to_assault(assault_position: Vector3) -> void:	
+	character_marker_3d.move_to_new_position(assault_position)
 
 
 func flip_to_starting_position() -> void:
 	var window_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var start_position: Vector2 = character_marker_3d.get_start_position_on_camera()
-	actions_animations.flip_h = start_position.x < window_width / 2.0
-
+	character_poses.flip_h = start_position.x < window_width / 2.0
 
 func flip_to_specified_point(point_position: Vector2) -> void:
-	actions_animations.flip_h = position < point_position
-
+	character_poses.flip_h = position < point_position
 
 func flip_view_direction() -> void:
-	actions_animations.flip_h = !actions_animations.flip_h
+	character_poses.flip_h = !character_poses.flip_h
 
 
-func actions_switcher(action: BattleParameters.Action) -> void:
-	actions_animations.play(AbstractCharacter.get_action_name(action))
+func actions_switcher(action: BattleParameters.CharactersActions) -> void:
+	var animation_name: String = \
+			"base_characters_actions/%s" % AbstractCharacter.get_action_name(action)
+	actions_animations.play(animation_name)
+
+
+func _set_character_type_group() -> void:
+	add_to_group(BattleParameters.GROUPS_BY_CHARACTERS_TYPES[stats.character_type])
+	if stats.character_type > BattleParameters.CharactersTypes.IMMUNOCYTE:
+		add_to_group("pathogens")
 
 
 func _connect_signals() -> void:
@@ -158,6 +165,8 @@ func _connect_signals() -> void:
 	physical_health.died.connect(_on_died)
 	@warning_ignore("return_value_discarded")
 	mental_health.stunned.connect(_on_stunned)
+	mental_health.stunned.connect(physical_resistance._on_character_stunned)
+	mental_health.stunned.connect(mental_resistance._on_character_stunned)
 	
 	for speed_dice in speed_dice_manager.get_all_speed_dice():
 		@warning_ignore("return_value_discarded")
@@ -181,11 +190,12 @@ func _auto_choose_opponent_speed_dice(opponent: AbstractCharacter) -> AbstractSp
 
 
 func _on_died() -> void:
-	pass
+	queue_free()
 
 
 func _on_stunned() -> void:
-	pass
+	physical_resistance._on_character_stunned()
+	mental_resistance._on_character_stunned()
 
 
 func _on_speed_dice_picked(speed_dice: AbstractSpeedDice) -> void:
