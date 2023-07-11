@@ -28,12 +28,12 @@ func _ready() -> void:
 	move_child(_location, 0)
 	
 	_battlefield = _location.battlefield
-	_battlefield.set_formation(_packed_formation.instantiate())
-	_battlefield.set_characters_start_position_on_battlefield(
-		ally_team.characters, enemy_team.characters)
+	_battlefield.set_characters_markers_on_battlefield(
+			ally_team.characters, enemy_team.characters)
+	_battlefield.set_formation(_packed_formation.instantiate(), 
+			ally_team.characters, enemy_team.characters)
 	
 	_connect_signals()
-	
 	_switch_battle_phase()
 
 
@@ -89,6 +89,13 @@ func _start_turn() -> void:
 
 func _end_turn() -> void:
 	await CombatManager.combat_end
+	if enemy_team.is_defeated():
+		victory()
+		return
+	if ally_team.is_defeated():
+		defeate()
+		return
+	
 	emit_signal("turn_ended")
 	_switch_battle_phase()
 

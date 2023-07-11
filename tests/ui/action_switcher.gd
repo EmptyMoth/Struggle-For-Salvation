@@ -2,19 +2,19 @@ extends Control
 
 
 func _on_stand_pressed() -> void: 
-	get_tree().call_group("characters", "actions_switcher", BattleParameters.Action.DEFAULT)
+	get_tree().call_group("characters", "actions_switcher", BattleParameters.CharactersActions.DEFAULT)
 
 func _on_movement_pressed() -> void:
-	get_tree().call_group("characters", "actions_switcher", BattleParameters.Action.MOVEMENT)
+	get_tree().call_group("characters", "actions_switcher", BattleParameters.CharactersActions.MOVEMENT)
 
 func _on_stunning_pressed() -> void:
-	get_tree().call_group("characters", "actions_switcher", BattleParameters.Action.STUN)
+	get_tree().call_group("characters", "actions_switcher", BattleParameters.CharactersActions.STUN)
 
 func _on_block_pressed() -> void:
-	get_tree().call_group("characters", "actions_switcher", BattleParameters.Action.BLOCK)
+	get_tree().call_group("characters", "actions_switcher", BattleParameters.CharactersActions.BLOCK)
 
 func _on_evade_pressed() -> void:
-	get_tree().call_group("characters", "actions_switcher", BattleParameters.Action.EVADE)
+	get_tree().call_group("characters", "actions_switcher", BattleParameters.CharactersActions.EVADE)
 
 func _on_slash_attack_pressed() -> void:
 	get_tree().call_group("characters", "actions_switcher", BattleParameters.Action.SLASH_ATTACK)

@@ -26,12 +26,12 @@ func roll_dice() -> void:
 
 
 func analyze_clash(
-		result: BattleParameters.ClashResult, 
+		result: BattleParameters.ClashResults, 
 		dice_type: AbstractActionDice.DiceType,
 		dice_value: int) -> void:
-	if result == BattleParameters.ClashResult.WIN:
+	if result == BattleParameters.ClashResults.WIN:
 		_winning_a_clash(dice_type, dice_value)
-	elif result == BattleParameters.ClashResult.DRAW:
+	elif result == BattleParameters.ClashResults.DRAW:
 		_drawing_a_clash(dice_type, dice_value)
 	else:
 		_losing_a_clash(dice_type, dice_value)

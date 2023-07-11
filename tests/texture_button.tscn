@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgc0fulju41ao"]
+
+[ext_resource type="Texture2D" uid="uid://uar4h4qjxuhv" path="res://sprites/ui/battle_ui/characters_ui/character_icons/eosinophil_icon.png" id="1_pjalw"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+tooltip_text = "sadawdsesaa"
+texture_normal = ExtResource("1_pjalw")

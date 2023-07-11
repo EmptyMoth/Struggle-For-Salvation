@@ -2,7 +2,8 @@ class_name AbstractTeam
 extends Node2D
 
 
-var characters: Array : get = _get_characters
+@onready var characters: Array[Node] : 
+	get: return get_children().slice(1)
 
 @onready var _team_model: BaseTeamModel = BaseTeamModel.new()
 @onready var _characters_ui: CanvasLayer = $CharactersUI
@@ -13,6 +14,7 @@ func _ready() -> void:
 	_characters_ui.add_child(_team_model.card_manager)
 	
 	CardPlacementManager.assault_was_set.connect(_on_assault_was_set)
+	prints(characters)
 	for character in characters:
 		@warning_ignore("return_value_discarded")
 		character.picked.connect(_on_character_picked)
@@ -31,8 +33,8 @@ func _input(event: InputEvent) -> void:
 		_team_model.deselect_character()
 
 
-func _get_characters() -> Array:
-	return []
+func is_defeated() -> bool:
+	return characters.size() < 1
 
 
 func _on_character_picked(
