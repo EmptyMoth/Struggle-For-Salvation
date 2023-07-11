@@ -37,15 +37,16 @@ func _activate_one_side_attack(
 		character_speed_dice: AbstractSpeedDice, opponent_speed_dice: AbstractSpeedDice) -> void:
 	var character: AbstractCharacter = character_speed_dice.get_character()
 	var opponent: AbstractCharacter = opponent_speed_dice.get_character()
-	character.move_to_assault(opponent, BattleParameters.AssaultType.ONE_SIDE)
+	character.move_to_assault(opponent.get_character_marker_position())
 
 
 func _activate_clash(
 		character_speed_dice: AbstractSpeedDice, opponent_speed_dice: AbstractSpeedDice) -> void:
 	var character: AbstractCharacter = character_speed_dice.get_character()
 	var opponent: AbstractCharacter = opponent_speed_dice.get_character()
-	character.move_to_assault(opponent, BattleParameters.AssaultType.CLASH)
-	opponent.move_to_assault(character, BattleParameters.AssaultType.CLASH)
+	var new_position = (character.get_character_marker_position() - opponent.get_character_marker_position()) / 2
+	character.move_to_assault(new_position)
+	opponent.move_to_assault(new_position)
 
 
 func sort_speed_dice_descending(

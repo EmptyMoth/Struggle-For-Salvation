@@ -11,19 +11,20 @@ config_version=5
 [application]
 
 config/name="Struggle For Salvation"
+config/tags=PackedStringArray("development")
 run/main_scene="res://scenes/ui/menu_ui/main_menu.tscn"
-config/features=PackedStringArray("4.0")
+config/features=PackedStringArray("4.1")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GlobalParameters="*res://scripts/global_scripts/global_parameters.gd"
-BattleParameters="*res://scripts/battle/base_scripts/battle_parameters.gd"
+BattleParameters="*res://scripts/global_scripts/battle_parameters.gd"
 CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/card_placement_manager.gd"
 CombatManager="*res://scripts/battle/base_scripts/phase_managers/combat_phase/combat_manager.gd"
 PlayerState="*res://scripts/battle/base_scripts/player_state.gd"
 HandlerForCardsPlacementByPlayer="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/handler_for_cards_placement_by_player.gd"
-Settings="*res://scripts/global_scripts/settings.gd"
+Settings="*res://scripts/global_scripts/settings/settings.gd"
 Saves="*res://scripts/global_scripts/saves.gd"
 
 [display]
@@ -41,7 +42,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/SmoothScroll/plugin.cfg")
 
 [filesystem]
 
@@ -73,7 +74,7 @@ texture={
 
 ui_cancel={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"pressed":false,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 ui_menu={
@@ -88,22 +89,22 @@ ui_switch_battle_phase={
 }
 ui_pick={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 ui_mouse_button_wheel_up={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"pressed":false,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 ui_mouse_button_wheel_down={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"pressed":false,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 ui_mouse_button_middle={
 "deadzone": 0.5,
-"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"pressed":false,"double_click":false,"script":null)
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":3,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
 ui_auto_selecting_cards={
@@ -116,7 +117,3 @@ ui_auto_selecting_cards={
 
 locale/translations=PackedStringArray("res://translate/translate_ui.en.translation", "res://translate/translate_ui.ru.translation")
 locale/locale_filter_mode=0
-
-[rendering]
-
-environment/defaults/default_clear_color=Color(0, 0, 0, 1)

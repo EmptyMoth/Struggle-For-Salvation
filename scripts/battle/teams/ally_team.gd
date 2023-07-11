@@ -3,9 +3,7 @@ extends AbstractTeam
 
 
 func _ready() -> void:
+	for ally in characters:
+		ally.add_to_group("allies")
 	_team_model = AllyTeamModel.new()
 	super._ready()
-
-
-func _get_characters() -> Array:
-	return get_tree().get_nodes_in_group("allies")

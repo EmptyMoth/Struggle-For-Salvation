@@ -18,8 +18,8 @@ func set_icon_character(icon: CompressedTexture2D) -> void:
 
 
 func set_resistaces(
-			physical_resistance: PhysicalResistance, 
-			mental_resistance: MentalResistance) -> void:
+			physical_resistance: BaseResistance, 
+			mental_resistance: BaseResistance) -> void:
 	_php_resistance_icon.texture.current_frame = physical_resistance.resistance
 	_mhp_resistance_icon.texture.current_frame = mental_resistance.resistance
 
