@@ -1,15 +1,12 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbtcjc5yc3fct"]
 
-[ext_resource type="PackedScene" path="res://scenes/battle/locations/location_elements/battlefields/base_scenes/abstract_battlefield.tscn" id="1_krs7g"]
+[ext_resource type="PackedScene" uid="uid://0ywdcjtv4m3x" path="res://scenes/battle/locations/location_elements/battlefields/base/abstract_battlefield.tscn" id="1_krs7g"]
 [ext_resource type="Texture2D" uid="uid://cds5a8f5r86uh" path="res://sprites/battle/locations/location_elements/battlefields/glass/up_side.png" id="2_jvmf7"]
 [ext_resource type="Texture2D" uid="uid://cyghqq4nsq06a" path="res://sprites/battle/locations/location_elements/battlefields/glass/right_side.png" id="3_smkfn"]
 [ext_resource type="Texture2D" uid="uid://dyeb7qnwwivis" path="res://sprites/battle/locations/location_elements/battlefields/glass/left_side.png" id="4_jkq02"]
 [ext_resource type="Texture2D" uid="uid://c21bvjqto0c8o" path="res://sprites/battle/locations/location_elements/battlefields/glass/bottom_side.png" id="5_vd82a"]
 
 [node name="Glass" instance=ExtResource("1_krs7g")]
-
-[node name="BattlefieldCamera" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 6, 9)
 
 [node name="AnimationPlayer" parent="BattlefieldCamera" index="0"]
 autoplay = "move_camera"

@@ -2,43 +2,34 @@ class_name Formation
 extends Node3D
 
 
-var ally_positions_count: int :
-	get: return _ally_positions.get_child_count()
-var enemy_positions_count: int :
-	get: return _enemy_positions.get_child_count()
-var positions_count: int :
-	get: return ally_positions_count + enemy_positions_count
-
-@onready var _ally_positions: Node3D = $AllyPositions
-@onready var _enemy_positions: Node3D = $EnemyPositions
+@onready var _allies_markers: Node3D = $AlliesMarkers
+@onready var _enemies_markers: Node3D = $EnemiesMarkers
+@onready var allies_positions_count: int = _allies_markers.get_child_count()
+@onready var enemies_positions_count: int = _enemies_markers.get_child_count()
+@onready var _allies_positions: PackedVector3Array = \
+		_get_positions(_allies_markers)
+@onready var _enemies_positions: PackedVector3Array = \
+		_get_positions(_enemies_markers)
 
 
 func _ready() -> void:
-	_flip_ally_team_on_right() \
-		if Settings.gameplay_settings.location_of_ally_team_on_battlefield == Settings.GameplaySettings.LocationOfAllyTeamOnBattlefield.RIGHT \
-		else _flip_ally_team_on_left()
 	($Battlefield as MeshInstance3D).hide()
+	_flip_ally_team(Settings.gameplay_settings.is_location_of_allies_on_left_battlefield())
 
 
-func set_ally_start_position(
-		character_marker: CharacterMarker3D, character_index: int) -> void:
-	var marker: Marker3D = _ally_positions.get_child(character_index)
-	
-	_set_start_position(character_marker, marker)
+func get_ally_position_by_index(index: int) -> Vector3:
+	return _allies_positions[index % allies_positions_count]
 
-func set_enemy_start_position(
-		character_marker: CharacterMarker3D, character_index: int) -> void:
-	var marker: Marker3D = _enemy_positions.get_child(character_index)
-	_set_start_position(character_marker, marker)
-
-func _set_start_position(
-		character_marker: CharacterMarker3D, marker: Marker3D) -> void:
-	character_marker.set_start_position(marker.global_position)
-	marker.add_child(character_marker)
+func get_enemy_position_by_index(index: int) -> Vector3:
+	return _enemies_positions[index % enemies_positions_count]
 
 
-func _flip_ally_team_on_left() -> void:
-	rotation = Vector3(0, PI, 0)
+func _get_positions(node_with_markers: Node3D) -> PackedVector3Array:
+	var positions: PackedVector3Array = []
+	for marker in node_with_markers.get_children():
+		positions.append(marker.global_position)
+	return positions
 
-func _flip_ally_team_on_right() -> void:
-	rotation = Vector3(0, 0, 0)
+
+func _flip_ally_team(on_left: bool) -> void:
+	rotate_y(0.0 if on_left else PI)
