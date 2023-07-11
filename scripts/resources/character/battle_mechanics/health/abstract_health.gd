@@ -20,20 +20,27 @@ func _init(max_value: int) -> void:
 	reset()
 
 
+func is_empty() -> bool:
+	return current_health <= 0
+
+
 func reset() -> void:
 	current_health = max_health
 
 
-func reduce_max_value(count: int) -> void:
-	max_health = max(1, max_health - count)
+func reduce_max_value(value: int) -> void:
+	max_health = max(1, max_health - value)
 
 
-func take_damage(count: int) -> void:
-	current_health = max(0, current_health - count)
+func take_damage(value: int, resistance_value: float) -> void:
+	var damage: int = roundi(value * resistance_value)
+	current_health = max(0, current_health - damage)
+	if is_empty():
+		_reached_zero()
 
 
-func heal(count: int) -> void:
-	current_health = min(current_health + count, max_health)
+func heal(value: int) -> void:
+	current_health = min(current_health + value, max_health)
 
 
 func _reached_zero() -> void:

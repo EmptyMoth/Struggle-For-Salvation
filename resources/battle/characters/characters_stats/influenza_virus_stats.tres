@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_qs801")
-name_character = "Вирус Гриппа из Вакцины"
+character_name = ""
+character_type = 1
 max_physical_health = 20
 max_mental_health = 10
 physical_resistance = 3

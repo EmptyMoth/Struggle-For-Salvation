@@ -4,7 +4,8 @@
 
 [resource]
 script = ExtResource("1_mcit0")
-name_character = "Нейтрофил"
+character_name = "Neutrophil"
+character_type = 0
 max_physical_health = 100
 max_mental_health = 50
 physical_resistance = 3
