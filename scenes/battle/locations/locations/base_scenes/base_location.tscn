@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dg0cyfqq0hx38"]
+[gd_scene load_steps=7 format=3 uid="uid://dg0cyfqq0hx38"]
 
 [ext_resource type="PackedScene" uid="uid://dbtcjc5yc3fct" path="res://scenes/battle/locations/location_elements/battlefields/glass/glass.tscn" id="1_8nmui"]
 [ext_resource type="Script" path="res://scripts/battle/locations/locations/base_scripts/base_location.gd" id="1_of65e"]
 [ext_resource type="PackedScene" uid="uid://bc5822o53spvp" path="res://scenes/battle/locations/location_elements/backgrounds/electrocardiogram/electrocardiogram.tscn" id="2_pd6tw"]
 [ext_resource type="Texture2D" uid="uid://c12ktw7dwg40v" path="res://sprites/battle/locations/location_elements/vignette/vignette_battlefield.png" id="4_k30nd"]
 [ext_resource type="Script" path="res://scripts/global_scripts/extension_scripts/player_camera_2d.gd" id="5_eeg5r"]
+[ext_resource type="Script" path="res://scripts/global_scripts/extension_scripts/monitoring_subviewport_container.gd" id="5_n5xcf"]
 
 [node name="BaseLocation" type="Node2D"]
 script = ExtResource("1_of65e")
@@ -25,6 +26,7 @@ centered = false
 offset_right = 1920.0
 offset_bottom = 1080.0
 stretch = true
+script = ExtResource("5_n5xcf")
 
 [node name="BattlefieldViewport" type="SubViewport" parent="Battlefield"]
 transparent_bg = true
