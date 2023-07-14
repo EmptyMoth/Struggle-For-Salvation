@@ -2,8 +2,7 @@ class_name Tooltip
 extends AbstractPopup
 
 
-@export_range(0, 5, 0.05, "or_greater", "suffix:s") var _delay_before_appearance: float = 0.5
-
+@export_range(0.05, 5, 0.05, "or_greater", "suffix:s") var _delay_before_appearance: float = 0.5
 @export var _position_depends_on_mouse: bool = true
 @export var _follow_mouse: bool = true
 @export var offset: Vector2i = Vector2i.ZERO
@@ -14,58 +13,59 @@ extends AbstractPopup
 
 func _ready() -> void:
 	super()
+	_configure_mouse_filter_to_ignore()
 	_timer.wait_time = _delay_before_appearance
 	_timer.timeout.connect(override_show)
 
 
 func _process(delta: float) -> void:
-	if _follow_mouse:
-		var border = get_viewport().size - padding
-		var base_pos = _get_screen_pos()
-		
-		# test if need to display to the left
-		var final_x = base_pos.x + offset.x
-		if final_x + size.x > border.x:
-			final_x = base_pos.x - offset.x - size.x
-		
-		# test if need to display below
-		var final_y = base_pos.y - size.y - offset.y
-		if final_y < padding.y:
-			final_y = base_pos.y + offset.y
-		global_position = Vector2(final_x, final_y)
+	if _follow_mouse and visible:
+		_change_location()
 
 
 func _draw() -> void:
-	var border = get_viewport().size - padding
-	var base_pos = _get_screen_pos()
-	# test if need to display to the left
-	var final_x = base_pos.x + offset.x
-	if final_x + size.x > border.x:
-		final_x = base_pos.x - offset.x - size.x
-	# test if need to display below
-	var final_y = base_pos.y - size.y - offset.y
-	if final_y < padding.y:
-		final_y = base_pos.y + offset.y
-	global_position = Vector2(final_x, final_y)
-
-
-func _get_screen_pos() -> Vector2:
-	return get_viewport().get_mouse_position() \
-			if _position_depends_on_mouse \
-			else _target_node.global_position
-	
-	var my_position: Vector2 = Vector2.ZERO
-	if _target_node is Node2D:
-		my_position = _target_node.get_global_transform_with_canvas().origin
-	elif _target_node is Control:
-		my_position = _target_node.position
-	
-	return my_position
+	_change_location()
 
 
 func override_show() -> void:
 	_timer.stop()
 	show()
+
+
+func _configure_mouse_filter_to_ignore() -> void:
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	self.child_entered_tree.connect(_on_child_entered_tree)
+	for child in get_children():
+		if child is Control:
+			child.mouse_filter = Control.MOUSE_FILTER_IGNORE
+
+
+func _change_location() -> void:
+	var target_global_position: Vector2 = _get_target_global_position()
+	var borders: Vector2i = get_viewport().size - padding
+	global_position = _get_global_position_taking_into_account_borders(
+			target_global_position, borders)
+
+
+func _get_target_global_position() -> Vector2:
+	return get_global_mouse_position() \
+			if _position_depends_on_mouse or _follow_mouse \
+			else _target_node.global_position
+
+
+func _get_global_position_taking_into_account_borders(
+		target_global_position: Vector2, borders: Vector2) -> Vector2:
+	var new_global_posiion: Vector2 = Vector2(
+			target_global_position.x + offset.x, 
+			target_global_position.y - size.y - offset.y
+	)
+	var position_on_viewport: Vector2 = get_viewport_transform() \
+			* (new_global_posiion + Vector2(size.x, 0))
+	if position_on_viewport.x > borders.x:
+		new_global_posiion.x = target_global_position.x - size.x - offset.x
+	if position_on_viewport.y < padding.y:
+		new_global_posiion.y = target_global_position.y + offset.y
+	return new_global_posiion
 
 
 func _on_target_mouse_entered() -> void:
@@ -75,3 +75,8 @@ func _on_target_mouse_entered() -> void:
 func _on_target_mouse_exited() -> void:
 	_timer.stop()
 	override_hide()
+
+
+func _on_child_entered_tree(node: Node) -> void:
+	if node is Control:
+		node.mouse_filter = Control.MOUSE_FILTER_IGNORE
