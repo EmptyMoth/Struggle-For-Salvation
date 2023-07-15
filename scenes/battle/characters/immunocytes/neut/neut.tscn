@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://vjbeubg6nd87"]
 
-[ext_resource type="PackedScene" uid="uid://4xjdxkyjcxhy" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_lt1gy"]
+[ext_resource type="PackedScene" uid="uid://bbb7gtt7smsqx" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_lt1gy"]
 [ext_resource type="Resource" uid="uid://clfjmrg2xhxl4" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="2_0iytg"]
 [ext_resource type="Resource" uid="uid://h8qxih5e8lr1" path="res://resources/battle/characters/deck_of_cards/neut_deck.tres" id="3_lew05"]
 [ext_resource type="Texture2D" uid="uid://chulonxxnqoco" path="res://sprites/ui/battle_ui/characters_ui/character_icons/neutrophil_icon.png" id="4_6llgt"]

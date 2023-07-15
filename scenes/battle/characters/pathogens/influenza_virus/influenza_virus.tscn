@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://5l30c5o4pxqg"]
 
-[ext_resource type="PackedScene" uid="uid://4xjdxkyjcxhy" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_qgif7"]
+[ext_resource type="PackedScene" uid="uid://bbb7gtt7smsqx" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_qgif7"]
 [ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="2_parvu"]
 [ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="3_75lpw"]
 [ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_u6l0x"]
