@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://chpfnnw1m5ki4"]
 
-[ext_resource type="Script" path="res://scripts/battle/base_scripts/base_battle.gd" id="1_c0o5h"]
+[ext_resource type="Script" path="res://scripts/battle/base/base_battle.gd" id="1_kvtsw"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_bx1pa"]
 [ext_resource type="AudioStream" uid="uid://oqtvktilj55x" path="res://music/battle/lungs/lungs_battle_1.mp3" id="4_itg7f"]
 [ext_resource type="PackedScene" uid="uid://crenpfqy7iihc" path="res://scenes/battle/teams/ally_team.tscn" id="5_b7ejh"]
@@ -14,13 +14,13 @@
 [ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu_ui/menu_pause.tscn" id="15_3iakm"]
 [ext_resource type="PackedScene" uid="uid://cplf5sbbg2dh0" path="res://scenes/battle/locations/locations/test_battle/test_battle.tscn" id="18_kal88"]
 
-[sub_resource type="Resource" id="Resource_macg1"]
+[sub_resource type="Resource" id="Resource_g1y31"]
 resource_local_to_scene = true
 script = ExtResource("8_p6u03")
 _packed_cards = Array[PackedScene]([ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf")])
 
 [node name="TestBattle" type="Node2D"]
-script = ExtResource("1_c0o5h")
+script = ExtResource("1_kvtsw")
 _packed_formation = ExtResource("2_bx1pa")
 _packed_location = ExtResource("18_kal88")
 
@@ -34,7 +34,7 @@ y_sort_enabled = true
 [node name="AllyTeam" parent="Teams" instance=ExtResource("5_b7ejh")]
 
 [node name="Neut" parent="Teams/AllyTeam" instance=ExtResource("6_jsmpb")]
-deck_of_cards = SubResource("Resource_macg1")
+deck_of_cards = SubResource("Resource_g1y31")
 
 [node name="Eosi" parent="Teams/AllyTeam" instance=ExtResource("9_shite")]
 
