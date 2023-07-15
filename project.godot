@@ -18,15 +18,15 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-GlobalParameters="*res://scripts/global_scripts/global_parameters.gd"
-BattleParameters="*res://scripts/global_scripts/battle_parameters.gd"
+GlobalParameters="*res://scripts/global/global_parameters.gd"
+BattleParameters="*res://scripts/global/battle_parameters.gd"
 CardPlacementManager="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/card_placement_manager.gd"
 CombatManager="*res://scripts/battle/base_scripts/phase_managers/combat_phase/combat_manager.gd"
 PlayerState="*res://scripts/battle/base_scripts/player_state.gd"
 HandlerForCardsPlacementByPlayer="*res://scripts/battle/base_scripts/phase_managers/card_placement_phase/handler_for_cards_placement_by_player.gd"
-Settings="*res://scripts/global_scripts/settings/settings.gd"
-Saves="*res://scripts/global_scripts/saves.gd"
-SceneTransition="*res://scripts/global_scripts/scene_transition/scene_transition.gd"
+Settings="*res://scripts/global/settings/settings.gd"
+Saves="*res://scripts/global/saves.gd"
+SceneTransition="*res://scripts/global/scene_transition/scene_transition.gd"
 
 [display]
 

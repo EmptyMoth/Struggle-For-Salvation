@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://4xjdxkyjcxhy"]
+[gd_scene load_steps=8 format=3 uid="uid://bbb7gtt7smsqx"]
 
 [ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/abstract_character.gd" id="1_pj8uo"]
 [ext_resource type="PackedScene" uid="uid://ctv5g5gejbuh" path="res://scenes/ui/battle_ui/characters_ui/huds/subcharacter_hud/subcharacter_hud.tscn" id="2_jxqr6"]

@@ -22,4 +22,3 @@ layout_mode = 2
 
 [node name="CardContainer" parent="TopCornerHUD" index="1" instance=ExtResource("16_dl38i")]
 layout_mode = 2
-mouse_filter = 2
