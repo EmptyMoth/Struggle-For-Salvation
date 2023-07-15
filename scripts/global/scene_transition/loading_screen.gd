@@ -18,7 +18,9 @@ func _process(_delta: float) -> void:
 		ResourceLoader.THREAD_LOAD_LOADED:
 			var resource: Resource = ResourceLoader.load_threaded_get(target_scene_path)
 			get_tree().change_scene_to_packed(resource)
-		_:
+		ResourceLoader.THREAD_LOAD_INVALID_RESOURCE:
+			return
+		ResourceLoader.THREAD_LOAD_FAILED:
 			print("Error. Could not load Resource")
 
 

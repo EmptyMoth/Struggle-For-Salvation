@@ -2,7 +2,7 @@ extends Node
 
 
 @onready var packed_scene_transition: PackedScene = \
-		preload("res://scenes/global_scenes/scene_transition/loading_screen.tscn")
+		preload("res://scenes/global/scene_transition/loading_screen.tscn")
 
 
 func change_scene_to_file(path: String) -> void:
