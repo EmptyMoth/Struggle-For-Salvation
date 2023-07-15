@@ -27,6 +27,7 @@ HandlerForCardsPlacementByPlayer="*res://scripts/battle/base/phase_managers/card
 Settings="*res://scripts/global/settings/settings.gd"
 Saves="*res://scripts/global/saves.gd"
 SceneTransition="*res://scripts/global/scene_transition/scene_transition.gd"
+CustomMouseCursor="*res://scripts/global/custom_mouse_cursor.gd"
 
 [display]
 
