@@ -8,14 +8,14 @@ extends AbstractPopup
 @export var offset: Vector2i = Vector2i.ZERO
 @export var padding: Vector2i = Vector2i.ZERO
 
-@onready var _timer: Timer = $Timer
+@onready var _appearance_timer: Timer = $Timer
 
 
 func _ready() -> void:
-	super()
+	super._ready()
 	_configure_mouse_filter_to_ignore()
-	_timer.wait_time = _delay_before_appearance
-	_timer.timeout.connect(override_show)
+	_appearance_timer.wait_time = _delay_before_appearance
+	_appearance_timer.timeout.connect(override_show)
 
 
 func _process(delta: float) -> void:
@@ -28,7 +28,7 @@ func _draw() -> void:
 
 
 func override_show() -> void:
-	_timer.stop()
+	_appearance_timer.stop()
 	show()
 
 
@@ -69,11 +69,11 @@ func _get_global_position_taking_into_account_borders(
 
 
 func _on_target_mouse_entered() -> void:
-	_timer.start()
+	_appearance_timer.start()
 
 
 func _on_target_mouse_exited() -> void:
-	_timer.stop()
+	_appearance_timer.stop()
 	override_hide()
 
 
