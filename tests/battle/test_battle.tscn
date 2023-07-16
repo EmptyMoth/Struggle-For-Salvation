@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu_ui/menu_pause.tscn" id="15_3iakm"]
 [ext_resource type="PackedScene" uid="uid://cplf5sbbg2dh0" path="res://scenes/battle/locations/locations/test_battle/test_battle.tscn" id="18_kal88"]
 
-[sub_resource type="Resource" id="Resource_vsq2p"]
+[sub_resource type="Resource" id="Resource_fyqik"]
 resource_local_to_scene = true
 script = ExtResource("8_p6u03")
 _packed_cards = Array[PackedScene]([ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf")])
@@ -34,7 +34,7 @@ y_sort_enabled = true
 [node name="AllyTeam" parent="Teams" instance=ExtResource("5_b7ejh")]
 
 [node name="Neut" parent="Teams/AllyTeam" instance=ExtResource("6_jsmpb")]
-deck_of_cards = SubResource("Resource_vsq2p")
+deck_of_cards = SubResource("Resource_fyqik")
 
 [node name="Eosi" parent="Teams/AllyTeam" instance=ExtResource("9_shite")]
 

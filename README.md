@@ -6,7 +6,7 @@ View the [documentation](https://github.com/PunchablePlushie/godot-game-settings
 View the [demo branch](https://github.com/PunchablePlushie/godot-game-settings/tree/demo) for information on how to get the demo.
 
 <p align="center">
-    <img src="https://i.postimg.cc/rpKvBkSk/ggs-icon-nobg.png" alt="demo preview">
+	<img src="https://i.postimg.cc/rpKvBkSk/ggs-icon-nobg.png" alt="demo preview">
 </p>
 
 
@@ -30,5 +30,5 @@ GGS has been completely reworked so it can provide a much better experience for 
 * New UI components have been added: Apply Button, Radio List, Toggle Button, CheckBox
 
 <p align="right">
-    <a href="https://github.com/PunchablePlushie/godot_ggs/wiki/Changelog">Full Changelog</a><br/>
+	<a href="https://github.com/PunchablePlushie/godot_ggs/wiki/Changelog">Full Changelog</a><br/>
 </p>
