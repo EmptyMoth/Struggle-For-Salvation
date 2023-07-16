@@ -37,11 +37,6 @@ window/size/resizable=false
 window/stretch/mode="canvas_items"
 window/size/fullscreen=true
 
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/SmoothScroll/plugin.cfg")
