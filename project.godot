@@ -39,7 +39,7 @@ window/size/fullscreen=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/SmoothScroll/plugin.cfg")
+enabled=PackedStringArray("res://addons/smooth_scroll/plugin.cfg")
 
 [filesystem]
 
