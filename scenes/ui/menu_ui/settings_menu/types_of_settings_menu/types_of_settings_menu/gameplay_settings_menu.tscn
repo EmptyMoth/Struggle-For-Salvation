@@ -12,13 +12,13 @@ script = ExtResource("2_ie1pk")
 layout_mode = 2
 setting_name = "Language"
 
-[node name="LocationOfAllyTeamOnBattlefield" parent="Settings" index="1" instance=ExtResource("2_ue4wd")]
+[node name="AlliesPlacement" parent="Settings" index="1" instance=ExtResource("2_ue4wd")]
 layout_mode = 2
-setting_name = "Location of Ally Team on Battlefield"
+setting_name = "Allies Placement"
 
-[node name="WhetherToCountActionDice" parent="Settings" index="2" instance=ExtResource("3_pyki4")]
+[node name="ActionDiceTally" parent="Settings" index="2" instance=ExtResource("3_pyki4")]
 layout_mode = 2
-setting_name = "Whether to Count Action Dice"
+setting_name = "Action Dice Tally"
 
 [node name="CustomRules" parent="Settings" index="3" instance=ExtResource("3_pyki4")]
 layout_mode = 2

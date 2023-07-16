@@ -1,42 +1,13 @@
 class_name GameplaySettings
-extends AbstractSettings
+extends AbstractSettingsType
 
 
-const LANGUAGE_DEFAULT: String = "English"
-const LANGUAGE: Dictionary = {
-	"English" = "en",
-	"Русский" = "ru",
-}
-
-const LOCATION_OF_ALLIES_ON_BATTLEFIELD_DEFAULT: String = "Left"
-const LOCATION_OF_ALLIES_ON_BATTLEFIELD: Dictionary =  {
-	"Left" = true,
-	"Right" = false,
-}
-
-var language := LANGUAGE_DEFAULT :
-	set(value):
-		language = value
-		var locale: String = LANGUAGE[language]
-		TranslationServer.set_locale(locale)
-		_save_change_setting("language", language)
-var location_of_allies_on_battlefield := LOCATION_OF_ALLIES_ON_BATTLEFIELD_DEFAULT :
-	set(value):
-		location_of_allies_on_battlefield = value
-		_save_change_setting("location_of_allies_on_battlefield", location_of_allies_on_battlefield)
-var whether_to_count_action_dice: bool = false :
-	set(value):
-		whether_to_count_action_dice = value
-		_save_change_setting("whether_to_count_action_dice", whether_to_count_action_dice)
-var custom_rules: bool = false :
-	set(value):
-		custom_rules = value
-		_save_change_setting("custom_rules", custom_rules)
+static var language := SettingLanguage.new()
+static var allies_placement := SettingAlliesPlacement.new()
+static var action_dice_tally := BaseSettingsWithToggle.new("action_dice_tally", false)
+static var custom_rules := BaseSettingsWithToggle.new("custom_rules", false)
 
 
 func _init(config: ConfigHandler) -> void:
-	super(config, "gameplay")
-
-
-func is_location_of_allies_on_left_battlefield() -> bool:
-	return LOCATION_OF_ALLIES_ON_BATTLEFIELD[location_of_allies_on_battlefield]
+	settings = [language, allies_placement, action_dice_tally, custom_rules]
+	super("gameplay", settings, config)

@@ -2,7 +2,7 @@ class_name AbstractSettingsMenu
 extends MarginContainer
 
 
-var _settings_server: AbstractSettings
+var _settings_server: AbstractSettingsType
 
 var _option_buttons_settings: Dictionary = {}
 var _check_button_settings: Array[String] = []
@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 func setups_option_buttons_settings(
-		labels_by_settings: Dictionary, settings: AbstractSettings) -> void:
+		labels_by_settings: Dictionary, settings: AbstractSettingsType) -> void:
 	for setting_name in labels_by_settings:
 		var labels: Array = labels_by_settings[setting_name]
 		var setting_button: OptionButton = get(setting_name)
@@ -23,42 +23,42 @@ func setups_option_buttons_settings(
 			setting_button.item_selected.connect(
 				_on_option_button_item_selected.bindv([setting_name, setting_button, settings]))
 		BaseSettingElement.set_labels_in_option_button(
-			setting_button, labels, settings.get(setting_name))
+			setting_button, labels, settings.get(setting_name).value)
 
 
 func setups_check_buttons_settings(
-		settings_array: Array[String], settings: AbstractSettings) -> void:
+		settings_array: Array[String], settings: AbstractSettingsType) -> void:
 	for setting_name in settings_array:
 		var setting_button: CheckButton = get(setting_name)
 		if not setting_button.toggled.is_connected(_on_check_button_toggled):
 			setting_button.toggled.connect(
 				_on_check_button_toggled.bindv([setting_name, settings]))
-		BaseSettingElement.set_pressed_for_check_button(setting_button, settings.get(setting_name))
+		BaseSettingElement.set_pressed_for_check_button(setting_button, settings.get(setting_name).value)
 
 
 func setups_hslider_settings(
-		settings_array: Array[String], settings: AbstractSettings) -> void:
+		settings_array: Array[String], settings: AbstractSettingsType) -> void:
 	for setting_name in settings_array:
 		var setting_button: HSlider = get(setting_name)
 		if not setting_button.drag_ended.is_connected(_on_hslider_drag_ended):
 			setting_button.drag_ended.connect(
 				_on_hslider_drag_ended.bindv([setting_name, setting_button, settings]))
-		BaseSettingElement.set_value_for_h_slider(setting_button, settings.get(setting_name))
+		BaseSettingElement.set_value_for_h_slider(setting_button, settings.get(setting_name).value)
 
 
 static func _on_option_button_item_selected(index: int, 
-		setting_name: String, settings_button: OptionButton, settings: AbstractSettings) -> void:
+		setting_name: String, settings_button: OptionButton, settings: AbstractSettingsType) -> void:
 	var new_value: String = settings_button.get_item_text(index)
 	settings.set(setting_name, new_value)
 
 
 static func _on_check_button_toggled(button_pressed: bool, 
-		setting_name: String, settings: AbstractSettings) -> void:
+		setting_name: String, settings: AbstractSettingsType) -> void:
 	settings.set(setting_name, button_pressed)
 
 
 static func _on_hslider_drag_ended(value_changed: bool, 
-		setting_name: String, hslider: HSlider, settings: AbstractSettings) -> void:
+		setting_name: String, hslider: HSlider, settings: AbstractSettingsType) -> void:
 	if value_changed:
 		settings.set(setting_name, hslider.value)
 
@@ -68,7 +68,7 @@ func init() -> void:
 
 
 func set_parameters(
-		settings_server: AbstractSettings,
+		settings_server: AbstractSettingsType,
 		option_buttons_settings: Dictionary) -> void:
 	_settings_server = settings_server
 	_option_buttons_settings = option_buttons_settings

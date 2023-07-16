@@ -13,9 +13,9 @@ func init() -> void:
 	set_parameters(
 		Settings.graphics_settings,
 		{
-			"graphics_quality" = GraphicsSettings.GRAPHICS_QUALITY.keys(),
-			"resolution" = GraphicsSettings.RESOLUTIONS.keys(),
-			"display" = GraphicsSettings.DISPLAY.keys(),
-			"limit_max_fps" = GraphicsSettings.LIMIT_MAX_FPS.keys(),
+			"graphics_quality" = GraphicsSettings.graphics_quality.get_options().keys(),
+			"resolution" = GraphicsSettings.resolution.get_options().keys(),
+			"display" = GraphicsSettings.display.get_options().keys(),
+			"limit_max_fps" = GraphicsSettings.limit_max_fps.get_options().keys(),
 		}
 	)

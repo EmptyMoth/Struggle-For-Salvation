@@ -20,6 +20,6 @@ setting_name = "Music Volume"
 layout_mode = 2
 setting_name = "SoundVolume"
 
-[node name="WhetherToPlayMusicDuringPause" parent="Settings" index="3" instance=ExtResource("3_431ps")]
+[node name="PlayMusicOnPause" parent="Settings" index="3" instance=ExtResource("3_431ps")]
 layout_mode = 2
-setting_name = "Whether to Play Music During Pause"
+setting_name = "Play Music on Pause"
