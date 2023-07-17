@@ -7,26 +7,27 @@
 
 [node name="GraphicsSettingsMenu" instance=ExtResource("1_imgem")]
 script = ExtResource("2_jppfy")
+settings_group_name = "GRAPHICS"
 
 [node name="GraphicsQuality" parent="Settings" index="0" instance=ExtResource("3_q2gbh")]
 layout_mode = 2
-setting_name = "Graphics Quality"
+setting_name = "GRAPHICS_QUALITY"
 
 [node name="Resolution" parent="Settings" index="1" instance=ExtResource("3_q2gbh")]
 layout_mode = 2
-setting_name = "Resolution"
+setting_name = "RESOLUTION"
 
 [node name="Display" parent="Settings" index="2" instance=ExtResource("3_q2gbh")]
 layout_mode = 2
-setting_name = "Display"
+setting_name = "DISPLAY"
 
 [node name="MouseLocked" parent="Settings" index="3" instance=ExtResource("4_0er8o")]
 layout_mode = 2
-setting_name = "Mouse Locked"
+setting_name = "MOUSE_LOCKED"
 
 [node name="LimitMaxFPS" parent="Settings" index="4" instance=ExtResource("3_q2gbh")]
 layout_mode = 2
-setting_name = "Limit Max FPS"
+setting_name = "LIMIT_MAX_FPS"
 
 [node name="VSync" parent="Settings" index="5" instance=ExtResource("4_0er8o")]
 layout_mode = 2

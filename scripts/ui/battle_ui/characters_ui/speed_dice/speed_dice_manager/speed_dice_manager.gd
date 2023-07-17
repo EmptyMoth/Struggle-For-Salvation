@@ -82,7 +82,7 @@ func _set_speed(new_min_speed: int, new_max_speed: int) -> void:
 func _get_sorted_speed() -> Array[int]:
 	var speeds: Array[int] = []
 	for i in speed_dice_count:
-		var speed: int = GlobalParameters.random.randi_range(min_speed, max_speed)
+		var speed: int = randi_range(min_speed, max_speed)
 		speeds.append(speed)
 	
 	speeds.sort_custom(func(x, y): return x > y)

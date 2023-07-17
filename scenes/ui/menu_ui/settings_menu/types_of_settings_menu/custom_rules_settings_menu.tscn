@@ -6,11 +6,12 @@
 
 [node name="CustomRulesSettingsMenu" instance=ExtResource("1_pwhf3")]
 script = ExtResource("2_yu6lp")
+settings_group_name = "CUSTOM_RULES"
 
 [node name="EnemyHealth" parent="Settings" index="0" instance=ExtResource("3_nuuc8")]
 layout_mode = 2
-setting_name = "Enemy Health"
+setting_name = "ENEMY_HEALTH"
 
 [node name="EnemyDamage" parent="Settings" index="1" instance=ExtResource("3_nuuc8")]
 layout_mode = 2
-setting_name = "Enemy Damage"
+setting_name = "ENEMY_DAMAGE"

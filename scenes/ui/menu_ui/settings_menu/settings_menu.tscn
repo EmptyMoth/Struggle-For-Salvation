@@ -32,10 +32,10 @@ layout_mode = 2
 tab_alignment = 1
 clip_tabs = false
 
-[node name="Graphics" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_m13m2")]
+[node name="Gameplay" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("2_hlchy")]
 layout_mode = 2
 
-[node name="Gameplay" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("2_hlchy")]
+[node name="Graphics" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_m13m2")]
 visible = false
 layout_mode = 2
 
@@ -51,6 +51,6 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
-text = "Save and Exit"
+text = "SAVE_AND_EXIT"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndExitButton" to="." method="_on_save_and_exit_button_pressed"]

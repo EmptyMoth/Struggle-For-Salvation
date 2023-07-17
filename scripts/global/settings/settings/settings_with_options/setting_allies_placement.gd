@@ -3,12 +3,12 @@ extends BaseSettingWithOptions
 
 
 var is_left: bool : 
-	get: return value == "Left"
+	get: return value == default_value
 
 
 func _init() -> void:
 	_options = {
-		"Left" = true,
-		"Right" = false,
+		"LEFT" = true,
+		"RIGHT" = false,
 	}
-	super("allies_placement", "Left", _options)
+	super("allies_placement", "LEFT", _options)

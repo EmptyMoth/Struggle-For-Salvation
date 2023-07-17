@@ -4,11 +4,11 @@ extends BaseSettingWithOptions
 
 func _init() -> void:
 	_options = {
-		"Windowed" = DisplayServer.WINDOW_MODE_WINDOWED,
-		"Borderless" = DisplayServer.WINDOW_MODE_WINDOWED + DisplayServer.WINDOW_FLAG_BORDERLESS,
-		"Fullscreen" = DisplayServer.WINDOW_MODE_FULLSCREEN,
+		"WINDOWED" = DisplayServer.WINDOW_MODE_WINDOWED,
+		"BORDERLESS" = DisplayServer.WINDOW_MODE_WINDOWED + DisplayServer.WINDOW_FLAG_BORDERLESS,
+		"FULLSCREEN" = DisplayServer.WINDOW_MODE_FULLSCREEN,
 	}
-	super("display", "Fullscreen", _options)
+	super("display", "FULLSCREEN", _options)
 
 
 func _execute() -> void:

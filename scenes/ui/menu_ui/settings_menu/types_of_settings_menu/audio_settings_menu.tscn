@@ -7,19 +7,23 @@
 
 [node name="AudioSettingsMenu" instance=ExtResource("1_a51de")]
 script = ExtResource("2_bomtg")
+settings_group_name = "AUDIO"
 
 [node name="GeneralVolume" parent="Settings" index="0" instance=ExtResource("3_2ahi8")]
 layout_mode = 2
-setting_name = "General Volume"
+setting_name = "GENERAL_VOLUME"
+setting_tooltip = " "
 
 [node name="MusicVolume" parent="Settings" index="1" instance=ExtResource("3_2ahi8")]
 layout_mode = 2
-setting_name = "Music Volume"
+setting_name = "MUSIC_VOLUM"
+setting_tooltip = " "
 
 [node name="SoundVolume" parent="Settings" index="2" instance=ExtResource("3_2ahi8")]
 layout_mode = 2
-setting_name = "Sound Volume"
+setting_name = "SOUND_VOLUME"
+setting_tooltip = " "
 
 [node name="PlayMusicOnPause" parent="Settings" index="3" instance=ExtResource("4_bsvem")]
 layout_mode = 2
-setting_name = "Play Music on Pause"
+setting_name = "PLAY_MUSIC_ON_PAUSE"

@@ -1,9 +1,7 @@
 extends Node
 
 
-@onready var random: RandomNumberGenerator = RandomNumberGenerator.new() :
-	get: return random
+const GENERAL_AUDIO_BUS: String = "Master"
+const MUSIC_AUDIO_BUS: String = "Music"
+const SOUND_AUDIO_BUS: String = "Sound"
 
-
-func _ready() -> void:
-	random.randomize()

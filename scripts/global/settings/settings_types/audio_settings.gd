@@ -2,9 +2,12 @@ class_name AudioSettings
 extends AbstractSettingsType
 
 
-static var general_volume := BaseSettingAudio.new("general_volume", "Master")
-static var music_volume := BaseSettingAudio.new("music_volume", "Music")
-static var sound_volume := BaseSettingAudio.new("sound_volume", "Sound")
+static var general_volume := BaseSettingAudio.new(
+		"general_volume", GlobalParameters.GENERAL_AUDIO_BUS)
+static var music_volume := BaseSettingAudio.new(
+		"music_volume", GlobalParameters.MUSIC_AUDIO_BUS)
+static var sound_volume := BaseSettingAudio.new(
+		"sound_volume", GlobalParameters.SOUND_AUDIO_BUS)
 static var play_music_on_pause := BaseSettingsWithToggle.new("play_music_on_pause", true)
 
 

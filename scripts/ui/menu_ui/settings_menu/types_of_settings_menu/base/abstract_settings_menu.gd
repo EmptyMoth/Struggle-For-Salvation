@@ -2,6 +2,8 @@ class_name AbstractSettingsMenu
 extends MarginContainer
 
 
+@export var settings_group_name: String = ""
+
 var _settings_server: AbstractSettingsType
 
 

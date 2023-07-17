@@ -113,5 +113,4 @@ ui_auto_selecting_cards={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://translate/translate_ui.en.translation", "res://translate/translate_ui.ru.translation")
-locale/locale_filter_mode=0
+locale/translations=PackedStringArray("res://translate/ui_translate.en.translation", "res://translate/ui_translate.ru.translation")

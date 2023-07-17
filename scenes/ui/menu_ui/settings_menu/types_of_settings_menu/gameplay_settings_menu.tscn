@@ -7,10 +7,12 @@
 
 [node name="GameplaySettingsMenu" instance=ExtResource("1_bqhdd")]
 script = ExtResource("2_efmhv")
+settings_group_name = "GAMEPLAY"
 
 [node name="Language" parent="Settings" index="0" instance=ExtResource("3_l061d")]
 layout_mode = 2
 setting_name = "LANGUAGE"
+setting_tooltip = " "
 
 [node name="AlliesPlacement" parent="Settings" index="1" instance=ExtResource("3_l061d")]
 layout_mode = 2
@@ -18,8 +20,8 @@ setting_name = "ALLIES_PLACEMENT"
 
 [node name="ActionDiceTally" parent="Settings" index="2" instance=ExtResource("4_cfsuh")]
 layout_mode = 2
-setting_name = "Action Dice Tally"
+setting_name = "ACTION_DICE_TALLY"
 
 [node name="CustomRules" parent="Settings" index="3" instance=ExtResource("4_cfsuh")]
 layout_mode = 2
-setting_name = "custom rules"
+setting_name = "CUSTOM_RULES"

@@ -1,0 +1,55 @@
+keys,en,ru
+SAVE_AND_EXIT,Save and Exit,Сохранить и Выйти
+RESET_SETTINGS,Reset Settings,Сбросить Настройки
+GAMEPLAY,Gameplay,Настройка Игры
+GRAPHICS,Graphics,Графика
+AUDIO,Audio,Аудио
+CUSTOM_RULES,Custom Rules,Свои Правила
+LANGUAGE,Language,Язык
+ALLIES_PLACEMENT,Allies Placement,Размещение Союзников
+ACTION_DICE_TALLY,Action Dice Tally,Подсчет Кубиков Действий
+GRAPHICS_QUALITY,Graphics Quality,Качество Графики
+RESOLUTION,Resolution,Разрешение
+DISPLAY,Display,Дисплей
+MOUSE_LOCKED,Mouse Locked,Заблокировать Мышь
+LIMIT_MAX_FPS,Limit Max FPS,Лимит Макс. FPS
+GENERAL_VOLUME,General Volume,Общая Громкость
+MUSIC_VOLUM,Music Volume,Музыка
+SOUND_VOLUME,Sound Volume,Звук
+PLAY_MUSIC_ON_PAUSE,Play Music on Pause,Воспроизводить Музыку при Паузе
+ENEMY_HEALTH,Enemy Health,Вражеское Здоровье
+ENEMY_DAMAGE,Enemy Damage,Вражеский Урон
+LEFT,Left,Слева
+RIGHT,Right,Справа
+LOW,Low,Низкое
+MEDIUM,Medium,Среднее
+HIGH,High,Высокое
+WINDOWED,Windowed,Окнонный
+BORDERLESS,Borderless,Без Рамок
+FULLSCREEN,Fullscreen,Полноэкранный
+CUSTOM_RULES_TOOLTIP,Include Custom Rules. Allows you to customize the game for yourself.,Включить Свои Правила. Позволяет настроить игру под себя.
+VSYNC_TOOLTIP,"Vertical synchronization. The frame rate is limited by the refresh rate of the monitor.
+Affects performance!","Вертикальная синхронизация. Частота кадров ограничена частотой обновления монитора.
+Влияет на производительность!"
+LANGUAGE_TOOLTIP,,
+ALLIES_PLACEMENT_TOOLTIP,"Changes the location of the team of allies and enemies on the battlefield.
+Affects only the display!","Меняет сторону расположения команды союзников и врагов на поле боя.
+Влияет только на отображение!"
+ACTION_DICE_TALLY_TOOLTIP,"""When viewing Skills, it calculates the values of Action Dice, taking into account Passive Abilities, Buffs/Debuffs.
+The final value may differ from the one shown!""","""""При просмотре Навыков подсчитывает значения Кубиков Действий, учитывая Пассивнные способности, Баффы/Дебаффы.
+Итоговое значение может отличаться от показанного!"""""
+GRAPHICS_QUALITY_TOOLTIP,"Changes the texture quality.
+Affects performance!","Изменяет качество текстур.
+Влияет на производительность!"
+RESOLUTION_TOOLTIP,Changes the resolution of the game window.,Изменяет разрешение окна игры.
+DISPLAY_TOOLTIP,Changes the game window mode.,Изменяет режим окна игры.
+MOUSE_LOCKED_TOOLTIP,Fixes the mouse cursor inside the game window.,Фиксирует курсор мыши внутри окна игры.
+LIMIT_MAX_FPS_TOOLTIP,"The maximum number of frames per second.
+Affects performance!","Максимальное количество кадров в секунду.
+Влияет на производительность!"
+GENERAL_VOLUME_TOOLTIP,,
+MUSIC_VOLUM_TOOLTIP,,
+SOUND_VOLUME_TOOLTIP,,
+PLAY_MUSIC_ON_PAUSE_TOOLTIP,Determines whether music will play during a pause.,Определяет будет ли играть музыка во время паузы.
+ENEMY_HEALTH_TOOLTIP,Changes the maximum health of enemies by the specified multiplier.,Изменяет максимальное здоровье врагов на указанный множитель.
+ENEMY_DAMAGE_TOOLTIP,Changes the damage inflicted by enemies by the specified multiplier.,Изменяет наносиммый врагами урон на указанный множитель.
