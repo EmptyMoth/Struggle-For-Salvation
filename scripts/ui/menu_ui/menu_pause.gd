@@ -7,6 +7,11 @@ var just_closed: bool = false
 @onready var settings_menu: Control = $Margins/SettingsMenu
 
 
+func _ready() -> void:
+	settings_menu.hide()
+	menu_pause.show()
+
+
 func pause_game() -> void:
 	get_tree().paused = true
 	visible = true
@@ -27,11 +32,11 @@ func _on_button_manual_pressed():
 
 
 func _on_button_settings_pressed() -> void:
-	menu_pause.hide()
 	settings_menu.show()
+	menu_pause.hide()
 
 
-func _on_menu_settings_exit_menu() -> void:
+func _on_settings_menu_menu_exited() -> void:
 	menu_pause.show()
 	settings_menu.hide()
 

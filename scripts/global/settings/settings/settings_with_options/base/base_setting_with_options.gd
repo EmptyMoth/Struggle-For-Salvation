@@ -21,3 +21,7 @@ func _set_value(new_value: Variant) -> void:
 
 func get_options() -> Dictionary:
 	return _options
+
+
+func get_items() -> Array:
+	return _options.keys()

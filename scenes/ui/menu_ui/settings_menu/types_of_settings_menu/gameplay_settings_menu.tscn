@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhnjojlybtvbt"]
+
+[ext_resource type="PackedScene" uid="uid://c012adynymsqp" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/base/abstract_settings_menu.tscn" id="1_bqhdd"]
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/settings_menu/types_of_settings_menu/gameplay_settings_menu.gd" id="2_efmhv"]
+[ext_resource type="PackedScene" uid="uid://bdrwcnuupffuw" path="res://scenes/ui/menu_ui/settings_menu/settings_elements/option_button_setting_menu.tscn" id="3_l061d"]
+[ext_resource type="PackedScene" uid="uid://bfwfo3q1hm38e" path="res://scenes/ui/menu_ui/settings_menu/settings_elements/check_button_setting_menu.tscn" id="4_cfsuh"]
+
+[node name="GameplaySettingsMenu" instance=ExtResource("1_bqhdd")]
+script = ExtResource("2_efmhv")
+
+[node name="Language" parent="Settings" index="0" instance=ExtResource("3_l061d")]
+layout_mode = 2
+setting_name = "LANGUAGE"
+
+[node name="AlliesPlacement" parent="Settings" index="1" instance=ExtResource("3_l061d")]
+layout_mode = 2
+setting_name = "ALLIES_PLACEMENT"
+
+[node name="ActionDiceTally" parent="Settings" index="2" instance=ExtResource("4_cfsuh")]
+layout_mode = 2
+setting_name = "Action Dice Tally"
+
+[node name="CustomRules" parent="Settings" index="3" instance=ExtResource("4_cfsuh")]
+layout_mode = 2
+setting_name = "custom rules"

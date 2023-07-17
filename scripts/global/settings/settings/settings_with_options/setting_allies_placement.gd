@@ -3,7 +3,7 @@ extends BaseSettingWithOptions
 
 
 var is_left: bool : 
-	get: return value
+	get: return value == "Left"
 
 
 func _init() -> void:

@@ -30,4 +30,4 @@ func initialise_settings() -> void:
 
 func set_default_settings() -> void:
 	for setting in settings:
-		set(setting.name, setting.default_value)
+		setting.set_defaut_value()
