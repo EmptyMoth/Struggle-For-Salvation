@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c07q2app4lcm7"]
+
+[ext_resource type="PackedScene" uid="uid://c012adynymsqp" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/base/abstract_settings_menu.tscn" id="1_imgem"]
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/settings_menu/types_of_settings_menu/graphics_settings_menu.gd" id="2_jppfy"]
+[ext_resource type="PackedScene" uid="uid://bdrwcnuupffuw" path="res://scenes/ui/menu_ui/settings_menu/settings_elements/option_button_setting_menu.tscn" id="3_q2gbh"]
+[ext_resource type="PackedScene" uid="uid://bfwfo3q1hm38e" path="res://scenes/ui/menu_ui/settings_menu/settings_elements/check_button_setting_menu.tscn" id="4_0er8o"]
+
+[node name="GraphicsSettingsMenu" instance=ExtResource("1_imgem")]
+script = ExtResource("2_jppfy")
+settings_group_name = "GRAPHICS"
+
+[node name="GraphicsQuality" parent="Settings" index="0" instance=ExtResource("3_q2gbh")]
+layout_mode = 2
+setting_name = "GRAPHICS_QUALITY"
+
+[node name="Resolution" parent="Settings" index="1" instance=ExtResource("3_q2gbh")]
+layout_mode = 2
+setting_name = "RESOLUTION"
+
+[node name="Display" parent="Settings" index="2" instance=ExtResource("3_q2gbh")]
+layout_mode = 2
+setting_name = "DISPLAY"
+
+[node name="MouseLocked" parent="Settings" index="3" instance=ExtResource("4_0er8o")]
+layout_mode = 2
+setting_name = "MOUSE_LOCKED"
+
+[node name="LimitMaxFPS" parent="Settings" index="4" instance=ExtResource("3_q2gbh")]
+layout_mode = 2
+setting_name = "LIMIT_MAX_FPS"
+
+[node name="VSync" parent="Settings" index="5" instance=ExtResource("4_0er8o")]
+layout_mode = 2
+setting_name = "VSync"

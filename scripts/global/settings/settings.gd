@@ -8,24 +8,26 @@ static var gameplay_settings := GameplaySettings.new(_config)
 static var audio_settings := AudioSettings.new(_config)
 static var custom_rules_settings := CustomRulesSettings.new(_config)
 
-static var settings: Array[AbstractSettings] = \
+static var settings: Array[AbstractSettingsType] = \
 [graphics_settings, audio_settings, gameplay_settings, custom_rules_settings]
 
 
 func _ready() -> void:
-	_initialise_parameters()
+	_initialise_settings()
 
 
-func reset_settings() -> void:
+func set_default_settings() -> void:
 	for setting in settings:
-		setting.reset_settings()
+		setting.set_default_settings()
 
 
 func save_settings() -> void:
+	for setting in settings:
+		setting.save_settings()
 	_config.save_config()
 
 
-func _initialise_parameters() -> void:
+func _initialise_settings() -> void:
 	for setting in settings:
-		setting.initialise_parameters()
+		setting.initialise_settings()
 	save_settings()

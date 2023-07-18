@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://ccvyx7je6c671"]
+
+[ext_resource type="PackedScene" uid="uid://c012adynymsqp" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/base/abstract_settings_menu.tscn" id="1_pwhf3"]
+[ext_resource type="Script" path="res://scripts/ui/menu_ui/settings_menu/types_of_settings_menu/custom_rules_settings_menu.gd" id="2_yu6lp"]
+[ext_resource type="PackedScene" uid="uid://chbkkj3m2qli6" path="res://scenes/ui/menu_ui/settings_menu/settings_elements/h_slider_setting_menu.tscn" id="3_nuuc8"]
+
+[node name="CustomRulesSettingsMenu" instance=ExtResource("1_pwhf3")]
+script = ExtResource("2_yu6lp")
+settings_group_name = "CUSTOM_RULES"
+
+[node name="EnemyHealth" parent="Settings" index="0" instance=ExtResource("3_nuuc8")]
+layout_mode = 2
+setting_name = "ENEMY_HEALTH"
+
+[node name="EnemyDamage" parent="Settings" index="1" instance=ExtResource("3_nuuc8")]
+layout_mode = 2
+setting_name = "ENEMY_DAMAGE"

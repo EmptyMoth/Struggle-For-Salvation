@@ -14,7 +14,7 @@ extends Node3D
 
 func _ready() -> void:
 	($Battlefield as MeshInstance3D).hide()
-	_flip_ally_team(Settings.gameplay_settings.is_location_of_allies_on_left_battlefield())
+	_flip_ally_team(Settings.gameplay_settings.allies_placement.is_left)
 
 
 func get_ally_position_by_index(index: int) -> Vector3:

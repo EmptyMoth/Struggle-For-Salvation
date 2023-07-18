@@ -14,7 +14,7 @@ action = &"ui_menu"
 events = [SubResource("InputEventAction_rh50j")]
 
 [node name="Control" type="Control"]
-process_mode = 2
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,6 +90,7 @@ text = "Выход"
 flat = true
 
 [node name="SettingsMenu" parent="Margins" instance=ExtResource("3_hrwj0")]
+visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonContinue" to="." method="_on_button_continue_pressed"]
@@ -98,3 +99,4 @@ layout_mode = 2
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonLevelSelect" to="." method="_on_button_level_select_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonMainMenu" to="." method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="Margins/MenuPause/VBoxContainer/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="menu_exited" from="Margins/SettingsMenu" to="." method="_on_settings_menu_menu_exited"]

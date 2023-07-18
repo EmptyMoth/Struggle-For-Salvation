@@ -25,7 +25,7 @@ func load_config(path: String) -> void:
 		_config = ConfigFile.new()
 
 
-func validate_value(section: String, key: String, value) -> void:
+func validate_value(section: String, key: String, value: Variant) -> void:
 	if not _config.has_section_key(section, key):
 		_config.set_value(section, key, value)
 

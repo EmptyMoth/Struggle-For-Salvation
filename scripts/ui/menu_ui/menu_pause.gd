@@ -7,15 +7,34 @@ var just_closed: bool = false
 @onready var settings_menu: Control = $Margins/SettingsMenu
 
 
+func _ready() -> void:
+	Settings.audio_settings.play_music_on_pause.setting_changed.connect(
+			_on_play_music_on_pause_changed)
+	settings_menu.hide()
+	menu_pause.show()
+
+
 func pause_game() -> void:
+	show()
 	get_tree().paused = true
-	visible = true
+	if not Settings.audio_settings.play_music_on_pause.is_on:
+		_music_mute(true)
 
 
 func close_menu() -> void:
+	hide()
 	get_tree().paused = false
 	just_closed = true
-	visible = false
+	_music_mute(false)
+
+
+func _music_mute(enable: bool) -> void:
+	var bus_index: int = AudioServer.get_bus_index(GlobalParameters.MUSIC_AUDIO_BUS)
+	AudioServer.set_bus_mute(bus_index, enable)
+
+
+func _on_play_music_on_pause_changed(new_value: bool) -> void:
+	_music_mute(not new_value)
 
 
 func _on_button_continue_pressed() -> void:
@@ -27,11 +46,11 @@ func _on_button_manual_pressed():
 
 
 func _on_button_settings_pressed() -> void:
-	menu_pause.hide()
 	settings_menu.show()
+	menu_pause.hide()
 
 
-func _on_menu_settings_exit_menu() -> void:
+func _on_settings_menu_menu_exited() -> void:
 	menu_pause.show()
 	settings_menu.hide()
 

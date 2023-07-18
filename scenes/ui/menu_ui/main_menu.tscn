@@ -60,3 +60,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="CenterContainer/Menu/ButtonSettings" to="." method="_on_button_settings_pressed"]
 [connection signal="pressed" from="CenterContainer/Menu/ButtonExit" to="." method="_on_button_exit_pressed"]
+[connection signal="menu_exited" from="CenterContainer/SettingsMenu" to="." method="_on_settings_menu_menu_exited"]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bvughhmsw4fmq"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu_ui/settings_menu/settings_menu.gd" id="1_vjftu"]
-[ext_resource type="PackedScene" uid="uid://bdv2jbltvaqfx" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/types_of_settings_menu/gameplay_settings_menu.tscn" id="2_volq4"]
-[ext_resource type="PackedScene" uid="uid://c07q2app4lcm7" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/types_of_settings_menu/graphics_settings_menu.tscn" id="3_m13m2"]
-[ext_resource type="PackedScene" uid="uid://der6t6sqo4u0o" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/types_of_settings_menu/audio_settings_menu.tscn" id="4_ax5ut"]
-[ext_resource type="PackedScene" uid="uid://ccvyx7je6c671" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/types_of_settings_menu/custom_rules_settings_menu.tscn" id="5_enftv"]
+[ext_resource type="PackedScene" uid="uid://dhnjojlybtvbt" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/gameplay_settings_menu.tscn" id="2_hlchy"]
+[ext_resource type="PackedScene" uid="uid://c07q2app4lcm7" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/graphics_settings_menu.tscn" id="3_m13m2"]
+[ext_resource type="PackedScene" uid="uid://der6t6sqo4u0o" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/audio_settings_menu.tscn" id="4_ax5ut"]
+[ext_resource type="PackedScene" uid="uid://ccvyx7je6c671" path="res://scenes/ui/menu_ui/settings_menu/types_of_settings_menu/custom_rules_settings_menu.tscn" id="5_enftv"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -32,25 +32,25 @@ layout_mode = 2
 tab_alignment = 1
 clip_tabs = false
 
-[node name="GameplaySettingsMenu" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("2_volq4")]
+[node name="Gameplay" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("2_hlchy")]
 layout_mode = 2
 
-[node name="GraphicsSettingsMenu" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_m13m2")]
+[node name="Graphics" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_m13m2")]
 visible = false
 layout_mode = 2
 
-[node name="AudioSettingsMenu" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("4_ax5ut")]
+[node name="Audio" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("4_ax5ut")]
 visible = false
 layout_mode = 2
 
-[node name="CustomRulesSettingsMenu" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("5_enftv")]
+[node name="CustomRules" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("5_enftv")]
 visible = false
 layout_mode = 2
 
-[node name="Button" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SaveAndExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
-text = "Save and Exit"
+text = "SAVE_AND_EXIT"
 
-[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndExitButton" to="." method="_on_save_and_exit_button_pressed"]

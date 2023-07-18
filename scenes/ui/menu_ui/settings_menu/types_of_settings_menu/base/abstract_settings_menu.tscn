@@ -21,6 +21,6 @@ theme_override_constants/separation = 12
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
-text = "Reset Settings"
+text = "RESET_SETTINGS"
 
 [connection signal="pressed" from="Settings/ResetButton" to="." method="_on_reset_button_pressed"]
