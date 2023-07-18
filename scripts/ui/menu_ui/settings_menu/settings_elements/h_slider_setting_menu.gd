@@ -12,7 +12,7 @@ func _initial_setup(setting: BaseSettingWithRange) -> void:
 	option_button.max_value = setting.max_value
 	option_button.step = setting.step
 	var tick_count: int = setting.get_segment_count()
-	option_button.tick_count = tick_count + 2 if tick_count < 10 else 0
+	option_button.tick_count = tick_count + 1 if tick_count < 10 else 0
 	option_button.value = setting.value
 
 
