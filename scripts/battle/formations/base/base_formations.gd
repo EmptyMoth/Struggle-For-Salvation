@@ -1,4 +1,4 @@
-class_name Formation
+class_name BaseFormation
 extends Node3D
 
 

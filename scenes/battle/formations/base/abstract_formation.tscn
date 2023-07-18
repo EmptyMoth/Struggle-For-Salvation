@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bgylwmmvsejd1"]
 
-[ext_resource type="Script" path="res://scripts/battle/formations/formation.gd" id="1_utn23"]
+[ext_resource type="Script" path="res://scripts/battle/formations/base/base_formations.gd" id="1_abp3m"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_h8dji"]
 
 [node name="AbstractFormation" type="Node3D"]
-script = ExtResource("1_utn23")
+script = ExtResource("1_abp3m")
 
 [node name="Battlefield" type="MeshInstance3D" parent="."]
 transform = Transform3D(11.4295, 0, 0, 0, 1.00593, 0, 0, 0, 1.60512, 0, 0, 0)
