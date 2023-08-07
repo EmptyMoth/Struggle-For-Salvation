@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dw2fc5c0smxm2"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/skills/skills_tooltip/skills_tooltip.gd" id="1_kwdch"]
-[ext_resource type="PackedScene" uid="uid://is8jw3kcoyh7" path="res://scenes/ui/battle/skills/skills_tooltip/tooltip_elements/action_dice_tooltip.tscn" id="2_cee3k"]
+[ext_resource type="PackedScene" uid="uid://is8jw3kcoyh7" path="res://scenes/ui/battle/huds/popups_for_teams/popup_with_skill_info/elements_with_actions_dice/action_dice_info.tscn" id="2_cee3k"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="3_hdrcf"]
 [ext_resource type="Texture2D" uid="uid://b5rnotvxes64o" path="res://sprites/ui/battle/popup_with_character_information/button_showing_dice_ability/default.svg" id="4_swlgi"]
 [ext_resource type="Texture2D" uid="uid://ybkvgd3dgiv0" path="res://sprites/ui/battle/popup_with_character_information/button_showing_dice_ability/pressed.svg" id="5_ky1np"]

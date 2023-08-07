@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5rnotvxes64o"
-path="res://.godot/imported/default.svg-cb61b6044c158bce8e8f556c431c0985.ctex"
+uid="uid://ybkvgd3dgiv0"
+path="res://.godot/imported/pressed.svg-dc595b518f2685c3d29b8185ae4ab08c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle/popup_with_character_information/button_showing_dice_ability/default.svg"
-dest_files=["res://.godot/imported/default.svg-cb61b6044c158bce8e8f556c431c0985.ctex"]
+source_file="res://sprites/ui/battle/popups_for_teams/popup_with_skill_info/button_showing_dice_ability/pressed.svg"
+dest_files=["res://.godot/imported/pressed.svg-dc595b518f2685c3d29b8185ae4ab08c.ctex"]
 
 [params]
 

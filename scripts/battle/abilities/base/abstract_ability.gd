@@ -14,10 +14,9 @@ var condition: AbilityCondition = null
 var influence: AbilityInfluence = null
 
 
-func _init(ability_condition: AbilityCondition, 
-		ability_influence: AbilityInfluence) -> void:
-	condition = ability_condition
-	influence = ability_influence
+#func _init(ability_condition: AbilityCondition, ability_influence: AbilityInfluence) -> void:
+#	condition = ability_condition
+#	influence = ability_influence
 
 
 class AbilityCondition:

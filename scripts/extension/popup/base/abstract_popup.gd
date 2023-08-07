@@ -7,16 +7,18 @@ extends Control
 
 
 func _ready() -> void:
-	hide()
+	override_hide()
 	connect_target_node(_target_node)
 
 
-func connect_target_node(target_node: CanvasItem) -> void:
-	if _target_node.has_signal("mouse_entered") and _target_node.has_signal("mouse_exited"):
-		_target_node.mouse_entered.connect(_on_target_mouse_entered)
-		_target_node.mouse_exited.connect(_on_target_mouse_exited)
-	else:
+func connect_target_node(target_node: CanvasItem) -> bool:
+	if not target_node.has_signal("mouse_entered") or not target_node.has_signal("mouse_exited"):
 		push_warning("WARNING. AbstractPopup: target node uncorrect")
+		return false
+	
+	target_node.mouse_entered.connect(_on_target_mouse_entered)
+	target_node.mouse_exited.connect(_on_target_mouse_exited)
+	return true
 
 
 func connect_target_nodes(target_nodes: Array) -> void:

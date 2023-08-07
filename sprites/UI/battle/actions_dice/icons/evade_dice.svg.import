@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://frwtuvmfj2ct"
-path="res://.godot/imported/hover.svg-cde05727e4279a8efb2385804f89b43e.ctex"
+uid="uid://m3jljc3axjbi"
+path="res://.godot/imported/evade_dice.svg-06a47373a377ac746a9dd7d421dc88b3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle/popup_with_character_information/button_showing_dice_ability/hover.svg"
-dest_files=["res://.godot/imported/hover.svg-cde05727e4279a8efb2385804f89b43e.ctex"]
+source_file="res://sprites/ui/battle/actions_dice/icons/evade_dice.svg"
+dest_files=["res://.godot/imported/evade_dice.svg-06a47373a377ac746a9dd7d421dc88b3.ctex"]
 
 [params]
 
@@ -32,6 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=0
-svg/scale=1.0
+svg/scale=3.0
 editor/scale_with_editor_scale=false
 editor/convert_colors_with_editor_theme=false

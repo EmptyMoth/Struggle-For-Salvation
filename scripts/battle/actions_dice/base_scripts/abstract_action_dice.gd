@@ -3,20 +3,20 @@ extends Node
 
 
 enum DiceType {
-	ATTACK_DICE = 1,
-	BLOCK_DICE = 2,
-	EVADE_DICE = 4,
-	COUNTER_ATTACK_DICE = 8,
-	COUNTER_BLOCK_DICE = 16,
-	COUNTER_EVADE_DICE = 32,
+	ATTACK_DICE = 0,
+	BLOCK_DICE = 1,
+	EVADE_DICE = 2,
+	COUNTER_ATTACK_DICE = 3,
+	COUNTER_BLOCK_DICE = 4,
+	COUNTER_EVADE_DICE = 5,
 }
 
 @export var min_value: int = 0
-@export var max_value: int = 0
+@export var max_value: int = 1
 
 var current_value: int = 0
-var dice_type: DiceType
-var ability: ActionDiceAbility
+var dice_type: DiceType = DiceType.ATTACK_DICE
+var ability: AbstractAbility = NoAbility.new()
 
 var _action: Action
 
