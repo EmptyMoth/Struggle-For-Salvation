@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://efc8p0t07j38"]
+
+[ext_resource type="PackedScene" uid="uid://c2vs8c01mtmfd" path="res://scenes/ui/battle/characters/health_bars/top_corner_bars/base_scenes/abstract_top_corner_bars.tscn" id="1_i5d3b"]
+[ext_resource type="PackedScene" uid="uid://cmvqfaqudnd46" path="res://scenes/ui/battle/characters/health_bars/top_corner_bars/right_top_corner_bar/right_mhp_bar.tscn" id="2_1vohx"]
+[ext_resource type="PackedScene" uid="uid://b6llakbrjsbdc" path="res://scenes/ui/battle/characters/health_bars/top_corner_bars/right_top_corner_bar/right_php_bar.tscn" id="3_0yiof"]
+
+[node name="RightTopCornerBars" instance=ExtResource("1_i5d3b")]
+size_flags_horizontal = 8
+
+[node name="PHPBar" parent="." index="0" instance=ExtResource("3_0yiof")]
+layout_mode = 2
+
+[node name="MHPBar" parent="." index="1" instance=ExtResource("2_1vohx")]
+layout_mode = 2

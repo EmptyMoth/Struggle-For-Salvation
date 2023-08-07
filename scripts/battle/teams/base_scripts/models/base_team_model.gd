@@ -85,8 +85,8 @@ func _instantiate_card_manager() -> void:
 
 
 func _get_top_corner_hud() -> BaseTopCornerHUD:
-	return preload("res://scenes/ui/battle_ui/characters_ui/huds/top_corner_hud/abstract_top_corner_hud.tscn").instantiate()
+	return preload("res://scenes/ui/battle/characters/huds/top_corner_hud/abstract_top_corner_hud.tscn").instantiate()
 
 func _get_card_manager() -> CardManager:
-	return preload("res://scenes/ui/battle_ui/cards/card_manager/card_manager.tscn").instantiate()
+	return preload("res://scenes/ui/battle/cards/card_manager/card_manager.tscn").instantiate()
 

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://6pkg7eeawcty"]
+
+[ext_resource type="PackedScene" uid="uid://tdwilafdoalt" path="res://scenes/ui/battle/characters/huds/top_corner_hud/abstract_top_corner_hud.tscn" id="1_2au32"]
+[ext_resource type="PackedScene" uid="uid://defvxsp743qes" path="res://scenes/ui/battle/characters/huds/top_corner_hud/elements/main_element/left_main_element.tscn" id="2_3h1ny"]
+[ext_resource type="PackedScene" uid="uid://dqbxeakk2x6s8" path="res://scenes/ui/battle/characters/huds/top_corner_hud/elements/passive_ability_labels/left_passive_ability_labels.tscn" id="15_k2u85"]
+[ext_resource type="PackedScene" uid="uid://bwr2b3ks3n2q2" path="res://scenes/ui/battle/characters/huds/top_corner_hud/elements/card_container/card_container.tscn" id="16_dl38i"]
+
+[node name="LeftTopCornerHUD" instance=ExtResource("1_2au32")]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="TopCornerHUD" parent="." index="0"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MainElement" parent="TopCornerHUD/HUD" index="0" instance=ExtResource("2_3h1ny")]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PassiveAbilityLabels" parent="TopCornerHUD/HUD" index="1" instance=ExtResource("15_k2u85")]
+layout_mode = 2
+
+[node name="CardContainer" parent="TopCornerHUD" index="1" instance=ExtResource("16_dl38i")]
+layout_mode = 2

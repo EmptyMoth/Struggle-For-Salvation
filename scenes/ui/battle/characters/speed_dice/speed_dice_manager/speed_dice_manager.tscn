@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dd5hub8wm1jqr"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/characters/speed_dice/speed_dice_manager/speed_dice_manager.gd" id="1_lgja3"]
+
+[node name="SpeedDiceManager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_lgja3")
+
+[node name="SpeedDiceContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(1783, 0)
+layout_mode = 0
+offset_left = -891.0
+offset_top = -205.0
+offset_right = 892.0
+scale = Vector2(0.25, 0.25)
+pivot_offset = Vector2(891, 205)
+mouse_filter = 2
+theme_override_constants/separation = -3
+alignment = 1
+metadata/_edit_group_ = true

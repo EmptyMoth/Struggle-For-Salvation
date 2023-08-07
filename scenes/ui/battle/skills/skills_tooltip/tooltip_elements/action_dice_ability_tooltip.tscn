@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxjdomt54u7mn"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/skills/skills_tooltip/tooltip_elements/action_dice_ability_tooltip.gd" id="1_h75mu"]
+[ext_resource type="FontFile" uid="uid://b42bg6pwq7sgh" path="res://fonts/achilles_2.ttf" id="2_3ja44"]
+
+[node name="DiceAbilityTooltip" type="PanelContainer"]
+auto_translate = false
+localize_numeral_system = false
+script = ExtResource("1_h75mu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="DiceAbilityInformation" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false
+theme_override_constants/separation = 5
+
+[node name="DiceNumber" type="Label" parent="MarginContainer/DiceAbilityInformation"]
+custom_minimum_size = Vector2(35, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+auto_translate = false
+localize_numeral_system = false
+theme_override_fonts/font = ExtResource("2_3ja44")
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Ability" type="Label" parent="MarginContainer/DiceAbilityInformation"]
+layout_mode = 2
+size_flags_horizontal = 3
+localize_numeral_system = false
+theme_override_font_sizes/font_size = 24
+autowrap_mode = 2
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+auto_translate = false
+localize_numeral_system = false

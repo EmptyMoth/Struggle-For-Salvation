@@ -1,0 +1,56 @@
+[gd_scene load_steps=6 format=3 uid="uid://bvughhmsw4fmq"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/settings_menu.gd" id="1_e8fqe"]
+[ext_resource type="PackedScene" uid="uid://dhnjojlybtvbt" path="res://scenes/ui/menu/settings_menu/types_of_settings_menu/gameplay_settings_menu.tscn" id="2_8e7cp"]
+[ext_resource type="PackedScene" uid="uid://c07q2app4lcm7" path="res://scenes/ui/menu/settings_menu/types_of_settings_menu/graphics_settings_menu.tscn" id="3_7qjjh"]
+[ext_resource type="PackedScene" uid="uid://der6t6sqo4u0o" path="res://scenes/ui/menu/settings_menu/types_of_settings_menu/audio_settings_menu.tscn" id="4_f4ltf"]
+[ext_resource type="PackedScene" uid="uid://ccvyx7je6c671" path="res://scenes/ui/menu/settings_menu/types_of_settings_menu/custom_rules_settings_menu.tscn" id="5_7ldj5"]
+
+[node name="SettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e8fqe")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="TabContainer" type="TabContainer" parent="CenterContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 800)
+layout_mode = 2
+tab_alignment = 1
+clip_tabs = false
+
+[node name="Gameplay" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("2_8e7cp")]
+layout_mode = 2
+
+[node name="Graphics" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("3_7qjjh")]
+visible = false
+layout_mode = 2
+
+[node name="Audio" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("4_f4ltf")]
+visible = false
+layout_mode = 2
+
+[node name="CustomRules" parent="CenterContainer/VBoxContainer/TabContainer" instance=ExtResource("5_7ldj5")]
+visible = false
+layout_mode = 2
+
+[node name="SaveAndExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 10
+text = "SAVE_AND_EXIT"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndExitButton" to="." method="_on_save_and_exit_button_pressed"]

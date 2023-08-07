@@ -1,5 +1,5 @@
 class_name AbstractActionDice
-extends Control
+extends Node
 
 
 enum DiceType {

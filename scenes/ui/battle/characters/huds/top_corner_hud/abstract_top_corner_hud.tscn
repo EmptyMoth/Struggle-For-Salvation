@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://tdwilafdoalt"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/characters/huds/top_corner_hud/base_top_corner_hud.gd" id="1_y2sxs"]
+
+[node name="AbstractTopCornerHUD" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_y2sxs")
+
+[node name="TopCornerHUD" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="HUD" type="VBoxContainer" parent="TopCornerHUD"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = -50

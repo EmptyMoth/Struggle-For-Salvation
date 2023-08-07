@@ -1,12 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbb7gtt7smsqx"]
+[gd_scene load_steps=8 format=3 uid="uid://bdncac3gfq8ms"]
 
 [ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/abstract_character.gd" id="1_pj8uo"]
-[ext_resource type="PackedScene" uid="uid://ctv5g5gejbuh" path="res://scenes/ui/battle_ui/characters_ui/huds/subcharacter_hud/subcharacter_hud.tscn" id="2_jxqr6"]
+[ext_resource type="PackedScene" uid="uid://ctv5g5gejbuh" path="res://scenes/ui/battle/characters/huds/subcharacter_hud/subcharacter_hud.tscn" id="2_wffk4"]
 [ext_resource type="AnimationLibrary" uid="uid://8tfrtticacgd" path="res://resources/battle/characters/actions_animations/base_libraries/base_characters_actions.res" id="3_ayav0"]
 [ext_resource type="AnimationLibrary" uid="uid://ptsewigwueq6" path="res://resources/battle/characters/actions_animations/base_libraries/characters_attacks.res" id="4_45hhr"]
-[ext_resource type="PackedScene" uid="uid://dd5hub8wm1jqr" path="res://scenes/ui/battle_ui/characters_ui/speed_dice/speed_dice_manager/speed_dice_manager.tscn" id="5_e60e0"]
+[ext_resource type="PackedScene" uid="uid://dd5hub8wm1jqr" path="res://scenes/ui/battle/characters/speed_dice/speed_dice_manager/speed_dice_manager.tscn" id="5_ip0ul"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_b8r1a"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_moquk"]
 resource_local_to_scene = true
 animations = [{
 "frames": [],
@@ -35,18 +35,17 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ir2ha"]
-resource_local_to_scene = true
-size = Vector2(31, 67)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aqoxh"]
 
 [node name="AbstractCharacter" type="Node2D" groups=["characters"]]
 script = ExtResource("1_pj8uo")
 
-[node name="SubcharacterHUD" parent="." instance=ExtResource("2_jxqr6")]
+[node name="SubcharacterHUD" parent="." instance=ExtResource("2_wffk4")]
 
 [node name="Actions" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-sprite_frames = SubResource("SpriteFrames_b8r1a")
+sprite_frames = SubResource("SpriteFrames_moquk")
+animation = &"block"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actions"]
 root_node = NodePath("../..")
@@ -55,17 +54,15 @@ libraries = {
 "characters_attacks": ExtResource("4_45hhr")
 }
 
-[node name="SpeedDiceManager" parent="." instance=ExtResource("5_e60e0")]
-offset_top = -86.0
-offset_bottom = -86.0
-
 [node name="ClickArea" type="Area2D" parent="."]
 collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-shape = SubResource("RectangleShape2D_ir2ha")
+shape = SubResource("RectangleShape2D_aqoxh")
 debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="SpeedDiceManager" parent="." instance=ExtResource("5_ip0ul")]
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://5j1e7vk4565f"]
+
+[ext_resource type="PackedScene" uid="uid://bdncac3gfq8ms" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_vyfbk"]
+[ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="2_hkv68"]
+[ext_resource type="Resource" uid="uid://d4cmnx4c5lvq4" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="2_v1wv4"]
+[ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="3_ja0r5"]
+[ext_resource type="Resource" uid="uid://dfvrjojo4q15m" path="res://resources/battle/characters/deck_of_cards/influenza_virus_deck.tres" id="3_vv7vx"]
+[ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_afsd2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7qecs"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hkv68")
+}],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ja0r5")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hkv68")
+}],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_afsd2")
+}],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hkv68")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8wt46"]
+resource_local_to_scene = true
+size = Vector2(33, 72)
+
+[node name="InfluenzaVirus" instance=ExtResource("1_vyfbk")]
+texture_filter = 1
+stats = ExtResource("2_v1wv4")
+deck_of_cards = ExtResource("3_vv7vx")
+
+[node name="Actions" parent="." index="1"]
+position = Vector2(0, -39)
+sprite_frames = SubResource("SpriteFrames_7qecs")
+
+[node name="CollisionShape2D" parent="ClickArea" index="0"]
+position = Vector2(2.5, -36)
+shape = SubResource("RectangleShape2D_8wt46")
+
+[node name="SpeedDiceManager" parent="." index="3"]
+offset_top = -75.0
+offset_bottom = -75.0

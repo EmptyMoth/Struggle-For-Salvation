@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwy3uum0p5b25"]
+
+[ext_resource type="PackedScene" path="res://scenes/ui/battle/characters/huds/top_corner_hud/elements/passive_ability_labels/abstract_passive_ability_labels.tscn" id="1_yae70"]
+
+[node name="RightPassiveAbilityLabels" instance=ExtResource("1_yae70")]
+
+[node name="Background" parent="." index="0"]
+mouse_filter = 2
+flip_h = true

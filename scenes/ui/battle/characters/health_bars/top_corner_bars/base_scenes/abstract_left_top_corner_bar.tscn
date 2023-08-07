@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxu84dql1n5u7"]
+
+[ext_resource type="PackedScene" uid="uid://bmy1h6qy47p4c" path="res://scenes/ui/battle/characters/health_bars/top_corner_bars/base_scenes/abstract_top_corner_bar.tscn" id="1_donj8"]
+
+[node name="AbstractLeftTopCornerBar" instance=ExtResource("1_donj8")]
+fill_mode = 5
+radial_center_offset = Vector2(-200, -200)
+
+[node name="IconStat" parent="." index="0"]
+layout_mode = 3
+
+[node name="Counter" parent="." index="1"]
+layout_mode = 3
+horizontal_alignment = 2

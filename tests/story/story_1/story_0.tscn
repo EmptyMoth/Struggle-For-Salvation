@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://cf1akt4tjrxta"]
 
 [ext_resource type="PackedScene" uid="uid://bkum2k6vrud1n" path="res://scenes/story/story_scene.tscn" id="1_axolc"]
-[ext_resource type="Texture2D" uid="uid://os6novkggwxr" path="res://sprites/ui/level_select_ui/lungs.png" id="2_bo4oj"]
+[ext_resource type="Texture2D" uid="uid://os6novkggwxr" path="res://sprites/ui/level_select/lungs.png" id="2_bo4oj"]
 [ext_resource type="Script" path="res://scripts/story/dialogue.gd" id="3_a4lyw"]
-[ext_resource type="Texture2D" uid="uid://bt0cgcrcc6h0x" path="res://sprites/ui/story_ui/characters/default_character.png" id="5_v3kvg"]
-[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story_ui/characters/neut.png" id="8_5mdgp"]
+[ext_resource type="Texture2D" uid="uid://bt0cgcrcc6h0x" path="res://sprites/ui/story/characters/default_character.png" id="5_v3kvg"]
+[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story/characters/neut.png" id="8_5mdgp"]
 
 [sub_resource type="Resource" id="Resource_no5ia"]
 script = ExtResource("3_a4lyw")

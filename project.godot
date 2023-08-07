@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Struggle For Salvation"
 config/tags=PackedStringArray("development")
-run/main_scene="res://scenes/ui/menu_ui/main_menu.tscn"
+run/main_scene="res://scenes/ui/menu/main_menu.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.svg"
 
@@ -45,6 +45,10 @@ enabled=PackedStringArray("res://addons/smooth_scroll/plugin.cfg")
 [filesystem]
 
 import/blender/enabled=false
+
+[gui]
+
+theme/custom="res://resources/ui/themes/main_theme.tres"
 
 [importer_defaults]
 

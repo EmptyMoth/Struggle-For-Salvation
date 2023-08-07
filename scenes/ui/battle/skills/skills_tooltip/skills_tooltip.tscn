@@ -1,0 +1,152 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw2fc5c0smxm2"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/skills/skills_tooltip/skills_tooltip.gd" id="1_kwdch"]
+[ext_resource type="PackedScene" uid="uid://is8jw3kcoyh7" path="res://scenes/ui/battle/skills/skills_tooltip/tooltip_elements/action_dice_tooltip.tscn" id="2_cee3k"]
+[ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="3_hdrcf"]
+[ext_resource type="Texture2D" uid="uid://b5rnotvxes64o" path="res://sprites/ui/battle/popup_with_character_information/button_showing_dice_ability/default.svg" id="4_swlgi"]
+[ext_resource type="Texture2D" uid="uid://ybkvgd3dgiv0" path="res://sprites/ui/battle/popup_with_character_information/button_showing_dice_ability/pressed.svg" id="5_ky1np"]
+[ext_resource type="Texture2D" uid="uid://frwtuvmfj2ct" path="res://sprites/ui/battle/popup_with_character_information/button_showing_dice_ability/hover.svg" id="6_xappx"]
+
+[node name="SkillsTooltip" type="AspectRatioContainer"]
+offset_right = 500.0
+offset_bottom = 218.0
+auto_translate = false
+localize_numeral_system = false
+script = ExtResource("1_kwdch")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBox" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ActionsDicePanel" type="PanelContainer" parent="Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="Margin/HBox/ActionsDicePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="ActionsDice" type="VBoxContainer" parent="Margin/HBox/ActionsDicePanel/Margin"]
+layout_mode = 2
+
+[node name="ActionDiceTooltip" parent="Margin/HBox/ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("2_cee3k")]
+layout_mode = 2
+
+[node name="ActionDiceTooltip2" parent="Margin/HBox/ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("2_cee3k")]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MainPanel" type="PanelContainer" parent="Margin/HBox/VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="Margin/HBox/VBox/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox/VBox/MainPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Header" type="HBoxContainer" parent="Margin/HBox/VBox/MainPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SkillIcon" type="TextureRect" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="SkillTitle" type="Label" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_hdrcf")
+theme_override_font_sizes/font_size = 24
+text = "Skill Title"
+vertical_alignment = 1
+
+[node name="SkillTypes" type="VBoxContainer" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RangeType" type="HBoxContainer" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header/SkillTypes"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="Type" type="Label" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header/SkillTypes/RangeType"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_hdrcf")
+theme_override_font_sizes/font_size = 20
+text = "Type"
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header/SkillTypes/RangeType"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="UsesType" type="HBoxContainer" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header/SkillTypes"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="Type" type="Label" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_hdrcf")
+theme_override_font_sizes/font_size = 20
+text = "Colldown"
+vertical_alignment = 1
+
+[node name="Counter" type="Label" parent="Margin/HBox/VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.47451, 0.631373, 0.94902, 1)
+theme_override_fonts/font = ExtResource("3_hdrcf")
+theme_override_font_sizes/font_size = 24
+text = "9"
+vertical_alignment = 1
+
+[node name="SkillAbilityDescription" type="RichTextLabel" parent="Margin/HBox/VBox/MainPanel/Margin/VBox"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b][Combat Start][/b] AD increase in min value and decrease in max value."
+fit_content = true
+scroll_active = false
+
+[node name="ButtonShowingDiceAbilities" type="TextureButton" parent="Margin/HBox/VBox/MainPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture_normal = ExtResource("4_swlgi")
+texture_pressed = ExtResource("5_ky1np")
+texture_hover = ExtResource("6_xappx")
+
+[node name="AbilitiesHBox" type="VBoxContainer" parent="Margin/HBox/VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 10

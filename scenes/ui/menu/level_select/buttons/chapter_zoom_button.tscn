@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://2j7tvrp3u5j6"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/level_select/chapter_zoom_button.gd" id="1_axmot"]
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_axmot")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

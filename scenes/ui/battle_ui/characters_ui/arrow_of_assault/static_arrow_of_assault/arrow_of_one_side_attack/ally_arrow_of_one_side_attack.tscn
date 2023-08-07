@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dfxwh78eigywj"]
-
-[ext_resource type="PackedScene" uid="uid://clkqjn5n4ruhs" path="res://scenes/ui/battle_ui/characters_ui/arrow_of_assault/static_arrow_of_assault/arrow_of_one_side_attack/base_scenes/base_arrow_of_one_side_attack.tscn" id="1_b8lkb"]
-
-[node name="AllyArrowOfOneSideAttack" instance=ExtResource("1_b8lkb")]
-modulate = Color(0.51, 0.648833, 1, 1)

@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://cbhpmthanrcoy"]
+
+[ext_resource type="PackedScene" uid="uid://bdncac3gfq8ms" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_6t10p"]
+[ext_resource type="Resource" uid="uid://dee4tjnw27ow" path="res://resources/battle/characters/characters_stats/eosi_stats.tres" id="2_nhney"]
+[ext_resource type="Texture2D" uid="uid://d0ssaqxemv1bc" path="res://sprites/battle/characters/immunocytes/eosinophil/block.png" id="2_pvq8a"]
+[ext_resource type="Resource" uid="uid://40i1ualtstcv" path="res://resources/battle/characters/deck_of_cards/eosi_deck.tres" id="3_fi7uo"]
+[ext_resource type="Texture2D" uid="uid://cwnn3w3ovq0xu" path="res://sprites/battle/characters/immunocytes/eosinophil/default.png" id="3_igee1"]
+[ext_resource type="Texture2D" uid="uid://l37dlehvev0x" path="res://sprites/battle/characters/immunocytes/eosinophil/evade.png" id="4_m5xfd"]
+[ext_resource type="Texture2D" uid="uid://cuurbqqc4wagr" path="res://sprites/battle/characters/immunocytes/eosinophil/movement.png" id="5_hn8t8"]
+[ext_resource type="Texture2D" uid="uid://oauhvqcq2572" path="res://sprites/battle/characters/immunocytes/eosinophil/stun.png" id="6_qrn8w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q2k58"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pvq8a")
+}],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_igee1")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m5xfd")
+}],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_hn8t8")
+}],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_qrn8w")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cnx8e"]
+resource_local_to_scene = true
+size = Vector2(32, 71)
+
+[node name="Eosi" instance=ExtResource("1_6t10p")]
+stats = ExtResource("2_nhney")
+deck_of_cards = ExtResource("3_fi7uo")
+
+[node name="Actions" parent="." index="1"]
+position = Vector2(0, -60)
+sprite_frames = SubResource("SpriteFrames_q2k58")
+
+[node name="CollisionShape2D" parent="ClickArea" index="0"]
+position = Vector2(7, -35.5)
+shape = SubResource("RectangleShape2D_cnx8e")
+
+[node name="SpeedDiceManager" parent="." index="3"]
+offset_top = -74.0
+offset_bottom = -74.0

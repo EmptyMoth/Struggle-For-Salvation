@@ -1,5 +1,5 @@
 class_name AbstractAbility
-extends Node
+extends Resource
 
 
 enum Target {
@@ -7,6 +7,8 @@ enum Target {
 	CARD = 2,
 	DICE = 4,
 }
+
+@export_multiline var description: String = ""
 
 var condition: AbilityCondition = null
 var influence: AbilityInfluence = null

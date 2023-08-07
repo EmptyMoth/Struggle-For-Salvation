@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2vs8c01mtmfd"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/characters/health_bars/base_scripts/base_container_bars.gd" id="1_02hlf"]
+
+[node name="AbstractTopCornerBars" type="MarginContainer"]
+offset_right = 141.0
+offset_bottom = 213.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_02hlf")
+metadata/_edit_group_ = true

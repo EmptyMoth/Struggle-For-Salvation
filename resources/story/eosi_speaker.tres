@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Speaker" load_steps=3 format=3 uid="uid://cdsepbbstwlg0"]
 
-[ext_resource type="Texture2D" uid="uid://bop8bhpl8dkjf" path="res://sprites/ui/story_ui/characters/eosi.png" id="1_5m2d0"]
+[ext_resource type="Texture2D" uid="uid://bop8bhpl8dkjf" path="res://sprites/ui/story/characters/eosi.png" id="1_5m2d0"]
 [ext_resource type="Script" path="res://scripts/story/speaker.gd" id="2_b85k8"]
 
 [resource]
