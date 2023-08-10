@@ -1,0 +1,152 @@
+[gd_scene load_steps=9 format=3 uid="uid://bu1wimhkpbutk"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/huds/popups_for_teams/popup_with_character_additional_info/popup_with_character_additional_info.gd" id="1_1vpgi"]
+[ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="2_3nuae"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jxwn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o0gcy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31swl"]
+content_margin_top = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.615686, 0.729412, 0.94902, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fv7ji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_13a6c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm7g4"]
+
+[node name="PopupWithCharacterAdditionalInfo" type="PanelContainer"]
+offset_right = 10.0
+offset_bottom = 10.0
+script = ExtResource("1_1vpgi")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Options" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="SkillsButton" type="Button" parent="Margin/VBox/Options"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1jxwn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o0gcy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_31swl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fv7ji")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13a6c")
+toggle_mode = true
+text = "Skills"
+
+[node name="PassiveButton" type="Button" parent="Margin/VBox/Options"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1jxwn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_o0gcy")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_31swl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fv7ji")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_13a6c")
+toggle_mode = true
+text = "Passive"
+
+[node name="SmoothScrollContainer" type="ScrollContainer" parent="Margin/VBox"]
+custom_minimum_size = Vector2(240, 220)
+layout_mode = 2
+script = ExtResource("2_3nuae")
+speed = 3.0
+damping_scroll = 0.3
+damping_drag = 0.6
+follow_focus_margin = 1
+allow_horizontal_scroll = false
+
+[node name="Margin" type="MarginContainer" parent="Margin/VBox/SmoothScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 10
+
+[node name="Content" type="TabContainer" parent="Margin/VBox/SmoothScrollContainer/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vm7g4")
+clip_tabs = false
+tabs_visible = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Margin/VBox/SmoothScrollContainer/Margin/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="GridContainer" type="GridContainer" parent="Margin/VBox/SmoothScrollContainer/Margin/Content"]
+visible = false
+layout_mode = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="TextureButton" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton2" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton3" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton4" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton5" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton6" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton7" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton8" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="TextureButton9" type="TextureButton" parent="Margin/VBox/SmoothScrollContainer/Margin/Content/GridContainer"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+mouse_filter = 1

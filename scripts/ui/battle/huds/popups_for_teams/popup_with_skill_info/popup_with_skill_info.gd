@@ -1,4 +1,4 @@
-extends Control
+extends Container
 
 
 const _ACTION_DICE_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/huds/popups_for_teams/popup_with_skill_info/elements_with_actions_dice/action_dice_info.tscn")

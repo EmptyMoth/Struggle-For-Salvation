@@ -1,10 +1,57 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://ckjnsn1tc7ngw"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://ckjnsn1tc7ngw"]
 
 [ext_resource type="FontFile" uid="uid://cqgufl6eexceh" path="res://fonts/ubuntu/ubuntu-regular.ttf" id="1_3thyr"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="2_87pw6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4d4hr"]
+bg_color = Color(0.129412, 0.168627, 0.25098, 0.701961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.784314, 0.784314, 0.784314, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0sfkc"]
+bg_color = Color(0.129412, 0.168627, 0.25098, 0.701961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kac0q"]
+bg_color = Color(0.129412, 0.168627, 0.25098, 0.701961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_brch6"]
+color = Color(0, 0, 0, 0)
+thickness = 7
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_j1q52"]
+color = Color(0, 0, 0, 0)
+thickness = 7
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qn087"]
-bg_color = Color(0.13, 0.17, 0.25, 0.7)
+bg_color = Color(0.129412, 0.168627, 0.25098, 0.701961)
 border_width_left = 5
 border_width_top = 5
 border_width_right = 5
@@ -29,7 +76,84 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 anti_aliasing_size = 3.0
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_65mk1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j02p8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sjcpa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_evje8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80q0w"]
+content_margin_top = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.615686, 0.729412, 0.94902, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sopdf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ppdaq"]
+bg_color = Color(0.129412, 0.168627, 0.25098, 0.701961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.784314, 0.784314, 0.784314, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k3oqk"]
+bg_color = Color(0.129412, 0.168627, 0.25098, 0.701961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hinmm"]
+bg_color = Color(0.129412, 0.168627, 0.25098, 0.701961)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 4
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_3m3nu"]
+color = Color(0, 0, 0, 0)
+thickness = 7
+vertical = true
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_eyn10"]
+color = Color(0, 0, 0, 0)
+thickness = 7
+vertical = true
+
 [resource]
+default_font = ExtResource("1_3thyr")
+default_font_size = 18
+Button/colors/font_color = Color(0.862745, 0.862745, 0.862745, 1)
+Button/colors/font_focus_color = Color(0.862745, 0.862745, 0.862745, 1)
+Button/colors/font_hover_color = Color(0.960784, 0.960784, 0.960784, 1)
+Button/colors/font_pressed_color = Color(0.615686, 0.729412, 0.94902, 1)
+HScrollBar/styles/grabber = SubResource("StyleBoxFlat_4d4hr")
+HScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_0sfkc")
+HScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_kac0q")
+HScrollBar/styles/scroll = SubResource("StyleBoxLine_brch6")
+HScrollBar/styles/scroll_focus = SubResource("StyleBoxLine_j1q52")
 Label/colors/font_color = Color(0.960784, 0.960784, 0.960784, 1)
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_3thyr")
@@ -43,3 +167,17 @@ RichTextLabel/font_sizes/mono_font_size = 18
 RichTextLabel/font_sizes/normal_font_size = 18
 RichTextLabel/fonts/bold_font = ExtResource("2_87pw6")
 RichTextLabel/fonts/normal_font = ExtResource("1_3thyr")
+TabBar/colors/font_hovered_color = Color(0.960784, 0.960784, 0.960784, 1)
+TabBar/colors/font_selected_color = Color(0.615686, 0.729412, 0.94902, 1)
+TabBar/colors/font_unselected_color = Color(0.862745, 0.862745, 0.862745, 1)
+TabBar/styles/button_highlight = SubResource("StyleBoxEmpty_65mk1")
+TabBar/styles/button_pressed = SubResource("StyleBoxEmpty_j02p8")
+TabBar/styles/tab_disabled = SubResource("StyleBoxEmpty_sjcpa")
+TabBar/styles/tab_hovered = SubResource("StyleBoxEmpty_evje8")
+TabBar/styles/tab_selected = SubResource("StyleBoxFlat_80q0w")
+TabBar/styles/tab_unselected = SubResource("StyleBoxEmpty_sopdf")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_ppdaq")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_k3oqk")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxFlat_hinmm")
+VScrollBar/styles/scroll = SubResource("StyleBoxLine_3m3nu")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxLine_eyn10")

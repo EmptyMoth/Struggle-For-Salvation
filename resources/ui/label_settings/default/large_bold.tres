@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bg1053ea44uyi"]
+
+[ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="1_e2i4t"]
+
+[resource]
+font = ExtResource("1_e2i4t")
+font_size = 24
+font_color = Color(0.960784, 0.960784, 0.960784, 1)
