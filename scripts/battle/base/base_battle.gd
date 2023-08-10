@@ -17,22 +17,14 @@ var current_phase: BattlePhase = BattlePhase.COMBAT
 var _location: BaseLocation = null
 var _battlefield: BaseBattlefield = null
 
-@onready var ally_team: AbstractTeam = $Teams/AllyTeam
-@onready var enemy_team: AbstractTeam = $Teams/EnemyTeam
+@onready var ally_team: BaseTeam = $Teams/AllyTeam
+@onready var enemy_team: BaseTeam = $Teams/EnemyTeam
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
 
 func _ready() -> void:
-	_location = _packed_location.instantiate()
-	add_child(_location)
-	move_child(_location, 0)
-	
-	_battlefield = _location.battlefield
-	_battlefield.set_characters_markers_on_battlefield(
-			ally_team.characters, enemy_team.characters)
-	_battlefield.set_formation(_packed_formation.instantiate(), 
-			ally_team.characters, enemy_team.characters)
-	
+	_init_of_location()
+	_init_of_teams()
 	_connect_signals()
 	_switch_battle_phase()
 
@@ -98,6 +90,29 @@ func _end_turn() -> void:
 	
 	emit_signal("turn_ended")
 	_switch_battle_phase()
+
+
+func _init_of_location() -> void:
+	_location = _packed_location.instantiate()
+	add_child(_location)
+	move_child(_location, 0)
+	_init_of_battlefild(_location.battlefield)
+
+func _init_of_battlefild(battlefield: BaseBattlefield) -> void:
+	_battlefield = battlefield
+	_battlefield.set_characters_markers_on_battlefield(
+			ally_team.characters, enemy_team.characters)
+	_battlefield.set_formation(_packed_formation.instantiate(), 
+			ally_team.characters, enemy_team.characters)
+
+
+func _init_of_teams() -> void:
+	var left_popup: BasePopupWithCharacterInfo = $UI/PopupWithCharacterInfo/Left
+	var right_popup: BasePopupWithCharacterInfo = $UI/PopupWithCharacterInfo/Right
+	ally_team.set_popup_with_character_info(
+			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
+	enemy_team.set_popup_with_character_info(
+			left_popup if not Settings.gameplay_settings.allies_placement.is_left else right_popup)
 
 
 func _connect_signals() -> void:

@@ -32,9 +32,9 @@ size_flags_vertical = 0
 
 [node name="Margin" type="MarginContainer" parent="ActionsDicePanel"]
 layout_mode = 2
-theme_override_constants/margin_left = 10
+theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 20
-theme_override_constants/margin_right = 10
+theme_override_constants/margin_right = 7
 theme_override_constants/margin_bottom = 20
 
 [node name="ActionsDice" type="VBoxContainer" parent="ActionsDicePanel/Margin"]

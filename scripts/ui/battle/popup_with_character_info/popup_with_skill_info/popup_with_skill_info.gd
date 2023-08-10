@@ -21,7 +21,7 @@ const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/ba
 
 func _ready() -> void:
 	hide()
-	remove_skill()
+	#remove_skill()
 	var action_dice_list: Array[AbstractActionDice] = [AbstractActionDice.new(), AbstractActionDice.new()]
 	action_dice_list[1].dice_type = AbstractActionDice.DiceType.EVADE_DICE
 	var skill: BaseSkill = BaseSkill.new()
