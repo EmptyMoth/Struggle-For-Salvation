@@ -9,9 +9,9 @@ enum CharactersTypes {
 	IMMUNOCYTE,
 	VIRUS,
 	BACTERIA,
-	PARASITE,
-	FUNGUS,
 	ALLERGEN,
+	FUNGUS,
+	PARASITE,
 	CANCER_CELL,
 }
 

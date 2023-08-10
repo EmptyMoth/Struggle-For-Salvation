@@ -16,3 +16,7 @@ enum ApplicationType { USES, COOLDOWN }
 
 static func get_str_application_type(skill: BaseSkill) -> String:
 	return "Uses" if skill.application_type == BaseSkill.ApplicationType.USES else "Cooldown"
+
+
+func is_blocked() -> bool:
+	return application_type_count == 0

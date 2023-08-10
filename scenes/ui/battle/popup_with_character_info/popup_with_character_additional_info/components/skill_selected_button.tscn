@@ -1,0 +1,66 @@
+[gd_scene load_steps=11 format=3 uid="uid://bwagcydq32xo1"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_additional_info/skill_selected_button/skill_selected_button.gd" id="1_kgxnq"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="2_fve3c"]
+[ext_resource type="Texture2D" uid="uid://busolphd4lb1w" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_additional_info/skill_selected_button/skill_colldown_icon.svg" id="3_gdg3v"]
+[ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="4_7k4ai"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yg477"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wie0m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ew6ri"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_22g10"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wec37"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jpbhg"]
+font = ExtResource("4_7k4ai")
+font_size = 20
+font_color = Color(0.960784, 0.960784, 0.960784, 1)
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[node name="SkillSelectedButton" type="AspectRatioContainer"]
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_kgxnq")
+
+[node name="SkillSelectedButton" type="Button" parent="."]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+theme_override_colors/icon_disabled_color = Color(0.666667, 0.666667, 0.666667, 1)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yg477")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wie0m")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ew6ri")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_22g10")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wec37")
+icon = ExtResource("2_fve3c")
+flat = true
+alignment = 2
+icon_alignment = 1
+expand_icon = true
+
+[node name="CooldownIcon" type="TextureRect" parent="."]
+visible = false
+self_modulate = Color(0.2, 0.666667, 1, 1)
+custom_minimum_size = Vector2(35, 40)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("3_gdg3v")
+expand_mode = 1
+
+[node name="Counter" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "x9"
+label_settings = SubResource("LabelSettings_jpbhg")
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[connection signal="pressed" from="SkillSelectedButton" to="." method="_on_skill_selected_button_pressed"]

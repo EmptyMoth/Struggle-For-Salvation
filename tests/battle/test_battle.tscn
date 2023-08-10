@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://chpfnnw1m5ki4"]
+[gd_scene load_steps=23 format=3 uid="uid://chpfnnw1m5ki4"]
 
 [ext_resource type="Script" path="res://scripts/battle/base/base_battle.gd" id="1_kvtsw"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_bx1pa"]
@@ -14,29 +14,31 @@
 [ext_resource type="PackedScene" uid="uid://b24m6cbrpoww8" path="res://scenes/battle/cards/cards/test_card_3.tscn" id="13_apq1b"]
 [ext_resource type="PackedScene" uid="uid://dl8haap1scn22" path="res://tests/ui/action_switcher.tscn" id="14_furee"]
 [ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu/menu_pause.tscn" id="15_3iakm"]
+[ext_resource type="PackedScene" uid="uid://ciro0ncgqiif4" path="res://scenes/ui/battle/popup_with_character_info/left_popup_with_character_info.tscn" id="16_7vedn"]
+[ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_with_character_info/right_popup_with_character_info.tscn" id="16_jyy2r"]
 [ext_resource type="PackedScene" uid="uid://cplf5sbbg2dh0" path="res://scenes/battle/locations/locations/test_battle/test_battle.tscn" id="18_kal88"]
 
-[sub_resource type="Resource" id="Resource_shfo2"]
+[sub_resource type="Resource" id="Resource_oy3bn"]
 resource_local_to_scene = true
 script = ExtResource("8_p6u03")
 _packed_cards = Array[PackedScene]([ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf"), ExtResource("7_gfeyf")])
 
-[sub_resource type="Resource" id="Resource_7q3yg"]
+[sub_resource type="Resource" id="Resource_5oscy"]
 resource_local_to_scene = true
 script = ExtResource("8_p6u03")
 _packed_cards = Array[PackedScene]([ExtResource("10_5k80x"), ExtResource("10_5k80x"), ExtResource("10_5k80x"), ExtResource("10_5k80x"), ExtResource("10_5k80x"), ExtResource("10_5k80x"), ExtResource("10_5k80x"), ExtResource("10_5k80x")])
 
-[sub_resource type="Resource" id="Resource_n0c5q"]
+[sub_resource type="Resource" id="Resource_g1ety"]
 resource_local_to_scene = true
 script = ExtResource("8_p6u03")
 _packed_cards = Array[PackedScene]([ExtResource("13_apq1b"), ExtResource("13_apq1b"), ExtResource("13_apq1b")])
 
-[sub_resource type="Resource" id="Resource_1uyxh"]
+[sub_resource type="Resource" id="Resource_3o466"]
 resource_local_to_scene = true
 script = ExtResource("8_p6u03")
 _packed_cards = Array[PackedScene]([ExtResource("13_apq1b"), ExtResource("13_apq1b"), ExtResource("13_apq1b")])
 
-[sub_resource type="Resource" id="Resource_274jo"]
+[sub_resource type="Resource" id="Resource_54876"]
 resource_local_to_scene = true
 script = ExtResource("8_p6u03")
 _packed_cards = Array[PackedScene]([ExtResource("13_apq1b"), ExtResource("13_apq1b"), ExtResource("13_apq1b")])
@@ -57,21 +59,21 @@ y_sort_enabled = true
 [node name="AllyTeam" parent="Teams" instance=ExtResource("5_b7ejh")]
 
 [node name="Neut" parent="Teams/AllyTeam" instance=ExtResource("6_jsmpb")]
-deck_of_cards = SubResource("Resource_shfo2")
+deck_of_cards = SubResource("Resource_oy3bn")
 
 [node name="Eosi" parent="Teams/AllyTeam" instance=ExtResource("9_shite")]
-deck_of_cards = SubResource("Resource_7q3yg")
+deck_of_cards = SubResource("Resource_5oscy")
 
 [node name="EnemyTeam" parent="Teams" instance=ExtResource("11_7wd7t")]
 
 [node name="InfluenzaVirus" parent="Teams/EnemyTeam" instance=ExtResource("11_akwkq")]
-deck_of_cards = SubResource("Resource_n0c5q")
+deck_of_cards = SubResource("Resource_g1ety")
 
 [node name="InfluenzaVirus2" parent="Teams/EnemyTeam" instance=ExtResource("11_akwkq")]
-deck_of_cards = SubResource("Resource_1uyxh")
+deck_of_cards = SubResource("Resource_3o466")
 
 [node name="InfluenzaVirus3" parent="Teams/EnemyTeam" instance=ExtResource("11_akwkq")]
-deck_of_cards = SubResource("Resource_274jo")
+deck_of_cards = SubResource("Resource_54876")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -79,3 +81,19 @@ deck_of_cards = SubResource("Resource_274jo")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("15_3iakm")]
 visible = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="PopupWithCharacterInfo" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Left" parent="UI/PopupWithCharacterInfo" instance=ExtResource("16_7vedn")]
+
+[node name="Right" parent="UI/PopupWithCharacterInfo" instance=ExtResource("16_jyy2r")]
+layout_mode = 1
+offset_left = 985.0
+offset_right = 1880.0
+offset_bottom = 488.0

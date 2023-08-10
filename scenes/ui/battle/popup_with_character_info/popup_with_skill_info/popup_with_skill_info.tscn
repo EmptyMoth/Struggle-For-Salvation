@@ -1,0 +1,174 @@
+[gd_scene load_steps=14 format=3 uid="uid://bxmbtddt0ipts"]
+
+[ext_resource type="PackedScene" uid="uid://db6v2plpbs7hf" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_info.tscn" id="1_1mxim"]
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="1_fup2d"]
+[ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="2_lj8gt"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="3_v744m"]
+[ext_resource type="Texture2D" uid="uid://080nbt6cg054" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/skills_types_icons/melee_type_icon.svg" id="4_74cg0"]
+[ext_resource type="Texture2D" uid="uid://b5rnotvxes64o" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/default.svg" id="4_xgt27"]
+[ext_resource type="Texture2D" uid="uid://dh1a7om5wfhov" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/skills_types_icons/range_type_icon.svg" id="5_l8m42"]
+[ext_resource type="Texture2D" uid="uid://ybkvgd3dgiv0" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/pressed.svg" id="5_oksd2"]
+[ext_resource type="LabelSettings" uid="uid://bg1053ea44uyi" path="res://resources/ui/label_settings/default/large_bold.tres" id="5_vj04u"]
+[ext_resource type="Texture2D" uid="uid://frwtuvmfj2ct" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/hover.svg" id="6_5kikf"]
+[ext_resource type="LabelSettings" uid="uid://bcny06divfrey" path="res://resources/ui/label_settings/default/medium_bolt.tres" id="6_qwta2"]
+[ext_resource type="PackedScene" uid="uid://dxjdomt54u7mn" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_ability_info.tscn" id="7_38q3i"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_7lnsl"]
+frames = 2
+pause = true
+one_shot = true
+frame_0/texture = ExtResource("4_74cg0")
+frame_1/texture = ExtResource("5_l8m42")
+frame_1/duration = 1.0
+
+[node name="PopupWithSkillInfo" type="HBoxContainer"]
+theme_override_constants/separation = 10
+script = ExtResource("1_fup2d")
+
+[node name="ActionsDicePanel" type="PanelContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="ActionsDicePanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 20
+
+[node name="ActionsDice" type="VBoxContainer" parent="ActionsDicePanel/Margin"]
+layout_mode = 2
+
+[node name="ActionDiceInfo" parent="ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
+layout_mode = 2
+
+[node name="ActionDiceInfo2" parent="ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
+layout_mode = 2
+
+[node name="ActionDiceInfo3" parent="ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MainPanel" type="PanelContainer" parent="VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Margin" type="MarginContainer" parent="VBox/MainPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="VBox/MainPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="Header" type="HBoxContainer" parent="VBox/MainPanel/Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="SkillIcon" type="TextureRect" parent="VBox/MainPanel/Margin/VBox/Header"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("3_v744m")
+expand_mode = 1
+
+[node name="SkillTitle" type="Label" parent="VBox/MainPanel/Margin/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2_lj8gt")
+theme_override_font_sizes/font_size = 24
+text = "Skill Title"
+label_settings = ExtResource("5_vj04u")
+vertical_alignment = 1
+
+[node name="SkillTypes" type="VBoxContainer" parent="VBox/MainPanel/Margin/VBox/Header"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="RangeType" type="HBoxContainer" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="Type" type="Label" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/RangeType"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Type"
+label_settings = ExtResource("6_qwta2")
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/RangeType"]
+self_modulate = Color(0.2, 0.666667, 1, 1)
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_7lnsl")
+expand_mode = 1
+
+[node name="UsesType" type="HBoxContainer" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes"]
+layout_mode = 2
+theme_override_constants/separation = 5
+alignment = 2
+
+[node name="Type" type="Label" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Colldown"
+label_settings = ExtResource("6_qwta2")
+vertical_alignment = 1
+
+[node name="Counter" type="Label" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType"]
+self_modulate = Color(0.2, 0.666667, 1, 1)
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.47451, 0.631373, 0.94902, 1)
+theme_override_fonts/font = ExtResource("2_lj8gt")
+theme_override_font_sizes/font_size = 24
+text = "9"
+label_settings = ExtResource("5_vj04u")
+vertical_alignment = 1
+
+[node name="SkillAbilityDescription" type="RichTextLabel" parent="VBox/MainPanel/Margin/VBox"]
+layout_mode = 2
+bbcode_enabled = true
+text = "[b][Combat Start][/b] AD increase in min value and decrease in max value."
+fit_content = true
+scroll_active = false
+
+[node name="ButtonShowingDiceAbilities" type="TextureButton" parent="VBox/MainPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("4_xgt27")
+texture_pressed = ExtResource("5_oksd2")
+texture_hover = ExtResource("6_5kikf")
+
+[node name="AbilitiesVBox" type="VBoxContainer" parent="VBox"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="ActionDiceAbilityInfo" parent="VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
+layout_mode = 2
+
+[node name="ActionDiceAbilityInfo2" parent="VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
+layout_mode = 2
+
+[node name="ActionDiceAbilityInfo3" parent="VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
+layout_mode = 2
+
+[connection signal="toggled" from="VBox/MainPanel/Margin/VBox/ButtonShowingDiceAbilities" to="." method="_on_button_showing_dice_abilities_toggled"]
