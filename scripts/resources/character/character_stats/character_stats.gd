@@ -2,8 +2,9 @@ class_name CharacterStats
 extends Resource
 
 
-@export var character_name: String = ''
-@export var character_type: BattleParameters.CharactersTypes
+@export var name: String = ''
+@export var type: BattleParameters.CharactersTypes
+@export var icon: Texture
 
 @export var skills: Array[BaseSkill] = []
 @export var passive_abilities: Array[AbstractAbility] = []

@@ -23,7 +23,7 @@ var _battlefield: BaseBattlefield = null
 
 
 func _ready() -> void:
-	_init_of_location()
+	set_location(_packed_location.instantiate())
 	_init_of_teams()
 	_connect_signals()
 	_switch_battle_phase()
@@ -39,6 +39,21 @@ func _input(_event: InputEvent) -> void:
 			_switch_battle_phase()
 		if Input.is_action_just_released("ui_auto_selecting_cards"):
 			CardPlacementManager.allies_auto_selecting_cards(ally_team.characters, enemy_team.characters)
+
+
+func set_location(location: BaseLocation) -> void:
+	_location = location
+	add_child(_location)
+	move_child(_location, 0)
+	set_battlefild(_location.battlefield)
+
+
+func set_battlefild(battlefield: BaseBattlefield) -> void:
+	_battlefield = battlefield
+	_battlefield.set_characters_markers_on_battlefield(
+			ally_team.characters, enemy_team.characters)
+	_battlefield.set_formation(_packed_formation.instantiate(), 
+			ally_team.characters, enemy_team.characters)
 
 
 func victory() -> void:
@@ -90,20 +105,6 @@ func _end_turn() -> void:
 	
 	emit_signal("turn_ended")
 	_switch_battle_phase()
-
-
-func _init_of_location() -> void:
-	_location = _packed_location.instantiate()
-	add_child(_location)
-	move_child(_location, 0)
-	_init_of_battlefild(_location.battlefield)
-
-func _init_of_battlefild(battlefield: BaseBattlefield) -> void:
-	_battlefield = battlefield
-	_battlefield.set_characters_markers_on_battlefield(
-			ally_team.characters, enemy_team.characters)
-	_battlefield.set_formation(_packed_formation.instantiate(), 
-			ally_team.characters, enemy_team.characters)
 
 
 func _init_of_teams() -> void:

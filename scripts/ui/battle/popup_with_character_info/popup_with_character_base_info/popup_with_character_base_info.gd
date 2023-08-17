@@ -1,34 +1,28 @@
 class_name PopupWithCharacterBaseInfo
-extends PanelContainer
+extends MovingContainer
 
 
-@onready var _character_icon: TextureRect = $Margin/VBox/MainInfo/HBox/CharacterIcon/Icon
-@onready var _character_type_icon: TextureRect = $Margin/VBox/CharacterTitle/CharacterTypeIcon
-@onready var _character_name_label: Label = $Margin/VBox/CharacterTitle/CharacterName
-@onready var _range_speed_label: Label = $Margin/VBox/MainInfo/Speed/Range
+@onready var _character_icon: TextureRect = $Panel/Margin/VBox/MainInfo/HBox/CharacterIcon/Icon
+@onready var _character_type_icon: TextureRect = $Panel/Margin/VBox/CharacterTitle/CharacterTypeIcon
+@onready var _character_name_label: Label = $Panel/Margin/VBox/CharacterTitle/CharacterName
+@onready var _range_speed_label: Label = $Panel/Margin/VBox/MainInfo/Speed/Range
 
-@onready var _hp_resistance_icon: TextureRect = $Margin/VBox/MainInfo/HBox/Margin/Resistances/HPResistance
-@onready var _sp_resistance_icon: TextureRect = $Margin/VBox/MainInfo/HBox/Margin/Resistances/SPResistance
+@onready var _hp_resistance_icon: TextureRect = $Panel/Margin/VBox/MainInfo/HBox/Margin/Resistances/HPResistance
+@onready var _sp_resistance_icon: TextureRect = $Panel/Margin/VBox/MainInfo/HBox/Margin/Resistances/SPResistance
 
-@onready var _hp_bar: ProgressBar = $Margin/VBox/MainInfo/HBox/Healths/HP/Bar
-@onready var _sp_bar: ProgressBar = $Margin/VBox/MainInfo/HBox/Healths/SP/Bar
+@onready var _hp_bar: ProgressBar = $Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Bar
+@onready var _sp_bar: ProgressBar = $Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Bar
 
-@onready var _current_hp_count_label: Label = $Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter/Current
-@onready var _max_hp_count_label: Label = $Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter/Max
-@onready var _current_sp_count_label: Label = $Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter/Current
-@onready var _max_sp_count_label: Label = $Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter/Max
-
-
-func _ready() -> void:
-	var character: AbstractCharacter = preload("res://scenes/battle/characters/immunocytes/neut.tscn").instantiate()
-	add_child(character)
-	set_info(character)
+@onready var _current_hp_count_label: Label = $Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter/Current
+@onready var _max_hp_count_label: Label = $Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter/Max
+@onready var _current_sp_count_label: Label = $Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter/Current
+@onready var _max_sp_count_label: Label = $Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter/Max
 
 
 func set_info(character: AbstractCharacter) -> void:
-	_character_icon.texture = character.icon
-	_character_type_icon.texture.current_frame = character.stats.character_type
-	_character_name_label.text = character.stats.character_name
+	_character_icon.texture = character.stats.icon
+	_character_type_icon.texture.current_frame = character.stats.type
+	_character_name_label.text = character.stats.name
 	_range_speed_label.text = "%s-%s" % [character.stats.min_speed, character.stats.max_speed]
 	_set_resistanes(character.physical_resistance, character.mental_resistance)
 	_set_health(character.physical_health, character.mental_health)

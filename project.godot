@@ -16,6 +16,10 @@ run/main_scene="res://scenes/ui/menu/main_menu.tscn"
 config/features=PackedStringArray("4.1")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://resources/global/bus_layout/default_bus_layout.tres"
+
 [autoload]
 
 GlobalParameters="*res://scripts/global/global_parameters.gd"

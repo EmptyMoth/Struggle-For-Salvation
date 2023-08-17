@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://dee4tjnw27ow"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://dee4tjnw27ow"]
 
 [ext_resource type="Script" path="res://scripts/resources/character/character_stats/character_stats.gd" id="1_efkeo"]
+[ext_resource type="Texture2D" uid="uid://uar4h4qjxuhv" path="res://sprites/ui/battle/characters/character_icons/eosinophil_icon.png" id="1_i17s1"]
 
 [resource]
 script = ExtResource("1_efkeo")
-character_name = ""
-character_type = 0
+name = "Eosi"
+type = 0
+icon = ExtResource("1_i17s1")
+skills = Array[Resource("res://scripts/ui/battle/skills/base/base_skill.gd")]([])
+passive_abilities = Array[Resource("res://scripts/battle/abilities/base/abstract_ability.gd")]([])
 max_physical_health = 80
 max_mental_health = 40
 physical_resistance = 3
 mental_resistance = 3
+speed_dice_count = 2
 min_speed = 1
 max_speed = 4
-speed_dice_count = 2

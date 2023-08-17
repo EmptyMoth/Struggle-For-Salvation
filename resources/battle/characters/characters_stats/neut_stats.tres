@@ -1,15 +1,19 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://clfjmrg2xhxl4"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://clfjmrg2xhxl4"]
 
+[ext_resource type="Texture2D" uid="uid://chulonxxnqoco" path="res://sprites/ui/battle/characters/character_icons/neutrophil_icon.png" id="1_j8b5i"]
 [ext_resource type="Script" path="res://scripts/resources/character/character_stats/character_stats.gd" id="1_mcit0"]
 
 [resource]
 script = ExtResource("1_mcit0")
-character_name = "Neutrophil"
-character_type = 0
+name = "Neut"
+type = 0
+icon = ExtResource("1_j8b5i")
+skills = Array[Resource("res://scripts/ui/battle/skills/base/base_skill.gd")]([])
+passive_abilities = Array[Resource("res://scripts/battle/abilities/base/abstract_ability.gd")]([])
 max_physical_health = 100
 max_mental_health = 50
 physical_resistance = 3
 mental_resistance = 3
+speed_dice_count = 3
 min_speed = 3
 max_speed = 6
-speed_dice_count = 3

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bxmbtddt0ipts"]
+[gd_scene load_steps=15 format=3 uid="uid://bxmbtddt0ipts"]
 
 [ext_resource type="PackedScene" uid="uid://db6v2plpbs7hf" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_info.tscn" id="1_1mxim"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="1_fup2d"]
+[ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="1_sovwk"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="2_lj8gt"]
 [ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="3_v744m"]
 [ext_resource type="Texture2D" uid="uid://080nbt6cg054" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/skills_types_icons/melee_type_icon.svg" id="4_74cg0"]
@@ -21,59 +22,86 @@ frame_0/texture = ExtResource("4_74cg0")
 frame_1/texture = ExtResource("5_l8m42")
 frame_1/duration = 1.0
 
-[node name="PopupWithSkillInfo" type="HBoxContainer"]
-theme_override_constants/separation = 10
+[node name="PopupWithSkillInfo" type="MarginContainer"]
+offset_right = 587.0
+offset_bottom = 463.0
+mouse_filter = 2
+theme_override_constants/margin_top = 0
 script = ExtResource("1_fup2d")
+metadata/_edit_group_ = true
 
-[node name="ActionsDicePanel" type="PanelContainer" parent="."]
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="ActionsDiceList" type="MarginContainer" parent="HBox"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_top = 0
+script = ExtResource("1_sovwk")
+
+[node name="Panel" type="PanelContainer" parent="HBox/ActionsDiceList"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="Margin" type="MarginContainer" parent="ActionsDicePanel"]
+[node name="Margin" type="MarginContainer" parent="HBox/ActionsDiceList/Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 7
 theme_override_constants/margin_bottom = 20
 
-[node name="ActionsDice" type="VBoxContainer" parent="ActionsDicePanel/Margin"]
+[node name="ActionsDice" type="VBoxContainer" parent="HBox/ActionsDiceList/Panel/Margin"]
 layout_mode = 2
 
-[node name="ActionDiceInfo" parent="ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
+[node name="ActionDiceInfo" parent="HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
 layout_mode = 2
 
-[node name="ActionDiceInfo2" parent="ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
+[node name="ActionDiceInfo2" parent="HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
 layout_mode = 2
 
-[node name="ActionDiceInfo3" parent="ActionsDicePanel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
+[node name="ActionDiceInfo3" parent="HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="HBox"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="MainPanel" type="PanelContainer" parent="VBox"]
+[node name="MainPanel" type="MarginContainer" parent="HBox/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_top = 0
+script = ExtResource("1_sovwk")
+
+[node name="Panel" type="PanelContainer" parent="HBox/VBox/MainPanel"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 
-[node name="Margin" type="MarginContainer" parent="VBox/MainPanel"]
+[node name="Margin" type="MarginContainer" parent="HBox/VBox/MainPanel/Panel"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
 theme_override_constants/margin_bottom = 20
 
-[node name="VBox" type="VBoxContainer" parent="VBox/MainPanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="HBox/VBox/MainPanel/Panel/Margin"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="Header" type="HBoxContainer" parent="VBox/MainPanel/Margin/VBox"]
+[node name="Header" type="HBoxContainer" parent="HBox/VBox/MainPanel/Panel/Margin/VBox"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 20
 
-[node name="SkillIcon" type="TextureRect" parent="VBox/MainPanel/Margin/VBox/Header"]
+[node name="SkillIcon" type="TextureRect" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -81,7 +109,7 @@ size_flags_vertical = 4
 texture = ExtResource("3_v744m")
 expand_mode = 1
 
-[node name="SkillTitle" type="Label" parent="VBox/MainPanel/Margin/VBox/Header"]
+[node name="SkillTitle" type="Label" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("2_lj8gt")
@@ -90,23 +118,23 @@ text = "Skill Title"
 label_settings = ExtResource("5_vj04u")
 vertical_alignment = 1
 
-[node name="SkillTypes" type="VBoxContainer" parent="VBox/MainPanel/Margin/VBox/Header"]
+[node name="SkillTypes" type="VBoxContainer" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="RangeType" type="HBoxContainer" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes"]
+[node name="RangeType" type="HBoxContainer" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 2
 
-[node name="Type" type="Label" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/RangeType"]
+[node name="Type" type="Label" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes/RangeType"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Type"
 label_settings = ExtResource("6_qwta2")
 vertical_alignment = 1
 
-[node name="Icon" type="TextureRect" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/RangeType"]
+[node name="Icon" type="TextureRect" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes/RangeType"]
 self_modulate = Color(0.2, 0.666667, 1, 1)
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
@@ -115,19 +143,19 @@ size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_7lnsl")
 expand_mode = 1
 
-[node name="UsesType" type="HBoxContainer" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes"]
+[node name="UsesType" type="HBoxContainer" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes"]
 layout_mode = 2
 theme_override_constants/separation = 5
 alignment = 2
 
-[node name="Type" type="Label" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType"]
+[node name="Type" type="Label" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes/UsesType"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Colldown"
 label_settings = ExtResource("6_qwta2")
 vertical_alignment = 1
 
-[node name="Counter" type="Label" parent="VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType"]
+[node name="Counter" type="Label" parent="HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes/UsesType"]
 self_modulate = Color(0.2, 0.666667, 1, 1)
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
@@ -139,14 +167,16 @@ text = "9"
 label_settings = ExtResource("5_vj04u")
 vertical_alignment = 1
 
-[node name="SkillAbilityDescription" type="RichTextLabel" parent="VBox/MainPanel/Margin/VBox"]
+[node name="SkillAbilityDescription" type="RichTextLabel" parent="HBox/VBox/MainPanel/Panel/Margin/VBox"]
+custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
+mouse_filter = 2
 bbcode_enabled = true
 text = "[b][Combat Start][/b] AD increase in min value and decrease in max value."
 fit_content = true
 scroll_active = false
 
-[node name="ButtonShowingDiceAbilities" type="TextureButton" parent="VBox/MainPanel/Margin/VBox"]
+[node name="ButtonHidingDiceAbilities" type="TextureButton" parent="HBox/VBox/MainPanel/Panel/Margin/VBox"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -155,20 +185,20 @@ texture_normal = ExtResource("4_xgt27")
 texture_pressed = ExtResource("5_oksd2")
 texture_hover = ExtResource("6_5kikf")
 
-[node name="AbilitiesVBox" type="VBoxContainer" parent="VBox"]
+[node name="AbilitiesVBox" type="VBoxContainer" parent="HBox/VBox"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="ActionDiceAbilityInfo" parent="VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
+[node name="ActionDiceAbilityInfo" parent="HBox/VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
 layout_mode = 2
 
-[node name="ActionDiceAbilityInfo2" parent="VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
+[node name="ActionDiceAbilityInfo2" parent="HBox/VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
 layout_mode = 2
 
-[node name="ActionDiceAbilityInfo3" parent="VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
+[node name="ActionDiceAbilityInfo3" parent="HBox/VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
 layout_mode = 2
 
-[connection signal="toggled" from="VBox/MainPanel/Margin/VBox/ButtonShowingDiceAbilities" to="." method="_on_button_showing_dice_abilities_toggled"]
+[connection signal="toggled" from="HBox/VBox/MainPanel/Panel/Margin/VBox/ButtonHidingDiceAbilities" to="." method="_on_button_hiding_dice_abilities_toggled"]

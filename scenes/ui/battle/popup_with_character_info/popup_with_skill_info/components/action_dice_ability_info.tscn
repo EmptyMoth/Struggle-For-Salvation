@@ -1,19 +1,22 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxjdomt54u7mn"]
 
-[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/elements_with_action_dice/action_dice_ability_info.gd" id="1_h75mu"]
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/elements_with_action_dice/action_dice_ability_info.gd" id="1_30bp8"]
 
-[node name="ActionDiceAbilityInfo" type="PanelContainer"]
+[node name="ActionDiceAbilityInfo" type="MarginContainer"]
+offset_right = 500.0
+offset_bottom = 82.0
+mouse_filter = 2
+script = ExtResource("1_30bp8")
+
+[node name="Panel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(500, 0)
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 81.0
-offset_bottom = 73.0
+layout_mode = 2
+size_flags_vertical = 0
 auto_translate = false
 localize_numeral_system = false
 mouse_filter = 2
-script = ExtResource("1_h75mu")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Margin" type="MarginContainer" parent="Panel"]
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
@@ -22,27 +25,31 @@ theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 20
 theme_override_constants/margin_bottom = 15
 
-[node name="HBox" type="HBoxContainer" parent="Margin"]
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin"]
 layout_mode = 2
 auto_translate = false
 localize_numeral_system = false
 mouse_filter = 2
 theme_override_constants/separation = 5
 
-[node name="ActionDiceNumber" type="Label" parent="Margin/HBox"]
+[node name="ActionDiceNumber" type="Label" parent="Panel/Margin/HBox"]
 custom_minimum_size = Vector2(35, 0)
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 0
 size_flags_vertical = 0
 auto_translate = false
 localize_numeral_system = false
 horizontal_alignment = 2
 
-[node name="ActionDiceAbility" type="RichTextLabel" parent="Margin/HBox"]
+[node name="ActionDiceAbility" type="RichTextLabel" parent="Panel/Margin/HBox"]
+clip_contents = false
+custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 0
 mouse_filter = 2
 bbcode_enabled = true
 text = "[b][Combat Start][/b] AD increase in min value and decrease in max value."
 fit_content = true
 scroll_active = false
+shortcut_keys_enabled = false

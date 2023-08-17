@@ -14,12 +14,7 @@ func _ready() -> void:
 	CardPlacementManager.assault_was_set.connect(_on_assault_was_set)
 	for character in characters:
 		character.add_to_group(characters_group)
-		@warning_ignore("return_value_discarded")
-		character.picked.connect(_team_model._on_character_picked)
-		@warning_ignore("return_value_discarded")
-		character.selected.connect(_team_model._on_character_selected)
-		@warning_ignore("return_value_discarded")
-		character.deselected.connect(_team_model._on_character_deselected)
+		_team_model.connect_signals(character)
 
 
 func _input(event: InputEvent) -> void:

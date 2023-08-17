@@ -44,6 +44,7 @@ frame_6/texture = ExtResource("7_kmwl7")
 frame_6/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_12k2q"]
+resource_local_to_scene = true
 frames = 6
 pause = true
 one_shot = true
@@ -60,6 +61,7 @@ frame_5/texture = ExtResource("7_603n3")
 frame_5/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ppwgf"]
+resource_local_to_scene = true
 frames = 6
 pause = true
 one_shot = true
@@ -109,28 +111,41 @@ expand_margin_bottom = 1.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i3v36"]
 
-[node name="PopupWithCharacterBaseInfo" type="PanelContainer"]
-offset_right = 264.0
+[node name="PopupWithCharacterBaseInfo" type="MarginContainer"]
+offset_right = 266.0
 offset_bottom = 161.0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_top = 0
 script = ExtResource("1_mjabn")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 5
 
-[node name="CharacterTitle" type="HBoxContainer" parent="Margin/VBox"]
+[node name="CharacterTitle" type="HBoxContainer" parent="Panel/Margin/VBox"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 5
 alignment = 2
 
-[node name="CharacterTypeIcon" type="TextureRect" parent="Margin/VBox/CharacterTitle"]
+[node name="CharacterTypeIcon" type="TextureRect" parent="Panel/Margin/VBox/CharacterTitle"]
 custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -138,7 +153,7 @@ size_flags_vertical = 4
 texture = SubResource("AnimatedTexture_xjvh6")
 expand_mode = 1
 
-[node name="CharacterName" type="Label" parent="Margin/VBox/CharacterTitle"]
+[node name="CharacterName" type="Label" parent="Panel/Margin/VBox/CharacterTitle"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Character Name"
@@ -146,26 +161,29 @@ label_settings = ExtResource("1_yhp3k")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="MainInfo" type="VBoxContainer" parent="Margin/VBox"]
+[node name="MainInfo" type="VBoxContainer" parent="Panel/Margin/VBox"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox/MainInfo"]
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin/VBox/MainInfo"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="Margin" type="MarginContainer" parent="Margin/VBox/MainInfo/HBox"]
+[node name="Margin" type="MarginContainer" parent="Panel/Margin/VBox/MainInfo/HBox"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/margin_right = 10
 
-[node name="Resistances" type="HBoxContainer" parent="Margin/VBox/MainInfo/HBox/Margin"]
+[node name="Resistances" type="HBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Margin"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="HPResistance" type="TextureRect" parent="Margin/VBox/MainInfo/HBox/Margin/Resistances"]
+[node name="HPResistance" type="TextureRect" parent="Panel/Margin/VBox/MainInfo/HBox/Margin/Resistances"]
 custom_minimum_size = Vector2(13, 36)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -173,7 +191,7 @@ size_flags_vertical = 0
 texture = SubResource("AnimatedTexture_12k2q")
 expand_mode = 1
 
-[node name="SPResistance" type="TextureRect" parent="Margin/VBox/MainInfo/HBox/Margin/Resistances"]
+[node name="SPResistance" type="TextureRect" parent="Panel/Margin/VBox/MainInfo/HBox/Margin/Resistances"]
 custom_minimum_size = Vector2(13, 36)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -181,28 +199,32 @@ size_flags_vertical = 0
 texture = SubResource("AnimatedTexture_ppwgf")
 expand_mode = 1
 
-[node name="Healths" type="VBoxContainer" parent="Margin/VBox/MainInfo/HBox"]
+[node name="Healths" type="VBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox"]
 layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_constants/separation = 5
 
-[node name="HP" type="VBoxContainer" parent="Margin/VBox/MainInfo/HBox/Healths"]
+[node name="HP" type="VBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
-[node name="Margin" type="MarginContainer" parent="Margin/VBox/MainInfo/HBox/Healths/HP"]
+[node name="Margin" type="MarginContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_right = 5
 
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox/MainInfo/HBox/Healths/HP/Margin"]
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 5
 
-[node name="Counter" type="HBoxContainer" parent="Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox"]
+[node name="Counter" type="HBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Current" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter"]
+[node name="Current" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter"]
 self_modulate = Color(0.898039, 0.313726, 0.313726, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -211,7 +233,7 @@ label_settings = ExtResource("2_1hilt")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Separation" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter"]
+[node name="Separation" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter"]
 self_modulate = Color(0.486275, 0.580392, 0.74902, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -220,7 +242,7 @@ label_settings = ExtResource("1_yhp3k")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Max" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter"]
+[node name="Max" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter"]
 self_modulate = Color(0.486275, 0.580392, 0.74902, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -229,7 +251,7 @@ label_settings = ExtResource("1_yhp3k")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="HP" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox"]
+[node name="HP" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox"]
 self_modulate = Color(0.486275, 0.580392, 0.74902, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -237,42 +259,46 @@ text = "HP"
 label_settings = ExtResource("1_yhp3k")
 vertical_alignment = 1
 
-[node name="Bar" type="ProgressBar" parent="Margin/VBox/MainInfo/HBox/Healths/HP"]
+[node name="Bar" type="ProgressBar" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/HP"]
 custom_minimum_size = Vector2(130, 8)
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_bk1ns")
 theme_override_styles/fill = SubResource("StyleBoxFlat_orawo")
 value = 70.0
 fill_mode = 1
 show_percentage = false
 
-[node name="SP" type="VBoxContainer" parent="Margin/VBox/MainInfo/HBox/Healths"]
+[node name="SP" type="VBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths"]
 layout_mode = 2
+mouse_filter = 2
 
-[node name="Bar" type="ProgressBar" parent="Margin/VBox/MainInfo/HBox/Healths/SP"]
+[node name="Bar" type="ProgressBar" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP"]
 custom_minimum_size = Vector2(130, 3)
 layout_mode = 2
 size_flags_vertical = 8
+mouse_filter = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_bk1ns")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yowhj")
 value = 40.0
 fill_mode = 1
 show_percentage = false
 
-[node name="Margin" type="MarginContainer" parent="Margin/VBox/MainInfo/HBox/Healths/SP"]
+[node name="Margin" type="MarginContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_right = 5
 
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox/MainInfo/HBox/Healths/SP/Margin"]
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin"]
 layout_mode = 2
 size_flags_horizontal = 8
 theme_override_constants/separation = 5
 
-[node name="Counter" type="HBoxContainer" parent="Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox"]
+[node name="Counter" type="HBoxContainer" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Current" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter"]
+[node name="Current" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter"]
 self_modulate = Color(0.313726, 0.607843, 0.898039, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -281,7 +307,7 @@ label_settings = ExtResource("2_1hilt")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Separation" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter"]
+[node name="Separation" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter"]
 self_modulate = Color(0.486275, 0.580392, 0.74902, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -290,7 +316,7 @@ label_settings = ExtResource("1_yhp3k")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Max" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter"]
+[node name="Max" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter"]
 self_modulate = Color(0.486275, 0.580392, 0.74902, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -299,7 +325,7 @@ label_settings = ExtResource("1_yhp3k")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="SP" type="Label" parent="Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox"]
+[node name="SP" type="Label" parent="Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox"]
 self_modulate = Color(0.486275, 0.580392, 0.74902, 1)
 custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
@@ -308,24 +334,26 @@ text = "SP"
 label_settings = ExtResource("1_yhp3k")
 vertical_alignment = 1
 
-[node name="CharacterIcon" type="PanelContainer" parent="Margin/VBox/MainInfo/HBox"]
+[node name="CharacterIcon" type="PanelContainer" parent="Panel/Margin/VBox/MainInfo/HBox"]
 custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+mouse_filter = 2
 
-[node name="Icon" type="TextureRect" parent="Margin/VBox/MainInfo/HBox/CharacterIcon"]
+[node name="Icon" type="TextureRect" parent="Panel/Margin/VBox/MainInfo/HBox/CharacterIcon"]
 layout_mode = 2
 texture = SubResource("CompressedTexture2D_i3v36")
 expand_mode = 1
 
-[node name="Speed" type="HBoxContainer" parent="Margin/VBox/MainInfo"]
+[node name="Speed" type="HBoxContainer" parent="Panel/Margin/VBox/MainInfo"]
 layout_mode = 2
 size_flags_horizontal = 8
+mouse_filter = 2
 theme_override_constants/separation = 5
 alignment = 2
 
-[node name="Range" type="Label" parent="Margin/VBox/MainInfo/Speed"]
+[node name="Range" type="Label" parent="Panel/Margin/VBox/MainInfo/Speed"]
 self_modulate = Color(0.964706, 0.976471, 0.501961, 1)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -334,10 +362,11 @@ label_settings = ExtResource("3_kv01i")
 horizontal_alignment = 2
 vertical_alignment = 1
 
-[node name="Icon" type="TextureRect" parent="Margin/VBox/MainInfo/Speed"]
+[node name="Icon" type="TextureRect" parent="Panel/Margin/VBox/MainInfo/Speed"]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("24_5mb18")
 expand_mode = 1

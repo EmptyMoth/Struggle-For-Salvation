@@ -1,5 +1,5 @@
 class_name PopupWithCharacterAdditionalInfo
-extends PanelContainer
+extends MovingContainer
 
 
 signal skill_selected(skill: BaseSkill) 
@@ -8,14 +8,14 @@ const SKILL_SELECTED_BUTTON_SCENE: PackedScene = preload("res://scenes/ui/battle
 const PRESSET_FOR_PASSIVE_LIST: String = "[ul bullet=▪]\n%s[/ul]"
 const PRESSET_FOR_PASSIVE_DESCRIPTION: String = "[color=#3AF][/color]%s"
 
-@onready var _skills_button: Button = $Margin/VBox/Options/HBox/SkillsButton
-@onready var _passive_button: Button = $Margin/VBox/Options/HBox/PassiveButton
-@onready var _content: TabContainer = $Margin/VBox/SmoothScroll/Margin/Content
-@onready var _skills_list: GridContainer = $Margin/VBox/SmoothScroll/Margin/Content/SkillsList
-@onready var _passive_abilities_list: RichTextLabel = $Margin/VBox/SmoothScroll/Margin/Content/PassiveAbilitiesList
-@onready var _content_container_parent: Control = $Margin/VBox/SmoothScroll
+var _current_pressed_content_button: BaseButton = null
 
-var _current_pressed_content_button: BaseButton = _skills_button
+@onready var _skills_button: Button = $Panel/Margin/VBox/Options/HBox/SkillsButton
+@onready var _passive_button: Button = $Panel/Margin/VBox/Options/HBox/PassiveButton
+@onready var _content: TabContainer = $Panel/Margin/VBox/SmoothScroll/Margin/Content
+@onready var _skills_list: GridContainer = $Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList
+@onready var _passive_abilities_list: RichTextLabel = $Panel/Margin/VBox/SmoothScroll/Margin/Content/PassiveAbilitiesList
+@onready var _content_container_parent: Control = $Panel/Margin/VBox/SmoothScroll
 
 
 func _ready() -> void:
@@ -25,7 +25,6 @@ func _ready() -> void:
 
 func set_info(
 			skills: Array[BaseSkill], passive_abilities: Array[AbstractAbility]) -> void:
-	
 	_set_skills(skills)
 	_set_passive_abilities(passive_abilities)
 	_passive_button.visible = passive_abilities.size() > 0
@@ -42,8 +41,9 @@ func open_passive_abilities_list() -> void:
 
 
 func _minimize_popup() -> void:
-	_current_pressed_content_button.button_pressed = false
-	_current_pressed_content_button = null
+	if _current_pressed_content_button != null:
+		_current_pressed_content_button.button_pressed = false
+		_current_pressed_content_button = null
 	_content_container_parent.hide()
 
 

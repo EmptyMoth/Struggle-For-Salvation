@@ -32,6 +32,7 @@ script = ExtResource("1_kgxnq")
 [node name="SkillSelectedButton" type="Button" parent="."]
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
+mouse_filter = 1
 theme_override_colors/icon_disabled_color = Color(0.666667, 0.666667, 0.666667, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yg477")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_wie0m")
@@ -51,6 +52,7 @@ custom_minimum_size = Vector2(35, 40)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
+mouse_filter = 2
 texture = ExtResource("3_gdg3v")
 expand_mode = 1
 

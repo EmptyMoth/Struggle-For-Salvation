@@ -10,7 +10,6 @@ signal unfolded_cards(cards: Array[AbstractCard])
 
 @export var stats: CharacterStats = CharacterStats.new()
 @export var deck_of_cards: DeckOfCards = DeckOfCards.new()
-@export var icon: CompressedTexture2D = null
 
 var is_ally : bool :
 	get: return "allies" in get_groups()
@@ -155,8 +154,8 @@ func actions_switcher(action: BattleParameters.CharactersActions) -> void:
 
 
 func _set_character_type_group() -> void:
-	add_to_group(BattleParameters.GROUPS_BY_CHARACTERS_TYPES[stats.character_type])
-	if stats.character_type > BattleParameters.CharactersTypes.IMMUNOCYTE:
+	add_to_group(BattleParameters.GROUPS_BY_CHARACTERS_TYPES[stats.type])
+	if stats.type > BattleParameters.CharactersTypes.IMMUNOCYTE:
 		add_to_group("pathogens")
 
 

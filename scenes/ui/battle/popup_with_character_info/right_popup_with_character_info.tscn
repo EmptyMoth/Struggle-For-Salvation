@@ -9,24 +9,26 @@
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -875.0
-offset_bottom = 463.0
+offset_left = -897.0
+offset_bottom = 494.0
 grow_horizontal = 0
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 script = ExtResource("1_gmx27")
-metadata/_edit_use_anchors_ = true
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="PopupWithSkillInfo" parent="HBox" instance=ExtResource("1_4qaq5")]
 layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="HBox"]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+theme_override_constants/separation = 10
 
 [node name="PopupWithCharacterBaseInfo" parent="HBox/VBox" instance=ExtResource("2_a7cqq")]
 layout_mode = 2

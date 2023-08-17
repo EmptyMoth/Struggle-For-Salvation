@@ -40,34 +40,48 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm7g4"]
 
-[node name="PopupWithCharacterAdditionalInfo" type="PanelContainer"]
-custom_minimum_size = Vector2(278, 0)
-offset_right = 10.0
-offset_bottom = 10.0
+[node name="PopupWithCharacterAdditionalInfo" type="MarginContainer"]
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 273.0
+offset_bottom = 298.0
+mouse_filter = 2
+theme_override_constants/margin_top = 0
 script = ExtResource("1_1vpgi")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 20
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 20
 
-[node name="VBox" type="VBoxContainer" parent="Margin"]
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 12
 
-[node name="Options" type="MarginContainer" parent="Margin/VBox"]
+[node name="Options" type="MarginContainer" parent="Panel/Margin/VBox"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 theme_override_constants/margin_right = 20
 
-[node name="HBox" type="HBoxContainer" parent="Margin/VBox/Options"]
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin/VBox/Options"]
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="SkillsButton" type="Button" parent="Margin/VBox/Options/HBox"]
+[node name="SkillsButton" type="Button" parent="Panel/Margin/VBox/Options/HBox"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -81,7 +95,7 @@ button_group = SubResource("ButtonGroup_3smeh")
 text = "Skills"
 metadata/content_index = 0
 
-[node name="PassiveButton" type="Button" parent="Margin/VBox/Options/HBox"]
+[node name="PassiveButton" type="Button" parent="Panel/Margin/VBox/Options/HBox"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -95,9 +109,11 @@ button_group = SubResource("ButtonGroup_3smeh")
 text = "Passive"
 metadata/content_index = 1
 
-[node name="SmoothScroll" type="ScrollContainer" parent="Margin/VBox"]
+[node name="SmoothScroll" type="ScrollContainer" parent="Panel/Margin/VBox"]
 custom_minimum_size = Vector2(0, 220)
 layout_mode = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
 script = ExtResource("2_3nuae")
 speed = 3.0
 damping_scroll = 0.3
@@ -105,90 +121,90 @@ damping_drag = 0.6
 follow_focus_margin = 1
 allow_horizontal_scroll = false
 
-[node name="Margin" type="MarginContainer" parent="Margin/VBox/SmoothScroll"]
+[node name="Margin" type="MarginContainer" parent="Panel/Margin/VBox/SmoothScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_constants/margin_right = 10
 
-[node name="Content" type="TabContainer" parent="Margin/VBox/SmoothScroll/Margin"]
+[node name="Content" type="TabContainer" parent="Panel/Margin/VBox/SmoothScroll/Margin"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vm7g4")
 clip_tabs = false
 tabs_visible = false
 
-[node name="SkillsList" type="GridContainer" parent="Margin/VBox/SmoothScroll/Margin/Content"]
+[node name="SkillsList" type="GridContainer" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
 
-[node name="SkillSelectedButton" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton" index="0"]
+[node name="Counter" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton" index="2"]
 mouse_filter = 1
 
-[node name="Counter" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton" index="2"]
-mouse_filter = 1
-
-[node name="SkillSelectedButton2" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton2" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton3" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton3" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton4" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton4" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton5" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton5" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton6" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton6" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton7" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton7" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton8" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton8" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton9" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton9" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton10" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton10" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton11" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton11" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton12" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton12" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="SkillSelectedButton13" parent="Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
+[node name="SkillSelectedButton13" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
 layout_mode = 2
 mouse_filter = 1
 
-[node name="PassiveAbilitiesList" type="RichTextLabel" parent="Margin/VBox/SmoothScroll/Margin/Content"]
+[node name="PassiveAbilitiesList" type="RichTextLabel" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 1
+mouse_filter = 2
 bbcode_enabled = true
 text = "[ul bullet=▪]
 
@@ -199,4 +215,4 @@ text = "[ul bullet=▪]
 fit_content = true
 scroll_active = false
 
-[editable path="Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton"]
+[editable path="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton"]

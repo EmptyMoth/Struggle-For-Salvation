@@ -58,6 +58,15 @@ func close_ui() -> void:
 	popup_with_character_info.close()
 
 
+func connect_signals(character: AbstractCharacter) -> void:
+	@warning_ignore("return_value_discarded")
+	character.picked.connect(_on_character_picked)
+	@warning_ignore("return_value_discarded")
+	character.selected.connect(_on_character_selected)
+	@warning_ignore("return_value_discarded")
+	character.deselected.connect(_on_character_deselected)
+
+
 func _on_character_picked(
 			character: AbstractCharacter, 
 			speed_dice: AbstractSpeedDice = null) -> void:
