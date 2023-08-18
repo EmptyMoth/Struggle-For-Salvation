@@ -14,8 +14,8 @@ enum ApplicationType { USES, COOLDOWN }
 @export var action_dice_list: Array[AbstractActionDice] = []
 
 
-static func get_str_application_type(skill: BaseSkill) -> String:
-	return "Uses" if skill.application_type == BaseSkill.ApplicationType.USES else "Cooldown"
+#static func get_str_application_type(skill: BaseSkill) -> String:
+#	return "Uses" if skill.application_type == BaseSkill1.ApplicationType.USES else "Cooldown"
 
 
 func is_blocked() -> bool:

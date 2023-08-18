@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bdncac3gfq8ms"]
 
-[ext_resource type="Script" path="res://scripts/battle/characters/base_scripts/abstract_character.gd" id="1_pj8uo"]
+[ext_resource type="Script" path="res://scripts/battle/characters/characters/base/abstract_character.gd" id="1_pj8uo"]
 [ext_resource type="PackedScene" uid="uid://ctv5g5gejbuh" path="res://scenes/ui/battle/characters/huds/subcharacter_hud/subcharacter_hud.tscn" id="2_wffk4"]
 [ext_resource type="AnimationLibrary" uid="uid://8tfrtticacgd" path="res://resources/battle/characters/actions_animations/base_libraries/base_characters_actions.res" id="3_ayav0"]
 [ext_resource type="AnimationLibrary" uid="uid://ptsewigwueq6" path="res://resources/battle/characters/actions_animations/base_libraries/characters_attacks.res" id="4_45hhr"]

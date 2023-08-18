@@ -6,7 +6,7 @@ extends Resource
 @export var type: BattleParameters.CharactersTypes
 @export var icon: Texture
 
-@export var skills: Array[BaseSkill] = []
+@export var skills: Array[AbstractSkill] = []
 @export var passive_abilities: Array[AbstractAbility] = []
 
 @export_group("Health")

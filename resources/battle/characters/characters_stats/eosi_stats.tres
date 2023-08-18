@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://dee4tjnw27ow"]
 
-[ext_resource type="Script" path="res://scripts/resources/character/character_stats/character_stats.gd" id="1_efkeo"]
+[ext_resource type="Script" path="res://scripts/battle/characters/stats/character_stats.gd" id="1_efkeo"]
 [ext_resource type="Texture2D" uid="uid://uar4h4qjxuhv" path="res://sprites/ui/battle/characters/character_icons/eosinophil_icon.png" id="1_i17s1"]
 
 [resource]

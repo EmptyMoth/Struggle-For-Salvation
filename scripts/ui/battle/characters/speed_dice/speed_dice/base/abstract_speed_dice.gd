@@ -29,7 +29,7 @@ var current_state: SpeedDiceState :
 		return _current_state
 
 var installed_card: AbstractCard = null
-var installed_skill: BaseSkill = null
+var installed_skill: AbstractSkill = null
 
 @onready var _speed_value_label: Label = $States/SpeedValue
 @onready var _border: TextureRect = $States/Border

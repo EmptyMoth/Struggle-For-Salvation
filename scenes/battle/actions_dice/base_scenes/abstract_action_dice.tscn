@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c6nmkv1f1dl10"]
 
-[ext_resource type="Script" path="res://scripts/battle/actions_dice/base_scripts/abstract_action_dice.gd" id="1_c33ci"]
+[ext_resource type="Script" path="res://scripts/battle/actions_dice/base/abstract_action_dice.gd" id="1_c33ci"]
 [ext_resource type="FontFile" uid="uid://bjpyveek057b3" path="res://fonts/itc_serif_gothic_lt_black.ttf" id="2_pb4ir"]
 
 [node name="AbstractActionDice" type="TextureRect"]

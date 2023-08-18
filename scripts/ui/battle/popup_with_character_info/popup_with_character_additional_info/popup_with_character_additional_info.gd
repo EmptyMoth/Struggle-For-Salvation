@@ -2,7 +2,7 @@ class_name PopupWithCharacterAdditionalInfo
 extends MovingContainer
 
 
-signal skill_selected(skill: BaseSkill) 
+signal skill_selected(skill: AbstractSkill) 
 
 const SKILL_SELECTED_BUTTON_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_character_info/popup_with_character_additional_info/components/skill_selected_button.tscn")
 const PRESSET_FOR_PASSIVE_LIST: String = "[ul bullet=▪]\n%s[/ul]"
@@ -24,7 +24,7 @@ func _ready() -> void:
 
 
 func set_info(
-			skills: Array[BaseSkill], passive_abilities: Array[AbstractAbility]) -> void:
+			skills: Array[AbstractSkill], passive_abilities: Array[AbstractAbility]) -> void:
 	_set_skills(skills)
 	_set_passive_abilities(passive_abilities)
 	_passive_button.visible = passive_abilities.size() > 0
@@ -47,7 +47,7 @@ func _minimize_popup() -> void:
 	_content_container_parent.hide()
 
 
-func _set_skills(skills: Array[BaseSkill]) -> void:
+func _set_skills(skills: Array[AbstractSkill]) -> void:
 	for skill in skills:
 		var skill_selected_button = SKILL_SELECTED_BUTTON_SCENE.instantiate()
 		_skills_list.add_child(skill_selected_button)
@@ -73,5 +73,5 @@ func _on_button_group_pressed(button: BaseButton) -> void:
 	_content_container_parent.show()
 
 
-func _on_skill_selected_button_skill_selected(skill: BaseSkill) -> void:
+func _on_skill_selected_button_skill_selected(skill: AbstractSkill) -> void:
 	emit_signal("skill_selected", skill)

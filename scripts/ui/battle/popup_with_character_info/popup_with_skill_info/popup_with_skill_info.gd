@@ -19,14 +19,14 @@ const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/ba
 @onready var _dice_abilities_container: VBoxContainer = $HBox/VBox/AbilitiesVBox
 
 
-func set_info(skill: BaseSkill) -> void:
+func set_info(skill: AbstractSkill) -> void:
 	if skill == null:
 		return
 	
-	_set_base_info(skill)
-	_set_skill_ability(skill.ability)
-	_set_actions_dice(skill.action_dice_list)
-	_button_hiding_dice_abilities.visible = _dice_abilities_container.get_child_count() > 0
+#	_set_base_info(skill)
+#	_set_skill_ability(skill.ability)
+#	_set_actions_dice(skill.action_dice_list)
+#	_button_hiding_dice_abilities.visible = _dice_abilities_container.get_child_count() > 0
 
 
 func remove_actions_dice_info() -> void:
@@ -54,12 +54,16 @@ func is_visible_dice_abilities() -> bool:
 	return not _button_hiding_dice_abilities.button_pressed
 
 
-func _set_base_info(skill: BaseSkill) -> void:
+func _set_base_info(skill: AbstractSkillStats) -> void:
 	_skill_icon.texture = skill.icon
 	_title_label.text = skill.title
 	_type_icon.texture.current_frame = skill.range_type
-	_uses_type_label.text = BaseSkill.get_str_application_type(skill)
-	_uses_count_label.text = str(skill.application_type_count)
+	if skill is CooldownSkillStats:
+		_uses_type_label.text = "Cooldown"
+		_uses_count_label.text = skill.cooldown
+	elif skill is QuantitySkillStats:
+		_uses_type_label.text = "Quantity"
+		_uses_count_label.text = skill.quantity
 
 
 func _set_skill_ability(skill_ability: AbstractAbility) -> void:
@@ -91,8 +95,8 @@ func _create_action_dice_ability_info(action_dice: AbstractActionDice, dice_inde
 
 
 func _on_button_hiding_dice_abilities_toggled(button_pressed: bool) -> void:
-	display_dice_abilities_panel(not button_pressed, 0.3)
+	display_dice_abilities_panel(not button_pressed, 0.2)
 
 
-func _on_skill_selected(skill: BaseSkill) -> void:
+func _on_skill_selected(skill: AbstractSkill) -> void:
 	set_info(skill)

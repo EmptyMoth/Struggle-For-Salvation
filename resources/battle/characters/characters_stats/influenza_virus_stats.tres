@@ -1,14 +1,14 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://d4cmnx4c5lvq4"]
 
 [ext_resource type="Texture2D" uid="uid://djjd7jjoal30w" path="res://sprites/ui/battle/characters/character_icons/Influenza_virus_icon.png" id="1_k38vb"]
-[ext_resource type="Script" path="res://scripts/resources/character/character_stats/character_stats.gd" id="1_qs801"]
+[ext_resource type="Script" path="res://scripts/battle/characters/stats/character_stats.gd" id="1_qs801"]
 
 [resource]
 script = ExtResource("1_qs801")
 name = "Influenza Virus"
 type = 1
 icon = ExtResource("1_k38vb")
-skills = Array[Resource("res://scripts/ui/battle/skills/base/base_skill.gd")]([])
+skills = Array[Resource("res://scripts/resources/skills/skills/base/abstract_skill.gd")]([])
 passive_abilities = Array[Resource("res://scripts/battle/abilities/base/abstract_ability.gd")]([])
 max_physical_health = 20
 max_mental_health = 10
