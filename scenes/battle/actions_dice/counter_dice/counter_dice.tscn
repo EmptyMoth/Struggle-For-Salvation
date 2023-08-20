@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/battle/actions_dice/base_scenes/abstract_action_dice.tscn" id="1_tptfj"]
-[ext_resource type="Script" path="res://scripts/battle/actions_dice/counter_dice/counter_dice.gd" id="2_2q5ty"]
+[ext_resource type="PackedScene" uid="uid://c6nmkv1f1dl10" path="res://scenes/battle/actions_dice/base_scenes/abstract_action_dice.tscn" id="1_tptfj"]
+[ext_resource type="Script" path="res://scripts/battle/actions_dice/actions_dice/counter_dice.gd" id="2_2q5ty"]
 [ext_resource type="Texture2D" uid="uid://bqbgw1dg07m8f" path="res://sprites/battle/actions_dice/counter_dice/counter_dice.png" id="2_6wim3"]
 
 [node name="CounterDice" instance=ExtResource("1_tptfj")]

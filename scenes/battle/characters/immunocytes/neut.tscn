@@ -1,27 +1,20 @@
-[gd_scene load_steps=14 format=3 uid="uid://c1nbclmuxc5ri"]
+[gd_scene load_steps=10 format=3 uid="uid://c1nbclmuxc5ri"]
 
-[ext_resource type="PackedScene" uid="uid://bdncac3gfq8ms" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_avfjx"]
-[ext_resource type="Resource" uid="uid://clfjmrg2xhxl4" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="2_73e57"]
-[ext_resource type="PackedScene" uid="uid://jp6ysklein1c" path="res://scenes/battle/cards/cards/test_card_1.tscn" id="3_hewcq"]
-[ext_resource type="Script" path="res://scripts/resources/character/deck_of_cards/deck_of_cards.gd" id="4_0syk8"]
-[ext_resource type="Texture2D" uid="uid://chulonxxnqoco" path="res://sprites/ui/battle/characters/character_icons/neutrophil_icon.png" id="5_6fkej"]
-[ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/immunocytes/neutrophil/block.png" id="6_xlfih"]
-[ext_resource type="Texture2D" uid="uid://dcp5tnyjlkg4x" path="res://sprites/battle/characters/immunocytes/neutrophil/default.png" id="7_boi8q"]
-[ext_resource type="Texture2D" uid="uid://cr5rqv0uv64p3" path="res://sprites/battle/characters/immunocytes/neutrophil/evade.png" id="8_r1y2x"]
-[ext_resource type="Texture2D" uid="uid://drltmipr5lo2a" path="res://sprites/battle/characters/immunocytes/neutrophil/movement.png" id="9_7g3hr"]
-[ext_resource type="Texture2D" uid="uid://c6bir2rcubwy2" path="res://sprites/battle/characters/immunocytes/neutrophil/stun.png" id="10_06vh2"]
+[ext_resource type="PackedScene" uid="uid://bdncac3gfq8ms" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_vircm"]
+[ext_resource type="Resource" uid="uid://dq7yncwf1bomg" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="2_yipjl"]
+[ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/immunocytes/neut/block.png" id="3_ilfsr"]
+[ext_resource type="Texture2D" uid="uid://dcp5tnyjlkg4x" path="res://sprites/battle/characters/immunocytes/neut/default.png" id="4_1aacy"]
+[ext_resource type="Texture2D" uid="uid://cr5rqv0uv64p3" path="res://sprites/battle/characters/immunocytes/neut/evade.png" id="5_6fp4d"]
+[ext_resource type="Texture2D" uid="uid://drltmipr5lo2a" path="res://sprites/battle/characters/immunocytes/neut/movement.png" id="6_wiebb"]
+[ext_resource type="Texture2D" uid="uid://65xy6foolauq" path="res://sprites/battle/characters/immunocytes/neut/pierce_attack.png" id="7_3x0am"]
+[ext_resource type="Texture2D" uid="uid://c6bir2rcubwy2" path="res://sprites/battle/characters/immunocytes/neut/stun.png" id="8_3im4w"]
 
-[sub_resource type="Resource" id="Resource_t55wq"]
-resource_local_to_scene = true
-script = ExtResource("4_0syk8")
-_packed_cards = Array[PackedScene]([ExtResource("3_hewcq"), ExtResource("3_hewcq"), ExtResource("3_hewcq"), ExtResource("3_hewcq"), ExtResource("3_hewcq"), ExtResource("3_hewcq"), ExtResource("3_hewcq"), ExtResource("3_hewcq"), ExtResource("3_hewcq")])
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_mwmub"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3ypy2"]
 resource_local_to_scene = true
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("6_xlfih")
+"texture": ExtResource("3_ilfsr")
 }],
 "loop": false,
 "name": &"block",
@@ -29,7 +22,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("7_boi8q")
+"texture": ExtResource("4_1aacy")
 }],
 "loop": false,
 "name": &"default",
@@ -37,7 +30,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_r1y2x")
+"texture": ExtResource("5_6fp4d")
 }],
 "loop": false,
 "name": &"evade",
@@ -45,7 +38,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("9_7g3hr")
+"texture": ExtResource("6_wiebb")
 }],
 "loop": false,
 "name": &"movement",
@@ -53,30 +46,25 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("10_06vh2")
+"texture": ExtResource("7_3x0am")
+}],
+"loop": true,
+"name": &"pierce_attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3im4w")
 }],
 "loop": false,
 "name": &"stun",
 "speed": 0.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_af71n"]
-resource_local_to_scene = true
-size = Vector2(31, 67)
-
-[node name="Neut" instance=ExtResource("1_avfjx")]
-stats = ExtResource("2_73e57")
-deck_of_cards = SubResource("Resource_t55wq")
-icon = ExtResource("5_6fkej")
+[node name="Neut" instance=ExtResource("1_vircm")]
+stats = ExtResource("2_yipjl")
 
 [node name="Actions" parent="." index="1"]
 position = Vector2(0, -27)
-sprite_frames = SubResource("SpriteFrames_mwmub")
-
-[node name="CollisionShape2D" parent="ClickArea" index="0"]
-position = Vector2(0, -31)
-shape = SubResource("RectangleShape2D_af71n")
-
-[node name="SpeedDiceManager" parent="." index="3"]
-offset_top = -70.0
-offset_bottom = -70.0
+sprite_frames = SubResource("SpriteFrames_3ypy2")
+animation = &"pierce_attack"

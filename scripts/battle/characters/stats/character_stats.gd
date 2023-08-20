@@ -6,12 +6,12 @@ extends Resource
 @export var type: BattleParameters.CharactersTypes
 @export var icon: Texture
 
-@export var skills: Array[AbstractSkill] = []
+@export var skills: Array[AbstractSkillStats] = []
 @export var passive_abilities: Array[AbstractAbility] = []
 
 @export_group("Health")
-@export_range(1, 1000, 1) var max_physical_health: int = 1
-@export_range(1, 1000, 1) var max_mental_health: int = 1
+@export_range(1, 999, 1) var max_physical_health: int = 1
+@export_range(1, 999, 1, "or_greater") var max_mental_health: int = 1
 
 @export_group("Resistances")
 @export var physical_resistance: BaseResistance.Resistance = BaseResistance.Resistance.NORMAL

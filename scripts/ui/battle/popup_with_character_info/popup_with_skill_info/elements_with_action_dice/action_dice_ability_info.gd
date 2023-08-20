@@ -11,6 +11,7 @@ const _ARABIC_VALUES: Array[int] = [10, 9, 5, 4, 1]
 
 func set_info(action_dice: AbstractActionDice, action_dice_index: int) -> void:
 	_action_dice_number_label.text = ActionDiceAbilityInfo._convert_to_roman(action_dice_index + 1)
+	_action_dice_number_label.modulate = action_dice.get_color()
 	_action_dice_ability_label.text = action_dice.ability.description
 
 

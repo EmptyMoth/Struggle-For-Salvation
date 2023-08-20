@@ -7,7 +7,8 @@ extends AbstractSkill
 var current_quantity: int = stats.quantity
 
 
-func _init(skill_stats: QuantitySkillStats) -> void:
+func _init(skill_stats: QuantitySkillStats = QuantitySkillStats.new()) -> void:
+	super()
 	stats = skill_stats
 	current_quantity = stats.quantity
 

@@ -11,14 +11,6 @@ var setted_skill: BaseSkill = null
 @onready var _counter_label: Label = $Counter
 
 
-func _ready() -> void:
-	var action_dice_list: Array[AbstractActionDice] = [AbstractActionDice.new(), AbstractActionDice.new()]
-	action_dice_list[1].dice_type = AbstractActionDice.DiceType.EVADE_DICE
-	var skill: BaseSkill = BaseSkill.new()
-	skill.action_dice_list = action_dice_list
-	set_skill(skill)
-
-
 func set_skill(skill: BaseSkill) -> void:
 	setted_skill = skill
 	var skill_is_blocked: bool = skill.is_blocked()

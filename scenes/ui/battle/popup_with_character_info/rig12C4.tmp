@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://crs4e7g1xvbjw"]
+
+[ext_resource type="PackedScene" uid="uid://bxmbtddt0ipts" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.tscn" id="1_4qaq5"]
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/base_popup_with_character_info.gd" id="1_gmx27"]
+[ext_resource type="PackedScene" uid="uid://b2sdtsgk0uk2a" path="res://scenes/ui/battle/popup_with_character_info/popup_with_character_base_info/popup_with_character_base_info.tscn" id="2_a7cqq"]
+[ext_resource type="PackedScene" uid="uid://bu1wimhkpbutk" path="res://scenes/ui/battle/popup_with_character_info/popup_with_character_additional_info/popup_with_character_additional_info.tscn" id="3_2h31k"]
+
+[node name="RightPopupWithCharacterInfo" type="MarginContainer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -897.0
+offset_bottom = 494.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_gmx27")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PopupWithSkillInfo" parent="HBox" instance=ExtResource("1_4qaq5")]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="HBox"]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PopupWithCharacterBaseInfo" parent="HBox/VBox" instance=ExtResource("2_a7cqq")]
+layout_mode = 2
+
+[node name="PopupWithCharacterAdditionalInfo" parent="HBox/VBox" instance=ExtResource("3_2h31k")]
+layout_mode = 2

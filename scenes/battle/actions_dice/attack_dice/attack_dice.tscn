@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3]
 
-[ext_resource type="PackedScene" path="res://scenes/battle/actions_dice/base_scenes/abstract_action_dice.tscn" id="1_pqj4f"]
-[ext_resource type="Script" path="res://scripts/battle/actions_dice/attack_dice/attack_dice.gd" id="2_0cj2h"]
+[ext_resource type="PackedScene" uid="uid://c6nmkv1f1dl10" path="res://scenes/battle/actions_dice/base_scenes/abstract_action_dice.tscn" id="1_pqj4f"]
+[ext_resource type="Script" path="res://scripts/battle/actions_dice/actions_dice/attack_dice.gd" id="2_0cj2h"]
 [ext_resource type="Texture2D" uid="uid://khq1ek2jqa21" path="res://sprites/battle/actions_dice/attack_dice/attack_dice.png" id="2_8u0uo"]
 
 [node name="AttackDice" instance=ExtResource("1_pqj4f")]

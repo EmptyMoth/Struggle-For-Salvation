@@ -14,6 +14,8 @@ var _cursor_loc: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
+	BattleSygnals.turn_started.connect(move_to_start_position)
+	BattleSygnals.combat_started.connect(move_to_combat_position)
 	_animation.play("move_camera")
 	_animation.pause()
 

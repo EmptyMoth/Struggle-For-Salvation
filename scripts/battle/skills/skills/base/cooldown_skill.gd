@@ -8,7 +8,8 @@ var is_selected: bool = false
 var current_cooldown: int = 0
 
 
-func _init(skill_stats: CooldownSkillStats) -> void:
+func _init(skill_stats: CooldownSkillStats = CooldownSkillStats.new()) -> void:
+	super()
 	stats = skill_stats
 
 

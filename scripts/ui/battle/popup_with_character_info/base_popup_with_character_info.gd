@@ -25,7 +25,7 @@ func _input(_event: InputEvent) -> void:
 func set_info(character: AbstractCharacter, speed_dice: AbstractSpeedDice = null) -> void:
 	show_popup()
 	_base_info.set_info(character)
-	_additional_info.set_info(character.stats.skills, character.stats.passive_abilities)
+	_additional_info.set_info(character.skills, character.stats.passive_abilities)
 	if speed_dice == null:
 		_skill_info.hide()
 		_additional_info.open_passive_abilities_list()

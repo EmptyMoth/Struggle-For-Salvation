@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://5j1e7vk4565f"]
+[gd_scene load_steps=8 format=3 uid="uid://5j1e7vk4565f"]
 
 [ext_resource type="PackedScene" uid="uid://bdncac3gfq8ms" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_vyfbk"]
 [ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="2_hkv68"]
-[ext_resource type="Resource" uid="uid://d4cmnx4c5lvq4" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="2_v1wv4"]
+[ext_resource type="Resource" uid="uid://onlgde0h0o36" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="2_v1wv4"]
 [ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="3_ja0r5"]
-[ext_resource type="Resource" uid="uid://dfvrjojo4q15m" path="res://resources/battle/characters/deck_of_cards/influenza_virus_deck.tres" id="3_vv7vx"]
 [ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_afsd2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7qecs"]
@@ -58,7 +57,6 @@ size = Vector2(33, 72)
 [node name="InfluenzaVirus" instance=ExtResource("1_vyfbk")]
 texture_filter = 1
 stats = ExtResource("2_v1wv4")
-deck_of_cards = ExtResource("3_vv7vx")
 
 [node name="Actions" parent="." index="1"]
 position = Vector2(0, -39)

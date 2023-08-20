@@ -32,6 +32,7 @@ Settings="*res://scripts/global/settings/settings.gd"
 Saves="*res://scripts/global/saves.gd"
 SceneTransition="*res://scripts/global/scene_transition/scene_transition.gd"
 CustomMouseCursor="*res://scripts/global/custom_mouse_cursor.gd"
+BattleSygnals="*res://scripts/global/battle/battle_sygnals.gd"
 
 [display]
 
@@ -41,6 +42,10 @@ window/size/resizable=false
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="res://sprites/global/custom_mouse_cursor/arrow.png"
 window/size/fullscreen=true
+
+[editor]
+
+movie_writer/movie_file="C:/Godot/Projects/Struggle For Salvation/tests/test_movie.avi"
 
 [editor_plugins]
 

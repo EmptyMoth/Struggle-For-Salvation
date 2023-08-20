@@ -15,7 +15,7 @@ enum CharactersTypes {
 	CANCER_CELL,
 }
 
-enum CharactersActions {
+enum CharactersMotions {
 	DEFAULT,
 	STUN,
 	MOVEMENT,

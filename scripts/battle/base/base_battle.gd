@@ -2,10 +2,6 @@ class_name BaseBattle
 extends Node2D
 
 
-signal turn_started(turn_number: int)
-signal turn_ended
-signal combat_started
-
 enum BattlePhase { CARD_PLACEMENT, COMBAT }
 
 @export var _packed_formation: PackedScene
@@ -25,7 +21,6 @@ var _battlefield: BaseBattlefield = null
 func _ready() -> void:
 	set_location(_packed_location.instantiate())
 	_init_of_teams()
-	_connect_signals()
 	_switch_battle_phase()
 
 
@@ -84,7 +79,7 @@ func _implements_card_placement_phase() -> void:
 
 func _implements_combat_phase() -> void:
 	current_phase = BattlePhase.COMBAT
-	emit_signal("combat_started")
+	BattleSygnals.combat_started.emit()
 	get_tree().call_group("characters", "prepare_for_combat")
 	CombatManager.set_assaults(CardPlacementManager.get_assaults())
 	CombatManager.activate_assaults()
@@ -92,7 +87,7 @@ func _implements_combat_phase() -> void:
 
 func _start_turn() -> void:
 	turn_number += 1
-	emit_signal("turn_started", turn_number)
+	BattleSygnals.turn_started.emit(turn_number)
 
 func _end_turn() -> void:
 	await CombatManager.combat_end
@@ -103,7 +98,7 @@ func _end_turn() -> void:
 		defeate()
 		return
 	
-	emit_signal("turn_ended")
+	BattleSygnals.turn_ended.emit(turn_number)
 	_switch_battle_phase()
 
 
@@ -114,13 +109,6 @@ func _init_of_teams() -> void:
 			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
 	enemy_team.set_popup_with_character_info(
 			left_popup if not Settings.gameplay_settings.allies_placement.is_left else right_popup)
-
-
-func _connect_signals() -> void:
-	#PlayerState.set_assault.connect(_on_player_set_assault)
-	turn_started.connect(CardPlacementManager._on_battle_turn_started)
-	turn_started.connect(_battlefield._on_battle_turn_started)
-	combat_started.connect(_battlefield._on_battle_combat_started)
 
 
 #func _on_player_set_assault() -> void:

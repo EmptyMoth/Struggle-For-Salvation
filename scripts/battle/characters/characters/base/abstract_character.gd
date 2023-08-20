@@ -9,7 +9,7 @@ signal folded_cards
 signal unfolded_cards(cards: Array[AbstractCard])
 
 @export var stats: CharacterStats = CharacterStats.new()
-@export var deck_of_cards: DeckOfCards = DeckOfCards.new()
+var deck_of_cards: DeckOfCards = DeckOfCards.new()
 
 var is_ally : bool :
 	get: return "allies" in get_groups()
@@ -46,15 +46,16 @@ func _ready() -> void:
 	speed_dice_manager.init(stats.min_speed, stats.max_speed, stats.speed_dice_count)
 	
 	_connect_signals()
-	actions_switcher(BattleParameters.CharactersActions.DEFAULT)
+	actions_switcher(BattleParameters.CharactersMotions.DEFAULT)
 
 
 func _process(_delta: float) -> void:
-	position = character_marker_3d.get_current_position_on_camera()
+	pass
+	#position = character_marker_3d.get_current_position_on_camera()
 
 
-static func get_action_name(action: BattleParameters.CharactersActions) -> String:
-	var action_name: String = BattleParameters.CharactersActions.find_key(action)
+static func get_action_name(action: BattleParameters.CharactersMotions) -> String:
+	var action_name: String = BattleParameters.CharactersMotions.find_key(action)
 	return action_name.to_lower() if action_name != null else "default"
 
 
@@ -98,6 +99,10 @@ func to_die() -> void:
 
 func to_stun() -> void:
 	take_mental_damage(mental_health.max_health)
+
+
+func deal_damage(attack_dice_value: int) -> int:
+	return attack_dice_value
 
 
 func take_damage(damage: int) -> void:
@@ -147,7 +152,7 @@ func flip_view_direction() -> void:
 	character_poses.flip_h = !character_poses.flip_h
 
 
-func actions_switcher(action: BattleParameters.CharactersActions) -> void:
+func actions_switcher(action: BattleParameters.CharactersMotions) -> void:
 	var animation_name: String = \
 			"base_characters_actions/%s" % AbstractCharacter.get_action_name(action)
 	actions_animations.play(animation_name)

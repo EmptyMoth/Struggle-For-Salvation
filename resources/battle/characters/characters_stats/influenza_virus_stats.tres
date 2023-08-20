@@ -1,19 +1,16 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=3 format=3 uid="uid://d4cmnx4c5lvq4"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://onlgde0h0o36"]
 
-[ext_resource type="Texture2D" uid="uid://djjd7jjoal30w" path="res://sprites/ui/battle/characters/character_icons/Influenza_virus_icon.png" id="1_k38vb"]
 [ext_resource type="Script" path="res://scripts/battle/characters/stats/character_stats.gd" id="1_qs801"]
 
 [resource]
 script = ExtResource("1_qs801")
-name = "Influenza Virus"
+name = "Virus"
 type = 1
-icon = ExtResource("1_k38vb")
-skills = Array[Resource("res://scripts/resources/skills/skills/base/abstract_skill.gd")]([])
-passive_abilities = Array[Resource("res://scripts/battle/abilities/base/abstract_ability.gd")]([])
-max_physical_health = 20
-max_mental_health = 10
+skills = Array[Resource("res://scripts/ui/battle/skills/base/base_skill.gd")]([])
+max_physical_health = 1
+max_mental_health = 1
 physical_resistance = 3
 mental_resistance = 3
 speed_dice_count = 1
 min_speed = 1
-max_speed = 3
+max_speed = 1
