@@ -14,5 +14,5 @@ func connect_condition(owner: AbstractCharacter, effect: Callable) -> void:
 	_get_condition(owner).connect(effect)
 
 
-func _get_condition(owner: AbstractCharacter) -> Signal:
+func _get_condition(_owner: AbstractCharacter) -> Signal:
 	return self.changed

@@ -2,6 +2,7 @@ class_name BaseSkillAbility
 extends AbstractAbility
 
 
+@warning_ignore("unused_private_class_variable")
 @export_enum(
 	"None", 
 	"On Clash",
@@ -13,5 +14,5 @@ extends AbstractAbility
 	"On Hit",
 	"On Block",
 	"On Evade",
-	"After Area Attack", 
+	"After Area Attack",
 	) var _condition_title: String = "None"

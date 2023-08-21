@@ -2,6 +2,7 @@ class_name BaseActionDiceAbility
 extends AbstractAbility
 
 
+@warning_ignore("unused_private_class_variable")
 @export_enum(
 	"None", 
 	"On Clash",

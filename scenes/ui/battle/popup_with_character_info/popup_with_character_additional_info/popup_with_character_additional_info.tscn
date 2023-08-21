@@ -1,8 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://bu1wimhkpbutk"]
+[gd_scene load_steps=15 format=3 uid="uid://bu1wimhkpbutk"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_additional_info/popup_with_character_additional_info.gd" id="1_1vpgi"]
 [ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="2_3nuae"]
-[ext_resource type="PackedScene" uid="uid://bwagcydq32xo1" path="res://scenes/ui/battle/popup_with_character_info/popup_with_character_additional_info/components/skill_selected_button.tscn" id="3_67dvx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jxwn"]
 
@@ -144,61 +143,6 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
 
-[node name="SkillSelectedButton" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="Counter" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton" index="2"]
-mouse_filter = 1
-
-[node name="SkillSelectedButton2" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton3" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton4" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton5" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton6" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton7" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton8" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton9" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton10" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton11" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton12" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton13" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("3_67dvx")]
-layout_mode = 2
-mouse_filter = 1
-
 [node name="PassiveAbilitiesList" type="RichTextLabel" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 visible = false
 layout_mode = 2
@@ -206,13 +150,5 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 bbcode_enabled = true
-text = "[ul bullet=▪]
-
-[color=#33AAFF][/color]Скорость (Speed) – персонаж получает 1 кубик скорости
-[color=#33AAFF][/color]Нетоз (NETs) – после смерти накладывает нетоз на противника, который нанес последний удар данному персонажу (нетоз – обездвиживает на 1 ход, накладывает каждый ход 2 медлительности и наносит каждый ход 1 урон)
-[color=#33AAFF][/color]Антиген-бактерия (Antigen-Bacteria) – все кубики получает 1 мощь против бактерий
-[/ul]"
 fit_content = true
 scroll_active = false
-
-[editable path="Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton"]

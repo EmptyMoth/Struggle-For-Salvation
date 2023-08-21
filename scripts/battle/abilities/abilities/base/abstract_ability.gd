@@ -16,6 +16,7 @@ func init(owner: AbstractCharacter) -> void:
 	_owner = owner
 	_condition = AbstractAbility._create_condition(get("_condition_title"))
 	_condition.connect_condition(_owner, _effect.effect)
+	@warning_ignore("static_called_on_instance")
 	description = _DESCRIPTION_TEMPLATE % [_condition.get_title(), _effect.get_description()]
 
 

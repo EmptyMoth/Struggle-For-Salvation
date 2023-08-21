@@ -3,6 +3,7 @@ extends CharacterBody3D
 
 
 const SPEED: float = 5.0
+const _POINT_INDENTATION: int = 100
 
 var start_position: Vector3
 
@@ -21,14 +22,27 @@ func _physics_process(_delta: float) -> void:
 	var is_colided: bool = move_and_slide()
 
 
-static func get_combat_point(
-			opponent_1: CharacterMarker3D, opponent_2: CharacterMarker3D) -> Vector3:
-	return (opponent_1.position + opponent_2.position) / 2
+func to_left_of_character(character: CharacterMarker3D) -> bool:
+	return self.position.x < character.position.x
 
 
-static func get_one_sided_attack_point(
-			striker: CharacterMarker3D, opponent: CharacterMarker3D) -> Vector3:
-	return opponent.position
+func get_point_for_clash(opponent: CharacterMarker3D) -> Vector3:
+	@warning_ignore("integer_division")
+	return _get_indented_point((self.position + opponent.position) / 2, 
+			int(_POINT_INDENTATION / 2), opponent)
+
+
+func get_point_for_one_sided(opponent: CharacterMarker3D) -> Vector3:
+	return _get_indented_point(opponent.position, _POINT_INDENTATION, opponent)
+
+
+func _get_indented_point(
+			point: Vector3, 
+			point_indentation: int,
+			opponent: CharacterMarker3D) -> Vector3:
+	return point + (point_indentation * Vector3.LEFT \
+			if to_left_of_character(opponent) \
+			else point_indentation * Vector3.RIGHT)
 
 
 func set_start_position(new_position: Vector3) -> void:

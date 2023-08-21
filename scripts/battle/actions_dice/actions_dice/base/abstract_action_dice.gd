@@ -45,13 +45,13 @@ func use_on_clash(
 			return _lose_on_clash(action_dice)
 
 
-func _win_on_clash(action_dice: AbstractDiceAction) -> AbstractDiceAction:
+func _win_on_clash(_action_dice: AbstractDiceAction) -> AbstractDiceAction:
 	return AbstractDiceAction.new()
 
 
-func _draw_on_clash(action_dice: AbstractDiceAction) -> AbstractDiceAction:
+func _draw_on_clash(_action_dice: AbstractDiceAction) -> AbstractDiceAction:
 	return AbstractDiceAction.new()
 
 
-func _lose_on_clash(action_dice: AbstractDiceAction) -> AbstractDiceAction:
+func _lose_on_clash(_action_dice: AbstractDiceAction) -> AbstractDiceAction:
 	return AbstractDiceAction.new()

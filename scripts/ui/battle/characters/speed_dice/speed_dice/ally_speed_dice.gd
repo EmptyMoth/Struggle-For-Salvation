@@ -6,9 +6,6 @@ signal was_selected(self_speed_dice: AllySpeedDice)
 signal assault_was_canceled(self_speed_dice: AllySpeedDice)
 
 
-var _arrow_of_player_assault: BaseArrowOfPlayerAssault = null
-
-
 func _ready() -> void:
 	super._ready()
 	

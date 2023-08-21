@@ -1,6 +1,5 @@
-[gd_scene load_steps=15 format=3 uid="uid://bxmbtddt0ipts"]
+[gd_scene load_steps=13 format=3 uid="uid://bxmbtddt0ipts"]
 
-[ext_resource type="PackedScene" uid="uid://db6v2plpbs7hf" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_info.tscn" id="1_1mxim"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="1_fup2d"]
 [ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="1_sovwk"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="2_lj8gt"]
@@ -12,7 +11,6 @@
 [ext_resource type="LabelSettings" uid="uid://bg1053ea44uyi" path="res://resources/ui/label_settings/default/large_bold.tres" id="5_vj04u"]
 [ext_resource type="Texture2D" uid="uid://frwtuvmfj2ct" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/hover.svg" id="6_5kikf"]
 [ext_resource type="LabelSettings" uid="uid://bcny06divfrey" path="res://resources/ui/label_settings/default/medium_bolt.tres" id="6_qwta2"]
-[ext_resource type="PackedScene" uid="uid://dxjdomt54u7mn" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_ability_info.tscn" id="7_38q3i"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_7lnsl"]
 frames = 2
@@ -55,15 +53,6 @@ theme_override_constants/margin_right = 7
 theme_override_constants/margin_bottom = 20
 
 [node name="ActionsDice" type="VBoxContainer" parent="HBox/ActionsDiceList/Panel/Margin"]
-layout_mode = 2
-
-[node name="ActionDiceInfo" parent="HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
-layout_mode = 2
-
-[node name="ActionDiceInfo2" parent="HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
-layout_mode = 2
-
-[node name="ActionDiceInfo3" parent="HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("1_1mxim")]
 layout_mode = 2
 
 [node name="VBox" type="VBoxContainer" parent="HBox"]
@@ -168,11 +157,11 @@ label_settings = ExtResource("5_vj04u")
 vertical_alignment = 1
 
 [node name="SkillAbilityDescription" type="RichTextLabel" parent="HBox/VBox/MainPanel/Panel/Margin/VBox"]
+visible = false
 custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[b][Combat Start][/b] AD increase in min value and decrease in max value."
 fit_content = true
 scroll_active = false
 
@@ -191,14 +180,5 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 10
-
-[node name="ActionDiceAbilityInfo" parent="HBox/VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
-layout_mode = 2
-
-[node name="ActionDiceAbilityInfo2" parent="HBox/VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
-layout_mode = 2
-
-[node name="ActionDiceAbilityInfo3" parent="HBox/VBox/AbilitiesVBox" instance=ExtResource("7_38q3i")]
-layout_mode = 2
 
 [connection signal="toggled" from="HBox/VBox/MainPanel/Panel/Margin/VBox/ButtonHidingDiceAbilities" to="." method="_on_button_hiding_dice_abilities_toggled"]

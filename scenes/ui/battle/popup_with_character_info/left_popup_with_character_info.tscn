@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ciro0ncgqiif4"]
+[gd_scene load_steps=58 format=3 uid="uid://ciro0ncgqiif4"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_base_info/popup_with_character_base_info.gd" id="1_5nc8q"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/base_popup_with_character_info.gd" id="1_wrolr"]
@@ -27,7 +27,6 @@
 [ext_resource type="LabelSettings" uid="uid://s1mrrv6ine7x" path="res://resources/ui/label_settings/default/small_bolt.tres" id="24_61jmy"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_additional_info/popup_with_character_additional_info.gd" id="25_0fybh"]
 [ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="26_q1nq2"]
-[ext_resource type="PackedScene" uid="uid://bwagcydq32xo1" path="res://scenes/ui/battle/popup_with_character_info/popup_with_character_additional_info/components/skill_selected_button.tscn" id="27_oukur"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="28_2qdai"]
 [ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="29_1y576"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="30_2dpqm"]
@@ -38,8 +37,6 @@
 [ext_resource type="Texture2D" uid="uid://b5rnotvxes64o" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/default.svg" id="34_tp3ow"]
 [ext_resource type="Texture2D" uid="uid://ybkvgd3dgiv0" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/pressed.svg" id="35_4l0jt"]
 [ext_resource type="Texture2D" uid="uid://frwtuvmfj2ct" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/hover.svg" id="36_ehquj"]
-[ext_resource type="PackedScene" uid="uid://dxjdomt54u7mn" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_ability_info.tscn" id="37_1g3gj"]
-[ext_resource type="PackedScene" uid="uid://db6v2plpbs7hf" path="res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_info.tscn" id="38_a5ixj"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_xjvh6"]
 frames = 7
@@ -547,61 +544,6 @@ theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
 
-[node name="SkillSelectedButton" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="Counter" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton" index="2"]
-mouse_filter = 1
-
-[node name="SkillSelectedButton2" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton3" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton4" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton5" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton6" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton7" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton8" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton9" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton10" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton11" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton12" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
-[node name="SkillSelectedButton13" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList" instance=ExtResource("27_oukur")]
-layout_mode = 2
-mouse_filter = 1
-
 [node name="PassiveAbilitiesList" type="RichTextLabel" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 visible = false
 layout_mode = 2
@@ -609,12 +551,6 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 bbcode_enabled = true
-text = "[ul bullet=▪]
-
-[color=#33AAFF][/color]Скорость (Speed) – персонаж получает 1 кубик скорости
-[color=#33AAFF][/color]Нетоз (NETs) – после смерти накладывает нетоз на противника, который нанес последний удар данному персонажу (нетоз – обездвиживает на 1 ход, накладывает каждый ход 2 медлительности и наносит каждый ход 1 урон)
-[color=#33AAFF][/color]Антиген-бактерия (Antigen-Bacteria) – все кубики получает 1 мощь против бактерий
-[/ul]"
 fit_content = true
 scroll_active = false
 
@@ -732,11 +668,11 @@ label_settings = ExtResource("31_2aun2")
 vertical_alignment = 1
 
 [node name="SkillAbilityDescription" type="RichTextLabel" parent="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox"]
+visible = false
 custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
 mouse_filter = 2
 bbcode_enabled = true
-text = "[b][Combat Start][/b] AD increase in min value and decrease in max value."
 fit_content = true
 scroll_active = false
 
@@ -755,18 +691,6 @@ layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 theme_override_constants/separation = 10
-
-[node name="ActionDiceAbilityInfo" parent="HBox/PopupWithSkillInfo/HBox/VBox/AbilitiesVBox" instance=ExtResource("37_1g3gj")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ActionDiceAbilityInfo2" parent="HBox/PopupWithSkillInfo/HBox/VBox/AbilitiesVBox" instance=ExtResource("37_1g3gj")]
-layout_mode = 2
-mouse_filter = 2
-
-[node name="ActionDiceAbilityInfo3" parent="HBox/PopupWithSkillInfo/HBox/VBox/AbilitiesVBox" instance=ExtResource("37_1g3gj")]
-layout_mode = 2
-mouse_filter = 2
 
 [node name="ActionsDiceList" type="MarginContainer" parent="HBox/PopupWithSkillInfo/HBox"]
 layout_mode = 2
@@ -790,15 +714,4 @@ theme_override_constants/margin_bottom = 20
 [node name="ActionsDice" type="VBoxContainer" parent="HBox/PopupWithSkillInfo/HBox/ActionsDiceList/Panel/Margin"]
 layout_mode = 2
 
-[node name="ActionDiceInfo" parent="HBox/PopupWithSkillInfo/HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("38_a5ixj")]
-layout_mode = 2
-
-[node name="ActionDiceInfo2" parent="HBox/PopupWithSkillInfo/HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("38_a5ixj")]
-layout_mode = 2
-
-[node name="ActionDiceInfo3" parent="HBox/PopupWithSkillInfo/HBox/ActionsDiceList/Panel/Margin/ActionsDice" instance=ExtResource("38_a5ixj")]
-layout_mode = 2
-
 [connection signal="toggled" from="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox/ButtonHidingDiceAbilities" to="HBox/PopupWithSkillInfo" method="_on_button_hiding_dice_abilities_toggled" flags=18]
-
-[editable path="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList/SkillSelectedButton"]
