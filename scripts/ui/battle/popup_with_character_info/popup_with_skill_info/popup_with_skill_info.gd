@@ -19,14 +19,14 @@ const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/ba
 @onready var _dice_abilities_container: VBoxContainer = $HBox/VBox/AbilitiesVBox
 
 
-func set_info(skill: AbstractSkill) -> void:
+func set_info(skill: AbstractSkillStats) -> void:
 	if skill == null:
 		return
 	
-#	_set_base_info(skill)
-#	_set_skill_ability(skill.ability)
-#	_set_actions_dice(skill.action_dice_list)
-#	_button_hiding_dice_abilities.visible = _dice_abilities_container.get_child_count() > 0
+	_set_base_info(skill)
+	_set_skill_ability(skill.abilities)
+	_set_actions_dice(skill.action_dice_list)
+	_button_hiding_dice_abilities.visible = _dice_abilities_container.get_child_count() > 0
 
 
 func remove_actions_dice_info() -> void:
@@ -66,9 +66,11 @@ func _set_base_info(skill: AbstractSkillStats) -> void:
 		_uses_count_label.text = skill.quantity
 
 
-func _set_skill_ability(skill_ability: AbstractAbility) -> void:
-	_skill_ability_label.text = skill_ability.description
-	_skill_ability_label.visible = not skill_ability is NoAbility
+func _set_skill_ability(abilities: Array[BaseSkillAbility]) -> void:
+	_skill_ability_label.visible = abilities.size() > 0
+	if _skill_ability_label.visible:
+		_skill_ability_label.text = AbstractAbility.get_abilities_description(
+				abilities as Array[AbstractAbility])
 
 
 func _set_actions_dice(actions_dice_list: Array[AbstractActionDice]) -> void:
@@ -86,7 +88,7 @@ func _create_action_dice_info(action_dice: AbstractActionDice) -> void:
 
 
 func _create_action_dice_ability_info(action_dice: AbstractActionDice, dice_index: int) -> void:
-	if action_dice.ability is NoAbility:
+	if not action_dice.has_ability():
 		return
 	
 	var action_dice_ability_info: ActionDiceAbilityInfo = _ACTION_DICE_ABILITY_INFO_SCENE.instantiate()
@@ -98,5 +100,5 @@ func _on_button_hiding_dice_abilities_toggled(button_pressed: bool) -> void:
 	display_dice_abilities_panel(not button_pressed, 0.2)
 
 
-func _on_skill_selected(skill: AbstractSkill) -> void:
+func _on_skill_selected(skill: AbstractSkillStats) -> void:
 	set_info(skill)

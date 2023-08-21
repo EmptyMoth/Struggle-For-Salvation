@@ -7,7 +7,7 @@ extends Resource
 @export var icon: Texture
 
 @export var skills: Array[AbstractSkillStats] = []
-@export var passive_abilities: Array[AbstractAbility] = []
+@export var passive_abilities: Array[BaseCharacterPassiveAbility] = []
 
 @export_group("Health")
 @export_range(1, 999, 1) var max_physical_health: int = 1
@@ -21,3 +21,7 @@ extends Resource
 @export_range(1, 10, 1, "or_greater") var speed_dice_count: int = 1
 @export_range(1, 99, 1, "or_greater") var min_speed: int = 1
 @export_range(1, 99, 1, "or_greater") var max_speed: int = 1
+
+
+func has_ability() -> bool:
+	return passive_abilities.size() > 0

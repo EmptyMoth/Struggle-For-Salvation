@@ -31,7 +31,7 @@ func set_info(character: AbstractCharacter, speed_dice: AbstractSpeedDice = null
 		_additional_info.open_passive_abilities_list()
 	else:
 		_skill_info.show()
-		_skill_info.set_info(speed_dice.installed_skill)
+		_skill_info.set_info(speed_dice.installed_skill.get("stats"))
 		_additional_info.open_skills_list()
 
 

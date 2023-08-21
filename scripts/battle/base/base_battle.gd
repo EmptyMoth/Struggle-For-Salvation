@@ -33,7 +33,7 @@ func _input(_event: InputEvent) -> void:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
 			_switch_battle_phase()
 		if Input.is_action_just_released("ui_auto_selecting_cards"):
-			CardPlacementManager.allies_auto_selecting_cards(ally_team.characters, enemy_team.characters)
+			pass
 
 
 func set_location(location: BaseLocation) -> void:
@@ -74,15 +74,12 @@ func _switch_battle_phase() -> void:
 func _implements_card_placement_phase() -> void:
 	current_phase = BattlePhase.CARD_PLACEMENT
 	get_tree().call_group("characters", "prepare_for_card_placement")
-	CardPlacementManager.enemies_auto_selecting_cards(enemy_team.characters, ally_team.characters)
 
 
 func _implements_combat_phase() -> void:
 	current_phase = BattlePhase.COMBAT
 	BattleSygnals.combat_started.emit()
 	get_tree().call_group("characters", "prepare_for_combat")
-	CombatManager.set_assaults(CardPlacementManager.get_assaults())
-	CombatManager.activate_assaults()
 
 
 func _start_turn() -> void:

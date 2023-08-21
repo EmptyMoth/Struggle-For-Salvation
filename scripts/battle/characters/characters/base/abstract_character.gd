@@ -5,11 +5,12 @@ extends Node2D
 signal picked(self_character: AbstractCharacter, self_speed_dice: AbstractSpeedDice)
 signal selected(self_character: AbstractCharacter, self_speed_dice: AbstractSpeedDice)
 signal deselected(self_character: AbstractCharacter, self_speed_dice: AbstractSpeedDice)
-signal folded_cards
-signal unfolded_cards(cards: Array[AbstractCard])
+
+signal clash_win(target: AbstractCharacter)
+signal clash_draw(target: AbstractCharacter)
+signal clash_lose(target: AbstractCharacter)
 
 @export var stats: CharacterStats = CharacterStats.new()
-var deck_of_cards: DeckOfCards = DeckOfCards.new()
 
 var is_ally : bool :
 	get: return "allies" in get_groups()
@@ -23,7 +24,6 @@ var is_stunned: bool :
 @onready var mental_health := MentalHealth.new(stats.max_mental_health)
 @onready var physical_resistance := BaseResistance.new(stats.physical_resistance)
 @onready var mental_resistance := BaseResistance.new(stats.mental_resistance)
-@onready var hand := Hand.new(deck_of_cards)
 
 @onready var character_poses: AnimatedSprite2D = $Actions
 @onready var actions_animations: AnimationPlayer = $Actions/AnimationPlayer
@@ -74,7 +74,6 @@ func prepare_for_card_placement() -> void:
 	character_marker_3d.return_to_starting_position()
 	flip_to_starting_position()
 	roll_speed_dice()
-	hand.update()
 
 
 func prepare_for_combat() -> void:
@@ -119,11 +118,12 @@ func _take_damage(damage: int, resistance_value: BaseResistance, health: Abstrac
 	health.take_damage(damage, resistance_value.get_value())
 
 
-func auto_place_cards() -> void:
-	for speed_dice in speed_dice_manager.get_all_speed_dice():
-		var card: AbstractCard = _auto_take_card()
-		if  card != null:
-			speed_dice.set_card(card)
+func auto_place_skills() -> void:
+	pass
+#	for speed_dice in speed_dice_manager.get_all_speed_dice():
+#		var card: AbstractCard = _auto_take_card()
+#		if  card != null:
+#			speed_dice.set_card(card)
 
 
 func auto_selecting_assault(opponents: Array) -> Dictionary:
@@ -181,8 +181,8 @@ func _connect_signals() -> void:
 		speed_dice.deselected.connect(_on_speed_dice_deselected)
 
 
-func _auto_take_card() -> AbstractCard:
-	return hand.get_random_active_card()
+func _auto_take_skill() -> AbstractSkill:
+	return AbstractSkill.new()
 
 
 func _auto_choose_opponent(opponents: Array) -> AbstractCharacter:
@@ -208,11 +208,9 @@ func _on_speed_dice_picked(speed_dice: AbstractSpeedDice) -> void:
 
 func _on_speed_dice_selected(speed_dice: AbstractSpeedDice) -> void:
 	emit_signal("selected", self, speed_dice)
-	emit_signal("unfolded_cards", hand.cards)
 
 func _on_speed_dice_deselected(speed_dice: AbstractSpeedDice) -> void:
 	emit_signal("deselected", self, speed_dice)
-	emit_signal("folded_cards")
 
 
 func _on_click_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

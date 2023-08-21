@@ -12,8 +12,6 @@ func _ready() -> void:
 	#_set_arrow_of_assault(arrow_of_assault)
 	
 	#self.was_selected.connect(PlayerState._on_enemy_speed_dice_was_selected)
-	self.assault_is_scheduled.connect(
-		HandlerForCardsPlacementByPlayer._on_enemy_speed_dice_assault_is_scheduled)
 
 
 func _on_pressed() -> void:

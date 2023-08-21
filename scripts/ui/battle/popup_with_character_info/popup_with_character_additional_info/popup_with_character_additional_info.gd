@@ -2,7 +2,7 @@ class_name PopupWithCharacterAdditionalInfo
 extends MovingContainer
 
 
-signal skill_selected(skill: AbstractSkill) 
+signal skill_selected(skill: AbstractSkillStats) 
 
 const SKILL_SELECTED_BUTTON_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_character_info/popup_with_character_additional_info/components/skill_selected_button.tscn")
 const PRESSET_FOR_PASSIVE_LIST: String = "[ul bullet=▪]\n%s[/ul]"
@@ -24,7 +24,8 @@ func _ready() -> void:
 
 
 func set_info(
-			skills: Array[AbstractSkill], passive_abilities: Array[AbstractAbility]) -> void:
+			skills: Array[AbstractSkill], 
+			passive_abilities: Array[BaseCharacterPassiveAbility]) -> void:
 	_set_skills(skills)
 	_set_passive_abilities(passive_abilities)
 	_passive_button.visible = passive_abilities.size() > 0
@@ -49,18 +50,15 @@ func _minimize_popup() -> void:
 
 func _set_skills(skills: Array[AbstractSkill]) -> void:
 	for skill in skills:
-		var skill_selected_button = SKILL_SELECTED_BUTTON_SCENE.instantiate()
+		var skill_selected_button: SkillSelectedButton = SKILL_SELECTED_BUTTON_SCENE.instantiate()
 		_skills_list.add_child(skill_selected_button)
 		skill_selected_button.set_skill(skill)
 
 
-func _set_passive_abilities(passive_abilities: Array[AbstractAbility]) -> void:
-	var passive_descriptions: PackedStringArray = PackedStringArray()
-	for passive_ability in passive_abilities:
-		passive_descriptions.append(PRESSET_FOR_PASSIVE_DESCRIPTION % passive_ability.description)
-	
-	var str_passive_list: String = "\n".join(passive_descriptions)
-	_passive_abilities_list.text = PRESSET_FOR_PASSIVE_LIST % str_passive_list
+func _set_passive_abilities(passives_abilities: Array[BaseCharacterPassiveAbility]) -> void:
+	var passives_description: String = AbstractAbility.get_abilities_description(
+			passives_abilities as Array[AbstractAbility], PRESSET_FOR_PASSIVE_DESCRIPTION)
+	_passive_abilities_list.text = PRESSET_FOR_PASSIVE_LIST % passives_description
 
 
 func _on_button_group_pressed(button: BaseButton) -> void:
@@ -74,4 +72,4 @@ func _on_button_group_pressed(button: BaseButton) -> void:
 
 
 func _on_skill_selected_button_skill_selected(skill: AbstractSkill) -> void:
-	emit_signal("skill_selected", skill)
+	emit_signal("skill_selected", skill.get("stats"))

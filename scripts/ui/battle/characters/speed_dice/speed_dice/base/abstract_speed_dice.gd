@@ -21,14 +21,11 @@ var speed: int = 0
 var _current_state: SpeedDiceState = SpeedDiceState.DEFAULT
 var current_state: SpeedDiceState :
 	set(new_state):
-		if new_state == SpeedDiceState.DEFAULT and is_assaulting():
-			new_state = SpeedDiceState.USED
 		_current_state = new_state
 		_states.texture.current_frame = max(0, new_state)
 	get:
 		return _current_state
 
-var installed_card: AbstractCard = null
 var installed_skill: AbstractSkill = null
 
 @onready var _speed_value_label: Label = $States/SpeedValue
@@ -46,10 +43,6 @@ static func calculate_assault_weight(
 			_opponent_speed_dice: AbstractSpeedDice,
 			assault_type: int) -> int:
 	return 10 * character_speed_dice.speed + assault_type
-
-
-func is_assaulting() -> bool:
-	return is_instance_valid(installed_card)
 
 
 func make_default() -> void:
@@ -81,16 +74,12 @@ func set_speed(new_speed: int) -> void:
 	_speed_value_label.text = str(new_speed)
 
 
-func set_card(card: AbstractCard) -> void:
-	if not is_instance_valid(card):
-		return
-	
-	card.remaining_uses_count_in_turn -= 1
-	installed_card = card
+func set_skill(skill: AbstractSkill) -> void:
+	installed_skill = skill
 	current_state = SpeedDiceState.USED
 
-func remove_card() -> void:
-	installed_card = null
+func remove_skill() -> void:
+	installed_skill = null
 	current_state = SpeedDiceState.DEFAULT
 
 

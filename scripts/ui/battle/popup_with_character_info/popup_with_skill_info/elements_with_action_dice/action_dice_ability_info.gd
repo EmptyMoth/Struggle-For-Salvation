@@ -5,14 +5,15 @@ extends MovingContainer
 const _ROMAN_SYMBOLS: Array[String] = ["X", "IX", "V", "IV", "I"]
 const _ARABIC_VALUES: Array[int] = [10, 9, 5, 4, 1]
 
-@onready var _action_dice_number_label: Label = $Panel/Margin/HBox/ActionDiceNumber
-@onready var _action_dice_ability_label: RichTextLabel = $Panel/Margin/HBox/ActionDiceAbility
+@onready var _dice_number_label: Label = $Panel/Margin/HBox/ActionDiceNumber
+@onready var _dice_ability_label: RichTextLabel = $Panel/Margin/HBox/ActionDiceAbility
 
 
 func set_info(action_dice: AbstractActionDice, action_dice_index: int) -> void:
-	_action_dice_number_label.text = ActionDiceAbilityInfo._convert_to_roman(action_dice_index + 1)
-	_action_dice_number_label.modulate = action_dice.get_color()
-	_action_dice_ability_label.text = action_dice.ability.description
+	_dice_number_label.text = ActionDiceAbilityInfo._convert_to_roman(action_dice_index + 1)
+	_dice_number_label.modulate = action_dice.get_color()
+	_dice_ability_label.text = AbstractAbility.get_abilities_description(
+			action_dice.abilities as Array[AbstractAbility])
 
 
 static func _convert_to_roman(number: int) -> String:

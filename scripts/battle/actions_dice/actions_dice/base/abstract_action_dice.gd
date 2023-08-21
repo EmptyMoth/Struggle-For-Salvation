@@ -6,7 +6,7 @@ extends Resource
 @export_range(0, 99, 1, "or_greater") var max_value: int = 1
 @export var motion: BattleParameters.CharactersMotions = \
 		BattleParameters.CharactersMotions.DEFAULT
-@export var ability: AbstractAbility = NoAbility.new()
+@export var abilities: Array[BaseActionDiceAbility] = []
 @export var action_animation: ActionAnimation
 
 var current_value: int = 0
@@ -15,6 +15,10 @@ var is_retossed: bool = false
 
 func get_color() -> Color:
 	return Color.TRANSPARENT
+
+
+func has_ability() -> bool:
+	return abilities.size() > 0
 
 
 func roll_dice() -> void:

@@ -11,7 +11,6 @@ extends Node2D
 
 
 func _ready() -> void:
-	CardPlacementManager.assault_was_set.connect(_on_assault_was_set)
 	for character in characters:
 		character.add_to_group(characters_group)
 		_team_model.connect_signals(character)

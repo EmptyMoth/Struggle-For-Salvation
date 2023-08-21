@@ -2,25 +2,25 @@ class_name SkillSelectedButton
 extends AspectRatioContainer
 
 
-signal skill_selected(skill: BaseSkill)
+signal skill_selected(skill: AbstractSkill)
 
-var setted_skill: BaseSkill = null
+var setted_skill: AbstractSkill = null
 
 @onready var _skill_selected_button: Button = $SkillSelectedButton
 @onready var _cooldown_icon: TextureRect = $CooldownIcon
 @onready var _counter_label: Label = $Counter
 
 
-func set_skill(skill: BaseSkill) -> void:
+func set_skill(skill: AbstractSkill) -> void:
 	setted_skill = skill
 	var skill_is_blocked: bool = skill.is_blocked()
 	_skill_selected_button.icon = skill.icon
 	_skill_selected_button.disabled = skill_is_blocked
-	if skill.application_type == 0:
+	if skill is CooldownSkill:
 		_cooldown_icon.visible = skill_is_blocked
 		_counter_label.visible = skill_is_blocked
 		_counter_label.text = str(skill.application_type_count)
-	elif skill.application_type == 1:
+	elif skill is QuantitySkill:
 		_cooldown_icon.hide()
 		_counter_label.show()
 		_counter_label.text = "x%s" % str(skill.application_type_count)
