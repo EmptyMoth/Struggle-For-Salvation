@@ -1,0 +1,2 @@
+class_name DefensiveDice
+extends AbstractActionDice

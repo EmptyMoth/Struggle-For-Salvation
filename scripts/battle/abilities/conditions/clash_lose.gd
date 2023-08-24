@@ -7,4 +7,4 @@ static func _get_title() -> String:
 
 
 func _get_condition(owner: AbstractCharacter) -> Signal:
-	return owner.clash_lose
+	return owner.lost_clash

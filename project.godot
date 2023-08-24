@@ -56,6 +56,7 @@ import/blender/enabled=false
 [gui]
 
 theme/custom="res://resources/ui/themes/main_theme.tres"
+theme/custom_font="res://fonts/ubuntu/ubuntu-regular.ttf"
 
 [importer_defaults]
 

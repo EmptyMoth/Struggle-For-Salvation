@@ -2,6 +2,7 @@ class_name BaseCharacterPassiveAbility
 extends AbstractAbility
 
 
+@export var passive_title: String = ""
 @warning_ignore("unused_private_class_variable")
 @export_enum(
 	"None", 
@@ -16,3 +17,7 @@ extends AbstractAbility
 	"On Evade",
 	"After Area Attack", 
 	) var _condition_title: String = "None"
+
+
+func _get_description() -> String:
+	return " - ".join([passive_title, _effect.get_description()])

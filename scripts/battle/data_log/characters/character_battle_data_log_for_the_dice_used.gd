@@ -1,0 +1,3 @@
+class_name CharacterBattleDataLogForTheDiceUsed
+extends AbstractCharacterBattleDataLog
+

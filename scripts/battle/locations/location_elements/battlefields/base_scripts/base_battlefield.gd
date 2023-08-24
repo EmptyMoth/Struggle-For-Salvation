@@ -2,10 +2,10 @@ class_name BaseBattlefield
 extends Node3D
 
 
-func set_characters_markers_on_battlefield(allies: Array, enemies: Array) -> void:
-	var node_with_characters: Node3D = $Characters
-	for character in allies + enemies:
-		node_with_characters.add_child(character.character_marker_3d)
+#func set_characters_markers_on_battlefield(allies: Array, enemies: Array) -> void:
+#	var node_with_characters: Node3D = $Characters
+#	for character in allies + enemies:
+#		node_with_characters.add_child(character.character_marker_3d)
 
 
 func set_formation(formation: BaseFormation, allies: Array, enemies: Array) -> void:

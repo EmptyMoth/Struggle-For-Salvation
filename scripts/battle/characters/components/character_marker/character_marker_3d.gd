@@ -5,7 +5,7 @@ extends CharacterBody3D
 const SPEED: float = 5.0
 const _POINT_INDENTATION: int = 100
 
-var start_position: Vector3
+var default_position: Vector3
 
 
 func _physics_process(_delta: float) -> void:
@@ -36,6 +36,25 @@ func get_point_for_one_sided(opponent: CharacterMarker3D) -> Vector3:
 	return _get_indented_point(opponent.position, _POINT_INDENTATION, opponent)
 
 
+func set_default_position(new_position: Vector3) -> void:
+	default_position = new_position
+	position = default_position
+
+
+func get_current_position_on_camera() -> Vector2:
+	return _get_position_on_camera(position)
+
+func get_default_position_on_camera() -> Vector2:
+	return _get_position_on_camera(default_position)
+
+
+func move_to_default_position() -> void:
+	_move_to_position(default_position, 1)
+
+func move_to_new_position(new_position: Vector3) -> void:
+	_move_to_position(new_position, 0.5)
+
+
 func _get_indented_point(
 			point: Vector3, 
 			point_indentation: int,
@@ -45,35 +64,11 @@ func _get_indented_point(
 			else point_indentation * Vector3.RIGHT)
 
 
-func set_start_position(new_position: Vector3) -> void:
-	start_position = new_position
-	position = start_position
-
-
-func get_current_position_on_camera() -> Vector2:
-	return _get_position_on_camera(position)
-
-
-func get_start_position_on_camera() -> Vector2:
-	return _get_position_on_camera(start_position)
-
-
-func return_to_starting_position() -> void:
-	_move_to_position(start_position, 1)
-
-
-func move_to_new_position(new_position: Vector3) -> void:
-	_move_to_position(new_position, 0.5)
-
-
-func _get_position_on_camera(current_position: Vector3) -> Vector2:
+func _get_position_on_camera(position_3d: Vector3) -> Vector2:
 	var viewport: Viewport = get_viewport()
-	return viewport.get_camera_3d().unproject_position(current_position) \
-		if is_instance_valid(viewport) \
-		else Vector2.ZERO
+	return viewport.get_camera_3d().unproject_position(position_3d)
 
 
 func _move_to_position(new_position: Vector3, duration: float) -> void:
 	var tween: Tween = get_tree().create_tween()
-	@warning_ignore("return_value_discarded")
 	tween.tween_property(self, "position", new_position, duration)

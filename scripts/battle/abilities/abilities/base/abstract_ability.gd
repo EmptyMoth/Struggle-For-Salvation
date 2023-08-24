@@ -2,8 +2,6 @@ class_name AbstractAbility
 extends Resource
 
 
-const _DESCRIPTION_TEMPLATE: String = "%s%s"
-
 @export var _effect: AbstractAbilityEffect
 
 var description: String = ""
@@ -17,7 +15,7 @@ func init(owner: AbstractCharacter) -> void:
 	_condition = AbstractAbility._create_condition(get("_condition_title"))
 	_condition.connect_condition(_owner, _effect.effect)
 	@warning_ignore("static_called_on_instance")
-	description = _DESCRIPTION_TEMPLATE % [_condition.get_title(), _effect.get_description()]
+	description = _get_description()
 
 
 static func get_abilities_description(abilities: Array[AbstractAbility], presset: String = "%s") -> String:
@@ -30,3 +28,7 @@ static func get_abilities_description(abilities: Array[AbstractAbility], presset
 static func _create_condition(condition_title: String) -> AbstractAbilityCondition:
 	condition_title = condition_title.to_snake_case()
 	return load("res://scripts/battle/abilities/conditions/%s.gd" % condition_title).new()
+
+
+func _get_description() -> String:
+	return "".join([_condition.get_title(), _effect.get_description()])

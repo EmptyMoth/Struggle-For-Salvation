@@ -32,8 +32,7 @@ func reduce_max_value(value: int) -> void:
 	max_health = max(1, max_health - value)
 
 
-func take_damage(value: int, resistance_value: float) -> void:
-	var damage: int = roundi(value * resistance_value)
+func take_damage(damage: int) -> void:
 	current_health = max(0, current_health - damage)
 	if is_empty():
 		_reached_zero()

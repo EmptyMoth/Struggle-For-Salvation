@@ -4,17 +4,28 @@
 script/source = "extends TextureButton
 
 
-@export var condition: BaseActionDiceAbility
+@export var condition: int = 12
 
 
 func _ready() -> void:
-	pass
+	var f_test: AttackDice = AttackDice.new(ActionDiceStats.new())
+	var ref: AbstractActionDice = f_test
+
+
+func test() -> void:
+	print(condition)
+	condition += 1
 "
 
 [node name="TextureButton" type="TextureButton"]
-offset_left = 261.0
-offset_top = 269.0
-offset_right = 301.0
-offset_bottom = 309.0
+offset_right = 40.0
+offset_bottom = 40.0
 tooltip_text = "sadawdsesaa"
 script = SubResource("GDScript_rpyhi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_right = 78.0
+offset_bottom = 30.0
+bbcode_enabled = true
+text = "[hint=tooltip text displayed on hover][color=red]{text}[/color][/hint]"

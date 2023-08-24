@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://bdncac3gfq8ms"]
+[gd_scene load_steps=9 format=3 uid="uid://bdncac3gfq8ms"]
 
 [ext_resource type="Script" path="res://scripts/battle/characters/characters/base/abstract_character.gd" id="1_pj8uo"]
 [ext_resource type="PackedScene" uid="uid://ctv5g5gejbuh" path="res://scenes/ui/battle/characters/huds/subcharacter_hud/subcharacter_hud.tscn" id="2_wffk4"]
 [ext_resource type="AnimationLibrary" uid="uid://8tfrtticacgd" path="res://resources/battle/characters/actions_animations/base_libraries/base_characters_actions.res" id="3_ayav0"]
 [ext_resource type="AnimationLibrary" uid="uid://ptsewigwueq6" path="res://resources/battle/characters/actions_animations/base_libraries/characters_attacks.res" id="4_45hhr"]
 [ext_resource type="PackedScene" uid="uid://dd5hub8wm1jqr" path="res://scenes/ui/battle/characters/speed_dice/speed_dice_manager/speed_dice_manager.tscn" id="5_ip0ul"]
+[ext_resource type="PackedScene" uid="uid://mf5va8bcv2bu" path="res://scenes/battle/characters/base/character_marker_3d.tscn" id="6_jqojb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_moquk"]
 resource_local_to_scene = true
@@ -63,6 +64,8 @@ shape = SubResource("RectangleShape2D_aqoxh")
 debug_color = Color(1, 1, 1, 0.419608)
 
 [node name="SpeedDiceManager" parent="." instance=ExtResource("5_ip0ul")]
+
+[node name="CharacterMarker3D" parent="." instance=ExtResource("6_jqojb")]
 
 [connection signal="input_event" from="ClickArea" to="." method="_on_click_area_input_event"]
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_click_area_mouse_entered"]

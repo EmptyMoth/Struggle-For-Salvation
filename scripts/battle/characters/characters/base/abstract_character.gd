@@ -6,17 +6,16 @@ signal picked(self_character: AbstractCharacter, self_speed_dice: AbstractSpeedD
 signal selected(self_character: AbstractCharacter, self_speed_dice: AbstractSpeedDice)
 signal deselected(self_character: AbstractCharacter, self_speed_dice: AbstractSpeedDice)
 
-signal clash_win(target: AbstractCharacter)
-signal clash_draw(target: AbstractCharacter)
-signal clash_lose(target: AbstractCharacter)
+signal won_clash(target: AbstractCharacter)
+signal drew_clash(target: AbstractCharacter)
+signal lost_clash(target: AbstractCharacter)
 
 @export var stats: CharacterStats = CharacterStats.new()
 
 var is_ally : bool :
 	get: return "allies" in get_groups()
 var is_themself_placement_cards : bool :
-	get: return "pathogens" in get_groups()
-
+	get: return "enemies" in get_groups()
 var is_stunned: bool :
 	get: return mental_health.is_empty()
 
@@ -25,13 +24,11 @@ var is_stunned: bool :
 @onready var physical_resistance := BaseResistance.new(stats.physical_resistance)
 @onready var mental_resistance := BaseResistance.new(stats.mental_resistance)
 
-@onready var character_poses: AnimatedSprite2D = $Actions
+@onready var character_motions: AnimatedSprite2D = $Actions
 @onready var actions_animations: AnimationPlayer = $Actions/AnimationPlayer
 @onready var subcharacter_hud: SubcharacterHUD = $SubcharacterHUD
 @onready var speed_dice_manager: SpeedDiceManager = $SpeedDiceManager
-
-@onready var character_marker_3d: CharacterMarker3D = preload(
-		"res://scenes/battle/characters/base/character_marker_3d.tscn").instantiate()
+@onready var character_marker_3d: CharacterMarker3D = $CharacterMarker3D
 
 
 func _ready() -> void:
@@ -41,17 +38,17 @@ func _ready() -> void:
 #	anim.track_set_path(track, "SubcharacterHUD/AnimatedSprite2D:animation")
 #	track = anim.find_track("SubcharacterHUD/AnimatedSprite2D:animation", Animation.TYPE_VALUE)
 	
+	#character_motions.sprite_frames = stats.motions_sprites
 	_set_character_type_group()
 	subcharacter_hud.init(physical_health, mental_health)
 	speed_dice_manager.init(stats.min_speed, stats.max_speed, stats.speed_dice_count)
 	
 	_connect_signals()
-	actions_switcher(BattleParameters.CharactersMotions.DEFAULT)
+	switch_motion(BattleParameters.CharactersMotions.DEFAULT)
 
 
 func _process(_delta: float) -> void:
-	pass
-	#position = character_marker_3d.get_current_position_on_camera()
+	position = character_marker_3d.get_current_position_on_camera()
 
 
 static func get_action_name(action: BattleParameters.CharactersMotions) -> String:
@@ -100,22 +97,22 @@ func to_stun() -> void:
 	take_mental_damage(mental_health.max_health)
 
 
-func deal_damage(attack_dice_value: int) -> int:
-	return attack_dice_value
+func take_physical_damage(damage: int, is_permanent: bool = false) -> int:
+	return _take_damage(damage, is_permanent, physical_resistance, physical_health)
+
+func take_mental_damage(damage: int, is_permanent: bool = false) -> int:
+	return _take_damage(damage, is_permanent, mental_resistance, mental_health)
 
 
-func take_damage(damage: int) -> void:
-	take_physical_damage(damage)
-	take_mental_damage(damage)
+func physical_heal(heal_amound: int) -> void:
+	physical_health.heal(heal_amound)
 
-func take_physical_damage(damage: int) -> void:
-	_take_damage(damage, physical_resistance, physical_health)
+func mental_heal(heal_amound: int) -> void:
+	mental_health.heal(heal_amound)
 
-func take_mental_damage(damage: int) -> void:
-	_take_damage(damage, mental_resistance, mental_health)
 
-func _take_damage(damage: int, resistance_value: BaseResistance, health: AbstractHealth) -> void:
-	health.take_damage(damage, resistance_value.get_value())
+func make_action(action: DiceAction) -> void:
+	pass
 
 
 func auto_place_skills() -> void:
@@ -143,16 +140,16 @@ func move_to_assault(assault_position: Vector3) -> void:
 func flip_to_starting_position() -> void:
 	var window_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var start_position: Vector2 = character_marker_3d.get_start_position_on_camera()
-	character_poses.flip_h = start_position.x < window_width / 2.0
+	character_motions.flip_h = start_position.x < window_width / 2.0
 
 func flip_to_specified_point(point_position: Vector2) -> void:
-	character_poses.flip_h = position < point_position
+	character_motions.flip_h = position < point_position
 
 func flip_view_direction() -> void:
-	character_poses.flip_h = !character_poses.flip_h
+	character_motions.flip_h = !character_motions.flip_h
 
 
-func actions_switcher(action: BattleParameters.CharactersMotions) -> void:
+func switch_motion(action: BattleParameters.CharactersMotions) -> void:
 	var animation_name: String = \
 			"base_characters_actions/%s" % AbstractCharacter.get_action_name(action)
 	actions_animations.play(animation_name)
@@ -162,6 +159,13 @@ func _set_character_type_group() -> void:
 	add_to_group(BattleParameters.GROUPS_BY_CHARACTERS_TYPES[stats.type])
 	if stats.type > BattleParameters.CharactersTypes.IMMUNOCYTE:
 		add_to_group("pathogens")
+
+
+func _take_damage(damage: int, is_permanent: bool, 
+			resistance: BaseResistance, health: AbstractHealth) -> int:
+	var final_damage: int = damage if is_permanent else roundi(damage * resistance.get_value())
+	health.take_damage(final_damage)
+	return final_damage
 
 
 func _connect_signals() -> void:

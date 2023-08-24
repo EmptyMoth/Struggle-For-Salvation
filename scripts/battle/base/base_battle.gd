@@ -45,8 +45,8 @@ func set_location(location: BaseLocation) -> void:
 
 func set_battlefild(battlefield: BaseBattlefield) -> void:
 	_battlefield = battlefield
-	_battlefield.set_characters_markers_on_battlefield(
-			ally_team.characters, enemy_team.characters)
+	#_battlefield.set_characters_markers_on_battlefield(
+	#		ally_team.characters, enemy_team.characters)
 	_battlefield.set_formation(_packed_formation.instantiate(), 
 			ally_team.characters, enemy_team.characters)
 
