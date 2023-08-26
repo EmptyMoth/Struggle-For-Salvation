@@ -2,7 +2,7 @@ class_name AbstractSkill
 extends Resource
 
 
-@export_range(-10, 10, 1, "or_less", "or_greater") var priority: int = 0
+@export var stats: SkillStats
 
 
 func _init() -> void:
@@ -20,8 +20,8 @@ func deselect() -> void:
 	pass
 
 
-func use() -> void:
-	pass
+func use() -> SkillCombatModel:
+	return SkillCombatModel.new(stats)
 
 
 func _on_battle_turn_started(_turn_number: int) -> void:

@@ -19,6 +19,9 @@ var is_themself_placement_cards : bool :
 var is_stunned: bool :
 	get: return mental_health.is_empty()
 
+var _skill_used: SkillCombatModel = null
+var _dice_reserved_list: Array[AbstractActionDice] = []
+
 @onready var physical_health := PhysicalHealth.new(stats.max_physical_health)
 @onready var mental_health := MentalHealth.new(stats.max_mental_health)
 @onready var physical_resistance := BaseResistance.new(stats.physical_resistance)
@@ -56,15 +59,8 @@ static func get_action_name(action: BattleParameters.CharactersMotions) -> Strin
 	return action_name.to_lower() if action_name != null else "default"
 
 
-func get_all_speed_dice() -> Array[AbstractSpeedDice]:
-	return speed_dice_manager.get_all_speed_dice()
-
-func get_assaulting_speed_dice() -> Array[AbstractSpeedDice]:
-	return speed_dice_manager.get_assaulting_speed_dice()
-
-
-func get_character_marker_position() -> Vector3:
-	return character_marker_3d.position
+func get_skill_used() -> SkillCombatModel:
+	return _skill_used.use()
 
 
 func prepare_for_card_placement() -> void:
@@ -115,6 +111,19 @@ func make_action(action: DiceAction) -> void:
 	pass
 
 
+func get_next_dice_reserved() -> AbstractActionDice:
+	if _skill_used == null:
+		var index: int = 0
+		return _dice_reserved_list[index] if index < _dice_reserved_list.size() else null
+	
+	var dice_reserved: AbstractActionDice = _skill_used.get_next_dice_reserved()
+	if dice_reserved != null:
+		return dice_reserved
+	return null
+	
+	
+
+
 func auto_place_skills() -> void:
 	pass
 #	for speed_dice in speed_dice_manager.get_all_speed_dice():
@@ -125,7 +134,7 @@ func auto_place_skills() -> void:
 
 func auto_selecting_assault(opponents: Array) -> Dictionary:
 	var opponent_by_speed_dice: Dictionary = {}
-	for speed_dice in get_assaulting_speed_dice():
+	for speed_dice in speed_dice_manager.get_assaulting_speed_dice():
 		var opponent: AbstractCharacter = _auto_choose_opponent(opponents)
 		var opponent_speed_dice: AbstractSpeedDice = _auto_choose_opponent_speed_dice(opponent)
 		opponent_by_speed_dice[speed_dice] = opponent_speed_dice
@@ -133,8 +142,12 @@ func auto_selecting_assault(opponents: Array) -> Dictionary:
 	return opponent_by_speed_dice
 
 
-func move_to_assault(assault_position: Vector3) -> void:	
-	character_marker_3d.move_to_new_position(assault_position)
+func move_to_assault(opponent_marker: CharacterMarker3D, 
+			assault_type: BattleParameters.AssaultTypes) -> void:
+	var point: Vector3 = character_marker_3d.get_point_for_one_sided(opponent_marker) \
+		if assault_type == BattleParameters.AssaultTypes.ONE_SIDE \
+		else character_marker_3d.get_point_for_clash(opponent_marker)
+	character_marker_3d.move_to_new_position(point)
 
 
 func flip_to_starting_position() -> void:

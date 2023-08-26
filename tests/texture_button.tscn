@@ -8,8 +8,9 @@ script/source = "extends TextureButton
 
 
 func _ready() -> void:
-	var f_test: AttackDice = AttackDice.new(ActionDiceStats.new())
-	var ref: AbstractActionDice = f_test
+	var a: int = 10
+	var b: int = 11
+	var result: BattleParameters.ClashResult = clampi(a - b, -1, 1)
 
 
 func test() -> void:
@@ -22,10 +23,3 @@ offset_right = 40.0
 offset_bottom = 40.0
 tooltip_text = "sadawdsesaa"
 script = SubResource("GDScript_rpyhi")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_right = 78.0
-offset_bottom = 30.0
-bbcode_enabled = true
-text = "[hint=tooltip text displayed on hover][color=red]{text}[/color][/hint]"

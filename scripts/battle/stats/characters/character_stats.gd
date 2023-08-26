@@ -7,7 +7,7 @@ extends Resource
 @export var motions_sprites: SpriteFrames
 @export var icon: Texture
 
-@export var skills: Array[AbstractSkillStats] = []
+@export var skills: Array[SkillStats] = []
 @export var passive_abilities: Array[BaseCharacterPassiveAbility] = []
 
 @export_group("Health")

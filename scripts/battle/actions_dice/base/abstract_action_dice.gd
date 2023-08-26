@@ -16,7 +16,7 @@ var bonus: ActionDiceBonus = ActionDiceBonus.new()
 var _current_value: int = 0
 
 
-func _init(_stats: ActionDiceStats) -> void:
+func _init(_stats: ActionDiceStats = ActionDiceStats.new()) -> void:
 	stats = _stats
 
 

@@ -2,12 +2,10 @@ class_name QuantitySkill
 extends AbstractSkill
 
 
-@export var stats: QuantitySkillStats
-
-var current_quantity: int = stats.quantity
+var current_quantity: int = 0
 
 
-func _init(skill_stats: QuantitySkillStats = QuantitySkillStats.new()) -> void:
+func _init(skill_stats: SkillStats = SkillStats.new()) -> void:
 	super()
 	stats = skill_stats
 	current_quantity = stats.quantity

@@ -21,7 +21,9 @@ var _battlefield: BaseBattlefield = null
 func _ready() -> void:
 	set_location(_packed_location.instantiate())
 	_init_of_teams()
-	_switch_battle_phase()
+	BattleSygnals.turn_started.connect(_on_turn_started)
+	BattleSygnals.turn_ended.connect(_on_turn_ended)
+	BattleSygnals.combat_started.connect(_implements_combat_phase)
 
 
 func _input(_event: InputEvent) -> void:
@@ -31,7 +33,7 @@ func _input(_event: InputEvent) -> void:
 	
 	if current_phase == BattlePhase.CARD_PLACEMENT:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
-			_switch_battle_phase()
+			pass
 		if Input.is_action_just_released("ui_auto_selecting_cards"):
 			pass
 
@@ -61,16 +63,6 @@ func end() -> void:
 	pass
 
 
-func _switch_battle_phase() -> void:
-	match current_phase:
-		BattlePhase.COMBAT:
-			_start_turn()
-			_implements_card_placement_phase()
-		BattlePhase.CARD_PLACEMENT:
-			_implements_combat_phase()
-			_end_turn()
-
-
 func _implements_card_placement_phase() -> void:
 	current_phase = BattlePhase.CARD_PLACEMENT
 	get_tree().call_group("characters", "prepare_for_card_placement")
@@ -82,12 +74,12 @@ func _implements_combat_phase() -> void:
 	get_tree().call_group("characters", "prepare_for_combat")
 
 
-func _start_turn() -> void:
+func _on_turn_started(_turn_number: int) -> void:
 	turn_number += 1
 	BattleSygnals.turn_started.emit(turn_number)
+	_implements_card_placement_phase()
 
-func _end_turn() -> void:
-	await CombatManager.combat_end
+func _on_turn_ended(_turn_number: int) -> void:
 	if enemy_team.is_defeated():
 		victory()
 		return
@@ -96,7 +88,6 @@ func _end_turn() -> void:
 		return
 	
 	BattleSygnals.turn_ended.emit(turn_number)
-	_switch_battle_phase()
 
 
 func _init_of_teams() -> void:
@@ -106,9 +97,3 @@ func _init_of_teams() -> void:
 			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
 	enemy_team.set_popup_with_character_info(
 			left_popup if not Settings.gameplay_settings.allies_placement.is_left else right_popup)
-
-
-#func _on_player_set_assault() -> void:
-#	var ally_speed_dice: AbstractSpeedDice = _right_commander.selected_speed_dice
-#	var enemy_speed_dice: AbstractSpeedDice = _left_commander.selected_speed_dice
-#	CardPlacementManager.set_assault(ally_speed_dice, enemy_speed_dice)
