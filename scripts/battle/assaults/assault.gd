@@ -8,7 +8,6 @@ var character_speed_dice: AbstractSpeedDice
 var target_speed_dice: AbstractSpeedDice
 var type: BattleParameters.AssaultType
 var assault_arrow: BaseArrowOfAssault
-var is_completed: bool = false
 
 var _character: AbstractCharacter
 var _target: AbstractCharacter
@@ -25,10 +24,21 @@ func _init(
 	character_speed_dice = _character_speed_dice
 	target_speed_dice = _target_speed_dice
 	type = assault_type
+	
+	_character = character_speed_dice.wearer
+	_target = target_speed_dice.wearer
+
+
+func change_assault_type(other_type: BattleParameters.AssaultType) -> void:
+	type = other_type
+
+
+func can_assault() -> bool:
+	return not character_speed_dice.wearer.is_stunned
 
 
 func execute() -> void:
-	if type == BattleParameters.AssaultType.CLASH and (_character.is_stunned or _target.is_stunned):
+	if type == BattleParameters.AssaultType.CLASH and _target.is_stunned:
 		type == BattleParameters.AssaultType.ONE_SIDE
 	
 	match type:
@@ -37,7 +47,6 @@ func execute() -> void:
 		_:
 			_make_clash_assault() 
 	
-	is_completed = true
 	executed.emit()
 
 

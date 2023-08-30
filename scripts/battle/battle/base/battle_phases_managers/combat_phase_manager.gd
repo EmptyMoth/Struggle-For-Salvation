@@ -20,7 +20,7 @@ static func _get_sorted_speeds(speeds_list: Array[int]) -> Array[int]:
 
 static func _execute_assaults(assaults: Array[Assault]) -> void:
 	for assault in assaults:
-		if assault.is_completed:
+		if not assault.can_assault():
 			continue
 		assault.execute()
 		await assault.executed

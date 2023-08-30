@@ -26,6 +26,7 @@ var current_state: SpeedDiceState :
 	get:
 		return _current_state
 
+var wearer: AbstractCharacter
 var installed_skill: AbstractSkill = null
 
 @onready var _speed_value_label: Label = $States/SpeedValue

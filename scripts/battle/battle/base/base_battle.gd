@@ -2,7 +2,7 @@ class_name BaseBattle
 extends Node2D
 
 
-enum BattlePhase { CARD_PLACEMENT, COMBAT }
+enum BattlePhase { PREPARATION, COMBAT }
 
 @export var _packed_formation: PackedScene
 @export var _packed_location: PackedScene
@@ -31,7 +31,7 @@ func _input(_event: InputEvent) -> void:
 		pause_menu.pause_game()
 	pause_menu.just_closed = false
 	
-	if current_phase == BattlePhase.CARD_PLACEMENT:
+	if current_phase == BattlePhase.PREPARATION:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
 			pass
 		if Input.is_action_just_released("ui_auto_selecting_cards"):
@@ -64,7 +64,7 @@ func end() -> void:
 
 
 func _implements_card_placement_phase() -> void:
-	current_phase = BattlePhase.CARD_PLACEMENT
+	current_phase = BattlePhase.PREPARATION
 	get_tree().call_group("characters", "prepare_for_card_placement")
 
 

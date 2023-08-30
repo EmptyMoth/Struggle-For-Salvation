@@ -14,10 +14,9 @@ signal lost_clash(target: AbstractCharacter)
 
 var is_ally : bool :
 	get: return "allies" in get_groups()
-var is_themself_placement_cards : bool :
-	get: return "enemies" in get_groups()
 var is_stunned: bool :
 	get: return mental_health.is_empty()
+var independently_arranges_skills : bool
 
 var _skill_used: SkillCombatModel = null
 var _dice_reserved_list: Array[AbstractActionDice] = []
@@ -61,6 +60,13 @@ static func get_action_name(action: BattleParameters.CharactersMotions) -> Strin
 
 func get_skill_used() -> SkillCombatModel:
 	return _skill_used.use()
+
+
+func make_independent() -> void:
+	independently_arranges_skills = true
+
+func remove_independent() -> void:
+	independently_arranges_skills = false
 
 
 func prepare_for_card_placement() -> void:
@@ -120,34 +126,15 @@ func get_next_dice_reserved() -> AbstractActionDice:
 	if dice_reserved != null:
 		return dice_reserved
 	return null
-	
-	
-
-
-func auto_place_skills() -> void:
-	pass
-#	for speed_dice in speed_dice_manager.get_all_speed_dice():
-#		var card: AbstractCard = _auto_take_card()
-#		if  card != null:
-#			speed_dice.set_card(card)
 
 
 func auto_selecting_assault(opponents: Array) -> Dictionary:
-	var opponent_by_speed_dice: Dictionary = {}
+	var opponents_by_speed_dice: Dictionary = {}
 	for speed_dice in speed_dice_manager.get_assaulting_speed_dice():
-		var opponent: AbstractCharacter = _auto_choose_opponent(opponents)
-		var opponent_speed_dice: AbstractSpeedDice = _auto_choose_opponent_speed_dice(opponent)
-		opponent_by_speed_dice[speed_dice] = opponent_speed_dice
-	
-	return opponent_by_speed_dice
-
-
-func move_to_assault(opponent_marker: CharacterMarker3D, 
-			assault_type: BattleParameters.AssaultTypes) -> void:
-	var point: Vector3 = character_marker_3d.get_point_for_one_sided(opponent_marker) \
-		if assault_type == BattleParameters.AssaultTypes.ONE_SIDE \
-		else character_marker_3d.get_point_for_clash(opponent_marker)
-	character_marker_3d.move_to_new_position(point)
+		var opponent_speed_dice: AbstractSpeedDice = _auto_choose_opponent_speed_dice(opponents)
+		_auto_arranges_skill(speed_dice, opponent_speed_dice)
+		opponents_by_speed_dice[speed_dice] = opponent_speed_dice
+	return opponents_by_speed_dice
 
 
 func flip_to_starting_position() -> void:
@@ -202,12 +189,18 @@ func _auto_take_skill() -> AbstractSkill:
 	return AbstractSkill.new()
 
 
-func _auto_choose_opponent(opponents: Array) -> AbstractCharacter:
-	return opponents.pick_random()
-
-
-func _auto_choose_opponent_speed_dice(opponent: AbstractCharacter) -> AbstractSpeedDice:
+func _auto_choose_opponent_speed_dice(opponents: Array) -> AbstractSpeedDice:
+	var opponent: AbstractCharacter = opponents.pick_random()
 	return opponent.get_all_speed_dice().pick_random()
+
+
+func _auto_arranges_skill(
+			character_speed_dice: AbstractSpeedDice, 
+			opponent_speed_dice: AbstractSpeedDice) -> void:
+	pass
+#	var skill: AbstractSkill = AbstractSkill.new()
+#	if  skill != null:
+#		speed_dice.set_card(skill)
 
 
 func _on_died() -> void:
