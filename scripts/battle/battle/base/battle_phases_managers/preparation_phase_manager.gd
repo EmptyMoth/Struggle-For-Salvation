@@ -1,117 +1,107 @@
 class_name PreparationPhaseManager
-extends Resource
+extends RefCounted
 
 
+static func _on_battle_started() -> void:
+	BattleSignals.turn_started.emit()
 
-static var _assaults_by_speed_dice: Dictionary = {}
-static var _assaults_by_target_speed_dice: Dictionary = {}
-static var _assaults_can_clash_by_target_speed_dice: Dictionary = {}
-static var _default_assaults_by_speed_dice: Dictionary = {}
+
+static func _on_battle_turn_started() -> void:
+	AssaultLog.clear()
+	GlobalParameters.get_tree().call_group("characters", "roll_atp_slots")
+	auto_arranges_enemies_assaults()
+	BattleSignals.preparation_started.emit()
 
 
 static func auto_arranges_enemies_assaults() -> void:
-	var enemies: Array[Node] = GlobalParameters.get_nodes_in_group("enemies")
-	var allies: Array[Node] = GlobalParameters.get_nodes_in_group("allies")
+	var enemies: Array[Node] = GlobalParameters.get_nodes_in_group(
+			BattleParameters.CHARACTERS_GROUPS_BY_FRACTIONS[BattleEnums.Fraction.ENEMY])
+	var allies: Array[Node] = GlobalParameters.get_nodes_in_group(
+			BattleParameters.CHARACTERS_GROUPS_BY_FRACTIONS[BattleEnums.Fraction.ALLY])
 	_auto_arranges_characters_assaults(enemies, allies)
-	_default_assaults_by_speed_dice = _assaults_by_speed_dice.duplicate()
+
 
 static func auto_arranges_allies_assaults() -> void:
-	var allies: Array[Node] = GlobalParameters.get_nodes_in_group("allies")
-	var enemies: Array[Node] = GlobalParameters.get_nodes_in_group("enemies")
+	var allies: Array[Node] = GlobalParameters.get_nodes_in_group(
+			BattleParameters.CHARACTERS_GROUPS_BY_FRACTIONS[BattleEnums.Fraction.ALLY])
+	var enemies: Array[Node] = GlobalParameters.get_nodes_in_group(
+			BattleParameters.CHARACTERS_GROUPS_BY_FRACTIONS[BattleEnums.Fraction.ENEMY])
 	_auto_arranges_characters_assaults(allies, enemies)
 
 
-static func set_assault(
-			character_speed_dice: AbstractSpeedDice, 
-			target_speed_dice: AbstractSpeedDice) -> void:
-	var target_assault: Assault = _assaults_by_speed_dice.get(target_speed_dice,
-			Assault.new(target_speed_dice, null, BattleParameters.AssaultType.ONE_SIDE))
-	if character_speed_dice.speed > target_speed_dice.speed \
-			or target_assault.target_speed_dice == character_speed_dice:
-		_replace_assaults(Assault.new(
-			character_speed_dice, target_speed_dice, BattleParameters.AssaultType.CLASH))
-		_replace_assaults(Assault.new(
-			target_speed_dice, character_speed_dice, BattleParameters.AssaultType.CLASH))
+static func set_assault(atp_slot: ATPSlot, targets: Targets) -> void:
+	var assault: Assault = AssaultLog.get_assault(atp_slot)
+	if assault == null:
+		assault = Assault.new(atp_slot, targets)
 	else:
-		_replace_assaults(Assault.new(
-			character_speed_dice, target_speed_dice, BattleParameters.AssaultType.ONE_SIDE))
-
-
-static func there_are_alternative_clash(character_speed_dice: AbstractSpeedDice) -> bool:
-	return 1 < _assaults_can_clash_by_target_speed_dice.get(character_speed_dice, []).size()
-
-
-static func change_opponent_in_clash(target_speed_dice: AbstractSpeedDice) -> void:
-	var assaults: Array[Assault] = _assaults_can_clash_by_target_speed_dice.get(
-			target_speed_dice, [])
-	for i in assaults.size():
-		var assault: Assault = assaults[i]
-		if assault.type != BattleParameters.AssaultType.CLASH:
-			continue
-		assault.change_assault_type(BattleParameters.AssaultType.ONE_SIDE)
-		var next_index: int = (i + 1) % assaults.size()
-		var new_clash_assault: Assault = assaults[next_index]
-		new_clash_assault.change_assault_type(BattleParameters.AssaultType.CLASH)
-		_replace_assaults(Assault.new(
-			target_speed_dice,
-			new_clash_assault.character_speed_dice,
-			BattleParameters.AssaultType.CLASH))
-		return
-
-
-static func get_assaults_by_speed() -> Dictionary:
-	var assaults_by_speed: Dictionary = {}
-	for speed_dice in _assaults_by_speed_dice:
-		var assault: Assault = _assaults_by_speed_dice[speed_dice]
-		var assaults: Array[Assault] = assaults_by_speed.get(speed_dice.speed, [])
-		assaults.append(assault)
-		assaults_by_speed[speed_dice.speed] = assaults
+		AssaultLog.remove(atp_slot)
 	
-	return assaults_by_speed
+	AssaultLog.add(assault)
+	if _is_clash_assault(atp_slot, targets.main):
+		_set_clash(atp_slot, targets.main)
+		return
+	_set_one_side(atp_slot, targets.main)
+
+
+static func remove_assault(atp_slot: ATPSlot) -> void:
+	var assault: Assault = AssaultLog.get_assault(atp_slot)
+	AssaultLog.remove(atp_slot)
+	if assault.is_clash():
+		_change_clash_or_default(assault.targets.main)
+
+
+static func change_opponent_in_clash(atp_slot: ATPSlot) -> void:
+	var assault: Assault = AssaultLog.get_assault(atp_slot)
+	if not assault.is_clash():
+		push_warning("change_opponent_in_clash for not assault")
+		return
+	
+	var opponent_assault: Assault = AssaultLog.get_assault(assault.targets.main)
+	var potential_clashes: Array[Assault] = AssaultLog.get_potential_clashes(atp_slot)
+	var index_assault: int = potential_clashes.find(opponent_assault)
+	var next_index_assault: int = (index_assault + 1) % potential_clashes.size()
+	var next_assault: Assault = potential_clashes[next_index_assault]
+	_set_one_side(opponent_assault.atp_slot, assault.atp_slot)
+	_change_clash(assault, next_assault)
+
+
+static func _is_clash_assault(character_atp_slot: ATPSlot, target_atp_slot: ATPSlot) -> bool:
+	var target_assault: Assault = AssaultLog.get_assault(target_atp_slot)
+	return target_assault != null \
+			and (character_atp_slot.speed > target_atp_slot.speed \
+			or target_assault.targets.main == character_atp_slot)
+
+
+static func _set_one_side(atp_slot: ATPSlot, target_atp_slot: ATPSlot) -> void:
+	AssaultLog.get_assault(atp_slot).set_one_side(target_atp_slot)
+
+static func _set_clash(atp_slot: ATPSlot, opponent_atp_slot: ATPSlot) -> void:
+	var opponent_assault: Assault = AssaultLog.get_assault(opponent_atp_slot)
+	if opponent_assault.is_clash():
+		AssaultLog.get_assault(opponent_assault.targets.main).set_one_side(opponent_atp_slot)
+	
+	var new_clash: Assault = AssaultLog.get_assault(atp_slot)
+	_change_clash(new_clash, opponent_assault)
+	AssaultLog.add_clash(new_clash)
+
+
+static func _change_clash_or_default(atp_slot: ATPSlot) -> void:
+	var potential_clashes: Array[Assault] = AssaultLog.get_potential_clashes(atp_slot)
+	if potential_clashes.size() > 0:
+		_change_clash(AssaultLog.get_assault(atp_slot), potential_clashes.back())
+		return
+	AssaultLog.get_assault(atp_slot).set_default()
+
+
+static func _change_clash(assault: Assault, new_assault_for_clash: Assault) -> void:
+	assault.set_clash(new_assault_for_clash.atp_slot)
+	new_assault_for_clash.set_clash(assault.atp_slot)
 
 
 static func _auto_arranges_characters_assaults(
-			characters: Array, 
-			opponents: Array) -> void:
+		characters: Array[Node], opponents: Array[Node]) -> void:
 	for character in characters:
-		var opponents_speed_dice_by_character_speed_dice: Dictionary = \
-				character.auto_selecting_assault(opponents)
-		for character_speed_dice in opponents_speed_dice_by_character_speed_dice:
-			var opponent_speed_dice: AbstractSpeedDice = \
-					opponents_speed_dice_by_character_speed_dice[character_speed_dice]
-			set_assault(character_speed_dice, opponent_speed_dice)
-
-
-static func _replace_assaults(new_assault: Assault) -> void:
-	var old_assault: Assault = _assaults_by_speed_dice.get(new_assault.character_speed_dice)
-	if old_assault != null:
-		_remove_assault(old_assault)
-	_add_assault(new_assault)
-
-
-static func _add_assault(assault: Assault) -> void:
-	_assaults_by_speed_dice[assault.character_speed_dice] = assault
-	if assault.type == BattleParameters.AssaultType.CLASH:
-		var assaults: Array[Assault] = _assaults_can_clash_by_target_speed_dice.get(assault.target_speed_dice, [])
-		assaults.append(assault)
-		_assaults_by_target_speed_dice[assault.target_speed_dice] = assaults
-	var assaults: Array[Assault] = _assaults_by_target_speed_dice.get(assault.target_speed_dice, [])
-	assaults.append(assault)
-	_assaults_by_target_speed_dice[assault.target_speed_dice] = assaults
-
-
-static func _remove_assault(assault: Assault) -> void:
-	_assaults_by_speed_dice.erase(assault.character_speed_dice)
-	if assault.type == BattleParameters.AssaultType.CLASH:
-		var assaults: Array[Assault] = _assaults_can_clash_by_target_speed_dice.get(assault.target_speed_dice, [])
-		assaults.erase(assault)
-	var assaults: Array[Assault] = _assaults_by_target_speed_dice.get(assault.target_speed_dice, [])
-	assaults.erase(assault)
-
-
-static func _set_default_assault(character_speed_dice: AbstractSpeedDice) -> void:
-	var default_assault: Assault = _default_assaults_by_speed_dice.get(character_speed_dice)
-	if default_assault == null:
-		_assaults_by_speed_dice.erase(character_speed_dice)
-		return
-	_add_assault(default_assault)
+		var targets_by_atp_slots: Dictionary = character.auto_selecting_assault(opponents)
+		for atp_slot in targets_by_atp_slots:
+			var targets: Targets = targets_by_atp_slots[atp_slot]
+			set_assault(atp_slot, targets)

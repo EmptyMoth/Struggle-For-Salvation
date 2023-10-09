@@ -10,7 +10,6 @@ script/source = "extends TextureButton
 func _ready() -> void:
 	var a: int = 10
 	var b: int = 11
-	var result: BattleParameters.ClashResult = clampi(a - b, -1, 1)
 
 
 func test() -> void:

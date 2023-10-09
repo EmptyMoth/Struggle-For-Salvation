@@ -7,18 +7,18 @@ extends Resource
 var description: String = ""
 
 var _condition: AbstractAbilityCondition
-var _owner: AbstractCharacter
+var _wearer: Character
 
 
-func init(owner: AbstractCharacter) -> void:
-	_owner = owner
+func init(wearer: Character) -> void:
+	_wearer = wearer
 	_condition = AbstractAbility._create_condition(get("_condition_title"))
-	_condition.connect_condition(_owner, _effect.effect)
+	_condition.connect_condition(_wearer, _effect.effect)
 	@warning_ignore("static_called_on_instance")
 	description = _get_description()
 
 
-static func get_abilities_description(abilities: Array[AbstractAbility], presset: String = "%s") -> String:
+static func get_abilities_description(abilities: Array, presset: String = "%s") -> String:
 	var descriptions: PackedStringArray = PackedStringArray()
 	for ability in abilities:
 		descriptions.append(presset % ability.description)
@@ -31,4 +31,5 @@ static func _create_condition(condition_title: String) -> AbstractAbilityConditi
 
 
 func _get_description() -> String:
+	@warning_ignore("static_called_on_instance")
 	return "".join([_condition.get_title(), _effect.get_description()])

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_base_info/popup_with_character_base_info.gd" id="1_5nc8q"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/base_popup_with_character_info.gd" id="1_wrolr"]
-[ext_resource type="LabelSettings" uid="uid://w82e3rfwv8xl" path="res://resources/ui/label_settings/default/small.tres" id="2_yekam"]
+[ext_resource type="LabelSettings" uid="uid://w82e3rfwv8xl" path="res://resources/ui/global/label_settings/default/small.tres" id="2_yekam"]
 [ext_resource type="Texture2D" uid="uid://cnisllos7rsh1" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/immunocyte.svg" id="3_lnfou"]
 [ext_resource type="Texture2D" uid="uid://c1nod30dak1gr" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/virus.svg" id="4_nsdbd"]
 [ext_resource type="Texture2D" uid="uid://0p7p8dvc7pcw" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/bacteria.svg" id="5_h3bo3"]
@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://dojh8rty1j55i" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/fungus.svg" id="7_3hh75"]
 [ext_resource type="Texture2D" uid="uid://hx57414bun23" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/parasite.svg" id="8_gtepu"]
 [ext_resource type="Texture2D" uid="uid://bdhk8pvh8y7nd" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/cancer_cell.svg" id="9_7wdih"]
-[ext_resource type="LabelSettings" uid="uid://bcny06divfrey" path="res://resources/ui/label_settings/default/medium_bolt.tres" id="10_5ba3n"]
+[ext_resource type="LabelSettings" uid="uid://bcny06divfrey" path="res://resources/ui/global/label_settings/default/medium_bolt.tres" id="10_5ba3n"]
 [ext_resource type="Texture2D" uid="uid://d0xq5bthf1alk" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/hp_resistance/hp_immunity.svg" id="11_3ety5"]
 [ext_resource type="Texture2D" uid="uid://c53wxiq8p2b1s" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/hp_resistance/hp_useless.svg" id="12_dj7ps"]
 [ext_resource type="Texture2D" uid="uid://cvrjjw1gj7uup" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/hp_resistance/hp_weak.svg" id="13_c8y65"]
@@ -24,14 +24,14 @@
 [ext_resource type="Texture2D" uid="uid://bi11x8dw2mbbu" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/sp_resistance/sp_hight.svg" id="21_ukxdi"]
 [ext_resource type="Texture2D" uid="uid://bs6pore70wy1i" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/sp_resistance/sp_fatal.svg" id="22_48kda"]
 [ext_resource type="Texture2D" uid="uid://cckl56j3tn33g" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/speed_icon/speed_icon.svg" id="23_t82on"]
-[ext_resource type="LabelSettings" uid="uid://s1mrrv6ine7x" path="res://resources/ui/label_settings/default/small_bolt.tres" id="24_61jmy"]
+[ext_resource type="LabelSettings" uid="uid://s1mrrv6ine7x" path="res://resources/ui/global/label_settings/default/small_bolt.tres" id="24_61jmy"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_additional_info/popup_with_character_additional_info.gd" id="25_0fybh"]
 [ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="26_q1nq2"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="28_2qdai"]
 [ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="29_1y576"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="30_2dpqm"]
 [ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="30_qsdty"]
-[ext_resource type="LabelSettings" uid="uid://bg1053ea44uyi" path="res://resources/ui/label_settings/default/large_bold.tres" id="31_2aun2"]
+[ext_resource type="LabelSettings" uid="uid://bg1053ea44uyi" path="res://resources/ui/global/label_settings/default/large_bold.tres" id="31_2aun2"]
 [ext_resource type="Texture2D" uid="uid://080nbt6cg054" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/skills_types_icons/melee_type_icon.svg" id="32_jma85"]
 [ext_resource type="Texture2D" uid="uid://dh1a7om5wfhov" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/skills_types_icons/range_type_icon.svg" id="33_p2q3k"]
 [ext_resource type="Texture2D" uid="uid://b5rnotvxes64o" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/default.svg" id="34_tp3ow"]
@@ -158,7 +158,7 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62o5d"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm7g4"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sevkx"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_7lnsl"]
 frames = 2
@@ -173,6 +173,7 @@ offset_right = 897.0
 offset_bottom = 494.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
@@ -182,11 +183,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="VBox" type="VBoxContainer" parent="HBox"]
 custom_minimum_size = Vector2(280, 0)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="PopupWithCharacterBaseInfo" type="MarginContainer" parent="HBox/VBox"]
@@ -233,6 +236,7 @@ custom_minimum_size = Vector2(25, 25)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AnimatedTexture_xjvh6")
 expand_mode = 1
 
@@ -257,6 +261,7 @@ mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/CharacterIcon"]
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("CompressedTexture2D_i3v36")
 expand_mode = 1
 flip_h = true
@@ -280,6 +285,7 @@ theme_override_constants/margin_left = 5
 [node name="HBox" type="HBoxContainer" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 theme_override_constants/separation = 5
 
 [node name="HP" type="Label" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox"]
@@ -292,6 +298,7 @@ vertical_alignment = 1
 
 [node name="Counter" type="HBoxContainer" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Max" type="Label" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/HP/Margin/HBox/Counter"]
@@ -350,6 +357,7 @@ theme_override_constants/margin_left = 5
 [node name="HBox" type="HBoxContainer" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin"]
 layout_mode = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 theme_override_constants/separation = 5
 
 [node name="SP" type="Label" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox"]
@@ -363,6 +371,7 @@ vertical_alignment = 1
 
 [node name="Counter" type="HBoxContainer" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="Max" type="Label" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter"]
@@ -401,6 +410,7 @@ theme_override_constants/margin_left = 10
 
 [node name="Resistances" type="HBoxContainer" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Margin"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="HPResistance" type="TextureRect" parent="HBox/VBox/PopupWithCharacterBaseInfo/Panel/Margin/VBox/MainInfo/HBox/Margin/Resistances"]
@@ -408,6 +418,7 @@ custom_minimum_size = Vector2(13, 36)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_filter = 2
 texture = SubResource("AnimatedTexture_epm18")
 expand_mode = 1
 
@@ -416,6 +427,7 @@ custom_minimum_size = Vector2(13, 36)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_filter = 2
 texture = SubResource("AnimatedTexture_fan2s")
 expand_mode = 1
 
@@ -509,11 +521,9 @@ text = "Passive"
 metadata/content_index = 1
 
 [node name="SmoothScroll" type="ScrollContainer" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox"]
-custom_minimum_size = Vector2(0, 220)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-mouse_filter = 0
 mouse_force_pass_scroll_events = false
-horizontal_scroll_mode = 0
 script = ExtResource("26_q1nq2")
 speed = 3.0
 damping_scroll = 0.3
@@ -524,16 +534,15 @@ allow_horizontal_scroll = false
 [node name="Margin" type="MarginContainer" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 mouse_filter = 2
-theme_override_constants/margin_right = 10
 
 [node name="Content" type="TabContainer" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_vm7g4")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_sevkx")
 clip_tabs = false
 tabs_visible = false
 
@@ -606,6 +615,7 @@ custom_minimum_size = Vector2(60, 60)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+mouse_filter = 2
 texture = ExtResource("29_1y576")
 expand_mode = 1
 
@@ -617,13 +627,16 @@ theme_override_font_sizes/font_size = 24
 text = "Skill Title"
 label_settings = ExtResource("31_2aun2")
 vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="SkillTypes" type="VBoxContainer" parent="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox/Header"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 0
 
 [node name="RangeType" type="HBoxContainer" parent="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 5
 alignment = 2
 
@@ -640,11 +653,13 @@ custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
+mouse_filter = 2
 texture = SubResource("AnimatedTexture_7lnsl")
 expand_mode = 1
 
 [node name="UsesType" type="HBoxContainer" parent="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 5
 alignment = 2
 
@@ -703,9 +718,11 @@ script = ExtResource("30_qsdty")
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="Margin" type="MarginContainer" parent="HBox/PopupWithSkillInfo/HBox/ActionsDiceList/Panel"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 7
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 7
@@ -713,5 +730,6 @@ theme_override_constants/margin_bottom = 20
 
 [node name="ActionsDice" type="VBoxContainer" parent="HBox/PopupWithSkillInfo/HBox/ActionsDiceList/Panel/Margin"]
 layout_mode = 2
+mouse_filter = 2
 
 [connection signal="toggled" from="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox/ButtonHidingDiceAbilities" to="HBox/PopupWithSkillInfo" method="_on_button_hiding_dice_abilities_toggled" flags=18]

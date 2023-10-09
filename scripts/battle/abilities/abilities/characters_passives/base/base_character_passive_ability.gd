@@ -20,4 +20,5 @@ extends AbstractAbility
 
 
 func _get_description() -> String:
+	@warning_ignore("static_called_on_instance")
 	return " - ".join([passive_title, _effect.get_description()])

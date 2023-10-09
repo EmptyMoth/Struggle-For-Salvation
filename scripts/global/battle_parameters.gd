@@ -1,20 +1,6 @@
 extends Node
 
 
-enum AssaultType { ONE_SIDE, CLASH } 
-
-enum ClashResult { LOSE = -1, DRAW = 0, WIN = 1 }
-
-enum CharacterType {
-	IMMUNOCYTE,
-	VIRUS,
-	BACTERIA,
-	ALLERGEN,
-	FUNGUS,
-	PARASITE,
-	CANCER_CELL,
-}
-
 enum CharactersMotions {
 	DEFAULT,
 	STUN,
@@ -33,14 +19,20 @@ enum CharactersMotions {
 	SPECIAL_5,
 }
 
+const CHARACTERS_GROUPS_BY_FRACTIONS: Dictionary = {
+	BattleEnums.Fraction.ALLY : "allies",
+	BattleEnums.Fraction.ENEMY : "enemies",
+	BattleEnums.Fraction.OTHER : "others",
+}
+
 const GROUPS_BY_CHARACTERS_TYPES: Dictionary = {
-	CharacterType.IMMUNOCYTE : "immunocytes",
-	CharacterType.VIRUS : "viruses",
-	CharacterType.BACTERIA : "bacteria",
-	CharacterType.PARASITE : "parasites",
-	CharacterType.FUNGUS : "fungi",
-	CharacterType.ALLERGEN : "allergens",
-	CharacterType.CANCER_CELL : "cancer_cells",
+	BattleEnums.CharacterType.IMMUNOCYTE : "immunocytes",
+	BattleEnums.CharacterType.VIRUS : "viruses",
+	BattleEnums.CharacterType.BACTERIA : "bacteria",
+	BattleEnums.CharacterType.PARASITE : "parasites",
+	BattleEnums.CharacterType.FUNGUS : "fungi",
+	BattleEnums.CharacterType.ALLERGEN : "allergens",
+	BattleEnums.CharacterType.CANCER_CELL : "cancer_cells",
 }
 
 static var battle: BaseBattle

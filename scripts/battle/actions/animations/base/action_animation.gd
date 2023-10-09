@@ -3,8 +3,8 @@ extends Animation
 
 
 func set_participants(
-			character: AbstractCharacter, 
-			target: AbstractCharacter) -> void:
+			character: Character, 
+			target: Character) -> void:
 	for i in get_track_count():
 		var pattern_track: String = str(track_get_path(i))
 		pattern_track = pattern_track.replace("Character", character.name)
@@ -13,8 +13,8 @@ func set_participants(
 
 
 func set_mass_participants(
-			character: AbstractCharacter, 
-			targets: Array[AbstractCharacter]) -> void:
+			character: Character, 
+			targets: Array[Character]) -> void:
 	for i in get_track_count():
 		var pattern_track: String = str(track_get_path(i))
 		pattern_track = pattern_track.replace("Character", character.name)

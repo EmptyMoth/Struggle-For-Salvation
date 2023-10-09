@@ -2,13 +2,11 @@ class_name BaseBattle
 extends Node2D
 
 
-enum BattlePhase { PREPARATION, COMBAT }
-
 @export var _packed_formation: PackedScene
 @export var _packed_location: PackedScene
 
 var turn_number: int = 0
-var current_phase: BattlePhase = BattlePhase.COMBAT
+var current_phase: BattleEnums.BattlePhase = BattleEnums.BattlePhase.PREPARATION
 
 var _location: BaseLocation = null
 var _battlefield: BaseBattlefield = null
@@ -16,14 +14,17 @@ var _battlefield: BaseBattlefield = null
 @onready var ally_team: BaseTeam = $Teams/AllyTeam
 @onready var enemy_team: BaseTeam = $Teams/EnemyTeam
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
+@onready var assaults_arrows: Control = $AssaultsArrows
 
 
 func _ready() -> void:
-	set_location(_packed_location.instantiate())
+	BattleParameters.battle = self
 	_init_of_teams()
-	BattleSygnals.turn_started.connect(_on_turn_started)
-	BattleSygnals.turn_ended.connect(_on_turn_ended)
-	BattleSygnals.combat_started.connect(_implements_combat_phase)
+	set_location(_packed_location.instantiate())
+	BattleSignals.turn_started.connect(_on_turn_started)
+	BattleSignals.turn_ended.connect(_on_turn_ended)
+	BattleSignals.combat_started.connect(_implements_combat_phase)
+	BattleSignals.battle_started.emit()
 
 
 func _input(_event: InputEvent) -> void:
@@ -31,11 +32,11 @@ func _input(_event: InputEvent) -> void:
 		pause_menu.pause_game()
 	pause_menu.just_closed = false
 	
-	if current_phase == BattlePhase.PREPARATION:
+	if current_phase == BattleEnums.BattlePhase.PREPARATION:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
 			pass
-		if Input.is_action_just_released("ui_auto_selecting_cards"):
-			pass
+		if Input.is_action_just_released("ui_auto_set_assault"):
+			PreparationPhaseManager.auto_arranges_allies_assaults()
 
 
 func set_location(location: BaseLocation) -> void:
@@ -47,10 +48,17 @@ func set_location(location: BaseLocation) -> void:
 
 func set_battlefild(battlefield: BaseBattlefield) -> void:
 	_battlefield = battlefield
-	#_battlefield.set_characters_markers_on_battlefield(
-	#		ally_team.characters, enemy_team.characters)
+	_battlefield.set_characters_markers_on_battlefield(
+			ally_team.characters, enemy_team.characters)
 	_battlefield.set_formation(_packed_formation.instantiate(), 
 			ally_team.characters, enemy_team.characters)
+
+
+func add_assault_arrow(arrow: BaseAssaultArrow) -> void:
+	assaults_arrows.add_child(arrow)
+
+func remove_assault_arrow(arrow: BaseAssaultArrow) -> void:
+	assaults_arrows.remove_child(arrow)
 
 
 func victory() -> void:
@@ -64,22 +72,21 @@ func end() -> void:
 
 
 func _implements_card_placement_phase() -> void:
-	current_phase = BattlePhase.PREPARATION
+	current_phase = BattleEnums.BattlePhase.PREPARATION
 	get_tree().call_group("characters", "prepare_for_card_placement")
 
 
 func _implements_combat_phase() -> void:
-	current_phase = BattlePhase.COMBAT
-	BattleSygnals.combat_started.emit()
+	current_phase = BattleEnums.BattlePhase.COMBAT
+	BattleSignals.combat_started.emit()
 	get_tree().call_group("characters", "prepare_for_combat")
 
 
-func _on_turn_started(_turn_number: int) -> void:
+func _on_turn_started() -> void:
 	turn_number += 1
-	BattleSygnals.turn_started.emit(turn_number)
-	_implements_card_placement_phase()
 
-func _on_turn_ended(_turn_number: int) -> void:
+
+func _on_turn_ended() -> void:
 	if enemy_team.is_defeated():
 		victory()
 		return
@@ -87,12 +94,12 @@ func _on_turn_ended(_turn_number: int) -> void:
 		defeate()
 		return
 	
-	BattleSygnals.turn_ended.emit(turn_number)
+	BattleSignals.turn_ended.emit(turn_number)
 
 
 func _init_of_teams() -> void:
-	var left_popup: BasePopupWithCharacterInfo = $UI/PopupWithCharacterInfo/Left
-	var right_popup: BasePopupWithCharacterInfo = $UI/PopupWithCharacterInfo/Right
+	var left_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Left
+	var right_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Right
 	ally_team.set_popup_with_character_info(
 			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
 	enemy_team.set_popup_with_character_info(

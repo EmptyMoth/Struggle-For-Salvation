@@ -12,5 +12,5 @@ func _lose_on_win(opponent_dice: AbstractActionDice) -> DiceAction:
 	return stats.action.init(_action)
 
 
-func _action(character: AbstractCharacter, target: AbstractCharacter) -> void:
+func _action(character: Character, target: Character) -> void:
 	character.mental_heal(get_current_value())

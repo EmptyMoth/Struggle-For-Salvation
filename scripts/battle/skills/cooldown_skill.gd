@@ -6,8 +6,8 @@ var is_selected: bool = false
 var current_cooldown: int = 0
 
 
-func is_blocked() -> bool:
-	return is_selected or current_cooldown > 0
+func is_available() -> bool:
+	return not is_selected or current_cooldown <= 0
 
 
 func select() -> void:
@@ -24,7 +24,7 @@ func increase_cooldown(count: int) -> void:
 	current_cooldown = current_cooldown + count
 
 
-func _on_battle_turn_started(_turn_number: int) -> void:
+func _on_battle_turn_started() -> void:
 	is_selected = false
-	if is_blocked():
+	if not is_available():
 		reduce_cooldown(1)

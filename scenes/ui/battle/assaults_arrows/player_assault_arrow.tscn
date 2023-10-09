@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://q8wnh8hwuvok"]
+
+[ext_resource type="PackedScene" uid="uid://dumn5rposhr3r" path="res://scenes/ui/battle/assaults_arrows/base/base_assault_arrow.tscn" id="1_8l2bk"]
+[ext_resource type="Script" path="res://scripts/ui/battle/assaults_arrows/player_assault_arrow.gd" id="2_6785t"]
+
+[node name="PlayerAssaultArrow" instance=ExtResource("1_8l2bk")]
+script = ExtResource("2_6785t")

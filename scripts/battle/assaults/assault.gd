@@ -3,46 +3,67 @@ extends Resource
 
 
 signal executed
+signal type_was_changed(new_type: BattleEnums.AssaultType)
 
-var character_speed_dice: AbstractSpeedDice
-var target_speed_dice: AbstractSpeedDice
-var type: BattleParameters.AssaultType
-var assault_arrow: BaseArrowOfAssault
+var atp_slot: ATPSlot
+var targets: Targets
+var type: BattleEnums.AssaultType = BattleEnums.AssaultType.ONE_SIDE :
+	set(new_type):
+		type = new_type
+		type_was_changed.emit(new_type)
 
-var _character: AbstractCharacter
-var _target: AbstractCharacter
+var _character: Character
+var _target: Character
 var _character_skill: SkillCombatModel
 var _target_skill: SkillCombatModel
 var _currect_character_action_dice: AbstractActionDice
 var _currect_target_action_dice: AbstractActionDice
 
 
-func _init(
-		_character_speed_dice: AbstractSpeedDice, 
-		_target_speed_dice: AbstractSpeedDice, 
-		assault_type: BattleParameters.AssaultType) -> void:
-	character_speed_dice = _character_speed_dice
-	target_speed_dice = _target_speed_dice
-	type = assault_type
-	
-	_character = character_speed_dice.wearer
-	_target = target_speed_dice.wearer
+func _init(_atp_slot: ATPSlot, _targets: Targets) -> void:
+	atp_slot = _atp_slot
+	targets = _targets
 
 
-func change_assault_type(other_type: BattleParameters.AssaultType) -> void:
-	type = other_type
+func _to_string() -> String:
+	var result: String = "Clash %s<->%s" if is_clash() else "One-side %s->%s"
+	return  result % [atp_slot.to_string(), targets.main.to_string()]
+
+
+func is_clash() -> bool:
+	return type == BattleEnums.AssaultType.CLASH
+
+func is_one_side() -> bool:
+	return type == BattleEnums.AssaultType.ONE_SIDE
+
+
+func set_default() -> void:
+	targets.set_default()
+	type = BattleEnums.AssaultType.ONE_SIDE
+
+
+func set_one_side(main_target: ATPSlot) -> void:
+	targets.change_main_target(main_target)
+	type = BattleEnums.AssaultType.ONE_SIDE
+
+
+func set_clash(main_target: ATPSlot) -> void:
+	targets.change_main_target(main_target)
+	type = BattleEnums.AssaultType.CLASH
 
 
 func can_assault() -> bool:
-	return not character_speed_dice.wearer.is_stunned
+	return not atp_slot.wearer.is_stunned
 
 
 func execute() -> void:
-	if type == BattleParameters.AssaultType.CLASH and _target.is_stunned:
-		type == BattleParameters.AssaultType.ONE_SIDE
+	_character = atp_slot.wearer
+	_target = targets.main.wearer
+	if type == BattleEnums.AssaultType.CLASH and _target.is_stunned:
+		type = BattleEnums.AssaultType.ONE_SIDE
 	
 	match type:
-		BattleParameters.AssaultType.ONE_SIDE:
+		BattleEnums.AssaultType.ONE_SIDE:
 			_make_one_side_assault()
 		_:
 			_make_clash_assault() 
@@ -98,11 +119,13 @@ func _make_dice_one_side_assault() -> void:
 func _make_dice_clash_assault() -> void:
 	_currect_character_action_dice.roll_dice()
 	_currect_target_action_dice.roll_dice()
-	var character_result: BattleParameters.ClashResult = clampi(
+	@warning_ignore("int_as_enum_without_cast")
+	var character_result: BattleEnums.ClashResult = clampi(
 			_currect_character_action_dice.get_current_value() \
 			- _currect_target_action_dice.get_current_value(), \
 			-1, 1)
-	var target_result: BattleParameters.ClashResult = -character_result
+	@warning_ignore("int_as_enum_without_cast")
+	var target_result: BattleEnums.ClashResult = -character_result
 	var character_action: DiceAction = _currect_character_action_dice.use_on_clash(
 			_currect_target_action_dice, character_result)
 	var target_action: DiceAction = _currect_target_action_dice.use_on_clash(

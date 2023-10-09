@@ -71,12 +71,12 @@ func use_on_one_side() -> DiceAction:
 
 
 func use_on_clash(opponent_dice: AbstractActionDice, 
-			result: BattleParameters.ClashResults) -> DiceAction:
+			result: BattleEnums.ClashResult) -> DiceAction:
 	is_breaked = true
 	match result:
-		BattleParameters.ClashResults.WIN:
+		BattleEnums.ClashResult.WIN:
 			return _win_on_clash(opponent_dice)
-		BattleParameters.ClashResults.LOSE:
+		BattleEnums.ClashResult.LOSE:
 			return _lose_on_clash(opponent_dice)
 		_:
 			return _draw_on_clash(opponent_dice)
@@ -92,8 +92,8 @@ func _lose_on_clash(_opponent_dice: AbstractActionDice) -> DiceAction:
 	return AbstractActionDice.losing_action
 
 
-func _action(character: AbstractCharacter, target: AbstractCharacter) -> void:
+func _action(_character: Character, _target: Character) -> void:
 	pass
 
-static func _none_action(character: AbstractCharacter, target: AbstractCharacter) -> void:
+static func _none_action(_character: Character, _target: Character) -> void:
 	pass

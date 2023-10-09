@@ -19,7 +19,7 @@ extends MovingContainer
 @onready var _max_sp_count_label: Label = $Panel/Margin/VBox/MainInfo/HBox/Healths/SP/Margin/HBox/Counter/Max
 
 
-func set_info(character: AbstractCharacter) -> void:
+func set_info(character: Character) -> void:
 	_character_icon.texture = character.stats.icon
 	_character_type_icon.texture.current_frame = character.stats.type
 	_character_name_label.text = character.stats.name

@@ -23,7 +23,7 @@ func init(action:Callable) -> DiceAction:
 	return self
 
 
-func execute(character: AbstractCharacter, target: AbstractCharacter) -> void:
+func execute(character: Character, target: Character) -> void:
 	is_executing = false
 	character.switch_motion(motion)
 	#action_animation.set_participants(character, target)

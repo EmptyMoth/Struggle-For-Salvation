@@ -4,13 +4,43 @@ extends Resource
 
 @export var stats: SkillStats
 
-
-func _init() -> void:
-	BattleSygnals.turn_started.connect(_on_battle_turn_started)
+var wearer: Character
 
 
-func is_blocked() -> bool:
-	return false
+func _init(character: Character, skill_stats: SkillStats) -> void:
+	wearer = character
+	stats = skill_stats
+	BattleSignals.turn_started.connect(_on_battle_turn_started)
+
+
+static func create_skill(character: Character, skill_stats: SkillStats) -> AbstractSkill:
+	match skill_stats.skill_type:
+		SkillStats.SkillType.COOLDOWN:
+			return CooldownSkill.new(character, skill_stats)
+		_:
+			return QuantitySkill.new(character, skill_stats)
+
+
+func is_mass_attack() -> bool:
+	return stats.targeting_type == SkillStats.TargetingType.MASS
+
+
+func is_auto_set_assault() -> bool:
+	return stats.assault_setter != null
+
+
+func is_available() -> bool:
+	return true
+
+
+func choose_targets_atp_slots(opponent_list: Array) -> Targets:
+	return stats.assault_setter.choose_targets_atp_slot(
+			opponent_list, stats.get_targets_count(opponent_list.size()))
+
+
+func choose_sub_targets(opponent_list: Array) -> Array[ATPSlot]:
+	return stats.assault_setter.choose_sub_targets(
+			opponent_list, stats.get_targets_count(opponent_list.size()) - 1)
 
 
 func select() -> void:
@@ -24,5 +54,5 @@ func use() -> SkillCombatModel:
 	return SkillCombatModel.new(stats)
 
 
-func _on_battle_turn_started(_turn_number: int) -> void:
+func _on_battle_turn_started() -> void:
 	pass

@@ -3,7 +3,7 @@ extends Resource
 
 
 static func start() -> void:
-	BattleSygnals.combat_started.emit()
+	BattleSignals.combat_started.emit()
 
 
 static func make_assaults(assaults_by_speeds: Dictionary) -> void:

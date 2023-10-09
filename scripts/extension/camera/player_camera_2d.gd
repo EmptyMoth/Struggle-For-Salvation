@@ -73,9 +73,9 @@ func _move_camera(event_mouse_motion: InputEventMouseMotion) -> void:
 
 
 func _change_zoom(event_mouse_button: InputEventMouseButton) -> void:
-	if event_mouse_button.is_action("ui_mouse_button_wheel_up"):
+	if event_mouse_button.is_action("ui_scroll_up"):
 		_zoom_level += _zoom_factor
-	elif event_mouse_button.is_action("ui_mouse_button_wheel_down"):
+	elif event_mouse_button.is_action("ui_scroll_down"):
 		_zoom_level -= _zoom_factor
 	else:
 		return
