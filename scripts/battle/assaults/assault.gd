@@ -1,16 +1,10 @@
-class_name Assault
+#class_name Assault
 extends Resource
 
 
 signal executed
-signal type_was_changed(new_type: BattleEnums.AssaultType)
 
-var atp_slot: ATPSlot
-var targets: Targets
-var type: BattleEnums.AssaultType = BattleEnums.AssaultType.ONE_SIDE :
-	set(new_type):
-		type = new_type
-		type_was_changed.emit(new_type)
+var _assault_data: AssaultData
 
 var _character: Character
 var _target: Character
@@ -20,55 +14,23 @@ var _currect_character_action_dice: AbstractActionDice
 var _currect_target_action_dice: AbstractActionDice
 
 
-func _init(_atp_slot: ATPSlot, _targets: Targets) -> void:
-	atp_slot = _atp_slot
-	targets = _targets
+func _init(assault_data: AssaultData) -> void:
+	_assault_data = assault_data
 
 
-func _to_string() -> String:
-	var result: String = "Clash %s<->%s" if is_clash() else "One-side %s->%s"
-	return  result % [atp_slot.to_string(), targets.main.to_string()]
-
-
-func is_clash() -> bool:
-	return type == BattleEnums.AssaultType.CLASH
-
-func is_one_side() -> bool:
-	return type == BattleEnums.AssaultType.ONE_SIDE
-
-
-func set_default() -> void:
-	targets.set_default()
-	type = BattleEnums.AssaultType.ONE_SIDE
-
-
-func set_one_side(main_target: ATPSlot) -> void:
-	targets.change_main_target(main_target)
-	type = BattleEnums.AssaultType.ONE_SIDE
-
-
-func set_clash(main_target: ATPSlot) -> void:
-	targets.change_main_target(main_target)
-	type = BattleEnums.AssaultType.CLASH
-
-
-func can_assault() -> bool:
-	return not atp_slot.wearer.is_stunned
-
-
-func execute() -> void:
-	_character = atp_slot.wearer
-	_target = targets.main.wearer
-	if type == BattleEnums.AssaultType.CLASH and _target.is_stunned:
-		type = BattleEnums.AssaultType.ONE_SIDE
-	
-	match type:
-		BattleEnums.AssaultType.ONE_SIDE:
-			_make_one_side_assault()
-		_:
-			_make_clash_assault() 
-	
-	executed.emit()
+#func execute() -> void:
+#	_character = atp_slot.wearer
+#	_target = targets.main.wearer
+#	if type == BattleEnums.AssaultType.CLASH and _target.is_stunned:
+#		type = BattleEnums.AssaultType.ONE_SIDE
+#
+#	match type:
+#		BattleEnums.AssaultType.ONE_SIDE:
+#			_make_one_side_assault()
+#		_:
+#			_make_clash_assault() 
+#
+#	executed.emit()
 
 
 func _make_one_side_assault() -> void:

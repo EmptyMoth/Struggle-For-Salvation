@@ -10,18 +10,18 @@ static var _clashes_arrows: Array[BaseAssaultArrow] = []
 static var _arrows_list_by_atp_slot: Dictionary = {}
 
 
-static func create_arrows(assault: Assault) -> void:
+static func create_arrows(assault: AssaultData) -> void:
 	_create_assault_arrow(assault.atp_slot)
 	for sub_target_atp in assault.targets.sub_targets:
 		_create_assault_arrow(sub_target_atp)
 
 
-static func remove_arrows(assault: Assault) -> void:
+static func remove_arrows(assault: AssaultData) -> void:
 	_get_arrows_list(assault.atp_slot).clear()
 
 
 static func show_arrows_by_atp_slot(atp_slot: ATPSlot) -> void:
-	var assault: Assault = AssaultLog.get_assault(atp_slot)
+	var assault: AssaultData = AssaultLog.get_assault(atp_slot)
 	if assault != null:
 		_show_arrows_by_atp_slot(assault)
 	for targeting_assault in AssaultLog.get_assaults_targeting(atp_slot):
@@ -58,7 +58,7 @@ static func _display_arrows(arrows: Array[BaseAssaultArrow], display: bool) -> v
 		arrow.visible = display
 
 
-static func _show_arrows_by_atp_slot(assault: Assault) -> void:
+static func _show_arrows_by_atp_slot(assault: AssaultData) -> void:
 	var arrow: BaseAssaultArrow = _get_arrows_list(assault.atp_slot).back()
 	arrow.show_arrow(assault, assault.targets.main)
 	for i in assault.targets.sub_targets.size():

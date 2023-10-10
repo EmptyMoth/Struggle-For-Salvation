@@ -6,7 +6,7 @@ var _atp_slot: ATPSlot
 var _get_target_point: Callable
 
 @onready var _body: BodyOfAssaultArrow = $Body
-@onready var _pointer_at_end: PointerOfAssaultArrow = $PointerAtEnd
+@onready var _pointer: PointerOfAssaultArrow = $Pointer
 
 
 func _ready() -> void:
@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 		_draw_arrow()
 
 
-func show_arrow(assault: Assault, target_atp_slot: ATPSlot) -> void:
+func show_arrow(assault: AssaultData, target_atp_slot: ATPSlot) -> void:
 	_atp_slot = assault.atp_slot
 	var is_sub_arrow: bool = assault.targets.main != target_atp_slot
 	if not is_sub_arrow and assault.is_clash():
@@ -31,6 +31,12 @@ func show_arrow(assault: Assault, target_atp_slot: ATPSlot) -> void:
 	show()
 
 
+func show_player_arrow(atp_slot: ATPSlot) -> void:
+	_atp_slot = atp_slot
+	_get_target_point = func(): return get_global_mouse_position()
+	show()
+
+
 func _get_center_position_atp_slot(atp_slot: ATPSlot) -> Vector2:
 	var atp_slot_ui: BaseATPSlotUI = atp_slot.get_atp_slot_ui()
 	return atp_slot_ui.global_position + atp_slot_ui.size / 2
@@ -39,8 +45,8 @@ func _get_center_position_atp_slot(atp_slot: ATPSlot) -> Vector2:
 func _draw_arrow() -> void:
 	var initional_position: Vector2 = _get_center_position_atp_slot(_atp_slot)
 	var target_point: Vector2 = _get_target_point.call()
-	_pointer_at_end.draw(initional_position, target_point)
-	var connection_point: Vector2 = _pointer_at_end.get_connection_point()
+	_pointer.draw(initional_position, target_point)
+	var connection_point: Vector2 = _pointer.get_connection_point()
 	_body.draw(initional_position, connection_point)
 
 

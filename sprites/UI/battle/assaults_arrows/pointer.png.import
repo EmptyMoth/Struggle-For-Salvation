@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dj0t8b47a6ub3"
-path="res://.godot/imported/pointer.png-140bbd382cce72383cbfe6d9e2fcc19a.ctex"
+path="res://.godot/imported/pointer.png-82c8f25c91ac0983f3f0f70d1237fc0a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle/characters/arrow_showing_target/pointer/pointer.png"
-dest_files=["res://.godot/imported/pointer.png-140bbd382cce72383cbfe6d9e2fcc19a.ctex"]
+source_file="res://sprites/ui/battle/assaults_arrows/pointer.png"
+dest_files=["res://.godot/imported/pointer.png-82c8f25c91ac0983f3f0f70d1237fc0a.ctex"]
 
 [params]
 

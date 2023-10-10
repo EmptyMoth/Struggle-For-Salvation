@@ -21,13 +21,6 @@ func _ready() -> void:
 	close()
 
 
-func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_pressed("ui_up"):
-		hide_popup()
-	if Input.is_action_just_pressed("ui_down"):
-		show_popup()
-
-
 func set_info(character: Character, atp_slot: ATPSlot = null) -> void:
 	show_popup()
 	_base_info.set_info(character)

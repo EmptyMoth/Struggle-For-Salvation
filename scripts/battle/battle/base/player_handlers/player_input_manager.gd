@@ -2,17 +2,22 @@
 extends Control
 
 
-const _PLAYER_ASSAULT_ARROW_PACKED_SCENE: PackedScene = preload("res://scenes/ui/battle/assaults_arrows/player_assault_arrow.tscn")
+const _PLAYER_ASSAULT_ARROW_PACKED_SCENE: PackedScene = preload("res://scenes/ui/battle/assaults_arrows/base/base_assault_arrow.tscn")
 
 static var selected_ally_atp_slot: ATPSlot = null
 static var selected_skill: AbstractSkill = null
 
-static var _player_assault_arrow: PlayerAssaultArrow
+static var _player_assault_arrow: BaseAssaultArrow
 
 
 func _input(event: InputEvent) -> void:
 	return
 	get_viewport().set_input_as_handled()
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_released("ui_cancel"):
+		_deselected()
 
 
 static func on_ally_atp_slot_deselected(ally_atp_slot: ATPSlot) -> void:
@@ -55,13 +60,13 @@ static func _set_assault(enemy_atp_slot: ATPSlot) -> void:
 		opponent_list.erase(enemy_atp_slot.wearer)
 		targets.sub_targets = selected_skill.choose_sub_targets(opponent_list)
 	
-	PreparationPhaseManager.set_assault(selected_ally_atp_slot, targets)
+	AssaultSetter.set_assault(selected_ally_atp_slot, targets)
 	_deselected()
 
 
 static func _remove_assault(enemy_atp_slot: ATPSlot) -> void:
 	selected_ally_atp_slot.remove_skill()
-	PreparationPhaseManager.remove_assault(selected_ally_atp_slot)
+	AssaultSetter.remove_assault(selected_ally_atp_slot)
 
 
 static func _on_battle_started() -> void:

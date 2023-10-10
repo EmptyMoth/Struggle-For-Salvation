@@ -1,4 +1,5 @@
-extends Node
+class_name BattleParameters
+extends RefCounted
 
 
 enum CharactersMotions {
@@ -36,3 +37,7 @@ const GROUPS_BY_CHARACTERS_TYPES: Dictionary = {
 }
 
 static var battle: BaseBattle
+
+
+static func get_fraction_group(fraction: BattleEnums.Fraction) -> Array[Node]:
+	return GlobalParameters.get_nodes_in_group(CHARACTERS_GROUPS_BY_FRACTIONS[fraction])
