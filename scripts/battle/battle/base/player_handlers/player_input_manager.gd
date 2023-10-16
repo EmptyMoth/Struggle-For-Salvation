@@ -10,14 +10,13 @@ static var selected_skill: AbstractSkill = null
 static var _player_assault_arrow: BaseAssaultArrow
 
 
-func _input(event: InputEvent) -> void:
-	return
-	get_viewport().set_input_as_handled()
+#func _input(_event: InputEvent) -> void:
+#	get_viewport().set_input_as_handled()
 
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("ui_cancel"):
-		_deselected()
+		self._deselected()
 
 
 static func on_ally_atp_slot_deselected(ally_atp_slot: ATPSlot) -> void:
@@ -64,9 +63,9 @@ static func _set_assault(enemy_atp_slot: ATPSlot) -> void:
 	_deselected()
 
 
-static func _remove_assault(enemy_atp_slot: ATPSlot) -> void:
-	selected_ally_atp_slot.remove_skill()
-	AssaultSetter.remove_assault(selected_ally_atp_slot)
+static func _remove_assault(ally_atp_slot: ATPSlot) -> void:
+	ally_atp_slot.remove_skill()
+	AssaultSetter.remove_assault(ally_atp_slot)
 
 
 static func _on_battle_started() -> void:

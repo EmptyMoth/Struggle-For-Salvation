@@ -12,5 +12,5 @@ func _win_on_clash(_opponent_dice: AbstractActionDice) -> DiceAction:
 	return stats.action.init(_action)
 
 
-func _action(character: Character, target: Character) -> void:
+func _action(_character: Character, target: Character) -> void:
 	target.take_mental_damage(get_current_value() + bonus.mental_damage)

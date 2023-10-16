@@ -121,6 +121,7 @@ func auto_selecting_assault(opponents: Array[Node]) -> Dictionary:
 	var opponents_by_atp_slot: Dictionary = {}
 	for atp_slot in atp_slots_manager.get_all_atp_slots():
 		var skill: AbstractSkill = _auto_take_skill()
+		@warning_ignore("static_called_on_instance")
 		var targets: Targets = skill.choose_targets_atp_slots(opponents) \
 				if skill.is_auto_set_assault() \
 				else _auto_assault_setter.choose_targets_atp_slot(opponents)

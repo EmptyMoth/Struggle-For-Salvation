@@ -12,6 +12,9 @@ const _ATP_SLOT_UI_BY_CHARACTER_TYPE: Dictionary = {
 	BattleEnums.CharacterType.IMMUNOCYTE : preload("res://scenes/ui/battle/atp_slots/base/abstract_atp_slot.tscn")
 }
 
+var center_position: Vector2 :
+	get: return global_position + scale * size / 2
+
 var current_state: ATPSlotState = ATPSlotState.NORMAL
 
 var _model: ATPSlot
@@ -104,13 +107,16 @@ func _on_atp_pressed() -> void:
 func _on_ally_atp_pressed() -> void:
 	_on_atp_pressed()
 	if Input.is_action_just_released("ui_pick"):
+		@warning_ignore("static_called_on_instance")
 		PlayerInputManager.on_ally_atp_slot_selected(_model)
 	elif Input.is_action_just_released("ui_cancel"):
+		@warning_ignore("static_called_on_instance")
 		PlayerInputManager.on_ally_atp_slot_deselected(_model)
 
 func _on_enemy_atp_pressed() -> void:
 	_on_atp_pressed()
 	if Input.is_action_just_released("ui_pick"):
+		@warning_ignore("static_called_on_instance")
 		PlayerInputManager.on_enemy_atp_slot_selected(_model)
 
 

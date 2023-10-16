@@ -36,7 +36,7 @@ func _input(_event: InputEvent) -> void:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
 			pass
 		if Input.is_action_just_released("ui_auto_set_assault"):
-			AutoArrangeAssaults.arranges_allies()
+			AutoArrangeAssaults.arranges_allies	()
 
 
 func set_location(location: BaseLocation) -> void:

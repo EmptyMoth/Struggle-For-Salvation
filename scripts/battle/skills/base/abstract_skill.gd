@@ -34,11 +34,13 @@ func is_available() -> bool:
 
 
 func choose_targets_atp_slots(opponent_list: Array) -> Targets:
+	@warning_ignore("static_called_on_instance")
 	return stats.assault_setter.choose_targets_atp_slot(
 			opponent_list, stats.get_targets_count(opponent_list.size()))
 
 
 func choose_sub_targets(opponent_list: Array) -> Array[ATPSlot]:
+	@warning_ignore("static_called_on_instance")
 	return stats.assault_setter.choose_sub_targets(
 			opponent_list, stats.get_targets_count(opponent_list.size()) - 1)
 

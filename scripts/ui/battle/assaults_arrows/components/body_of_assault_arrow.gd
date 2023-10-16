@@ -2,39 +2,63 @@ class_name BodyOfAssaultArrow
 extends Line2D
 
 
-const ANGLE_ALONG_BODY_DEG: int = 45
-const ANGLE_ALONG_BODY_RAD: float = deg_to_rad(ANGLE_ALONG_BODY_DEG)
+const _POINT_COUNT: float = 45.0
+const _ANGLE_ALONG_BODY: float = deg_to_rad(45)
+const _ARC_START_ANGLE: float = PI/2 - _ANGLE_ALONG_BODY
+const _ARC_END_ANGLE: float = PI/2 + _ANGLE_ALONG_BODY
+const _STRETCHING_FACTOR_BY_X: float = cos(PI/2 - _ANGLE_ALONG_BODY)
+const _DOWNING_FACTOR_BY_Y: float = sin(PI/2 - _ANGLE_ALONG_BODY)
 
-const _ARC_START_ANGLE_DEG: int = 90 - ANGLE_ALONG_BODY_DEG
-const _ARC_END_ANGLE_DEG: int = 90 + ANGLE_ALONG_BODY_DEG
-const _MAX_UNIT_BY_X: float = cos(deg_to_rad(_ARC_START_ANGLE_DEG))
-const _OFFSET_UNIT_BY_Y: float = sin(deg_to_rad(_ARC_START_ANGLE_DEG))
-
-
-func draw(start_point: Vector2, end_point: Vector2) -> void:
-	var arrow_line: Vector2 = end_point - start_point
-	position = start_point
-	rotation = arrow_line.angle()
-	_create_arc(arrow_line)
+var _arc_end_angle: float
+var _arrow_line: Vector2
 
 
-func get_point_in_arc_middle(initial_position: Vector2, target: Vector2) -> Vector2:
-	target -= initial_position
-	var middle_angle: float = deg_to_rad(90)
-	return _create_point(middle_angle, target)
+func set_arrow_line(arrow_line: Vector2) -> void:
+	_arrow_line = arrow_line
 
 
-func _create_arc(line_creation_direction: Vector2) -> void:
+func draw(end_point: Vector2) -> void:
 	clear_points()
-	for angle in range(_ARC_START_ANGLE_DEG, _ARC_END_ANGLE_DEG):
-		var new_point: Vector2 = _create_point(deg_to_rad(angle), line_creation_direction)
+	_arc_end_angle = _get_deflection_angle(end_point)
+	for i in _POINT_COUNT + 1:
+		var angle: float = lerpf(_ARC_START_ANGLE, _arc_end_angle, i / _POINT_COUNT)
+		var new_point: Vector2 = _create_point(angle)
 		add_point(new_point)
 
-func _create_point(angle_rad: float, line_creation_direction: Vector2) -> Vector2:
-	var radius: float = line_creation_direction.length() / 2
-	var point: Vector2 = Vector2(cos(angle_rad), -sin(angle_rad) + _OFFSET_UNIT_BY_Y)
-	point *= radius
-	point.x /= _MAX_UNIT_BY_X
+
+func get_angle_along_body(weight: float) -> float:
+	var angle: float = lerpf(_ARC_START_ANGLE, _ARC_END_ANGLE, weight)
+	return _get_angle_along_body(angle)
+
+
+func get_adjusted_angle_along_body() -> float:
+	var angle: float = lerpf(_ARC_START_ANGLE, _arc_end_angle, 1.0 - 3 / _POINT_COUNT)
+	return _get_angle_along_body(angle)
+
+
+func get_point_on_arc(weight: float) -> Vector2:
+	var point_angle: float = lerpf(_ARC_START_ANGLE, _ARC_END_ANGLE, weight)
+	return _create_point(point_angle)
+
+
+func _create_point(angle: float) -> Vector2:
+	var radius: float = _arrow_line.length() / 2
+	var correct_x: float = cos(angle) / _STRETCHING_FACTOR_BY_X
+	var correct_y: float = -sin(angle) + _DOWNING_FACTOR_BY_Y
+	var point: Vector2 = radius * Vector2(correct_x, correct_y)
+	point.x -= radius
+	point.y *= -cos(_arrow_line.angle())
+	return point.rotated(-PI)
+
+
+func _get_deflection_angle(point: Vector2) -> float:
+	var radius: float = _arrow_line.length() / 2
+	point = point.rotated(PI)
 	point.x += radius
-	point.y *= cos(line_creation_direction.angle())
-	return point
+	point.x /= radius
+	point.x *= _STRETCHING_FACTOR_BY_X
+	return acos(point.x)
+
+
+func _get_angle_along_body(angle: float) -> float:
+	return (angle - PI/2) * cos(_arrow_line.angle())

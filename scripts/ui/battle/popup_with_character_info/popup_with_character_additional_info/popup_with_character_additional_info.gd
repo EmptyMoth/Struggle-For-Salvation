@@ -100,6 +100,7 @@ func _on_option_button_group_pressed(button: BaseButton) -> void:
 func _on_skill_selected_button_group_pressed(button: BaseButton) -> void:
 	if button is SkillSelectedButton:
 		if button.setted_skill.wearer.is_ally:
+			@warning_ignore("static_called_on_instance")
 			PlayerInputManager.on_ally_skill_selected(button.setted_skill)
 		skill_selected.emit(button.setted_skill)
 
