@@ -5,7 +5,7 @@ extends Node2D
 @export var team_fraction: BattleEnums.Fraction
 @export var _characters_parameters: Array[CharacterBattleParameters] = []
 
-@onready var characters: Array[Node] : 
+@onready var characters: Array[Node] :
 	get: return get_tree().get_nodes_in_group(
 			BattleParameters.CHARACTERS_GROUPS_BY_FRACTIONS[team_fraction])
 

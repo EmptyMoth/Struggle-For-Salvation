@@ -21,7 +21,7 @@ var skills: Array[AbstractSkill] = []
 
 var _skill_used: SkillCombatModel = null
 var _dice_reserved_list: Array[AbstractActionDice] = []
-var _auto_assault_setter: BaseAutoAssaultSetter	
+var _auto_assault_setter: BaseAutoAssaultSetter
 
 @onready var physical_health := PhysicalHealth.new(stats.max_physical_health)
 @onready var mental_health := MentalHealth.new(stats.max_mental_health)
@@ -33,7 +33,7 @@ var _auto_assault_setter: BaseAutoAssaultSetter
 @onready var _view: CharacterView = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
 
 
-func _init(battle_parameters: CharacterBattleParameters, 
+func _init(battle_parameters: CharacterBattleParameters,
 			character_fraction: BattleEnums.Fraction) -> void:
 	y_sort_enabled = true
 	stats = battle_parameters.stats
@@ -45,11 +45,11 @@ func _ready() -> void:
 	_view.set_model(self)
 	add_child(_view)
 	atp_slots_manager = ATPSlotsManager.new(self, _view.atp_slots_manager_ui)
-	
+
 	_set_character_to_groups()
 	for skill_stats in stats.skills:
 		skills.append(AbstractSkill.create_skill(self, skill_stats))
-	
+
 	_connect_signals()
 
 
@@ -110,7 +110,7 @@ func get_next_dice_reserved() -> AbstractActionDice:
 	if _skill_used == null:
 		var index: int = 0
 		return _dice_reserved_list[index] if index < _dice_reserved_list.size() else null
-	
+
 	var dice_reserved: AbstractActionDice = _skill_used.get_next_dice_reserved()
 	if dice_reserved != null:
 		return dice_reserved
@@ -138,7 +138,7 @@ func _set_character_to_groups() -> void:
 		add_to_group("pathogens")
 
 
-func _take_damage(damage: int, is_permanent: bool, 
+func _take_damage(damage: int, is_permanent: bool,
 			resistance: BaseResistance, health: AbstractHealth) -> int:
 	var final_damage: int = damage if is_permanent else roundi(damage * resistance.get_value())
 	health.take_damage(final_damage)

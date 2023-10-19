@@ -2,7 +2,7 @@ class_name BaseATPSlotUI
 extends Button
 
 
-enum ATPSlotState { 
+enum ATPSlotState {
 	NORMAL = 0,
 	BROKEN = 1,
 	BLOCKED = 2,
@@ -95,7 +95,7 @@ func _on_installed_skill_changed(new_skill: AbstractSkill) -> void:
 	if new_skill == null:
 		pass
 		return
-	
+
 	var skill_icon: Texture2D = new_skill.stats.icon
 	pass
 

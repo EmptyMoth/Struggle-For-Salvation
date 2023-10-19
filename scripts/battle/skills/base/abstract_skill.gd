@@ -14,11 +14,9 @@ func _init(character: Character, skill_stats: SkillStats) -> void:
 
 
 static func create_skill(character: Character, skill_stats: SkillStats) -> AbstractSkill:
-	match skill_stats.skill_type:
-		SkillStats.SkillType.COOLDOWN:
-			return CooldownSkill.new(character, skill_stats)
-		_:
-			return QuantitySkill.new(character, skill_stats)
+	return CooldownSkill.new(character, skill_stats) \
+			if skill_stats.skill_type == SkillStats.SkillType.COOLDOWN \
+			else QuantitySkill.new(character, skill_stats)
 
 
 func is_mass_attack() -> bool:

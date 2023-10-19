@@ -3,12 +3,14 @@ extends Resource
 
 
 var atp_slot: ATPSlot
+var skill: AbstractSkill
 var targets: Targets
 var type: BattleEnums.AssaultType = BattleEnums.AssaultType.ONE_SIDE
 
 
-func _init(_atp_slot: ATPSlot, _targets: Targets) -> void:
+func _init(_atp_slot: ATPSlot, _skill: AbstractSkill, _targets: Targets) -> void:
 	atp_slot = _atp_slot
+	skill = _skill
 	targets = _targets
 
 
@@ -29,8 +31,7 @@ func set_default() -> void:
 	type = BattleEnums.AssaultType.ONE_SIDE
 
 
-func set_one_side(main_target: ATPSlot) -> void:
-	targets.change_main_target(main_target)
+func set_one_side() -> void:
 	type = BattleEnums.AssaultType.ONE_SIDE
 
 

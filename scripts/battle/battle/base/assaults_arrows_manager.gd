@@ -2,8 +2,6 @@ class_name AssaultsArrowsManager
 extends RefCounted
 
 
-const _ARROW_PACKED_SCENE: PackedScene = preload("res://scenes/ui/battle/assaults_arrows/base/base_assault_arrow.tscn")
-
 static var _allies_arrows: Array[BaseAssaultArrow] = []
 static var _enemies_arrows: Array[BaseAssaultArrow] = []
 static var _clashes_arrows: Array[BaseAssaultArrow] = []
@@ -17,7 +15,10 @@ static func create_arrows(assault: AssaultData) -> void:
 
 
 static func remove_arrows(assault: AssaultData) -> void:
-	_get_arrows_list(assault.atp_slot).clear()
+	var arrows_list: Array[BaseAssaultArrow] = _get_arrows_list(assault.atp_slot)
+	for arrow in arrows_list:
+		BattleParameters.battle.remove_assault_arrow(arrow)
+	arrows_list.clear()
 
 
 static func show_arrows_by_atp_slot(atp_slot: ATPSlot) -> void:
@@ -32,7 +33,7 @@ static func hide_arrows_by_atp_slot(atp_slot: ATPSlot) -> void:
 	var arrows: Array[BaseAssaultArrow] = _get_arrows_list(atp_slot).duplicate()
 	for targeting_assault in AssaultLog.get_assaults_targeting(atp_slot):
 		arrows.append_array(_get_arrows_list(targeting_assault.atp_slot))
-	
+
 	for arrow in arrows:
 		arrow.hide()
 
@@ -60,16 +61,16 @@ static func _display_arrows(arrows: Array[BaseAssaultArrow], display: bool) -> v
 
 static func _show_arrows_by_atp_slot(assault: AssaultData) -> void:
 	var arrow: BaseAssaultArrow = _get_arrows_list(assault.atp_slot).back()
-	arrow.show_arrow(assault, assault.targets.main)
+	arrow.show_arrow(assault.atp_slot, assault.targets.main)
 	for i in assault.targets.sub_targets.size():
 		var sub_target: ATPSlot = assault.targets.sub_targets[i]
 		arrow = _get_arrows_list(assault.atp_slot)[i]
-		arrow.show_arrow(assault, sub_target)
+		arrow.show_arrow(assault.atp_slot, sub_target)
 
 
 static func _create_assault_arrow(atp_slot: ATPSlot) -> void:
-	var arrow: BaseAssaultArrow = _ARROW_PACKED_SCENE.instantiate()
 	var arrows_list: Array[BaseAssaultArrow] = _get_arrows_list(atp_slot)
+	var arrow: BaseAssaultArrow = BaseAssaultArrow.create_arrow()
 	arrows_list.append(arrow)
 	_arrows_list_by_atp_slot[atp_slot] = arrows_list
 	BattleParameters.battle.add_assault_arrow(arrow)

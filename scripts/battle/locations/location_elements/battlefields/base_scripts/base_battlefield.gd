@@ -16,9 +16,9 @@ func set_formation(formation: BaseFormation, allies: Array, enemies: Array) -> v
 			formation, enemies, formation.get_enemy_position_by_index)
 
 
-func _set_characters_default_positions(formation: BaseFormation, 
+func _set_characters_default_positions(formation: BaseFormation,
 		characters: Array, character_position_func: Callable) -> void:
 	for character in characters:
 		var character_index: int = character.get_index()
-		var default_position: Vector3 = character_position_func.call(character_index)	
+		var default_position: Vector3 = character_position_func.call(character_index)
 		character.character_marker_3d.set_default_position(default_position)

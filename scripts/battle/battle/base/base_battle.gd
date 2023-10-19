@@ -31,7 +31,7 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("ui_menu") and !pause_menu.just_closed:
 		pause_menu.pause_game()
 	pause_menu.just_closed = false
-	
+
 	if current_phase == BattleEnums.BattlePhase.PREPARATION:
 		if Input.is_action_just_released("ui_switch_battle_phase"):
 			pass
@@ -50,7 +50,7 @@ func set_battlefild(battlefield: BaseBattlefield) -> void:
 	_battlefield = battlefield
 	_battlefield.set_characters_markers_on_battlefield(
 			ally_team.characters, enemy_team.characters)
-	_battlefield.set_formation(_packed_formation.instantiate(), 
+	_battlefield.set_formation(_packed_formation.instantiate(),
 			ally_team.characters, enemy_team.characters)
 
 
@@ -93,7 +93,7 @@ func _on_turn_ended() -> void:
 	if ally_team.is_defeated():
 		defeate()
 		return
-	
+
 	BattleSignals.turn_ended.emit(turn_number)
 
 
