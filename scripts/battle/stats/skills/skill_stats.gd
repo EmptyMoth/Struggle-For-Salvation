@@ -21,7 +21,7 @@ enum TargetingType { SINGLE, MASS }
 
 @export_category("Other")
 @export_range(-10, 10, 1, "or_less", "or_greater") var priority: int = 0
-@export var assault_setter: BaseAutoAssaultSetter = null
+@export var targets_setter: BaseTargetsSetter = null
 
 var targeting_type: TargetingType = TargetingType.SINGLE
 
@@ -30,9 +30,7 @@ func has_ability() -> bool:
 	return abilities.size() > 0
 
 
-func get_targets_count(opponent_count: int) -> int:
-	if not self is MassSkillStats:
-		return 1
-	if self.mass_targeting_type == MassSkillStats.MassTargetingType.ALL:
-		return opponent_count
-	return min(self._targeting_count, opponent_count)
+func get_targets_count() -> int:
+	if self is MassSkillStats:
+		return self._targeting_count
+	return 1

@@ -22,6 +22,9 @@ extends Resource
 @export_range(1, 99, 1, "or_greater") var min_speed: int = 1
 @export_range(1, 99, 1, "or_greater") var max_speed: int = 1
 
+@export_category("Other")
+@export var targets_setter: BaseTargetsSetter = null
+
 
 func has_ability() -> bool:
 	return passive_abilities.size() > 0

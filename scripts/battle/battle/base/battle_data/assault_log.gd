@@ -47,7 +47,10 @@ static func add(assault: AssaultData) -> void:
 
 
 static func change_assaults_targeting(assault: AssaultData, old_target: Targets) -> void:
-	_remove_assault_targeting(assault)
+	get_assaults_targeting(old_target.main).erase(assault)
+	for sub_target in old_target.sub_targets:
+		get_assaults_targeting(sub_target).erase(assault)
+	#_remove_assault_targeting(assault)
 	_add_assault_targeting(assault)
 
 
@@ -55,11 +58,12 @@ static func remove(atp_slot: ATPSlot) -> void:
 	var assault: AssaultData = get_assault(atp_slot)
 	if assault == null:
 		return
-
+	
 	_ASSAULTS_BY_ATP_SLOT.erase(assault.atp_slot)
 	_remove_assault_targeting(assault)
 	get_potential_clashes(assault.targets.main).erase(assault)
 	AssaultsArrowsManager.remove_arrows(assault)
+	atp_slot.remove_assault()
 
 
 static func clear() -> void:

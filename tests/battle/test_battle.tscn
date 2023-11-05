@@ -1,18 +1,37 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg14wxg4vcb1k"]
+[gd_scene load_steps=18 format=3 uid="uid://bg14wxg4vcb1k"]
 
 [ext_resource type="Script" path="res://scripts/battle/battle/base/base_battle.gd" id="1_h0jpa"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_2fqru"]
 [ext_resource type="PackedScene" uid="uid://cc2nij35uexsb" path="res://scenes/battle/locations/locations/test_location/test_location.tscn" id="3_8uel4"]
 [ext_resource type="Script" path="res://scripts/battle/teams/base/base_team.gd" id="4_c0bj1"]
 [ext_resource type="Script" path="res://scripts/battle/characters/base/character_battle_parameters.gd" id="5_afr7i"]
+[ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="6_1fv8a"]
 [ext_resource type="Resource" uid="uid://cg53i625fwoc2" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="6_4l50c"]
+[ext_resource type="Resource" uid="uid://bpgvgspkgt7go" path="res://resources/battle/skills/test_cooldown_skill.tres" id="7_7fd6k"]
 [ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_with_character_info/right_popup_with_character_info.tscn" id="7_ft1fj"]
 [ext_resource type="PackedScene" uid="uid://ciro0ncgqiif4" path="res://scenes/ui/battle/popup_with_character_info/left_popup_with_character_info.tscn" id="8_0r3md"]
+[ext_resource type="Resource" uid="uid://dl0phvk5y180k" path="res://resources/battle/skills/test_quantity_skill.tres" id="8_7r8oo"]
 [ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu/menu_pause.tscn" id="9_gc333"]
+[ext_resource type="Resource" uid="uid://bjggvuvpixqnf" path="res://resources/battle/skills/test_mass_skill.tres" id="9_v6rgl"]
+
+[sub_resource type="Resource" id="Resource_htwi1"]
+resource_local_to_scene = true
+script = ExtResource("6_1fv8a")
+name = "Neut"
+type = 1
+skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("8_7r8oo"), ExtResource("7_7fd6k"), ExtResource("9_v6rgl")])
+passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+max_physical_health = 10
+max_mental_health = 5
+physical_resistance = 3
+mental_resistance = 3
+atp_slots_count = 3
+min_speed = 3
+max_speed = 5
 
 [sub_resource type="Resource" id="Resource_bsmcw"]
 script = ExtResource("5_afr7i")
-stats = ExtResource("6_4l50c")
+stats = SubResource("Resource_htwi1")
 
 [sub_resource type="Resource" id="Resource_siymb"]
 script = ExtResource("5_afr7i")
@@ -49,6 +68,15 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="UI" type="CanvasLayer" parent="."]
+
+[node name="DarkeningScreen" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.462745)
 
 [node name="PopupsWithCharacterInfo" type="Control" parent="UI"]
 custom_minimum_size = Vector2(1920, 1080)

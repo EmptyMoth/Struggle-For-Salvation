@@ -21,7 +21,6 @@ var skills: Array[AbstractSkill] = []
 
 var _skill_used: SkillCombatModel = null
 var _dice_reserved_list: Array[AbstractActionDice] = []
-var _auto_assault_setter: BaseAutoAssaultSetter
 
 @onready var physical_health := PhysicalHealth.new(stats.max_physical_health)
 @onready var mental_health := MentalHealth.new(stats.max_mental_health)
@@ -37,7 +36,7 @@ func _init(battle_parameters: CharacterBattleParameters,
 			character_fraction: BattleEnums.Fraction) -> void:
 	y_sort_enabled = true
 	stats = battle_parameters.stats
-	_auto_assault_setter = battle_parameters.auto_assault_setter
+	#_targets_setter = battle_parameters.auto_assault_setter
 	fraction = character_fraction
 
 
@@ -68,6 +67,13 @@ func get_view() -> CharacterView:
 
 func get_skill_used() -> SkillCombatModel:
 	return _skill_used.use()
+
+
+func get_slots_for_assaults() -> Array[ATPSlot]:
+	return atp_slots_manager.get_atp_slots_for_assaults()
+
+func get_slots_available_for_targeting() -> Array[ATPSlot]:
+	return atp_slots_manager.get_atp_slots_available_for_targeting()
 
 
 func make_independent() -> void:
@@ -117,25 +123,22 @@ func get_next_dice_reserved() -> AbstractActionDice:
 	return null
 
 
-func auto_selecting_assault(opponents: Array[Node]) -> Dictionary:
-	var opponents_by_atp_slot: Dictionary = {}
-	for atp_slot in atp_slots_manager.get_all_atp_slots():
+func auto_set_assault(opponents: Array[Node]) -> void:
+	for atp_slot in get_slots_for_assaults():
 		var skill: AbstractSkill = _auto_take_skill()
-		@warning_ignore("static_called_on_instance")
-		var targets: Targets = skill.choose_targets_atp_slots(opponents) \
-				if skill.is_auto_set_assault() \
-				else _auto_assault_setter.choose_targets_atp_slot(opponents)
-		atp_slot.set_skill(skill)
-		opponents_by_atp_slot[atp_slot] = targets
-	return opponents_by_atp_slot
+		var targets_setter: BaseTargetsSetter = \
+				skill.get_targets_setter() if skill.get_targets_setter() else stats.targets_setter
+		var targets: Targets = AutoTargetsSetter.choose_targets(
+				opponents, skill.get_targets_count(), targets_setter)
+		AssaultSetter.create_assault(atp_slot, targets, skill)
 
 
 func _set_character_to_groups() -> void:
-	add_to_group("characters")
-	add_to_group(BattleParameters.CHARACTERS_GROUPS_BY_FRACTIONS[fraction])
-	add_to_group(BattleParameters.GROUPS_BY_CHARACTERS_TYPES[stats.type])
+	add_to_group(BattleGroups.CHARACTERS_GROUP)
+	add_to_group(BattleGroups.GROUPS_BY_FRACTIONS[fraction])
+	add_to_group(BattleGroups.GROUPS_BY_CHARACTERS_TYPES[stats.type])
 	if stats.type != BattleEnums.CharacterType.IMMUNOCYTE:
-		add_to_group("pathogens")
+		add_to_group(BattleGroups.PATHOGENS_GROUP)
 
 
 func _take_damage(damage: int, is_permanent: bool,

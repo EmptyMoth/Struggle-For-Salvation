@@ -30,9 +30,9 @@ func set_info(character: Character, atp_slot: ATPSlot = null) -> void:
 		_skill_info.hide()
 	else:
 		_additional_info.open_skills_list()
-		if atp_slot.installed_skill != null:
+		if atp_slot.assaulting_skill != null:
 			_skill_info.show()
-			_skill_info.set_info(atp_slot.installed_skill.stats)
+			_skill_info.set_info(atp_slot.assaulting_skill.stats)
 
 
 func close() -> void:

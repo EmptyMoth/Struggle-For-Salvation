@@ -5,17 +5,28 @@ extends Resource
 signal speed_changed(new_speed: int)
 signal installed_skill_changed(new_skill: AbstractSkill)
 
+enum ATPSlotState {
+	NORMAL = 0,
+	BROKEN = 1,
+	BLOCKED = 2,
+}
+
 var speed: int = 0 :
 	set(value):
 		speed = value
 		speed_changed.emit(value)
-var installed_skill: AbstractSkill = null :
+var assaulting_skill: AbstractSkill = null :
 	set(new_skill):
-		installed_skill = new_skill
+		if assaulting_skill != null:
+			assaulting_skill.deselect()
+		assaulting_skill = new_skill
+		assaulting_skill.select()
+		installed_skill_changed.emit(new_skill)
 
 var wearer: Character
 
 var _atp_slot_ui: BaseATPSlotUI
+var _current_state: ATPSlotState = ATPSlotState.NORMAL
 
 
 func _init(character: Character) -> void:
@@ -28,16 +39,16 @@ func _to_string() -> String:
 	return "%s-ATP-%s" % [wearer.to_string(), speed]
 
 
+func is_broken() -> bool:
+	return _current_state == ATPSlotState.BROKEN
+
+func is_blocked() -> bool:
+	return _current_state == ATPSlotState.BLOCKED
+
+
 func get_atp_slot_ui() -> BaseATPSlotUI:
 	return _atp_slot_ui
 
 
-func set_skill(skill: AbstractSkill) -> void:
-	remove_skill()
-	installed_skill = skill
-	installed_skill.select()
-
 func remove_skill() -> void:
-	if installed_skill != null:
-		installed_skill.deselect()
-	installed_skill = null
+	assaulting_skill = null

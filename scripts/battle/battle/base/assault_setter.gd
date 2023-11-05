@@ -2,13 +2,16 @@ class_name AssaultSetter
 extends RefCounted
 
 
-static func set_assault(atp_slot: ATPSlot, skill: AbstractSkill, targets: Targets) -> void:
-	var assault: AssaultData = AssaultLog.get_assault(atp_slot)
-	if assault != null:
-		remove_assault(atp_slot)
-	assault = AssaultData.new(atp_slot, skill, targets)
-	if _is_clash_assault(atp_slot, targets.main):
-		_set_clash(assault, targets.main)
+static func create_assault(assault_slot: ATPSlot, targets: Targets, skill: AbstractSkill) -> void:
+	assault_slot.assaulting_skill = skill
+	set_assault(AssaultData.new(assault_slot, targets))
+
+
+static func set_assault(assault: AssaultData) -> void:
+	if AssaultLog.get_assault(assault.atp_slot) != null:
+		remove_assault(assault.atp_slot)
+	if _is_clash_assault(assault.atp_slot, assault.targets.main):
+		_set_clash(assault, assault.targets.main)
 	AssaultLog.add(assault)
 
 

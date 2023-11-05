@@ -24,23 +24,19 @@ func is_mass_attack() -> bool:
 
 
 func is_auto_set_assault() -> bool:
-	return stats.assault_setter != null
+	return stats.targets_setter != null
 
 
 func is_available() -> bool:
 	return true
 
 
-func choose_targets_atp_slots(opponent_list: Array) -> Targets:
-	@warning_ignore("static_called_on_instance")
-	return stats.assault_setter.choose_targets_atp_slot(
-			opponent_list, stats.get_targets_count(opponent_list.size()))
+func get_targets_count() -> int:
+	return stats.get_targets_count()
 
 
-func choose_sub_targets(opponent_list: Array) -> Array[ATPSlot]:
-	@warning_ignore("static_called_on_instance")
-	return stats.assault_setter.choose_sub_targets(
-			opponent_list, stats.get_targets_count(opponent_list.size()) - 1)
+func get_targets_setter() -> BaseTargetsSetter:
+	return stats.targets_setter
 
 
 func select() -> void:

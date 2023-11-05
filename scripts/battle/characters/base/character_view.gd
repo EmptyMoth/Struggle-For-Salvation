@@ -2,9 +2,9 @@ class_name CharacterView
 extends Node2D
 
 
-signal picked(self_character: Character, self_atp_slot: ATPSlot)
-signal selected(self_character: Character, self_atp_slot: ATPSlot)
-signal deselected(self_character: Character, self_atp_slot: ATPSlot)
+#signal picked(self_character: Character, self_atp_slot: ATPSlot)
+#signal selected(self_character: Character, self_atp_slot: ATPSlot)
+#signal deselected(self_character: Character, self_atp_slot: ATPSlot)
 
 var _model: Character
 
@@ -85,11 +85,10 @@ func _on_stunned() -> void:
 
 
 func _on_character_pressed() -> void:
-	if Input.is_action_just_released("ui_pick"):
-		picked.emit(_model, null)
+	PlayerInputManager.get_character_picked_signal(_model.is_ally).emit(_model, null)
 
 func _on_character_mouse_entered() -> void:
-	selected.emit(_model, null)
+	PlayerInputManager.get_character_selected_signal(_model.is_ally).emit(_model, null)
 
 func _on_character_mouse_exited() -> void:
-	deselected.emit(_model, null)
+	PlayerInputManager.get_character_deselected_signal(_model.is_ally).emit(_model, null)

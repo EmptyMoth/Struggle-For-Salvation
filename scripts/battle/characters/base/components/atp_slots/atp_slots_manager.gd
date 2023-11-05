@@ -23,9 +23,14 @@ func _init(character: Character, atp_slots_container: ATPSlotsManagerUI) -> void
 func get_atp_slot(index: int) -> ATPSlot:
 	return _atp_slots[index]
 
-
 func get_all_atp_slots() -> Array[ATPSlot]:
 	return _atp_slots.duplicate()
+
+func get_atp_slots_for_assaults() -> Array[ATPSlot]:
+	return _atp_slots.filter(func(atp_slot: ATPSlot): return not atp_slot.is_broken())
+
+func get_atp_slots_available_for_targeting() -> Array[ATPSlot]:
+	return _atp_slots.filter(func(atp_slot: ATPSlot): return not atp_slot.is_blocked())
 
 
 func roll_atp_slots() -> void:

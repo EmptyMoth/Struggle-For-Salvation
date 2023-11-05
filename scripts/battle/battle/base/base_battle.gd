@@ -15,6 +15,7 @@ var _battlefield: BaseBattlefield = null
 @onready var enemy_team: BaseTeam = $Teams/EnemyTeam
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
 @onready var assaults_arrows: Control = $AssaultsArrows
+@onready var _darkening_screen: ColorRect = $UI/DarkeningScreen
 
 
 func _ready() -> void:
@@ -82,6 +83,12 @@ func _implements_combat_phase() -> void:
 	get_tree().call_group("characters", "prepare_for_combat")
 
 
+func highlight_nodes(nodes: Array[CanvasItem], is_highlight: bool) -> void:
+	_darkening_screen.visible = is_highlight
+	for node in nodes:
+		node.z_index = 1 if is_highlight else 0
+
+
 func _on_turn_started() -> void:
 	turn_number += 1
 
@@ -89,11 +96,8 @@ func _on_turn_started() -> void:
 func _on_turn_ended() -> void:
 	if enemy_team.is_defeated():
 		victory()
-		return
-	if ally_team.is_defeated():
+	elif ally_team.is_defeated():
 		defeate()
-		return
-
 	BattleSignals.turn_ended.emit(turn_number)
 
 

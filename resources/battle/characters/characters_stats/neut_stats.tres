@@ -5,6 +5,7 @@
 [ext_resource type="Resource" uid="uid://dl0phvk5y180k" path="res://resources/battle/skills/test_quantity_skill.tres" id="3_aedbv"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_nswmx")
 name = "Neut"
 type = 1
