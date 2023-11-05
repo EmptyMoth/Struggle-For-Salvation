@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://0ntsu8a1r058"]
 
 [ext_resource type="PackedScene" uid="uid://bkum2k6vrud1n" path="res://scenes/story/story_scene.tscn" id="1_hvqw1"]
-[ext_resource type="Texture2D" uid="uid://lrlp6oygsfsv" path="res://sprites/ui/level_select_ui/background.png" id="2_8h1us"]
+[ext_resource type="Texture2D" uid="uid://lrlp6oygsfsv" path="res://sprites/ui/level_select/background.png" id="2_8h1us"]
 [ext_resource type="Script" path="res://scripts/story/dialogue.gd" id="3_exvpc"]
-[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story_ui/characters/neut.png" id="4_fla2a"]
-[ext_resource type="Texture2D" uid="uid://bop8bhpl8dkjf" path="res://sprites/ui/story_ui/characters/eosi.png" id="5_jvm7o"]
-[ext_resource type="Texture2D" uid="uid://bt0cgcrcc6h0x" path="res://sprites/ui/story_ui/characters/default_character.png" id="6_y1j3h"]
+[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story/characters/neut.png" id="4_fla2a"]
+[ext_resource type="Texture2D" uid="uid://bop8bhpl8dkjf" path="res://sprites/ui/story/characters/eosi.png" id="5_jvm7o"]
+[ext_resource type="Texture2D" uid="uid://bt0cgcrcc6h0x" path="res://sprites/ui/story/characters/default_character.png" id="6_y1j3h"]
 
 [sub_resource type="Resource" id="Resource_57w5s"]
 script = ExtResource("3_exvpc")

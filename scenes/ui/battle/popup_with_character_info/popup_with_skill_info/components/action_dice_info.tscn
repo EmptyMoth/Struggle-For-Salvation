@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://db6v2plpbs7hf"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_info.gd" id="1_gdcf8"]
+[ext_resource type="LabelSettings" uid="uid://bcny06divfrey" path="res://resources/ui/global/label_settings/default/medium_bolt.tres" id="2_fhci6"]
+[ext_resource type="Texture2D" uid="uid://d3op6bt1c5kon" path="res://sprites/ui/battle/actions_dice/icons/attack_dice.svg" id="3_men3b"]
+[ext_resource type="Texture2D" uid="uid://dr0pt8402f60q" path="res://sprites/ui/battle/actions_dice/icons/block_dice.svg" id="4_q62ud"]
+[ext_resource type="Texture2D" uid="uid://m3jljc3axjbi" path="res://sprites/ui/battle/actions_dice/icons/evade_dice.svg" id="5_6dfgr"]
+[ext_resource type="Texture2D" uid="uid://yjndvqstn00w" path="res://sprites/ui/battle/actions_dice/icons/counte_dice.svg" id="6_pl8wp"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_mga6w"]
+resource_local_to_scene = true
+frames = 4
+pause = true
+one_shot = true
+frame_0/texture = ExtResource("3_men3b")
+frame_1/texture = ExtResource("4_q62ud")
+frame_1/duration = 0.0
+frame_2/texture = ExtResource("5_6dfgr")
+frame_2/duration = 0.0
+frame_3/texture = ExtResource("6_pl8wp")
+frame_3/duration = 0.0
+
+[node name="ActionDiceInfo" type="VBoxContainer"]
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_gdcf8")
+
+[node name="DiceValue" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "98-99"
+label_settings = ExtResource("2_fhci6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiceIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+mouse_filter = 2
+texture = SubResource("AnimatedTexture_mga6w")
+expand_mode = 1

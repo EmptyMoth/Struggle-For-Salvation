@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnq58jiikuj23"]
+
+[ext_resource type="Script" path="res://scripts/global/scene_transition/loading_screen.gd" id="1_0dknp"]
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_0dknp")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = 896.0
+offset_top = 972.0
+offset_right = 1856.0
+offset_bottom = 999.0

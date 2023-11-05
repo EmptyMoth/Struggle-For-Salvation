@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="PoolOfCardiogramGraphs" load_steps=2 format=3 uid="uid://cyw52bowgpici"]
 
-[ext_resource type="Script" path="res://scripts/resources/locations/location_elements/backgrounds/electrocardiogram/pool_of_cardiogram_graphs.gd" id="1_erfnb"]
+[ext_resource type="Script" path="res://scripts/battle/locations/location_elements/backgrounds/electrocardiogram/pool_of_cardiogram_graphs.gd" id="1_erfnb"]
 
 [resource]
 script = ExtResource("1_erfnb")

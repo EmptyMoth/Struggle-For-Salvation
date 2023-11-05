@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhnjojlybtvbt"]
+
+[ext_resource type="PackedScene" uid="uid://c012adynymsqp" path="res://scenes/ui/menu/settings_menu/types_of_settings_menu/base/abstract_settings_menu.tscn" id="1_dmcsf"]
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/types_of_settings_menu/gameplay_settings_menu.gd" id="2_aj82h"]
+[ext_resource type="PackedScene" uid="uid://bdrwcnuupffuw" path="res://scenes/ui/menu/settings_menu/settings_elements/option_button_setting_menu.tscn" id="3_fbxha"]
+[ext_resource type="PackedScene" uid="uid://bfwfo3q1hm38e" path="res://scenes/ui/menu/settings_menu/settings_elements/check_button_setting_menu.tscn" id="4_rjy1a"]
+
+[node name="GameplaySettingsMenu" instance=ExtResource("1_dmcsf")]
+script = ExtResource("2_aj82h")
+settings_group_name = "GAMEPLAY"
+
+[node name="Language" parent="Settings" index="0" instance=ExtResource("3_fbxha")]
+layout_mode = 2
+setting_name = "LANGUAGE"
+setting_tooltip = " "
+
+[node name="AlliesPlacement" parent="Settings" index="1" instance=ExtResource("3_fbxha")]
+layout_mode = 2
+setting_name = "ALLIES_PLACEMENT"
+
+[node name="ActionDiceTally" parent="Settings" index="2" instance=ExtResource("4_rjy1a")]
+layout_mode = 2
+setting_name = "ACTION_DICE_TALLY"
+
+[node name="CustomRules" parent="Settings" index="3" instance=ExtResource("4_rjy1a")]
+layout_mode = 2
+setting_name = "CUSTOM_RULES"

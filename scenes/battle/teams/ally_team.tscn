@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://crenpfqy7iihc"]
-
-[ext_resource type="PackedScene" uid="uid://c0esshdn4ko0v" path="res://scenes/battle/teams/base_scenes/abstract_team.tscn" id="1_1xmkp"]
-[ext_resource type="Script" path="res://scripts/battle/teams/ally_team.gd" id="1_o1f71"]
-
-[node name="AllyTeam" instance=ExtResource("1_1xmkp")]
-script = ExtResource("1_o1f71")

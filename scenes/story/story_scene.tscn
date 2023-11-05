@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/story/story_scene.gd" id="2_glmgb"]
 [ext_resource type="PackedScene" uid="uid://tsckhc21wjk8" path="res://scenes/story/dialogue_scene.tscn" id="3_80yei"]
 [ext_resource type="AudioStream" uid="uid://rbheeic77ueq" path="res://music/story/lungs/lungs_story.mp3" id="3_vf7ti"]
-[ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu_ui/menu_pause.tscn" id="4_agyho"]
+[ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu/menu_pause.tscn" id="4_agyho"]
 [ext_resource type="PackedScene" uid="uid://dnglfmpetv0ls" path="res://scenes/story/log/log.tscn" id="5_hgc4i"]
 
 [sub_resource type="Theme" id="Theme_g2seh"]

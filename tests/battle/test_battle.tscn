@@ -1,104 +1,98 @@
-[gd_scene load_steps=24 format=3 uid="uid://chpfnnw1m5ki4"]
+[gd_scene load_steps=18 format=3 uid="uid://bg14wxg4vcb1k"]
 
-[ext_resource type="Script" path="res://scripts/battle/base_scripts/base_battle.gd" id="1_c0o5h"]
-[ext_resource type="PackedScene" uid="uid://dufi5egwve2s1" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_bx1pa"]
-[ext_resource type="AudioStream" uid="uid://oqtvktilj55x" path="res://music/battle/lungs/lungs_battle_1.mp3" id="4_itg7f"]
-[ext_resource type="PackedScene" uid="uid://crenpfqy7iihc" path="res://scenes/battle/teams/ally_team.tscn" id="5_b7ejh"]
-[ext_resource type="PackedScene" uid="uid://yh2b8tn2xy40" path="res://scenes/battle/characters/immunocytes/neutrophil/neutrophil.tscn" id="6_x3pmk"]
-[ext_resource type="PackedScene" uid="uid://jp6ysklein1c" path="res://scenes/battle/cards/cards/test_card_1.tscn" id="7_monx3"]
-[ext_resource type="Script" path="res://scripts/resources/character/deck_of_cards/deck_of_cards.gd" id="8_ckplx"]
-[ext_resource type="PackedScene" uid="uid://2xhg7u4igdrn" path="res://scenes/battle/characters/immunocytes/eosinophil/eosinophil.tscn" id="9_68dof"]
-[ext_resource type="PackedScene" uid="uid://jsrso1l2r05v" path="res://scenes/battle/cards/cards/test_card_2.tscn" id="10_fplm5"]
-[ext_resource type="PackedScene" uid="uid://c5864d4hwlkes" path="res://scenes/battle/teams/enemy_team.tscn" id="11_7wd7t"]
-[ext_resource type="PackedScene" uid="uid://bmcn4eh1lxac2" path="res://scenes/battle/characters/pathogens/influenza_virus/influenza_virus.tscn" id="12_7s024"]
-[ext_resource type="PackedScene" uid="uid://b24m6cbrpoww8" path="res://scenes/battle/cards/cards/test_card_3.tscn" id="13_uh5h7"]
-[ext_resource type="PackedScene" uid="uid://dl8haap1scn22" path="res://tests/ui/action_switcher.tscn" id="14_furee"]
-[ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu_ui/menu_pause.tscn" id="15_3iakm"]
-[ext_resource type="PackedScene" uid="uid://cplf5sbbg2dh0" path="res://scenes/battle/locations/locations/test_battle/test_battle.tscn" id="18_kal88"]
+[ext_resource type="Script" path="res://scripts/battle/battle/base/base_battle.gd" id="1_h0jpa"]
+[ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_2fqru"]
+[ext_resource type="PackedScene" uid="uid://cc2nij35uexsb" path="res://scenes/battle/locations/locations/test_location/test_location.tscn" id="3_8uel4"]
+[ext_resource type="Script" path="res://scripts/battle/teams/base/base_team.gd" id="4_c0bj1"]
+[ext_resource type="Script" path="res://scripts/battle/characters/base/character_battle_parameters.gd" id="5_afr7i"]
+[ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="6_1fv8a"]
+[ext_resource type="Resource" uid="uid://cg53i625fwoc2" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="6_4l50c"]
+[ext_resource type="Resource" uid="uid://bpgvgspkgt7go" path="res://resources/battle/skills/test_cooldown_skill.tres" id="7_7fd6k"]
+[ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_with_character_info/right_popup_with_character_info.tscn" id="7_ft1fj"]
+[ext_resource type="PackedScene" uid="uid://ciro0ncgqiif4" path="res://scenes/ui/battle/popup_with_character_info/left_popup_with_character_info.tscn" id="8_0r3md"]
+[ext_resource type="Resource" uid="uid://dl0phvk5y180k" path="res://resources/battle/skills/test_quantity_skill.tres" id="8_7r8oo"]
+[ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu/menu_pause.tscn" id="9_gc333"]
+[ext_resource type="Resource" uid="uid://bjggvuvpixqnf" path="res://resources/battle/skills/test_mass_skill.tres" id="9_v6rgl"]
 
-[sub_resource type="Resource" id="Resource_rn3po"]
+[sub_resource type="Resource" id="Resource_htwi1"]
 resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3")])
+script = ExtResource("6_1fv8a")
+name = "Neut"
+type = 1
+skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("8_7r8oo"), ExtResource("7_7fd6k"), ExtResource("9_v6rgl")])
+passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+max_physical_health = 10
+max_mental_health = 5
+physical_resistance = 3
+mental_resistance = 3
+atp_slots_count = 3
+min_speed = 3
+max_speed = 5
 
-[sub_resource type="Resource" id="Resource_imu51"]
-resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3"), ExtResource("7_monx3")])
+[sub_resource type="Resource" id="Resource_bsmcw"]
+script = ExtResource("5_afr7i")
+stats = SubResource("Resource_htwi1")
 
-[sub_resource type="Resource" id="Resource_2pqor"]
-resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5")])
+[sub_resource type="Resource" id="Resource_siymb"]
+script = ExtResource("5_afr7i")
+stats = ExtResource("6_4l50c")
 
-[sub_resource type="Resource" id="Resource_vofsm"]
-resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5"), ExtResource("10_fplm5")])
-
-[sub_resource type="Resource" id="Resource_oyuoo"]
-resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
-
-[sub_resource type="Resource" id="Resource_vkgnq"]
-resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
-
-[sub_resource type="Resource" id="Resource_3xhg3"]
-resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
-
-[sub_resource type="Resource" id="Resource_s5s05"]
-resource_local_to_scene = true
-script = ExtResource("8_ckplx")
-_packed_cards = Array[PackedScene]([ExtResource("13_uh5h7"), ExtResource("13_uh5h7"), ExtResource("13_uh5h7")])
+[sub_resource type="Resource" id="Resource_iu4mf"]
+script = ExtResource("5_afr7i")
+stats = ExtResource("6_4l50c")
 
 [node name="TestBattle" type="Node2D"]
-script = ExtResource("1_c0o5h")
-_packed_formation = ExtResource("2_bx1pa")
-_packed_location = ExtResource("18_kal88")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_itg7f")
-autoplay = true
+script = ExtResource("1_h0jpa")
+_packed_formation = ExtResource("2_2fqru")
+_packed_location = ExtResource("3_8uel4")
 
 [node name="Teams" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="AllyTeam" parent="Teams" instance=ExtResource("5_b7ejh")]
+[node name="AllyTeam" type="Node2D" parent="Teams"]
+y_sort_enabled = true
+script = ExtResource("4_c0bj1")
+team_fraction = 1
+_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_bsmcw")])
 
-[node name="Neutrophil" parent="Teams/AllyTeam" instance=ExtResource("6_x3pmk")]
-deck_of_cards = SubResource("Resource_rn3po")
+[node name="EnemyTeam" type="Node2D" parent="Teams"]
+y_sort_enabled = true
+script = ExtResource("4_c0bj1")
+team_fraction = -1
+_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_siymb"), SubResource("Resource_iu4mf")])
 
-[node name="Neutrophil2" parent="Teams/AllyTeam" instance=ExtResource("6_x3pmk")]
-deck_of_cards = SubResource("Resource_imu51")
+[node name="AssaultsArrows" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Eosinophil" parent="Teams/AllyTeam" instance=ExtResource("9_68dof")]
-deck_of_cards = SubResource("Resource_2pqor")
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Eosinophil2" parent="Teams/AllyTeam" instance=ExtResource("9_68dof")]
-deck_of_cards = SubResource("Resource_vofsm")
+[node name="DarkeningScreen" type="ColorRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.462745)
 
-[node name="EnemyTeam" parent="Teams" instance=ExtResource("11_7wd7t")]
+[node name="PopupsWithCharacterInfo" type="Control" parent="UI"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
 
-[node name="InfluenzaVirus" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_oyuoo")
+[node name="Left" parent="UI/PopupsWithCharacterInfo" instance=ExtResource("8_0r3md")]
+layout_mode = 0
 
-[node name="InfluenzaVirus2" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_vkgnq")
-
-[node name="InfluenzaVirus3" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_3xhg3")
-
-[node name="InfluenzaVirus4" parent="Teams/EnemyTeam" instance=ExtResource("12_7s024")]
-deck_of_cards = SubResource("Resource_s5s05")
+[node name="Right" parent="UI/PopupsWithCharacterInfo" instance=ExtResource("7_ft1fj")]
+layout_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ActionSwitcher" parent="CanvasLayer" instance=ExtResource("14_furee")]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("15_3iakm")]
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_gc333")]
 visible = false

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgc0fulju41ao"]
+
+[sub_resource type="GDScript" id="GDScript_rpyhi"]
+script/source = "extends TextureButton
+
+
+@export var condition: int = 12
+
+
+func _ready() -> void:
+	var a: int = 10
+	var b: int = 11
+
+
+func test() -> void:
+	print(condition)
+	condition += 1
+"
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+tooltip_text = "sadawdsesaa"
+script = SubResource("GDScript_rpyhi")

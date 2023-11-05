@@ -1,7 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://c5864d4hwlkes"]
-
-[ext_resource type="PackedScene" uid="uid://c0esshdn4ko0v" path="res://scenes/battle/teams/base_scenes/abstract_team.tscn" id="1_2i1af"]
-[ext_resource type="Script" path="res://scripts/battle/teams/enemy_team.gd" id="2_fbbsp"]
-
-[node name="EnemyTeam" instance=ExtResource("1_2i1af")]
-script = ExtResource("2_fbbsp")

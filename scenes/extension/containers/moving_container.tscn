@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgem1hvtihu4m"]
+
+[ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="1_h4r48"]
+
+[node name="MovingContainer" type="MarginContainer"]
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+script = ExtResource("1_h4r48")

@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://gv8b676x2jnn"]
+
+[ext_resource type="FontFile" uid="uid://cqgufl6eexceh" path="res://fonts/ubuntu/ubuntu-regular.ttf" id="1_0gy67"]
+
+[resource]
+font = ExtResource("1_0gy67")
+font_size = 20
+font_color = Color(0.960784, 0.960784, 0.960784, 1)
+shadow_size = 0

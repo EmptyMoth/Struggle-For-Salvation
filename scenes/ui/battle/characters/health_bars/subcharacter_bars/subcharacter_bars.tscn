@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://drxp468mge6s"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/characters/health_bars/base_scripts/base_container_bars.gd" id="1_6lyhv"]
+[ext_resource type="PackedScene" uid="uid://bci1n6s5ljlyj" path="res://scenes/ui/battle/characters/health_bars/subcharacter_bars/php_bar.tscn" id="3_1u0yb"]
+[ext_resource type="PackedScene" uid="uid://2e47rgonbe3b" path="res://scenes/ui/battle/characters/health_bars/subcharacter_bars/mhp_bar.tscn" id="4_x1ush"]
+
+[node name="SubcharacterBars" type="HBoxContainer"]
+offset_left = -35.0
+offset_top = -18.0
+offset_right = 35.0
+offset_bottom = 22.0
+mouse_filter = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_6lyhv")
+
+[node name="PHPBar" parent="." instance=ExtResource("3_1u0yb")]
+layout_mode = 2
+
+[node name="MHPBar" parent="." instance=ExtResource("4_x1ush")]
+layout_mode = 2

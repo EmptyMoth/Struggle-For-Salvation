@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://8nq84a36g3sp"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/level_select/button_switch_scene.gd" id="1_ioqy2"]
+
+[node name="ButtonSwitchScene" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+flat = true
+script = ExtResource("1_ioqy2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

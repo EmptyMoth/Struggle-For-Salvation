@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://dumn5rposhr3r"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/assaults_arrows/base/base_assault_arrow.gd" id="1_ty2n8"]
+[ext_resource type="Texture2D" uid="uid://dy7e3qhu11uix" path="res://sprites/ui/battle/assaults_arrows/body.png" id="2_7by1a"]
+[ext_resource type="Script" path="res://scripts/ui/battle/assaults_arrows/components/body_of_assault_arrow.gd" id="3_kmf2k"]
+[ext_resource type="Texture2D" uid="uid://dj0t8b47a6ub3" path="res://sprites/ui/battle/assaults_arrows/pointer.png" id="3_xtnxo"]
+[ext_resource type="Script" path="res://scripts/ui/battle/assaults_arrows/components/pointer_of_assault_arrow.gd" id="5_udwde"]
+
+[sub_resource type="Curve" id="Curve_2fo8m"]
+min_value = 0.3
+_data = [Vector2(0, 0.3), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="BaseAssaultArrow" type="Control"]
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+script = ExtResource("1_ty2n8")
+
+[node name="Body" type="Line2D" parent="."]
+width_curve = SubResource("Curve_2fo8m")
+texture = ExtResource("2_7by1a")
+texture_mode = 2
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("3_kmf2k")
+
+[node name="Pointer" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(25, 17)
+layout_mode = 0
+offset_right = 25.0
+offset_bottom = 17.0
+pivot_offset = Vector2(25, 8)
+mouse_filter = 2
+texture = ExtResource("3_xtnxo")
+expand_mode = 1
+script = ExtResource("5_udwde")
+_connection_point = Vector2(6, 8)

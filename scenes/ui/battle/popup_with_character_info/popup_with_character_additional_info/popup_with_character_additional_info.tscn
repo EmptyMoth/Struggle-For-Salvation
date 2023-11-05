@@ -1,0 +1,150 @@
+[gd_scene load_steps=15 format=3 uid="uid://bu1wimhkpbutk"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_additional_info/popup_with_character_additional_info.gd" id="1_1vpgi"]
+[ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="2_3nuae"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jxwn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_da11u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yk74"]
+content_margin_top = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.2, 0.666667, 1, 1)
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ccta"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hs34t"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_3smeh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pr1ya"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f8ty"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq6j"]
+content_margin_top = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+draw_center = false
+border_width_bottom = 2
+border_color = Color(0.2, 0.666667, 1, 1)
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cn65t"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62o5d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm7g4"]
+
+[node name="PopupWithCharacterAdditionalInfo" type="MarginContainer"]
+offset_right = 280.0
+offset_bottom = 293.0
+mouse_filter = 2
+theme_override_constants/margin_top = 0
+script = ExtResource("1_1vpgi")
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Options" type="MarginContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/margin_right = 20
+
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin/VBox/Options"]
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 10
+
+[node name="SkillsButton" type="Button" parent="Panel/Margin/VBox/Options/HBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1jxwn")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_da11u")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4yk74")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_0ccta")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hs34t")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_3smeh")
+text = "Skills"
+metadata/content_index = 0
+
+[node name="PassiveButton" type="Button" parent="Panel/Margin/VBox/Options/HBox"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pr1ya")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7f8ty")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_5cq6j")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cn65t")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_62o5d")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_3smeh")
+text = "Passive"
+metadata/content_index = 1
+
+[node name="SmoothScroll" type="ScrollContainer" parent="Panel/Margin/VBox"]
+custom_minimum_size = Vector2(0, 70)
+layout_mode = 2
+mouse_force_pass_scroll_events = false
+script = ExtResource("2_3nuae")
+speed = 3.0
+damping_scroll = 0.3
+damping_drag = 0.6
+follow_focus_margin = 1
+allow_horizontal_scroll = false
+
+[node name="Margin" type="MarginContainer" parent="Panel/Margin/VBox/SmoothScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Content" type="TabContainer" parent="Panel/Margin/VBox/SmoothScroll/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_vm7g4")
+clip_tabs = false
+tabs_visible = false
+
+[node name="SkillsList" type="GridContainer" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/h_separation = 5
+theme_override_constants/v_separation = 5
+columns = 3
+
+[node name="PassiveAbilitiesList" type="RichTextLabel" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
