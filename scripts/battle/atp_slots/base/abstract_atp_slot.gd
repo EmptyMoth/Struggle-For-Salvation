@@ -19,8 +19,9 @@ var assaulting_skill: AbstractSkill = null :
 	set(new_skill):
 		if assaulting_skill != null:
 			assaulting_skill.deselect()
+		if new_skill != null:
+			new_skill.select()
 		assaulting_skill = new_skill
-		assaulting_skill.select()
 		installed_skill_changed.emit(new_skill)
 
 var wearer: Character

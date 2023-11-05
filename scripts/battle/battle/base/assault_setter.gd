@@ -18,6 +18,7 @@ static func set_assault(assault: AssaultData) -> void:
 static func remove_assault(atp_slot: ATPSlot) -> void:
 	var assault: AssaultData = AssaultLog.get_assault(atp_slot)
 	AssaultLog.remove(assault.atp_slot)
+	atp_slot.remove_skill()
 	if assault.is_clash():
 		_change_clash_or_default(AssaultLog.get_assault(assault.targets.main))
 

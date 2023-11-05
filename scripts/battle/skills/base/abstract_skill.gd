@@ -2,53 +2,46 @@ class_name AbstractSkill
 extends Resource
 
 
-@export var stats: SkillStats
+var is_available: bool :
+	get: return stats.use_type.is_available(self)
 
+var stats: SkillStats
 var wearer: Character
+
+var current_use_count: int = 0
+var is_mass_attack: bool
+var targets_count: int
+
 
 
 func _init(character: Character, skill_stats: SkillStats) -> void:
 	wearer = character
 	stats = skill_stats
-	BattleSignals.turn_started.connect(_on_battle_turn_started)
+	is_mass_attack = stats.targeting_type is MassSkillType
+	targets_count = stats.targeting_type.get_targets_count()
 
 
-static func create_skill(character: Character, skill_stats: SkillStats) -> AbstractSkill:
-	return CooldownSkill.new(character, skill_stats) \
-			if skill_stats.skill_type == SkillStats.SkillType.COOLDOWN \
-			else QuantitySkill.new(character, skill_stats)
-
-
-func is_mass_attack() -> bool:
-	return stats.targeting_type == SkillStats.TargetingType.MASS
+func _to_string() -> String:
+	return stats.title
 
 
 func is_auto_set_assault() -> bool:
 	return stats.targets_setter != null
 
 
-func is_available() -> bool:
-	return true
+func select() -> void:
+	stats.use_type.select(self)
 
+func deselect() -> void:
+	stats.use_type.deselect(self)
 
-func get_targets_count() -> int:
-	return stats.get_targets_count()
+func restore() -> void:
+	stats.use_type.restore(self)
 
 
 func get_targets_setter() -> BaseTargetsSetter:
 	return stats.targets_setter
 
 
-func select() -> void:
-	pass
-
-func deselect() -> void:
-	pass
-
-
 func use() -> SkillCombatModel:
 	return SkillCombatModel.new(stats)
-
-
-func _on_battle_turn_started() -> void:
-	pass

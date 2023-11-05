@@ -64,7 +64,7 @@ static func _deselected() -> void:
 
 static func _set_assault(enemy_slot: ATPSlot) -> void:
 	var targets: Targets = Targets.new(enemy_slot)
-	if selected_skill.is_mass_attack():
+	if selected_skill.is_mass_attack:
 		var opponent_list: Array[Node] = BattleGroups.get_fraction_group(BattleEnums.Fraction.ENEMY)
 		opponent_list.erase(enemy_slot.wearer)
 		targets.sub_targets = AutoTargetsSetter.choose_sub_targets(
@@ -75,17 +75,13 @@ static func _set_assault(enemy_slot: ATPSlot) -> void:
 	_deselected()
 
 
-static func _remove_assault(ally_slot: ATPSlot) -> void:
-	AssaultSetter.remove_assault(ally_slot)
-
-
 static func _on_ally_picked(character: Character, atp_slot: ATPSlot = null) -> void:
 	if Input.is_action_just_released("ui_pick"):
 		selected_ally_slot = atp_slot
 	elif Input.is_action_just_released("ui_cancel"):
 		_deselected()
-		if atp_slot.installed_skill != null:
-			_remove_assault(atp_slot)
+		if atp_slot.assaulting_skill != null:
+			AssaultSetter.remove_assault(atp_slot)
 
 static func _on_enemy_picked(character: Character, atp_slot: ATPSlot = null) -> void:
 	if Input.is_action_just_released("ui_pick"):

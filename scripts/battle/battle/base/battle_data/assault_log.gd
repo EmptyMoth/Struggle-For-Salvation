@@ -63,7 +63,6 @@ static func remove(atp_slot: ATPSlot) -> void:
 	_remove_assault_targeting(assault)
 	get_potential_clashes(assault.targets.main).erase(assault)
 	AssaultsArrowsManager.remove_arrows(assault)
-	atp_slot.remove_assault()
 
 
 static func clear() -> void:
