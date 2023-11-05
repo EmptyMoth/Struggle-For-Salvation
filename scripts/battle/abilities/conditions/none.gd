@@ -6,5 +6,5 @@ static func get_title() -> String:
 	return ""
 
 
-func connect_condition(_owner: AbstractCharacter, _effect: Callable) -> void:
+func connect_condition(_owner: Character, _effect: Callable) -> void:
 	pass

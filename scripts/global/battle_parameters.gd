@@ -1,19 +1,6 @@
-extends Node
+class_name BattleParameters
+extends RefCounted
 
-
-enum AssaultTypes { ONE_SIDE, CLASH } 
-
-enum ClashResults { WIN, DRAW, LOSE }
-
-enum CharactersTypes {
-	IMMUNOCYTE,
-	VIRUS,
-	BACTERIA,
-	ALLERGEN,
-	FUNGUS,
-	PARASITE,
-	CANCER_CELL,
-}
 
 enum CharactersMotions {
 	DEFAULT,
@@ -21,7 +8,7 @@ enum CharactersMotions {
 	MOVEMENT,
 	BLOCK,
 	EVADE,
-	SLASH_ATTACK, 
+	SLASH_ATTACK,
 	PIERCE_ATTACK,
 	BLUNT_ATTACK,
 	SHOT,
@@ -33,12 +20,4 @@ enum CharactersMotions {
 	SPECIAL_5,
 }
 
-const GROUPS_BY_CHARACTERS_TYPES: Dictionary = {
-	CharactersTypes.IMMUNOCYTE : "immunocytes",
-	CharactersTypes.VIRUS : "viruses",
-	CharactersTypes.BACTERIA : "bacteria",
-	CharactersTypes.PARASITE : "parasites",
-	CharactersTypes.FUNGUS : "fungi",
-	CharactersTypes.ALLERGEN : "allergens",
-	CharactersTypes.CANCER_CELL : "cancer_cells",
-}
+static var battle: BaseBattle

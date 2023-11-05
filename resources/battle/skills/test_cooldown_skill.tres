@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=3 format=3 uid="uid://bpgvgspkgt7go"]
+
+[ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="1_iobjm"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="1_krejc"]
+
+[resource]
+script = ExtResource("1_iobjm")
+title = "Test Cooldown Skill"
+skill_type = 0
+range_type = 0
+icon = ExtResource("1_krejc")
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+actions_dice_stats = Array[Resource("res://scripts/battle/stats/actions_dice/action_dice_stats.gd")]([])
+cooldown = 2
+quantity = 1
+priority = 1

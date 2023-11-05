@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MassSkillStats" load_steps=3 format=3 uid="uid://bjggvuvpixqnf"]
+
+[ext_resource type="Script" path="res://scripts/battle/stats/skills/mass_skill_stats.gd" id="1_thffj"]
+[ext_resource type="Texture2D" uid="uid://7477xiljt2cb" path="res://sprites/ui/battle/skills/test_skill_3.svg" id="1_uj83d"]
+
+[resource]
+script = ExtResource("1_thffj")
+_targeting_count = 2
+title = "Mass Attack"
+skill_type = 1
+clash_type = 0
+icon = ExtResource("1_uj83d")
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+actions_dice_stats = Array[Resource("res://scripts/battle/stats/actions_dice/action_dice_stats.gd")]([])
+cooldown = 1
+quantity = 3
+priority = 0

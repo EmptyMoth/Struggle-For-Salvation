@@ -2,32 +2,24 @@ class_name BaseTeam
 extends Node2D
 
 
-@export_enum("allies", "enemies") var characters_group: String = "allies"
+@export var team_fraction: BattleEnums.Fraction
+@export var _characters_parameters: Array[CharacterBattleParameters] = []
 
-@onready var characters: Array[Node] : 
-	get: return get_children()
+@onready var characters: Array[Node] :
+	get: return BattleGroups.get_fraction_group(team_fraction)
 
-@onready var _team_model: BaseTeamModel = BaseTeamModel.new()
+@onready var _team_ui := TeamUI.new()
 
 
 func _ready() -> void:
-	for character in characters:
-		character.add_to_group(characters_group)
-		_team_model.connect_signals(character)
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_released("ui_cancel"):
-		_team_model.deselect_character()
+	_team_ui.connect_signals(team_fraction)
+	for character_parameter in _characters_parameters:
+		add_child(Character.new(character_parameter, team_fraction))
 
 
 func set_popup_with_character_info(popup: BasePopupWithCharacterInfo) -> void:
-	_team_model.popup_with_character_info = popup
+	_team_ui.popup_with_character_info = popup
 
 
 func is_defeated() -> bool:
 	return characters.size() < 1
-
-
-func _on_assault_was_set() -> void:
-	_team_model.deselect_character()

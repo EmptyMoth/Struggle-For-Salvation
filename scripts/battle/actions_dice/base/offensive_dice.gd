@@ -9,6 +9,6 @@ func _win_on_clash(_opponent_dice: AbstractActionDice) -> DiceAction:
 	return super(_opponent_dice)
 
 
-func _action(character: AbstractCharacter, target: AbstractCharacter) -> void:
+func _action(_character: Character, target: Character) -> void:
 	target.take_physical_damage(get_current_value() + bonus.physical_damage)
 	target.take_mental_damage(get_current_value() + bonus.mental_damage)

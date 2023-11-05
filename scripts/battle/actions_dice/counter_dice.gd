@@ -7,5 +7,4 @@ func get_color() -> Color:
 
 
 func _win_on_clash(_opponent_dice: AbstractActionDice) -> DiceAction:
-	is_recycled = true
 	return super(_opponent_dice)

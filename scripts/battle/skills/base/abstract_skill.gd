@@ -2,15 +2,41 @@ class_name AbstractSkill
 extends Resource
 
 
-@export_range(-10, 10, 1, "or_less", "or_greater") var priority: int = 0
+@export var stats: SkillStats
+
+var wearer: Character
 
 
-func _init() -> void:
-	BattleSygnals.turn_started.connect(_on_battle_turn_started)
+func _init(character: Character, skill_stats: SkillStats) -> void:
+	wearer = character
+	stats = skill_stats
+	BattleSignals.turn_started.connect(_on_battle_turn_started)
 
 
-func is_blocked() -> bool:
-	return false
+static func create_skill(character: Character, skill_stats: SkillStats) -> AbstractSkill:
+	return CooldownSkill.new(character, skill_stats) \
+			if skill_stats.skill_type == SkillStats.SkillType.COOLDOWN \
+			else QuantitySkill.new(character, skill_stats)
+
+
+func is_mass_attack() -> bool:
+	return stats.targeting_type == SkillStats.TargetingType.MASS
+
+
+func is_auto_set_assault() -> bool:
+	return stats.targets_setter != null
+
+
+func is_available() -> bool:
+	return true
+
+
+func get_targets_count() -> int:
+	return stats.get_targets_count()
+
+
+func get_targets_setter() -> BaseTargetsSetter:
+	return stats.targets_setter
 
 
 func select() -> void:
@@ -20,9 +46,9 @@ func deselect() -> void:
 	pass
 
 
-func use() -> void:
-	pass
+func use() -> SkillCombatModel:
+	return SkillCombatModel.new(stats)
 
 
-func _on_battle_turn_started(_turn_number: int) -> void:
+func _on_battle_turn_started() -> void:
 	pass

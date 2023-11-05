@@ -40,10 +40,8 @@ expand_margin_bottom = 2.0
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm7g4"]
 
 [node name="PopupWithCharacterAdditionalInfo" type="MarginContainer"]
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 273.0
-offset_bottom = 298.0
+offset_right = 280.0
+offset_bottom = 293.0
 mouse_filter = 2
 theme_override_constants/margin_top = 0
 script = ExtResource("1_1vpgi")
@@ -109,9 +107,8 @@ text = "Passive"
 metadata/content_index = 1
 
 [node name="SmoothScroll" type="ScrollContainer" parent="Panel/Margin/VBox"]
-custom_minimum_size = Vector2(0, 220)
+custom_minimum_size = Vector2(0, 70)
 layout_mode = 2
-mouse_filter = 0
 mouse_force_pass_scroll_events = false
 script = ExtResource("2_3nuae")
 speed = 3.0
@@ -123,14 +120,13 @@ allow_horizontal_scroll = false
 [node name="Margin" type="MarginContainer" parent="Panel/Margin/VBox/SmoothScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 mouse_filter = 2
-theme_override_constants/margin_right = 10
 
 [node name="Content" type="TabContainer" parent="Panel/Margin/VBox/SmoothScroll/Margin"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
+size_flags_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vm7g4")
 clip_tabs = false

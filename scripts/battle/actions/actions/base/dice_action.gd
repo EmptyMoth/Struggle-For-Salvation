@@ -2,6 +2,11 @@ class_name DiceAction
 extends Resource
 
 
+signal finished
+
+var is_executing: bool = false
+
+
 @export var motion: BattleParameters.CharactersMotions = \
 		BattleParameters.CharactersMotions.DEFAULT
 #@export var action_animation: ActionAnimation
@@ -18,7 +23,10 @@ func init(action:Callable) -> DiceAction:
 	return self
 
 
-func do(character: AbstractCharacter, target: AbstractCharacter) -> void:
+func execute(character: Character, target: Character) -> void:
+	is_executing = false
 	character.switch_motion(motion)
 	#action_animation.set_participants(character, target)
 	_action.call(character, target)
+	finished.emit()
+	is_executing = true

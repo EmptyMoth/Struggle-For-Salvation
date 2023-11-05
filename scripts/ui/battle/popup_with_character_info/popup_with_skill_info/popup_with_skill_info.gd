@@ -3,7 +3,7 @@ extends MovingContainer
 
 
 const _ACTION_DICE_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_info.tscn")
-const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/action_dice_ability_info.tscn")
+const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_character_info/popup_with_skill_info/components/popup_with_action_dice_ability.tscn")
 
 @onready var main_panel: MovingContainer = $HBox/VBox/MainPanel
 @onready var dice_list_panel: MovingContainer = $HBox/ActionsDiceList
@@ -19,13 +19,10 @@ const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/ba
 @onready var _dice_abilities_container: VBoxContainer = $HBox/VBox/AbilitiesVBox
 
 
-func set_info(skill: AbstractSkillStats) -> void:
-	if skill == null:
-		return
-	
-	_set_base_info(skill)
-	_set_skill_ability(skill.abilities)
-	_set_actions_dice(skill.action_dice_list)
+func set_info(skill: SkillStats) -> void:
+	_set_base_skill_info(skill)
+	_set_skill_abilities_info(skill.abilities)
+	_set_actions_dice_info(skill.actions_dice_stats)
 	_button_hiding_dice_abilities.visible = _dice_abilities_container.get_child_count() > 0
 
 
@@ -36,12 +33,10 @@ func remove_actions_dice_info() -> void:
 		_dice_abilities_container.remove_child(dice_abilities_info)
 
 
-func display_dice_abilities_panel(is_displayed: bool, duration: float) -> void:
+func display_dice_abilities_panel(tween: Tween, is_displayed: bool, duration: float) -> void:
 	if not is_visible_dice_abilities():
 		return
 	
-	var tween: Tween = get_tree().create_tween()\
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING).set_parallel()
 	tween.tween_property(_dice_abilities_container, "modulate:a", 1 if is_displayed else 0, 0.2)
 	var number: int = 0
 	for dice_abilities_info in _dice_abilities_container.get_children():
@@ -54,51 +49,49 @@ func is_visible_dice_abilities() -> bool:
 	return not _button_hiding_dice_abilities.button_pressed
 
 
-func _set_base_info(skill: AbstractSkillStats) -> void:
+func _set_base_skill_info(skill: SkillStats) -> void:
 	_skill_icon.texture = skill.icon
 	_title_label.text = skill.title
-	_type_icon.texture.current_frame = skill.range_type
-	if skill is CooldownSkillStats:
-		_uses_type_label.text = "Cooldown"
-		_uses_count_label.text = skill.cooldown
-	elif skill is QuantitySkillStats:
-		_uses_type_label.text = "Quantity"
-		_uses_count_label.text = skill.quantity
+	_type_icon.texture.current_frame = skill.targeting_type
+	match skill.skill_type:
+		SkillStats.SkillType.COOLDOWN:
+			_uses_type_label.text = "Cooldown"
+			_uses_count_label.text = str(skill.cooldown)
+		_:
+			_uses_type_label.text = "Quantity"
+			_uses_count_label.text = str(skill.quantity)
 
 
-func _set_skill_ability(abilities: Array[BaseSkillAbility]) -> void:
+func _set_skill_abilities_info(abilities: Array[BaseSkillAbility]) -> void:
 	_skill_ability_label.visible = abilities.size() > 0
 	if _skill_ability_label.visible:
-		_skill_ability_label.text = AbstractAbility.get_abilities_description(
-				abilities as Array[AbstractAbility])
+		_skill_ability_label.text = AbstractAbility.get_abilities_description(abilities)
 
 
-func _set_actions_dice(actions_dice_list: Array[AbstractActionDice]) -> void:
+func _set_actions_dice_info(actions_dice_list: Array[ActionDiceStats]) -> void:
 	remove_actions_dice_info()
 	for i in actions_dice_list.size():
-		var action_dice: AbstractActionDice = actions_dice_list[i]
-		_create_action_dice_info(action_dice)
-		_create_action_dice_ability_info(action_dice, i)
+		var action_dice: ActionDiceStats = actions_dice_list[i]
+		_set_action_dice_info(action_dice)
+		_set_action_dice_ability_info(action_dice, i)
 
 
-func _create_action_dice_info(action_dice: AbstractActionDice) -> void:
+func _set_action_dice_info(action_dice: ActionDiceStats) -> void:
 	var action_dice_info: ActionDiceInfo = _ACTION_DICE_INFO_SCENE.instantiate()
 	_dice_container.add_child(action_dice_info)
 	action_dice_info.set_info(action_dice)
 
 
-func _create_action_dice_ability_info(action_dice: AbstractActionDice, dice_index: int) -> void:
+func _set_action_dice_ability_info(action_dice: ActionDiceStats, dice_index: int) -> void:
 	if not action_dice.has_ability():
 		return
 	
-	var action_dice_ability_info: ActionDiceAbilityInfo = _ACTION_DICE_ABILITY_INFO_SCENE.instantiate()
+	var action_dice_ability_info: PopupWithActionDiceAbility = _ACTION_DICE_ABILITY_INFO_SCENE.instantiate()
 	_dice_abilities_container.add_child(action_dice_ability_info)
 	action_dice_ability_info.set_info(action_dice, dice_index)
 
 
 func _on_button_hiding_dice_abilities_toggled(button_pressed: bool) -> void:
-	display_dice_abilities_panel(not button_pressed, 0.2)
-
-
-func _on_skill_selected(skill: AbstractSkillStats) -> void:
-	set_info(skill)
+	var tween: Tween = get_tree().create_tween()\
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING).set_parallel()
+	display_dice_abilities_panel(tween, not button_pressed, 0.2)

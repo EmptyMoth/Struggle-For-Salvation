@@ -1,16 +1,20 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=2 format=3 uid="uid://dq7yncwf1bomg"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://cg53i625fwoc2"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_nswmx"]
+[ext_resource type="Resource" uid="uid://bpgvgspkgt7go" path="res://resources/battle/skills/test_cooldown_skill.tres" id="2_47ah8"]
+[ext_resource type="Resource" uid="uid://dl0phvk5y180k" path="res://resources/battle/skills/test_quantity_skill.tres" id="3_aedbv"]
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("1_nswmx")
 name = "Neut"
-type = 0
-skills = Array[Resource("res://scripts/ui/battle/skills/base/base_skill.gd")]([])
-max_physical_health = 1
-max_mental_health = 1
+type = 1
+skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_47ah8"), ExtResource("3_aedbv"), ExtResource("2_47ah8")])
+passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+max_physical_health = 10
+max_mental_health = 5
 physical_resistance = 3
 mental_resistance = 3
-speed_dice_count = 1
-min_speed = 1
-max_speed = 1
+atp_slots_count = 3
+min_speed = 3
+max_speed = 5
