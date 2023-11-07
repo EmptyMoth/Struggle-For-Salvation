@@ -68,7 +68,7 @@ static func _set_assault(enemy_slot: ATPSlot) -> void:
 		var opponent_list: Array[Node] = BattleGroups.get_fraction_group(BattleEnums.Fraction.ENEMY)
 		opponent_list.erase(enemy_slot.wearer)
 		targets.sub_targets = AutoTargetsSetter.choose_sub_targets(
-				opponent_list, selected_skill.get_targets_count(), selected_skill.get_targets_setter())
+				opponent_list, selected_skill.targets_count, selected_skill.get_targets_setter())
 	
 	AssaultSetter.create_assault(selected_ally_slot, targets, selected_skill)
 	PlayerInputManager.player_made_general_cancel.emit()
