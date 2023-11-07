@@ -1,16 +1,28 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=3 format=3 uid="uid://dl0phvk5y180k"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=9 format=3 uid="uid://dl0phvk5y180k"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="1_7sdj4"]
 [ext_resource type="Texture2D" uid="uid://ghvuud5dewto" path="res://sprites/ui/battle/skills/test_skill_2.svg" id="1_pm23f"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="1_ptntk"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_targeting_type/single_skill_type.gd" id="4_t2vve"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/quantity_skill_type.gd" id="5_f6m6s"]
+
+[sub_resource type="Resource" id="Resource_wr0uu"]
+script = ExtResource("1_ptntk")
+
+[sub_resource type="Resource" id="Resource_21aww"]
+script = ExtResource("4_t2vve")
+
+[sub_resource type="Resource" id="Resource_8gb1a"]
+script = ExtResource("5_f6m6s")
+quantity = 2
 
 [resource]
 script = ExtResource("1_7sdj4")
 title = "Test Quantity Skill"
-skill_type = 1
-range_type = 0
+use_type = SubResource("Resource_8gb1a")
+clash_type = SubResource("Resource_wr0uu")
+targeting_type = SubResource("Resource_21aww")
 icon = ExtResource("1_pm23f")
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
 actions_dice_stats = Array[Resource("res://scripts/battle/stats/actions_dice/action_dice_stats.gd")]([])
-cooldown = 1
-quantity = 2
 priority = 0

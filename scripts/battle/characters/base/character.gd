@@ -9,15 +9,15 @@ signal drew_clash(target: Character)
 signal lost_clash(target: Character)
 
 var stats: CharacterStats
-var atp_slots_manager: ATPSlotsManager
 var fraction: BattleEnums.Fraction
+var atp_slots_manager: ATPSlotsManager
+var skills_manager: SkillsManager
 
 var is_ally: bool :
 	get: return fraction == BattleEnums.Fraction.ALLY
 var is_stunned: bool :
 	get: return mental_health.is_empty()
 var independently_arranges_skills : bool
-var skills: Array[AbstractSkill] = []
 
 var _skill_used: SkillCombatModel = null
 var _dice_reserved_list: Array[AbstractActionDice] = []
@@ -36,8 +36,9 @@ func _init(battle_parameters: CharacterBattleParameters,
 			character_fraction: BattleEnums.Fraction) -> void:
 	y_sort_enabled = true
 	stats = battle_parameters.stats
-	#_targets_setter = battle_parameters.auto_assault_setter
 	fraction = character_fraction
+	skills_manager = SkillsManager.new(self, stats.skills)
+	#_targets_setter = battle_parameters.auto_assault_setter
 
 
 func _ready() -> void:
@@ -46,9 +47,6 @@ func _ready() -> void:
 	atp_slots_manager = ATPSlotsManager.new(self, _view.atp_slots_manager_ui)
 
 	_set_character_to_groups()
-	for skill_stats in stats.skills:
-		skills.append(AbstractSkill.create_skill(self, skill_stats))
-
 	_connect_signals()
 
 
@@ -81,10 +79,6 @@ func make_independent() -> void:
 
 func remove_independent() -> void:
 	independently_arranges_skills = false
-
-
-func roll_atp_slots() -> void:
-	atp_slots_manager.roll_atp_slots()
 
 
 func to_die() -> void:
@@ -125,11 +119,13 @@ func get_next_dice_reserved() -> AbstractActionDice:
 
 func auto_set_assault(opponents: Array[Node]) -> void:
 	for atp_slot in get_slots_for_assaults():
-		var skill: AbstractSkill = _auto_take_skill()
+		var skill: AbstractSkill = skills_manager.auto_selects_skill_or_null()
+		if skill == null:
+			return
 		var targets_setter: BaseTargetsSetter = \
 				skill.get_targets_setter() if skill.get_targets_setter() else stats.targets_setter
 		var targets: Targets = AutoTargetsSetter.choose_targets(
-				opponents, skill.get_targets_count(), targets_setter)
+				opponents, skill.targets_count, targets_setter)
 		AssaultSetter.create_assault(atp_slot, targets, skill)
 
 
@@ -155,10 +151,6 @@ func _connect_signals() -> void:
 	mental_health.stunned.connect(mental_resistance._on_character_stunned)
 
 
-func _auto_take_skill() -> AbstractSkill:
-	return skills.pick_random()
-
-
 func _on_died() -> void:
 	queue_free()
 
@@ -166,3 +158,9 @@ func _on_died() -> void:
 func _on_stunned() -> void:
 	physical_resistance._on_character_stunned()
 	mental_resistance._on_character_stunned()
+
+
+func _on_battle_turn_started() -> void:
+	atp_slots_manager.roll_atp_slots()
+	skills_manager.restore_skills()
+	character_marker_3d.move_to_default_position()

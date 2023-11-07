@@ -22,16 +22,18 @@ func _ready() -> void:
 
 
 func set_info(character: Character, atp_slot: ATPSlot = null) -> void:
+	_skill_info.hide()
 	show_popup()
 	_base_info.set_info(character)
-	_additional_info.set_info(character.skills, character.stats.passive_abilities)
+	_additional_info.set_info(character.skills_manager.get_all_skills(), 
+			character.stats.passive_abilities)
 	if atp_slot == null:
 		_additional_info.open_passive_abilities_list()
-		_skill_info.hide()
 	else:
 		_additional_info.open_skills_list()
 		if atp_slot.assaulting_skill != null:
 			_skill_info.show()
+			_display_popup_with_skill(true)
 			_skill_info.set_info(atp_slot.assaulting_skill.stats)
 
 
@@ -53,8 +55,7 @@ func _display_popup(is_displayed: bool) -> void:
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING).set_parallel()
 	_display_panel(_current_tween, _base_info, is_displayed, _DURATION_OF_PRIMARY_INFO)
 	_display_panel(_current_tween, _additional_info, is_displayed, _DURATION_OF_SECONDARY_INFO)
-	if _skill_info.visible:
-		_display_popup_with_skill(is_displayed)
+	_display_popup_with_skill(is_displayed and _skill_info.visible)
 
 
 func _display_popup_with_skill(is_displayed: bool) -> void:

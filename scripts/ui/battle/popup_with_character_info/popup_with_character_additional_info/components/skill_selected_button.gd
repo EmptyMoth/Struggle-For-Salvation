@@ -14,17 +14,17 @@ var setted_skill: AbstractSkill = null
 func set_skill(skill: AbstractSkill) -> void:
 	show()
 	setted_skill = skill
-	var skill_is_available: bool = skill.is_available()
+	var skill_is_available: bool = skill.is_available
 	icon = skill.stats.icon
 	disabled = not skill_is_available
-	if skill is CooldownSkill:
+	if skill.stats.use_type is CooldownSkillType:
 		_cooldown_icon.visible = not skill_is_available
 		_counter_label.visible = not skill_is_available
-		_counter_label.text = str(skill.current_cooldown)
-	elif skill is QuantitySkill:
+		_counter_label.text = str(skill.current_use_count)#stats.use_type.current_cooldown)
+	else:
 		_cooldown_icon.hide()
 		_counter_label.show()
-		_counter_label.text = "x%s" % str(skill.current_quantity)
+		_counter_label.text = "x%s" % str(skill.current_use_count)#stats.use_type.current_quantity)
 
 
 func remove_skill() -> void:

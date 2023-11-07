@@ -17,6 +17,9 @@ var _model: ATPSlot
 var _is_fixed: bool = false
 
 @onready var _speed_value_label: Label = $SpeedValue
+@onready var _body: TextureRect = $Body
+@onready var _icon: TextureRect = $Icon
+@onready var _skill_icon: TextureRect = $SkillIcon
 
 
 func _draw() -> void:
@@ -85,11 +88,15 @@ func _on_speed_changed(new_speed: int) -> void:
 
 func _on_installed_skill_changed(new_skill: AbstractSkill) -> void:
 	if new_skill == null:
-		pass
+		_body.modulate = Color.WHITE
+		_icon.show()
+		_skill_icon.hide()
 		return
-
-	var skill_icon: Texture2D = new_skill.stats.icon
-	pass
+	
+	_icon.hide()
+	_skill_icon.show()
+	_skill_icon.texture = new_skill.stats.icon
+	_body.modulate = Color.MIDNIGHT_BLUE
 
 
 func _on_atp_pressed() -> void:

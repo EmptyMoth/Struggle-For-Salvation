@@ -52,14 +52,13 @@ func is_visible_dice_abilities() -> bool:
 func _set_base_skill_info(skill: SkillStats) -> void:
 	_skill_icon.texture = skill.icon
 	_title_label.text = skill.title
-	_type_icon.texture.current_frame = skill.targeting_type
-	match skill.skill_type:
-		SkillStats.SkillType.COOLDOWN:
-			_uses_type_label.text = "Cooldown"
-			_uses_count_label.text = str(skill.cooldown)
-		_:
-			_uses_type_label.text = "Quantity"
-			_uses_count_label.text = str(skill.quantity)
+	_type_icon.texture.current_frame = \
+			0 if skill.targeting_type is SingleSkillType else 1
+	
+	var is_cooldown: bool = skill.use_type is CooldownSkillType
+	_uses_type_label.text = "Cooldown" if is_cooldown else "Quantity"
+	_uses_count_label.text = str(
+			skill.use_type.cooldown if is_cooldown else skill.use_type.quantity)
 
 
 func _set_skill_abilities_info(abilities: Array[BaseSkillAbility]) -> void:
