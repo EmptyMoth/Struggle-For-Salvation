@@ -1,4 +1,4 @@
-class_name AssaultsRealization
+class_name ActionDiceUser
 extends RefCounted
 
 
@@ -19,9 +19,11 @@ static func realize_clash(opponent_1: CharacterCombatModel, opponent_2: Characte
 
 static func _get_action_dice_interaction(
 			dice_1: AbstractActionDice, dice_2: AbstractActionDice) -> Callable:
-	if dice_1 is AttackDice:
-		return AssaultsRealization._implement_respond if dice_2 is CounterDice else AssaultsRealization._implement_clash 
-	return AssaultsRealization._implement_reserve
+	if dice_1 is AttackDice or dice_2 is AttackDice:
+		if dice_1 is CounterDice or dice_2 is CounterDice:
+			return ActionDiceUser._implement_respond 
+		return ActionDiceUser._implement_clash
+	return ActionDiceUser._implement_reserve
 
 
 static func _implement_reserve(opponent_1: CharacterCombatModel, opponent_2: CharacterCombatModel) -> void:

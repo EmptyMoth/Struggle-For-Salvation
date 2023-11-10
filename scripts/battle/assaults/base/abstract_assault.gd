@@ -24,20 +24,30 @@ func can_be_executed() -> bool:
 
 func execute() -> void:
 	await _move_characters()
+	print(_character)
 	_join_assault()
 	while _can_continue_assault():
-		_execute()
+		_main_use_actions_dice()
+	_additional_use_actions_dice()
+	_leave_assault()
+	executed.emit()
 
 
-func _execute() -> void:
+func _main_use_actions_dice() -> void:
 	pass
 
-
-func _move_characters() -> void:
+func _additional_use_actions_dice() -> void:
 	pass
 
 
 func _join_assault() -> void:
+	pass
+
+func _leave_assault() -> void:
+	pass
+
+
+func _move_characters() -> void:
 	pass
 
 
