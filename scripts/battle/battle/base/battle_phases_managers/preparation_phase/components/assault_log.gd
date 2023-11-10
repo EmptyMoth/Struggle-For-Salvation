@@ -29,7 +29,7 @@ static func get_next_potential_clash(atp_slot: ATPSlot) -> AssaultData:
 	return potential_clashes[next_index_clash]
 
 
-static func get_assaults_by_speed() -> Dictionary:
+static func get_assaults_data_by_speed() -> Dictionary:
 	var assaults_by_speed: Dictionary = {}
 	for atp_slot in _ASSAULTS_BY_ATP_SLOT:
 		var assault: AssaultData = _ASSAULTS_BY_ATP_SLOT[atp_slot]

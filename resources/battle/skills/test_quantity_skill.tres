@@ -1,10 +1,25 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=9 format=3 uid="uid://dl0phvk5y180k"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=12 format=3 uid="uid://dl0phvk5y180k"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="1_7sdj4"]
+[ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_ndxc4"]
 [ext_resource type="Texture2D" uid="uid://ghvuud5dewto" path="res://sprites/ui/battle/skills/test_skill_2.svg" id="1_pm23f"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="1_ptntk"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_targeting_type/single_skill_type.gd" id="4_t2vve"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/quantity_skill_type.gd" id="5_f6m6s"]
+
+[sub_resource type="Resource" id="Resource_rv4eh"]
+script = ExtResource("1_ndxc4")
+dice_type = 1
+min_value = 1
+max_value = 3
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_s2kay"]
+script = ExtResource("1_ndxc4")
+dice_type = 1
+min_value = 3
+max_value = 5
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
 
 [sub_resource type="Resource" id="Resource_wr0uu"]
 script = ExtResource("1_ptntk")
@@ -24,5 +39,5 @@ clash_type = SubResource("Resource_wr0uu")
 targeting_type = SubResource("Resource_21aww")
 icon = ExtResource("1_pm23f")
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
-actions_dice_stats = Array[Resource("res://scripts/battle/stats/actions_dice/action_dice_stats.gd")]([])
+actions_dice_stats = Array[ExtResource("1_ndxc4")]([SubResource("Resource_rv4eh"), SubResource("Resource_s2kay")])
 priority = 0

@@ -1,10 +1,18 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=9 format=3 uid="uid://d03aklplspjyy"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=11 format=3 uid="uid://d03aklplspjyy"]
 
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="1_crog0"]
 [ext_resource type="Texture2D" uid="uid://7477xiljt2cb" path="res://sprites/ui/battle/skills/test_skill_3.svg" id="1_uj83d"]
+[ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_ykmpi"]
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="3_ym7dp"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_targeting_type/mass_skill_type.gd" id="4_626jb"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/cooldown_skill_type.gd" id="5_gqyxg"]
+
+[sub_resource type="Resource" id="Resource_3muf6"]
+script = ExtResource("1_ykmpi")
+dice_type = 0
+min_value = 5
+max_value = 10
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
 
 [sub_resource type="Resource" id="Resource_led0f"]
 script = ExtResource("1_crog0")
@@ -25,5 +33,5 @@ clash_type = SubResource("Resource_led0f")
 targeting_type = SubResource("Resource_np13j")
 icon = ExtResource("1_uj83d")
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
-actions_dice_stats = Array[Resource("res://scripts/battle/stats/actions_dice/action_dice_stats.gd")]([])
+actions_dice_stats = Array[ExtResource("1_ykmpi")]([SubResource("Resource_3muf6")])
 priority = 2

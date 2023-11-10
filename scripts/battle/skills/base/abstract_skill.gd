@@ -44,4 +44,4 @@ func get_targets_setter() -> BaseTargetsSetter:
 
 
 func use() -> SkillCombatModel:
-	return SkillCombatModel.new(stats)
+	return SkillCombatModel.new(stats, wearer)

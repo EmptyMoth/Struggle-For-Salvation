@@ -5,6 +5,8 @@ extends Node2D
 @export var _packed_formation: PackedScene
 @export var _packed_location: PackedScene
 
+static var battle: BaseBattle
+
 var turn_number: int = 0
 var current_phase: BattleEnums.BattlePhase = BattleEnums.BattlePhase.PREPARATION
 
@@ -20,11 +22,10 @@ var _battlefield: BaseBattlefield = null
 
 func _ready() -> void:
 	BattleParameters.battle = self
+	BaseBattle.battle = self
 	_init_of_teams()
 	set_location(_packed_location.instantiate())
-	BattleSignals.turn_started.connect(_on_turn_started)
-	BattleSignals.turn_ended.connect(_on_turn_ended)
-	BattleSignals.combat_started.connect(_implements_combat_phase)
+	_connect_signals()
 	BattleSignals.battle_started.emit()
 
 
@@ -32,12 +33,6 @@ func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("ui_menu") and !pause_menu.just_closed:
 		pause_menu.pause_game()
 	pause_menu.just_closed = false
-
-	if current_phase == BattleEnums.BattlePhase.PREPARATION:
-		if Input.is_action_just_released("ui_switch_battle_phase"):
-			pass
-		if Input.is_action_just_released("ui_auto_set_assault"):
-			AutoArrangeAssaults.arranges_allies	()
 
 
 func set_location(location: BaseLocation) -> void:
@@ -69,18 +64,7 @@ func defeate() -> void:
 	end()
 
 func end() -> void:
-	pass
-
-
-func _implements_card_placement_phase() -> void:
-	current_phase = BattleEnums.BattlePhase.PREPARATION
-	get_tree().call_group("characters", "prepare_for_card_placement")
-
-
-func _implements_combat_phase() -> void:
-	current_phase = BattleEnums.BattlePhase.COMBAT
-	BattleSignals.combat_started.emit()
-	get_tree().call_group("characters", "prepare_for_combat")
+	BattleSignals.battle_ended.emit()
 
 
 func highlight_nodes(nodes: Array[CanvasItem], is_highlight: bool) -> void:
@@ -89,16 +73,32 @@ func highlight_nodes(nodes: Array[CanvasItem], is_highlight: bool) -> void:
 		node.z_index = 1 if is_highlight else 0
 
 
-func _on_turn_started() -> void:
+func _start_next_turn() -> void:
 	turn_number += 1
+	BattleSignals.turn_started.emit()
 
 
-func _on_turn_ended() -> void:
+func _connect_signals() -> void:
+	BattleSignals.preparation_started.connect(_on_preparation_started)
+	BattleSignals.combat_started.connect(_on_combat_started)
+	BattleSignals.combat_ended.connect(_on_combat_ended)
+	BattleSignals.battle_started.connect(_start_next_turn)
+	BattleSignals.turn_ended.connect(_start_next_turn)
+
+
+func _on_preparation_started() -> void:
+	current_phase = BattleEnums.BattlePhase.PREPARATION
+
+func _on_combat_started() -> void:
+	current_phase = BattleEnums.BattlePhase.COMBAT
+
+
+func _on_combat_ended() -> void:
 	if enemy_team.is_defeated():
 		victory()
 	elif ally_team.is_defeated():
 		defeate()
-	BattleSignals.turn_ended.emit(turn_number)
+	BattleSignals.turn_ended.emit()
 
 
 func _init_of_teams() -> void:

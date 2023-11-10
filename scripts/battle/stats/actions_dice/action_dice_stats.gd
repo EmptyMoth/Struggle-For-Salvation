@@ -15,13 +15,25 @@ func has_ability() -> bool:
 	return abilities.size() > 0
 
 
-func create_dice() -> AbstractActionDice:
+func get_color() -> Color:
 	match dice_type:
 		DiceType.ATTACK:
-			return AttackDice.new(self)
+			return AttackDice.get_color()
 		DiceType.BLOCK:
-			return BlockDice.new(self)
+			return BlockDice.get_color()
 		DiceType.EVADE:
-			return EvadeDice.new(self)
+			return EvadeDice.get_color()
 		_:
-			return CounterDice.new(self)
+			return CounterDice.get_color()
+
+
+func create_dice(skill: SkillCombatModel) -> AbstractActionDice:
+	match dice_type:
+		DiceType.ATTACK:
+			return AttackDice.new(self, skill)
+		DiceType.BLOCK:
+			return BlockDice.new(self, skill)
+		DiceType.EVADE:
+			return EvadeDice.new(self, skill)
+		_:
+			return CounterDice.new(self, skill)

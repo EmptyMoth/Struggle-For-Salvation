@@ -4,10 +4,6 @@ extends Node2D
 
 signal fraction_changed(new_fraction: BattleEnums.Fraction)
 
-signal won_clash(target: Character)
-signal drew_clash(target: Character)
-signal lost_clash(target: Character)
-
 var stats: CharacterStats
 var fraction: BattleEnums.Fraction
 var atp_slots_manager: ATPSlotsManager
@@ -17,10 +13,9 @@ var is_ally: bool :
 	get: return fraction == BattleEnums.Fraction.ALLY
 var is_stunned: bool :
 	get: return mental_health.is_empty()
+var is_dead: bool :
+	get: return physical_health.is_empty()
 var independently_arranges_skills : bool
-
-var _skill_used: SkillCombatModel = null
-var _dice_reserved_list: Array[AbstractActionDice] = []
 
 @onready var physical_health := PhysicalHealth.new(stats.max_physical_health)
 @onready var mental_health := MentalHealth.new(stats.max_mental_health)
@@ -29,6 +24,7 @@ var _dice_reserved_list: Array[AbstractActionDice] = []
 
 @onready var character_marker_3d: CharacterMarker3D = preload("res://scenes/battle/characters/character_marker_3d.tscn").instantiate()
 
+@onready var _combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
 @onready var _view: CharacterView = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
 
 
@@ -45,7 +41,6 @@ func _ready() -> void:
 	_view.set_model(self)
 	add_child(_view)
 	atp_slots_manager = ATPSlotsManager.new(self, _view.atp_slots_manager_ui)
-
 	_set_character_to_groups()
 	_connect_signals()
 
@@ -59,12 +54,16 @@ static func get_action_name(action: BattleParameters.CharactersMotions) -> Strin
 	return action_name.to_lower() if action_name != null else "default"
 
 
+func is_active() -> bool:
+	return not is_stunned and not is_dead
+
+
 func get_view() -> CharacterView:
 	return _view
 
 
-func get_skill_used() -> SkillCombatModel:
-	return _skill_used.use()
+func get_combat_model() -> CharacterCombatModel:
+	return _combat_model
 
 
 func get_slots_for_assaults() -> Array[ATPSlot]:
@@ -102,21 +101,6 @@ func mental_heal(heal_amound: int) -> void:
 	mental_health.heal(heal_amound)
 
 
-func make_action(action: DiceAction) -> void:
-	pass
-
-
-func get_next_dice_reserved() -> AbstractActionDice:
-	if _skill_used == null:
-		var index: int = 0
-		return _dice_reserved_list[index] if index < _dice_reserved_list.size() else null
-
-	var dice_reserved: AbstractActionDice = _skill_used.get_next_dice_reserved()
-	if dice_reserved != null:
-		return dice_reserved
-	return null
-
-
 func auto_set_assault(opponents: Array[Node]) -> void:
 	for atp_slot in get_slots_for_assaults():
 		var skill: AbstractSkill = skills_manager.auto_selects_skill_or_null()
@@ -152,7 +136,7 @@ func _connect_signals() -> void:
 
 
 func _on_died() -> void:
-	queue_free()
+	print("%s is DEAD!" % self)
 
 
 func _on_stunned() -> void:

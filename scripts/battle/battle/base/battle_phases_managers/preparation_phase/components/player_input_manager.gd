@@ -24,6 +24,14 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
+	if BaseBattle.battle.current_phase != BattleEnums.BattlePhase.PREPARATION:
+		return
+	if Input.is_action_just_released("ui_switch_battle_phase"):
+		PreparationPhaseManager.finish_phase()
+	
+	if Input.is_action_just_released("ui_auto_set_assault"):
+		AutoArrangeAssaults.arranges_allies()
+	
 	if Input.is_action_just_released("ui_show_one_side_allied_arrows"):
 		BattleSettings.is_display_allied_arrows = not BattleSettings.is_display_allied_arrows
 	elif Input.is_action_just_released("ui_show_one_side_enemy_arrows"):

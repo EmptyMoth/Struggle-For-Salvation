@@ -9,30 +9,36 @@ signal break_down
 static var losing_action := DiceAction.new(
 		BattleParameters.CharactersMotions.STUN, AbstractActionDice._none_action)
 
-var is_breaked: bool = false
+var wearer: CharacterCombatModel :
+	get: return wearer_skill.wearer
+
+var current_value: int = 0
+var is_used: bool = false
+var is_destroyed: bool = false
 var is_recycled: bool = false
+var is_responds: bool = false
+var wearer_skill: SkillCombatModel
 var bonus: ActionDiceBonus = ActionDiceBonus.new()
 
-var _current_value: int = 0
 
-
-func _init(_stats: ActionDiceStats = ActionDiceStats.new()) -> void:
+func _init(_stats: ActionDiceStats, skill: SkillCombatModel) -> void:
 	stats = _stats
+	wearer_skill = skill
 
 
-static func create_dice(_stats: ActionDiceStats) -> AbstractActionDice:
-	match _stats.dice_type:
-		ActionDiceStats.DiceType.ATTACK:
-			return AttackDice.new(_stats)
-		ActionDiceStats.DiceType.BLOCK:
-			return BlockDice.new(_stats)
-		ActionDiceStats.DiceType.EVADE:
-			return EvadeDice.new(_stats)
-		_:
-			return CounterDice.new(_stats)
+#static func create_dice(_stats: ActionDiceStats, skill: SkillCombatModel) -> AbstractActionDice:
+#	match _stats.dice_type:
+#		ActionDiceStats.DiceType.ATTACK:
+#			return AttackDice.new(_stats, skill)
+#		ActionDiceStats.DiceType.BLOCK:
+#			return BlockDice.new(_stats, skill)
+#		ActionDiceStats.DiceType.EVADE:
+#			return EvadeDice.new(_stats, skill)
+#		_:
+#			return CounterDice.new(_stats, skill)
 
 
-func get_color() -> Color:
+static func get_color() -> Color:
 	return Color.WHITE_SMOKE
 
 
@@ -43,7 +49,7 @@ func get_default_max_value() -> int:
 	return stats.max_value
 
 func get_default_current_value() -> int:
-	return _current_value
+	return current_value
 
 
 func get_min_value() -> int:
@@ -54,42 +60,53 @@ func get_max_value() -> int:
 
 func get_current_value() -> int:
 	if bonus.ignore_power:
-		return _current_value
-	return _current_value + bonus.power
+		return current_value
+	return current_value + bonus.power
 
 
 func roll_dice() -> void:
-	_current_value = randi_range(get_min_value(), get_max_value())
+	current_value = randi_range(get_min_value(), get_max_value())
+
+
+func compare_to(opponent_dice: AbstractActionDice) -> int:
+	return clampi(current_value - opponent_dice.current_value, -1, 1)
 
 
 func break_dice() -> void:
 	break_down.emit()
 
 
-func use_on_one_side() -> DiceAction:
+func is_used_on_one_sided() -> bool:
+	return false
+
+
+func will_go_into_reserve(opponent_dice: AbstractActionDice) -> bool:
+	return false
+
+
+func use(target: CharacterCombatModel) -> DiceAction:
+	is_used = true
 	return stats.action.init(_none_action)
 
 
-func use_on_clash(opponent_dice: AbstractActionDice, 
-			result: BattleEnums.ClashResult) -> DiceAction:
-	is_breaked = true
-	match result:
+func use_in_clash(target: CharacterCombatModel, clash_result: BattleEnums.ClashResult) -> void:
+	match clash_result:
 		BattleEnums.ClashResult.WIN:
-			return _win_on_clash(opponent_dice)
+			_win_clash(target)
 		BattleEnums.ClashResult.LOSE:
-			return _lose_on_clash(opponent_dice)
+			_lose_clash(target)
 		_:
-			return _draw_on_clash(opponent_dice)
+			_draw_clash(target)
 
 
-func _win_on_clash(_opponent_dice: AbstractActionDice) -> DiceAction:
-	return stats.action.init(_action)
+func _win_clash(target: CharacterCombatModel) -> void:
+	pass
 
-func _draw_on_clash(_opponent_dice: AbstractActionDice) -> DiceAction:
-	return stats.action.init(_none_action)
+func _draw_clash(target: CharacterCombatModel) -> void:
+	pass
 
-func _lose_on_clash(_opponent_dice: AbstractActionDice) -> DiceAction:
-	return AbstractActionDice.losing_action
+func _lose_clash(target: CharacterCombatModel) -> void:
+	pass
 
 
 func _action(_character: Character, _target: Character) -> void:

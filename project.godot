@@ -28,7 +28,11 @@ Saves="*res://scripts/global/saves.gd"
 SceneTransition="*res://scripts/global/scene_transition/scene_transition.gd"
 CustomMouseCursor="*res://scripts/global/custom_mouse_cursor.gd"
 BattleSignals="*res://scripts/global/battle/battle_signals.gd"
-PlayerInputManager="*res://scripts/battle/battle/base/player_handlers/player_input_manager.gd"
+PlayerInputManager="*res://scripts/battle/battle/base/battle_phases_managers/preparation_phase/components/player_input_manager.gd"
+
+[debug]
+
+gdscript/warnings/static_called_on_instance=0
 
 [display]
 

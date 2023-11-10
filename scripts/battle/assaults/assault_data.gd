@@ -19,6 +19,14 @@ func _to_string() -> String:
 	return  result % [atp_slot.to_string(), targets.main.to_string()]
 
 
+func create_assault() -> AbstractAssault:
+	if is_clash():
+		var clash: ClashAssault = ClashAssault.new(self)
+		if clash.can_be_executed():
+			return clash
+	return OneSideAssault.new(self)
+
+
 func is_clash() -> bool:
 	return type == BattleEnums.AssaultType.CLASH
 

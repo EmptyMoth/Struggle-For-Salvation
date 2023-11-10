@@ -14,8 +14,16 @@ static func create_arrows(assault: AssaultData) -> void:
 static func remove_arrows(assault: AssaultData) -> void:
 	var arrows_list: Array[BaseAssaultArrow] = _get_arrows_list(assault.atp_slot)
 	for arrow in arrows_list:
-		BattleParameters.battle.remove_assault_arrow(arrow)
+		BaseBattle.battle.remove_assault_arrow(arrow)
 	arrows_list.clear()
+
+
+static func clear_arrows() -> void:
+	for atp_slot in _arrows_list_by_atp_slot:
+		var arrows_list: Array[BaseAssaultArrow] = _arrows_list_by_atp_slot[atp_slot]
+		for arrow in arrows_list:
+			BaseBattle.battle.remove_assault_arrow(arrow)
+	_arrows_list_by_atp_slot.clear()
 
 
 static func toggle_arrows_by_atp_slot(atp_slot: ATPSlot, display: bool) -> void:

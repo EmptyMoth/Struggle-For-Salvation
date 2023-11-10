@@ -11,3 +11,6 @@ script = ExtResource("1_8383r")
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.100006, 0, 0, 0, 0.100006, 0, 0, 0, 0.100006, 0, 0, 0)
 shape = SubResource("BoxShape3D_o4ey2")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+debug_enabled = true
