@@ -29,13 +29,15 @@ static func get_next_potential_clash(atp_slot: ATPSlot) -> AssaultData:
 	return potential_clashes[next_index_clash]
 
 
-static func get_assaults_data_by_speed() -> Dictionary:
-	var assaults_by_speed: Dictionary = {}
-	for atp_slot in _ASSAULTS_BY_ATP_SLOT:
-		var assault: AssaultData = _ASSAULTS_BY_ATP_SLOT[atp_slot]
-		assaults_by_speed[atp_slot.speed] = assaults_by_speed.get(atp_slot.speed, [])
-		assaults_by_speed[atp_slot.speed].append(assault)
-	return assaults_by_speed
+static func get_sorted_assault_by_speed() -> Array[AbstractAssault]:
+	var assaults_data_by_speed: Dictionary = _get_assaults_data_by_speed()
+	var speeds: Array = assaults_data_by_speed.keys()
+	speeds.sort_custom(func(speed_1: int, speed_2: int): return speed_1 > speed_2)
+	var assaults: Array[AbstractAssault] = []
+	for speed in speeds:
+		assaults.append_array(assaults_data_by_speed[speed].map(
+				func(data: AssaultData): return data.create_assault()))
+	return assaults
 
 
 static func add(assault: AssaultData) -> void:
@@ -50,7 +52,6 @@ static func change_assaults_targeting(assault: AssaultData, old_target: Targets)
 	get_assaults_targeting(old_target.main).erase(assault)
 	for sub_target in old_target.sub_targets:
 		get_assaults_targeting(sub_target).erase(assault)
-	#_remove_assault_targeting(assault)
 	_add_assault_targeting(assault)
 
 
@@ -80,12 +81,23 @@ static func _add_assault_targeting(assault: AssaultData) -> void:
 		assaults_targeting.append(assault)
 		_ASSAULTS_LIST_BY_TARGET_ATP_SLOT[sub_target] = assaults_targeting
 
+
 static func _remove_assault_targeting(assault: AssaultData) -> void:
 	get_assaults_targeting(assault.targets.main).erase(assault)
 	for sub_target in assault.targets.sub_targets:
 		get_assaults_targeting(sub_target).erase(assault)
 
+
 static func _add_potential_clash(assault: AssaultData) -> void:
 	var potential_clashes: Array[AssaultData] = get_potential_clashes(assault.targets.main)
 	potential_clashes.append(assault)
 	_ASSAULTS_CAN_CLASH_LIST_BY_TARGET_ATP_SLOT[assault.targets.main] = potential_clashes
+
+
+static func _get_assaults_data_by_speed() -> Dictionary:
+	var assaults_by_speed: Dictionary = {}
+	for atp_slot in _ASSAULTS_BY_ATP_SLOT:
+		var assault: AssaultData = _ASSAULTS_BY_ATP_SLOT[atp_slot]
+		assaults_by_speed[atp_slot.speed] = assaults_by_speed.get(atp_slot.speed, [])
+		assaults_by_speed[atp_slot.speed].append(assault)
+	return assaults_by_speed

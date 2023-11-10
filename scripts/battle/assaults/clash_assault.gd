@@ -2,15 +2,19 @@ class_name ClashAssault
 extends AbstractAssault
 
 
+func can_be_executed() -> bool:
+	return super() and _target.can_assault(_target_atp_slot)
+
+
 func _main_use_actions_dice() -> void:
-	ActionDiceUser.realize_clash(_character, _target)
+	ActionDiceUser.use_dice_in_clash(_character, _target)
 
 
 func _additional_use_actions_dice() -> void:
 	if _character.can_continue_assault():
-		ActionDiceUser.realize_one_side(_character, _target)
+		ActionDiceUser.use_dice_in_one_side(_character, _target)
 	elif _target.can_continue_assault():
-		ActionDiceUser.realize_one_side(_target, _character)
+		ActionDiceUser.use_dice_in_one_side(_target, _character)
 
 
 func _move_characters() -> void:
@@ -19,12 +23,12 @@ func _move_characters() -> void:
 
 
 func _join_assault() -> void:
-	_character.join_assault(_character_atp_slot)
+	super()
 	_target.join_assault(_target_atp_slot)
 
 
 func _leave_assault() -> void:
-	_character.finish_assault()
+	super()
 	_target.finish_assault()
 
 

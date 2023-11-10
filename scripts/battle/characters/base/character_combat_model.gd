@@ -6,11 +6,9 @@ signal won_clash(target: Character)
 signal drew_clash(target: Character)
 signal lost_clash(target: Character)
 
-var on_move: bool = false
-
-var current_atp_slot: ATPSlot
-var current_skill: SkillCombatModel
-var current_action_dice: AbstractActionDice
+var current_atp_slot: ATPSlot = null
+var current_skill: SkillCombatModel = null
+var current_action_dice: AbstractActionDice = null
 var dice_reserved_list: Array[AbstractActionDice] = []
 
 var wearer: Character
@@ -43,12 +41,16 @@ func is_active() -> bool:
 	return wearer.is_active()
 
 
+func can_assault(atp_slot: ATPSlot) -> bool:
+	return is_active() and atp_slot.assaulting_skill != null
+
+
 func can_continue_assault() -> bool:
-	return is_active() and (current_skill == null or current_skill.is_available)
+	return is_active() and current_skill and current_skill.is_available
 
 
 func can_fight_back() -> bool:
-	return there_is_reserved_dice() and is_active()
+	return is_active() and there_is_reserved_dice()
 
 
 func there_is_reserved_dice() -> bool:

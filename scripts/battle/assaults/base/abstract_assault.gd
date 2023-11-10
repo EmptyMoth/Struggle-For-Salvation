@@ -19,12 +19,11 @@ func _init(assault_data: AssaultData) -> void:
 
 
 func can_be_executed() -> bool:
-	return _can_continue_assault()
+	return _character.can_assault(_character_atp_slot)
 
 
 func execute() -> void:
 	await _move_characters()
-	print(_character)
 	_join_assault()
 	while _can_continue_assault():
 		_main_use_actions_dice()
@@ -41,10 +40,10 @@ func _additional_use_actions_dice() -> void:
 
 
 func _join_assault() -> void:
-	pass
+	_character.join_assault(_character_atp_slot)
 
 func _leave_assault() -> void:
-	pass
+	_character.finish_assault()
 
 
 func _move_characters() -> void:

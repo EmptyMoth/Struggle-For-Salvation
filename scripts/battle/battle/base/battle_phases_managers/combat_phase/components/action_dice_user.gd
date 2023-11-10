@@ -2,7 +2,7 @@ class_name ActionDiceUser
 extends RefCounted
 
 
-static func realize_one_side(character: CharacterCombatModel, target: CharacterCombatModel) -> void:
+static func use_dice_in_one_side(character: CharacterCombatModel, target: CharacterCombatModel) -> void:
 	var action_dice: AbstractActionDice = character.get_next_dice()
 	if not action_dice.is_used_on_one_sided():
 		character.reserve_current_dice()
@@ -11,7 +11,7 @@ static func realize_one_side(character: CharacterCombatModel, target: CharacterC
 	character.try_use_current_dice_in_one_side(target)
 
 
-static func realize_clash(opponent_1: CharacterCombatModel, opponent_2: CharacterCombatModel) -> void:
+static func use_dice_in_clash(opponent_1: CharacterCombatModel, opponent_2: CharacterCombatModel) -> void:
 	var interaction: Callable = _get_action_dice_interaction(
 			opponent_1.get_next_dice(), opponent_2.get_next_dice())
 	interaction.call(opponent_1, opponent_2)

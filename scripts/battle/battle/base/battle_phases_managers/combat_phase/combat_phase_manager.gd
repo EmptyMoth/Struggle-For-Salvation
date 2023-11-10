@@ -4,21 +4,14 @@ extends Resource
 
 static func _on_battle_preparation_ended() -> void:
 	BattleSignals.combat_started.emit()
-	var assaults: Array[AbstractAssault] = _get_sortet_assault()
-	for assault in assaults:
-		if assault.can_be_executed():
-			assault.execute()
-			await assault.executed
+	await implement_assaults()
 	BattleSignals.combat_ended.emit()
 
 
-static func _get_sortet_assault() -> Array[AbstractAssault]:
-	var assaults_data_by_speed: Dictionary = AssaultLog.get_assaults_data_by_speed()
-	var speeds: Array = assaults_data_by_speed.keys()
-	speeds.sort()
-	speeds.reverse()
-	var assaults: Array[AbstractAssault] = []
-	for speed in speeds:
-		assaults.append_array(assaults_data_by_speed[speed].map(
-				func(data: AssaultData): return data.create_assault()))
-	return assaults
+static func implement_assaults() -> void:
+	var assaults: Array[AbstractAssault] = AssaultLog.get_sorted_assault_by_speed()
+	for assault in assaults:
+		if not assault.can_be_executed():
+			continue
+		assault.execute()
+		await assault.executed

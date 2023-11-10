@@ -17,7 +17,7 @@ var is_destroyed: bool = false
 
 var wearer: CharacterCombatModel
 
-var _index_current_dice: int = 0
+var _index_next_dice: int = 0
 var _last_used_dice: AbstractActionDice
 
 
@@ -30,11 +30,11 @@ func _init(stats: SkillStats, character: Character) -> void:
 
 
 func there_is_dice_available() -> bool:
-	return _index_current_dice < dice_count or (_last_used_dice and _last_used_dice.is_recycled)
+	return _index_next_dice < dice_count or (_last_used_dice and _last_used_dice.is_recycled)
 
 
 func get_index_current_dice() -> int:
-	return _index_current_dice
+	return _index_next_dice - 1
 
 
 func get_current_dice() -> AbstractActionDice:
@@ -50,9 +50,9 @@ func get_dice_at(index: int) -> AbstractActionDice:
 func get_next_dice() -> AbstractActionDice:
 	if _last_used_dice != null and _last_used_dice.is_recycled:
 		return _last_used_dice
-	if _index_current_dice >= dice_count:
+	if _index_next_dice >= dice_count:
 		push_error("incorrect index was passed for taking Action Dice")
 	
-	_last_used_dice = actions_dice[_index_current_dice]
-	_index_current_dice += 1
+	_last_used_dice = actions_dice[_index_next_dice]
+	_index_next_dice += 1
 	return _last_used_dice
