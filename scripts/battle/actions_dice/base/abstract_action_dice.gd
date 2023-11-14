@@ -12,18 +12,26 @@ static var losing_action := DiceAction.new(
 var wearer: CharacterCombatModel :
 	get: return wearer_skill.wearer
 
-var current_value: int = 0
 var is_used: bool = false
 var is_destroyed: bool = false
 var is_recycled: bool = false
 var is_responds: bool = false
+var is_goes_to_reserve: bool = false
+var is_avoids_clash: bool = false
 var wearer_skill: SkillCombatModel
 var bonus: ActionDiceBonus = ActionDiceBonus.new()
+
+var current_value: int = 0
+var is_reserved: bool = false
 
 
 func _init(_stats: ActionDiceStats, skill: SkillCombatModel) -> void:
 	stats = _stats
 	wearer_skill = skill
+
+
+func _to_string() -> String:
+	return "%cD-" + str(current_value)
 
 
 #static func create_dice(_stats: ActionDiceStats, skill: SkillCombatModel) -> AbstractActionDice:
@@ -76,17 +84,8 @@ func break_dice() -> void:
 	break_down.emit()
 
 
-func is_used_on_one_sided() -> bool:
-	return false
-
-
-func will_go_into_reserve(opponent_dice: AbstractActionDice) -> bool:
-	return false
-
-
-func use(target: CharacterCombatModel) -> DiceAction:
+func use(target: CharacterCombatModel) -> void:
 	is_used = true
-	return stats.action.init(_none_action)
 
 
 func use_in_clash(target: CharacterCombatModel, clash_result: BattleEnums.ClashResult) -> void:

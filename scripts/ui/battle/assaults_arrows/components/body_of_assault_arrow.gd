@@ -9,8 +9,17 @@ const _ARC_END_ANGLE: float = PI/2 + _ANGLE_ALONG_BODY
 const _STRETCHING_FACTOR_BY_X: float = cos(PI/2 - _ANGLE_ALONG_BODY)
 const _DOWNING_FACTOR_BY_Y: float = sin(PI/2 - _ANGLE_ALONG_BODY)
 
+const _TEXTURE_MAIN_BODY: Texture = preload("res://sprites/ui/battle/assaults_arrows/main_body.png")
+const _TEXTURE_SUB_BODY: Texture = preload("res://sprites/ui/battle/assaults_arrows/sub_body.png")
+
 var _arc_end_angle: float
 var _arrow_line: Vector2
+
+
+func change_appearance(is_sub_arrow: bool) -> void:
+	texture = _TEXTURE_SUB_BODY if is_sub_arrow else _TEXTURE_MAIN_BODY
+	texture_mode = Line2D.LINE_TEXTURE_TILE if is_sub_arrow else Line2D.LINE_TEXTURE_STRETCH
+	texture_repeat = CanvasItem.TEXTURE_REPEAT_ENABLED if is_sub_arrow else CanvasItem.TEXTURE_REPEAT_DISABLED
 
 
 func set_arrow_line(arrow_line: Vector2) -> void:

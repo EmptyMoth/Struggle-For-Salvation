@@ -4,10 +4,9 @@ extends RefCounted
 
 static func use_dice_in_one_side(character: CharacterCombatModel, target: CharacterCombatModel) -> void:
 	var action_dice: AbstractActionDice = character.get_next_dice()
-	if not action_dice.is_used_on_one_sided():
+	if action_dice.is_goes_to_reserve:
 		character.reserve_current_dice()
 		return
-	character.current_action_dice.roll_dice()
 	character.try_use_current_dice_in_one_side(target)
 
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gapi0qty6ro4"
-path="res://.godot/imported/point.png-9f2cb1a445eea51acd79dddd7900ae0e.ctex"
+uid="uid://cd4lm4iun1an0"
+path="res://.godot/imported/main_body.png-4cd3dd6e748992becb5788b516de33f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/ui/battle/characters/arrow_showing_target/pointer/point.png"
-dest_files=["res://.godot/imported/point.png-9f2cb1a445eea51acd79dddd7900ae0e.ctex"]
+source_file="res://sprites/ui/battle/assaults_arrows/main_body.png"
+dest_files=["res://.godot/imported/main_body.png-4cd3dd6e748992becb5788b516de33f6.ctex"]
 
 [params]
 

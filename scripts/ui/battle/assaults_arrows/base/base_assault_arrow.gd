@@ -11,9 +11,9 @@ enum AssaultArrowType {
 
 const COLOR_BY_ARROW_TYPE: Dictionary = {
 	AssaultArrowType.PLAYER : Color("f5f5f5"),
-	AssaultArrowType.ALLY_ONE_SIDE : Color("69b6d9"),
-	AssaultArrowType.ENEMY_ONE_SIDE : Color("ff6a6e"),
-	AssaultArrowType.CLASH : Color("ffe869"),
+	AssaultArrowType.ALLY_ONE_SIDE : Color("65B5FF"),
+	AssaultArrowType.ENEMY_ONE_SIDE : Color("FF5454"),
+	AssaultArrowType.CLASH : Color("FFE76A"),
 }
 
 const _ASSAULT_ARROW_PACKED_SCENE: PackedScene = preload("res://scenes/ui/battle/assaults_arrows/base/base_assault_arrow.tscn")
@@ -38,7 +38,7 @@ var _target_atp_slot: BaseATPSlotUI
 func init(assault: AssaultData, target_atp_slot: ATPSlot) -> void:
 	hide()
 	_atp_slot = assault.atp_slot.get_atp_slot_ui()
-	_update_arrow(assault, target_atp_slot)
+	_update_arrow.call_deferred(assault, target_atp_slot)
 	assault.assault_data_changed.connect(_on_assault_data_changed)
 
 
@@ -70,7 +70,7 @@ func _update_arrow(assault: AssaultData, target_atp_slot: ATPSlot) -> void:
 	add_to_group(BattleGroups.GROUPS_BY_ASSAULT_ARROWS_TYPES[_arrow_type])
 	is_battle_setting_display = BattleSettings.get_display_assault_arrows_by_type(_arrow_type)
 	modulate = COLOR_BY_ARROW_TYPE[_arrow_type]
-	_create_body_arrow(is_sub_arrow)
+	_body.change_appearance(is_sub_arrow)
 
 
 func _draw_arrow() -> void:
@@ -101,11 +101,6 @@ func _determine_arrow_type(assault: AssaultData, is_sub_arrow: bool) -> AssaultA
 	return AssaultArrowType.ALLY_ONE_SIDE \
 			if assault.atp_slot.wearer.is_ally \
 			else AssaultArrowType.ENEMY_ONE_SIDE
-
-
-func _create_body_arrow(is_sub_arrow: bool) -> void:
-	await ready
-	_body.modulate = (Color.WHITE if not is_sub_arrow else Color.CHARTREUSE)
 
 
 func _on_assault_data_changed(changed_assault: AssaultData, old_targets: Targets) -> void:

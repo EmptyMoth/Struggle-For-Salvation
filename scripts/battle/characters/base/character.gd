@@ -80,25 +80,10 @@ func remove_independent() -> void:
 	independently_arranges_skills = false
 
 
-func to_die() -> void:
-	take_physical_damage(physical_health.max_health)
-
-func to_stun() -> void:
-	take_mental_damage(mental_health.max_health)
 
 
-func take_physical_damage(damage: int, is_permanent: bool = false) -> int:
-	return _take_damage(damage, is_permanent, physical_resistance, physical_health)
-
-func take_mental_damage(damage: int, is_permanent: bool = false) -> int:
-	return _take_damage(damage, is_permanent, mental_resistance, mental_health)
 
 
-func physical_heal(heal_amound: int) -> void:
-	physical_health.heal(heal_amound)
-
-func mental_heal(heal_amound: int) -> void:
-	mental_health.heal(heal_amound)
 
 
 func auto_set_assault(opponents: Array[Node]) -> void:
@@ -121,11 +106,7 @@ func _set_character_to_groups() -> void:
 		add_to_group(BattleGroups.PATHOGENS_GROUP)
 
 
-func _take_damage(damage: int, is_permanent: bool,
-			resistance: BaseResistance, health: AbstractHealth) -> int:
-	var final_damage: int = damage if is_permanent else roundi(damage * resistance.get_value())
-	health.take_damage(final_damage)
-	return final_damage
+
 
 
 func _connect_signals() -> void:

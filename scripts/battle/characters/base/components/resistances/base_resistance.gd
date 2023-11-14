@@ -20,6 +20,11 @@ const _MULTIPLIER_BY_RESISTANCE: Dictionary = {
 	Resistance.FATAL: 2.0,
 }
 
+var default_multiplier: float :
+	get: return _MULTIPLIER_BY_RESISTANCE[default_resistance]
+var multiplier: float :
+	get: return _MULTIPLIER_BY_RESISTANCE[resistance]
+
 var default_resistance: Resistance
 var resistance: Resistance
 
@@ -27,14 +32,6 @@ var resistance: Resistance
 func _init(start_resistance: Resistance) -> void:
 	default_resistance = start_resistance
 	reset()
-
-
-func get_default_value() -> float:
-	return _MULTIPLIER_BY_RESISTANCE[default_resistance]
-
-
-func get_value() -> float:
-	return _MULTIPLIER_BY_RESISTANCE[resistance]
 
 
 func reset() -> void:

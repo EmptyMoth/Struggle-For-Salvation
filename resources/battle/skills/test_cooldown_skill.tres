@@ -16,7 +16,7 @@ abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dic
 
 [sub_resource type="Resource" id="Resource_5sxm7"]
 script = ExtResource("1_nu464")
-dice_type = 0
+dice_type = 3
 min_value = 3
 max_value = 5
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
