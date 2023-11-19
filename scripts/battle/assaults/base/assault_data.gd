@@ -2,7 +2,7 @@ class_name AssaultData
 extends Resource
 
 
-signal assault_data_changed(changed_assault: AssaultData, old_targets: Targets)
+signal assault_data_changed(changed_assault: AssaultData)
 
 var atp_slot: ATPSlot
 var targets: Targets
@@ -35,14 +35,12 @@ func is_one_side() -> bool:
 
 
 func set_default() -> void:
-	var old_main_target: Targets = targets.copy()
 	targets.set_default()
 	type = BattleEnums.AssaultType.ONE_SIDE
-	assault_data_changed.emit(self, old_main_target)
+	assault_data_changed.emit(self)
 
 
 func set_clash(main_target: ATPSlot) -> void:
-	var old_main_target: Targets = targets.copy()
 	targets.change_main_target(main_target)
 	type = BattleEnums.AssaultType.CLASH
-	assault_data_changed.emit(self, old_main_target)
+	assault_data_changed.emit(self)

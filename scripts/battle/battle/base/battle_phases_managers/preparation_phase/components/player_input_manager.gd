@@ -24,6 +24,8 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
+	if BaseBattle.battle == null:
+		return
 	if BaseBattle.battle.current_phase != BattleEnums.BattlePhase.PREPARATION:
 		return
 	if Input.is_action_just_released("ui_switch_battle_phase"):

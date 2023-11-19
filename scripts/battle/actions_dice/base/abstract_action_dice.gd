@@ -2,114 +2,72 @@ class_name AbstractActionDice
 extends Resource
 
 
-signal break_down
+const _DICE_COLOR_BY_TYPE: Dictionary = {
+	BattleEnums.ActionDiceType.ATTACK : Color("E54646"),
+	BattleEnums.ActionDiceType.BLOCK : Color("5C8AE5"),
+	BattleEnums.ActionDiceType.EVADE : Color("73E573"),
+	BattleEnums.ActionDiceType.COUNTER : Color("EEEE48"),
+}
 
-@export var stats: ActionDiceStats
-
-static var losing_action := DiceAction.new(
-		BattleParameters.CharactersMotions.STUN, AbstractActionDice._none_action)
-
-var wearer: CharacterCombatModel :
+var wearer: Character :
 	get: return wearer_skill.wearer
+var wearer_skill: AbstractSkill
 
-var is_used: bool = false
-var is_destroyed: bool = false
-var is_recycled: bool = false
-var is_responds: bool = false
-var is_goes_to_reserve: bool = false
-var is_avoids_clash: bool = false
-var wearer_skill: SkillCombatModel
-var bonus: ActionDiceBonus = ActionDiceBonus.new()
+var stats: ActionDiceStats
+var values_model: ActionDiceValuesModel
+var combat_model: ActionDiceCombatModel
 
-var current_value: int = 0
-var is_reserved: bool = false
+var color: Color :
+	get: return _DICE_COLOR_BY_TYPE[stats.dice_type]
+
+var default_min_value: int : 
+	get: return values_model.default_min_value
+var default_max_value: int : 
+	get: return values_model.default_max_value
+var default_current_value: int : 
+	get: return values_model.default_current_value
 
 
-func _init(_stats: ActionDiceStats, skill: SkillCombatModel) -> void:
-	stats = _stats
+func _init(dice_stats: ActionDiceStats, skill: AbstractSkill) -> void:
 	wearer_skill = skill
+	stats = dice_stats
+	values_model = ActionDiceValuesModel.new(dice_stats, skill)
 
 
 func _to_string() -> String:
-	return "%cD-" + str(current_value)
+	return "%cD-" + str(values_model.get_current_value())
 
 
-#static func create_dice(_stats: ActionDiceStats, skill: SkillCombatModel) -> AbstractActionDice:
-#	match _stats.dice_type:
-#		ActionDiceStats.DiceType.ATTACK:
-#			return AttackDice.new(_stats, skill)
-#		ActionDiceStats.DiceType.BLOCK:
-#			return BlockDice.new(_stats, skill)
-#		ActionDiceStats.DiceType.EVADE:
-#			return EvadeDice.new(_stats, skill)
-#		_:
-#			return CounterDice.new(_stats, skill)
+func create_combat_dice(skill: SkillCombatModel) -> ActionDiceCombatModel:
+	combat_model = _create_combat_dice(skill)
+	return combat_model
 
 
-static func get_color() -> Color:
-	return Color.WHITE_SMOKE
+func get_min_value() -> int: return values_model.get_min_value()
+
+func get_max_value() -> int: return values_model.get_max_value()
+
+func get_current_value() -> int: return values_model.get_current_value()
+
+func roll_dice() -> void: return values_model.roll_dice()
+
+func compare_to(opponent_dice: ActionDiceValuesModel) -> int: return values_model.compare_to(opponent_dice)
 
 
-func get_default_min_value() -> int:
-	return stats.min_value
+func break_dice() -> void: combat_model.break_dice()
 
-func get_default_max_value() -> int:
-	return stats.max_value
+func use_in_one_side(target: CharacterCombatModel) -> void: combat_model.use_in_one_side(target)
 
-func get_default_current_value() -> int:
-	return current_value
+func use_in_clash(target: CharacterCombatModel, clash_result: BattleEnums.ClashResult) -> void: combat_model.use_in_clash(target, clash_result)
 
 
-func get_min_value() -> int:
-	return stats.min_value + bonus.min_value
-
-func get_max_value() -> int:
-	return stats.max_value + bonus.max_value
-
-func get_current_value() -> int:
-	if bonus.ignore_power:
-		return current_value
-	return current_value + bonus.power
-
-
-func roll_dice() -> void:
-	current_value = randi_range(get_min_value(), get_max_value())
-
-
-func compare_to(opponent_dice: AbstractActionDice) -> int:
-	return clampi(current_value - opponent_dice.current_value, -1, 1)
-
-
-func break_dice() -> void:
-	break_down.emit()
-
-
-func use(target: CharacterCombatModel) -> void:
-	is_used = true
-
-
-func use_in_clash(target: CharacterCombatModel, clash_result: BattleEnums.ClashResult) -> void:
-	match clash_result:
-		BattleEnums.ClashResult.WIN:
-			_win_clash(target)
-		BattleEnums.ClashResult.LOSE:
-			_lose_clash(target)
+func _create_combat_dice(skill: SkillCombatModel) -> ActionDiceCombatModel:
+	match stats.dice_type:
+		BattleEnums.ActionDiceType.ATTACK:
+			return AttackDice.new(self, skill)
+		BattleEnums.ActionDiceType.BLOCK:
+			return BlockDice.new(self, skill)
+		BattleEnums.ActionDiceType.EVADE:
+			return EvadeDice.new(self, skill)
 		_:
-			_draw_clash(target)
-
-
-func _win_clash(target: CharacterCombatModel) -> void:
-	pass
-
-func _draw_clash(target: CharacterCombatModel) -> void:
-	pass
-
-func _lose_clash(target: CharacterCombatModel) -> void:
-	pass
-
-
-func _action(_character: Character, _target: Character) -> void:
-	pass
-
-static func _none_action(_character: Character, _target: Character) -> void:
-	pass
+			return CounterDice.new(self, skill)

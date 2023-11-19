@@ -6,27 +6,26 @@ var dice_count: int :
 	get: return actions_dice.size()
 var is_available: int :
 	get: return not is_used and not is_destroyed
-
-var calculate_value_for_clash: Callable
-var actions_dice: Array = []#[AbstractActionDice] = []
-var abilities: Array[BaseSkillAbility] = []
-
 var is_used: bool :
 	get: return not there_is_dice_available()
 var is_destroyed: bool = false
 
 var wearer: CharacterCombatModel
+var model: AbstractSkill
+
+var actions_dice: Array[ActionDiceCombatModel]
+var abilities: Array[BaseSkillAbility]
 
 var _index_next_dice: int = 0
-var _last_used_dice: AbstractActionDice
+var _last_used_dice: ActionDiceCombatModel
 
 
-func _init(stats: SkillStats, character: Character) -> void:
+func _init(skill: AbstractSkill, character: Character) -> void:
 	wearer = character.get_combat_model()
-	calculate_value_for_clash = stats.clash_type.calculate_value_to_compare_in_clash
-	abilities = stats.abilities
-	actions_dice = stats.actions_dice_stats.map(func(dice_stats: ActionDiceStats): 
-			return dice_stats.create_dice(self))
+	model = skill
+	abilities = model.stats.abilities
+	actions_dice.assign(model.actions_dice.map(
+			func(dice: AbstractActionDice): return dice.create_combat_dice(self)))
 
 
 func there_is_dice_available() -> bool:
@@ -37,17 +36,21 @@ func get_index_current_dice() -> int:
 	return _index_next_dice - 1
 
 
-func get_current_dice() -> AbstractActionDice:
+func get_dice_available() -> Array[ActionDiceCombatModel]:
+	return actions_dice.slice(_index_next_dice)
+
+
+func get_current_dice() -> ActionDiceCombatModel:
 	return _last_used_dice
 
 
-func get_dice_at(index: int) -> AbstractActionDice:
+func get_dice_at(index: int) -> ActionDiceCombatModel:
 	if index < 0 or index >= dice_count:
 		push_error("incorrect index was passed for taking Action Dice")
 	return actions_dice[index]
 
 
-func get_next_dice() -> AbstractActionDice:
+func get_next_dice() -> ActionDiceCombatModel:
 	if _last_used_dice != null and _last_used_dice.is_recycled:
 		return _last_used_dice
 	if _index_next_dice >= dice_count:
@@ -56,3 +59,7 @@ func get_next_dice() -> AbstractActionDice:
 	_last_used_dice = actions_dice[_index_next_dice]
 	_index_next_dice += 1
 	return _last_used_dice
+
+
+func calculate_comparing_value(opponent_skill: SkillCombatModel) -> int:
+	return model.stats.clash_type.calculate_comparing_value(opponent_skill)

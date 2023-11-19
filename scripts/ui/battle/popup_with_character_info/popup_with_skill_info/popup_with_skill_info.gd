@@ -19,10 +19,10 @@ const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/ba
 @onready var _dice_abilities_container: VBoxContainer = $HBox/VBox/AbilitiesVBox
 
 
-func set_info(skill: SkillStats) -> void:
-	_set_base_skill_info(skill)
-	_set_skill_abilities_info(skill.abilities)
-	_set_actions_dice_info(skill.actions_dice_stats)
+func set_info(skill: AbstractSkill) -> void:
+	_set_base_skill_info(skill.stats)
+	_set_skill_abilities_info(skill.stats.abilities)
+	_set_actions_dice_info(skill.actions_dice)
 	_button_hiding_dice_abilities.visible = _dice_abilities_container.get_child_count() > 0
 
 
@@ -52,9 +52,7 @@ func is_visible_dice_abilities() -> bool:
 func _set_base_skill_info(skill: SkillStats) -> void:
 	_skill_icon.texture = skill.icon
 	_title_label.text = skill.title
-	_type_icon.texture.current_frame = \
-			0 if skill.targeting_type is SingleSkillType else 1
-	
+	_type_icon.texture.current_frame = 0 if skill.targeting_type is SingleSkillType else 1
 	var is_cooldown: bool = skill.use_type is CooldownSkillType
 	_uses_type_label.text = "Cooldown" if is_cooldown else "Quantity"
 	_uses_count_label.text = str(
@@ -67,24 +65,23 @@ func _set_skill_abilities_info(abilities: Array[BaseSkillAbility]) -> void:
 		_skill_ability_label.text = AbstractAbility.get_abilities_description(abilities)
 
 
-func _set_actions_dice_info(actions_dice_list: Array[ActionDiceStats]) -> void:
+func _set_actions_dice_info(actions_dice_list: Array) -> void:
 	remove_actions_dice_info()
 	for i in actions_dice_list.size():
-		var action_dice: ActionDiceStats = actions_dice_list[i]
+		var action_dice: AbstractActionDice = actions_dice_list[i]
 		_set_action_dice_info(action_dice)
 		_set_action_dice_ability_info(action_dice, i)
 
 
-func _set_action_dice_info(action_dice: ActionDiceStats) -> void:
+func _set_action_dice_info(action_dice: AbstractActionDice) -> void:
 	var action_dice_info: ActionDiceInfo = _ACTION_DICE_INFO_SCENE.instantiate()
 	_dice_container.add_child(action_dice_info)
 	action_dice_info.set_info(action_dice)
 
 
-func _set_action_dice_ability_info(action_dice: ActionDiceStats, dice_index: int) -> void:
-	if not action_dice.has_ability():
+func _set_action_dice_ability_info(action_dice: AbstractActionDice, dice_index: int) -> void:
+	if action_dice.stats.abilities.size() <= 0:
 		return
-	
 	var action_dice_ability_info: PopupWithActionDiceAbility = _ACTION_DICE_ABILITY_INFO_SCENE.instantiate()
 	_dice_abilities_container.add_child(action_dice_ability_info)
 	action_dice_ability_info.set_info(action_dice, dice_index)

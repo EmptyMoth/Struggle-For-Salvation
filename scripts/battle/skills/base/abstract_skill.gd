@@ -11,7 +11,7 @@ var wearer: Character
 var current_use_count: int = 0
 var is_mass_attack: bool
 var targets_count: int
-
+var actions_dice: Array#[AbstractActionDice]
 
 
 func _init(character: Character, skill_stats: SkillStats) -> void:
@@ -19,6 +19,8 @@ func _init(character: Character, skill_stats: SkillStats) -> void:
 	stats = skill_stats
 	is_mass_attack = stats.targeting_type is MassSkillType
 	targets_count = stats.targeting_type.get_targets_count()
+	actions_dice = skill_stats.actions_dice_stats.map(
+			func(stats: ActionDiceStats): return AbstractActionDice.new(stats, self))
 
 
 func _to_string() -> String:
@@ -44,4 +46,4 @@ func get_targets_setter() -> BaseTargetsSetter:
 
 
 func use() -> SkillCombatModel:
-	return SkillCombatModel.new(stats, wearer)
+	return SkillCombatModel.new(self, wearer)

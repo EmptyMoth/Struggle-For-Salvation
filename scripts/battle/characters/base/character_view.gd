@@ -10,12 +10,12 @@ var _model: Character
 
 @onready var character_motions: AnimatedSprite2D = $Actions
 @onready var actions_animations: AnimationPlayer = $Actions/AnimationPlayer
-@onready var subcharacter_hud: SubcharacterHUD = $SubcharacterHUD
+@onready var subcharacter_bars: SubcharacterBars = $SubcharacterBars
 @onready var atp_slots_manager_ui: ATPSlotsManagerUI = $ATPSlotsContainer
 
 
 func _ready() -> void:
-	subcharacter_hud.init(_model.physical_health, _model.mental_health)
+	subcharacter_bars.set_healths(_model.physical_health, _model.mental_health)
 	switch_motion(BattleParameters.CharactersMotions.DEFAULT)
 	_connect_signals()
 

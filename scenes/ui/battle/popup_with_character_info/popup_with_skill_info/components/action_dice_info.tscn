@@ -27,7 +27,7 @@ mouse_filter = 2
 theme_override_constants/separation = 0
 script = ExtResource("1_gdcf8")
 
-[node name="DiceValue" type="Label" parent="."]
+[node name="DiceRange" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
 text = "98-99"

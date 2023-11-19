@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4dda6w3tkcxx"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/characters_components/health_bars/base_health_bar.gd" id="1_fufof"]
+[ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="2_80c2k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2jl1j"]
+line_spacing = 0.0
+font = ExtResource("2_80c2k")
+font_size = 18
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v7gm3"]
+bg_color = Color(0.960784, 0.960784, 0.960784, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 4
+
+[node name="AbstractHealthBar" type="HBoxContainer"]
+offset_right = 56.0
+offset_bottom = 21.0
+mouse_filter = 2
+theme_override_constants/separation = 3
+script = ExtResource("1_fufof")
+
+[node name="Counter" type="Label" parent="."]
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_2jl1j")
+vertical_alignment = 1
+
+[node name="Bar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_v7gm3")
+show_percentage = false
+
+[connection signal="value_changed" from="Bar" to="." method="_on_bar_value_changed"]

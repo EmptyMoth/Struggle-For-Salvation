@@ -7,14 +7,15 @@ func can_be_executed() -> bool:
 
 
 func _main_use_actions_dice() -> void:
-	ActionDiceUser.use_dice_in_clash(_character, _target)
+	BattleSignals.clash_started.emit(_character.model, _target.model)
+	await ActionDiceUser.use_dice_in_clash(_character, _target)
 
 
 func _additional_use_actions_dice() -> void:
 	if _character.can_continue_assault():
-		ActionDiceUser.use_dice_in_one_side(_character, _target)
+		await ActionDiceUser.use_dice_in_one_side(_character, _target)
 	elif _target.can_continue_assault():
-		ActionDiceUser.use_dice_in_one_side(_target, _character)
+		await ActionDiceUser.use_dice_in_one_side(_target, _character)
 
 
 func _move_characters() -> void:

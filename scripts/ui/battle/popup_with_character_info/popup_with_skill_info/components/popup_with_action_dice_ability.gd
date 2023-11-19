@@ -9,9 +9,9 @@ const _ARABIC_VALUES: Array[int] = [10, 9, 5, 4, 1]
 @onready var _dice_ability_label: RichTextLabel = $Panel/Margin/HBox/ActionDiceAbility
 
 
-func set_info(action_dice: ActionDiceStats, action_dice_index: int) -> void:
-	_dice_number_label.text = PopupWithActionDiceAbility._convert_to_roman(action_dice_index + 1)
-	_dice_number_label.modulate = action_dice.get_color()
+func set_info(action_dice: AbstractActionDice, dice_index: int) -> void:
+	_dice_number_label.text = _convert_to_roman(dice_index + 1)
+	_dice_number_label.modulate = action_dice.color
 	_dice_ability_label.text = AbstractAbility.get_abilities_description(
 			action_dice.abilities as Array[AbstractAbility])
 
@@ -24,5 +24,4 @@ static func _convert_to_roman(number: int) -> String:
 			result += _ROMAN_SYMBOLS[index]
 			number -= _ARABIC_VALUES[index]
 		index += 1
-	
 	return result

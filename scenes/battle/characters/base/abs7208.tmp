@@ -113,7 +113,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_sn2ax")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jnt4r")
 
 [node name="SubcharacterBars" parent="." instance=ExtResource("10_p1s56")]
-theme_override_constants/margin_top = 5
 
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_character_mouse_entered"]
 [connection signal="mouse_exited" from="ClickArea" to="." method="_on_character_mouse_exited"]

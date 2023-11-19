@@ -62,5 +62,5 @@ func _get_position_on_camera(position_3d: Vector3) -> Vector2:
 
 
 func _navigation_setup():
-	await get_tree().physics_frame
+	await NavigationServer3D.map_changed
 	set_physics_process(true)

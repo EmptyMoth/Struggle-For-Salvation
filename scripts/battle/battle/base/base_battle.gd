@@ -2,6 +2,8 @@ class_name BaseBattle
 extends Node2D
 
 
+const _POPUP_WITH_ASSAULT_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_assault/popup_with_assault.tscn")
+
 @export var _packed_formation: PackedScene
 @export var _packed_location: PackedScene
 
@@ -16,8 +18,10 @@ var _battlefield: BaseBattlefield = null
 @onready var ally_team: BaseTeam = $Teams/AllyTeam
 @onready var enemy_team: BaseTeam = $Teams/EnemyTeam
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
-@onready var assaults_arrows: Control = $AssaultsArrows
+
+@onready var _assaults_arrows: Control = $UI/AssaultsArrows
 @onready var _darkening_screen: ColorRect = $UI/DarkeningScreen
+@onready var _popups_with_assault_info: Control = $UI/PopupsWithAssaultInfo
 
 
 func _ready() -> void:
@@ -51,10 +55,10 @@ func set_battlefild(battlefield: BaseBattlefield) -> void:
 
 
 func add_assault_arrow(arrow: BaseAssaultArrow) -> void:
-	assaults_arrows.add_child(arrow)
+	_assaults_arrows.add_child(arrow)
 
 func remove_assault_arrow(arrow: BaseAssaultArrow) -> void:
-	assaults_arrows.remove_child(arrow)
+	_assaults_arrows.remove_child(arrow)
 
 
 func victory() -> void:
@@ -78,12 +82,32 @@ func _start_next_turn() -> void:
 	BattleSignals.turn_started.emit()
 
 
+func _add_popup_with_assault_info(character: CharacterCombatModel) -> void:
+	var popup: BasePopupWithAssault = _POPUP_WITH_ASSAULT_INFO_SCENE.instantiate()
+	_popups_with_assault_info.add_child(popup)
+	popup.set_info(character)
+
+
+func _init_of_teams() -> void:
+	var left_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Left
+	var right_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Right
+	ally_team.set_popup_with_character_info(
+			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
+	enemy_team.set_popup_with_character_info(
+			left_popup if not Settings.gameplay_settings.allies_placement.is_left else right_popup)
+
+
 func _connect_signals() -> void:
 	BattleSignals.preparation_started.connect(_on_preparation_started)
 	BattleSignals.combat_started.connect(_on_combat_started)
 	BattleSignals.combat_ended.connect(_on_combat_ended)
 	BattleSignals.battle_started.connect(_start_next_turn)
 	BattleSignals.turn_ended.connect(_start_next_turn)
+	
+	BattleSignals.assault_started.connect(_on_assault_started)
+	BattleSignals.assault_ended.connect(_on_assault_ended)
+	BattleSignals.one_side_started.connect(_on_one_side_started)
+	BattleSignals.clash_started.connect(_on_clash_started)
 
 
 func _on_preparation_started() -> void:
@@ -101,10 +125,18 @@ func _on_combat_ended() -> void:
 	BattleSignals.turn_ended.emit()
 
 
-func _init_of_teams() -> void:
-	var left_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Left
-	var right_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Right
-	ally_team.set_popup_with_character_info(
-			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
-	enemy_team.set_popup_with_character_info(
-			left_popup if not Settings.gameplay_settings.allies_placement.is_left else right_popup)
+func _on_assault_started(character: Character, target: Character) -> void:
+	pass
+
+func _on_assault_ended(character: Character, target: Character) -> void:
+	for popup in _popups_with_assault_info.get_children():
+		_popups_with_assault_info.remove_child(popup)
+
+
+func _on_one_side_started(character: Character, target: Character) -> void:
+	_add_popup_with_assault_info(character.combat_model)
+
+
+func _on_clash_started(opponent_1: Character, opponent_2: Character) -> void:
+	_add_popup_with_assault_info(opponent_1.combat_model)
+	_add_popup_with_assault_info(opponent_2.combat_model)

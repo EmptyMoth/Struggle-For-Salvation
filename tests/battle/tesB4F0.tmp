@@ -42,6 +42,12 @@ script = ExtResource("4_c0bj1")
 team_fraction = -1
 _characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_siymb"), SubResource("Resource_iu4mf")])
 
+[node name="AssaultsArrows" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="DarkeningScreen" type="ColorRect" parent="UI"]
@@ -52,12 +58,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.462745)
-
-[node name="AssaultsArrows" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="PopupsWithCharacterInfo" type="Control" parent="UI"]
 custom_minimum_size = Vector2(1920, 1080)
@@ -72,12 +72,6 @@ layout_mode = 0
 
 [node name="Right" parent="UI/PopupsWithCharacterInfo" instance=ExtResource("7_ft1fj")]
 layout_mode = 1
-
-[node name="PopupsWithAssaultInfo" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

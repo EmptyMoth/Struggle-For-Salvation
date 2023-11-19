@@ -24,10 +24,11 @@ var is_battle_setting_display: bool = false :
 		visible = display or is_fixed
 var is_fixed: bool = false :
 	get: return _fixed_count > 0
-
-var _fixed_count: int = 0
+var is_sub_arrow: bool = false
 
 var _arrow_type: AssaultArrowType
+var _fixed_count: int = 0
+
 var _atp_slot: BaseATPSlotUI
 var _target_atp_slot: BaseATPSlotUI
 
@@ -38,7 +39,7 @@ var _target_atp_slot: BaseATPSlotUI
 func init(assault: AssaultData, target_atp_slot: ATPSlot) -> void:
 	hide()
 	_atp_slot = assault.atp_slot.get_atp_slot_ui()
-	_update_arrow.call_deferred(assault, target_atp_slot)
+	_update_arrow(assault, target_atp_slot)
 	assault.assault_data_changed.connect(_on_assault_data_changed)
 
 
@@ -64,12 +65,14 @@ func hide_arrow() -> void:
 
 func _update_arrow(assault: AssaultData, target_atp_slot: ATPSlot) -> void:
 	_target_atp_slot = target_atp_slot.get_atp_slot_ui()
-	var is_sub_arrow: bool = assault.targets.main != target_atp_slot
+	is_sub_arrow = target_atp_slot != assault.targets.main 
 	remove_from_group(BattleGroups.GROUPS_BY_ASSAULT_ARROWS_TYPES[_arrow_type])
-	_arrow_type = _determine_arrow_type(assault, is_sub_arrow)
+	_arrow_type = _determine_arrow_type(assault)
 	add_to_group(BattleGroups.GROUPS_BY_ASSAULT_ARROWS_TYPES[_arrow_type])
 	is_battle_setting_display = BattleSettings.get_display_assault_arrows_by_type(_arrow_type)
 	modulate = COLOR_BY_ARROW_TYPE[_arrow_type]
+	if not is_node_ready():
+		await ready
 	_body.change_appearance(is_sub_arrow)
 
 
@@ -95,7 +98,7 @@ func _get_target_point() -> Vector2:
 	return _target_atp_slot.center_position
 
 
-func _determine_arrow_type(assault: AssaultData, is_sub_arrow: bool) -> AssaultArrowType:
+func _determine_arrow_type(assault: AssaultData) -> AssaultArrowType:
 	if not is_sub_arrow and assault.is_clash():
 		return AssaultArrowType.CLASH
 	return AssaultArrowType.ALLY_ONE_SIDE \
@@ -103,9 +106,9 @@ func _determine_arrow_type(assault: AssaultData, is_sub_arrow: bool) -> AssaultA
 			else AssaultArrowType.ENEMY_ONE_SIDE
 
 
-func _on_assault_data_changed(changed_assault: AssaultData, old_targets: Targets) -> void:
+func _on_assault_data_changed(changed_assault: AssaultData) -> void:
 	var current_target: ATPSlot = _target_atp_slot._model
 	if current_target == changed_assault.targets.default_main \
 			or current_target == changed_assault.targets.main \
-			or current_target == old_targets.main:
+			or not is_sub_arrow:
 		_update_arrow(changed_assault, changed_assault.targets.main)

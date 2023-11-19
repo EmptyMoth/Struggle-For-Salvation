@@ -22,10 +22,9 @@ var independently_arranges_skills : bool
 @onready var physical_resistance := BaseResistance.new(stats.physical_resistance)
 @onready var mental_resistance := BaseResistance.new(stats.mental_resistance)
 
+@onready var combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
+@onready var view_model: CharacterView = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
 @onready var character_marker_3d: CharacterMarker3D = preload("res://scenes/battle/characters/character_marker_3d.tscn").instantiate()
-
-@onready var _combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
-@onready var _view: CharacterView = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
 
 
 func _init(battle_parameters: CharacterBattleParameters,
@@ -38,9 +37,9 @@ func _init(battle_parameters: CharacterBattleParameters,
 
 
 func _ready() -> void:
-	_view.set_model(self)
-	add_child(_view)
-	atp_slots_manager = ATPSlotsManager.new(self, _view.atp_slots_manager_ui)
+	view_model.set_model(self)
+	add_child(view_model)
+	atp_slots_manager = ATPSlotsManager.new(self, view_model.atp_slots_manager_ui)
 	_set_character_to_groups()
 	_connect_signals()
 
@@ -59,11 +58,11 @@ func is_active() -> bool:
 
 
 func get_view() -> CharacterView:
-	return _view
+	return view_model
 
 
 func get_combat_model() -> CharacterCombatModel:
-	return _combat_model
+	return combat_model
 
 
 func get_slots_for_assaults() -> Array[ATPSlot]:

@@ -41,4 +41,5 @@ targeting_type = SubResource("Resource_np13j")
 icon = ExtResource("1_uj83d")
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
 actions_dice_stats = Array[ExtResource("1_ykmpi")]([SubResource("Resource_3muf6"), SubResource("Resource_3h1kw")])
+is_unclashable = false
 priority = 2

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjnkm3wj1s8jp"]
+
+[ext_resource type="PackedScene" uid="uid://c4dda6w3tkcxx" path="res://scenes/ui/battle/characters_components/health_bars/base/abstract_health_bar.tscn" id="1_0ftg8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ar0gh"]
+bg_color = Color(0.313726, 0.607843, 0.898039, 1)
+corner_radius_top_left = 1
+corner_radius_top_right = 1
+corner_radius_bottom_right = 1
+corner_radius_bottom_left = 1
+corner_detail = 4
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[node name="SPBar" instance=ExtResource("1_0ftg8")]
+custom_minimum_size = Vector2(18, 18)
+_is_left = false
+
+[node name="Bar" parent="." index="0"]
+theme_override_styles/fill = SubResource("StyleBoxFlat_ar0gh")
+fill_mode = 3
+
+[node name="Counter" parent="." index="1"]
+self_modulate = Color(0.313726, 0.607843, 0.898039, 1)

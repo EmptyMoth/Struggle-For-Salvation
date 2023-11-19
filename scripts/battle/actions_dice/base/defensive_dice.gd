@@ -1,2 +1,2 @@
 class_name DefensiveDice
-extends AbstractActionDice
+extends ActionDiceCombatModel

@@ -23,12 +23,14 @@ func can_be_executed() -> bool:
 
 
 func execute() -> void:
+	BattleSignals.assault_started.emit(_character.model, _target.model)
 	await _move_characters()
 	_join_assault()
 	while _can_continue_assault():
-		_main_use_actions_dice()
-	_additional_use_actions_dice()
+		await _main_use_actions_dice()
+	await _additional_use_actions_dice()
 	_leave_assault()
+	BattleSignals.assault_ended.emit(_character.model, _target.model)
 	executed.emit()
 
 

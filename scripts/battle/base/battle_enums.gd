@@ -10,6 +10,8 @@ enum AssaultType { ONE_SIDE, CLASH }
 
 enum ClashResult { LOSE = -1, DRAW = 0, WIN = 1 }
 
+enum ActionDiceType { ATTACK, BLOCK, EVADE, COUNTER }
+
 enum CharacterType {
 	IMMUNOCYTE,
 	VIRUS,

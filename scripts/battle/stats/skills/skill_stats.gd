@@ -11,9 +11,6 @@ extends Resource
 @export var actions_dice_stats: Array[ActionDiceStats] = []
 
 @export_category("Other")
+@export var is_unclashable: bool = false
 @export_range(-10, 10, 1, "or_less", "or_greater") var priority: int = 0
 @export var targets_setter: BaseTargetsSetter = null
-
-
-func has_ability() -> bool:
-	return abilities.size() > 0

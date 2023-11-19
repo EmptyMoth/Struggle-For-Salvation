@@ -13,6 +13,11 @@ signal preparation_ended
 signal combat_started
 signal combat_ended
 
+signal assault_started(character: Character, target: Character)
+signal assault_ended(character: Character, target: Character)
+signal one_side_started(character: Character, target: Character)
+signal clash_started(opponent_1: Character, opponent_2: Character)
+
 
 func _ready() -> void:
 	battle_started.connect(PlayerInputManager._on_battle_started)

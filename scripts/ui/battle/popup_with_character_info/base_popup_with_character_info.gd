@@ -25,16 +25,16 @@ func set_info(character: Character, atp_slot: ATPSlot = null) -> void:
 	_skill_info.hide()
 	show_popup()
 	_base_info.set_info(character)
-	_additional_info.set_info(character.skills_manager.get_all_skills(), 
-			character.stats.passive_abilities)
+	_additional_info.set_info(
+			character.skills_manager.get_all_skills(), character.stats.passive_abilities)
 	if atp_slot == null:
 		_additional_info.open_passive_abilities_list()
-	else:
-		_additional_info.open_skills_list()
-		if atp_slot.assaulting_skill != null:
-			_skill_info.show()
-			_display_popup_with_skill(true)
-			_skill_info.set_info(atp_slot.assaulting_skill.stats)
+		return
+	_additional_info.open_skills_list()
+	if atp_slot.assaulting_skill != null:
+		_skill_info.show()
+		_display_popup_with_skill(true)
+		_skill_info.set_info(atp_slot.assaulting_skill)
 
 
 func close() -> void:
@@ -80,7 +80,7 @@ func _on_skill_selected(skill: AbstractSkill) -> void:
 
 func _on_skill_shown(skill: AbstractSkill) -> void:
 	_skill_info.show()
-	_skill_info.set_info(skill.stats)
+	_skill_info.set_info(skill)
 	_display_popup_with_skill(true)
 
 
