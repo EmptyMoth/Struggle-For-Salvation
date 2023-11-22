@@ -2,23 +2,25 @@ class_name ActionDiceValuesModel
 extends Resource
 
 
-var wearer: Character :
-	get: return wearer_skill.wearer
-var wearer_skill: AbstractSkill
+signal rolled
+signal dropped_min_value
+signal dropped_max_value
 
-var default_min_value: int
-var default_max_value: int
+var model: AbstractActionDice
+
+var default_min_value: int :
+	get: return model.stats.min_value
+var default_max_value: int :
+	get: return model.stats.max_value
 var default_current_value: int = 0
 
 var abilities: Array[BaseActionDiceAbility]
 var bonus: ActionDiceBonus = ActionDiceBonus.new()
 
 
-func _init(dice_stats: ActionDiceStats, skill: AbstractSkill) -> void:
-	wearer_skill = skill
-	default_min_value = dice_stats.min_value
-	default_max_value = dice_stats.max_value
-	abilities = dice_stats.abilities
+func _init(dice: AbstractActionDice) -> void:
+	model = dice
+	abilities = dice.stats.abilities
 
 
 func get_min_value() -> int:
@@ -34,7 +36,14 @@ func get_current_value() -> int:
 
 
 func roll_dice() -> void:
-	default_current_value = randi_range(get_min_value(), get_max_value())
+	var min_value: int = get_min_value()
+	var max_value: int = get_max_value()
+	default_current_value = randi_range(min_value, max_value)
+	match default_current_value:
+		min_value:
+			dropped_min_value.emit()
+		max_value:
+			dropped_max_value.emit()
 
 
 func compare_to(opponent_dice: ActionDiceValuesModel) -> int:

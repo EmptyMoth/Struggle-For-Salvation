@@ -6,12 +6,12 @@ func can_be_executed() -> bool:
 	return super() and _target.can_assault(_target_atp_slot)
 
 
-func _main_use_actions_dice() -> void:
-	BattleSignals.clash_started.emit(_character.model, _target.model)
-	await ActionDiceUser.use_dice_in_clash(_character, _target)
-
-
-func _additional_use_actions_dice() -> void:
+func _execute() -> void:
+	BattleSignals.clash_started.emit(_character, _target)
+	while _can_continue_assault():
+		await ActionDiceUser.use_dice_in_clash(_character, _target)
+	BattleSignals.clash_ended.emit(_character, _target)
+	
 	if _character.can_continue_assault():
 		await ActionDiceUser.use_dice_in_one_side(_character, _target)
 	elif _target.can_continue_assault():
@@ -19,8 +19,9 @@ func _additional_use_actions_dice() -> void:
 
 
 func _move_characters() -> void:
-	_character.move_to(_target, true)
-	await _target.move_to(_character, true)
+	_character.movement_model.move_to_clash(_target)
+	_target.movement_model.move_to_clash(_character)
+	await _target.movement_model.came_to_position
 
 
 func _join_assault() -> void:

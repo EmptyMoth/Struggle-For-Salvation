@@ -4,27 +4,18 @@ extends Node2D
 
 signal fraction_changed(new_fraction: BattleEnums.Fraction)
 
-var stats: CharacterStats
 var fraction: BattleEnums.Fraction
 var atp_slots_manager: ATPSlotsManager
 var skills_manager: SkillsManager
 
 var is_ally: bool :
 	get: return fraction == BattleEnums.Fraction.ALLY
-var is_stunned: bool :
-	get: return mental_health.is_empty()
-var is_dead: bool :
-	get: return physical_health.is_empty()
 var independently_arranges_skills : bool
-
-@onready var physical_health := PhysicalHealth.new(stats.max_physical_health)
-@onready var mental_health := MentalHealth.new(stats.max_mental_health)
-@onready var physical_resistance := BaseResistance.new(stats.physical_resistance)
-@onready var mental_resistance := BaseResistance.new(stats.mental_resistance)
+var stats: CharacterStats
 
 @onready var combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
-@onready var view_model: CharacterView = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
-@onready var character_marker_3d: CharacterMarker3D = preload("res://scenes/battle/characters/character_marker_3d.tscn").instantiate()
+@onready var view_model: CharacterViewModel = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
+@onready var movement_model: CharacterMovementModel = preload("res://scenes/battle/characters/character_marker_3d.tscn").instantiate()
 
 
 func _init(battle_parameters: CharacterBattleParameters,
@@ -53,16 +44,8 @@ static func get_action_name(action: BattleParameters.CharactersMotions) -> Strin
 	return action_name.to_lower() if action_name != null else "default"
 
 
-func is_active() -> bool:
-	return not is_stunned and not is_dead
-
-
-func get_view() -> CharacterView:
-	return view_model
-
-
-func get_combat_model() -> CharacterCombatModel:
-	return combat_model
+func get_movement_model() -> CharacterMovementModel:
+	return movement_model
 
 
 func get_slots_for_assaults() -> Array[ATPSlot]:
@@ -77,12 +60,6 @@ func make_independent() -> void:
 
 func remove_independent() -> void:
 	independently_arranges_skills = false
-
-
-
-
-
-
 
 
 func auto_set_assault(opponents: Array[Node]) -> void:
@@ -105,26 +82,24 @@ func _set_character_to_groups() -> void:
 		add_to_group(BattleGroups.PATHOGENS_GROUP)
 
 
-
-
-
 func _connect_signals() -> void:
-	physical_health.died.connect(_on_died)
-	mental_health.stunned.connect(_on_stunned)
-	mental_health.stunned.connect(physical_resistance._on_character_stunned)
-	mental_health.stunned.connect(mental_resistance._on_character_stunned)
+	pass
+#	physical_health.died.connect(_on_died)
+#	mental_health.stunned.connect(_on_stunned)
+#	mental_health.stunned.connect(physical_resistance._on_character_stunned)
+#	mental_health.stunned.connect(mental_resistance._on_character_stunned)
 
 
 func _on_died() -> void:
 	print("%s is DEAD!" % self)
 
 
-func _on_stunned() -> void:
-	physical_resistance._on_character_stunned()
-	mental_resistance._on_character_stunned()
+#func _on_stunned() -> void:
+#	physical_resistance._on_character_stunned()
+#	mental_resistance._on_character_stunned()
 
 
 func _on_battle_turn_started() -> void:
 	atp_slots_manager.roll_atp_slots()
 	skills_manager.restore_skills()
-	character_marker_3d.move_to_default_position()
+	movement_model.move_to_default_position()

@@ -5,7 +5,7 @@ extends Node3D
 func set_characters_markers_on_battlefield(allies: Array[Node], enemies: Array[Node]) -> void:
 	var node_with_characters: Node3D = $Characters
 	for character in allies + enemies:
-		node_with_characters.add_child(character.character_marker_3d)
+		node_with_characters.add_child(character.movement_model)
 
 
 func set_formation(formation: BaseFormation, allies: Array, enemies: Array) -> void:
@@ -21,4 +21,4 @@ func _set_characters_default_positions(formation: BaseFormation,
 	for character in characters:
 		var character_index: int = character.get_index()
 		var default_position: Vector3 = character_position_func.call(character_index)
-		character.character_marker_3d.set_default_position(default_position)
+		character.movement_model.set_default_position(default_position)

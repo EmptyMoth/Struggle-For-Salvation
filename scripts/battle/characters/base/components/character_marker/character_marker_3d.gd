@@ -1,4 +1,4 @@
-class_name CharacterMarker3D
+class_name CharacterMovementModel
 extends CharacterBody3D
 
 
@@ -21,12 +21,12 @@ func _physics_process(_delta: float) -> void:
 		return
 	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
 	velocity = global_position.direction_to(next_path_position) * SPEED
-	#velocity.y = 0
+	velocity.y = 0
 	move_and_slide()
 
 
-func to_left_of_character(character: CharacterMarker3D) -> bool:
-	return self.position.x < character.position.x
+func to_left_of_character(character: Character) -> bool:
+	return self.position.x < character.get_movement_model().position.x
 
 
 func set_default_position(new_position: Vector3) -> void:
@@ -42,19 +42,20 @@ func get_default_position_on_camera() -> Vector2:
 
 
 func move_to_default_position() -> void:
-	move_to_position(default_position)
+	move_to(default_position)
 
 
-func move_to_position(new_position: Vector3) -> void:
+func move_to(new_position: Vector3) -> void:
 	navigation_agent.set_target_position(new_position)
 	await navigation_agent.navigation_finished
 	came_to_position.emit()
 
 
-func move_to_assault(opponent: CharacterMarker3D, is_clash: bool) -> void:
-	move_to_position((self.position + opponent.position) / 2 \
-			if is_clash \
-			else opponent.position)
+func move_to_one_side(opponent: Character) -> void:
+	move_to(opponent.get_movement_model().position)
+
+func move_to_clash(opponent: Character) -> void:
+	move_to((self.position + opponent.get_movement_model().position) / 2)
 
 
 func _get_position_on_camera(position_3d: Vector3) -> Vector2:

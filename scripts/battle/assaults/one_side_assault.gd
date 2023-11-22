@@ -2,14 +2,16 @@ class_name OneSideAssault
 extends AbstractAssault
 
 
-func _main_use_actions_dice() -> void:
-	BattleSignals.one_side_started.emit(_character.model, _target.model)
-	await ActionDiceUser.use_dice_in_one_side(_character, _target)
+func _execute() -> void:
+	BattleSignals.one_side_started.emit(_character, _target)
+	while _can_continue_assault():
+		await ActionDiceUser.use_dice_in_one_side(_character, _target)
 
 
 func _move_characters() -> void:
-	await _character.move_to(_target, false)
+	_character.movement_model.move_to_one_side(_target)
+	await _character.movement_model.came_to_position
 
 
 func _can_continue_assault() -> bool:
-	return _character.can_continue_assault()
+	return _character.combat_model.can_continue_assault()

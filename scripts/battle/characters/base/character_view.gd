@@ -1,4 +1,4 @@
-class_name CharacterView
+class_name CharacterViewModel
 extends Node2D
 
 
@@ -6,7 +6,7 @@ extends Node2D
 #signal selected(self_character: Character, self_atp_slot: ATPSlot)
 #signal deselected(self_character: Character, self_atp_slot: ATPSlot)
 
-var _model: Character
+var model: Character
 
 @onready var character_motions: AnimatedSprite2D = $Actions
 @onready var actions_animations: AnimationPlayer = $Actions/AnimationPlayer
@@ -15,25 +15,17 @@ var _model: Character
 
 
 func _ready() -> void:
-	subcharacter_bars.set_healths(_model.physical_health, _model.mental_health)
+	subcharacter_bars.set_healths(model.combat_model.physical_health, model.combat_model.mental_health)
 	switch_motion(BattleParameters.CharactersMotions.DEFAULT)
 	_connect_signals()
 
 
 func _process(_delta: float) -> void:
-	position = _model.character_marker_3d.get_current_position_on_camera()
+	position = model.movement_model.get_current_position_on_camera()
 
 
-static func get_action_name(action: BattleParameters.CharactersMotions) -> String:
-	var action_name: String = BattleParameters.CharactersMotions.find_key(action)
-	return action_name.to_lower() if action_name != null else "default"
-
-
-func set_model(model: Character) -> void:
-	_model = model
-
-func get_model() -> Character:
-	return _model
+func set_model(character_model: Character) -> void:
+	model = character_model
 
 
 func make_selected() -> void:
@@ -51,7 +43,7 @@ func make_action(action: DiceAction) -> void:
 
 func flip_to_starting_position() -> void:
 	var window_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
-	var default_position: Vector2 = _model.character_marker_3d.get_default_position_on_camera()
+	var default_position: Vector2 = model.movement_model.get_default_position_on_camera()
 	character_motions.flip_h = default_position.x < window_width / 2.0
 
 func flip_to_specified_point(point_position: Vector2) -> void:
@@ -72,7 +64,7 @@ func _connect_signals() -> void:
 
 
 func _on_turn_started() -> void:
-	_model.character_marker_3d.move_to_default_position()
+	model.movement_model.move_to_default_position()
 	flip_to_starting_position()
 
 
@@ -85,10 +77,10 @@ func _on_stunned() -> void:
 
 
 func _on_character_pressed() -> void:
-	PlayerInputManager.get_character_picked_signal(_model.is_ally).emit(_model, null)
+	PlayerInputManager.get_character_picked_signal(model.is_ally).emit(model, null)
 
 func _on_character_mouse_entered() -> void:
-	PlayerInputManager.get_character_selected_signal(_model.is_ally).emit(_model, null)
+	PlayerInputManager.get_character_selected_signal(model.is_ally).emit(model, null)
 
 func _on_character_mouse_exited() -> void:
-	PlayerInputManager.get_character_deselected_signal(_model.is_ally).emit(_model, null)
+	PlayerInputManager.get_character_deselected_signal(model.is_ally).emit(model, null)

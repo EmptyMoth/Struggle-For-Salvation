@@ -17,57 +17,35 @@ var stats: ActionDiceStats
 var values_model: ActionDiceValuesModel
 var combat_model: ActionDiceCombatModel
 
+var type: BattleEnums.ActionDiceType :
+	get: return stats.dice_type
 var color: Color :
 	get: return _DICE_COLOR_BY_TYPE[stats.dice_type]
-
-var default_min_value: int : 
-	get: return values_model.default_min_value
-var default_max_value: int : 
-	get: return values_model.default_max_value
-var default_current_value: int : 
-	get: return values_model.default_current_value
 
 
 func _init(dice_stats: ActionDiceStats, skill: AbstractSkill) -> void:
 	wearer_skill = skill
 	stats = dice_stats
-	values_model = ActionDiceValuesModel.new(dice_stats, skill)
+	values_model = ActionDiceValuesModel.new(self)
+	combat_model = _create_combat_dice()
 
 
 func _to_string() -> String:
 	return "%cD-" + str(values_model.get_current_value())
 
 
-func create_combat_dice(skill: SkillCombatModel) -> ActionDiceCombatModel:
-	combat_model = _create_combat_dice(skill)
+func create_combat_dice() -> ActionDiceCombatModel:
+	combat_model = _create_combat_dice()
 	return combat_model
 
 
-func get_min_value() -> int: return values_model.get_min_value()
-
-func get_max_value() -> int: return values_model.get_max_value()
-
-func get_current_value() -> int: return values_model.get_current_value()
-
-func roll_dice() -> void: return values_model.roll_dice()
-
-func compare_to(opponent_dice: ActionDiceValuesModel) -> int: return values_model.compare_to(opponent_dice)
-
-
-func break_dice() -> void: combat_model.break_dice()
-
-func use_in_one_side(target: CharacterCombatModel) -> void: combat_model.use_in_one_side(target)
-
-func use_in_clash(target: CharacterCombatModel, clash_result: BattleEnums.ClashResult) -> void: combat_model.use_in_clash(target, clash_result)
-
-
-func _create_combat_dice(skill: SkillCombatModel) -> ActionDiceCombatModel:
+func _create_combat_dice() -> ActionDiceCombatModel:
 	match stats.dice_type:
 		BattleEnums.ActionDiceType.ATTACK:
-			return AttackDice.new(self, skill)
+			return AttackDice.new(self)
 		BattleEnums.ActionDiceType.BLOCK:
-			return BlockDice.new(self, skill)
+			return BlockDice.new(self)
 		BattleEnums.ActionDiceType.EVADE:
-			return EvadeDice.new(self, skill)
+			return EvadeDice.new(self)
 		_:
-			return CounterDice.new(self, skill)
+			return CounterDice.new(self)

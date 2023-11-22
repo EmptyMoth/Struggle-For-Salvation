@@ -3,16 +3,13 @@ extends Resource
 
 
 signal destroyed
-signal used
-signal rolled
+signal dice_used
+signal used_in_one_side(target: Character)
+signal won_clash(target: Character)
+signal drew_clash(target: Character)
+signal lost_clash(target: Character)
 
-var wearer: CharacterCombatModel :
-	get: return wearer_skill.wearer
-var wearer_skill: SkillCombatModel
 var model: AbstractActionDice
-
-var stats: ActionDiceStats
-var values_model: ActionDiceValuesModel
 
 var is_used_in_one_side: bool = false
 var is_avoids_clash: bool = false
@@ -23,35 +20,25 @@ var is_recycled: bool = false
 var is_destroyed: bool = false
 
 
-func _init(dice: AbstractActionDice, skill: SkillCombatModel) -> void:
+func _init(dice: AbstractActionDice) -> void:
 	model = dice
-	stats = dice.stats
-	wearer_skill = skill
 
 
 func _to_string() -> String:
 	return "%cD-" + str(model.values_model.get_current_value())
 
 
-func roll_dice() -> void:
-	model.values_model.roll_dice()
-	rolled.emit()
-
-
-func compare_to(opponent_dice: AbstractActionDice) -> int:
-	return values_model.compare_to(opponent_dice.values_model)
-
-
 func break_dice() -> void:
 	destroyed.emit()
 
 
-func use_in_one_side(target: CharacterCombatModel) -> void:
+func use_in_one_side(target: Character) -> void:
 	is_used = true
-	used.emit()
+	used_in_one_side.emit()
+	dice_used.emit()
 
 
-func use_in_clash(target: CharacterCombatModel, clash_result: BattleEnums.ClashResult) -> void:
+func use_in_clash(target: Character, clash_result: BattleEnums.ClashResult) -> void:
 	match clash_result:
 		BattleEnums.ClashResult.WIN:
 			_win_clash(target)
@@ -59,15 +46,15 @@ func use_in_clash(target: CharacterCombatModel, clash_result: BattleEnums.ClashR
 			_lose_clash(target)
 		_:
 			_draw_clash(target)
-	used.emit()
+	dice_used.emit()
 	is_used = true
 
 
-func _win_clash(target: CharacterCombatModel) -> void:
-	pass
+func _win_clash(target: Character) -> void:
+	won_clash.emit(target)
 
-func _draw_clash(target: CharacterCombatModel) -> void:
-	pass
+func _draw_clash(target: Character) -> void:
+	drew_clash.emit(target)
 
-func _lose_clash(target: CharacterCombatModel) -> void:
-	pass
+func _lose_clash(target: Character) -> void:
+	lost_clash.emit(target)

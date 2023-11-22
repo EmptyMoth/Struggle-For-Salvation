@@ -5,10 +5,10 @@ extends Resource
 var selected_character: Character = null :
 	set(character):
 		if selected_character != null:
-			selected_character.get_view().cancel_selected()
+			selected_character.view_model.cancel_selected()
 		selected_character = character
 		if character != null:
-			character.get_view().make_selected()
+			character.view_model.make_selected()
 var selected_atp_slot: ATPSlot = null :
 	set(atp_slot):
 		if selected_atp_slot != null:

@@ -2,16 +2,17 @@ class_name AbstractSkill
 extends Resource
 
 
-var is_available: bool :
-	get: return stats.use_type.is_available(self)
-
-var stats: SkillStats
 var wearer: Character
 
 var current_use_count: int = 0
 var is_mass_attack: bool
 var targets_count: int
-var actions_dice: Array#[AbstractActionDice]
+var actions_dice: Array[AbstractActionDice]
+var is_available: bool :
+	get: return stats.use_type.is_available(self)
+
+var stats: SkillStats
+var combat_model: SkillCombatModel = SkillCombatModel.new(self)
 
 
 func _init(character: Character, skill_stats: SkillStats) -> void:
@@ -19,8 +20,8 @@ func _init(character: Character, skill_stats: SkillStats) -> void:
 	stats = skill_stats
 	is_mass_attack = stats.targeting_type is MassSkillType
 	targets_count = stats.targeting_type.get_targets_count()
-	actions_dice = skill_stats.actions_dice_stats.map(
-			func(stats: ActionDiceStats): return AbstractActionDice.new(stats, self))
+	actions_dice.assign(skill_stats.actions_dice_stats.map(
+			func(stats: ActionDiceStats): return AbstractActionDice.new(stats, self)))
 
 
 func _to_string() -> String:
@@ -45,5 +46,5 @@ func get_targets_setter() -> BaseTargetsSetter:
 	return stats.targets_setter
 
 
-func use() -> SkillCombatModel:
-	return SkillCombatModel.new(self, wearer)
+func use() -> void:
+	pass
