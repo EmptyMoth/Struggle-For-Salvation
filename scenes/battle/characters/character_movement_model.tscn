@@ -1,16 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://mf5va8bcv2bu"]
 
-[ext_resource type="Script" path="res://scripts/battle/characters/base/components/character_marker/character_marker_3d.gd" id="1_8383r"]
+[ext_resource type="Script" path="res://scripts/battle/characters/base/components/character_marker/character_movement_model.gd" id="1_k87gu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o4ey2"]
 
-[node name="CharacterMarker3D" type="CharacterBody3D"]
+[node name="CharacterMovementModel" type="CharacterBody3D"]
 collision_layer = 0
-script = ExtResource("1_8383r")
+script = ExtResource("1_k87gu")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.100006, 0, 0, 0, 0.100006, 0, 0, 0, 0.100006, 0, 0, 0)
 shape = SubResource("BoxShape3D_o4ey2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_max_distance = 20.01
+path_postprocessing = 1
 debug_enabled = true

@@ -13,8 +13,8 @@ func _to_string() -> String:
 
 func _win_clash(target: Character) -> void:
 	super(target)
-	var opponent_dice: ActionDiceCombatModel = target.current_action_dice.combat_model
+	var opponent_dice: AbstractActionDice = target.combat_model.current_action_dice
 	var damage: int = model.values_model.get_current_value()
-	if opponent_dice is BlockDice:
-		damage -= opponent_dice.model.values_model.get_current_value()
+	if opponent_dice.type == BattleEnums.ActionDiceType.BLOCK:
+		damage -= opponent_dice.values_model.get_current_value()
 	attack(target, damage)

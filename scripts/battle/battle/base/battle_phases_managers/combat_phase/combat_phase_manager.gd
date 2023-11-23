@@ -2,6 +2,9 @@ class_name CombatPhaseManager
 extends Resource
 
 
+static var assaults: Array[AssaultData]
+
+
 static func _on_battle_preparation_ended() -> void:
 	BattleSignals.combat_started.emit()
 	await implement_assaults()
@@ -9,9 +12,13 @@ static func _on_battle_preparation_ended() -> void:
 
 
 static func implement_assaults() -> void:
-	var assaults: Array[AbstractAssault] = AssaultLog.get_sorted_assault_by_speed()
-	for assault in assaults:
-		if not assault.can_be_executed():
-			continue
-		assault.execute()
-		await assault.executed
+	assaults = AssaultLog.get_sorted_assault_by_speed()
+	while assaults.size() > 0:
+		var assault_data: AssaultData = assaults.pop_back()
+		if assault_data.type == BattleEnums.AssaultType.CLASH \
+				and ClashAssault.can_be_executed(assault_data):
+			var opponent_assault_data: AssaultData = AssaultLog.get_assault(assault_data.targets.main)
+			assaults.erase(opponent_assault_data)
+			await ClashAssault.new(assault_data, opponent_assault_data).execute()
+		elif OneSideAssault.can_be_executed(assault_data):
+			await OneSideAssault.new(assault_data).execute()

@@ -11,8 +11,8 @@ var _action_dice: AbstractActionDice
 
 func set_info(action_dice: AbstractActionDice) -> void:
 	_action_dice = action_dice
-	action_dice.combat_model.rolled.connect(_on_action_dice_rolled)
-	action_dice.combat_model.used.connect(_on_action_dice_used)
+	action_dice.values_model.rolled.connect(_on_action_dice_rolled)
+	action_dice.combat_model.dice_used.connect(_on_action_dice_used)
 	action_dice.combat_model.destroyed.connect(_on_action_dice_destroyed)
 	_dice_icon.texture.current_frame = action_dice.stats.dice_type
 	_dice_range_label.text = "%s-%s" % \

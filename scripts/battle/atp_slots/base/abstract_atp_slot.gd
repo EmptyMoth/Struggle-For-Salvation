@@ -53,3 +53,7 @@ func get_atp_slot_ui() -> BaseATPSlotUI:
 
 func remove_skill() -> void:
 	assaulting_skill = null
+
+
+func assault_can_be_executed() -> bool:
+	return assaulting_skill != null and wearer.combat_model.is_active()

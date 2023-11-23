@@ -55,12 +55,8 @@ func is_active() -> bool:
 	return not is_stunned and not is_dead
 
 
-func can_assault(atp_slot: ATPSlot) -> bool:
-	return is_active() and atp_slot.assaulting_skill != null
-
-
 func can_continue_assault() -> bool:
-	return is_active() and current_skill and current_skill.is_available
+	return is_active() and current_skill.combat_model.is_available
 
 
 func can_fight_back() -> bool:
@@ -78,7 +74,7 @@ func get_next_dice() -> AbstractActionDice:
 
 
 func calculate_comparing_value(opponent_skill: AbstractSkill) -> int:
-	var result: int = opponent_skill.calculate_comparing_value(current_skill)
+	var result: int = opponent_skill.combat_model.calculate_comparing_value(current_skill)
 	calculated_comparing_value.emit(result)
 	return result
 
@@ -86,6 +82,7 @@ func calculate_comparing_value(opponent_skill: AbstractSkill) -> int:
 func reserve_current_dice() -> void:
 	dice_reserved_list.enqueue(current_action_dice)
 	added_to_reserve.emit(current_action_dice)
+	await GlobalParameters.get_tree().create_timer(1).timeout
 
 
 func try_use_current_dice_in_one_side(target: Character) -> void:
@@ -94,11 +91,12 @@ func try_use_current_dice_in_one_side(target: Character) -> void:
 	current_action_dice.values_model.roll_dice()
 	used_action_dice.emit(current_action_dice)
 	used_in_one_side.emit(current_action_dice)
-	current_action_dice.use_in_one_side(target)
+	current_action_dice.combat_model.use_in_one_side(target)
+	await GlobalParameters.get_tree().create_timer(1).timeout
 
 
 func try_use_current_dice_in_clash(
-			target: CharacterCombatModel, clash_result: BattleEnums.ClashResult) -> void:
+			target: Character, clash_result: BattleEnums.ClashResult) -> void:
 	if not is_active():
 		return
 	match clash_result:
@@ -109,9 +107,10 @@ func try_use_current_dice_in_clash(
 		_:
 			drew_clash.emit(target)
 	
-	used_action_dice.emit(current_action_dice.model)
+	used_action_dice.emit(current_action_dice)
 	used_in_clashed.emit(current_action_dice)
-	current_action_dice.use_in_clash(target, clash_result)
+	current_action_dice.combat_model.use_in_clash(target, clash_result)
+	await GlobalParameters.get_tree().create_timer(1).timeout
 
 
 func to_die() -> void:
@@ -126,10 +125,10 @@ func take_damage(damage: int, is_permanent: bool = false) -> void:
 	take_mental_damage(damage, is_permanent)
 
 func take_physical_damage(damage: int, is_permanent: bool = false) -> int:
-	return _take_damage(damage, is_permanent, model.physical_resistance, model.physical_health)
+	return _take_damage(damage, is_permanent, physical_resistance, physical_health)
 
 func take_mental_damage(damage: int, is_permanent: bool = false) -> int:
-	return _take_damage(damage, is_permanent, model.mental_resistance, model.mental_health)
+	return _take_damage(damage, is_permanent, mental_resistance, mental_health)
 
 
 func physical_heal(heal_amound: int) -> void:

@@ -15,7 +15,7 @@ var stats: CharacterStats
 
 @onready var combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
 @onready var view_model: CharacterViewModel = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
-@onready var movement_model: CharacterMovementModel = preload("res://scenes/battle/characters/character_marker_3d.tscn").instantiate()
+@onready var movement_model: CharacterMovementModel = preload("res://scenes/battle/characters/character_movement_model.tscn").instantiate()
 
 
 func _init(battle_parameters: CharacterBattleParameters,

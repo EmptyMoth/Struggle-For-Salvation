@@ -3,6 +3,6 @@ extends AbstractSkillClashType
 
 
 static func calculate_comparing_value(opponent_skill: AbstractSkill) -> int:
-	var current_dice: AbstractActionDice = opponent_skill.get_current_dice()
-	current_dice.roll_dice()
-	return current_dice.model.values_model.get_current_value()
+	var current_dice: AbstractActionDice = opponent_skill.combat_model.get_current_dice()
+	current_dice.values_model.roll_dice()
+	return current_dice.values_model.get_current_value()

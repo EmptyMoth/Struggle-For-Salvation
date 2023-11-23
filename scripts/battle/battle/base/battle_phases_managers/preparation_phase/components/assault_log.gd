@@ -29,15 +29,14 @@ static func get_next_potential_clash(atp_slot: ATPSlot) -> AssaultData:
 	return potential_clashes[next_index_clash]
 
 
-static func get_sorted_assault_by_speed() -> Array[AbstractAssault]:
+static func get_sorted_assault_by_speed() -> Array[AssaultData]:
 	var assaults_data_by_speed: Dictionary = _get_assaults_data_by_speed()
 	var speeds: Array = assaults_data_by_speed.keys()
-	speeds.sort_custom(func(speed_1: int, speed_2: int): return speed_1 > speed_2)
-	var assaults: Array[AbstractAssault] = []
+	speeds.sort_custom(func(speed_1: int, speed_2: int): return speed_1 < speed_2)
+	var assaults_data: Array[AssaultData] = []
 	for speed in speeds:
-		assaults.append_array(assaults_data_by_speed[speed].map(
-				func(data: AssaultData): return data.create_assault()))
-	return assaults
+		assaults_data.append_array(assaults_data_by_speed[speed])
+	return assaults_data
 
 
 static func add(assault: AssaultData) -> void:

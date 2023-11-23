@@ -28,7 +28,7 @@ func _add_action_dice_use_info(dice: AbstractActionDice) -> void:
 
 
 func _on_character_chose_next_action_dice(
-			dice: AbstractActionDice, dice_pool: Array[ActionDiceCombatModel]) -> void:
+			dice: AbstractActionDice, dice_pool: Array[AbstractActionDice]) -> void:
 	_use_skill_icon.texture = dice.wearer_skill.stats.icon
 	_use_skill_title.text = dice.wearer_skill.stats.title
 	_use_current_value.text = "0"
@@ -37,8 +37,8 @@ func _on_character_chose_next_action_dice(
 	for action_dice_use_info in _dice_pool.get_children():
 		_dice_pool.remove_child(action_dice_use_info)
 	_add_action_dice_use_info(dice)
-	for combat_action_dice in dice_pool:
-		_add_action_dice_use_info(combat_action_dice.model)
+	for action_dice in dice_pool:
+		_add_action_dice_use_info(action_dice)
 
 
 func _on_character_calculated_comparing_value(value: int) -> void:
