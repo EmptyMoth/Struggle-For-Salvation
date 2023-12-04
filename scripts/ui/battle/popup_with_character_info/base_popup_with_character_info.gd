@@ -7,7 +7,7 @@ const _DURATION_OF_SECONDARY_INFO: float = _DURATION_OF_PRIMARY_INFO + 0.1
 const _DURATION_OF_TERTIARY_INFO: float = _DURATION_OF_SECONDARY_INFO + 0.1
 
 var _current_tween: Tween = null
-var _selected_skill: AbstractSkill = null
+var _selected_skill: Skill = null
 
 @onready var _base_info: PopupWithCharacterBaseInfo = $HBox/VBox/PopupWithCharacterBaseInfo
 @onready var _additional_info: PopupWithCharacterAdditionalInfo = $HBox/VBox/PopupWithCharacterAdditionalInfo
@@ -71,20 +71,20 @@ func _display_panel(tween: Tween, panel: MovingContainer, is_displayed: bool, du
 	panel.move_container_from_current(tween, SIDE_TOP, to, duration)
 
 
-func _on_skill_selected(skill: AbstractSkill) -> void:
+func _on_skill_selected(skill: Skill) -> void:
 	if _selected_skill == skill:
 		_selected_skill = null
 	else:
 		_selected_skill = skill
 
 
-func _on_skill_shown(skill: AbstractSkill) -> void:
+func _on_skill_shown(skill: Skill) -> void:
 	_skill_info.show()
 	_skill_info.set_info(skill)
 	_display_popup_with_skill(true)
 
 
-func _on_skill_hidden(skill: AbstractSkill) -> void:
+func _on_skill_hidden(skill: Skill) -> void:
 	if _selected_skill != null:
 		_on_skill_shown(_selected_skill)
 	else:

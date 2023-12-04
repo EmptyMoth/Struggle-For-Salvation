@@ -37,14 +37,12 @@ func get_atp_slots_available_for_targeting() -> Array[ATPSlot]:
 func roll_atp_slots() -> void:
 	var speeds: PackedInt32Array = _get_sorted_speed()
 	for i in atp_slots_count:
-		var atp_slot: ATPSlot = _atp_slots[i]
-		atp_slot.speed = speeds[i]
+		_atp_slots[i].speed = speeds[i]
 
 
 func change_atp_slots_count(new_count: int) -> void:
 	if new_count == atp_slots_count and new_count <= 0:
 		return
-	
 	var difference: int = new_count - atp_slots_count
 	if difference > 0:
 		add_atp_slots(difference)
@@ -63,6 +61,11 @@ func remove_atp_slots(count: int) -> void:
 	for i in count:
 		var atp_slot: ATPSlot = _atp_slots.pop_back()
 		_atp_slots_container.remove_atp_slot(atp_slot.get_atp_slot_ui())
+
+
+func preparation_atp_slots() -> void:
+	for atp_slot in _atp_slots:
+		atp_slot.remove_skill()
 
 
 func _get_sorted_speed() -> PackedInt32Array:

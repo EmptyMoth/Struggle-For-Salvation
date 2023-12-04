@@ -6,7 +6,7 @@ signal rolled
 signal dropped_min_value
 signal dropped_max_value
 
-var model: AbstractActionDice
+var model: ActionDice
 
 var default_min_value: int :
 	get: return model.stats.min_value
@@ -18,7 +18,7 @@ var abilities: Array[BaseActionDiceAbility]
 var bonus: ActionDiceBonus = ActionDiceBonus.new()
 
 
-func _init(dice: AbstractActionDice) -> void:
+func _init(dice: ActionDice) -> void:
 	model = dice
 	abilities = dice.stats.abilities
 

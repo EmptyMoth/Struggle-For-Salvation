@@ -86,7 +86,7 @@ func _on_speed_changed(new_speed: int) -> void:
 	_speed_value_label.text = str(new_speed)
 
 
-func _on_installed_skill_changed(new_skill: AbstractSkill) -> void:
+func _on_installed_skill_changed(new_skill: Skill) -> void:
 	if new_skill == null:
 		_body.modulate = Color.WHITE
 		_icon.show()

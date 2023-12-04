@@ -2,7 +2,7 @@ class_name CounterDice
 extends OffensiveDice
 
 
-func _init(dice: AbstractActionDice) -> void:
+func _init(dice: ActionDice) -> void:
 	is_avoids_clash = true
 	super(dice)
 

@@ -16,16 +16,16 @@ extends Resource
 #func update() -> void:
 #	pass
 
-func is_available(_skill: AbstractSkill) -> bool:
+func is_available(_skill: Skill) -> bool:
 	return true
 
 
-func select(_skill: AbstractSkill) -> void:
+func select(_skill: Skill) -> void:
 	pass
 
-func deselect(_skill: AbstractSkill) -> void:
+func deselect(_skill: Skill) -> void:
 	pass
 
 
-func restore(_skill: AbstractSkill) -> void:
+func restore(_skill: Skill) -> void:
 	pass

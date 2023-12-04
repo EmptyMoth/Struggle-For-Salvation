@@ -9,7 +9,7 @@ signal won_clash(target: Character)
 signal drew_clash(target: Character)
 signal lost_clash(target: Character)
 
-var model: AbstractActionDice
+var model: ActionDice
 
 var is_used_in_one_side: bool = false
 var is_avoids_clash: bool = false
@@ -20,7 +20,7 @@ var is_recycled: bool = false
 var is_destroyed: bool = false
 
 
-func _init(dice: AbstractActionDice) -> void:
+func _init(dice: ActionDice) -> void:
 	model = dice
 
 

@@ -24,8 +24,8 @@ func set_info(character: Character) -> void:
 	_character_type_icon.texture.current_frame = character.stats.type
 	_character_name_label.text = character.stats.name
 	_range_speed_label.text = "%s-%s" % [character.stats.min_speed, character.stats.max_speed]
-	_set_resistanes(character.combat_model.physical_resistance, character.combat_model.mental_resistance)
-	_set_health(character.combat_model.physical_health, character.combat_model.mental_health)
+	_set_resistanes(character.physical_resistance, character.mental_resistance)
+	_set_health(character.physical_health, character.mental_health)
 
 
 func _set_resistanes(hp_resistance: BaseResistance, sp_resistance: BaseResistance) -> void:

@@ -10,5 +10,5 @@ func use_in_one_side(target: Character) -> void:
 
 
 func attack(target: Character, damage: int) -> void:
-	target.combat_model.take_damage(damage)
+	target.take_damage(damage)
 	hit.emit()

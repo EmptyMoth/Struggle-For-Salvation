@@ -20,7 +20,7 @@ func set_info(character: CharacterCombatModel) -> void:
 	character.used_action_dice.connect(_on_character_used_action_dice)
 
 
-func _add_action_dice_use_info(dice: AbstractActionDice) -> void:
+func _add_action_dice_use_info(dice: ActionDice) -> void:
 	var action_dice_use_info: ActionDiceUseInfo = _ACTION_DICE_USE_INFO_SCENE.instantiate()
 	_dice_pool.add_child(action_dice_use_info)
 	await _dice_pool.child_entered_tree
@@ -28,7 +28,7 @@ func _add_action_dice_use_info(dice: AbstractActionDice) -> void:
 
 
 func _on_character_chose_next_action_dice(
-			dice: AbstractActionDice, dice_pool: Array[AbstractActionDice]) -> void:
+			dice: ActionDice, dice_pool: Array[ActionDice]) -> void:
 	_use_skill_icon.texture = dice.wearer_skill.stats.icon
 	_use_skill_title.text = dice.wearer_skill.stats.title
 	_use_current_value.text = "0"
@@ -46,7 +46,7 @@ func _on_character_calculated_comparing_value(value: int) -> void:
 	_use_current_value.modulate = Color.WHITE_SMOKE
 
 
-func _on_character_used_action_dice(dice: AbstractActionDice) -> void:
+func _on_character_used_action_dice(dice: ActionDice) -> void:
 	_use_dice_icon.texture.current_frame = dice.stats.dice_type
 	_use_dice_range.text = "%s-%s" % \
 			[dice.values_model.get_min_value(), dice.values_model.get_max_value()]

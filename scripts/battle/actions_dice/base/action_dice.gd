@@ -1,4 +1,4 @@
-class_name AbstractActionDice
+class_name ActionDice
 extends Resource
 
 
@@ -11,7 +11,7 @@ const _DICE_COLOR_BY_TYPE: Dictionary = {
 
 var wearer: Character :
 	get: return wearer_skill.wearer
-var wearer_skill: AbstractSkill
+var wearer_skill: Skill
 
 var stats: ActionDiceStats
 var values_model: ActionDiceValuesModel
@@ -23,7 +23,7 @@ var color: Color :
 	get: return _DICE_COLOR_BY_TYPE[stats.dice_type]
 
 
-func _init(dice_stats: ActionDiceStats, skill: AbstractSkill) -> void:
+func _init(dice_stats: ActionDiceStats, skill: Skill) -> void:
 	wearer_skill = skill
 	stats = dice_stats
 	values_model = ActionDiceValuesModel.new(self)

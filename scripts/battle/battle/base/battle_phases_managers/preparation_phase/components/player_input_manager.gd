@@ -13,7 +13,7 @@ signal enemy_selected(character: Character, atp_slot: ATPSlot)
 signal enemy_deselected(character: Character, atp_slot: ATPSlot)
 
 static var selected_ally_slot: ATPSlot = null
-static var selected_skill: AbstractSkill = null
+static var selected_skill: Skill = null
 
 static var _player_assault_arrow: PlayerAssaultArrow
 
@@ -59,7 +59,7 @@ func get_character_deselected_signal(character_is_ally: bool) -> Signal:
 	return ally_deselected if character_is_ally else enemy_deselected
 
 
-static func on_ally_skill_selected(skill: AbstractSkill) -> void:
+static func on_ally_skill_selected(skill: Skill) -> void:
 	if selected_ally_slot == null:
 		return
 	selected_skill = skill

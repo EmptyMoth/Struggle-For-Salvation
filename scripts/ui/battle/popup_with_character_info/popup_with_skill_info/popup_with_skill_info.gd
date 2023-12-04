@@ -19,7 +19,7 @@ const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/ba
 @onready var _dice_abilities_container: VBoxContainer = $HBox/VBox/AbilitiesVBox
 
 
-func set_info(skill: AbstractSkill) -> void:
+func set_info(skill: Skill) -> void:
 	_set_base_skill_info(skill.stats)
 	_set_skill_abilities_info(skill.stats.abilities)
 	_set_actions_dice_info(skill.actions_dice)
@@ -68,18 +68,18 @@ func _set_skill_abilities_info(abilities: Array[BaseSkillAbility]) -> void:
 func _set_actions_dice_info(actions_dice_list: Array) -> void:
 	remove_actions_dice_info()
 	for i in actions_dice_list.size():
-		var action_dice: AbstractActionDice = actions_dice_list[i]
+		var action_dice: ActionDice = actions_dice_list[i]
 		_set_action_dice_info(action_dice)
 		_set_action_dice_ability_info(action_dice, i)
 
 
-func _set_action_dice_info(action_dice: AbstractActionDice) -> void:
+func _set_action_dice_info(action_dice: ActionDice) -> void:
 	var action_dice_info: ActionDiceInfo = _ACTION_DICE_INFO_SCENE.instantiate()
 	_dice_container.add_child(action_dice_info)
 	action_dice_info.set_info(action_dice)
 
 
-func _set_action_dice_ability_info(action_dice: AbstractActionDice, dice_index: int) -> void:
+func _set_action_dice_ability_info(action_dice: ActionDice, dice_index: int) -> void:
 	if action_dice.stats.abilities.size() <= 0:
 		return
 	var action_dice_ability_info: PopupWithActionDiceAbility = _ACTION_DICE_ABILITY_INFO_SCENE.instantiate()

@@ -2,16 +2,16 @@ class_name SkillSelectedButton
 extends Button
 
 
-signal skill_shown(skill: AbstractSkill)
-signal skill_hidden(skill: AbstractSkill)
+signal skill_shown(skill: Skill)
+signal skill_hidden(skill: Skill)
 
-var setted_skill: AbstractSkill = null
+var setted_skill: Skill = null
 
 @onready var _cooldown_icon: TextureRect = $CooldownIcon
 @onready var _counter_label: Label = $Counter
 
 
-func set_skill(skill: AbstractSkill) -> void:
+func set_skill(skill: Skill) -> void:
 	show()
 	setted_skill = skill
 	var skill_is_available: bool = skill.is_available

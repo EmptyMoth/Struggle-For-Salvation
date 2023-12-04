@@ -3,7 +3,7 @@ extends Resource
 
 
 signal speed_changed(new_speed: int)
-signal installed_skill_changed(new_skill: AbstractSkill)
+signal installed_skill_changed(new_skill: Skill)
 
 enum ATPSlotState {
 	NORMAL = 0,
@@ -15,7 +15,7 @@ var speed: int = 0 :
 	set(value):
 		speed = value
 		speed_changed.emit(value)
-var assaulting_skill: AbstractSkill = null :
+var assaulting_skill: Skill = null :
 	set(new_skill):
 		if assaulting_skill != null:
 			assaulting_skill.deselect()
@@ -56,4 +56,4 @@ func remove_skill() -> void:
 
 
 func assault_can_be_executed() -> bool:
-	return assaulting_skill != null and wearer.combat_model.is_active()
+	return assaulting_skill != null and wearer.is_active

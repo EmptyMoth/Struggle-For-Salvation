@@ -2,7 +2,7 @@ class_name AssaultSetter
 extends RefCounted
 
 
-static func create_assault(assault_slot: ATPSlot, targets: Targets, skill: AbstractSkill) -> void:
+static func create_assault(assault_slot: ATPSlot, targets: Targets, skill: Skill) -> void:
 	assault_slot.assaulting_skill = skill
 	set_assault(AssaultData.new(assault_slot, targets))
 
@@ -50,7 +50,6 @@ static func _set_clash(new_clash: AssaultData, opponent_atp_slot: ATPSlot) -> vo
 
 
 static func _change_clash_or_default(assault: AssaultData) -> void:
-	var potential_clashes: Array[AssaultData] = AssaultLog.get_potential_clashes(assault.atp_slot)
 	if AssaultLog.there_are_alternative_clash(assault.atp_slot):
 		_change_clash(assault, AssaultLog.get_next_potential_clash(assault.atp_slot))
 		return

@@ -15,7 +15,7 @@ var model: Character
 
 
 func _ready() -> void:
-	subcharacter_bars.set_healths(model.combat_model.physical_health, model.combat_model.mental_health)
+	subcharacter_bars.set_healths(model.physical_health, model.mental_health)
 	switch_motion(BattleParameters.CharactersMotions.DEFAULT)
 	_connect_signals()
 

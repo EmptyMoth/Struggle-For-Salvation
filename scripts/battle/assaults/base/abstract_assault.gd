@@ -2,20 +2,11 @@ class_name AbstractAssault
 extends Resource
 
 
-#var _character: Character
-#var _target: Character
-#
-#var _character_atp_slot: ATPSlot
-#var _target_atp_slot: ATPSlot
 var _data: AssaultData
 
 
 func _init(assault_data: AssaultData) -> void:
 	_data = assault_data
-#	_character_atp_slot = assault_data.atp_slot
-#	_character = _character_atp_slot.wearer
-#	_target_atp_slot = assault_data.targets.main
-#	_target = _target_atp_slot.wearer
 
 
 static func can_be_executed(data: AssaultData) -> bool:
@@ -24,8 +15,10 @@ static func can_be_executed(data: AssaultData) -> bool:
 
 func execute() -> void:
 	BattleSignals.assault_started.emit(_data.character, _data.main_target)
+	@warning_ignore("redundant_await")
 	await _move_characters()
 	_join_assault()
+	@warning_ignore("redundant_await")
 	await _execute()
 	_leave_assault()
 	BattleSignals.assault_ended.emit(_data.character, _data.main_target)

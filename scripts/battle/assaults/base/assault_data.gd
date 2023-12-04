@@ -45,7 +45,7 @@ func set_default() -> void:
 	assault_data_changed.emit(self)
 
 
-func set_clash(main_target: ATPSlot) -> void:
-	targets.change_main_target(main_target)
+func set_clash(new_main_target: ATPSlot) -> void:
+	targets.change_main_target(new_main_target)
 	type = BattleEnums.AssaultType.CLASH
 	assault_data_changed.emit(self)

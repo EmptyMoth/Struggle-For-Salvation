@@ -14,4 +14,4 @@ func has_ability() -> bool:
 
 
 func get_color() -> Color:
-	return AbstractActionDice._DICE_COLOR_BY_TYPE[dice_type]
+	return ActionDice._DICE_COLOR_BY_TYPE[dice_type]

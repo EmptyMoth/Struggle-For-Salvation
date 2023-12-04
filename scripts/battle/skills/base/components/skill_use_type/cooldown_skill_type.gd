@@ -30,26 +30,26 @@ extends AbstractSkillUseType
 #	is_selected = false
 #	if current_cooldown > 0:
 #		reduce_cooldown(1)
-func is_available(skill: AbstractSkill) -> bool:
+func is_available(skill: Skill) -> bool:
 	return skill.current_use_count == 0
 
 
-func select(skill: AbstractSkill) -> void:
+func select(skill: Skill) -> void:
 	skill.current_use_count = cooldown
 
-func deselect(skill: AbstractSkill) -> void:
+func deselect(skill: Skill) -> void:
 	skill.current_use_count = 0
 
 
-func restore(skill: AbstractSkill) -> void:
+func restore(skill: Skill) -> void:
 	if not is_available(skill):
 		reduce_cooldown(skill, 1)
 	else:
 		skill.current_use_count = 0
 
 
-func reduce_cooldown(skill: AbstractSkill, count: int) -> void:
+func reduce_cooldown(skill: Skill, count: int) -> void:
 	skill.current_use_count = min(0, skill.current_use_count + count)
 
-func increase_cooldown(skill: AbstractSkill, count: int) -> void:
+func increase_cooldown(skill: Skill, count: int) -> void:
 	skill.current_use_count -= count

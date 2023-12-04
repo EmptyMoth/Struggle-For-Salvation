@@ -6,5 +6,5 @@ signal died
 
 
 func _reached_zero() -> void:
-	super._reached_zero()
+	super()
 	died.emit()

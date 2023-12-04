@@ -2,14 +2,14 @@ class_name ActionDiceUseInfo
 extends VBoxContainer
 
 
-var _action_dice: AbstractActionDice
+var _action_dice: ActionDice
 
 @onready var _dice_range_label: Label = $DiceRange
 @onready var _dice_value_label: Label = $DiceValue
 @onready var _dice_icon: TextureRect = $DiceIcon
 
 
-func set_info(action_dice: AbstractActionDice) -> void:
+func set_info(action_dice: ActionDice) -> void:
 	_action_dice = action_dice
 	action_dice.values_model.rolled.connect(_on_action_dice_rolled)
 	action_dice.combat_model.dice_used.connect(_on_action_dice_used)

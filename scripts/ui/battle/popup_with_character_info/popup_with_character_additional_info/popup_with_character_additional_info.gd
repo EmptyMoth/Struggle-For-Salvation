@@ -2,9 +2,9 @@ class_name PopupWithCharacterAdditionalInfo
 extends MovingContainer
 
 
-signal skill_selected(skill: AbstractSkill)
-signal skill_shown(skill: AbstractSkill)
-signal skill_hidden(skill: AbstractSkill)
+signal skill_selected(skill: Skill)
+signal skill_shown(skill: Skill)
+signal skill_hidden(skill: Skill)
 
 const PRESSET_FOR_PASSIVE_LIST: String = "[ul bullet=▪]\n%s[/ul]"
 const PRESSET_FOR_PASSIVE_DESCRIPTION: String = "[color=#3AF][/color]%s"
@@ -31,7 +31,7 @@ func _ready() -> void:
 
 
 func set_info(
-			skills: Array[AbstractSkill], 
+			skills: Array[Skill], 
 			passive_abilities: Array[BaseCharacterPassiveAbility]) -> void:
 	_set_skills(skills)
 	_set_passive_abilities(passive_abilities)
@@ -61,10 +61,10 @@ func _set_passive_abilities(passives_abilities: Array) -> void:
 	_passive_abilities_list.text = PRESSET_FOR_PASSIVE_LIST % passives_description
 
 
-func _set_skills(skills: Array[AbstractSkill]) -> void:
+func _set_skills(skills: Array[Skill]) -> void:
 	_create_skill_selected_buttons(skills.size() - _skills_list.get_child_count())
 	for i in skills.size():
-		var skill: AbstractSkill = skills[i]
+		var skill: Skill = skills[i]
 		var skill_selected_button: SkillSelectedButton = _skills_list.get_child(i)
 		skill_selected_button.set_skill(skill)
 	for i in range(skills.size(), _skills_list.get_child_count()):
@@ -105,8 +105,8 @@ func _on_skill_selected_button_group_pressed(button: BaseButton) -> void:
 		skill_selected.emit(button.setted_skill)
 
 
-func _on_skill_selected_button_skill_shown(skill: AbstractSkill) -> void:
+func _on_skill_selected_button_skill_shown(skill: Skill) -> void:
 	skill_shown.emit(skill)
 
-func _on_skill_selected_button_skill_hidden(skill: AbstractSkill) -> void:
+func _on_skill_selected_button_skill_hidden(skill: Skill) -> void:
 	skill_hidden.emit(skill)

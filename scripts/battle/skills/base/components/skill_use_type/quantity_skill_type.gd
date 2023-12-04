@@ -25,16 +25,16 @@ extends AbstractSkillUseType
 #	current_quantity = quantity
 
 
-func is_available(skill: AbstractSkill) -> bool:
+func is_available(skill: Skill) -> bool:
 	return skill.current_use_count > 0
 
 
-func select(skill: AbstractSkill) -> void:
+func select(skill: Skill) -> void:
 	skill.current_use_count -= 1
 
-func deselect(skill: AbstractSkill) -> void:
+func deselect(skill: Skill) -> void:
 	skill.current_use_count += 1
 
 
-func restore(skill: AbstractSkill) -> void:
+func restore(skill: Skill) -> void:
 	skill.current_use_count = quantity
