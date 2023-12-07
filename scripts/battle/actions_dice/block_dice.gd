@@ -12,5 +12,5 @@ func _win_clash(target: Character) -> void:
 	var damage: int = model.values_model.get_current_value()
 	if opponent_dice.type == BattleEnums.ActionDiceType.ATTACK:
 		damage -= opponent_dice.values_model.get_current_value()
-	target.combat_model.take_mental_damage(damage)
+	target.take_mental_damage(damage)
 	defended.emit()
