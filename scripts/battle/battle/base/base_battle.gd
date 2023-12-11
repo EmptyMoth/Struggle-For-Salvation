@@ -21,7 +21,7 @@ var _battlefield: BaseBattlefield = null
 
 @onready var _assaults_arrows: Control = $AssaultsArrows
 @onready var _darkening_screen: ColorRect = $UI/DarkeningScreen
-@onready var _popups_with_assault_info: Control = $UI/PopupsWithAssaultInfo
+@onready var _popups_with_assault_info: Control = $PopupsWithAssaultInfo
 
 
 func _ready() -> void:
@@ -73,7 +73,7 @@ func end() -> void:
 
 func highlight_nodes(nodes: Array[CanvasItem], is_highlight: bool) -> void:
 	_darkening_screen.visible = is_highlight
-	for node in nodes:
+	for node: CanvasItem in nodes:
 		node.z_index = 1 if is_highlight else 0
 
 
@@ -129,7 +129,7 @@ func _on_assault_started(character: Character, target: Character) -> void:
 	pass
 
 func _on_assault_ended(character: Character, target: Character) -> void:
-	for popup in _popups_with_assault_info.get_children():
+	for popup: Node in _popups_with_assault_info.get_children():
 		_popups_with_assault_info.remove_child(popup)
 
 

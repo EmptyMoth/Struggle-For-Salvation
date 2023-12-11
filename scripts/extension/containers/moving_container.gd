@@ -2,10 +2,10 @@ class_name MovingContainer
 extends MarginContainer
 
 
-const MARGIN_BOTTOM := "margin_bottom"
-const MARGIN_LEFT := "margin_left"
-const MARGIN_RIGHT := "margin_right"
-const MARGIN_TOP := "margin_top"
+const MARGIN_BOTTOM: String = "margin_bottom"
+const MARGIN_LEFT: String = "margin_left"
+const MARGIN_RIGHT: String = "margin_right"
+const MARGIN_TOP: String = "margin_top"
 
 
 func move_container_from(tween: Tween, moving_side: Side, 

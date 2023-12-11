@@ -48,6 +48,12 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
+[node name="PopupsWithAssaultInfo" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="DarkeningScreen" type="ColorRect" parent="UI"]
@@ -72,12 +78,6 @@ layout_mode = 0
 
 [node name="Right" parent="UI/PopupsWithCharacterInfo" instance=ExtResource("7_ft1fj")]
 layout_mode = 1
-
-[node name="PopupsWithAssaultInfo" type="Control" parent="UI"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

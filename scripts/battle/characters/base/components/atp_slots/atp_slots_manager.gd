@@ -27,16 +27,16 @@ func get_all_atp_slots() -> Array[ATPSlot]:
 	return _atp_slots.duplicate()
 
 func get_atp_slots_for_assaults() -> Array[ATPSlot]:
-	return _atp_slots.filter(func(atp_slot: ATPSlot): 
+	return _atp_slots.filter(func(atp_slot: ATPSlot) -> bool: 
 				return not atp_slot.is_broken() and atp_slot.assaulting_skill == null)
 
 func get_atp_slots_available_for_targeting() -> Array[ATPSlot]:
-	return _atp_slots.filter(func(atp_slot: ATPSlot): return not atp_slot.is_blocked())
+	return _atp_slots.filter(func(atp_slot: ATPSlot) -> bool: return not atp_slot.is_blocked())
 
 
 func roll_atp_slots() -> void:
 	var speeds: PackedInt32Array = _get_sorted_speed()
-	for i in atp_slots_count:
+	for i: int in atp_slots_count:
 		_atp_slots[i].speed = speeds[i]
 
 
@@ -51,26 +51,26 @@ func change_atp_slots_count(new_count: int) -> void:
 
 
 func add_atp_slots(count: int) -> void:
-	for i in count:
+	for i: int in count:
 		var atp_slot: ATPSlot = ATPSlot.new(wearer)
 		_atp_slots.append(atp_slot)
 		_atp_slots_container.add_atp_slot(atp_slot.get_atp_slot_ui())
 
 
 func remove_atp_slots(count: int) -> void:
-	for i in count:
+	for i: int in count:
 		var atp_slot: ATPSlot = _atp_slots.pop_back()
 		_atp_slots_container.remove_atp_slot(atp_slot.get_atp_slot_ui())
 
 
 func preparation_atp_slots() -> void:
-	for atp_slot in _atp_slots:
+	for atp_slot: ATPSlot in _atp_slots:
 		atp_slot.remove_skill()
 
 
 func _get_sorted_speed() -> PackedInt32Array:
 	var speeds: PackedInt32Array = []
-	for i in atp_slots_count:
+	for i: int in atp_slots_count:
 		speeds.append(randi_range(_min_speed, _max_speed))
 	
 	speeds.sort()

@@ -12,8 +12,7 @@ const _ARABIC_VALUES: Array[int] = [10, 9, 5, 4, 1]
 func set_info(action_dice: ActionDice, dice_index: int) -> void:
 	_dice_number_label.text = _convert_to_roman(dice_index + 1)
 	_dice_number_label.modulate = action_dice.color
-	_dice_ability_label.text = AbstractAbility.get_abilities_description(
-			action_dice.abilities as Array[AbstractAbility])
+	_dice_ability_label.text = AbstractAbility.get_abilities_description(action_dice.stats.abilities)
 
 
 static func _convert_to_roman(number: int) -> String:

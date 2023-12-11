@@ -11,7 +11,7 @@ var default_position: Vector3
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
 
-func _ready():
+func _ready() -> void:
 	set_physics_process(false)
 	_navigation_setup.call_deferred()
 
@@ -62,6 +62,6 @@ func _get_position_on_camera(position_3d: Vector3) -> Vector2:
 	return get_viewport().get_camera_3d().unproject_position(position_3d)
 
 
-func _navigation_setup():
+func _navigation_setup() -> void:
 	await NavigationServer3D.map_changed
 	set_physics_process(true)

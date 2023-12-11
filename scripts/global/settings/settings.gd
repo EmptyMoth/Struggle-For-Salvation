@@ -17,17 +17,17 @@ func _ready() -> void:
 
 
 func set_default_settings() -> void:
-	for setting in settings:
+	for setting: AbstractSettingsType in settings:
 		setting.set_default_settings()
 
 
 func save_settings() -> void:
-	for setting in settings:
+	for setting: AbstractSettingsType in settings:
 		setting.save_settings()
 	_config.save_config()
 
 
 func _initialise_settings() -> void:
-	for setting in settings:
+	for setting: AbstractSettingsType in settings:
 		setting.initialise_settings()
 	save_settings()

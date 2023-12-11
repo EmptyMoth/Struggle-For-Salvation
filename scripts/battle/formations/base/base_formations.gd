@@ -24,9 +24,9 @@ func get_enemy_position_by_index(index: int) -> Vector3:
 	return _enemies_positions[index % enemies_positions_count]
 
 
-func _get_positions(node_with_markers: Node3D) -> PackedVector3Array:
-	var positions: PackedVector3Array = []
-	for marker in node_with_markers.get_children():
+func _get_positions(node_with_markers: Node3D) -> Array[Vector3]:
+	var positions: Array[Vector3] = []
+	for marker: Node in node_with_markers.get_children():
 		positions.append(marker.global_position)
 	return positions
 

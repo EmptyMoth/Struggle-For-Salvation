@@ -9,10 +9,10 @@ func get_setting_button() -> OptionButton:
 func _initial_setup(setting: BaseSettingWithOptions) -> void:
 	var option_button: OptionButton = get_setting_button()
 	if option_button.item_count <= 0:
-		for item_text in setting.get_items():
+		for item_text: Variant in setting.get_items():
 			option_button.add_item(item_text)
 	
-	for index in option_button.item_count:
+	for index: int in option_button.item_count:
 		var item_text: String = option_button.get_item_text(index)
 		if item_text == setting.value:
 			option_button.select(index)

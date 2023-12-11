@@ -63,11 +63,11 @@ func _set_passive_abilities(passives_abilities: Array) -> void:
 
 func _set_skills(skills: Array[Skill]) -> void:
 	_create_skill_selected_buttons(skills.size() - _skills_list.get_child_count())
-	for i in skills.size():
+	for i: int in skills.size():
 		var skill: Skill = skills[i]
 		var skill_selected_button: SkillSelectedButton = _skills_list.get_child(i)
 		skill_selected_button.set_skill(skill)
-	for i in range(skills.size(), _skills_list.get_child_count()):
+	for i: int in range(skills.size(), _skills_list.get_child_count()):
 		var skill_selected_button: SkillSelectedButton = _skills_list.get_child(i)
 		skill_selected_button.remove_skill()
 
@@ -77,7 +77,7 @@ func _create_skill_selected_buttons(count: int) -> void:
 		return
 	
 	var skill_selected_button_scene: Resource = preload("res://scenes/ui/battle/popup_with_character_info/popup_with_character_additional_info/components/skill_selected_button.tscn")
-	for i in count:
+	for i: int in count:
 		var skill_selected_button: SkillSelectedButton = skill_selected_button_scene.instantiate()
 		skill_selected_button.button_group = _skill_selected_button_group
 		skill_selected_button.skill_shown.connect(_on_skill_selected_button_skill_shown)

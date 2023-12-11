@@ -37,10 +37,6 @@ func cancel_selected() -> void:
 	$ClickArea.modulate = Color.WHITE
 
 
-func make_action(action: DiceAction) -> void:
-	pass
-
-
 func flip_to_starting_position() -> void:
 	var window_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
 	var default_position: Vector2 = model.movement_model.get_default_position_on_camera()

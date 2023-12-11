@@ -22,7 +22,7 @@ func _init(character: Character, skill_stats: SkillStats) -> void:
 	is_mass_attack = stats.targeting_type is MassSkillType
 	targets_count = stats.targeting_type.get_targets_count()
 	actions_dice.assign(skill_stats.actions_dice_stats.map(
-			func(dice_stats: ActionDiceStats): return ActionDice.new(dice_stats, self)))
+			func(dice_stats: ActionDiceStats) -> ActionDice: return ActionDice.new(dice_stats, self)))
 
 
 func _to_string() -> String:

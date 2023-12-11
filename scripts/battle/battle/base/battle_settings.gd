@@ -2,15 +2,15 @@ class_name BattleSettings
 extends RefCounted
 
 
-static var is_display_allied_arrows = false :
+static var is_display_allied_arrows: bool = false :
 	set(display):
 		is_display_allied_arrows = display
 		AssaultsArrowsManager.display_allies_arrows(display)
-static var is_display_enemy_arrows = false :
+static var is_display_enemy_arrows: bool = false :
 	set(display):
 		is_display_enemy_arrows = display
 		AssaultsArrowsManager.display_enemies_arrows(display)
-static var is_display_clashing_arrows = false :
+static var is_display_clashing_arrows: bool = false :
 	set(display):
 		is_display_clashing_arrows = display
 		AssaultsArrowsManager.display_clashes_arrows(display)

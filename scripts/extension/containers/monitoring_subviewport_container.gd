@@ -5,7 +5,7 @@ extends SubViewportContainer
 @onready var viewport: SubViewport = get_children().front()
 
 
-func _ready():
+func _ready() -> void:
 	Settings.graphics_settings.graphics_quality.setting_changed.connect(_on_graphics_quality_changed)
 
 

@@ -27,9 +27,9 @@ func set_info(skill: Skill) -> void:
 
 
 func remove_actions_dice_info() -> void:
-	for dice_info in _dice_container.get_children():
+	for dice_info: Node in _dice_container.get_children():
 		_dice_container.remove_child(dice_info)
-	for dice_abilities_info in _dice_abilities_container.get_children():
+	for dice_abilities_info: Node in _dice_abilities_container.get_children():
 		_dice_abilities_container.remove_child(dice_abilities_info)
 
 
@@ -39,7 +39,7 @@ func display_dice_abilities_panel(tween: Tween, is_displayed: bool, duration: fl
 	
 	tween.tween_property(_dice_abilities_container, "modulate:a", 1 if is_displayed else 0, 0.2)
 	var number: int = 0
-	for dice_abilities_info in _dice_abilities_container.get_children():
+	for dice_abilities_info: Node in _dice_abilities_container.get_children():
 		number += 1
 		dice_abilities_info.move_container_from_current(tween, SIDE_TOP, 
 				0 if is_displayed else -50 * number, duration + 0.1 * number)
@@ -67,7 +67,7 @@ func _set_skill_abilities_info(abilities: Array[BaseSkillAbility]) -> void:
 
 func _set_actions_dice_info(actions_dice_list: Array) -> void:
 	remove_actions_dice_info()
-	for i in actions_dice_list.size():
+	for i: int in actions_dice_list.size():
 		var action_dice: ActionDice = actions_dice_list[i]
 		_set_action_dice_info(action_dice)
 		_set_action_dice_ability_info(action_dice, i)

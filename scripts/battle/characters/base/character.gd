@@ -72,8 +72,8 @@ func remove_independent() -> void:
 	independently_arranges_skills = false
 
 
-func auto_set_assault(opponents: Array[Node]) -> void:
-	for atp_slot in get_slots_for_assaults():
+func auto_set_assault(opponents: Array[Character]) -> void:
+	for atp_slot: ATPSlot in get_slots_for_assaults():
 		var skill: Skill = skills_manager.auto_selects_skill_or_null()
 		if skill == null:
 			return
@@ -127,7 +127,7 @@ func _set_character_to_groups() -> void:
 func _connect_signals() -> void:
 	physical_health.died.connect(_on_died)
 	mental_health.stunned.connect(_on_stunned)
-	for resistance in [physical_resistance, mental_resistance]:
+	for resistance: BaseResistance in [physical_resistance, mental_resistance]:
 		mental_health.stunned.connect(resistance._on_character_stunned)
 		mental_health.came_out_of_stun.connect(resistance._on_character_came_out_of_stun)
 

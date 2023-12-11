@@ -23,5 +23,5 @@ func get_options() -> Dictionary:
 	return _options
 
 
-func get_items() -> Array:
+func get_items() -> Array[Variant]:
 	return _options.keys()

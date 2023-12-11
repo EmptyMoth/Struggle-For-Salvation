@@ -3,7 +3,7 @@ extends Resource
  
 
 static func choose_targets(
-			targets_list: Array[Node], 
+			targets_list: Array[Character], 
 			targets_count: int = 1,
 			targets_setter: BaseTargetsSetter = null) -> Targets:
 	targets_list = (targets_setter if targets_setter else BaseTargetsSetter).sorted_targets(targets_list)
@@ -16,7 +16,7 @@ static func choose_targets(
 
 
 static func choose_sub_targets(
-			targets_list: Array[Node], 
+			targets_list: Array[Character], 
 			targets_count: int,
 			targets_setter: BaseTargetsSetter = null) -> Array[ATPSlot]:
 	targets_list = (targets_setter if targets_setter else BaseTargetsSetter).sorted_targets(targets_list)
@@ -24,16 +24,16 @@ static func choose_sub_targets(
 
 
 static func _choose_sub_targets(
-			targets_list: Array[Node], 
+			targets_list: Array[Character], 
 			targets_count: int, 
 			targets_setter: BaseTargetsSetter = null) -> Array[ATPSlot]:
 	var sub_targets: Array[ATPSlot] = []
-	for i in min(targets_count, targets_list.size()):
+	for i: int in min(targets_count, targets_list.size()):
 		sub_targets.append(_get_next_target_slot(targets_list, targets_setter))
 	return sub_targets
 
 
-static func _get_next_target_slot(targets_list: Array[Node], 
+static func _get_next_target_slot(targets_list: Array[Character], 
 			targets_setter: BaseTargetsSetter = null) -> ATPSlot:
 	var targets_slots: Array[ATPSlot] = targets_list.pop_back().get_slots_available_for_targeting()
 	return (targets_setter if targets_setter else BaseTargetsSetter).choose_target_slot(targets_slots)

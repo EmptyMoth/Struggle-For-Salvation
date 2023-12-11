@@ -7,35 +7,35 @@ static var _arrows_list_by_atp_slot: Dictionary = {}
 
 static func create_arrows(assault: AssaultData) -> void:
 	_create_assault_arrow(assault, assault.targets.main)
-	for sub_target_atp in assault.targets.sub_targets:
+	for sub_target_atp: ATPSlot in assault.targets.sub_targets:
 		_create_assault_arrow(assault, sub_target_atp)
 
 
 static func remove_arrows(assault: AssaultData) -> void:
 	var arrows_list: Array[BaseAssaultArrow] = _get_arrows_list(assault.atp_slot)
-	for arrow in arrows_list:
+	for arrow: BaseAssaultArrow in arrows_list:
 		BaseBattle.battle.remove_assault_arrow(arrow)
 	arrows_list.clear()
 
 
 static func clear_arrows() -> void:
-	for atp_slot in _arrows_list_by_atp_slot:
+	for atp_slot: ATPSlot in _arrows_list_by_atp_slot:
 		var arrows_list: Array[BaseAssaultArrow] = _arrows_list_by_atp_slot[atp_slot]
-		for arrow in arrows_list:
+		for arrow: BaseAssaultArrow in arrows_list:
 			BaseBattle.battle.remove_assault_arrow(arrow)
 	_arrows_list_by_atp_slot.clear()
 
 
 static func toggle_arrows_by_atp_slot(atp_slot: ATPSlot, display: bool) -> void:
-	for arrow in _get_related_arrows_list(atp_slot):
+	for arrow: BaseAssaultArrow in _get_related_arrows_list(atp_slot):
 		arrow.toggle_fix(display)
 
 static func show_arrows_by_atp_slot(atp_slot: ATPSlot) -> void:
-	for arrow in _get_related_arrows_list(atp_slot):
+	for arrow: BaseAssaultArrow in _get_related_arrows_list(atp_slot):
 		arrow.show()
 
 static func hide_arrows_by_atp_slot(atp_slot: ATPSlot) -> void:
-	for arrow in _get_related_arrows_list(atp_slot):
+	for arrow: BaseAssaultArrow in _get_related_arrows_list(atp_slot):
 		arrow.hide_arrow()
 
 
@@ -57,13 +57,13 @@ static func _get_arrows_list(atp_slot: ATPSlot) -> Array[BaseAssaultArrow]:
 
 static func _get_related_arrows_list(atp_slot: ATPSlot) -> Array[BaseAssaultArrow]:
 	var arrows: Array[BaseAssaultArrow] = _get_arrows_list(atp_slot).duplicate()
-	for targeting_assault in AssaultLog.get_assaults_targeting(atp_slot):
+	for targeting_assault: AssaultData in AssaultLog.get_assaults_targeting(atp_slot):
 		arrows.append_array(_get_arrows_list(targeting_assault.atp_slot))
 	return arrows
 
 
-static func _display_arrows(arrows: Array, display: bool) -> void:
-	for arrow in arrows:
+static func _display_arrows(arrows: Array[BaseAssaultArrow], display: bool) -> void:
+	for arrow: BaseAssaultArrow in arrows:
 		arrow.is_battle_setting_display = display
 
 

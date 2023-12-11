@@ -20,7 +20,7 @@ func play_animation_of_drawing_graph(given_points: PackedVector2Array) -> void:
 
 func _draw_graph(given_points: PackedVector2Array) -> void:
 	add_point(given_points[0])
-	for i in range(1, given_points.size()):
+	for i: int in range(1, given_points.size()):
 		var point: Vector2 = given_points[i - 1]
 		add_point(point)
 		await _move_point(i, i, given_points).finished
@@ -28,7 +28,7 @@ func _draw_graph(given_points: PackedVector2Array) -> void:
 
 
 func _erase_graph(given_points: PackedVector2Array) -> void:
-	for i in range(1, given_points.size()):
+	for i: int in range(1, given_points.size()):
 		await _move_point(0, i, given_points).finished
 		remove_point(0)
 	clear_points()

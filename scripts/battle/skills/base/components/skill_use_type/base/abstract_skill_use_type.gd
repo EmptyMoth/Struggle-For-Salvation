@@ -2,7 +2,7 @@ class_name AbstractSkillUseType
 extends Resource
 
 
-func _init(data: AbstractSkillUseTypeData) -> void:
+func _init(_data: AbstractSkillUseTypeData) -> void:
 	pass
 
 

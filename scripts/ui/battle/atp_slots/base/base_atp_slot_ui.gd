@@ -14,7 +14,6 @@ var is_selected: bool :
 		return draw_mode != DRAW_NORMAL and draw_mode != DRAW_DISABLED
 
 var _model: ATPSlot
-var _is_fixed: bool = false
 
 @onready var _speed_value_label: Label = $SpeedValue
 @onready var _body: TextureRect = $Body
@@ -38,9 +37,8 @@ func _draw() -> void:
 
 
 static func create_atp_slot_ui(character_type: BattleEnums.CharacterType) -> BaseATPSlotUI:
-	return _ATP_SLOT_UI_BY_CHARACTER_TYPE.get(character_type, \
-			preload("res://scenes/ui/battle/atp_slots/base/abstract_atp_slot.tscn"))\
-			.instantiate()
+	return _ATP_SLOT_UI_BY_CHARACTER_TYPE.get(character_type,
+			preload("res://scenes/ui/battle/atp_slots/base/abstract_atp_slot.tscn")).instantiate()
 
 
 func set_model(atp_slot: ATPSlot) -> void:

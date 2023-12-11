@@ -2,7 +2,7 @@ class_name BaseTargetsSetter
 extends Resource
 
 
-static func sorted_targets(targets_list: Array[Node]) -> Array[Node]:
+static func sorted_targets(targets_list: Array[Character]) -> Array[Character]:
 	targets_list = targets_list.duplicate()
 	targets_list.shuffle()
 	return targets_list

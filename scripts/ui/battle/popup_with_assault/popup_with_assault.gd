@@ -34,10 +34,10 @@ func _on_character_chose_next_action_dice(
 	_use_current_value.text = "0"
 	_use_dice_container.hide()
 	_use_skill_icon.show()
-	for action_dice_use_info in _dice_pool.get_children():
+	for action_dice_use_info: Node in _dice_pool.get_children():
 		_dice_pool.remove_child(action_dice_use_info)
 	_add_action_dice_use_info(dice)
-	for action_dice in dice_pool:
+	for action_dice: ActionDice in dice_pool:
 		_add_action_dice_use_info(action_dice)
 
 

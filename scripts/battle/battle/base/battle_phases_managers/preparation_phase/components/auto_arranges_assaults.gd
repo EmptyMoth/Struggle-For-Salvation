@@ -12,7 +12,7 @@ static func arranges_allies() -> void:
 static func _auto_arranges_characters_assaults(
 		fraction_characters: BattleEnums.Fraction,
 		fraction_opponents: BattleEnums.Fraction) -> void:
-	var characters: Array[Node] = BattleGroups.get_fraction_group(fraction_characters)
-	var opponents: Array[Node] = BattleGroups.get_fraction_group(fraction_opponents)
-	for character in characters:
+	var characters: Array[Character] = BattleGroups.get_fraction_group(fraction_characters)
+	var opponents: Array[Character] = BattleGroups.get_fraction_group(fraction_opponents)
+	for character: Character in characters:
 		character.auto_set_assault(opponents)

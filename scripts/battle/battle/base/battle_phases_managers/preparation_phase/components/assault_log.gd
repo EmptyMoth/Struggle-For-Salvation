@@ -32,9 +32,9 @@ static func get_next_potential_clash(atp_slot: ATPSlot) -> AssaultData:
 static func get_sorted_assault_by_speed() -> Array[AssaultData]:
 	var assaults_data_by_speed: Dictionary = _get_assaults_data_by_speed()
 	var speeds: Array = assaults_data_by_speed.keys()
-	speeds.sort_custom(func(speed_1: int, speed_2: int): return speed_1 < speed_2)
+	speeds.sort_custom(func(speed_1: int, speed_2: int) -> bool: return speed_1 < speed_2)
 	var assaults_data: Array[AssaultData] = []
-	for speed in speeds:
+	for speed: int in speeds:
 		assaults_data.append_array(assaults_data_by_speed[speed])
 	return assaults_data
 
@@ -49,7 +49,7 @@ static func add(assault: AssaultData) -> void:
 
 static func change_assaults_targeting(assault: AssaultData, old_target: Targets) -> void:
 	get_assaults_targeting(old_target.main).erase(assault)
-	for sub_target in old_target.sub_targets:
+	for sub_target: ATPSlot in old_target.sub_targets:
 		get_assaults_targeting(sub_target).erase(assault)
 	_add_assault_targeting(assault)
 
@@ -75,7 +75,7 @@ static func _add_assault_targeting(assault: AssaultData) -> void:
 	var assaults_targeting: Array[AssaultData] = get_assaults_targeting(assault.targets.main)
 	assaults_targeting.append(assault)
 	_ASSAULTS_LIST_BY_TARGET_ATP_SLOT[assault.targets.main] = assaults_targeting
-	for sub_target in assault.targets.sub_targets:
+	for sub_target: ATPSlot in assault.targets.sub_targets:
 		assaults_targeting = get_assaults_targeting(sub_target)
 		assaults_targeting.append(assault)
 		_ASSAULTS_LIST_BY_TARGET_ATP_SLOT[sub_target] = assaults_targeting
@@ -83,7 +83,7 @@ static func _add_assault_targeting(assault: AssaultData) -> void:
 
 static func _remove_assault_targeting(assault: AssaultData) -> void:
 	get_assaults_targeting(assault.targets.main).erase(assault)
-	for sub_target in assault.targets.sub_targets:
+	for sub_target: ATPSlot in assault.targets.sub_targets:
 		get_assaults_targeting(sub_target).erase(assault)
 
 
@@ -95,7 +95,7 @@ static func _add_potential_clash(assault: AssaultData) -> void:
 
 static func _get_assaults_data_by_speed() -> Dictionary:
 	var assaults_by_speed: Dictionary = {}
-	for atp_slot in _ASSAULTS_BY_ATP_SLOT:
+	for atp_slot: ATPSlot in _ASSAULTS_BY_ATP_SLOT:
 		var assault: AssaultData = _ASSAULTS_BY_ATP_SLOT[atp_slot]
 		assaults_by_speed[atp_slot.speed] = assaults_by_speed.get(atp_slot.speed, [])
 		assaults_by_speed[atp_slot.speed].append(assault)

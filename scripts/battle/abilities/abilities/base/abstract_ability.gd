@@ -20,7 +20,7 @@ func init(wearer: Character) -> void:
 
 static func get_abilities_description(abilities: Array, presset: String = "%s") -> String:
 	var descriptions: PackedStringArray = PackedStringArray()
-	for ability in abilities:
+	for ability: AbstractAbility in abilities:
 		descriptions.append(presset % ability.description)
 	return "\n".join(descriptions)
 

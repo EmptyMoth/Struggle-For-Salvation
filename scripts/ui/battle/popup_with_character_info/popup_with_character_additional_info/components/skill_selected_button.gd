@@ -14,22 +14,25 @@ var setted_skill: Skill = null
 func set_skill(skill: Skill) -> void:
 	show()
 	setted_skill = skill
-	var skill_is_available: bool = skill.is_available
 	icon = skill.stats.icon
-	disabled = not skill_is_available
-	if skill.use_type is CooldownSkillType:
-		_cooldown_icon.visible = not skill_is_available
-		_counter_label.visible = not skill_is_available
-		_counter_label.text = str(skill.use_type.cooldown)#stats.use_type.current_cooldown)
-	else:
-		_cooldown_icon.hide()
-		_counter_label.show()
-		_counter_label.text = "x%s" % str(skill.use_type.quantity)#stats.use_type.current_quantity)
+	disabled = not skill.is_available
+	_set_cost(skill.use_type, skill.is_available)
 
 
 func remove_skill() -> void:
 	hide()
 	setted_skill = null
+
+
+func _set_cost(use_type: AbstractSkillUseType, skill_is_available: bool) -> void:
+	if use_type is CooldownSkillType:
+		_cooldown_icon.visible = not skill_is_available
+		_counter_label.visible = not skill_is_available
+		_counter_label.text = str(use_type.cooldown)
+	else:
+		_cooldown_icon.hide()
+		_counter_label.show()
+		_counter_label.text = "x%s" % str(use_type.quantity)
 
 
 func _on_mouse_entered() -> void:

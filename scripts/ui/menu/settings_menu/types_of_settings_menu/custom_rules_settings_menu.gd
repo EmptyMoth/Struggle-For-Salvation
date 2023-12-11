@@ -11,7 +11,7 @@ func _ready() -> void:
 
 
 func _on_custom_rules_changed(new_value: bool) -> void:
-	for setting_element in $Settings.get_children():
+	for setting_element: Node in $Settings.get_children():
 		if not setting_element is BaseSettingElementMenu:
 			continue
 		var setting_button: Control = setting_element.get_setting_button()

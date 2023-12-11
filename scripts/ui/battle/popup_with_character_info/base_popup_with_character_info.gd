@@ -84,7 +84,7 @@ func _on_skill_shown(skill: Skill) -> void:
 	_display_popup_with_skill(true)
 
 
-func _on_skill_hidden(skill: Skill) -> void:
+func _on_skill_hidden(_skill: Skill) -> void:
 	if _selected_skill != null:
 		_on_skill_shown(_selected_skill)
 	else:

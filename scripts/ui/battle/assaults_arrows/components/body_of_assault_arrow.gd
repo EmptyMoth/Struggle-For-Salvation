@@ -29,7 +29,7 @@ func set_arrow_line(arrow_line: Vector2) -> void:
 func draw(end_point: Vector2) -> void:
 	clear_points()
 	_arc_end_angle = _get_deflection_angle(end_point)
-	for i in _POINT_COUNT + 1:
+	for i: int in _POINT_COUNT + 1:
 		var angle: float = lerpf(_ARC_START_ANGLE, _arc_end_angle, i / _POINT_COUNT)
 		var new_point: Vector2 = _create_point(angle)
 		add_point(new_point)

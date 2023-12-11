@@ -28,8 +28,12 @@ const GROUPS_BY_ASSAULT_ARROWS_TYPES: Dictionary = {
 }
 
 
-static func get_fraction_group(fraction: BattleEnums.Fraction) -> Array[Node]:
-	return GlobalParameters.get_nodes_in_group(GROUPS_BY_FRACTIONS[fraction])
+static func get_fraction_group(fraction: BattleEnums.Fraction) -> Array[Character]:
+	var result: Array[Character] = [] as Array[Character]
+	result.assign(GlobalParameters.get_nodes_in_group(GROUPS_BY_FRACTIONS[fraction]))
+	return result
 
-static func get_assault_arrows_group(arrow_type: BaseAssaultArrow.AssaultArrowType) -> Array[Node]:
-	return GlobalParameters.get_nodes_in_group(GROUPS_BY_ASSAULT_ARROWS_TYPES[arrow_type])
+static func get_assault_arrows_group(arrow_type: BaseAssaultArrow.AssaultArrowType) -> Array[BaseAssaultArrow]:
+	var result: Array[BaseAssaultArrow] = [] as Array[BaseAssaultArrow]
+	result.assign(GlobalParameters.get_nodes_in_group(GROUPS_BY_ASSAULT_ARROWS_TYPES[arrow_type]))
+	return result
