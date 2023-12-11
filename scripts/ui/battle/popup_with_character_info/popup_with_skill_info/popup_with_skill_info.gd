@@ -53,7 +53,7 @@ func _set_base_skill_info(skill: SkillStats) -> void:
 	_skill_icon.texture = skill.icon
 	_title_label.text = skill.title
 	_type_icon.texture.current_frame = 0 if skill.targeting_type is SingleSkillType else 1
-	var is_cooldown: bool = skill.use_type is CooldownSkillType
+	var is_cooldown: bool = skill.use_type is CooldownData
 	_uses_type_label.text = "Cooldown" if is_cooldown else "Quantity"
 	_uses_count_label.text = str(
 			skill.use_type.cooldown if is_cooldown else skill.use_type.quantity)

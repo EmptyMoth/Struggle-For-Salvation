@@ -2,54 +2,44 @@ class_name CooldownSkillType
 extends AbstractSkillUseType
 
 
-@export_range(1, 9, 1, "suffix:turn") var cooldown: int = 1
+var cooldown: int = 0
+var is_cooldown: bool = false
 
-#var is_selected: bool = false
-#var current_cooldown: int = 0
-
-
-#func is_available() -> bool:
-#	return not is_selected and current_cooldown <= 0
-#
-#
-#func select() -> void:
-#	is_selected = true
-#
-#func deselect() -> void:
-#	is_selected = false
-#
-#
-#func reduce_cooldown(count: int) -> void:
-#	current_cooldown = max(0, current_cooldown - count)
-#
-#func increase_cooldown(count: int) -> void:
-#	current_cooldown = current_cooldown + count
-#
-#
-#func update() -> void:
-#	is_selected = false
-#	if current_cooldown > 0:
-#		reduce_cooldown(1)
-func is_available(skill: Skill) -> bool:
-	return skill.current_use_count == 0
+var _data: CooldownData
 
 
-func select(skill: Skill) -> void:
-	skill.current_use_count = cooldown
+func _init(data: AbstractSkillUseTypeData) -> void:
+	if not data is CooldownData:
+		push_error("attempt to install data not related to cooldown skill type")
+	_data = data
 
-func deselect(skill: Skill) -> void:
-	skill.current_use_count = 0
+
+func is_available() -> bool:
+	return cooldown == 0
 
 
-func restore(skill: Skill) -> void:
-	if not is_available(skill):
-		reduce_cooldown(skill, 1)
+func select() -> void:
+	cooldown = _data.cooldown
+
+func deselect() -> void:
+	cooldown = 0
+
+
+func restore() -> void:
+	if is_cooldown:
+		reduce_cooldown(1)
 	else:
-		skill.current_use_count = 0
+		cooldown = 0
 
 
-func reduce_cooldown(skill: Skill, count: int) -> void:
-	skill.current_use_count = min(0, skill.current_use_count + count)
+func reduce_cooldown(count: int) -> void:
+	cooldown = min(0, cooldown - count)
+	is_cooldown = cooldown > 0
 
-func increase_cooldown(skill: Skill, count: int) -> void:
-	skill.current_use_count -= count
+func increase_cooldown(count: int) -> void:
+	cooldown += count
+
+
+func _on_skill_used() -> void:
+	cooldown = _data.cooldown + 1
+	is_cooldown = true

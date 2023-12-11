@@ -2,39 +2,28 @@ class_name QuantitySkillType
 extends AbstractSkillUseType
 
 
-@export_range(1, 5, 1, "suffix:pcs") var quantity: int = 1
-#	set(value):
-#		quantity = value
-#		current_quantity = quantity
+var quantity: int
 
-#var current_quantity: int = quantity
-#
-#
-#func is_available() -> bool:
-#	return current_quantity > 0
-#
-#
-#func select() -> void:
-#	current_quantity -= 1
-#
-#func deselect() -> void:
-#	current_quantity += 1
-#
-#
-#func update() -> void:
-#	current_quantity = quantity
+var _data: QuantityData
 
 
-func is_available(skill: Skill) -> bool:
-	return skill.current_use_count > 0
+func _init(data: AbstractSkillUseTypeData) -> void:
+	if not data is QuantityData:
+		push_error("attempt to install data not related to quantity skill type")
+	_data = data as QuantityData
+	quantity = data.quantity
 
 
-func select(skill: Skill) -> void:
-	skill.current_use_count -= 1
-
-func deselect(skill: Skill) -> void:
-	skill.current_use_count += 1
+func is_available() -> bool:
+	return quantity > 0
 
 
-func restore(skill: Skill) -> void:
-	skill.current_use_count = quantity
+func select() -> void:
+	quantity -= 1
+
+func deselect() -> void:
+	quantity += 1
+
+
+func restore() -> void:
+	quantity = _data.quantity

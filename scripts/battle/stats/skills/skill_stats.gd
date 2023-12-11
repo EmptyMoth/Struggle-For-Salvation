@@ -3,7 +3,7 @@ extends Resource
 
 
 @export var title: String = ""
-@export var use_type: AbstractSkillUseType
+@export var use_type: AbstractSkillUseTypeData
 @export var clash_type: AbstractSkillClashType
 @export var targeting_type: AbstractSkillTargetingType
 @export var icon: Texture2D = Texture2D.new()

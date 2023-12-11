@@ -2,30 +2,28 @@ class_name AbstractSkillUseType
 extends Resource
 
 
-#func is_available() -> bool:
-#	return true
-#
-#
-#func select() -> void:
-#	pass
-#
-#func deselect() -> void:
-#	pass
-#
-#
-#func update() -> void:
-#	pass
+func _init(data: AbstractSkillUseTypeData) -> void:
+	pass
 
-func is_available(_skill: Skill) -> bool:
+
+func is_available() -> bool:
 	return true
 
 
-func select(_skill: Skill) -> void:
+func select() -> void:
 	pass
 
-func deselect(_skill: Skill) -> void:
+func deselect() -> void:
 	pass
 
 
-func restore(_skill: Skill) -> void:
+func restore() -> void:
+	pass
+
+
+func get_data() -> AbstractSkillUseTypeData:
+	return get("_data")
+
+
+func _on_skill_used() -> void:
 	pass

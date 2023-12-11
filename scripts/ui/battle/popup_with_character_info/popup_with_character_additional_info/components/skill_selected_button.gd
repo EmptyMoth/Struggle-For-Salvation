@@ -17,14 +17,14 @@ func set_skill(skill: Skill) -> void:
 	var skill_is_available: bool = skill.is_available
 	icon = skill.stats.icon
 	disabled = not skill_is_available
-	if skill.stats.use_type is CooldownSkillType:
+	if skill.use_type is CooldownSkillType:
 		_cooldown_icon.visible = not skill_is_available
 		_counter_label.visible = not skill_is_available
-		_counter_label.text = str(skill.current_use_count)#stats.use_type.current_cooldown)
+		_counter_label.text = str(skill.use_type.cooldown)#stats.use_type.current_cooldown)
 	else:
 		_cooldown_icon.hide()
 		_counter_label.show()
-		_counter_label.text = "x%s" % str(skill.current_use_count)#stats.use_type.current_quantity)
+		_counter_label.text = "x%s" % str(skill.use_type.quantity)#stats.use_type.current_quantity)
 
 
 func remove_skill() -> void:

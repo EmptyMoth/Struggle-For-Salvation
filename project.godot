@@ -32,6 +32,10 @@ PlayerInputManager="*res://scripts/battle/battle/base/battle_phases_managers/pre
 
 [debug]
 
+gdscript/warnings/untyped_declaration=1
+gdscript/warnings/inferred_declaration=1
+gdscript/warnings/unsafe_property_access=1
+gdscript/warnings/unsafe_method_access=1
 gdscript/warnings/static_called_on_instance=0
 
 [display]

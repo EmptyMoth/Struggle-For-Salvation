@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_ykmpi"]
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="3_ym7dp"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_targeting_type/mass_skill_type.gd" id="4_626jb"]
-[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/cooldown_skill_type.gd" id="5_gqyxg"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/cooldown_data.gd" id="6_bhh6j"]
 
 [sub_resource type="Resource" id="Resource_3muf6"]
 script = ExtResource("1_ykmpi")
@@ -28,14 +28,14 @@ script = ExtResource("1_crog0")
 script = ExtResource("4_626jb")
 _targeting_count = 5
 
-[sub_resource type="Resource" id="Resource_jx3c6"]
-script = ExtResource("5_gqyxg")
-cooldown = 1
+[sub_resource type="Resource" id="Resource_5cavs"]
+script = ExtResource("6_bhh6j")
+cooldown = 2
 
 [resource]
 script = ExtResource("3_ym7dp")
 title = "Test Mass Skill"
-use_type = SubResource("Resource_jx3c6")
+use_type = SubResource("Resource_5cavs")
 clash_type = SubResource("Resource_led0f")
 targeting_type = SubResource("Resource_np13j")
 icon = ExtResource("1_uj83d")
