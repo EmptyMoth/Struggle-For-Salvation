@@ -19,7 +19,7 @@ var _battlefield: BaseBattlefield = null
 @onready var enemy_team: BaseTeam = $Teams/EnemyTeam
 @onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
-@onready var _assaults_arrows: Control = $UI/AssaultsArrows
+@onready var _assaults_arrows: Control = $AssaultsArrows
 @onready var _darkening_screen: ColorRect = $UI/DarkeningScreen
 @onready var _popups_with_assault_info: Control = $UI/PopupsWithAssaultInfo
 
