@@ -21,3 +21,22 @@ enum CharacterType {
 	PARASITE,
 	CANCER_CELL,
 }
+
+enum CharactersMotions {
+	DEFAULT = 0,
+	STUN = -1,
+	DEATH = -2,
+	MOVEMENT = 1,
+	BLOCK = 2,
+	EVADE = 3,
+	SLASH_ATTACK,
+	PIERCE_ATTACK,
+	BLUNT_ATTACK,
+	SHOT,
+	SPECIAL,
+	SPECIAL_1,
+	SPECIAL_2,
+	SPECIAL_3,
+	SPECIAL_4,
+	SPECIAL_5,
+}

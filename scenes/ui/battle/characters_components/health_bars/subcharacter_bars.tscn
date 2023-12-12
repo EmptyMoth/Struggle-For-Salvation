@@ -9,6 +9,7 @@ offset_right = 66.0
 offset_bottom = 31.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 script = ExtResource("1_gvw0g")
 
 [node name="Panel" type="PanelContainer" parent="."]

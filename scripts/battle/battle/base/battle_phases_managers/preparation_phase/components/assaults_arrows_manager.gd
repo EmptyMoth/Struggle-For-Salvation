@@ -72,4 +72,4 @@ static func _create_assault_arrow(assault: AssaultData, target_atp_slot: ATPSlot
 	var arrows_list: Array[BaseAssaultArrow] = _get_arrows_list(assault.atp_slot)
 	arrows_list.append(arrow)
 	_arrows_list_by_atp_slot[assault.atp_slot] = arrows_list
-	BattleParameters.battle.add_assault_arrow(arrow)
+	BaseBattle.battle.add_assault_arrow(arrow)

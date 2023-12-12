@@ -1,0 +1,3 @@
+class_name ActionState
+extends AbstractCharacterState
+

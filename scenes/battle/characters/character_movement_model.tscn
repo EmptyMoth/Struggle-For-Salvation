@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://mf5va8bcv2bu"]
 
-[ext_resource type="Script" path="res://scripts/battle/characters/base/components/character_marker/character_movement_model.gd" id="1_k87gu"]
+[ext_resource type="Script" path="res://scripts/battle/characters/base/character_movement_model.gd" id="1_k87gu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o4ey2"]
 

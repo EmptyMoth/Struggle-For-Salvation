@@ -24,8 +24,7 @@ var _battlefield: BaseBattlefield = null
 @onready var _popups_with_assault_info: Control = $PopupsWithAssaultInfo
 
 
-func _ready() -> void:
-	BattleParameters.battle = self
+func _ready() -> void:	
 	BaseBattle.battle = self
 	_init_of_teams()
 	set_location(_packed_location.instantiate())

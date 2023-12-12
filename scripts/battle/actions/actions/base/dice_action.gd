@@ -7,13 +7,12 @@ signal finished
 var is_executing: bool = false
 
 
-@export var motion: BattleParameters.CharactersMotions = \
-		BattleParameters.CharactersMotions.DEFAULT
+@export var motion: BattleEnums.CharactersMotions = BattleEnums.CharactersMotions.DEFAULT
 #@export var action_animation: ActionAnimation
 var _action: Callable
 
 
-func _init(_motion: BattleParameters.CharactersMotions, action: Callable) -> void:
+func _init(_motion: BattleEnums.CharactersMotions, action: Callable) -> void:
 	motion = _motion
 	_action = action
 

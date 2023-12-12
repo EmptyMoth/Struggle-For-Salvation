@@ -101,7 +101,7 @@ static func _on_enemy_picked(_characte: Character, atp_slot: ATPSlot = null) -> 
 
 static func _on_battle_started() -> void:
 	_player_assault_arrow = PlayerAssaultArrow.create_arrow() as PlayerAssaultArrow
-	BattleParameters.battle.add_assault_arrow(_player_assault_arrow)
+	BaseBattle.battle.add_assault_arrow(_player_assault_arrow)
 
 static func _on_battle_ended() -> void:
 	_player_assault_arrow.queue_free()

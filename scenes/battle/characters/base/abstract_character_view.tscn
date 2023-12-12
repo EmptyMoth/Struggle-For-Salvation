@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://brldvuotlrlu7"]
 
-[ext_resource type="Script" path="res://scripts/battle/characters/base/character_view.gd" id="1_0qv6k"]
+[ext_resource type="Script" path="res://scripts/battle/characters/base/character_view_model.gd" id="1_d6dh1"]
 [ext_resource type="AnimationLibrary" uid="uid://8tfrtticacgd" path="res://resources/battle/characters/actions_animations/base_libraries/base_characters_actions.res" id="3_2cv2j"]
 [ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/immunocytes/neut/block.png" id="3_sum3q"]
 [ext_resource type="AnimationLibrary" uid="uid://ptsewigwueq6" path="res://resources/battle/characters/actions_animations/base_libraries/characters_attacks.res" id="4_3th83"]
@@ -64,7 +64,7 @@ bg_color = Color(0.905882, 0.776471, 0.196078, 0.768627)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnt4r"]
 
 [node name="AbstractCharacterView" type="Node2D" groups=["characters"]]
-script = ExtResource("1_0qv6k")
+script = ExtResource("1_d6dh1")
 
 [node name="Actions" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -95,7 +95,6 @@ alignment = 1
 script = ExtResource("9_r4gj7")
 
 [node name="ClickArea" type="Button" parent="."]
-visible = false
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -113,6 +112,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_sn2ax")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jnt4r")
 
 [node name="SubcharacterBars" parent="." instance=ExtResource("10_p1s56")]
+mouse_filter = 2
 theme_override_constants/margin_top = 5
 
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_character_mouse_entered"]

@@ -10,7 +10,7 @@ func _ready() -> void:
 	_hp_bar.resized.connect(_on_hp_bar_resized)
 
 
-func set_healths(physical_health: PhysicalHealth, mental_health: MentalHealth) -> void:
+func set_healths(physical_health: BaseHealth, mental_health: BaseHealth) -> void:
 	_hp_bar.set_initial_values(physical_health)
 	_sp_bar.set_initial_values(mental_health)
 	_on_hp_bar_resized()

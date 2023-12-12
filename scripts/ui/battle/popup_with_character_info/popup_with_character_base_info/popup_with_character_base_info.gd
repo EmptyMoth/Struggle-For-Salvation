@@ -33,7 +33,7 @@ func _set_resistanes(hp_resistance: BaseResistance, sp_resistance: BaseResistanc
 	_sp_resistance_icon.texture.current_frame = sp_resistance.resistance
 
 
-func _set_health(hp: PhysicalHealth, sp: MentalHealth) -> void:
+func _set_health(hp: BaseHealth, sp: BaseHealth) -> void:
 	_max_hp_count_label.text = str(hp.max_health)
 	_current_hp_count_label.text = str(hp.current_health)
 	_hp_bar.max_value = hp.max_health

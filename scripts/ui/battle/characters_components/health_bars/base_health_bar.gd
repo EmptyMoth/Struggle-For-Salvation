@@ -12,7 +12,7 @@ extends HBoxContainer
 @onready var _counter_label: Label = $Counter
 
 
-func set_initial_values(health: AbstractHealth) -> void:
+func set_initial_values(health: BaseHealth) -> void:
 	health.health_changed.connect(_update_bar)
 	_bar.max_value = health.max_health
 	_update_bar(health.current_health)
