@@ -25,3 +25,13 @@ static func get_display_assault_arrows_by_type(
 			return is_display_allied_arrows
 		_:
 			return is_display_enemy_arrows
+
+
+static func toggle_display_allied_arrows() -> void:
+	is_display_allied_arrows = not is_display_allied_arrows
+
+static func toggle_display_enemy_arrows() -> void:
+	is_display_enemy_arrows = not is_display_enemy_arrows
+
+static func toggle_display_clashing_arrows() -> void:
+	is_display_clashing_arrows = not is_display_clashing_arrows

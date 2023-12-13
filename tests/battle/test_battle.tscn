@@ -42,30 +42,8 @@ script = ExtResource("4_c0bj1")
 team_fraction = -1
 _characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_siymb"), SubResource("Resource_iu4mf")])
 
-[node name="AssaultsArrows" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="PopupsWithAssaultInfo" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="DarkeningScreen" type="ColorRect" parent="UI"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.462745)
-
-[node name="PopupsWithCharacterInfo" type="Control" parent="UI"]
+[node name="EnvironmentUI" type="Control" parent="."]
+z_index = 1
 custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
@@ -73,13 +51,43 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 
-[node name="Left" parent="UI/PopupsWithCharacterInfo" instance=ExtResource("8_0r3md")]
+[node name="AssaultsArrows" type="Control" parent="EnvironmentUI"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="PopupsWithAssaultInfo" type="Control" parent="EnvironmentUI"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="DarkeningScreen" type="ColorRect" parent="EnvironmentUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0.784314)
+
+[node name="CanvasUI" type="CanvasLayer" parent="."]
+
+[node name="PopupsWithCharacterInfo" type="Control" parent="CanvasUI"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+mouse_filter = 2
+
+[node name="Left" parent="CanvasUI/PopupsWithCharacterInfo" instance=ExtResource("8_0r3md")]
 layout_mode = 0
 
-[node name="Right" parent="UI/PopupsWithCharacterInfo" instance=ExtResource("7_ft1fj")]
+[node name="Right" parent="CanvasUI/PopupsWithCharacterInfo" instance=ExtResource("7_ft1fj")]
 layout_mode = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_gc333")]
+[node name="PauseMenu" parent="CanvasUI" instance=ExtResource("9_gc333")]
 visible = false

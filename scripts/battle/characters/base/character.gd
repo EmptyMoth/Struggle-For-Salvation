@@ -9,16 +9,15 @@ signal came_out_of_stun
 
 var stats: CharacterStats
 var combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
-
 var view_model: CharacterViewModel = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
 var movement_model: CharacterMovementModel = preload("res://scenes/battle/characters/character_movement_model.tscn").instantiate()
 
 var is_ally: bool :
 	get: return fraction == BattleEnums.Fraction.ALLY
 var is_dead: bool :
-	get: return combat_fsm.current_state is DeathState
+	get: return character_fsm.current_state is DeathState
 var is_stunned: bool :
-	get: return combat_fsm.current_state is StunState
+	get: return character_fsm.current_state is StunState
 var is_active: bool:
 	get: return not (is_stunned or is_dead)
 var independently_arranges_skills : bool
@@ -28,7 +27,7 @@ var fraction: BattleEnums.Fraction :
 		fraction = new_fraction
 		fraction_changed.emit(new_fraction)
 var atp_slots_manager: ATPSlotsManager
-var combat_fsm: CharacterFSM
+var character_fsm: CharacterFSM
 
 var physical_health: BaseHealth :
 	get: return health_manager.physical_health
@@ -52,9 +51,9 @@ func _init(battle_parameters: CharacterBattleParameters,
 
 
 func _ready() -> void:
-	view_model.set_model(self)
+	view_model.model = self
 	add_child(view_model)
-	combat_fsm = CharacterFSM.new(self)
+	character_fsm = CharacterFSM.new(self)
 	atp_slots_manager = ATPSlotsManager.new(self, view_model.atp_slots_manager_ui)
 	_set_character_to_groups()
 
@@ -84,6 +83,20 @@ func remove_independent() -> void:
 	independently_arranges_skills = false
 
 
+func prepare_character() -> void:
+	movement_model.set_to_default_position()
+	view_model.flip_to_starting_position()
+	atp_slots_manager.preparation_atp_slots()
+	atp_slots_manager.atp_slots_managet_ui.show()
+	if is_active:
+		atp_slots_manager.roll_atp_slots()
+		skills_manager.restore_skills()
+
+
+func prepare_character_to_combat() -> void:
+	atp_slots_manager.atp_slots_managet_ui.hide()
+
+
 func auto_set_assault(opponents: Array[Character]) -> void:
 	for atp_slot: ATPSlot in get_slots_for_assaults():
 		var skill: Skill = skills_manager.auto_selects_skill_or_null()
@@ -102,11 +115,3 @@ func _set_character_to_groups() -> void:
 	add_to_group(BattleGroups.GROUPS_BY_CHARACTERS_TYPES[stats.type])
 	if stats.type != BattleEnums.CharacterType.IMMUNOCYTE:
 		add_to_group(BattleGroups.PATHOGENS_GROUP)
-
-
-func _on_battle_turn_started() -> void:
-	movement_model.move_to_default_position()
-	atp_slots_manager.preparation_atp_slots()
-	if is_active:
-		atp_slots_manager.roll_atp_slots()
-		skills_manager.restore_skills()

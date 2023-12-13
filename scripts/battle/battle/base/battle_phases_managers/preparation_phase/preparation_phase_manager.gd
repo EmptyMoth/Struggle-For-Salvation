@@ -4,7 +4,8 @@ extends RefCounted
 
 static func _on_battle_turn_started() -> void:
 	AssaultLog.clear()
-	GlobalParameters.get_tree().call_group(BattleGroups.CHARACTERS_GROUP, "_on_battle_turn_started")
+	GlobalParameters.get_tree().call_group(BattleGroups.CHARACTERS_GROUP, "prepare_character")
+	await GlobalParameters.get_tree().process_frame
 	AutoArrangeAssaults.arranges_enemies()
 	BattleSignals.preparation_started.emit()
 

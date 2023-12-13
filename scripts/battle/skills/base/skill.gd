@@ -33,16 +33,14 @@ func is_auto_set_assault() -> bool:
 	return stats.targets_setter != null
 
 
-func select() -> void:
-	use_type.select()
+func restore() -> void: use_type.restore()
+
+func select() -> void: use_type.select()
 
 func deselect() -> void:
 	if combat_model == null:
 		use_type.deselect()
 	combat_model = null
-
-func restore() -> void:
-	use_type.restore()
 
 
 func get_targets_setter() -> BaseTargetsSetter:

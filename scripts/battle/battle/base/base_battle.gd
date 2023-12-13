@@ -17,14 +17,14 @@ var _battlefield: BaseBattlefield = null
 
 @onready var ally_team: BaseTeam = $Teams/AllyTeam
 @onready var enemy_team: BaseTeam = $Teams/EnemyTeam
-@onready var pause_menu: Control = $CanvasLayer/PauseMenu
 
-@onready var _assaults_arrows: Control = $AssaultsArrows
-@onready var _darkening_screen: ColorRect = $UI/DarkeningScreen
-@onready var _popups_with_assault_info: Control = $PopupsWithAssaultInfo
+@onready var _pause_menu: Control = $CanvasUI/PauseMenu
+@onready var _darkening_screen: ColorRect = $EnvironmentUI/DarkeningScreen
+@onready var _assaults_arrows: Control = $EnvironmentUI/AssaultsArrows
+@onready var _popups_with_assault_info: Control = $EnvironmentUI/PopupsWithAssaultInfo
 
 
-func _ready() -> void:	
+func _ready() -> void:
 	BaseBattle.battle = self
 	_init_of_teams()
 	set_location(_packed_location.instantiate())
@@ -33,9 +33,28 @@ func _ready() -> void:
 
 
 func _input(_event: InputEvent) -> void:
-	if Input.is_action_just_released("ui_menu") and !pause_menu.just_closed:
-		pause_menu.pause_game()
-	pause_menu.just_closed = false
+	if Input.is_action_just_released("ui_switch_battle_phase"):
+		PreparationPhaseManager.finish_phase()
+		return
+	
+	if Input.is_action_just_released("ui_auto_set_assault"):
+		AutoArrangeAssaults.arranges_allies()
+	
+	if Input.is_action_just_released("ui_show_one_side_allied_arrows"):
+		BattleSettings.toggle_display_allied_arrows()
+	elif Input.is_action_just_released("ui_show_one_side_enemy_arrows"):
+		BattleSettings.toggle_display_enemy_arrows()
+	elif Input.is_action_just_released("ui_show_clashing_arrows"):
+		BattleSettings.toggle_display_clashing_arrows()
+	
+	if Input.is_action_just_released("ui_menu") and not _pause_menu.just_closed:
+		_pause_menu.pause_game()
+	_pause_menu.just_closed = false
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_released("ui_cancel"):
+		PlayerInputManager.player_made_general_cancel.emit()
 
 
 func set_location(location: BaseLocation) -> void:
@@ -73,7 +92,7 @@ func end() -> void:
 func highlight_nodes(nodes: Array[CanvasItem], is_highlight: bool) -> void:
 	_darkening_screen.visible = is_highlight
 	for node: CanvasItem in nodes:
-		node.z_index = 1 if is_highlight else 0
+		node.z_index = 2 if is_highlight else 0
 
 
 func _start_next_turn() -> void:
@@ -88,8 +107,8 @@ func _add_popup_with_assault_info(character: CharacterCombatModel) -> void:
 
 
 func _init_of_teams() -> void:
-	var left_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Left
-	var right_popup: BasePopupWithCharacterInfo = $UI/PopupsWithCharacterInfo/Right
+	var left_popup: BasePopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Left
+	var right_popup: BasePopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Right
 	ally_team.set_popup_with_character_info(
 			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
 	enemy_team.set_popup_with_character_info(

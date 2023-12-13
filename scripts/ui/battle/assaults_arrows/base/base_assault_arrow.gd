@@ -107,7 +107,7 @@ func _determine_arrow_type(assault: AssaultData) -> AssaultArrowType:
 
 
 func _on_assault_data_changed(changed_assault: AssaultData) -> void:
-	var current_target: ATPSlot = _target_atp_slot._model
+	var current_target: ATPSlot = _target_atp_slot.model
 	if current_target == changed_assault.targets.default_main \
 			or current_target == changed_assault.targets.main \
 			or not is_sub_arrow:

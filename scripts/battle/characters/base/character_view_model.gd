@@ -14,7 +14,6 @@ func _ready() -> void:
 	subcharacter_bars.set_healths(
 			model.health_manager.physical_health, model.health_manager.mental_health)
 	switch_motion(BattleEnums.CharactersMotions.DEFAULT)
-	_connect_signals()
 
 
 func _process(_delta: float) -> void:
@@ -24,10 +23,6 @@ func _process(_delta: float) -> void:
 static func get_action_name(action: BattleEnums.CharactersMotions) -> String:
 	var action_name: String = BattleEnums.CharactersMotions.find_key(action)
 	return action_name.to_lower() if action_name != null else "default"
-
-
-func set_model(character_model: Character) -> void:
-	model = character_model
 
 
 func make_selected() -> void:
@@ -40,9 +35,7 @@ func cancel_selected() -> void:
 
 
 func flip_to_starting_position() -> void:
-	var window_width: int = ProjectSettings.get_setting("display/window/size/viewport_width")
-	var default_position: Vector2 = model.movement_model.get_default_position_on_camera()
-	character_motions.flip_h = default_position.x < window_width / 2.0
+	character_motions.flip_h = model.movement_model.default_position.x < 0
 
 func flip_to_specified_point(point_position: Vector2) -> void:
 	character_motions.flip_h = position < point_position
@@ -54,19 +47,6 @@ func flip_view_direction() -> void:
 func switch_motion(action: BattleEnums.CharactersMotions) -> void:
 	var animation_name: String = "base_characters_actions/%s" % get_action_name(action)
 	actions_animations.play(animation_name)
-
-
-func _connect_signals() -> void:
-	BattleSignals.turn_started.connect(_on_turn_started)
-
-
-func _on_turn_started() -> void:
-	model.movement_model.move_to_default_position()
-	flip_to_starting_position()
-
-
-func _on_died() -> void:
-	pass
 
 
 func _on_character_pressed() -> void:

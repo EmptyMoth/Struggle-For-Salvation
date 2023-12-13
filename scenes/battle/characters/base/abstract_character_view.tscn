@@ -70,7 +70,7 @@ script = ExtResource("1_d6dh1")
 texture_filter = 1
 position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_moquk")
-animation = &"block"
+animation = &"movement"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Actions"]
 root_node = NodePath("../..")
@@ -112,7 +112,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_sn2ax")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_jnt4r")
 
 [node name="SubcharacterBars" parent="." instance=ExtResource("10_p1s56")]
-mouse_filter = 2
 theme_override_constants/margin_top = 5
 
 [connection signal="mouse_entered" from="ClickArea" to="." method="_on_character_mouse_entered"]

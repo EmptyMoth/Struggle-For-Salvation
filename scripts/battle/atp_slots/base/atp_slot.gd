@@ -47,8 +47,7 @@ func is_blocked() -> bool:
 	return _current_state == ATPSlotState.BLOCKED
 
 
-func get_atp_slot_ui() -> BaseATPSlotUI:
-	return _atp_slot_ui
+func get_atp_slot_ui() -> BaseATPSlotUI: return _atp_slot_ui
 
 
 func remove_skill() -> void:

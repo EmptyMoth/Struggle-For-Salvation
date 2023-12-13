@@ -10,8 +10,7 @@ static func choose_targets(
 	var main_target: ATPSlot = _get_next_target_slot(targets_list, targets_setter)
 	if targets_count <= 1:
 		return Targets.new(main_target)
-	var sub_targets: Array[ATPSlot] = _choose_sub_targets(
-			targets_list, targets_count - 1, targets_setter)
+	var sub_targets: Array[ATPSlot] = _choose_sub_targets(targets_list, targets_count - 1, targets_setter)
 	return Targets.new(main_target, sub_targets)
 
 

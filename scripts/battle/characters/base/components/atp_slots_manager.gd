@@ -3,18 +3,19 @@ extends Resource
 
 
 var wearer: Character
+
+var atp_slots_managet_ui: ATPSlotsManagerUI
 var atp_slots_count: int :
 	get: return _atp_slots.size()
 
 var _min_speed: int = 1
 var _max_speed: int = 1
 var _atp_slots: Array[ATPSlot] = []
-var _atp_slots_container: ATPSlotsManagerUI
 
 
 func _init(character: Character, atp_slots_container: ATPSlotsManagerUI) -> void:
 	wearer = character
-	_atp_slots_container = atp_slots_container
+	atp_slots_managet_ui = atp_slots_container
 	_min_speed = character.stats.min_speed
 	_max_speed = character.stats.max_speed
 	change_atp_slots_count(character.stats.atp_slots_count)
@@ -54,13 +55,13 @@ func add_atp_slots(count: int) -> void:
 	for i: int in count:
 		var atp_slot: ATPSlot = ATPSlot.new(wearer)
 		_atp_slots.append(atp_slot)
-		_atp_slots_container.add_atp_slot(atp_slot.get_atp_slot_ui())
+		atp_slots_managet_ui.add_atp_slot(atp_slot.get_atp_slot_ui())
 
 
 func remove_atp_slots(count: int) -> void:
 	for i: int in count:
 		var atp_slot: ATPSlot = _atp_slots.pop_back()
-		_atp_slots_container.remove_atp_slot(atp_slot.get_atp_slot_ui())
+		atp_slots_managet_ui.remove_atp_slot(atp_slot.get_atp_slot_ui())
 
 
 func preparation_atp_slots() -> void:
