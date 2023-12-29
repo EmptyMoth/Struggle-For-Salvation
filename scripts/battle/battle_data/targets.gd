@@ -18,6 +18,12 @@ func copy() -> Targets:
 	return Targets.new(main, sub_targets.duplicate())
 
 
+func get_all_targets() -> Array[ATPSlot]:
+	var targets: Array[ATPSlot] = [main]
+	targets.append_array(sub_targets)
+	return targets
+
+
 func set_default() -> void:
 	if main == default_main:
 		return

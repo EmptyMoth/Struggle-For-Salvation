@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgc0fulju41ao"]
+
+[ext_resource type="Resource" uid="uid://bjadmf2p8fjuy" path="res://tests/test_action_part.tres" id="1_yu7mr"]
+
+[sub_resource type="GDScript" id="GDScript_rpyhi"]
+script/source = "extends TextureButton
+
+
+@export var action_part: ActionPart
+
+
+func _ready() -> void:
+	print(action_part.user_motion)
+	prints(action_part.user_motion.characters_motions, action_part.user_motion._curve)
+	prints(action_part.opponent_motion)
+	prints(action_part.opponent_motion.delay)
+	var a: int = 10
+	var b: int = 11
+"
+
+[node name="TextureButton" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+tooltip_text = "sadawdsesaa"
+script = SubResource("GDScript_rpyhi")
+action_part = ExtResource("1_yu7mr")

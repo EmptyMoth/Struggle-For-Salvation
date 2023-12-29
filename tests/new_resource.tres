@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ActionPart" load_steps=6 format=3 uid="uid://dwxwwnc6u8ngg"]
+
+[ext_resource type="Script" path="res://scripts/battle/actions/actions_parts/base/action_part.gd" id="1_k4rl1"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/knockback.gd" id="1_kctnq"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/base/abstract_motion.gd" id="2_fa34r"]
+
+[sub_resource type="Resource" id="Resource_oh5ta"]
+script = ExtResource("1_kctnq")
+knockback_power = 5.0
+characters_motions = 0
+delay = 0.1
+is_update_direction = true
+
+[sub_resource type="Resource" id="Resource_tlon6"]
+script = ExtResource("2_fa34r")
+characters_motions = 1
+delay = 0.43
+is_update_direction = false
+
+[resource]
+script = ExtResource("1_k4rl1")
+user_motion = SubResource("Resource_tlon6")
+opponent_motion = SubResource("Resource_oh5ta")

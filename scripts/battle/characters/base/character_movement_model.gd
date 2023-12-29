@@ -30,7 +30,7 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 
-func to_left_of_character(character: Character) -> bool:
+func to_left_of(character: Character) -> bool:
 	return self.position.x < character.get_movement_model().position.x
 
 
@@ -47,6 +47,18 @@ func get_current_position_on_camera() -> Vector2:
 
 func get_default_position_on_camera() -> Vector2:
 	return _get_position_on_camera(default_position)
+
+
+func animate_move_to(
+			new_position: Vector3, 
+			duration: float, 
+			ease: Tween.EaseType = Tween.EASE_IN,
+			transition: Tween.TransitionType = Tween.TRANS_LINEAR) -> void:
+	await get_tree().create_tween()\
+			.set_ease(ease)\
+			.set_trans(transition)\
+			.tween_property(self, "position", new_position, duration)\
+			.finished
 
 
 func move_to(new_position: Vector3) -> void:

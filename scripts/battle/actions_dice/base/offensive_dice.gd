@@ -1,7 +1,15 @@
 class_name OffensiveDice
 extends ActionDiceCombatModel
 
+
 signal hit
+
+
+func _init(dice: ActionDice) -> void:
+	super(dice)
+	action = dice.stats.action \
+			if dice.stats.action != null \
+			else Action.new([ActionPart.new(Evade.DEFAULT, Knockback.DEFAULT)]) 
 
 
 func use_in_one_side(target: Character) -> void:

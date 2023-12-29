@@ -11,6 +11,8 @@ signal lost_clash(target: Character)
 
 var model: ActionDice
 
+var action: Action : get = _get_action
+
 var is_used_in_one_side: bool = false
 var is_avoids_clash: bool = false
 
@@ -58,3 +60,7 @@ func _draw_clash(target: Character) -> void:
 
 func _lose_clash(target: Character) -> void:
 	lost_clash.emit(target)
+
+
+func _get_action() -> Action:
+	return action if action != null else model.stats.action

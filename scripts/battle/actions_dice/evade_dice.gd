@@ -2,6 +2,10 @@ class_name EvadeDice
 extends DefensiveDice
 
 
+static func _static_init() -> void:
+	DEFAULT_ACTION = Action.new([ActionPart.new(Evade.DEFAULT)])
+
+
 func _to_string() -> String:
 	return super() % "E"
 

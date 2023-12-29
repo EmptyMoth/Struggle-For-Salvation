@@ -5,7 +5,7 @@ extends Resource
 @export var dice_type: BattleEnums.ActionDiceType = BattleEnums.ActionDiceType.ATTACK
 @export_range(1, 99, 1) var min_value: int = 1
 @export_range(1, 99, 1) var max_value: int = 1
-@export var action: DiceAction
+@export var action: Action = null
 @export var abilities: Array[BaseActionDiceAbility] = []
 
 

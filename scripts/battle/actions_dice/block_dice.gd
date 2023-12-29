@@ -2,6 +2,10 @@ class_name BlockDice
 extends DefensiveDice
 
 
+static func _static_init() -> void:
+	DEFAULT_ACTION = Action.new([ActionPart.new(Block.DEFAULT)])
+
+
 func _to_string() -> String:
 	return super() % "B"
 

@@ -4,17 +4,9 @@
 script/source = "extends TextureButton
 
 
-@export var condition: int = 12
-
-
 func _ready() -> void:
 	var a: int = 10
 	var b: int = 11
-
-
-func test() -> void:
-	print(condition)
-	condition += 1
 "
 
 [node name="TextureButton" type="TextureButton"]
