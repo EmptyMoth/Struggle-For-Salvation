@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://0ywdcjtv4m3x"]
+[gd_scene load_steps=12 format=3 uid="uid://0ywdcjtv4m3x"]
 
 [ext_resource type="Script" path="res://scripts/battle/locations/location_elements/battlefields/base_scripts/base_battlefield.gd" id="1_ywcr7"]
 [ext_resource type="Script" path="res://tests/battle/battlefield_camera.gd" id="2_1qd8q"]
@@ -35,15 +35,39 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 0, 6, 9, 1, 1, 0, 2.5, 9)
 
+[sub_resource type="Animation" id="Animation_tq1sw"]
+resource_name = "move_camera_2"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, -0.258819, 0, 0, 0.965926, 0.3, 1, -0.258819, 0, 0, 0.965926, 1, 1, 0, 0, 0, 1)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 6, 9, 1, 1, 0, 0, 9)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cytek"]
 _data = {
 "RESET": SubResource("Animation_vix07"),
-"move_camera": SubResource("Animation_6yeqf")
+"move_camera": SubResource("Animation_6yeqf"),
+"move_camera_2": SubResource("Animation_tq1sw")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_aiq1s"]
+size = Vector3(13.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_73lfk"]
+size = Vector3(0.5, 0.5, 3.5)
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_1x30t"]
-vertices = PackedVector3Array(-6.5, 0.5, -1.5, -6.5, 0.5, 1.5, 0, 0.5, 1.5, 0, 0.5, -1.5, 6.5, 0.5, -1.5, 0, 0.5, -1.5, 0, 0.5, 1.5, 6.5, 0.5, 1.5)
-polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1), PackedInt32Array(7, 6, 4), PackedInt32Array(4, 6, 5)]
+vertices = PackedVector3Array(-6.5, 0.5, -1.5, -6.5, 0.5, 1.5, 6.5, 0.5, 1.5, 6.5, 0.5, -1.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 geometry_parsed_geometry_type = 1
 agent_radius = 0.0
 
@@ -94,17 +118,42 @@ axis = 1
 no_depth_test = true
 render_priority = -11
 
+[node name="StaticBorders" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="StaticBorders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBorders/StaticBody3D"]
+shape = SubResource("BoxShape3D_aiq1s")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="StaticBorders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBorders/StaticBody3D2"]
+shape = SubResource("BoxShape3D_aiq1s")
+
+[node name="StaticBody3D3" type="StaticBody3D" parent="StaticBorders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBorders/StaticBody3D3"]
+shape = SubResource("BoxShape3D_73lfk")
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="StaticBorders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.5, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBorders/StaticBody3D4"]
+shape = SubResource("BoxShape3D_73lfk")
+
 [node name="Characters" type="Node3D" parent="."]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 navigation_mesh = SubResource("NavigationMesh_1x30t")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 shape = SubResource("BoxShape3D_fa6f4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 mesh = SubResource("BoxMesh_087c1")

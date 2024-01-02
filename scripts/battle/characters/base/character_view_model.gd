@@ -5,7 +5,6 @@ extends Node2D
 var model: Character
 
 @onready var character_motions: AnimatedSprite2D = $Actions
-@onready var actions_animations: AnimationPlayer = $Actions/AnimationPlayer
 @onready var subcharacter_bars: SubcharacterBars = $SubcharacterBars
 @onready var atp_slots_manager_ui: ATPSlotsManagerUI = $ATPSlotsContainer
 
@@ -45,8 +44,7 @@ func flip_view_direction() -> void:
 
 
 func switch_motion(action: BattleEnums.CharactersMotions) -> void:
-	var animation_name: String = "base_characters_actions/%s" % get_action_name(action)
-	actions_animations.play(animation_name)
+	character_motions.play(get_action_name(action))
 
 
 func _on_character_pressed() -> void:

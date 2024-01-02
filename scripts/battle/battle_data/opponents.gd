@@ -10,8 +10,8 @@ var _targets: Targets
 func _init(targets: Targets) -> void:
 	_targets = targets
 	main = targets.main.wearer
-	sub_targets = targets.sub_targets.map(
-			func(target: ATPSlot) -> Character: return target.wearer)
+	for target: ATPSlot in targets.sub_targets:
+		sub_targets.append(target.wearer)
 
 
 func fast_init(main_opponents: Character, _sub_targets: Array[Character] = []) -> void:

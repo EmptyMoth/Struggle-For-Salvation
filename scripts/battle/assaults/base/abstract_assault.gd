@@ -2,11 +2,11 @@ class_name AbstractAssault
 extends Resource
 
 
-var _data: AssaultData
+var _initiator_info: CharacterAssaultInfo
 
 
 func _init(assault_data: AssaultData) -> void:
-	_data = assault_data
+	_initiator_info = CharacterAssaultInfo.new(assault_data)
 
 
 static func can_be_executed(data: AssaultData) -> bool:
@@ -14,14 +14,14 @@ static func can_be_executed(data: AssaultData) -> bool:
 
 
 func execute() -> void:
-	BattleSignals.assault_started.emit(_data.character, _data.main_target)
+	BattleSignals.assault_started.emit(_initiator_info.character, _initiator_info.opponents.main)
 	@warning_ignore("redundant_await")
 	await _move_characters()
 	_join_assault()
 	@warning_ignore("redundant_await")
 	await _execute()
 	_leave_assault()
-	BattleSignals.assault_ended.emit(_data.character, _data.main_target)
+	BattleSignals.assault_ended.emit(_initiator_info.character, _initiator_info.opponents.main)
 
 
 func _execute() -> void:
@@ -29,10 +29,10 @@ func _execute() -> void:
 
 
 func _join_assault() -> void:
-	_data.character.combat_model.join_assault(_data.atp_slot)
+	_initiator_info.character.combat_model.join_assault(_initiator_info.attacker_atp_slot)
 
 func _leave_assault() -> void:
-	_data.character.combat_model.finish_assault()
+	_initiator_info.character.combat_model.finish_assault()
 
 
 func _move_characters() -> void:

@@ -2,14 +2,13 @@ class_name Nothing
 extends AbstractMotion
 
 
-static func _static_init() -> void:
-	DEFAULT = Nothing.new()
+static var DEFAULT: Nothing = Nothing.new()
 
 
 func _init(
 			_characters_motions: BattleEnums.CharactersMotions = BattleEnums.CharactersMotions.DEFAULT,
-			_duration: float = 0,
-			_is_update_direction: bool = false) -> void:
+			_is_update_direction: bool = false,
+			_duration: float = 0) -> void:
 	pass
 
 

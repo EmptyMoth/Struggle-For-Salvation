@@ -2,9 +2,8 @@ class_name Evade
 extends Knockback
 
 
-static func _static_init() -> void:
-	DEFAULT = Evade.new()
+static var DEFAULT: Evade = Evade.new()
 
 
 func _init() -> void:
-	super(2, 0.3, BattleEnums.CharactersMotions.EVADE, true, Tween.EASE_IN)
+	super(2, _DEFAULT_DURATION, BattleEnums.CharactersMotions.EVADE, true, Tween.EASE_IN)

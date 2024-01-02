@@ -6,9 +6,12 @@ signal came_to_position
 signal began_to_move
 signal finished_to_move
 
-const SPEED: float = 5.0
+const MOVEMENT_SPEED: float = 5.0
 
+var model: Character
 var default_position: Vector3
+var is_animation_move: bool = false
+var acceleration: float = 0
 
 @onready var navigation_agent: NavigationAgent3D = $NavigationAgent3D
 
@@ -21,13 +24,15 @@ func _ready() -> void:
 	set_physics_process(true)
 
 
-func _physics_process(_delta: float) -> void:
-	if navigation_agent.is_navigation_finished():
-		return
-	var next_path_position: Vector3 = navigation_agent.get_next_path_position()
-	velocity = global_position.direction_to(next_path_position) * SPEED
-	velocity.y = 0
-	move_and_slide()
+func _physics_process(delta: float) -> void:
+	if is_animation_move:
+		var collision: KinematicCollision3D = move_and_collide(velocity * acceleration * delta)
+		if collision != null:
+			velocity = velocity.bounce(collision.get_normal())
+	elif not navigation_agent.is_navigation_finished():
+		var next_path_position: Vector3 = navigation_agent.get_next_path_position()
+		velocity = position.direction_to(next_path_position) * MOVEMENT_SPEED
+		move_and_slide()
 
 
 func to_left_of(character: Character) -> bool:
@@ -50,19 +55,23 @@ func get_default_position_on_camera() -> Vector2:
 
 
 func animate_move_to(
-			new_position: Vector3, 
+			additional_position: Vector3, 
 			duration: float, 
 			ease: Tween.EaseType = Tween.EASE_IN,
 			transition: Tween.TransitionType = Tween.TRANS_LINEAR) -> void:
+	is_animation_move = true
+	await get_tree().physics_frame
+	velocity = 2 * additional_position / duration
 	await get_tree().create_tween()\
-			.set_ease(ease)\
-			.set_trans(transition)\
-			.tween_property(self, "position", new_position, duration)\
+			.set_ease(ease).set_trans(transition)\
+			.tween_property(self, "acceleration", 0.1, duration).from(1.0)\
 			.finished
+	is_animation_move = false
 
 
 func move_to(new_position: Vector3) -> void:
 	navigation_agent.set_target_position(new_position)
+	model.view_model.flip_to_specified_point(_get_position_on_camera(new_position))
 	await navigation_agent.navigation_finished
 	came_to_position.emit()
 

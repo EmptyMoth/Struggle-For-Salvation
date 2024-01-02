@@ -51,6 +51,7 @@ func _init(battle_parameters: CharacterBattleParameters,
 
 
 func _ready() -> void:
+	movement_model.model = self
 	view_model.model = self
 	add_child(view_model)
 	character_fsm = CharacterFSM.new(self)

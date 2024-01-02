@@ -3,17 +3,19 @@
 [ext_resource type="Script" path="res://scripts/battle/characters/base/character_movement_model.gd" id="1_k87gu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o4ey2"]
+size = Vector3(0.2, 0.2, 0.2)
 
 [node name="CharacterMovementModel" type="CharacterBody3D"]
 collision_layer = 0
 script = ExtResource("1_k87gu")
 
 [node name="CollisionShape3d" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.100006, 0, 0, 0, 0.100006, 0, 0, 0, 0.100006, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("BoxShape3D_o4ey2")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.5
+path_height_offset = 0.5
 path_max_distance = 20.01
 path_postprocessing = 1
 path_metadata_flags = 0

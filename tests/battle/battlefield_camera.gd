@@ -4,8 +4,10 @@ extends Camera3D
 
 const VIEWING_ANGLE_IS_NORMAL: float = -PI/6
 const VIEWING_ANGLE_IS_COMBAT: float = -PI/18
+#const VIEWING_ANGLE_IS_COMBAT: float = 0
 const NORMAL_POSITION: Vector3 = Vector3(0, 6.0, 9)
 const COMBAT_POSITION: Vector3 = Vector3(0, 2.5, 9)
+#const COMBAT_POSITION: Vector3 = Vector3(0, 0, 9)
 
 var _drag: bool = false
 var _cursor_loc: Vector2 = Vector2.ZERO
@@ -16,7 +18,7 @@ var _cursor_loc: Vector2 = Vector2.ZERO
 func _ready() -> void:
 	BattleSignals.turn_started.connect(move_to_start_position)
 	BattleSignals.combat_started.connect(move_to_combat_position)
-	_animation.play("move_camera")
+	_animation.play("move_camera_2")
 	_animation.pause()
 
 

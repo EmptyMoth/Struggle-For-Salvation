@@ -12,6 +12,7 @@ script = ExtResource("1_ndxc4")
 dice_type = 1
 min_value = 1
 max_value = 3
+motion = 2
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
 
 [sub_resource type="Resource" id="Resource_s2kay"]
@@ -19,6 +20,7 @@ script = ExtResource("1_ndxc4")
 dice_type = 1
 min_value = 3
 max_value = 5
+motion = 2
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
 
 [sub_resource type="Resource" id="Resource_wr0uu"]

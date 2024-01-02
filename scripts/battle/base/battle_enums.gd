@@ -24,9 +24,9 @@ enum CharacterType {
 
 enum CharactersMotions {
 	DEFAULT = 0,
-	DAMAGE = -1,
+	DEATH = -1,
 	STUN = -2,
-	DEATH = -3,
+	DAMAGE = -2,
 	MOVEMENT = 1,
 	BLOCK = 2,
 	EVADE = 3,

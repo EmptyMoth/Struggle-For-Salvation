@@ -11,10 +11,10 @@ func _to_string() -> String:
 	return super() % "A"
 
 
-func _win_clash(target: Character) -> void:
-	super(target)
-	var opponent_dice: ActionDice = target.combat_model.current_action_dice
+func _win_clash(targets: Opponents) -> void:
+	super(targets)
+	var opponent_dice: ActionDice = targets.main.combat_model.current_action_dice
 	var damage: int = model.values_model.get_current_value()
 	if opponent_dice.type == BattleEnums.ActionDiceType.BLOCK:
 		damage -= opponent_dice.values_model.get_current_value()
-	attack(target, damage)
+	attack(targets, damage)

@@ -11,8 +11,6 @@ signal lost_clash(target: Character)
 
 var model: ActionDice
 
-var action: Action : get = _get_action
-
 var is_used_in_one_side: bool = false
 var is_avoids_clash: bool = false
 
@@ -34,33 +32,29 @@ func break_dice() -> void:
 	destroyed.emit()
 
 
-func use_in_one_side(target: Character) -> void:
+func use_in_one_side(targets: Opponents) -> void:
 	is_used = true
 	used_in_one_side.emit()
 	dice_used.emit()
 
 
-func use_in_clash(target: Character, clash_result: BattleEnums.ClashResult) -> void:
+func use_in_clash(targets: Opponents, clash_result: BattleEnums.ClashResult) -> void:
 	match clash_result:
 		BattleEnums.ClashResult.WIN:
-			_win_clash(target)
+			_win_clash(targets)
 		BattleEnums.ClashResult.LOSE:
-			_lose_clash(target)
+			_lose_clash(targets)
 		_:
-			_draw_clash(target)
+			_draw_clash(targets)
 	dice_used.emit()
 	is_used = true
 
 
-func _win_clash(target: Character) -> void:
-	won_clash.emit(target)
+func _win_clash(targets: Opponents) -> void:
+	won_clash.emit(targets)
 
-func _draw_clash(target: Character) -> void:
-	drew_clash.emit(target)
+func _draw_clash(targets: Opponents) -> void:
+	drew_clash.emit(targets)
 
-func _lose_clash(target: Character) -> void:
-	lost_clash.emit(target)
-
-
-func _get_action() -> Action:
-	return action if action != null else model.stats.action
+func _lose_clash(targets: Opponents) -> void:
+	lost_clash.emit(targets)
