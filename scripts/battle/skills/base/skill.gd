@@ -19,8 +19,8 @@ func _init(character: Character, skill_stats: SkillStats) -> void:
 	wearer = character
 	stats = skill_stats
 	use_type = skill_stats.use_type.create_use_type()
-	is_mass_attack = stats.targeting_type is MassSkillType
-	targets_count = stats.targeting_type.get_targets_count()
+	targets_count = stats.targets_count
+	is_mass_attack = stats.targets_count > 1
 	actions_dice.assign(skill_stats.actions_dice_stats.map(
 			func(dice_stats: ActionDiceStats) -> ActionDice: return ActionDice.new(dice_stats, self)))
 
@@ -37,10 +37,7 @@ func restore() -> void: use_type.restore()
 
 func select() -> void: use_type.select()
 
-func deselect() -> void:
-	if combat_model == null:
-		use_type.deselect()
-	combat_model = null
+func deselect() -> void: use_type.deselect()
 
 
 func get_targets_setter() -> BaseTargetsSetter:
@@ -49,5 +46,8 @@ func get_targets_setter() -> BaseTargetsSetter:
 
 func use() -> void:
 	combat_model = SkillCombatModel.new(self)
-	combat_model.skill_used.connect(use_type._on_skill_used)
-	combat_model.skill_used.emit()
+	use_type._on_skill_used()
+
+
+func _on_battle_turn_started() -> void:
+	combat_model = null

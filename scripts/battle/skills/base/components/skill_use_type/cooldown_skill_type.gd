@@ -33,7 +33,7 @@ func restore() -> void:
 
 
 func reduce_cooldown(count: int) -> void:
-	cooldown = min(0, cooldown - count)
+	cooldown = max(0, cooldown - count)
 	is_cooldown = cooldown > 0
 
 func increase_cooldown(count: int) -> void:

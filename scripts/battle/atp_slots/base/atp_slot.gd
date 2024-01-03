@@ -17,10 +17,6 @@ var speed: int = 0 :
 		speed_changed.emit(value)
 var assaulting_skill: Skill = null :
 	set(new_skill):
-		if assaulting_skill != null:
-			assaulting_skill.deselect()
-		if new_skill != null:
-			new_skill.select()
 		assaulting_skill = new_skill
 		installed_skill_changed.emit(new_skill)
 
@@ -48,6 +44,18 @@ func is_blocked() -> bool:
 
 
 func get_atp_slot_ui() -> BaseATPSlotUI: return _atp_slot_ui
+
+
+func selected_skill(skill: Skill) -> void:
+	deselected_skill()
+	if skill != null:
+		assaulting_skill = skill
+		assaulting_skill.select()
+
+func deselected_skill() -> void:
+	if assaulting_skill != null:
+		assaulting_skill.deselect()
+		assaulting_skill = null
 
 
 func remove_skill() -> void:

@@ -1,10 +1,9 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=12 format=3 uid="uid://dl0phvk5y180k"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=10 format=3 uid="uid://dl0phvk5y180k"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="1_7sdj4"]
 [ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_ndxc4"]
 [ext_resource type="Texture2D" uid="uid://ghvuud5dewto" path="res://sprites/ui/battle/skills/test_skill_2.svg" id="1_pm23f"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="1_ptntk"]
-[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_targeting_type/single_skill_type.gd" id="4_t2vve"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/quantity_data.gd" id="6_sejju"]
 
 [sub_resource type="Resource" id="Resource_rv4eh"]
@@ -26,9 +25,6 @@ abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dic
 [sub_resource type="Resource" id="Resource_wr0uu"]
 script = ExtResource("1_ptntk")
 
-[sub_resource type="Resource" id="Resource_21aww"]
-script = ExtResource("4_t2vve")
-
 [sub_resource type="Resource" id="Resource_3vcy6"]
 script = ExtResource("6_sejju")
 quantity = 3
@@ -36,11 +32,11 @@ quantity = 3
 [resource]
 script = ExtResource("1_7sdj4")
 title = "Test Quantity Skill"
+icon = ExtResource("1_pm23f")
+targets_count = 1
 use_type = SubResource("Resource_3vcy6")
 clash_type = SubResource("Resource_wr0uu")
-targeting_type = SubResource("Resource_21aww")
-icon = ExtResource("1_pm23f")
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
 actions_dice_stats = Array[ExtResource("1_ndxc4")]([SubResource("Resource_rv4eh"), SubResource("Resource_s2kay")])
 is_unclashable = false
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
 priority = 0
