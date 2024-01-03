@@ -1,68 +1,66 @@
 class_name BattlefieldCamera
 extends Camera3D
 
+const _MOVE_DURATION: float = 0.2
 
 const VIEWING_ANGLE_IS_NORMAL: float = -PI/6
-const VIEWING_ANGLE_IS_COMBAT: float = -PI/18
-#const VIEWING_ANGLE_IS_COMBAT: float = 0
-const NORMAL_POSITION: Vector3 = Vector3(0, 6.0, 9)
-const COMBAT_POSITION: Vector3 = Vector3(0, 2.5, 9)
-#const COMBAT_POSITION: Vector3 = Vector3(0, 0, 9)
+const VIEWING_ANGLE_IS_COMBAT: float = -PI/18/2
+
+const MAX_POSITION: Vector3 = Vector3(0, 7.0, 9)
+const DEFAULT_POSITION: Vector3 = Vector3(0, 6.0, 9)
+const MIN_POSITION: Vector3 = Vector3(0, 5.0, 9)
+const END_ROTAION_POSITION: Vector3 = Vector3(0, 2.0, 9)
 
 var _drag: bool = false
 var _cursor_loc: Vector2 = Vector2.ZERO
-
-@onready var _animation: AnimationPlayer = $AnimationPlayer
+var camera_position_fraction: float = 0.3
 
 
 func _ready() -> void:
-	BattleSignals.turn_started.connect(move_to_start_position)
+	BattleSignals.preparation_started.connect(move_to_start_position)
 	BattleSignals.combat_started.connect(move_to_combat_position)
-	_animation.play("move_camera_2")
-	_animation.pause()
 
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		_camera_motion_control(event)
-
-	if event is InputEventMouseMotion:
+	elif event is InputEventMouseMotion:
 		_move_camera_by_player(event)
 
 
 func move_to_start_position() -> void:
-	_move_camera(VIEWING_ANGLE_IS_NORMAL, NORMAL_POSITION)
+	_move_camera(VIEWING_ANGLE_IS_NORMAL, DEFAULT_POSITION, 1)
 
 func move_to_combat_position() -> void:
-	_move_camera(VIEWING_ANGLE_IS_COMBAT, COMBAT_POSITION)
+	_move_camera(VIEWING_ANGLE_IS_COMBAT, END_ROTAION_POSITION, 1)
 
-func _move_camera(new_angle: float, new_position: Vector3) -> void:
+func _move_camera(new_angle: float, new_position: Vector3, duration: float) -> void:
 	var tween: Tween = get_tree().create_tween().set_parallel()
-	@warning_ignore("return_value_discarded")
-	tween.tween_property(self, "rotation:x", new_angle, 1)
-	@warning_ignore("return_value_discarded")
-	tween.tween_property(self, "position", new_position, 1)
+	tween.tween_property(self, "rotation:x", new_angle, duration)
+	tween.tween_property(self, "position", new_position, duration)
 
 
 func _camera_motion_control(event_mouse_button: InputEventMouseButton) -> void:
-	if event_mouse_button.button_index != MOUSE_BUTTON_MIDDLE:
-		return
-	
-	_drag = not _drag
-	if event_mouse_button.is_action_pressed("ui_mouse_button_middle"):
-		_cursor_loc = event_mouse_button.position
+	if event_mouse_button.is_action_released("ui_player_move_camera"):
+		_drag = not _drag
+	elif event_mouse_button.is_action_pressed("ui_player_move_camera"):
+		_drag = not _drag
+		_cursor_loc = event_mouse_button.global_position
 
 
 func _move_camera_by_player(event_mouse_motion: InputEventMouseMotion) -> void:
 	if not _drag:
 		return
 	
-	var mouse_offset: Vector2 = _cursor_loc - event_mouse_motion.position
-	#_set_new_position_by_x(mouse_offset)
-	_animation.seek(_animation.current_animation_position + mouse_offset.y / 1080 / 1.5, true)
-	_cursor_loc = event_mouse_motion.position
-
-
-#func _set_new_position_by_x(mouse_offset: Vector2) -> void:
-#	var new_position_by_x: float = position.x + mouse_offset.x / 4 / fov
-#	position.x = clampf(new_position_by_x, -3.5, 3.5) 
+	var mouse_offset: Vector2 = _cursor_loc - event_mouse_motion.global_position
+	_cursor_loc = event_mouse_motion.global_position
+	var animation_offset: float = mouse_offset.y / DisplayServer.window_get_size().y * 1.5
+	camera_position_fraction = clampf(camera_position_fraction - animation_offset, 0, 1)
+	var new_position: Vector3 = position
+	if camera_position_fraction <= 0.6:
+		new_position.y = lerpf(MIN_POSITION.y, MAX_POSITION.y, camera_position_fraction / 0.6)
+	else:
+		new_position.y = lerpf(MAX_POSITION.y, END_ROTAION_POSITION.y, (camera_position_fraction - 0.6) / 0.4)
+	var rotation_fraction: float = clampf((camera_position_fraction - 0.6) / 0.4, 0, 1)
+	var new_angle: float = lerp_angle(VIEWING_ANGLE_IS_NORMAL, VIEWING_ANGLE_IS_COMBAT, rotation_fraction)
+	_move_camera(new_angle, new_position, _MOVE_DURATION)

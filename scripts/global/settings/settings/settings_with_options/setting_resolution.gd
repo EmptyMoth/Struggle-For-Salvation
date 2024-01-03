@@ -17,6 +17,5 @@ func _init() -> void:
 
 func _execute() -> void:
 	DisplayServer.window_set_size(current_option)
-	var new_window_position: Vector2i = \
-		(DisplayServer.screen_get_size() - DisplayServer.window_get_size()) / 2
+	var new_window_position: Vector2i = (DisplayServer.screen_get_size() - current_option) / 2
 	DisplayServer.window_set_position(new_window_position)

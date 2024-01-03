@@ -4,6 +4,9 @@ extends Camera2D
 
 enum CameraDirections { NOT_MOVE, MOVE_BY_X, MOVE_BY_Y, MOVE_BY_X_AND_Y }
 
+const _ZOOM_DURATION: float = 0.4
+const _MOVE_DURATION: float = 0.4
+
 @export_group("Zoom")
 @export var can_change_zoom: bool = true
 @export var _min_zoom: Vector2 = Vector2.ONE * 0.9
@@ -14,16 +17,14 @@ enum CameraDirections { NOT_MOVE, MOVE_BY_X, MOVE_BY_Y, MOVE_BY_X_AND_Y }
 @export var camera_direction: CameraDirections = CameraDirections.MOVE_BY_X_AND_Y
 @export var max_shift: Vector2 = Vector2(960, 540)
 
-const _ZOOM_DURATION: float = 0.4
-const _MOVE_DURATION: float = 0.4
 
 var _zoom_level: Vector2 = zoom :
 	set(value):
 		_zoom_level.x = clampf(value.x, _min_zoom.x, _max_zoom.x)
 		_zoom_level.y = clampf(value.y, _min_zoom.y, _max_zoom.y)
 
-var _drag: bool = false
-var _cursor_loc: Vector2 = Vector2.ZERO
+var _on_drag: bool = false
+var _cursor_lock_position: Vector2 = Vector2.ZERO
 
 
 func _ready() -> void:
@@ -48,17 +49,17 @@ func _input(event: InputEvent) -> void:
 func _camera_motion_control(event_mouse_button: InputEventMouseButton) -> void:
 	if event_mouse_button.button_index != MOUSE_BUTTON_MIDDLE:
 		return
-
-	_drag = not _drag
+	
+	_on_drag = not _on_drag
 	if event_mouse_button.is_action_pressed("ui_mouse_button_middle"):
-		_cursor_loc = event_mouse_button.position
+		_cursor_lock_position = event_mouse_button.position
 
 
 func _move_camera(event_mouse_motion: InputEventMouseMotion) -> void:
-	if not _drag:
+	if camera_direction == CameraDirections.NOT_MOVE or not _on_drag:
 		return
 	
-	var mouse_offset: Vector2 = _cursor_loc - event_mouse_motion.position
+	var mouse_offset: Vector2 = _cursor_lock_position - event_mouse_motion.position
 	var new_position: Vector2 = position + mouse_offset / zoom
 	match camera_direction:
 		CameraDirections.MOVE_BY_X_AND_Y:
@@ -69,7 +70,7 @@ func _move_camera(event_mouse_motion: InputEventMouseMotion) -> void:
 		CameraDirections.MOVE_BY_Y:
 			position.y = clampf(new_position.y, -max_shift.y, max_shift.y)
 	
-	_cursor_loc = event_mouse_motion.position
+	_cursor_lock_position = event_mouse_motion.position
 
 
 func _change_zoom(event_mouse_button: InputEventMouseButton) -> void:
@@ -84,15 +85,14 @@ func _change_zoom(event_mouse_button: InputEventMouseButton) -> void:
 
 
 func _animate_zoom_change(new_zoom: Vector2) -> void:
-	var tween: Tween = get_tree().create_tween()
-	tween.tween_property(self, "zoom", new_zoom, _ZOOM_DURATION)\
-		.set_trans(Tween.TRANS_EXPO)\
-		.set_ease(Tween.EASE_OUT)
+	get_tree().create_tween()\
+		.set_trans(Tween.TRANS_QUAD)\
+		.set_ease(Tween.EASE_OUT)\
+		.tween_property(self, "zoom", new_zoom, _ZOOM_DURATION)
 
 
 func zoom_to(new_position: Vector2, new_zoom: Vector2) -> void:
 	new_position -= Vector2(get_viewport().size / 2)
-	
 	match camera_direction:
 		CameraDirections.MOVE_BY_X_AND_Y:
 			new_position.x = clampf(new_position.x, -max_shift.x, max_shift.x)
@@ -102,8 +102,6 @@ func zoom_to(new_position: Vector2, new_zoom: Vector2) -> void:
 		CameraDirections.MOVE_BY_Y:
 			new_position.y = clampf(new_position.y, -max_shift.y, max_shift.y)
 	
-	var tween: Tween = get_tree().create_tween()
 	_zoom_level = new_zoom
-	
-	tween.tween_property(self, "position", new_position, _MOVE_DURATION)
+	get_tree().create_tween().tween_property(self, "position", new_position, _MOVE_DURATION)
 	_animate_zoom_change(_zoom_level)

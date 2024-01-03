@@ -3,3 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dg0cyfqq0hx38" path="res://scenes/battle/locations/locations/base/base_location.tscn" id="1_6c41e"]
 
 [node name="TestLocation" instance=ExtResource("1_6c41e")]
+
+[node name="Camera" parent="." index="3"]
+camera_direction = 1
+max_shift = Vector2(100, 540)
