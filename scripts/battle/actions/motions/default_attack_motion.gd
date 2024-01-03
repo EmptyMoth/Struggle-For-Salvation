@@ -1,10 +1,10 @@
-class_name BaseAttack
+class_name DefaultAttackMotion
 extends AbstractMotion
 
 
 func _init(
 			_characters_motions: BattleEnums.CharactersMotions = BattleEnums.CharactersMotions.ATTACK_1, 
-			_duration: float = _DEFAULT_DURATION,
+			_duration: float = DEFAULT_DURATION,
 			_is_update_direction: bool = true) -> void:
 	super(_characters_motions, _duration, _is_update_direction)
 

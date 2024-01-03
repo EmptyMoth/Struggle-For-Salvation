@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ActionPart" load_steps=6 format=3 uid="uid://bjadmf2p8fjuy"]
 
-[ext_resource type="Script" path="res://scripts/battle/actions/motions/knockback.gd" id="1_i0p02"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/knockback_motion.gd" id="1_i0p02"]
 [ext_resource type="Script" path="res://scripts/battle/actions/actions_parts/base/action_part.gd" id="1_ywah5"]
 [ext_resource type="Script" path="res://scripts/battle/actions/motions/base/abstract_motion.gd" id="2_t7l6s"]
 

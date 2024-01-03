@@ -2,7 +2,7 @@ class_name AbstractMotion
 extends Resource
 
 
-const _DEFAULT_DURATION: float = 0.3
+const DEFAULT_DURATION: float = 0.3
 
 @export var characters_motion: BattleEnums.CharactersMotions
 @export_range(0, 1, 0.01, "or_greater") var duration: float = 0.1
@@ -15,7 +15,7 @@ const _DEFAULT_DURATION: float = 0.3
 
 func _init(
 			_characters_motion: BattleEnums.CharactersMotions = BattleEnums.CharactersMotions.DEFAULT, 
-			_duration: float = _DEFAULT_DURATION,
+			_duration: float = DEFAULT_DURATION,
 			_is_update_direction: bool = true,
 			_tween_ease: Tween.EaseType = Tween.EASE_IN,
 			_tween_transition: Tween.TransitionType = Tween.TRANS_LINEAR) -> void:

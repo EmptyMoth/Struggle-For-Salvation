@@ -3,9 +3,9 @@ extends RefCounted
 
 
 static var _RESERVE_DICE_SOLO: Action = Action.new([
-		ActionPart.new(MotionsStop.DEFAULT, Nothing.DEFAULT)])
+		ActionPart.new(StopMotion.DEFAULT, NothingMotion.DEFAULT)])
 static var _RESERVE_DICE_DUAL: Action = Action.new([
-		ActionPart.new(MotionsStop.DEFAULT, MotionsStop.DEFAULT)])
+		ActionPart.new(StopMotion.DEFAULT, StopMotion.DEFAULT)])
 
 
 static func execute_win(winner: Character, opponents: Opponents) -> void:
@@ -42,8 +42,8 @@ static func execute_dice_reserve(opponent_1: Character, opponent_2: Character, i
 static func _execute_draw_in_attack(opponent_1: Character, opponent_2: Character) -> void:
 	var draw_in_attacks: Action = Action.new([
 		ActionPart.new(
-			Knockback.new(3, 0.3, opponent_1.combat_model.current_action_dice.stats.motion),
-			Knockback.new(3, 0.3, opponent_2.combat_model.current_action_dice.stats.motion)
+			KnockbackMotion.new(3, 0.3, opponent_1.combat_model.current_action_dice.stats.motion),
+			KnockbackMotion.new(3, 0.3, opponent_2.combat_model.current_action_dice.stats.motion)
 		)
 	])
 	draw_in_attacks.execute(opponent_1, opponent_2)
@@ -53,8 +53,8 @@ static func _execute_draw_in_attack(opponent_1: Character, opponent_2: Character
 static func _execute_evaded_attack(defending: Character, attacker: Character) -> void:
 	var evaded_attack: Action = Action.new([
 		ActionPart.new(
-			Evade.DEFAULT,
-			BaseAttack.new(attacker.combat_model.current_action_dice.stats.motion)
+			EvadeMotion.DEFAULT,
+			DefaultAttackMotion.new(attacker.combat_model.current_action_dice.stats.motion)
 		)
 	])
 	evaded_attack.execute(defending, attacker)
@@ -64,11 +64,11 @@ static func _execute_evaded_attack(defending: Character, attacker: Character) ->
 static func _execute_blocked_attack(defending: Character, attacker: Character) -> void:
 	var blocked_attack: Action = Action.new([
 		ActionPart.new(
-			Block.DEFAULT,
-			BaseAttack.new(attacker.combat_model.current_action_dice.stats.motion)
+			BlockMotion.DEFAULT,
+			DefaultAttackMotion.new(attacker.combat_model.current_action_dice.stats.motion)
 		),
 		ActionPart.new(
-			Block.DEFAULT,
+			BlockMotion.DEFAULT,
 			DamageMotion.DEFAULT
 		)
 	])
@@ -81,6 +81,6 @@ static func _execute_attack(user: Character, opponents: Opponents) -> void:
 	var attack: Action = dice.stats.action \
 		if dice.stats.action != null \
 		else Action.new([ActionPart.new(
-			BaseAttack.new(user.combat_model.current_action_dice.stats.motion), DamageMotion.DEFAULT)])
+			DefaultAttackMotion.new(user.combat_model.current_action_dice.stats.motion), DamageMotion.DEFAULT)])
 	attack.execute(user, opponents.main, opponents.sub_targets)
 	await attack.finished

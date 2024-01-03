@@ -35,6 +35,10 @@ func get_current_value() -> int:
 	return max(1, default_current_value + bonus.power)
 
 
+func get_extra_power_multiplier() -> float:
+	return get_current_value() / default_current_value
+
+
 func roll_dice() -> void:
 	var min_value: int = get_min_value()
 	var max_value: int = get_max_value()

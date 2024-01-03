@@ -13,8 +13,8 @@ extends AbstractAbility
 	"Clash Lose",
 	"On Roll Dice",
 	"On Hit",
-	"On Block",
-	"On Evade",
+	"On BlockMotion",
+	"On EvadeMotion",
 	"After Area Attack", 
 	) var _condition_title: String = "None"
 

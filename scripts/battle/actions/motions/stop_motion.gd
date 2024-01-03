@@ -1,12 +1,12 @@
-class_name MotionsStop
+class_name StopMotion
 extends AbstractMotion
 
 
-static var DEFAULT: MotionsStop = MotionsStop.new()
+static var DEFAULT: StopMotion = StopMotion.new()
 
 
 func _init(
-			_duration: float = _DEFAULT_DURATION,
+			_duration: float = DEFAULT_DURATION,
 			_is_update_direction: bool = true,
 			_characters_motions: BattleEnums.CharactersMotions = BattleEnums.CharactersMotions.DEFAULT) -> void:
 	super(_characters_motions, _duration, _is_update_direction)

@@ -1,4 +1,4 @@
-class_name Knockback
+class_name KnockbackMotion
 extends AbstractMotion
 
 
@@ -7,7 +7,7 @@ extends AbstractMotion
 
 func _init(
 			_knockback_power: float = 3,
-			_duration: float = _DEFAULT_DURATION,
+			_duration: float = DEFAULT_DURATION,
 			_characters_motions: BattleEnums.CharactersMotions = BattleEnums.CharactersMotions.DAMAGE, 
 			_is_update_direction: bool = true,
 			_tween_ease: Tween.EaseType = Tween.EASE_OUT,

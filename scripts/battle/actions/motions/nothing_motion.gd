@@ -1,8 +1,8 @@
-class_name Nothing
+class_name NothingMotion
 extends AbstractMotion
 
 
-static var DEFAULT: Nothing = Nothing.new()
+static var DEFAULT: NothingMotion = NothingMotion.new()
 
 
 func _init(
