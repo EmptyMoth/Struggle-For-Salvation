@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bvughhmsw4fmq"]
+[gd_scene load_steps=12 format=3 uid="uid://bvughhmsw4fmq"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/settings_menu.gd" id="1_e8fqe"]
 [ext_resource type="PackedScene" uid="uid://dccvt6oohut1v" path="res://scenes/ui/menu/settings_menu/settings_list/settings_list.tscn" id="4_0fmdu"]
@@ -7,10 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cgjhn45pycsb6" path="res://scenes/ui/menu/base/tabs_header/tabs_header.tscn" id="6_vchef"]
 [ext_resource type="PackedScene" uid="uid://chbkkj3m2qli6" path="res://scenes/ui/menu/settings_menu/settings_elements/h_slider_setting_menu.tscn" id="7_nvp2c"]
 [ext_resource type="PackedScene" uid="uid://cf80bvo24wwwh" path="res://scenes/ui/menu/base/tabs_header/tab_button.tscn" id="7_p334f"]
-[ext_resource type="StyleBox" uid="uid://bseajyjn6r2a6" path="res://resources/ui/global/styles/small_button_style.tres" id="8_auvx0"]
-[ext_resource type="StyleBox" uid="uid://0ob2iwlxuxlu" path="res://resources/ui/global/styles/small_button_style_disabled.tres" id="9_uufq2"]
-[ext_resource type="StyleBox" uid="uid://dgevgvejfm767" path="res://resources/ui/global/styles/big_button_style.tres" id="10_kib8i"]
-[ext_resource type="StyleBox" uid="uid://cp5dd1rijft4l" path="res://resources/ui/global/styles/big_button_style_disabled.tres" id="11_0nqgp"]
+[ext_resource type="PackedScene" uid="uid://c8bls1ts5i4af" path="res://scenes/ui/menu/base/buttons/medium_button.tscn" id="8_tm5d6"]
+[ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="9_4n53n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2l3pb"]
 content_margin_top = 3.0
@@ -20,10 +18,6 @@ border_width_bottom = 3
 border_color = Color(0.2, 0.666667, 1, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erjt3"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4dwpy"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vetq"]
 
 [node name="SettingsMenu" type="Control"]
 layout_mode = 3
@@ -197,29 +191,14 @@ setting_name = "ENEMY_HEALTH"
 layout_mode = 2
 setting_name = "ENEMY_DAMAGE"
 
-[node name="ResetButton" type="Button" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox"]
+[node name="ResetButton" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox" instance=ExtResource("8_tm5d6")]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 10
-theme_override_font_sizes/font_size = 24
-theme_override_styles/normal = ExtResource("8_auvx0")
-theme_override_styles/hover = ExtResource("8_auvx0")
-theme_override_styles/pressed = ExtResource("8_auvx0")
-theme_override_styles/disabled = ExtResource("9_uufq2")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_4dwpy")
-text = "RESET_SETTINGS"
+text = "RESET"
 
-[node name="SaveAndExitButton" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="SaveAndExitButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("9_4n53n")]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 10
-theme_override_font_sizes/font_size = 40
-theme_override_styles/normal = ExtResource("10_kib8i")
-theme_override_styles/hover = ExtResource("10_kib8i")
-theme_override_styles/pressed = ExtResource("10_kib8i")
-theme_override_styles/disabled = ExtResource("11_0nqgp")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_3vetq")
-text = "SAVE_AND_EXIT"
+text = "CLOSE"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/Panel/Margin/VBox/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndExitButton" to="." method="_on_save_and_exit_button_pressed"]

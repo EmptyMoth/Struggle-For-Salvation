@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://ciro0ncgqiif4"]
+[gd_scene load_steps=49 format=3 uid="uid://ciro0ncgqiif4"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_base_info/popup_with_character_base_info.gd" id="1_5nc8q"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/base_popup_with_character_info.gd" id="1_wrolr"]
@@ -27,7 +27,9 @@
 [ext_resource type="LabelSettings" uid="uid://s1mrrv6ine7x" path="res://resources/ui/global/label_settings/default/small_bolt.tres" id="24_61jmy"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_additional_info/popup_with_character_additional_info.gd" id="25_0fybh"]
 [ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="26_q1nq2"]
+[ext_resource type="PackedScene" uid="uid://cgjhn45pycsb6" path="res://scenes/ui/menu/base/tabs_header/tabs_header.tscn" id="27_p3418"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="28_2qdai"]
+[ext_resource type="PackedScene" uid="uid://cf80bvo24wwwh" path="res://scenes/ui/menu/base/tabs_header/tab_button.tscn" id="28_36yvg"]
 [ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="29_1y576"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="30_2dpqm"]
 [ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="30_qsdty"]
@@ -123,40 +125,6 @@ frame_4/texture = ExtResource("21_ukxdi")
 frame_4/duration = 1.0
 frame_5/texture = ExtResource("22_48kda")
 frame_5/duration = 1.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jxwn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_da11u"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yk74"]
-content_margin_top = 2.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-draw_center = false
-border_width_bottom = 2
-border_color = Color(0.2, 0.666667, 1, 1)
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ccta"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hs34t"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_mlaip"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pr1ya"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f8ty"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq6j"]
-content_margin_top = 2.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-draw_center = false
-border_width_bottom = 2
-border_color = Color(0.2, 0.666667, 1, 1)
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cn65t"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62o5d"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sevkx"]
 
@@ -486,37 +454,19 @@ size_flags_horizontal = 8
 mouse_filter = 2
 theme_override_constants/margin_right = 20
 
-[node name="HBox" type="HBoxContainer" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options"]
+[node name="TabsHeader" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options" node_paths=PackedStringArray("tab_container") instance=ExtResource("27_p3418")]
 layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
+alignment = 2
+can_collapse_tabs = true
+tab_container = NodePath("../../SmoothScroll/Margin/Content")
 
-[node name="SkillsButton" type="Button" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options/HBox"]
+[node name="SkillsButton" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options/TabsHeader" instance=ExtResource("28_36yvg")]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_1jxwn")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_da11u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4yk74")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0ccta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hs34t")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_mlaip")
 text = "Skills"
-metadata/content_index = 0
 
-[node name="PassiveButton" type="Button" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options/HBox"]
+[node name="PassiveButton" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options/TabsHeader" instance=ExtResource("28_36yvg")]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pr1ya")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_7f8ty")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5cq6j")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_cn65t")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_62o5d")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_mlaip")
 text = "Passive"
 metadata/content_index = 1
 
@@ -535,20 +485,17 @@ allow_horizontal_scroll = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-mouse_filter = 2
 
 [node name="Content" type="TabContainer" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_sevkx")
 clip_tabs = false
 tabs_visible = false
 
 [node name="SkillsList" type="GridContainer" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 layout_mode = 2
-mouse_filter = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
@@ -558,7 +505,7 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
+mouse_filter = 1
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
@@ -732,4 +679,6 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 mouse_filter = 2
 
-[connection signal="toggled" from="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox/ButtonHidingDiceAbilities" to="HBox/PopupWithSkillInfo" method="_on_button_hiding_dice_abilities_toggled" flags=18]
+[connection signal="tab_changed" from="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options/TabsHeader" to="HBox/VBox/PopupWithCharacterAdditionalInfo" method="_on_tabs_header_tab_changed"]
+[connection signal="tab_collapse" from="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/Options/TabsHeader" to="HBox/VBox/PopupWithCharacterAdditionalInfo" method="_on_tabs_header_tab_collapse"]
+[connection signal="toggled" from="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox/ButtonHidingDiceAbilities" to="HBox/PopupWithSkillInfo" method="_on_button_hiding_dice_abilities_toggled"]

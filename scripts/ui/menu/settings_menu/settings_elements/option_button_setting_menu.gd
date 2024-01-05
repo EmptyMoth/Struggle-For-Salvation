@@ -2,6 +2,11 @@
 extends BaseSettingElementMenu
 
 
+func _ready() -> void:
+	super()
+	get_setting_button().get_popup().transparent_bg = true
+
+
 func get_setting_button() -> OptionButton:
 	return $CenterContainer/OptionButton
 

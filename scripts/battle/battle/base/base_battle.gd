@@ -18,7 +18,7 @@ var _battlefield: BaseBattlefield = null
 @onready var ally_team: BaseTeam = $Teams/AllyTeam
 @onready var enemy_team: BaseTeam = $Teams/EnemyTeam
 
-@onready var _pause_menu: Control = $CanvasUI/PauseMenu
+@onready var _pause_menu: Control = $CanvasUI/BattlePauseMenu
 @onready var _darkening_screen: ColorRect = $EnvironmentUI/DarkeningScreen
 @onready var _assaults_arrows: Control = $EnvironmentUI/AssaultsArrows
 @onready var _popups_with_assault_info: Control = $EnvironmentUI/PopupsWithAssaultInfo
@@ -46,10 +46,6 @@ func _input(_event: InputEvent) -> void:
 		BattleSettings.toggle_display_enemy_arrows()
 	elif Input.is_action_just_released("ui_show_clashing_arrows"):
 		BattleSettings.toggle_display_clashing_arrows()
-	
-	if Input.is_action_just_released("ui_menu") and not _pause_menu.just_closed:
-		_pause_menu.pause_game()
-	_pause_menu.just_closed = false
 
 
 func _unhandled_input(event: InputEvent) -> void:

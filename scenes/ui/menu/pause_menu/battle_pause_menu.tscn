@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3ullwwdhlbfr"]
+
+[ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu/pause_menu/pause_menu.tscn" id="1_2qifr"]
+[ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_1a3e6"]
+
+[node name="BattlePauseMenu" instance=ExtResource("1_2qifr")]
+
+[node name="RestartButton" parent="Menu/VBox" index="1" instance=ExtResource("2_1a3e6")]
+layout_mode = 2
+text = "RESTART"
+
+[node name="ExitButton" parent="Menu/VBox" index="4"]
+visible = false
+
+[node name="LeaveButton" parent="Menu/VBox" index="5" instance=ExtResource("2_1a3e6")]
+layout_mode = 2
+text = "LEAVE"
+
+[connection signal="pressed" from="Menu/VBox/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Menu/VBox/LeaveButton" to="." method="_on_leave_button_pressed"]

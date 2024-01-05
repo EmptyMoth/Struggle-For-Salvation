@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://cg53i625fwoc2" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="6_4l50c"]
 [ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_with_character_info/right_popup_with_character_info.tscn" id="7_ft1fj"]
 [ext_resource type="PackedScene" uid="uid://ciro0ncgqiif4" path="res://scenes/ui/battle/popup_with_character_info/left_popup_with_character_info.tscn" id="8_0r3md"]
-[ext_resource type="PackedScene" uid="uid://bjdros8jccxcd" path="res://scenes/ui/menu/menu_pause.tscn" id="9_gc333"]
+[ext_resource type="PackedScene" uid="uid://b3ullwwdhlbfr" path="res://scenes/ui/menu/pause_menu/battle_pause_menu.tscn" id="9_lo4gb"]
 
 [sub_resource type="Resource" id="Resource_bsmcw"]
 script = ExtResource("5_afr7i")
@@ -89,5 +89,5 @@ layout_mode = 0
 [node name="Right" parent="CanvasUI/PopupsWithCharacterInfo" instance=ExtResource("7_ft1fj")]
 layout_mode = 1
 
-[node name="PauseMenu" parent="CanvasUI" instance=ExtResource("9_gc333")]
+[node name="BattlePauseMenu" parent="CanvasUI" instance=ExtResource("9_lo4gb")]
 visible = false

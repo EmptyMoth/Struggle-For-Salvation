@@ -2,15 +2,22 @@ class_name SettingsMenu
 extends Control
 
 
-signal menu_exited
-
+signal menu_closed
 
 @onready var settings: TabContainer = $CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content
 
 
+func open_menu() -> void:
+	show()
+
+
+func close_menu() -> void:
+	hide()
+
+
 func _on_save_and_exit_button_pressed() -> void:
 	Settings.save_settings()
-	emit_signal("menu_exited")
+	menu_closed.emit()
 
 
 func _on_reset_button_pressed() -> void:

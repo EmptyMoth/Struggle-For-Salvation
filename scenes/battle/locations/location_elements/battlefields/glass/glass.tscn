@@ -8,10 +8,6 @@
 
 [node name="Glass" instance=ExtResource("1_krs7g")]
 
-[node name="AnimationPlayer" parent="BattlefieldCamera" index="0"]
-autoplay = "move_camera"
-reset_on_save = false
-
 [node name="UpSide" parent="VisualPart" index="0"]
 texture = ExtResource("2_jvmf7")
 
