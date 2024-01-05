@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dccvt6oohut1v"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/settings_list/settings_list.gd" id="1_al5p0"]
+
+[node name="SettingsList" type="VBoxContainer"]
+theme_override_constants/separation = 12
+script = ExtResource("1_al5p0")

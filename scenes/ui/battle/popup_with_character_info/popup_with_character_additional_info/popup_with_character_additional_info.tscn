@@ -1,41 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bu1wimhkpbutk"]
+[gd_scene load_steps=6 format=3 uid="uid://bu1wimhkpbutk"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_additional_info/popup_with_character_additional_info.gd" id="1_1vpgi"]
 [ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="2_3nuae"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jxwn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_da11u"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4yk74"]
-content_margin_top = 2.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-draw_center = false
-border_width_bottom = 2
-border_color = Color(0.2, 0.666667, 1, 1)
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0ccta"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hs34t"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_3smeh"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pr1ya"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7f8ty"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq6j"]
-content_margin_top = 2.0
-bg_color = Color(0.6, 0.6, 0.6, 0)
-draw_center = false
-border_width_bottom = 2
-border_color = Color(0.2, 0.666667, 1, 1)
-expand_margin_bottom = 2.0
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cn65t"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_62o5d"]
+[ext_resource type="PackedScene" uid="uid://cgjhn45pycsb6" path="res://scenes/ui/menu/base/tabs_header/tabs_header.tscn" id="2_5hi6s"]
+[ext_resource type="PackedScene" uid="uid://cf80bvo24wwwh" path="res://scenes/ui/menu/base/tabs_header/tab_button.tscn" id="3_h0q1l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vm7g4"]
 
@@ -57,7 +25,7 @@ mouse_filter = 2
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 20
-theme_override_constants/margin_top = 20
+theme_override_constants/margin_top = 18
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 20
 
@@ -72,37 +40,18 @@ size_flags_horizontal = 0
 mouse_filter = 2
 theme_override_constants/margin_right = 20
 
-[node name="HBox" type="HBoxContainer" parent="Panel/Margin/VBox/Options"]
+[node name="TabsHeader" parent="Panel/Margin/VBox/Options" node_paths=PackedStringArray("tab_container") instance=ExtResource("2_5hi6s")]
 layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 12
+can_collapse_tabs = true
+tab_container = NodePath("../../SmoothScroll/Margin/Content")
 
-[node name="SkillsButton" type="Button" parent="Panel/Margin/VBox/Options/HBox"]
+[node name="SkillsButton" parent="Panel/Margin/VBox/Options/TabsHeader" instance=ExtResource("3_h0q1l")]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_1jxwn")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_da11u")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_4yk74")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0ccta")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_hs34t")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_3smeh")
 text = "Skills"
-metadata/content_index = 0
 
-[node name="PassiveButton" type="Button" parent="Panel/Margin/VBox/Options/HBox"]
+[node name="PassiveButton" parent="Panel/Margin/VBox/Options/TabsHeader" instance=ExtResource("3_h0q1l")]
 layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_pr1ya")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_7f8ty")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_5cq6j")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_cn65t")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_62o5d")
-toggle_mode = true
-button_group = SubResource("ButtonGroup_3smeh")
 text = "Passive"
 metadata/content_index = 1
 
@@ -121,20 +70,17 @@ allow_horizontal_scroll = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-mouse_filter = 2
 
 [node name="Content" type="TabContainer" parent="Panel/Margin/VBox/SmoothScroll/Margin"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vm7g4")
 clip_tabs = false
 tabs_visible = false
 
 [node name="SkillsList" type="GridContainer" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 layout_mode = 2
-mouse_filter = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
@@ -144,7 +90,10 @@ visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-mouse_filter = 2
+mouse_filter = 1
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+
+[connection signal="tab_changed" from="Panel/Margin/VBox/Options/TabsHeader" to="." method="_on_tabs_header_tab_changed"]
+[connection signal="tab_collapse" from="Panel/Margin/VBox/Options/TabsHeader" to="." method="_on_tabs_header_tab_collapse"]

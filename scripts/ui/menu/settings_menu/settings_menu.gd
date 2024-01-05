@@ -5,13 +5,14 @@ extends Control
 signal menu_exited
 
 
-func _ready() -> void:
-	var tab_container: TabContainer = $CenterContainer/VBoxContainer/TabContainer
-	for tab_index: int in tab_container.get_tab_count():
-		var settings: AbstractSettingsMenu = tab_container.get_child(tab_index)
-		tab_container.set_tab_title(tab_index, settings.settings_group_name)
+@onready var settings: TabContainer = $CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content
 
 
 func _on_save_and_exit_button_pressed() -> void:
 	Settings.save_settings()
 	emit_signal("menu_exited")
+
+
+func _on_reset_button_pressed() -> void:
+	var current_settings: SettingsList = settings.get_current_tab_control() as SettingsList
+	current_settings.reset_settings()

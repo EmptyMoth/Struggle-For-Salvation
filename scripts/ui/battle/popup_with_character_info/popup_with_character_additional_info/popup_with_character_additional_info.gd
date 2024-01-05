@@ -10,11 +10,9 @@ const PRESSET_FOR_PASSIVE_LIST: String = "[ul bullet=▪]\n%s[/ul]"
 const PRESSET_FOR_PASSIVE_DESCRIPTION: String = "[color=#3AF][/color]%s"
 
 var _skill_selected_button_group: ButtonGroup = ButtonGroup.new()
-var _option_button_group: ButtonGroup = ButtonGroup.new()
-var _current_pressed_option_button: BaseButton
 
-@onready var _skills_button: Button = $Panel/Margin/VBox/Options/HBox/SkillsButton
-@onready var _passive_button: Button = $Panel/Margin/VBox/Options/HBox/PassiveButton
+@onready var _skills_button: Button = $Panel/Margin/VBox/Options/TabsHeader/SkillsButton
+@onready var _passive_button: Button = $Panel/Margin/VBox/Options/TabsHeader/PassiveButton
 @onready var _content: TabContainer = $Panel/Margin/VBox/SmoothScroll/Margin/Content
 @onready var _skills_list: GridContainer = $Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList
 @onready var _passive_abilities_list: RichTextLabel = $Panel/Margin/VBox/SmoothScroll/Margin/Content/PassiveAbilitiesList
@@ -24,19 +22,14 @@ var _current_pressed_option_button: BaseButton
 
 func _ready() -> void:
 	_skill_selected_button_group.pressed.connect(_on_skill_selected_button_group_pressed)
-	_option_button_group.pressed.connect(_on_option_button_group_pressed)
-	_skills_button.button_group = _option_button_group
-	_passive_button.button_group = _option_button_group
 	_minimize_popup()
 
 
-func set_info(
-			skills: Array[Skill], 
+func set_info(skills: Array[Skill], 
 			passive_abilities: Array[BaseCharacterPassiveAbility]) -> void:
 	_set_skills(skills)
 	_set_passive_abilities(passive_abilities)
 	_passive_button.visible = passive_abilities.size() > 0
-	_minimize_popup()
 
 
 func open_skills_list() -> void:
@@ -49,9 +42,6 @@ func open_passive_abilities_list() -> void:
 
 
 func _minimize_popup() -> void:
-	if _current_pressed_option_button != null:
-		_current_pressed_option_button.button_pressed = false
-		_current_pressed_option_button = null
 	_scroll_container.hide()
 
 
@@ -85,16 +75,13 @@ func _create_skill_selected_buttons(count: int) -> void:
 		_skills_list.add_child(skill_selected_button)
 
 
-func _on_option_button_group_pressed(button: BaseButton) -> void:
-	if _current_pressed_option_button == button:
-		_minimize_popup()
-		return
-	
-	_current_pressed_option_button = button
-	_content.current_tab = button.get_meta("content_index")
+func _on_tabs_header_tab_changed(_tab: int) -> void:
 	_scroll_container.show()
 	await get_tree().process_frame
 	_scroll_container.custom_minimum_size.y = min(_content_container_parent.size.y, 220)
+
+func _on_tabs_header_tab_collapse(_tab: int) -> void:
+	_minimize_popup()
 
 
 func _on_skill_selected_button_group_pressed(button: BaseButton) -> void:

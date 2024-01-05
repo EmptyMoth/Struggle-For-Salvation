@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cf80bvo24wwwh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m1qot"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_njvyx"]
+content_margin_top = 2.0
+content_margin_bottom = 2.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 2
+border_color = Color(0.2, 0.666667, 1, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hek3g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_q4p8u"]
+
+[node name="TabButton" type="Button"]
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_m1qot")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_m1qot")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_njvyx")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_hek3g")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_q4p8u")
+toggle_mode = true
+text = "Text"
+metadata/content_index = 0

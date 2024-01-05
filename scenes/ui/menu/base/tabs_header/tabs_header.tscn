@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgjhn45pycsb6"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/base/tabs_header/tabs_header.gd" id="1_wddyy"]
+
+[node name="TabsHeader" type="HBoxContainer"]
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("1_wddyy")
