@@ -1,8 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://bjdros8jccxcd"]
+[gd_scene load_steps=8 format=3 uid="uid://bjdros8jccxcd"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu/pause_menu.gd" id="1_mggr6"]
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_iks7v"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blur_background.gdshader" id="2_j2mv0"]
 [ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="3_23n23"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxdso"]
+shader = ExtResource("2_j2mv0")
+shader_parameter/blur_force = 1.0
+
+[sub_resource type="Gradient" id="Gradient_p5xbd"]
+offsets = PackedFloat32Array(0, 0.228571, 0.495238, 0.766667, 1)
+colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 0.2, 0.0392157, 0.0392157, 0.0392157, 0.8, 0.0392157, 0.0392157, 0.0392157, 1, 0.0392157, 0.0392157, 0.0392157, 0.8, 0.0392157, 0.0392157, 0.0392157, 0.2)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mah5k"]
+gradient = SubResource("Gradient_p5xbd")
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -14,13 +26,31 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mggr6")
 
+[node name="Blur" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_rxdso")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_mah5k")
+
 [node name="Background" type="ColorRect" parent="."]
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.588235)
+color = Color(0.0392157, 0.0392157, 0.0392157, 0.4)
 
 [node name="Menu" type="CenterContainer" parent="."]
 layout_mode = 1

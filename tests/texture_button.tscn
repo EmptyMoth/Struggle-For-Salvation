@@ -1,4 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgc0fulju41ao"]
+[gd_scene load_steps=10 format=3 uid="uid://cgc0fulju41ao"]
+
+[ext_resource type="Texture2D" uid="uid://dp28sv6srdfmo" path="res://tests/LocationImageWithEffect.png" id="1_e7ml5"]
+[ext_resource type="Texture2D" uid="uid://dcmlrwiewvkq1" path="res://sprites/global/custom_mouse_cursor/move.png" id="1_q6q68"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/multiply.gdshader" id="3_jttgt"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/difference.gdshader" id="4_stobp"]
+
+[sub_resource type="Gradient" id="Gradient_dlh8m"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.555556)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1lv42"]
+gradient = SubResource("Gradient_dlh8m")
 
 [sub_resource type="GDScript" id="GDScript_rpyhi"]
 script/source = "extends TextureButton
@@ -9,8 +21,44 @@ func _ready() -> void:
 	var b: int = 11
 "
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_itqcw"]
+shader = ExtResource("3_jttgt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_blv8h"]
+shader = ExtResource("4_stobp")
+
 [node name="TextureButton" type="TextureButton"]
 offset_right = 40.0
 offset_bottom = 40.0
 tooltip_text = "sadawdsesaa"
+texture_normal = SubResource("GradientTexture1D_1lv42")
+stretch_mode = 0
 script = SubResource("GDScript_rpyhi")
+
+[node name="LocationImageWithEffect" type="Sprite2D" parent="."]
+position = Vector2(513, 559)
+texture = ExtResource("1_e7ml5")
+
+[node name="Move" type="Sprite2D" parent="."]
+position = Vector2(102, 45)
+texture = ExtResource("1_q6q68")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_itqcw")
+layout_mode = 0
+offset_left = 89.0
+offset_top = 24.0
+offset_right = 129.0
+offset_bottom = 64.0
+color = Color(0.219608, 0.203922, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+material = SubResource("ShaderMaterial_blv8h")
+layout_mode = 0
+offset_left = 335.0
+offset_top = -11.0
+offset_right = 912.0
+offset_bottom = 136.0
+theme_override_colors/font_color = Color(0.490196, 0.317647, 0.862745, 1)
+theme_override_font_sizes/font_size = 128
+text = "Epidermis"
