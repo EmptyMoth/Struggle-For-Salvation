@@ -11,6 +11,6 @@ float vignette(vec2 uv){
 }
 
 void fragment(){
-	COLOR.rgb = color.rgb;
+	COLOR.rgb = color;
 	COLOR *= 1.0 - vignette(UV);
 }

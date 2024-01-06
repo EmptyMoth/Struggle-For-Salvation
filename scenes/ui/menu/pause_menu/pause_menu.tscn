@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bjdros8jccxcd"]
+[gd_scene load_steps=12 format=3 uid="uid://bjdros8jccxcd"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu/pause_menu.gd" id="1_mggr6"]
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_iks7v"]
 [ext_resource type="Shader" path="res://resources/ui/global/shaders/blur_background.gdshader" id="2_j2mv0"]
+[ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="3_10v1o"]
 [ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="3_23n23"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxdso"]
@@ -10,11 +11,97 @@ shader = ExtResource("2_j2mv0")
 shader_parameter/blur_force = 1.0
 
 [sub_resource type="Gradient" id="Gradient_p5xbd"]
-offsets = PackedFloat32Array(0, 0.228571, 0.495238, 0.766667, 1)
+offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
 colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 0.2, 0.0392157, 0.0392157, 0.0392157, 0.8, 0.0392157, 0.0392157, 0.0392157, 1, 0.0392157, 0.0392157, 0.0392157, 0.8, 0.0392157, 0.0392157, 0.0392157, 0.2)
+metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mah5k"]
 gradient = SubResource("Gradient_p5xbd")
+
+[sub_resource type="Animation" id="Animation_wo0lv"]
+resource_name = "show"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:material:shader_parameter/blur_force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gmb6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:material:shader_parameter/blur_force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_crdfj"]
+_data = {
+"RESET": SubResource("Animation_gmb6u"),
+"show": SubResource("Animation_wo0lv")
+}
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -26,7 +113,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mggr6")
 
-[node name="Blur" type="ColorRect" parent="."]
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Blur" type="ColorRect" parent="Background"]
 material = SubResource("ShaderMaterial_rxdso")
 layout_mode = 1
 anchors_preset = 15
@@ -34,23 +130,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture1D_mah5k")
 
-[node name="Background" type="ColorRect" parent="."]
-layout_mode = 0
+[node name="Background" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0.0392157, 0.0392157, 0.0392157, 0.4)
+
+[node name="Animation" type="AnimationPlayer" parent="Background"]
+libraries = {
+"": SubResource("AnimationLibrary_crdfj")
+}
 
 [node name="Menu" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -60,25 +165,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBox" type="VBoxContainer" parent="Menu"]
+[node name="Moving" type="MarginContainer" parent="Menu"]
+layout_mode = 2
+theme_override_constants/margin_top = 0
+script = ExtResource("3_10v1o")
+
+[node name="VBox" type="VBoxContainer" parent="Menu/Moving"]
 custom_minimum_size = Vector2(360, 0)
 layout_mode = 2
+size_flags_vertical = 0
 theme_override_constants/separation = 16
 
-[node name="ResumeButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
+[node name="ResumeButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
 layout_mode = 2
 text = "RESUME"
 
-[node name="ManualButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
+[node name="ManualButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
 visible = false
 layout_mode = 2
 text = "MANUAL"
 
-[node name="SettingsButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
+[node name="SettingsButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="ExitButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
+[node name="ExitButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
 layout_mode = 2
 text = "EXIT"
 
@@ -86,7 +197,9 @@ text = "EXIT"
 visible = false
 layout_mode = 1
 
-[connection signal="pressed" from="Menu/VBox/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="Menu/VBox/ManualButton" to="." method="_on_manual_button_pressed"]
-[connection signal="pressed" from="Menu/VBox/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Menu/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="animation_finished" from="Background/Animation" to="." method="_on_animation_animation_finished"]
+[connection signal="pressed" from="Menu/Moving/VBox/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu/Moving/VBox/ManualButton" to="." method="_on_manual_button_pressed"]
+[connection signal="pressed" from="Menu/Moving/VBox/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/Moving/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="menu_closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]

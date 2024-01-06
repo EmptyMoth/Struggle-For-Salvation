@@ -1,0 +1,156 @@
+[gd_scene load_steps=9 format=3 uid="uid://cmb10wy2q2gwf"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/main_menu/main_menu.gd" id="1_jg0kq"]
+[ext_resource type="Texture2D" uid="uid://d4fcmvqrftt7l" path="res://sprites/ui/menu/locations/brain_stem.png" id="2_tyiu0"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/vignettes/square_vignette.gdshader" id="3_bly2p"]
+[ext_resource type="Texture2D" uid="uid://28rgyn3863sd" path="res://sprites/global/game_logo/game_logo.svg" id="4_fbhwm"]
+[ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="5_gdxar"]
+[ext_resource type="Script" path="res://scripts/ui/menu/base/buttons/button_switch_scene.gd" id="6_tbwx4"]
+[ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="7_3g0qb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j42ep"]
+shader = ExtResource("3_bly2p")
+shader_parameter/color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+shader_parameter/size = 0.3
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jg0kq")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="LastLocation" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(1080, 0)
+layout_mode = 1
+anchor_left = 0.437
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.959961
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Location" type="TextureRect" parent="LastLocation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_tyiu0")
+
+[node name="Shadow" type="ColorRect" parent="LastLocation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.039, 0.039, 0.039, 0.5)
+
+[node name="Vignette" type="ColorRect" parent="LastLocation"]
+material = SubResource("ShaderMaterial_j42ep")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 128
+theme_override_constants/margin_bottom = 48
+
+[node name="VBox" type="VBoxContainer" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="Main/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 128
+
+[node name="GameLogo" type="TextureRect" parent="Main/VBox/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_fbhwm")
+
+[node name="Menu" type="VBoxContainer" parent="Main/VBox/VBox"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+theme_override_constants/separation = 16
+
+[node name="ContinueButton" parent="Main/VBox/VBox/Menu" instance=ExtResource("5_gdxar")]
+layout_mode = 2
+text = "CONTINUE"
+script = ExtResource("6_tbwx4")
+scene_path = "res://tests/battle/test_battle.tscn"
+
+[node name="NewGameButton" parent="Main/VBox/VBox/Menu" instance=ExtResource("5_gdxar")]
+visible = false
+layout_mode = 2
+text = "NEW_GAME"
+
+[node name="SettingsButton" parent="Main/VBox/VBox/Menu" instance=ExtResource("5_gdxar")]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="ExitButton" parent="Main/VBox/VBox/Menu" instance=ExtResource("5_gdxar")]
+layout_mode = 2
+text = "EXIT"
+
+[node name="Label" type="Label" parent="Main/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+text = "v.0.0.1a"
+
+[node name="MainShadow" type="ColorRect" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="SettingsMenu" parent="." instance=ExtResource("7_3g0qb")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Main/VBox/VBox/Menu/ContinueButton" to="Main/VBox/VBox/Menu/ContinueButton" method="_on_pressed"]
+[connection signal="pressed" from="Main/VBox/VBox/Menu/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Main/VBox/VBox/Menu/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="menu_closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]

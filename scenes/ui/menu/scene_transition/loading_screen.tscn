@@ -1,0 +1,319 @@
+[gd_scene load_steps=12 format=3 uid="uid://dnq58jiikuj23"]
+
+[ext_resource type="Script" path="res://scripts/global/scene_transition/loading_screen.gd" id="1_cwoj1"]
+[ext_resource type="Texture2D" uid="uid://d4fcmvqrftt7l" path="res://sprites/ui/menu/locations/brain_stem.png" id="2_dma34"]
+[ext_resource type="Texture2D" uid="uid://dmxswrfdlbgx0" path="res://sprites/ui/menu/scene_transition/loading_icon_elements_2.svg" id="2_plyxe"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/vignettes/vignette.gdshader" id="3_e1kia"]
+[ext_resource type="Texture2D" uid="uid://tnvfnpulmivt" path="res://sprites/ui/menu/scene_transition/loading_icon_elements_1.svg" id="3_xt7ef"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/difference.gdshader" id="4_g07bb"]
+
+[sub_resource type="Animation" id="Animation_c1ks3"]
+resource_name = "loading"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.8),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 0.470751, 1),
+"update": 0,
+"values": [Vector2(18, 0), Vector2(18, -2), Vector2(18, -5), Vector2(18, -2), Vector2(18, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.8),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 0.470751, 1),
+"update": 0,
+"values": [Vector2(36, 18), Vector2(38, 18), Vector2(41, 18), Vector2(38, 18), Vector2(36, 18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.8),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 0.470751, 1),
+"update": 0,
+"values": [Vector2(18, 36), Vector2(18, 38), Vector2(18, 41), Vector2(18, 38), Vector2(18, 36)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.8),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 0.470751, 1),
+"update": 0,
+"values": [Vector2(0, 18), Vector2(-2, 18), Vector2(-5, 18), Vector2(-2, 18), Vector2(0, 18)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.4, 0.5, 0.8),
+"transitions": PackedFloat32Array(2.07053, 1, 1, 0.470751, 1),
+"update": 0,
+"values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
+}
+
+[sub_resource type="Animation" id="Animation_h105j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 36)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 18)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xta51"]
+_data = {
+"RESET": SubResource("Animation_h105j"),
+"loading": SubResource("Animation_c1ks3")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kw72c"]
+shader = ExtResource("3_e1kia")
+shader_parameter/color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+shader_parameter/opacity = 10.0
+shader_parameter/radius = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q2v0t"]
+shader = ExtResource("4_g07bb")
+
+[node name="LoadingScreen" type="CanvasLayer"]
+script = ExtResource("1_cwoj1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xta51")
+}
+autoplay = "loading"
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+
+[node name="LastLocation" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 1024.0
+offset_bottom = -56.0
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Location" type="TextureRect" parent="LastLocation"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_dma34")
+
+[node name="Vignette" type="ColorRect" parent="LastLocation"]
+material = SubResource("ShaderMaterial_kw72c")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LocationName" type="Label" parent="LastLocation"]
+material = SubResource("ShaderMaterial_q2v0t")
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -468.0
+offset_top = -191.0
+offset_right = 374.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 128
+text = "LocationName"
+
+[node name="Margin" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 8
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 48
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Margin" type="MarginContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/margin_top = 516
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Margin"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 28
+
+[node name="Label" type="Label" parent="Margin/VBox/Margin/VBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.666667, 1, 1)
+theme_override_font_sizes/font_size = 36
+text = "Life Facts"
+horizontal_alignment = 2
+
+[node name="Tips" type="Label" parent="Margin/VBox/Margin/VBox"]
+custom_minimum_size = Vector2(680, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.486275, 0.580392, 0.74902, 1)
+theme_override_font_sizes/font_size = 24
+text = "Каждый день в Организме человека появляется несколько милионнов Раковых клеток"
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="LoadingProgress" type="Control" parent="Margin/VBox"]
+custom_minimum_size = Vector2(162, 65)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 10
+
+[node name="Progress" type="Label" parent="Margin/VBox/LoadingProgress"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -21.0
+offset_right = 72.0
+offset_bottom = 21.0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "56%"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="LoadingIcon" type="Control" parent="Margin/VBox/LoadingProgress"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -65.0
+offset_top = -32.5
+offset_bottom = 32.5
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(32.5, 32.5)
+metadata/_edit_group_ = true
+
+[node name="Element1" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+layout_mode = 2
+offset_left = 18.0
+offset_right = 47.0
+offset_bottom = 29.0
+texture = ExtResource("2_plyxe")
+
+[node name="Element2" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+layout_mode = 2
+offset_left = 36.0
+offset_top = 18.0
+offset_right = 65.0001
+offset_bottom = 47.0
+texture = ExtResource("3_xt7ef")
+
+[node name="Element3" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+layout_mode = 2
+offset_left = 18.0
+offset_top = 36.0
+offset_right = 47.0
+offset_bottom = 65.0001
+texture = ExtResource("3_xt7ef")
+
+[node name="Element4" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+layout_mode = 2
+offset_top = 18.0
+offset_right = 29.0
+offset_bottom = 47.0
+texture = ExtResource("3_xt7ef")

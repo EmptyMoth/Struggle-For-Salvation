@@ -8,6 +8,7 @@
 [node name="BigButton" type="Button"]
 size_flags_horizontal = 3
 size_flags_vertical = 2
+focus_mode = 0
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = ExtResource("1_gocsi")
 theme_override_styles/hover = ExtResource("1_gocsi")

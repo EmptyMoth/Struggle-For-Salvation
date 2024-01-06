@@ -31,6 +31,7 @@ func set_setting(setting: AbstractSetting) -> void:
 	_initial_setup(setting)
 
 
+@warning_ignore("untyped_declaration")
 func _initial_setup(setting) -> void:
 	_setting = setting
 

@@ -52,7 +52,7 @@ func _display_popup(is_displayed: bool) -> void:
 	if _current_tween:
 		_current_tween.kill()
 	_current_tween = get_tree().create_tween()\
-		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING).set_parallel()
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
 	_display_panel(_current_tween, _base_info, is_displayed, _DURATION_OF_PRIMARY_INFO)
 	_display_panel(_current_tween, _additional_info, is_displayed, _DURATION_OF_SECONDARY_INFO)
 	_display_popup_with_skill(is_displayed and _skill_info.visible)
@@ -60,7 +60,7 @@ func _display_popup(is_displayed: bool) -> void:
 
 func _display_popup_with_skill(is_displayed: bool) -> void:
 	_current_tween = get_tree().create_tween()\
-		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING).set_parallel()
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
 	_display_panel(_current_tween, _skill_info.main_panel, is_displayed, _DURATION_OF_SECONDARY_INFO)
 	_display_panel(_current_tween, _skill_info.dice_list_panel, is_displayed, _DURATION_OF_TERTIARY_INFO)
 	_skill_info.display_dice_abilities_panel(_current_tween, is_displayed, _DURATION_OF_TERTIARY_INFO)

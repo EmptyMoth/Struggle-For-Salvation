@@ -1,9 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgc0fulju41ao"]
+[gd_scene load_steps=8 format=3 uid="uid://cgc0fulju41ao"]
 
-[ext_resource type="Texture2D" uid="uid://dp28sv6srdfmo" path="res://tests/LocationImageWithEffect.png" id="1_e7ml5"]
-[ext_resource type="Texture2D" uid="uid://dcmlrwiewvkq1" path="res://sprites/global/custom_mouse_cursor/move.png" id="1_q6q68"]
-[ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/multiply.gdshader" id="3_jttgt"]
-[ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/difference.gdshader" id="4_stobp"]
+[ext_resource type="Texture2D" uid="uid://cmatvgodntsms" path="res://tests/Location=BrainStem.png" id="2_jv4tr"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/vignettes/square_vignette.gdshader" id="2_k7lex"]
 
 [sub_resource type="Gradient" id="Gradient_dlh8m"]
 interpolation_mode = 1
@@ -16,16 +14,43 @@ gradient = SubResource("Gradient_dlh8m")
 script/source = "extends TextureButton
 
 
+const _OFFSET_TEXTURE: int = 50
+
+var _directions: Array[Vector2] = [Vector2(1, 1), Vector2(1, -1), Vector2(-1, 1), Vector2(-1, -1),
+		Vector2.UP, Vector2.DOWN, Vector2.LEFT, Vector2.RIGHT, Vector2.ZERO]
+var _current_direction: Vector2 = _directions.pop_at(randi_range(0, _directions.size() - 1))
+
+@onready var texture: TextureRect = $Control/TextureRect
+@onready var _start_position: Vector2 = texture.position
+
+
 func _ready() -> void:
-	var a: int = 10
-	var b: int = 11
+	_on_tween_finished()
+
+
+func _on_tween_finished() -> void:
+	var random_index: int = randi_range(0, _directions.size() - 1)
+	_directions.append(_current_direction)
+	_current_direction = _directions.pop_at(random_index)
+	var new_position: Vector2 = _start_position + _current_direction * _OFFSET_TEXTURE
+	get_tree().create_tween()\\
+			.set_ease(Tween.EASE_IN_OUT)\\
+			.set_trans(Tween.TRANS_BACK)\\
+			.tween_property(texture, \"position\", new_position, 5)\\
+			.finished.connect(_on_tween_finished)
+	#var tween: Tween = get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_SINE)
+	#if texture.position.x < -10:
+		#tween.tween_property(texture, \"position:x\", 0, 20).finished.connect(_on_tween_finished)
+	#else:
+		#tween.tween_property(texture, \"position:x\", -texture.size.x, 20).finished.connect(_on_tween_finished)
 "
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_itqcw"]
-shader = ExtResource("3_jttgt")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_frxvl"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_blv8h"]
-shader = ExtResource("4_stobp")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iy3tp"]
+shader = ExtResource("2_k7lex")
+shader_parameter/color = Color(0, 0, 0, 1)
+shader_parameter/size = 0.2
 
 [node name="TextureButton" type="TextureButton"]
 offset_right = 40.0
@@ -35,30 +60,41 @@ texture_normal = SubResource("GradientTexture1D_1lv42")
 stretch_mode = 0
 script = SubResource("GDScript_rpyhi")
 
-[node name="LocationImageWithEffect" type="Sprite2D" parent="."]
-position = Vector2(513, 559)
-texture = ExtResource("1_e7ml5")
+[node name="Location=brainStem" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_frxvl")
+scale = Vector2(1.055, 1.055)
+texture = ExtResource("2_jv4tr")
+centered = false
 
-[node name="Move" type="Sprite2D" parent="."]
-position = Vector2(102, 45)
-texture = ExtResource("1_q6q68")
+[node name="Control" type="Control" parent="."]
+visible = false
+clip_contents = true
+anchors_preset = 0
+offset_right = 1080.0
+offset_bottom = 1080.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+clip_contents = true
+layout_mode = 0
+offset_left = -228.0
+offset_top = -228.0
+offset_right = 1308.0
+offset_bottom = 1308.0
+texture = ExtResource("2_jv4tr")
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(1.055, 1.055)
+color = Color(0.0392157, 0.0392157, 0.0392157, 0.4)
 
 [node name="ColorRect" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_itqcw")
+material = SubResource("ShaderMaterial_iy3tp")
 layout_mode = 0
-offset_left = 89.0
-offset_top = 24.0
-offset_right = 129.0
-offset_bottom = 64.0
-color = Color(0.219608, 0.203922, 1, 1)
-
-[node name="Label" type="Label" parent="."]
-material = SubResource("ShaderMaterial_blv8h")
-layout_mode = 0
-offset_left = 335.0
-offset_top = -11.0
-offset_right = 912.0
-offset_bottom = 136.0
-theme_override_colors/font_color = Color(0.490196, 0.317647, 0.862745, 1)
-theme_override_font_sizes/font_size = 128
-text = "Epidermis"
+offset_left = -1.0
+offset_top = -9.99998
+offset_right = 1023.0
+offset_bottom = 1014.0
+scale = Vector2(1.055, 1.055)
