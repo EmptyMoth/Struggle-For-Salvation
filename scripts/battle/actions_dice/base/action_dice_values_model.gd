@@ -36,7 +36,7 @@ func get_current_value() -> int:
 
 
 func get_extra_power_multiplier() -> float:
-	return get_current_value() / default_current_value
+	return get_current_value() / float(default_current_value)
 
 
 func roll_dice() -> void:

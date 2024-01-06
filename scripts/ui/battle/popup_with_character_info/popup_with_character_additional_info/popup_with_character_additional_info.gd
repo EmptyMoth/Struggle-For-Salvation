@@ -13,7 +13,6 @@ var _skill_selected_button_group: ButtonGroup = ButtonGroup.new()
 
 @onready var _skills_button: Button = $Panel/Margin/VBox/Options/TabsHeader/SkillsButton
 @onready var _passive_button: Button = $Panel/Margin/VBox/Options/TabsHeader/PassiveButton
-@onready var _content: TabContainer = $Panel/Margin/VBox/SmoothScroll/Margin/Content
 @onready var _skills_list: GridContainer = $Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList
 @onready var _passive_abilities_list: RichTextLabel = $Panel/Margin/VBox/SmoothScroll/Margin/Content/PassiveAbilitiesList
 @onready var _scroll_container: Control = $Panel/Margin/VBox/SmoothScroll

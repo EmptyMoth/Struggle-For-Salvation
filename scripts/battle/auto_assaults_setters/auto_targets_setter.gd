@@ -6,6 +6,7 @@ static func choose_targets(
 			targets_list: Array[Character], 
 			targets_count: int = 1,
 			targets_setter: BaseTargetsSetter = null) -> Targets:
+	@warning_ignore("incompatible_ternary")
 	targets_list = (targets_setter if targets_setter else BaseTargetsSetter).sorted_targets(targets_list)
 	var main_target: ATPSlot = _get_next_target_slot(targets_list, targets_setter)
 	if targets_count <= 1:
@@ -18,6 +19,7 @@ static func choose_sub_targets(
 			targets_list: Array[Character], 
 			targets_count: int,
 			targets_setter: BaseTargetsSetter = null) -> Array[ATPSlot]:
+	@warning_ignore("incompatible_ternary")
 	targets_list = (targets_setter if targets_setter else BaseTargetsSetter).sorted_targets(targets_list)
 	return _choose_sub_targets(targets_list, targets_count, targets_setter)
 
@@ -35,4 +37,5 @@ static func _choose_sub_targets(
 static func _get_next_target_slot(targets_list: Array[Character], 
 			targets_setter: BaseTargetsSetter = null) -> ATPSlot:
 	var targets_slots: Array[ATPSlot] = targets_list.pop_back().get_slots_available_for_targeting()
+	@warning_ignore("incompatible_ternary")
 	return (targets_setter if targets_setter else BaseTargetsSetter).choose_target_slot(targets_slots)

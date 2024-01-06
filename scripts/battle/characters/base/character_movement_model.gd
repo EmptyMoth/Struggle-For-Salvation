@@ -57,13 +57,13 @@ func get_default_position_on_camera() -> Vector2:
 func animate_move_to(
 			additional_position: Vector3, 
 			duration: float, 
-			ease: Tween.EaseType = Tween.EASE_IN,
+			tween_ease: Tween.EaseType = Tween.EASE_IN,
 			transition: Tween.TransitionType = Tween.TRANS_LINEAR) -> void:
 	is_animation_move = true
 	await get_tree().physics_frame
 	velocity = 2 * additional_position / duration
 	await get_tree().create_tween()\
-			.set_ease(ease).set_trans(transition)\
+			.set_ease(tween_ease).set_trans(transition)\
 			.tween_property(self, "acceleration", 0.1, duration).from(1.0)\
 			.finished
 	is_animation_move = false
