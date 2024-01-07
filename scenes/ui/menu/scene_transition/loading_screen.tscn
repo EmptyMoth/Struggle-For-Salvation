@@ -7,6 +7,69 @@
 [ext_resource type="Texture2D" uid="uid://tnvfnpulmivt" path="res://sprites/ui/menu/scene_transition/loading_icon_elements_1.svg" id="3_xt7ef"]
 [ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/difference.gdshader" id="4_g07bb"]
 
+[sub_resource type="Animation" id="Animation_h105j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 18)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 36)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 18)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_c1ks3"]
 resource_name = "loading"
 length = 0.8
@@ -70,69 +133,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(2.07053, 1, 1, 0.470751, 1),
 "update": 0,
 "values": [0.0, 1.5708, 3.14159, 4.71239, 6.28319]
-}
-
-[sub_resource type="Animation" id="Animation_h105j"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(18, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(36, 18)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(18, 36)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element4:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 18)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xta51"]
@@ -253,39 +253,22 @@ text = "Каждый день в Организме человека появл�
 horizontal_alignment = 2
 autowrap_mode = 2
 
-[node name="LoadingProgress" type="Control" parent="Margin/VBox"]
-custom_minimum_size = Vector2(162, 65)
+[node name="LoadingProgress" type="HBoxContainer" parent="Margin/VBox"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 10
+theme_override_constants/separation = 24
 
 [node name="Progress" type="Label" parent="Margin/VBox/LoadingProgress"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -21.0
-offset_right = 72.0
-offset_bottom = 21.0
-grow_vertical = 2
+layout_mode = 2
 theme_override_font_sizes/font_size = 36
-text = "56%"
+text = "100%"
 horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="LoadingIcon" type="Control" parent="Margin/VBox/LoadingProgress"]
-layout_mode = 1
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -65.0
-offset_top = -32.5
-offset_bottom = 32.5
-grow_horizontal = 0
-grow_vertical = 2
-pivot_offset = Vector2(32.5, 32.5)
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
 metadata/_edit_group_ = true
 
 [node name="Element1" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
