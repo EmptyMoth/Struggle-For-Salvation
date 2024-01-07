@@ -65,7 +65,7 @@ func _set_skill_abilities_info(abilities: Array[BaseSkillAbility]) -> void:
 		_skill_ability_label.text = AbstractAbility.get_abilities_description(abilities)
 
 
-func _set_actions_dice_info(actions_dice_list: Array) -> void:
+func _set_actions_dice_info(actions_dice_list: Array[ActionDice]) -> void:
 	remove_actions_dice_info()
 	for i: int in actions_dice_list.size():
 		var action_dice: ActionDice = actions_dice_list[i]

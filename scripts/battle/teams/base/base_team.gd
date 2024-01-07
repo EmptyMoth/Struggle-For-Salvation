@@ -17,7 +17,7 @@ func _ready() -> void:
 		add_child(Character.new(character_parameter, team_fraction))
 
 
-func set_popup_with_character_info(popup: BasePopupWithCharacterInfo) -> void:
+func set_popup_with_character_info(popup: PopupWithCharacterInfo) -> void:
 	_team_ui.popup_with_character_info = popup
 
 

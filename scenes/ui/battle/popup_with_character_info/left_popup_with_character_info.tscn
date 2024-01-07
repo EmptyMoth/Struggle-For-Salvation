@@ -1,7 +1,7 @@
 [gd_scene load_steps=49 format=3 uid="uid://ciro0ncgqiif4"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_base_info/popup_with_character_base_info.gd" id="1_5nc8q"]
-[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/base_popup_with_character_info.gd" id="1_wrolr"]
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_info.gd" id="1_wrolr"]
 [ext_resource type="LabelSettings" uid="uid://w82e3rfwv8xl" path="res://resources/ui/global/label_settings/default/small.tres" id="2_yekam"]
 [ext_resource type="Texture2D" uid="uid://cnisllos7rsh1" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/immunocyte.svg" id="3_lnfou"]
 [ext_resource type="Texture2D" uid="uid://c1nod30dak1gr" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/virus.svg" id="4_nsdbd"]

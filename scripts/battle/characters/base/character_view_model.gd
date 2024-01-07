@@ -7,6 +7,7 @@ var model: Character
 @onready var character_motions: AnimatedSprite2D = $Actions
 @onready var subcharacter_bars: SubcharacterBars = $SubcharacterBars
 @onready var atp_slots_manager_ui: ATPSlotsManagerUI = $ATPSlotsContainer
+@onready var click_area: Button = $ClickArea
 
 
 func _ready() -> void:
@@ -22,6 +23,10 @@ func _process(_delta: float) -> void:
 static func get_action_name(action: BattleEnums.CharactersMotions) -> String:
 	var action_name: String = BattleEnums.CharactersMotions.find_key(action)
 	return action_name.to_lower() if action_name != null else "default"
+
+
+func get_position_for_popup_assault_info() -> Vector2:
+	return Vector2(position.x, position.y - click_area.size.y - 30)
 
 
 func make_selected() -> void:

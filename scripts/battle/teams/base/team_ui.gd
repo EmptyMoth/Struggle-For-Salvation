@@ -19,7 +19,7 @@ var selected_atp_slot: ATPSlot = null :
 			AssaultsArrowsManager.toggle_arrows_by_atp_slot(atp_slot, true)
 		selected_atp_slot = atp_slot
 
-var popup_with_character_info: BasePopupWithCharacterInfo = null
+var popup_with_character_info: PopupWithCharacterInfo = null
 
 
 func is_character_selected() -> bool:

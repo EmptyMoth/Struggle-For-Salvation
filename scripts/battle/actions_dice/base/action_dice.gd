@@ -3,10 +3,10 @@ extends Resource
 
 
 const _DICE_COLOR_BY_TYPE: Dictionary = {
-	BattleEnums.ActionDiceType.ATTACK : Color("E54646"),
-	BattleEnums.ActionDiceType.BLOCK : Color("5C8AE5"),
-	BattleEnums.ActionDiceType.EVADE : Color("73E573"),
-	BattleEnums.ActionDiceType.COUNTER : Color("EEEE48"),
+	BattleEnums.ActionDiceType.ATTACK : Color("E04B4B"),
+	BattleEnums.ActionDiceType.BLOCK : Color("588BF2"),
+	BattleEnums.ActionDiceType.EVADE : Color("4BD169"),
+	BattleEnums.ActionDiceType.COUNTER : Color("E5E529"),
 }
 
 var wearer: Character :

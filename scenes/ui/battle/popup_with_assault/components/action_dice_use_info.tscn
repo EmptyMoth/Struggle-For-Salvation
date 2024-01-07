@@ -1,16 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://yaruhydavs04"]
+[gd_scene load_steps=7 format=3 uid="uid://yaruhydavs04"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_assault/components/action_dice_use_info.gd" id="1_5ask1"]
-[ext_resource type="FontFile" uid="uid://cqgufl6eexceh" path="res://fonts/ubuntu/ubuntu-regular.ttf" id="2_j5uc6"]
 [ext_resource type="Texture2D" uid="uid://d3op6bt1c5kon" path="res://sprites/ui/battle/actions_dice/icons/attack_dice.svg" id="3_1uy8v"]
 [ext_resource type="Texture2D" uid="uid://dr0pt8402f60q" path="res://sprites/ui/battle/actions_dice/icons/block_dice.svg" id="4_bopu6"]
 [ext_resource type="Texture2D" uid="uid://m3jljc3axjbi" path="res://sprites/ui/battle/actions_dice/icons/evade_dice.svg" id="5_p37dq"]
 [ext_resource type="Texture2D" uid="uid://yjndvqstn00w" path="res://sprites/ui/battle/actions_dice/icons/counte_dice.svg" id="6_5g0ul"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ciacj"]
-font = ExtResource("2_j5uc6")
-font_color = Color(0.960784, 0.960784, 0.960784, 1)
-shadow_size = 0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_mga6w"]
 resource_local_to_scene = true
@@ -25,13 +19,9 @@ frame_2/duration = 0.0
 frame_3/texture = ExtResource("6_5g0ul")
 frame_3/duration = 0.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_xwh76"]
-font = ExtResource("2_j5uc6")
-font_size = 20
-font_color = Color(0.960784, 0.960784, 0.960784, 1)
-shadow_size = 0
-
 [node name="ActionDiceUseInfo" type="VBoxContainer"]
+offset_right = 52.0
+offset_bottom = 58.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 mouse_filter = 2
@@ -41,13 +31,18 @@ script = ExtResource("1_5ask1")
 [node name="DiceRange" type="Label" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
 text = "98-99"
-label_settings = SubResource("LabelSettings_ciacj")
 horizontal_alignment = 1
-vertical_alignment = 1
+vertical_alignment = 2
 
-[node name="DiceIcon" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(25, 25)
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="DiceIcon" type="TextureRect" parent="Center"]
+custom_minimum_size = Vector2(35, 35)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -55,10 +50,12 @@ mouse_filter = 2
 texture = SubResource("AnimatedTexture_mga6w")
 expand_mode = 1
 
-[node name="DiceValue" type="Label" parent="."]
+[node name="DiceValue" type="Label" parent="Center"]
 layout_mode = 2
 size_flags_vertical = 0
-text = "99"
-label_settings = SubResource("LabelSettings_xwh76")
+theme_override_colors/font_outline_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "15"
 horizontal_alignment = 1
 vertical_alignment = 1

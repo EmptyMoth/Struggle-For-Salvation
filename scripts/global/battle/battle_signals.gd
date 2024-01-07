@@ -24,6 +24,7 @@ signal clash_ended(opponent_1: Character, opponent_2: Character)
 func _ready() -> void:
 	battle_started.connect(PlayerArrangeAssaults._on_battle_started)
 	battle_ended.connect(PlayerArrangeAssaults._on_battle_ended)
+	preparation_ended.connect(PlayerArrangeAssaults._on_battle_preparaion_ended)
 	
 	turn_started.connect(PreparationPhaseManager._on_battle_turn_started)
 	

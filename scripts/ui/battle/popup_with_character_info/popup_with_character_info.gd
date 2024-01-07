@@ -1,4 +1,4 @@
-class_name BasePopupWithCharacterInfo
+class_name PopupWithCharacterInfo
 extends MarginContainer
 
 

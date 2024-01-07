@@ -2,7 +2,7 @@ class_name BaseBattle
 extends Node2D
 
 
-const _POPUP_WITH_ASSAULT_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_assault/popup_with_assault.tscn")
+const _POPUP_WITH_ASSAULT_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_assault/base_popup_with_assault_info.tscn")
 
 @export var _packed_formation: PackedScene
 @export var _packed_location: PackedScene
@@ -95,15 +95,16 @@ func _start_next_turn() -> void:
 	BattleSignals.turn_started.emit()
 
 
-func _add_popup_with_assault_info(character: CharacterCombatModel) -> void:
-	var popup: BasePopupWithAssault = _POPUP_WITH_ASSAULT_INFO_SCENE.instantiate()
+func _add_popup_with_assault_info(character: Character, is_left: bool) -> void:
+	var popup: PopupWithAssaultInfo = _POPUP_WITH_ASSAULT_INFO_SCENE.instantiate()
+	popup.is_left = is_left
 	_popups_with_assault_info.add_child(popup)
 	popup.set_info(character)
 
 
 func _init_of_teams() -> void:
-	var left_popup: BasePopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Left
-	var right_popup: BasePopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Right
+	var left_popup: PopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Left
+	var right_popup: PopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Right
 	ally_team.set_popup_with_character_info(
 			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
 	enemy_team.set_popup_with_character_info(
@@ -147,9 +148,11 @@ func _on_assault_ended(character: Character, target: Character) -> void:
 
 
 func _on_one_side_started(character: Character, target: Character) -> void:
-	_add_popup_with_assault_info(character.combat_model)
+	var is_left: bool = character.movement_model.to_left_of(target)
+	_add_popup_with_assault_info(character, is_left)
 
 
 func _on_clash_started(opponent_1: Character, opponent_2: Character) -> void:
-	_add_popup_with_assault_info(opponent_1.combat_model)
-	_add_popup_with_assault_info(opponent_2.combat_model)
+	var is_left_1: bool = opponent_1.movement_model.to_left_of(opponent_2)
+	_add_popup_with_assault_info(opponent_1, is_left_1)
+	_add_popup_with_assault_info(opponent_2, not is_left_1)

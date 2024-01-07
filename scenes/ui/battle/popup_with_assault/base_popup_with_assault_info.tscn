@@ -1,0 +1,71 @@
+[gd_scene load_steps=5 format=3 uid="uid://co873sb4koma3"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_with_assault/popup_with_assault_info.gd" id="1_xy2ql"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="2_bv24e"]
+[ext_resource type="PackedScene" uid="uid://yaruhydavs04" path="res://scenes/ui/battle/popup_with_assault/components/action_dice_use_info.tscn" id="3_3pvqa"]
+
+[sub_resource type="FontVariation" id="FontVariation_a6mcb"]
+spacing_glyph = -1
+
+[node name="BasePopupWithAssaultInfo" type="HBoxContainer"]
+offset_right = 222.0
+offset_bottom = 186.0
+theme_override_constants/separation = 12
+script = ExtResource("1_xy2ql")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="FinalValue" type="Label" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = SubResource("FontVariation_a6mcb")
+theme_override_font_sizes/font_size = 64
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Panel" type="PanelContainer" parent="VBox"]
+custom_minimum_size = Vector2(108, 108)
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="VBox/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="SkillIcon" type="TextureRect" parent="VBox/Panel/Margin"]
+layout_mode = 2
+texture = ExtResource("2_bv24e")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+
+[node name="SkillTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "Skill Title"
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Margin" type="MarginContainer" parent="VBoxContainer/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 12
+
+[node name="DiceList" type="HBoxContainer" parent="VBoxContainer/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="ActionDiceUseInfo" parent="VBoxContainer/Panel/Margin/DiceList" instance=ExtResource("3_3pvqa")]
+layout_mode = 2

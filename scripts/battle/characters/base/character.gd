@@ -99,6 +99,8 @@ func prepare_character_to_combat() -> void:
 
 
 func auto_set_assault(opponents: Array[Character]) -> void:
+	if not is_active:
+		return
 	for atp_slot: ATPSlot in get_slots_for_assaults():
 		var skill: Skill = skills_manager.auto_selects_skill_or_null()
 		if skill == null:

@@ -63,8 +63,8 @@ static func _turn_on_manager_mode(turn_on: bool) -> void:
 	BaseBattle.battle.highlight_nodes(selected_stots, turn_on)
 
 
-static func _on_ally_picked(_characte: Character, atp_slot: ATPSlot = null) -> void:
-	if atp_slot != null and Input.is_action_just_released("ui_pick"):
+static func _on_ally_picked(characte: Character, atp_slot: ATPSlot = null) -> void:
+	if characte.is_active and atp_slot != null and Input.is_action_just_released("ui_pick"):
 		selected_ally_slot = atp_slot
 
 
@@ -74,6 +74,8 @@ static func _on_enemy_picked(_characte: Character, atp_slot: ATPSlot = null) -> 
 
 
 static func _on_player_made_general_cancel() -> void: _deselected()
+
+static func _on_battle_preparaion_ended() -> void: _deselected()
 
 
 static func _on_battle_started() -> void:

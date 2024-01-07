@@ -17,7 +17,6 @@ func _ready() -> void:
 	ally_picked.connect(PlayerArrangeAssaults._on_ally_picked)
 	enemy_picked.connect(PlayerArrangeAssaults._on_enemy_picked)
 	player_made_general_cancel.connect(PlayerArrangeAssaults._on_player_made_general_cancel)
-#	get_viewport().set_input_as_handled()
 
 
 func get_character_picked_signal(character_is_ally: bool) -> Signal:
