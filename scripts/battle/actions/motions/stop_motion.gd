@@ -14,6 +14,6 @@ func _init(
 
 func execute(character: Character, main_opponent: Character, sub_targets: Array[Character] = []) -> void:
 	if is_update_direction:
-		character.view_model.flip_to_specified_point(main_opponent.view_model.position)
+		character.view_model.flip_to_specified_point(main_opponent.position)
 	character.view_model.switch_motion(characters_motion)
 	await GlobalParameters.get_tree().create_timer(duration).timeout

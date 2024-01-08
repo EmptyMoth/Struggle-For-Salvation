@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://b244n3810ichk"]
+
+[ext_resource type="PackedScene" uid="uid://brldvuotlrlu7" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_k2tg2"]
+[ext_resource type="Texture2D" uid="uid://dtesmuwl6gtxx" path="res://sprites/battle/characters/immunocytes/eosi/attack_1.png" id="2_k6qqi"]
+[ext_resource type="Texture2D" uid="uid://pi8xw0ec6xiy" path="res://sprites/battle/characters/immunocytes/eosi/attack_2.png" id="3_8thx4"]
+[ext_resource type="Texture2D" uid="uid://dharqnti1vq37" path="res://sprites/battle/characters/immunocytes/eosi/attack_3.png" id="4_ki6i4"]
+[ext_resource type="Texture2D" uid="uid://d0ssaqxemv1bc" path="res://sprites/battle/characters/immunocytes/eosi/block.png" id="5_aopi2"]
+[ext_resource type="Texture2D" uid="uid://cwnn3w3ovq0xu" path="res://sprites/battle/characters/immunocytes/eosi/default.png" id="6_21xgd"]
+[ext_resource type="Texture2D" uid="uid://l37dlehvev0x" path="res://sprites/battle/characters/immunocytes/eosi/evade.png" id="7_iiqy5"]
+[ext_resource type="Texture2D" uid="uid://cuurbqqc4wagr" path="res://sprites/battle/characters/immunocytes/eosi/movement.png" id="8_ba2cn"]
+[ext_resource type="Texture2D" uid="uid://oauhvqcq2572" path="res://sprites/battle/characters/immunocytes/eosi/stun.png" id="9_cys1o"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8dair"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_k6qqi")
+}],
+"loop": true,
+"name": &"attack_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8thx4")
+}],
+"loop": true,
+"name": &"attack_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ki6i4")
+}],
+"loop": true,
+"name": &"attack_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_aopi2")
+}],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_21xgd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_iiqy5")
+}],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ba2cn")
+}],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_cys1o")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="Eosi" instance=ExtResource("1_k2tg2")]
+
+[node name="Actions" parent="." index="0"]
+position = Vector2(0, -60)
+sprite_frames = SubResource("SpriteFrames_8dair")
+animation = &"default"
+
+[node name="ClickArea" parent="Actions" index="0"]
+offset_left = -107.5
+offset_top = -76.0
+offset_right = -68.5
+offset_bottom = -9.0

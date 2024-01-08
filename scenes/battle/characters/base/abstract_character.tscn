@@ -1,0 +1,98 @@
+[gd_scene load_steps=8 format=3 uid="uid://brldvuotlrlu7"]
+
+[ext_resource type="Script" path="res://scripts/battle/characters/base/character.gd" id="1_lshlj"]
+[ext_resource type="Script" path="res://scripts/ui/battle/characters_components/atp_slots/atp_slots_manager_ui.gd" id="10_vvxtu"]
+[ext_resource type="PackedScene" uid="uid://0s320kriran8" path="res://scenes/ui/battle/characters_components/health_bars/subcharacter_bars.tscn" id="11_0j7kp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_moquk"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"attack_1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_2",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1gbb"]
+bg_color = Color(1, 1, 1, 0.556863)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn2ax"]
+bg_color = Color(0.905882, 0.776471, 0.196078, 0.768627)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnt4r"]
+
+[node name="AbstractCharacter" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_lshlj")
+
+[node name="Actions" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_moquk")
+animation = &"attack_1"
+
+[node name="ClickArea" type="Button" parent="Actions"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_m1gbb")
+theme_override_styles/hover = SubResource("StyleBoxFlat_m1gbb")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_sn2ax")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jnt4r")
+
+[node name="ATPSlotsContainer" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 4
+alignment = 1
+script = ExtResource("10_vvxtu")
+
+[node name="SubcharacterBars" parent="." instance=ExtResource("11_0j7kp")]
+theme_override_constants/margin_top = 5

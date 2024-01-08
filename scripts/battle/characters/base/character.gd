@@ -8,9 +8,9 @@ signal stunned
 signal came_out_of_stun
 
 var stats: CharacterStats
+var view_model: CharacterViewModel = CharacterViewModel.new(self)
 var combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
-var view_model: CharacterViewModel = preload("res://scenes/battle/characters/base/abstract_character_view.tscn").instantiate()
-var movement_model: CharacterMovementModel = preload("res://scenes/battle/characters/character_movement_model.tscn").instantiate()
+var movement_model: CharacterMovementModel = preload("res://scenes/battle/characters/base/character_movement_model.tscn").instantiate()
 
 var is_ally: bool :
 	get: return fraction == BattleEnums.Fraction.ALLY
@@ -42,21 +42,22 @@ var mental_resistance: BaseResistance :
 @onready var health_manager := HealthManager.new(self)
 
 
-func _init(battle_parameters: CharacterBattleParameters,
-			character_fraction: BattleEnums.Fraction) -> void:
-	y_sort_enabled = true
-	stats = battle_parameters.stats
+func init(character_stats: CharacterStats, character_fraction: BattleEnums.Fraction) -> void:
+	stats = character_stats
 	fraction = character_fraction
 	#_targets_setter = battle_parameters.auto_assault_setter
 
 
 func _ready() -> void:
-	movement_model.model = self
-	view_model.model = self
 	add_child(view_model)
+	movement_model.model = self
 	character_fsm = CharacterFSM.new(self)
 	atp_slots_manager = ATPSlotsManager.new(self, view_model.atp_slots_manager_ui)
 	_set_character_to_groups()
+
+
+func _process(_delta: float) -> void:
+	view_model.set_position()
 
 
 func _to_string() -> String:

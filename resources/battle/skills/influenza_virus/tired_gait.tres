@@ -1,0 +1,34 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=9 format=3 uid="uid://sgdy5bh6ygpq"]
+
+[ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_blfio"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_smjh6"]
+[ext_resource type="Texture2D" uid="uid://dn35vm6t2xeg7" path="res://sprites/battle/skills/influenza_virus/skill_icon=9.png" id="3_2r1is"]
+[ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_1dffw"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/quantity_data.gd" id="5_d3xb3"]
+
+[sub_resource type="Resource" id="Resource_rv4eh"]
+script = ExtResource("1_blfio")
+dice_type = 0
+min_value = 1
+max_value = 5
+motion = 5
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_wr0uu"]
+script = ExtResource("2_smjh6")
+
+[sub_resource type="Resource" id="Resource_3vcy6"]
+script = ExtResource("5_d3xb3")
+quantity = 2
+
+[resource]
+script = ExtResource("4_1dffw")
+title = "Tired Gait"
+icon = ExtResource("3_2r1is")
+targets_count = 1
+use_type = SubResource("Resource_3vcy6")
+clash_type = SubResource("Resource_wr0uu")
+actions_dice_stats = Array[ExtResource("1_blfio")]([SubResource("Resource_rv4eh")])
+is_unclashable = false
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+priority = 0

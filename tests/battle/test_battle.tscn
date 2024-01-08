@@ -1,26 +1,44 @@
-[gd_scene load_steps=13 format=3 uid="uid://bg14wxg4vcb1k"]
+[gd_scene load_steps=20 format=3 uid="uid://bg14wxg4vcb1k"]
 
 [ext_resource type="Script" path="res://scripts/battle/battle/base/base_battle.gd" id="1_h0jpa"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_2fqru"]
 [ext_resource type="PackedScene" uid="uid://cc2nij35uexsb" path="res://scenes/battle/locations/locations/test_location/test_location.tscn" id="3_8uel4"]
 [ext_resource type="Script" path="res://scripts/battle/teams/base/base_team.gd" id="4_c0bj1"]
 [ext_resource type="Script" path="res://scripts/battle/characters/base/character_battle_parameters.gd" id="5_afr7i"]
+[ext_resource type="PackedScene" uid="uid://ba1j5haj6xpwc" path="res://scenes/battle/characters/neut.tscn" id="5_c4b6s"]
 [ext_resource type="Resource" uid="uid://cg53i625fwoc2" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="6_4l50c"]
+[ext_resource type="Resource" uid="uid://dsojpcsk1qora" path="res://resources/battle/characters/characters_stats/eosi_stats.tres" id="7_f5ryo"]
 [ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_with_character_info/right_popup_with_character_info.tscn" id="7_ft1fj"]
 [ext_resource type="PackedScene" uid="uid://ciro0ncgqiif4" path="res://scenes/ui/battle/popup_with_character_info/left_popup_with_character_info.tscn" id="8_0r3md"]
+[ext_resource type="PackedScene" uid="uid://51pyjdsyc75t" path="res://scenes/battle/characters/influenza_virus.tscn" id="8_v0c3t"]
+[ext_resource type="PackedScene" uid="uid://b244n3810ichk" path="res://scenes/battle/characters/eosi.tscn" id="8_xnua3"]
+[ext_resource type="Resource" uid="uid://p1xpow1ndxjp" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="9_ftf24"]
 [ext_resource type="PackedScene" uid="uid://b3ullwwdhlbfr" path="res://scenes/ui/menu/pause_menu/battle_pause_menu.tscn" id="9_lo4gb"]
 
-[sub_resource type="Resource" id="Resource_bsmcw"]
+[sub_resource type="Resource" id="Resource_7omlh"]
 script = ExtResource("5_afr7i")
 stats = ExtResource("6_4l50c")
+character = ExtResource("5_c4b6s")
 
-[sub_resource type="Resource" id="Resource_siymb"]
+[sub_resource type="Resource" id="Resource_pyocx"]
 script = ExtResource("5_afr7i")
-stats = ExtResource("6_4l50c")
+stats = ExtResource("7_f5ryo")
+character = ExtResource("8_xnua3")
 
-[sub_resource type="Resource" id="Resource_iu4mf"]
+[sub_resource type="Resource" id="Resource_o54b6"]
 script = ExtResource("5_afr7i")
-stats = ExtResource("6_4l50c")
+stats = ExtResource("9_ftf24")
+character = ExtResource("8_v0c3t")
+
+[sub_resource type="Resource" id="Resource_eaghs"]
+script = ExtResource("5_afr7i")
+stats = ExtResource("9_ftf24")
+character = ExtResource("8_v0c3t")
+
+[sub_resource type="Resource" id="Resource_22mnv"]
+script = ExtResource("5_afr7i")
+stats = ExtResource("9_ftf24")
+character = ExtResource("8_v0c3t")
 
 [node name="TestBattle" type="Node2D"]
 script = ExtResource("1_h0jpa")
@@ -34,13 +52,13 @@ y_sort_enabled = true
 y_sort_enabled = true
 script = ExtResource("4_c0bj1")
 team_fraction = 1
-_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_bsmcw")])
+_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_7omlh"), SubResource("Resource_pyocx")])
 
 [node name="EnemyTeam" type="Node2D" parent="Teams"]
 y_sort_enabled = true
 script = ExtResource("4_c0bj1")
 team_fraction = -1
-_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_siymb"), SubResource("Resource_iu4mf")])
+_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_o54b6"), SubResource("Resource_eaghs"), SubResource("Resource_22mnv")])
 
 [node name="EnvironmentUI" type="Control" parent="."]
 z_index = 1

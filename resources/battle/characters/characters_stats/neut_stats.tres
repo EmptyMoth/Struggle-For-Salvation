@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://cg53i625fwoc2"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_nswmx"]
-[ext_resource type="Resource" uid="uid://bpgvgspkgt7go" path="res://resources/battle/skills/test_cooldown_skill.tres" id="2_i5plj"]
-[ext_resource type="Resource" uid="uid://dl0phvk5y180k" path="res://resources/battle/skills/test_quantity_skill.tres" id="3_ss4qr"]
-[ext_resource type="Resource" uid="uid://d03aklplspjyy" path="res://resources/battle/skills/test_mass_skill.tres" id="4_a0u5r"]
+[ext_resource type="Resource" uid="uid://b4a85ebktfnul" path="res://resources/battle/skills/neut/swift_dash.tres" id="2_cutus"]
+[ext_resource type="Resource" uid="uid://b6ca1adlckaia" path="res://resources/battle/skills/neut/lunge_from_block.tres" id="3_8hfm7"]
+[ext_resource type="Resource" uid="uid://sro7jqxu5ot2" path="res://resources/battle/skills/neut/raise_shield.tres" id="4_uod3f"]
 
 [resource]
 resource_local_to_scene = true
 script = ExtResource("1_nswmx")
 name = "Neut"
 type = 0
-skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_i5plj"), ExtResource("3_ss4qr"), ExtResource("4_a0u5r")])
+skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_cutus"), ExtResource("3_8hfm7"), ExtResource("4_uod3f")])
 passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
 max_physical_health = 100
 max_mental_health = 20

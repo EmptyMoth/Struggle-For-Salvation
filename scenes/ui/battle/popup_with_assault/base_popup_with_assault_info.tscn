@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://co873sb4koma3"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_assault/popup_with_assault_info.gd" id="1_xy2ql"]
-[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="2_bv24e"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/battle/skills/test_skill.svg" id="2_bv24e"]
 [ext_resource type="PackedScene" uid="uid://yaruhydavs04" path="res://scenes/ui/battle/popup_with_assault/components/action_dice_use_info.tscn" id="3_3pvqa"]
 
 [sub_resource type="FontVariation" id="FontVariation_a6mcb"]

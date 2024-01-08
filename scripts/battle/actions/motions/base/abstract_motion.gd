@@ -29,7 +29,7 @@ func execute(character: Character, main_opponent: Character, sub_targets: Array[
 	character.view_model.switch_motion(characters_motion)
 	await character.movement_model.animate_move_to(additional_position, duration, tween_ease, tween_transition)
 	if is_update_direction:
-		character.view_model.flip_to_specified_point(main_opponent.view_model.position)
+		character.view_model.flip_to_specified_point(main_opponent.position)
 
 
 func _create_additional_position(character: Character, main_opponent: Character, sub_targets: Array[Character] = []) -> Vector3:

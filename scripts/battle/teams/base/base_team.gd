@@ -14,7 +14,9 @@ extends Node2D
 func _ready() -> void:
 	_team_ui.connect_signals(team_fraction)
 	for character_parameter: CharacterBattleParameters in _characters_parameters:
-		add_child(Character.new(character_parameter, team_fraction))
+		var character: Character = character_parameter.character.instantiate()
+		character.init(character_parameter.stats, team_fraction)
+		add_child(character)
 
 
 func set_popup_with_character_info(popup: PopupWithCharacterInfo) -> void:

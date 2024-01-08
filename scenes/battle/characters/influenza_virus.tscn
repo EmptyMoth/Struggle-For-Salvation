@@ -1,0 +1,76 @@
+[gd_scene load_steps=7 format=3 uid="uid://51pyjdsyc75t"]
+
+[ext_resource type="PackedScene" uid="uid://brldvuotlrlu7" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_d4ig3"]
+[ext_resource type="Texture2D" uid="uid://dqfqm3a3rl4ek" path="res://sprites/battle/characters/pathogens/influenza_virus/attack.png" id="2_sduo3"]
+[ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="3_u1pp8"]
+[ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_bvgnn"]
+[ext_resource type="Texture2D" uid="uid://cbymiqy8oumsc" path="res://sprites/battle/characters/pathogens/influenza_virus/stun.png" id="5_s8ald"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eqfff"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_sduo3")
+}],
+"loop": true,
+"name": &"attack_1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_2",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"attack_3",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_u1pp8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bvgnn")
+}],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_s8ald")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="InfluenzaVirus" instance=ExtResource("1_d4ig3")]
+
+[node name="Actions" parent="." index="0"]
+position = Vector2(0, -39)
+sprite_frames = SubResource("SpriteFrames_eqfff")
+animation = &"default"
+
+[node name="ClickArea" parent="Actions" index="0"]
+offset_left = -37.0
+offset_top = -69.5
+offset_right = -8.0
+offset_bottom = 0.5

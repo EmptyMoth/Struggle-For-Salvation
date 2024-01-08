@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=11 format=3 uid="uid://hlvgkgtus0rv"]
+
+[ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_4jenx"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_x6gn1"]
+[ext_resource type="Texture2D" uid="uid://mtpb8102iw71" path="res://sprites/battle/skills/eosi/skill_icon=7.svg" id="3_7onc8"]
+[ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_ydiik"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/cooldown_data.gd" id="5_cv6ij"]
+
+[sub_resource type="Resource" id="Resource_1iqnc"]
+script = ExtResource("1_4jenx")
+dice_type = 0
+min_value = 3
+max_value = 3
+motion = 5
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_tujq6"]
+script = ExtResource("1_4jenx")
+dice_type = 2
+min_value = 2
+max_value = 6
+motion = 3
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_s2kay"]
+script = ExtResource("1_4jenx")
+dice_type = 0
+min_value = 3
+max_value = 3
+motion = 5
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_wr0uu"]
+script = ExtResource("2_x6gn1")
+
+[sub_resource type="Resource" id="Resource_uoqca"]
+script = ExtResource("5_cv6ij")
+cooldown = 1
+
+[resource]
+script = ExtResource("4_ydiik")
+title = "Dance of Blades"
+icon = ExtResource("3_7onc8")
+targets_count = 1
+use_type = SubResource("Resource_uoqca")
+clash_type = SubResource("Resource_wr0uu")
+actions_dice_stats = Array[ExtResource("1_4jenx")]([SubResource("Resource_1iqnc"), SubResource("Resource_tujq6"), SubResource("Resource_s2kay")])
+is_unclashable = false
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+priority = 0

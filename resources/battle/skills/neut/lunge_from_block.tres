@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=10 format=3 uid="uid://b6ca1adlckaia"]
+
+[ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_khaji"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_t1orf"]
+[ext_resource type="Texture2D" uid="uid://trg40frha1x" path="res://sprites/battle/skills/neut/skill_icon=4.svg" id="3_wp6vu"]
+[ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_yd8c5"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/quantity_data.gd" id="5_rs5m5"]
+
+[sub_resource type="Resource" id="Resource_rv4eh"]
+script = ExtResource("1_khaji")
+dice_type = 1
+min_value = 2
+max_value = 4
+motion = 2
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_s2kay"]
+script = ExtResource("1_khaji")
+dice_type = 0
+min_value = 2
+max_value = 3
+motion = 7
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_g2ken"]
+script = ExtResource("2_t1orf")
+
+[sub_resource type="Resource" id="Resource_41pr7"]
+script = ExtResource("5_rs5m5")
+quantity = 2
+
+[resource]
+script = ExtResource("4_yd8c5")
+title = "Lunge From Block"
+icon = ExtResource("3_wp6vu")
+targets_count = 1
+use_type = SubResource("Resource_41pr7")
+clash_type = SubResource("Resource_g2ken")
+actions_dice_stats = Array[ExtResource("1_khaji")]([SubResource("Resource_rv4eh"), SubResource("Resource_s2kay")])
+is_unclashable = false
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+priority = 0

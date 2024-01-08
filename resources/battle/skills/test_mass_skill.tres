@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="SkillStats" load_steps=10 format=3 uid="uid://d03aklplspjyy"]
 
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="1_crog0"]
-[ext_resource type="Texture2D" uid="uid://7477xiljt2cb" path="res://sprites/ui/battle/skills/test_skill_3.svg" id="1_uj83d"]
 [ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_ykmpi"]
+[ext_resource type="Texture2D" uid="uid://7477xiljt2cb" path="res://sprites/battle/skills/test_skill_3.svg" id="3_fatwt"]
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="3_ym7dp"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/cooldown_data.gd" id="6_bhh6j"]
 
@@ -32,7 +32,7 @@ cooldown = 2
 [resource]
 script = ExtResource("3_ym7dp")
 title = "Test Mass Skill"
-icon = ExtResource("1_uj83d")
+icon = ExtResource("3_fatwt")
 targets_count = 1
 use_type = SubResource("Resource_5cavs")
 clash_type = SubResource("Resource_led0f")

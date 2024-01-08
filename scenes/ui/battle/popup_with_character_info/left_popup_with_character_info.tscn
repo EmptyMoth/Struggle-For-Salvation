@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://cgjhn45pycsb6" path="res://scenes/ui/menu/base/tabs_header/tabs_header.tscn" id="27_p3418"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="28_2qdai"]
 [ext_resource type="PackedScene" uid="uid://cf80bvo24wwwh" path="res://scenes/ui/menu/base/tabs_header/tab_button.tscn" id="28_36yvg"]
-[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/ui/battle/skills/test_skill.svg" id="29_1y576"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/battle/skills/test_skill.svg" id="29_1y576"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="30_2dpqm"]
 [ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="30_qsdty"]
 [ext_resource type="LabelSettings" uid="uid://bg1053ea44uyi" path="res://resources/ui/global/label_settings/default/large_bold.tres" id="31_2aun2"]

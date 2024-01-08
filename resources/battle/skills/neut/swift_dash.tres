@@ -1,0 +1,42 @@
+[gd_resource type="Resource" script_class="SkillStats" load_steps=10 format=3 uid="uid://b4a85ebktfnul"]
+
+[ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_ri5ff"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_e82o0"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/battle/skills/test_skill.svg" id="3_vg1kw"]
+[ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_mgf2w"]
+[ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/cooldown_data.gd" id="5_krmjh"]
+
+[sub_resource type="Resource" id="Resource_rv4eh"]
+script = ExtResource("1_ri5ff")
+dice_type = 0
+min_value = 3
+max_value = 5
+motion = 6
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_s2kay"]
+script = ExtResource("1_ri5ff")
+dice_type = 0
+min_value = 3
+max_value = 5
+motion = 6
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+
+[sub_resource type="Resource" id="Resource_g2ken"]
+script = ExtResource("2_e82o0")
+
+[sub_resource type="Resource" id="Resource_103xh"]
+script = ExtResource("5_krmjh")
+cooldown = 1
+
+[resource]
+script = ExtResource("4_mgf2w")
+title = "Swift Dash"
+icon = ExtResource("3_vg1kw")
+targets_count = 1
+use_type = SubResource("Resource_103xh")
+clash_type = SubResource("Resource_g2ken")
+actions_dice_stats = Array[ExtResource("1_ri5ff")]([SubResource("Resource_rv4eh"), SubResource("Resource_s2kay")])
+is_unclashable = false
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+priority = 0

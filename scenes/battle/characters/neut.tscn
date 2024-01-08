@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://ba1j5haj6xpwc"]
+
+[ext_resource type="PackedScene" uid="uid://brldvuotlrlu7" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_n2kqk"]
+[ext_resource type="Texture2D" uid="uid://c3fque8a4ik0j" path="res://sprites/battle/characters/immunocytes/neut/attack_1.png" id="2_buxve"]
+[ext_resource type="Texture2D" uid="uid://65xy6foolauq" path="res://sprites/battle/characters/immunocytes/neut/attack_2.png" id="3_iin3g"]
+[ext_resource type="Texture2D" uid="uid://xq2xyd4ivpm" path="res://sprites/battle/characters/immunocytes/neut/attack_3.png" id="4_6xv4m"]
+[ext_resource type="Texture2D" uid="uid://bxhtvbemvdsrs" path="res://sprites/battle/characters/immunocytes/neut/block.png" id="5_ul2b1"]
+[ext_resource type="Texture2D" uid="uid://dcp5tnyjlkg4x" path="res://sprites/battle/characters/immunocytes/neut/default.png" id="6_dyc4x"]
+[ext_resource type="Texture2D" uid="uid://cr5rqv0uv64p3" path="res://sprites/battle/characters/immunocytes/neut/evade.png" id="7_ewtn0"]
+[ext_resource type="Texture2D" uid="uid://drltmipr5lo2a" path="res://sprites/battle/characters/immunocytes/neut/movement.png" id="8_iblpj"]
+[ext_resource type="Texture2D" uid="uid://c6bir2rcubwy2" path="res://sprites/battle/characters/immunocytes/neut/stun.png" id="9_iad78"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b725x"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_buxve")
+}],
+"loop": true,
+"name": &"attack_1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_iin3g")
+}],
+"loop": true,
+"name": &"attack_2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6xv4m")
+}],
+"loop": true,
+"name": &"attack_3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ul2b1")
+}],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_dyc4x")
+}],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ewtn0")
+}],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_iblpj")
+}],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_iad78")
+}],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="Neut" instance=ExtResource("1_n2kqk")]
+
+[node name="Actions" parent="." index="0"]
+position = Vector2(0, -27)
+sprite_frames = SubResource("SpriteFrames_b725x")
+animation = &"default"
+
+[node name="ClickArea" parent="Actions" index="0"]
+offset_left = -97.0
+offset_top = -81.0
+offset_right = -73.0
+offset_bottom = -17.0
