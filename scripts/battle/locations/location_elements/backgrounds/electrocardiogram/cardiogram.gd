@@ -12,6 +12,5 @@ func _ready() -> void:
 			if not cardiogram_graph is CardiogramGraph:
 				continue
 			var random_graph: PackedVector2Array = pool_of_graphs.get_random_graph()
-			cardiogram_graph.play_animation_of_drawing_graph(random_graph)
-			await cardiogram_graph.graph_has_been_drawn
+			await cardiogram_graph.play_animation_of_drawing_graph(random_graph)
 			await get_tree().create_timer(WAITING_TIME_FOR_NEXT_GRAPH, false).timeout
