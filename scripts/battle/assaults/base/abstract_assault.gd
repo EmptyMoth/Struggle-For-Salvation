@@ -10,7 +10,7 @@ func _init(assault_data: AssaultData) -> void:
 
 
 static func can_be_executed(data: AssaultData) -> bool:
-	return data.atp_slot.assault_can_be_executed()
+	return data.atp_slot.assault_can_be_executed() and not data.targets.main.wearer.is_dead
 
 
 func execute() -> void:

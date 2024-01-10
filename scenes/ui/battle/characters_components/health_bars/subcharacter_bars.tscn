@@ -1,8 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://0s320kriran8"]
+[gd_scene load_steps=5 format=3 uid="uid://0s320kriran8"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/characters_components/health_bars/subcharacter_bars.gd" id="1_gvw0g"]
 [ext_resource type="PackedScene" uid="uid://cfqbuvajohkib" path="res://scenes/ui/battle/characters_components/health_bars/hp_bar.tscn" id="1_ms1as"]
 [ext_resource type="PackedScene" uid="uid://bjnkm3wj1s8jp" path="res://scenes/ui/battle/characters_components/health_bars/sp_bar.tscn" id="2_3rsp3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ud5bv"]
+content_margin_left = 8.0
+content_margin_top = 4.0
+content_margin_right = 8.0
+content_margin_bottom = 4.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+shadow_color = Color(0.0392157, 0.0392157, 0.0392157, 0.6)
+shadow_size = 1
 
 [node name="SubcharacterBars" type="MarginContainer"]
 offset_right = 66.0
@@ -17,6 +26,7 @@ layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ud5bv")
 
 [node name="HBox" type="HBoxContainer" parent="Panel"]
 layout_mode = 2

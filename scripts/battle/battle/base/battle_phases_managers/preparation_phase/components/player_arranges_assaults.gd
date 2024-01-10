@@ -27,7 +27,8 @@ static func _deselected() -> void:
 	if PlayerState.is_manager():
 		_turn_on_manager_mode(false)
 	PlayerState.switch_to_default()
-	_player_assault_arrow.hide()
+	if _player_assault_arrow:
+		_player_assault_arrow.hide()
 	selected_ally_slot = null
 	selected_skill = null
 
@@ -75,7 +76,7 @@ static func _on_enemy_picked(_characte: Character, atp_slot: ATPSlot = null) -> 
 
 static func _on_player_made_general_cancel() -> void: _deselected()
 
-static func _on_battle_preparaion_ended() -> void: _deselected()
+static func _on_battle_preparaion_started() -> void: _deselected()
 
 
 static func _on_battle_started() -> void:

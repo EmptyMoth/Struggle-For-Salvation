@@ -1,0 +1,77 @@
+keys,en,ru
+CONTINUE,Continue,Продолжить
+NEW_GAME,New Game,Новая Игра
+SETTINGS,Settings,Настройки
+EXIT,Exit,Выйти
+RESET,Reset,Сбросить
+CLOSE,Close,Закрыть
+RESUME,Resum,Возобновить
+RESTART,Restart,Перезапустить
+MANUAL,Manual,Мануал
+LEAVE,Leave,Покинуть
+BACK,Back,Назад
+NEXT,Next,Далее
+GRAPHICS,Graphics,Графика
+GAMEPLAY,Gameplay,Геймплей
+AUDIO,Audio,Аудио
+CUSTOM_RULES,Own Rules,Свои Правила
+GRAPHICS_QUALITY,Graphics Quality,Качество Графики
+RESOLUTION,Resolution,Разрешение
+DISPLAY,Display,Дисплей
+MOUSE_LOCKED,Mouse Locked,Зафиксировать Мышь
+LIMIT_MAX_FPS,Limit Max FPS,Лимит Макс. FPS
+LANGUAGE,Language,Язык
+ALLIES_PLACEMENT,Allies Place,Размещение Союзников
+ACTION_DICE_TALLY,Action Dice Tally,Подсчет Кубиков Действий
+GENERAL_VOLUME,General Volume,Общая Громкость
+MUSIC_VOLUM,Music Volume,Музыка
+SOUND_VOLUME,Sound Volume,Звук
+PLAY_MUSIC_ON_PAUSE,Play Music on Pause,Слушать Музыку при Паузе
+ENEMY_HEALTH,Enemy Health,Здоровье Противников
+ENEMY_DAMAGE,Enemy Damage,Урон Противников
+LOW,Low,Низкое
+MEDIUM,Medium,Среднее
+HIGH,High,Высокое
+WINDOWED,Window,Оконный
+BORDERLESS,Borderless,Без Рамок
+FULLSCREEN,Fullscreen,Полный
+LEFT,Left,Слева
+RIGHT,Right,Справа
+GRAPHICS_QUALITY_TOOLTIP,"Changes the quality of textures.
+Impacts productivity!","Изменяет качество текстур.
+Влияет на производительность!"
+RESOLUTION_TOOLTIP,Changes the game window resolution.,Изменяет разрешение окна игры.
+DISPLAY_TOOLTIP,Changes the game window mode.,Изменяет режим окна игры.
+MOUSE_LOCKED_TOOLTIP,Fixes the mouse cursor inside the game window,Фиксирует курсор мыши внутри окна игры.
+LIMIT_MAX_FPS_TOOLTIP,"Maximum number of FPS.
+Impacts productivity!","Максимальное количество кадров в секунду.
+Влияет на производительность!"
+VSYNC_TOOLTIP_TOOLTIP,"VSync. Frame rate is limited by the refresh rate of the monitor.
+Impacts productivity!","Вертикальная синхронизация. Частота кадров ограничена частотой обновления монитора.
+Влияет на производительность!"
+LANGUAGE_TOOLTIP,,
+ALLIES_PLACEMENT_TOOLTIP,"Changes the side of the allied and enemy team's positioning on the battlefield.
+Only affects the view!","Меняет сторону расположения команды союзников и врагов на поле боя.
+Влияет только на отображение!"
+ACTION_DICE_TALLY_TOOLTIP,"When viewing Skills, it calculates the min/max values of Action Cubes, taking into account Passive Abilities, Buffs/Debuffs.
+The final value may be different from the one shown!","""При просмотре Навыков подсчитывает мин./макс. значения Кубиков Действий, учитывая Пассивные способности, Баффы/Дебаффы.
+Итоговое значение может отличаться от показанного!"""
+CUSTOM_RULES_TOOLTIP,Enable Your Own Rules. Allows you to customize the game to suit yourself.,Включить Свои Правила. Позволяет настроить игру под себя.
+GENERAL_VOLUME_TOOLTIP,,
+MUSIC_VOLUM_TOOLTIP,,
+SOUND_VOLUME_TOOLTIP,,
+PLAY_MUSIC_ON_PAUSE_TOOLTIP,Selects whether or not music will play during a pause.,Определяет будет ли играть музыка во время паузы.
+ENEMY_HEALTH_TOOLTIP,Changes the max health of enemies by the specified multiplier.,Изменяет максимальное здоровье врагов на указанный множитель.
+ENEMY_DAMAGE_TOOLTIP,Changes the damage by enemies by the specified multiplier.,Изменяет наносимый врагами урон на указанный множитель.
+VESSELS,Vessels,Сосуды
+LYMPH,Lymph,Лимфа
+MUCOUS,Mucous,Слизистые
+EPIDERMIS,Epidermis,Эпидермис
+LUNGS,Lungs,Легкие
+LIVER,Liver,Печень
+BOWELS,Bowels,Кишечник
+STOMACH,Stomach,Желудок
+MAMMARY_GLANDS,Mammary Glands,Молочные Железы
+BRAIN_STEM,Brain Stem,Спинной Мозг
+BRAIN,Brain,Мозг
+HEART,Heart,Сердце

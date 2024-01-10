@@ -42,7 +42,6 @@ func _add_action_dice_use_info(dice: ActionDice) -> void:
 	_dice_list.add_child(action_dice_use_info)
 	if is_left:
 		_dice_list.move_child(action_dice_use_info, 0)
-	await action_dice_use_info.ready
 	action_dice_use_info.set_info(dice)
 
 

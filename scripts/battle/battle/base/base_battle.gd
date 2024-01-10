@@ -75,13 +75,21 @@ func remove_assault_arrow(arrow: BaseAssaultArrow) -> void:
 
 
 func victory() -> void:
+	print("IS VICTORY!")
+	$CanvasUI/EndScreen/Victory.show()
 	end()
 
 func defeate() -> void:
+	print("IS DEFEATE!")
+	$CanvasUI/EndScreen/Defeat.show()
 	end()
 
 func end() -> void:
-	BattleSignals.battle_ended.emit()
+	#BattleSignals.battle_ended.emit()
+	#battle = null
+	var end_screen: Control = $CanvasUI/EndScreen
+	get_tree().create_tween().tween_property(end_screen, "modulate:a", 1.0, 0.7).from(0.0)
+	end_screen.show()
 
 
 func highlight_nodes(nodes: Array[CanvasItem], is_highlight: bool) -> void:
@@ -136,7 +144,8 @@ func _on_combat_ended() -> void:
 		victory()
 	elif ally_team.is_defeated():
 		defeate()
-	BattleSignals.turn_ended.emit()
+	else:
+		BattleSignals.turn_ended.emit()
 
 
 func _on_assault_started(character: Character, target: Character) -> void:
@@ -144,7 +153,7 @@ func _on_assault_started(character: Character, target: Character) -> void:
 
 func _on_assault_ended(character: Character, target: Character) -> void:
 	for popup: Node in _popups_with_assault_info.get_children():
-		_popups_with_assault_info.remove_child(popup)
+		popup.queue_free()
 
 
 func _on_one_side_started(character: Character, target: Character) -> void:

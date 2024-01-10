@@ -32,6 +32,10 @@ func break_dice() -> void:
 	destroyed.emit()
 
 
+func reserve() -> void:
+	is_recycled = false
+
+
 func use_in_one_side(targets: Opponents) -> void:
 	is_used = true
 	used_in_one_side.emit()

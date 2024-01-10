@@ -12,6 +12,17 @@ func _init(action_motions: Array[ActionPart] = []) -> void:
 
 
 func execute(user: Character, main_opponent: Character, sub_targets: Array[Character] = []) -> void:
+	var characters: Array[Character] = [user, main_opponent]
+	characters.append_array(sub_targets)
+	for character: Character in characters:
+		character.start_performing_action()
+	await _execute(user, main_opponent, sub_targets)
+	for character: Character in characters:
+		character.finish_performing_action()
+	finished.emit()
+
+
+func _execute(user: Character, main_opponent: Character, sub_targets: Array[Character] = []) -> void:
 	for action_part: ActionPart in _action_parts:
 		for opponent in sub_targets:
 			action_part.opponent_motion.execute(opponent, user)
@@ -22,5 +33,3 @@ func execute(user: Character, main_opponent: Character, sub_targets: Array[Chara
 		else:
 			action_part.user_motion.execute(user, main_opponent, sub_targets)
 			await action_part.opponent_motion.execute(main_opponent, user)
-	
-	finished.emit()

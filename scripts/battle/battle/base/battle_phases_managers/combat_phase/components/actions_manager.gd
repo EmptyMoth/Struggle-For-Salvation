@@ -42,8 +42,12 @@ static func execute_dice_reserve(opponent_1: Character, opponent_2: Character, i
 static func _execute_draw_in_attack(opponent_1: Character, opponent_2: Character) -> void:
 	var draw_in_attacks: Action = Action.new([
 		ActionPart.new(
-			KnockbackMotion.new(3, 0.3, opponent_1.combat_model.current_action_dice.stats.motion),
-			KnockbackMotion.new(3, 0.3, opponent_2.combat_model.current_action_dice.stats.motion)
+			DefaultAttackMotion.new(opponent_1.combat_model.current_action_dice.stats.motion),
+			DefaultAttackMotion.new(opponent_2.combat_model.current_action_dice.stats.motion)
+		),
+		ActionPart.new(
+			KnockbackMotion.new(3, AbstractMotion.DEFAULT_DURATION, opponent_1.combat_model.current_action_dice.stats.motion),
+			KnockbackMotion.new(3, AbstractMotion.DEFAULT_DURATION, opponent_2.combat_model.current_action_dice.stats.motion)
 		)
 	])
 	draw_in_attacks.execute(opponent_1, opponent_2)

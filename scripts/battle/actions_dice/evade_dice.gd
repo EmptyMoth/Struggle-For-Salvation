@@ -9,7 +9,7 @@ func _to_string() -> String:
 func _win_clash(_targets: Opponents) -> void:
 	super(_targets)
 	is_recycled = true
-	model.wearer.mental_heal(model.values_model.get_current_value())
+	model.wearer.health_manager.mental_heal(model.values_model.get_current_value())
 	defended.emit()
 
 func _draw_clash(_targets: Opponents) -> void:

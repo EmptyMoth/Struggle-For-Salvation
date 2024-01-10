@@ -3,14 +3,14 @@ extends CanvasLayer
 
 
 static var _LOCATIONS_DATA_BY_LOCAIONS: Array[LocationData] = [
-	LocationData.new("Brain Stem", Color("DAD07A")),
-	LocationData.new("Lungs", Color("5AF7C8")),
-	LocationData.new("Vessels", Color("E83E36")),
-	LocationData.new("Lymph", Color("337D36")),
-	LocationData.new("Mucous", Color("89EBAA")),
-	LocationData.new("Epidermis", Color("7D51DC")),
-	LocationData.new("Bowel", Color("32AADA")),
-	LocationData.new("Stomach", Color("ED942B")),
+	LocationData.new("BRAIN_STEM", Color("DAD07A")),
+	LocationData.new("LUNGS", Color("5AF7C8")),
+	LocationData.new("VESSELS", Color("E83E36")),
+	LocationData.new("LYMPH", Color("337D36")),
+	LocationData.new("MUCOUS", Color("89EBAA")),
+	LocationData.new("EPIDERMIS", Color("7D51DC")),
+	LocationData.new("BOWEL", Color("32AADA")),
+	LocationData.new("STOMACH", Color("ED942B")),
 ]
 
 var target_scene_path: String = ""

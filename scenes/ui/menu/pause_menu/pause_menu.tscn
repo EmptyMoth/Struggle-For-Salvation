@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://bjdros8jccxcd"]
+[gd_scene load_steps=13 format=3 uid="uid://bjdros8jccxcd"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu/pause_menu.gd" id="1_mggr6"]
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_iks7v"]
 [ext_resource type="Shader" path="res://resources/ui/global/shaders/blur_background.gdshader" id="2_j2mv0"]
 [ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="3_10v1o"]
 [ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="3_23n23"]
+[ext_resource type="PackedScene" uid="uid://dbwoaee5bxkap" path="res://scenes/ui/menu/training_screen/training_screen.tscn" id="6_by3kj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxdso"]
 shader = ExtResource("2_j2mv0")
@@ -17,6 +18,45 @@ metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mah5k"]
 gradient = SubResource("Gradient_p5xbd")
+
+[sub_resource type="Animation" id="Animation_gmb6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:material:shader_parameter/blur_force")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Background:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_wo0lv"]
 resource_name = "show"
@@ -56,45 +96,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_gmb6u"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Blur:material:shader_parameter/blur_force")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("TextureRect:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Background:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_crdfj"]
@@ -181,7 +182,6 @@ layout_mode = 2
 text = "RESUME"
 
 [node name="ManualButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
-visible = false
 layout_mode = 2
 text = "MANUAL"
 
@@ -197,9 +197,15 @@ text = "EXIT"
 visible = false
 layout_mode = 1
 
+[node name="TrainingScreen" parent="." instance=ExtResource("6_by3kj")]
+visible = false
+layout_mode = 1
+_is_manual = true
+
 [connection signal="animation_finished" from="Background/Animation" to="." method="_on_animation_animation_finished"]
 [connection signal="pressed" from="Menu/Moving/VBox/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/Moving/VBox/ManualButton" to="." method="_on_manual_button_pressed"]
 [connection signal="pressed" from="Menu/Moving/VBox/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Menu/Moving/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="menu_closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]
+[connection signal="training_ended" from="TrainingScreen" to="." method="_on_manual_menu_closed"]

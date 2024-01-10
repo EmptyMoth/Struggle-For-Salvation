@@ -31,4 +31,4 @@ func _initialize_battlefield() -> void:
 
 func _initialize_camera() -> void:
 	pass
-	#($Camera as PlayerCamera2D).position = Vector2(1920/2, 1080/2)
+	#($Camera as BattleCamera).position = Vector2(1920/2, 1080/2)

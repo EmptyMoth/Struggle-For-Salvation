@@ -62,6 +62,7 @@ func calculate_comparing_value(opponent_skill: Skill) -> int:
 
 
 func reserve_current_dice() -> void:
+	current_action_dice.combat_model.reserve()
 	dice_reserved_list.enqueue(current_action_dice)
 	added_to_reserve.emit(current_action_dice)
 

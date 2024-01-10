@@ -5,7 +5,7 @@ extends TextureButton
 signal zoom(source)
 
 
-@onready var camera: PlayerCamera2D = get_viewport().get_camera_2d()
+@onready var camera: BattleCamera = get_viewport().get_camera_2d()
 @export var target: Node
 @export var target_zoom: Vector2 = Vector2.ONE
 

@@ -14,4 +14,6 @@ func _move_characters() -> void:
 
 
 func _can_continue_assault() -> bool:
-	return _initiator_info.character.combat_model.can_continue_assault()
+	return _initiator_info.character.combat_model.can_continue_assault() \
+			and _initiator_info.opponents.get_all_opponents().any(
+				func(character: Character) -> bool: return not character.is_dead)

@@ -45,6 +45,9 @@ func _leave_assault() -> void:
 func _can_continue_assault() -> bool:
 	var initiator: CharacterCombatModel = _initiator_info.character.combat_model
 	var defendant: CharacterCombatModel = _defendant_info.character.combat_model
-	return (initiator.can_continue_assault() and defendant.can_continue_assault()) \
+	var condition: Callable = func(character: Character) -> bool: return not character.is_dead
+	return  _initiator_info.opponents.get_all_opponents().any(condition) \
+			and _defendant_info.opponents.get_all_opponents().any(condition) \
+			and ((initiator.can_continue_assault() and defendant.can_continue_assault()) \
 			or (initiator.can_continue_assault() and defendant.can_fight_back()) \
-			or  (initiator.can_fight_back() and defendant.can_continue_assault())
+			or  (initiator.can_fight_back() and defendant.can_continue_assault()))

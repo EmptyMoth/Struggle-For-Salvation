@@ -114,7 +114,7 @@ theme_override_constants/separation = 16
 layout_mode = 2
 text = "CONTINUE"
 script = ExtResource("6_tbwx4")
-scene_path = "res://tests/battle/test_battle.tscn"
+scene_path = "res://tests/battle/training_battle.tscn"
 
 [node name="NewGameButton" parent="Main/VBox/VBox/Menu" instance=ExtResource("5_gdxar")]
 visible = false

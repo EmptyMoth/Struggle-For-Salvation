@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwjc6as1n8qkm"]
+
+[ext_resource type="PackedScene" uid="uid://bg14wxg4vcb1k" path="res://tests/battle/test_battle.tscn" id="1_qktaj"]
+[ext_resource type="Script" path="res://tests/battle/training_battle.gd" id="2_jjtpj"]
+[ext_resource type="PackedScene" uid="uid://dbwoaee5bxkap" path="res://scenes/ui/menu/training_screen/training_screen.tscn" id="2_p76l1"]
+
+[node name="TrainingBattle" instance=ExtResource("1_qktaj")]
+script = ExtResource("2_jjtpj")
+
+[node name="TrainingScreen" parent="CanvasUI" index="3" instance=ExtResource("2_p76l1")]
+visible = false

@@ -7,6 +7,7 @@ const _DROP_DURATION: float = 0.3
 var is_opened: bool = false
 
 @onready var _menu: CenterContainer = $Menu
+@onready var _manual_menu: TrainingScreen = $TrainingScreen
 @onready var _settings_menu: SettingsMenu = $SettingsMenu
 @onready var _buttons_container: MovingContainer = $Menu/Moving
 @onready var _animation_background: AnimationPlayer = $Background/Animation
@@ -66,12 +67,17 @@ func _on_restart_button_pressed() -> void: get_tree().reload_current_scene()
 
 
 func _on_manual_button_pressed() -> void:
-	pass # Replace with function body.
+	_menu.hide()
+	_manual_menu.open_training()
+
+
+func _on_manual_menu_closed() -> void:
+	_menu.show()
 
 
 func _on_settings_button_pressed() -> void:
-	_settings_menu.open_menu()
 	_menu.hide()
+	_settings_menu.open_menu()
 
 
 func _on_settings_menu_closed() -> void:

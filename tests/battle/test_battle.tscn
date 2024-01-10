@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bg14wxg4vcb1k"]
+[gd_scene load_steps=25 format=3 uid="uid://bg14wxg4vcb1k"]
 
 [ext_resource type="Script" path="res://scripts/battle/battle/base/base_battle.gd" id="1_h0jpa"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formations/formation_1.tscn" id="2_2fqru"]
@@ -14,13 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://b244n3810ichk" path="res://scenes/battle/characters/eosi.tscn" id="8_xnua3"]
 [ext_resource type="Resource" uid="uid://p1xpow1ndxjp" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="9_ftf24"]
 [ext_resource type="PackedScene" uid="uid://b3ullwwdhlbfr" path="res://scenes/ui/menu/pause_menu/battle_pause_menu.tscn" id="9_lo4gb"]
+[ext_resource type="Script" path="res://scripts/battle/battle/base/battle_camera/battle_camera_controller.gd" id="15_1f2bs"]
+[ext_resource type="Texture2D" uid="uid://c12fkp8c47vb3" path="res://sprites/ui/menu/battle_end_screen/defeat_screen.png" id="15_abu68"]
+[ext_resource type="Texture2D" uid="uid://bwamkkupi333" path="res://sprites/ui/menu/battle_end_screen/victory_screen.png" id="16_et46r"]
+[ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="17_imps8"]
+[ext_resource type="Script" path="res://scripts/ui/menu/base/buttons/button_switch_scene.gd" id="18_lf6cq"]
 
 [sub_resource type="Resource" id="Resource_7omlh"]
 script = ExtResource("5_afr7i")
 stats = ExtResource("6_4l50c")
 character = ExtResource("5_c4b6s")
 
-[sub_resource type="Resource" id="Resource_pyocx"]
+[sub_resource type="Resource" id="Resource_6tg24"]
 script = ExtResource("5_afr7i")
 stats = ExtResource("7_f5ryo")
 character = ExtResource("8_xnua3")
@@ -52,7 +57,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 script = ExtResource("4_c0bj1")
 team_fraction = 1
-_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_7omlh"), SubResource("Resource_pyocx")])
+_characters_parameters = Array[ExtResource("5_afr7i")]([SubResource("Resource_7omlh"), SubResource("Resource_6tg24")])
 
 [node name="EnemyTeam" type="Node2D" parent="Teams"]
 y_sort_enabled = true
@@ -89,7 +94,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.784314)
+color = Color(0, 0, 0, 0.7)
 
 [node name="CanvasUI" type="CanvasLayer" parent="."]
 
@@ -109,3 +114,58 @@ layout_mode = 1
 
 [node name="BattlePauseMenu" parent="CanvasUI" instance=ExtResource("9_lo4gb")]
 visible = false
+
+[node name="EndScreen" type="Control" parent="CanvasUI"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Defeat" type="TextureRect" parent="CanvasUI/EndScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("15_abu68")
+
+[node name="Victory" type="TextureRect" parent="CanvasUI/EndScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("16_et46r")
+
+[node name="LeaveButton" parent="CanvasUI/EndScreen" instance=ExtResource("17_imps8")]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.0
+offset_top = -206.0
+offset_right = 99.0
+offset_bottom = -128.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "LEAVE"
+script = ExtResource("18_lf6cq")
+scene_path = "res://scenes/ui/menu/main_menu/main_menu.tscn"
+with_scene_transition = false
+
+[node name="BattleCameraController" type="Node" parent="."]
+script = ExtResource("15_1f2bs")
+
+[connection signal="pressed" from="CanvasUI/EndScreen/LeaveButton" to="CanvasUI/EndScreen/LeaveButton" method="_on_pressed"]

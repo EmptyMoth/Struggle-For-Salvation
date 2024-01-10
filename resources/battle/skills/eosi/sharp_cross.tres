@@ -19,7 +19,7 @@ script = ExtResource("1_2ioym")
 dice_type = 0
 min_value = 4
 max_value = 4
-motion = 6
+motion = 7
 abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
 
 [sub_resource type="Resource" id="Resource_s2kay"]

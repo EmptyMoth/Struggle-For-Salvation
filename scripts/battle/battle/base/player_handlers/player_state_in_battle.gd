@@ -11,7 +11,7 @@ static func is_default() -> bool: return _current_player_state == PlayerStates.D
 
 static func is_manager() -> bool: return _current_player_state == PlayerStates.MANAGER
 
-static func is_observer_state() -> bool: return _current_player_state == PlayerStates.OBSERVER
+static func is_observer() -> bool: return _current_player_state == PlayerStates.OBSERVER
 
 
 static func switch_to_default() -> void: _current_player_state = PlayerStates.DEFAULT

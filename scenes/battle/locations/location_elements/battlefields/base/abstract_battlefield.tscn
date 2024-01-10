@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://0ywdcjtv4m3x"]
 
 [ext_resource type="Script" path="res://scripts/battle/locations/location_elements/battlefields/base_scripts/base_battlefield.gd" id="1_ywcr7"]
-[ext_resource type="Script" path="res://tests/battle/battlefield_camera.gd" id="2_1qd8q"]
+[ext_resource type="Script" path="res://scripts/battle/battle/base/battle_camera/battlefield_camera.gd" id="2_1qd8q"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_aiq1s"]
 size = Vector3(13.5, 0.5, 0.5)
@@ -27,7 +27,7 @@ script = ExtResource("1_ywcr7")
 [node name="BattlefieldCamera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 6, 9)
 current = true
-fov = 30.0
+fov = 40.0
 far = 40.0
 script = ExtResource("2_1qd8q")
 

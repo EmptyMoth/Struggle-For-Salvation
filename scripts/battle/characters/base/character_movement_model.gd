@@ -77,11 +77,11 @@ func move_to(new_position: Vector3) -> void:
 
 
 func move_to_one_side(opponent: Character) -> void:
-	navigation_agent.path_desired_distance = 0.9
+	navigation_agent.path_desired_distance = 0.5
 	await _move_to_position(opponent.get_movement_model().position)
 
 func move_to_clash(opponent: Character) -> void:
-	navigation_agent.path_desired_distance = 0.7
+	navigation_agent.path_desired_distance = 0.3
 	await _move_to_position((self.position + opponent.get_movement_model().position) / 2)
 
 

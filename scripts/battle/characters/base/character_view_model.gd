@@ -15,6 +15,8 @@ func _init(character: Character) -> void:
 
 
 func _ready() -> void:
+	click_area.modulate.a = 0
+	model.died.connect(_on_character_died)
 	click_area.pressed.connect(_on_character_pressed)
 	click_area.mouse_exited.connect(_on_character_mouse_exited)
 	click_area.mouse_entered.connect(_on_character_mouse_entered)
@@ -29,21 +31,17 @@ static func get_action_name(action: BattleEnums.CharactersMotions) -> String:
 	return action_name.to_lower() if action_name != null else "default"
 
 
-func set_position() -> void:
-	model.position = model.movement_model.get_current_position_on_camera()
-
-
 func get_position_for_popup_assault_info() -> Vector2:
 	return model.position - Vector2(0, click_area.size.y + 30)
 
 
 func make_selected() -> void:
 	model.z_index = 1
-	click_area.modulate = Color("ffff00")
+	#click_area.modulate = Color("ffff00")
 
 func cancel_selected() -> void:
 	model.z_index = 0
-	click_area.modulate = Color.WHITE
+	#click_area.modulate = Color.WHITE
 
 
 func flip_to_starting_position() -> void:
@@ -57,7 +55,24 @@ func flip_view_direction() -> void:
 
 
 func switch_motion(action: BattleEnums.CharactersMotions) -> void:
+	if get_action_name(action) == "death":
+		character_motions.hide()
+		return
 	character_motions.play(get_action_name(action))
+
+
+func prepare_character() -> void:
+	flip_to_starting_position()
+	atp_slots_manager_ui.show()
+
+func prepare_character_to_combat() -> void:
+	atp_slots_manager_ui.hide()
+
+
+func _on_character_died() -> void:
+	atp_slots_manager_ui.hide()
+	subcharacter_bars.hide()
+	click_area.hide()
 
 
 func _on_character_pressed() -> void:

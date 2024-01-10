@@ -24,4 +24,7 @@ func set_popup_with_character_info(popup: PopupWithCharacterInfo) -> void:
 
 
 func is_defeated() -> bool:
-	return characters.size() < 1
+	for character: Character in characters:
+		if not character.is_dead:
+			return false
+	return true

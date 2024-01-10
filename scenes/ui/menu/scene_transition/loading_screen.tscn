@@ -12,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element1:position")
+tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -24,7 +24,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element2:position")
+tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -36,7 +36,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element3:position")
+tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -48,7 +48,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element4:position")
+tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element4:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -60,7 +60,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon:rotation")
+tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -77,7 +77,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element1:position")
+tracks/0/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element1:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +89,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element2:position")
+tracks/1/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -101,7 +101,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element3:position")
+tracks/2/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element3:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -113,7 +113,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/Element4:position")
+tracks/3/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon/Element4:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -125,7 +125,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon:rotation")
+tracks/4/path = NodePath("Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -269,16 +269,25 @@ vertical_alignment = 1
 [node name="LoadingIcon" type="Control" parent="Margin/VBox/LoadingProgress"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
+
+[node name="LoadingIcon" type="Control" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(31, 30)
 metadata/_edit_group_ = true
 
-[node name="Element1" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+[node name="Element1" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon"]
 layout_mode = 2
 offset_left = 18.0
 offset_right = 47.0
 offset_bottom = 29.0
 texture = ExtResource("2_plyxe")
 
-[node name="Element2" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+[node name="Element2" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon"]
 layout_mode = 2
 offset_left = 36.0
 offset_top = 18.0
@@ -286,7 +295,7 @@ offset_right = 65.0001
 offset_bottom = 47.0
 texture = ExtResource("3_xt7ef")
 
-[node name="Element3" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+[node name="Element3" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon"]
 layout_mode = 2
 offset_left = 18.0
 offset_top = 36.0
@@ -294,7 +303,7 @@ offset_right = 47.0
 offset_bottom = 65.0001
 texture = ExtResource("3_xt7ef")
 
-[node name="Element4" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon"]
+[node name="Element4" type="TextureRect" parent="Margin/VBox/LoadingProgress/LoadingIcon/LoadingIcon"]
 layout_mode = 2
 offset_top = 18.0
 offset_right = 29.0

@@ -2,7 +2,7 @@ class_name AbstractMotion
 extends Resource
 
 
-const DEFAULT_DURATION: float = 0.3
+const DEFAULT_DURATION: float = 0.6
 
 @export var characters_motion: BattleEnums.CharactersMotions
 @export_range(0, 1, 0.01, "or_greater") var duration: float = 0.1

@@ -1,0 +1,62 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbwoaee5bxkap"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/training_screen/training_screen.gd" id="1_ijk70"]
+[ext_resource type="Texture2D" uid="uid://clvla0hbtd3qx" path="res://sprites/ui/menu/training_screen/training_screen=1.png" id="1_mif0b"]
+[ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_vse1l"]
+
+[node name="TrainingScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ijk70")
+
+[node name="Shadow" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.039, 0.039, 0.039, 0.7)
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TrainingSlide" type="TextureRect" parent="Center/VBox"]
+layout_mode = 2
+texture = ExtResource("1_mif0b")
+
+[node name="HBox" type="HBoxContainer" parent="Center/VBox"]
+layout_mode = 2
+
+[node name="BackButton" parent="Center/VBox/HBox" instance=ExtResource("2_vse1l")]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "BACK"
+
+[node name="CloseButton" parent="Center/VBox/HBox" instance=ExtResource("2_vse1l")]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "CLOSE"
+
+[node name="NextButton" parent="Center/VBox/HBox" instance=ExtResource("2_vse1l")]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "NEXT"
+
+[connection signal="pressed" from="Center/VBox/HBox/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="Center/VBox/HBox/CloseButton" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Center/VBox/HBox/NextButton" to="." method="_on_next_button_pressed"]

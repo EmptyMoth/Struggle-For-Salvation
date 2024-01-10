@@ -9,7 +9,8 @@ var current_state: AbstractCharacterState :
 		if str(current_state) == str(new_state):
 			return
 		current_state = new_state
-		model.view_model.switch_motion(new_state.get_motions())
+		if not new_state is ActionState:
+			model.view_model.switch_motion(new_state.get_motions())
 
 
 func _init(character: Character) -> void:
@@ -18,7 +19,8 @@ func _init(character: Character) -> void:
 	character.mental_health.reached_zero.connect(_on_mental_health_reached_zero)
 	character.came_out_of_stun.connect(_on_character_came_out_of_stun)
 	character.movement_model.began_to_move.connect(_on_character_began_to_move)
-	character.movement_model.finished_to_move.connect(_on_character_finished_to_move)
+	character.started_performing_action.connect(_on_character_started_performing_action)
+	character.finished_performing_action.connect(_on_character_finished_performing_action)
 	current_state = DefaultState.new(model)
 
 
@@ -38,6 +40,16 @@ func _on_character_began_to_move() -> void:
 	if model.is_active:
 		current_state = MovementState.new(model)
 
-func _on_character_finished_to_move() -> void:
+#func _on_character_finished_to_move() -> void:
+	#if model.is_active:
+		#current_state = DefaultState.new(model)
+
+
+func _on_character_started_performing_action() -> void:
+	if model.is_active:
+		current_state = ActionState.new(model)
+
+func _on_character_finished_performing_action() -> void:
 	if model.is_active:
 		current_state = DefaultState.new(model)
+

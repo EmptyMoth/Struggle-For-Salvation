@@ -19,4 +19,3 @@ path_height_offset = 0.5
 path_max_distance = 20.01
 path_postprocessing = 1
 path_metadata_flags = 0
-debug_enabled = true
