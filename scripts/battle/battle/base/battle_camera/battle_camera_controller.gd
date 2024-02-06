@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 	var zoom: Vector2 = Vector2.ONE * clampf(1200 / distance, 1.2, 3)
 	var assault_position: Vector2 = (_character_1.position + _character_2.position) / 2
 	assault_position.y -= 100
-	battle_camera.move_to(assault_position, zoom, delta)
+	battle_camera.move_to(assault_position, zoom)
 
 
 static func _on_battle_started() -> void:
@@ -60,10 +60,10 @@ static func _on_battle_combat_ended() -> void:
 
 
 static func _on_assault_started(character_1: Character, character_2: Character) -> void:
-	return
+	#return
 	_character_1 = character_1
 	_character_2 = character_2
-	#var distance: float = (_character_1.position - _character_2.position).length()
-	#var assault_position: Vector2 = (_character_1.position + _character_2.position) / 2
-	#var zoom: Vector2 = Vector2.ONE * clampf(1200 / distance, 0.8, 2)
-	#battle_camera.move_to(assault_position, zoom)
+	var distance: float = (_character_1.position - _character_2.position).length()
+	var assault_position: Vector2 = (_character_1.position + _character_2.position) / 2
+	var zoom: Vector2 = Vector2.ONE * clampf(1200 / distance, 0.8, 2)
+	battle_camera.move_to(assault_position, zoom)

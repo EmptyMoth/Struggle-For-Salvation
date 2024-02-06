@@ -1,5 +1,5 @@
 class_name ActionsManager
-extends RefCounted
+extends Node
 
 
 static var _RESERVE_DICE_SOLO: Action = Action.new([

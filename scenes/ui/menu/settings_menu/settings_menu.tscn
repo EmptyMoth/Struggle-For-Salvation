@@ -51,7 +51,7 @@ script = ExtResource("2_kkqwi")
 
 [node name="Panel" type="PanelContainer" parent="CenterContainer/VBoxContainer/MainMoving"]
 z_index = 1
-custom_minimum_size = Vector2(0, 539)
+custom_minimum_size = Vector2(698, 539)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
@@ -104,6 +104,7 @@ text = "AUDIO"
 metadata/content_index = 2
 
 [node name="CustomRulesButton" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2l3pb")
@@ -142,6 +143,7 @@ layout_mode = 2
 setting_name = "LIMIT_MAX_FPS"
 
 [node name="VSync" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("6_f4fnh")]
+visible = false
 layout_mode = 2
 setting_name = "VSync"
 
@@ -156,14 +158,17 @@ setting_name = "LANGUAGE"
 setting_tooltip = " "
 
 [node name="AlliesPlacement" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("5_4y2do")]
+visible = false
 layout_mode = 2
 setting_name = "ALLIES_PLACEMENT"
 
 [node name="ActionDiceTally" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("6_f4fnh")]
+visible = false
 layout_mode = 2
 setting_name = "ACTION_DICE_TALLY"
 
 [node name="CustomRules" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("6_f4fnh")]
+visible = false
 layout_mode = 2
 setting_name = "CUSTOM_RULES"
 

@@ -1,5 +1,5 @@
 class_name CombatPhaseManager
-extends Resource
+extends Node
 
 
 static var assaults: Array[AssaultData]

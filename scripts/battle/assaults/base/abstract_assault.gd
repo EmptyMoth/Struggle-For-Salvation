@@ -15,10 +15,8 @@ static func can_be_executed(data: AssaultData) -> bool:
 
 func execute() -> void:
 	BattleSignals.assault_started.emit(_initiator_info.character, _initiator_info.opponents.main)
-	@warning_ignore("redundant_await")
 	await _move_characters()
 	_join_assault()
-	@warning_ignore("redundant_await")
 	await _execute()
 	_leave_assault()
 	BattleSignals.assault_ended.emit(_initiator_info.character, _initiator_info.opponents.main)

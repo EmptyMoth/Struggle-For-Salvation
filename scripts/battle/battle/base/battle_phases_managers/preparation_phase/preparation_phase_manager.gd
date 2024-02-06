@@ -1,5 +1,5 @@
 class_name PreparationPhaseManager
-extends RefCounted
+extends Node
 
 
 static func _on_battle_turn_started() -> void:
@@ -12,6 +12,5 @@ static func _on_battle_turn_started() -> void:
 
 
 static func finish_phase() -> void:
-	PlayerState.switch_to_observer()
 	AssaultsArrowsManager.clear_arrows()
 	BattleSignals.preparation_ended.emit()

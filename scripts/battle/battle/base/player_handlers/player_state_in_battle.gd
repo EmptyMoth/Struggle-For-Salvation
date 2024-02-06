@@ -1,5 +1,5 @@
 class_name PlayerState
-extends RefCounted
+extends Node
 
 
 enum PlayerStates { DEFAULT = 0, MANAGER = 1, OBSERVER = 2 }

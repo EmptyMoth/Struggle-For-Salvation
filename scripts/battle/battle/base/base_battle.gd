@@ -28,10 +28,14 @@ func _ready() -> void:
 	_init_of_teams()
 	set_location(_packed_location.instantiate())
 	_connect_signals()
+	add_assault_arrow($Managers/PreparationPhaseManager/PlayerArrangeAssaults._player_assault_arrow)
 	BattleSignals.battle_started.emit()
 
 
 func _input(_event: InputEvent) -> void:
+	if current_phase != BattleEnums.BattlePhase.PREPARATION:
+		return
+	
 	if Input.is_action_just_released("ui_switch_battle_phase"):
 		PreparationPhaseManager.finish_phase()
 		return
@@ -149,9 +153,10 @@ func _on_combat_ended() -> void:
 
 
 func _on_assault_started(character: Character, target: Character) -> void:
-	pass
+	highlight_nodes([character, target], true)
 
 func _on_assault_ended(character: Character, target: Character) -> void:
+	highlight_nodes([character, target], false)
 	for popup: Node in _popups_with_assault_info.get_children():
 		popup.queue_free()
 

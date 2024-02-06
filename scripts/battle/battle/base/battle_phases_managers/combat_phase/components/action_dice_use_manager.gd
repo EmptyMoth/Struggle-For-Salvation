@@ -1,5 +1,5 @@
 class_name ActionDiceUseManager
-extends RefCounted
+extends Node
 
 
 static func use_dice_in_one_side(info: CharacterAssaultInfo) -> void:

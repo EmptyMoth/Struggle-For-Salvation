@@ -35,6 +35,7 @@ func set_info(character: Character) -> void:
 	_use_skill_title.text = skill.stats.title
 	character.combat_model.chose_next_action_dice.connect(_on_character_chose_next_action_dice)
 	character.combat_model.calculated_comparing_value.connect(_on_character_calculated_comparing_value)
+	character.combat_model.used_action_dice.connect(_on_character_used_action_dice)
 
 
 func _add_action_dice_use_info(dice: ActionDice) -> void:
@@ -43,6 +44,11 @@ func _add_action_dice_use_info(dice: ActionDice) -> void:
 	if is_left:
 		_dice_list.move_child(action_dice_use_info, 0)
 	action_dice_use_info.set_info(dice)
+
+
+func _on_character_used_action_dice(dice: ActionDice) -> void:
+	_final_value.text = str(dice.values_model.get_current_value())
+	_final_value.modulate = dice.color
 
 
 func _on_character_chose_next_action_dice(

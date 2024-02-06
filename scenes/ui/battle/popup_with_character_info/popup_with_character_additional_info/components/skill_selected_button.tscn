@@ -21,7 +21,7 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 mouse_filter = 1
 theme_override_colors/icon_disabled_color = Color(0.666667, 0.666667, 0.666667, 1)
-toggle_mode = true
+action_mode = 0
 icon = ExtResource("2_fve3c")
 flat = true
 alignment = 2
@@ -71,3 +71,4 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

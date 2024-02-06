@@ -48,12 +48,12 @@ func preparation_to_combat_position() -> void:
 	set_process(false)
 
 
-func move_to(new_position: Vector2, new_zoom: Vector2, delta: float) -> void:
-	#new_position = _adjust_position(new_position)
+func move_to(new_position: Vector2, new_zoom: Vector2) -> void:
+	new_position = _adjust_position(new_position)
 	position = new_position
 	zoom = zoom.lerp(new_zoom, 0.1)
-	#_animate_movement(new_position)
-	#_animate_zoom(new_zoom)
+	_animate_movement(new_position)
+	_animate_zoom(new_zoom)
 
 
 func _change_zoom(event: InputEvent) -> void:

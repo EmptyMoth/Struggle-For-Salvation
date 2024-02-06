@@ -4,6 +4,7 @@ extends Button
 
 signal skill_shown(skill: Skill)
 signal skill_hidden(skill: Skill)
+signal skill_pressed(skill: Skill)
 
 var setted_skill: Skill = null
 
@@ -40,3 +41,6 @@ func _on_mouse_entered() -> void:
 
 func _on_mouse_exited() -> void:
 	skill_hidden.emit(setted_skill)
+
+func _on_pressed() -> void:
+	skill_pressed.emit(setted_skill)

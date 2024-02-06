@@ -96,3 +96,5 @@ script = ExtResource("10_vvxtu")
 
 [node name="SubcharacterBars" parent="." instance=ExtResource("11_0j7kp")]
 theme_override_constants/margin_top = 5
+
+[node name="DamageLabelPosition" type="Marker2D" parent="."]

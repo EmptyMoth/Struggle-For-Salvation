@@ -1,5 +1,5 @@
 class_name AutoArrangeAssaults
-extends RefCounted
+extends Node
 
 
 static func arranges_enemies() -> void:

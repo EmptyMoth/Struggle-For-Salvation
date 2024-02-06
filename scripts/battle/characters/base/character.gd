@@ -8,6 +8,9 @@ signal stunned
 signal came_out_of_stun
 signal started_performing_action
 signal finished_performing_action
+signal taken_damage(damage_info: DamageInfo)
+signal taken_physical_damage(damage_info: DamageInfo)
+signal taken_mental_damage(damage_info: DamageInfo)
 
 var stats: CharacterStats
 var view_model: CharacterViewModel = CharacterViewModel.new(self)

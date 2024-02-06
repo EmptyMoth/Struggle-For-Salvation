@@ -1,10 +1,10 @@
 class_name AssaultSetter
-extends RefCounted
+extends Node
 
 
 static func create_assault(assault_slot: ATPSlot, targets: Targets, skill: Skill) -> void:
-	assault_slot.selected_skill(skill)
 	set_assault(AssaultData.new(assault_slot, targets))
+	assault_slot.selected_skill(skill)
 
 
 static func set_assault(assault: AssaultData) -> void:

@@ -8,6 +8,7 @@ var model: Character
 @onready var subcharacter_bars: SubcharacterBars = model.get_node("SubcharacterBars")
 @onready var atp_slots_manager_ui: ATPSlotsManagerUI = model.get_node("ATPSlotsContainer")
 @onready var click_area: Button = model.get_node("Actions/ClickArea")
+@onready var damage_label_position: Node2D = model.get_node("DamageLabelPosition")
 
 
 func _init(character: Character) -> void:
@@ -17,9 +18,11 @@ func _init(character: Character) -> void:
 func _ready() -> void:
 	click_area.modulate.a = 0
 	model.died.connect(_on_character_died)
+	model.taken_damage.connect(_on_character_taken_damage)
 	click_area.pressed.connect(_on_character_pressed)
 	click_area.mouse_exited.connect(_on_character_mouse_exited)
 	click_area.mouse_entered.connect(_on_character_mouse_entered)
+	damage_label_position.global_position = click_area.global_position + click_area.size / 2.0
 	atp_slots_manager_ui.position.y = -click_area.size.y - 10
 	subcharacter_bars.set_healths(
 			model.health_manager.physical_health, model.health_manager.mental_health)
@@ -67,6 +70,10 @@ func prepare_character() -> void:
 
 func prepare_character_to_combat() -> void:
 	atp_slots_manager_ui.hide()
+
+
+func _on_character_taken_damage(damage_info: DamageInfo) -> void:
+	damage_label_position.add_child(DamageLabel.create_damage_label(damage_info))
 
 
 func _on_character_died() -> void:

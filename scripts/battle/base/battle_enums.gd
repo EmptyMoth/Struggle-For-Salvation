@@ -43,7 +43,13 @@ enum CharactersMotions {
 }
 
 enum DamageType {
-	Attack,
-	Status,
-	Ability,
+	PHYSICAL = -1,
+	GENERAL = 0,
+	MENTAL = 1
+}
+
+enum DamageSourceType {
+	ATTACK,
+	STATUS,
+	ABILITY,
 }

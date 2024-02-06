@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmb10wy2q2gwf"]
+[gd_scene load_steps=10 format=3 uid="uid://cmb10wy2q2gwf"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/main_menu/main_menu.gd" id="1_jg0kq"]
 [ext_resource type="Texture2D" uid="uid://d4fcmvqrftt7l" path="res://sprites/ui/menu/locations/brain_stem.png" id="2_tyiu0"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="5_gdxar"]
 [ext_resource type="Script" path="res://scripts/ui/menu/base/buttons/button_switch_scene.gd" id="6_tbwx4"]
 [ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="7_3g0qb"]
+[ext_resource type="AudioStream" uid="uid://c7d8f6gcv70rc" path="res://music/story/main_menu.mp3" id="8_cua4s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j42ep"]
 shader = ExtResource("3_bly2p")
@@ -149,6 +150,12 @@ color = Color(0.0392157, 0.0392157, 0.0392157, 1)
 [node name="SettingsMenu" parent="." instance=ExtResource("7_3g0qb")]
 visible = false
 layout_mode = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_cua4s")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Main/VBox/VBox/Menu/ContinueButton" to="Main/VBox/VBox/Menu/ContinueButton" method="_on_pressed"]
 [connection signal="pressed" from="Main/VBox/VBox/Menu/SettingsButton" to="." method="_on_settings_button_pressed"]

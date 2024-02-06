@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpavks0473n7x"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/damage_label/damage_label.gd" id="1_qy6v8"]
+
+[node name="DamageLabel" type="Label"]
+z_index = 10
+offset_right = 40.0
+offset_bottom = 20.625
+pivot_offset = Vector2(20.5, 28)
+theme_override_font_sizes/font_size = 24
+text = "123"
+vertical_alignment = 1
+script = ExtResource("1_qy6v8")

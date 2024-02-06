@@ -12,5 +12,7 @@ func use_in_one_side(targets: Opponents) -> void:
 
 func attack(targets: Opponents, damage: int) -> void:
 	for target: Character in targets.get_all_opponents():
-		target.health_manager.take_damage(damage)
+		target.health_manager.take_damage(DamageInfo.new(
+				damage, target, BattleEnums.DamageSourceType.ATTACK, 
+				model.wearer, model.values_model.get_extra_power_multiplier()))
 	hit.emit()

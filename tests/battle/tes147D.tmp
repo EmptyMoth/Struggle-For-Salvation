@@ -219,5 +219,6 @@ offset_bottom = 329.0
 bbcode_enabled = true
 text = "awjdoa widajd oawijdao wja {TestWord} awdawukd aw bdu"
 script = ExtResource("30_2sruw")
+_contains_hint = true
 
 [connection signal="pressed" from="CanvasUI/EndScreen/LeaveButton" to="CanvasUI/EndScreen/LeaveButton" method="_on_pressed"]

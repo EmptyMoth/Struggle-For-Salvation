@@ -1,8 +1,12 @@
 class_name AssaultsArrowsManager
-extends RefCounted
+extends Node
 
 
 static var _arrows_list_by_atp_slot: Dictionary = {}
+
+
+func _ready() -> void:
+	_arrows_list_by_atp_slot = {}
 
 
 static func create_arrows(assault: AssaultData) -> void:

@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://3o27s8kd1wr4"]
+
+[ext_resource type="Script" path="res://scripts/ui/base/tooltips/keyword_tooltip.gd" id="1_umaqm"]
+
+[node name="KeywordsTooltip" type="PanelContainer"]
+custom_minimum_size = Vector2(300, 0)
+offset_right = 300.0
+offset_bottom = 125.0
+script = ExtResource("1_umaqm")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 12
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Image" type="TextureRect" parent="Margin/VBox/HBox"]
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Margin/VBox/HBox"]
+layout_mode = 2
+text = "Title"
+
+[node name="DescriptionLabel" type="RichTextLabel" parent="Margin/VBox"]
+layout_mode = 2
+bbcode_enabled = true
+text = "awjdoa widajd oawijdao wja {TestWord} awdawukd aw bdu"
+fit_content = true
+scroll_active = false
+autowrap_mode = 2

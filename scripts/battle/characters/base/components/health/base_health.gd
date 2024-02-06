@@ -30,7 +30,7 @@ func reduce_max_value(value: int) -> void:
 	max_health = max(1, max_health - value)
 
 
-func take_damage(damage: int, is_permanent: bool) -> int:
+func take_damage(is_permanent: bool, damage: int) -> int:
 	var final_damage: int = damage if is_permanent else roundi(damage * resistance.multiplier)
 	_take_damage(final_damage)
 	return final_damage

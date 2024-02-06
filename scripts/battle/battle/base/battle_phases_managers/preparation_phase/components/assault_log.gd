@@ -1,10 +1,16 @@
 class_name AssaultLog
-extends RefCounted
+extends Node
 
 
 static var _ASSAULTS_BY_ATP_SLOT: Dictionary = {}
 static var _ASSAULTS_LIST_BY_TARGET_ATP_SLOT: Dictionary = {}
 static var _ASSAULTS_CAN_CLASH_LIST_BY_TARGET_ATP_SLOT: Dictionary = {}
+
+
+func _ready() -> void:
+	_ASSAULTS_BY_ATP_SLOT = {}
+	_ASSAULTS_LIST_BY_TARGET_ATP_SLOT = {}
+	_ASSAULTS_CAN_CLASH_LIST_BY_TARGET_ATP_SLOT = {}
 
 
 static func get_assault(atp_slot: ATPSlot) -> AssaultData:

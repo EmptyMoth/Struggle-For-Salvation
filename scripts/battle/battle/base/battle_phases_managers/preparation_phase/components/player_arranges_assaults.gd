@@ -1,11 +1,17 @@
 class_name PlayerArrangeAssaults
-extends RefCounted
+extends Node
 
 
 static var selected_ally_slot: ATPSlot = null
 static var selected_skill: Skill = null
 
 static var _player_assault_arrow: PlayerAssaultArrow
+
+
+func _ready() -> void:
+	selected_ally_slot = null
+	selected_skill = null
+	_player_assault_arrow = PlayerAssaultArrow.create_arrow() as PlayerAssaultArrow
 
 
 static func select_ally_skill(skill: Skill) -> void:
@@ -76,14 +82,6 @@ static func _on_enemy_picked(_characte: Character, atp_slot: ATPSlot = null) -> 
 
 static func _on_player_made_general_cancel() -> void: _deselected()
 
-static func _on_battle_preparaion_started() -> void: _deselected()
-
-
-static func _on_battle_started() -> void:
-	_player_assault_arrow = PlayerAssaultArrow.create_arrow() as PlayerAssaultArrow
-	BaseBattle.battle.add_assault_arrow(_player_assault_arrow)
-
-static func _on_battle_ended() -> void:
-	_deselected()
-	_player_assault_arrow.queue_free()
-	_player_assault_arrow = null
+static func _on_battle_preparaion_ended() -> void:
+	PlayerInputManager.player_made_general_cancel.emit()
+	PlayerState.switch_to_observer()
