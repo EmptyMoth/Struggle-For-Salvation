@@ -16,7 +16,7 @@ var is_empty: bool :
 var resistance: BaseResistance
 
 
-func _init(max_value: int, default_resistance: BaseResistance.Resistance) -> void:
+func _init(max_value: int, default_resistance: BaseResistance.ResistanceType) -> void:
 	max_health = max_value
 	resistance = BaseResistance.new(default_resistance)
 	recover()

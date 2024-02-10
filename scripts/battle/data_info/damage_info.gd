@@ -6,9 +6,11 @@ var attacker: Character
 var target: Character
 var damage_sent: int
 var damage_received: int
+var resistance: BaseResistance.ResistanceType = -1
 var dice_gain_multiplier: float
 var damage_type: BattleEnums.DamageType
 var damage_source: BattleEnums.DamageSourceType
+var is_permanent: bool
 
 
 func _init(
@@ -22,3 +24,4 @@ func _init(
 	attacker = _attacker
 	target = _target
 	dice_gain_multiplier = _dice_gain_multiplier
+	is_permanent = damage_source != BattleEnums.DamageSourceType.ATTACK

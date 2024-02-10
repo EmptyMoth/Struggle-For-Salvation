@@ -50,6 +50,6 @@ enum DamageType {
 
 enum DamageSourceType {
 	ATTACK,
-	STATUS,
 	ABILITY,
+	STATUS_EFFECT,
 }

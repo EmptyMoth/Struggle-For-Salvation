@@ -85,17 +85,6 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
 
-[node name="AssaultsArrows" type="Control" parent="EnvironmentUI"]
-z_index = 5
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 2
-
-[node name="PopupsWithAssaultInfo" type="Control" parent="EnvironmentUI"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 2
-
 [node name="DarkeningScreen" type="ColorRect" parent="EnvironmentUI"]
 visible = false
 layout_mode = 1
@@ -106,6 +95,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.7)
+
+[node name="AssaultsArrows" type="Control" parent="EnvironmentUI"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="PopupsWithAssaultInfo" type="Control" parent="EnvironmentUI"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
 
 [node name="CanvasUI" type="CanvasLayer" parent="."]
 

@@ -5,7 +5,8 @@ extends RefCounted
 static var HINT_BY_WORDS: Dictionary
 
 static var KEYWORDS_BY_WORDS: Dictionary = {
-	"TestWord": Keyword.new("Test Word", "Test title")
+	"TestWord": Keyword.new("Test title", "Description"),
+	TestStatusEffect.get_keyword(): Keyword.new("Test Status Effect", "Description", "3af", TestStatusEffect.get_icon_path())
 }
 
 

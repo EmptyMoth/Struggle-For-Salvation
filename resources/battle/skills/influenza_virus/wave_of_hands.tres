@@ -1,10 +1,21 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=10 format=3 uid="uid://c6xjtr7yhfetg"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=14 format=3 uid="uid://c6xjtr7yhfetg"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_8ynrq"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/effects/take_damage.gd" id="1_751gn"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_3yitl"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd" id="2_oe7u4"]
 [ext_resource type="Texture2D" uid="uid://b5vuga3lm5gwc" path="res://sprites/battle/skills/influenza_virus/skill_icon=8.png" id="3_qus0q"]
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_vaoku"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/quantity_data.gd" id="5_oolgp"]
+
+[sub_resource type="Resource" id="Resource_tg8hs"]
+script = ExtResource("1_751gn")
+_damage_count = 2
+
+[sub_resource type="Resource" id="Resource_mkr3n"]
+script = ExtResource("2_oe7u4")
+_condition_title = "Clash Lose"
+_effect = SubResource("Resource_tg8hs")
 
 [sub_resource type="Resource" id="Resource_rv4eh"]
 script = ExtResource("1_8ynrq")
@@ -38,5 +49,5 @@ use_type = SubResource("Resource_3vcy6")
 clash_type = SubResource("Resource_wr0uu")
 actions_dice_stats = Array[ExtResource("1_8ynrq")]([SubResource("Resource_rv4eh"), SubResource("Resource_s2kay")])
 is_unclashable = false
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+abilities = Array[ExtResource("2_oe7u4")]([SubResource("Resource_mkr3n")])
 priority = 0

@@ -5,9 +5,10 @@ extends Node
 var model: Character
 
 @onready var character_motions: AnimatedSprite2D = model.get_node("Actions")
-@onready var subcharacter_bars: SubcharacterBars = model.get_node("SubcharacterBars")
+@onready var subcharacter_bars: SubcharacterBars = model.get_node("Subcharacter/HealthsBars")
 @onready var atp_slots_manager_ui: ATPSlotsManagerUI = model.get_node("ATPSlotsContainer")
 @onready var click_area: Button = model.get_node("Actions/ClickArea")
+@onready var status_effects_container: GridContainer = model.get_node("Subcharacter/StatusEffectsContiner")
 @onready var damage_label_position: Node2D = model.get_node("DamageLabelPosition")
 
 
@@ -19,6 +20,7 @@ func _ready() -> void:
 	click_area.modulate.a = 0
 	model.died.connect(_on_character_died)
 	model.taken_damage.connect(_on_character_taken_damage)
+	model.status_effects_manager.added_status_effect.connect(status_effects_container.add_status_effect)
 	click_area.pressed.connect(_on_character_pressed)
 	click_area.mouse_exited.connect(_on_character_mouse_exited)
 	click_area.mouse_entered.connect(_on_character_mouse_entered)

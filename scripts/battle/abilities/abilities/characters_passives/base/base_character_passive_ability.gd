@@ -15,10 +15,10 @@ extends AbstractAbility
 	"On Hit",
 	"On BlockMotion",
 	"On EvadeMotion",
-	"After Area Attack", 
+	"After Area Attack",
+	"Turn Start",
 	) var _condition_title: String = "None"
 
 
 func _get_description() -> String:
-	@warning_ignore("static_called_on_instance")
 	return " - ".join([passive_title, _effect.get_description()])

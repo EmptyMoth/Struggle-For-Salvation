@@ -45,6 +45,7 @@ var mental_resistance: BaseResistance :
 
 @onready var skills_manager := SkillsManager.new(self, stats.skills)
 @onready var health_manager := HealthManager.new(self)
+@onready var status_effects_manager := StatusEffectsManager.new(self)
 
 
 func init(character_stats: CharacterStats, character_fraction: BattleEnums.Fraction) -> void:
@@ -59,6 +60,8 @@ func _ready() -> void:
 	character_fsm = CharacterFSM.new(self)
 	atp_slots_manager = ATPSlotsManager.new(self, view_model.atp_slots_manager_ui)
 	_set_character_to_groups()
+	for ability: BaseCharacterPassiveAbility in stats.passive_abilities:
+		ability.init(self)
 
 
 func _process(_delta: float) -> void:
@@ -100,6 +103,7 @@ func prepare_character() -> void:
 		return
 	movement_model.set_to_default_position()
 	view_model.prepare_character()
+	status_effects_manager.reduce_effects_stack()
 	atp_slots_manager.preparation_atp_slots()
 	if is_active:
 		atp_slots_manager.roll_atp_slots()

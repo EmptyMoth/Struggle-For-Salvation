@@ -10,9 +10,9 @@ static func _get_title() -> String:
 	return ""
 
 
+static func _get_condition(_owner: Character) -> Signal:
+	return _owner.changed
+
+
 func connect_condition(owner: Character, effect: Callable) -> void:
 	_get_condition(owner).connect(effect)
-
-
-func _get_condition(_owner: Character) -> Signal:
-	return self.changed

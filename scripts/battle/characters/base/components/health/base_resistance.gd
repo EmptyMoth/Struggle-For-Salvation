@@ -2,7 +2,7 @@ class_name BaseResistance
 extends Resource
 
 
-enum Resistance {
+enum ResistanceType {
 	IMMUNITY = 0,
 	INEFFECTIVE = 1,
 	WEAK = 2,
@@ -12,12 +12,12 @@ enum Resistance {
 }
 
 const _MULTIPLIER_BY_RESISTANCE: Dictionary = {
-	Resistance.IMMUNITY: 0.0,
-	Resistance.INEFFECTIVE: 0.5,
-	Resistance.WEAK: 0.75,
-	Resistance.NORMAL: 1.0,
-	Resistance.HIGH: 1.5,
-	Resistance.FATAL: 2.0,
+	ResistanceType.IMMUNITY: 0.0,
+	ResistanceType.INEFFECTIVE: 0.5,
+	ResistanceType.WEAK: 0.75,
+	ResistanceType.NORMAL: 1.0,
+	ResistanceType.HIGH: 1.5,
+	ResistanceType.FATAL: 2.0,
 }
 
 var default_multiplier: float :
@@ -25,11 +25,11 @@ var default_multiplier: float :
 var multiplier: float :
 	get: return _MULTIPLIER_BY_RESISTANCE[resistance]
 
-var default_resistance: Resistance
-var resistance: Resistance
+var default_resistance: ResistanceType
+var resistance: ResistanceType
 
 
-func _init(start_resistance: Resistance) -> void:
+func _init(start_resistance: ResistanceType) -> void:
 	default_resistance = start_resistance
 	reset()
 
@@ -38,12 +38,12 @@ func reset() -> void:
 	resistance = default_resistance
 
 
-func change_resistance(new_resistance: Resistance) -> void:
+func change_resistance(new_resistance: ResistanceType) -> void:
 	resistance = new_resistance
 
 
 func _on_character_stunned() -> void:
-	resistance = Resistance.FATAL
+	resistance = ResistanceType.FATAL
 
 
 func _on_character_came_out_of_stun() -> void:

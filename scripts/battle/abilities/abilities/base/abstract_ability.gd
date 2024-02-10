@@ -12,9 +12,9 @@ var _wearer: Character
 
 func init(wearer: Character) -> void:
 	_wearer = wearer
-	_condition = AbstractAbility._create_condition(get("_condition_title"))
-	_condition.connect_condition(_wearer, _effect.effect)
-	@warning_ignore("static_called_on_instance")
+	_effect._wearer = wearer
+	_condition = _create_condition(get("_condition_title"))
+	_condition.connect_condition(_wearer, _effect.get("effect"))
 	description = _get_description()
 
 
@@ -31,5 +31,4 @@ static func _create_condition(condition_title: String) -> AbstractAbilityConditi
 
 
 func _get_description() -> String:
-	@warning_ignore("static_called_on_instance")
-	return "".join([_condition.get_title(), _effect.get_description()])
+	return " ".join([_condition.get_title(), _effect.get_description()])

@@ -14,8 +14,8 @@ extends Resource
 @export_range(1, 999, 1, "or_greater") var max_mental_health: int = 1
 
 @export_group("Resistances")
-@export var physical_resistance: BaseResistance.Resistance = BaseResistance.Resistance.NORMAL
-@export var mental_resistance: BaseResistance.Resistance = BaseResistance.Resistance.NORMAL
+@export var physical_resistance: BaseResistance.ResistanceType = BaseResistance.ResistanceType.NORMAL
+@export var mental_resistance: BaseResistance.ResistanceType = BaseResistance.ResistanceType.NORMAL
 
 @export_group("ATP Slots")
 @export_range(1, 10, 1, "or_greater") var atp_slots_count: int = 1

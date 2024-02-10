@@ -51,8 +51,9 @@ func to_stun() -> void:
 
 
 func _take_damage(health: BaseHealth, damage_info: DamageInfo) -> void:
-	damage_info.damage_received = health.take_damage(
-			damage_info.damage_source != BattleEnums.DamageSourceType.ATTACK, damage_info.damage_sent)
+	if not damage_info.is_permanent:
+		damage_info.resistance = health.resistance.resistance
+	damage_info.damage_received = health.take_damage(damage_info.is_permanent, damage_info.damage_sent)
 	_model.taken_damage.emit(damage_info)
 
 

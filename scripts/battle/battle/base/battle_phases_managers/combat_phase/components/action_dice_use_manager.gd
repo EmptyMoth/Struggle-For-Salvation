@@ -55,8 +55,8 @@ static func _implement_respond(info_1: CharacterAssaultInfo, info_2: CharacterAs
 static func _implement_clash(info_1: CharacterAssaultInfo, info_2: CharacterAssaultInfo) -> void:
 	var clash_result: Dictionary = await _get_clash_result(info_1.character, info_2.character)
 	prints(info_1.character, " -><- ", info_2.character)
-	info_1.character.combat_model.try_use_current_dice_in_clash(info_2.opponents, clash_result[info_1.character])
-	info_2.character.combat_model.try_use_current_dice_in_clash(info_1.opponents, clash_result[info_2.character])
+	info_1.character.combat_model.try_use_current_dice_in_clash(info_1.opponents, clash_result[info_1.character])
+	info_2.character.combat_model.try_use_current_dice_in_clash(info_2.opponents, clash_result[info_2.character])
 	match clash_result[info_1.character]:
 		BattleEnums.ClashResult.WIN:
 			await ActionsManager.execute_win(info_1.character, info_1.opponents)
@@ -71,4 +71,5 @@ static func _get_clash_result(opponent_1: Character, opponent_2: Character) -> D
 	var value_2: int = opponent_2.combat_model.calculate_comparing_value(opponent_1.combat_model.current_skill)
 	await GlobalParameters.get_tree().create_timer(1).timeout
 	var result: int = clampi(value_1 - value_2, BattleEnums.ClashResult.LOSE, BattleEnums.ClashResult.WIN)
+	prints(value_1, value_2, result)
 	return { opponent_1: result, opponent_2: -result }

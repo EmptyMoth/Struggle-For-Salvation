@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://brldvuotlrlu7"]
+[gd_scene load_steps=9 format=3 uid="uid://brldvuotlrlu7"]
 
 [ext_resource type="Script" path="res://scripts/battle/characters/base/character.gd" id="1_lshlj"]
+[ext_resource type="Script" path="res://scripts/ui/battle/characters_components/status_effects/status_effects_continer.gd" id="4_0j6ie"]
 [ext_resource type="Script" path="res://scripts/ui/battle/characters_components/atp_slots/atp_slots_manager_ui.gd" id="10_vvxtu"]
 [ext_resource type="PackedScene" uid="uid://0s320kriran8" path="res://scenes/ui/battle/characters_components/health_bars/subcharacter_bars.tscn" id="11_0j7kp"]
 
@@ -94,7 +95,26 @@ theme_override_constants/separation = 4
 alignment = 1
 script = ExtResource("10_vvxtu")
 
-[node name="SubcharacterBars" parent="." instance=ExtResource("11_0j7kp")]
+[node name="DamageLabelPosition" type="Marker2D" parent="."]
+
+[node name="Subcharacter" type="VBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -66.0
+offset_right = 66.0
+offset_bottom = 68.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HealthsBars" parent="Subcharacter" instance=ExtResource("11_0j7kp")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
 theme_override_constants/margin_top = 5
 
-[node name="DamageLabelPosition" type="Marker2D" parent="."]
+[node name="StatusEffectsContiner" type="GridContainer" parent="Subcharacter"]
+layout_mode = 2
+size_flags_horizontal = 4
+columns = 5
+script = ExtResource("4_0j6ie")
