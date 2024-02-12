@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://ciro0ncgqiif4"]
+[gd_scene load_steps=50 format=3 uid="uid://ciro0ncgqiif4"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_base_info/popup_with_character_base_info.gd" id="1_5nc8q"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_character_info.gd" id="1_wrolr"]
@@ -33,6 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/battle/skills/test_skill.svg" id="29_1y576"]
 [ext_resource type="FontFile" uid="uid://d14b6gyntdr4e" path="res://fonts/ubuntu/ubuntu-bold.ttf" id="30_2dpqm"]
 [ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="30_qsdty"]
+[ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="30_vy8ql"]
 [ext_resource type="LabelSettings" uid="uid://bg1053ea44uyi" path="res://resources/ui/global/label_settings/default/large_bold.tres" id="31_2aun2"]
 [ext_resource type="Texture2D" uid="uid://080nbt6cg054" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/skills_types_icons/melee_type_icon.svg" id="32_jma85"]
 [ext_resource type="Texture2D" uid="uid://dh1a7om5wfhov" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/skills_types_icons/range_type_icon.svg" id="33_p2q3k"]
@@ -502,12 +503,12 @@ columns = 3
 [node name="PassiveAbilitiesList" type="RichTextLabel" parent="HBox/VBox/PopupWithCharacterAdditionalInfo/Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 mouse_filter = 1
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+autowrap_mode = 2
+script = ExtResource("30_vy8ql")
 
 [node name="PopupWithSkillInfo" type="MarginContainer" parent="HBox"]
 layout_mode = 2
@@ -630,12 +631,13 @@ vertical_alignment = 1
 
 [node name="SkillAbilityDescription" type="RichTextLabel" parent="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox"]
 visible = false
-custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 1
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+autowrap_mode = 2
+script = ExtResource("30_vy8ql")
 
 [node name="ButtonHidingDiceAbilities" type="TextureButton" parent="HBox/PopupWithSkillInfo/HBox/VBox/MainPanel/Panel/Margin/VBox"]
 layout_mode = 2

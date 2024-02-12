@@ -1,20 +1,39 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=9 format=3 uid="uid://cg53i625fwoc2"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=16 format=3 uid="uid://cg53i625fwoc2"]
 
 [ext_resource type="Script" path="res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd" id="1_cvo77"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/characters_passives/clash_lose.gd" id="1_k1ti0"]
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_nswmx"]
-[ext_resource type="Script" path="res://scripts/battle/abilities/effects/test_effect.gd" id="1_qjjfd"]
 [ext_resource type="Resource" uid="uid://b4a85ebktfnul" path="res://resources/battle/skills/neut/swift_dash.tres" id="2_cutus"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/effects/take_damage.gd" id="2_o8ryo"]
 [ext_resource type="Resource" uid="uid://b6ca1adlckaia" path="res://resources/battle/skills/neut/lunge_from_block.tres" id="3_8hfm7"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/characters_passives/turn_start.gd" id="4_1aap3"]
 [ext_resource type="Resource" uid="uid://sro7jqxu5ot2" path="res://resources/battle/skills/neut/raise_shield.tres" id="4_uod3f"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/effects/test_effect.gd" id="5_yv082"]
 
-[sub_resource type="Resource" id="Resource_cqtsw"]
-script = ExtResource("1_qjjfd")
+[sub_resource type="Resource" id="Resource_tkuxj"]
+script = ExtResource("1_k1ti0")
+
+[sub_resource type="Resource" id="Resource_1fkj4"]
+script = ExtResource("2_o8ryo")
+_damage_count = 1
 
 [sub_resource type="Resource" id="Resource_eafn7"]
 script = ExtResource("1_cvo77")
-passive_title = "Test Ability"
-_condition_title = "Turn Start"
-_effect = SubResource("Resource_cqtsw")
+passive_title = "Despair"
+_character_condition = SubResource("Resource_tkuxj")
+_effect = SubResource("Resource_1fkj4")
+
+[sub_resource type="Resource" id="Resource_lqtf1"]
+script = ExtResource("4_1aap3")
+
+[sub_resource type="Resource" id="Resource_i3yod"]
+script = ExtResource("5_yv082")
+
+[sub_resource type="Resource" id="Resource_s3e27"]
+script = ExtResource("1_cvo77")
+passive_title = "Test"
+_character_condition = SubResource("Resource_lqtf1")
+_effect = SubResource("Resource_i3yod")
 
 [resource]
 resource_local_to_scene = true
@@ -22,7 +41,7 @@ script = ExtResource("1_nswmx")
 name = "Neut"
 type = 0
 skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_cutus"), ExtResource("3_8hfm7"), ExtResource("4_uod3f")])
-passive_abilities = Array[ExtResource("1_cvo77")]([SubResource("Resource_eafn7")])
+passive_abilities = Array[ExtResource("1_cvo77")]([SubResource("Resource_eafn7"), SubResource("Resource_s3e27")])
 max_physical_health = 100
 max_mental_health = 50
 physical_resistance = 3

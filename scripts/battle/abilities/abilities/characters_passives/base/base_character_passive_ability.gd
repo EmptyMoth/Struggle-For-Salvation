@@ -1,24 +1,19 @@
-class_name BaseCharacterPassiveAbility
+class_name BaseCharacterAbility
 extends AbstractAbility
 
 
 @export var passive_title: String = ""
-@warning_ignore("unused_private_class_variable")
-@export_enum(
-	"None", 
-	"On Clash",
-	"On One Side",
-	"Clash Win", 
-	"Clash Draw", 
-	"Clash Lose",
-	"On Roll Dice",
-	"On Hit",
-	"On BlockMotion",
-	"On EvadeMotion",
-	"After Area Attack",
-	"Turn Start",
-	) var _condition_title: String = "None"
+@export var _character_condition: AbstractCharacterAbilityCondition
+
+
+func init(character: Character, skill: Skill = null, dice: ActionDice = null) -> void:
+	_condition = _character_condition
+	super(character, skill, dice)
 
 
 func _get_description() -> String:
 	return " - ".join([passive_title, _effect.get_description()])
+
+
+func _connect_condition() -> void:
+	_condition.connect_condition(_effect.get("effect"), _wearer)

@@ -2,17 +2,16 @@ class_name BaseSkillAbility
 extends AbstractAbility
 
 
-@warning_ignore("unused_private_class_variable")
-@export_enum(
-	"None", 
-	"On Clash",
-	"On One Side",
-	"Clash Win", 
-	"Clash Draw", 
-	"Clash Lose",
-	"On Roll Dice",
-	"On Hit",
-	"On BlockMotion",
-	"On EvadeMotion",
-	"After Area Attack",
-	) var _condition_title: String = "None"
+@export var _skill_condition: AbstractSkillAbilityCondition
+
+var _wearer_skill: Skill
+
+
+func init(character: Character, skill: Skill, dice: ActionDice = null) -> void:
+	_wearer_skill = skill
+	_condition = _skill_condition
+	super(character, skill, dice)
+
+
+func _connect_condition() -> void:
+	_condition.connect_condition(_effect.get("effect"), _wearer, _wearer_skill)

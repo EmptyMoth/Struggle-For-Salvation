@@ -10,9 +10,10 @@ static func _get_title() -> String:
 	return ""
 
 
-static func _get_condition(_owner: Character) -> Signal:
-	return _owner.changed
+static func _get_condition(wearer: Character, wearer_skill: Skill, wearer_dice: ActionDice) -> Signal:
+	return wearer.changed
 
 
-func connect_condition(owner: Character, effect: Callable) -> void:
-	_get_condition(owner).connect(effect)
+func connect_condition(effect: Callable, 
+		wearer: Character, wearer_skill: Skill = null, wearer_dice: ActionDice = null) -> void:
+	_get_condition(wearer, wearer_skill, wearer_dice).connect(effect)

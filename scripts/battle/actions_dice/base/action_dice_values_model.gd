@@ -14,7 +14,7 @@ var default_max_value: int :
 	get: return model.stats.max_value
 var default_current_value: int = 0
 
-var abilities: Array[BaseActionDiceAbility]
+var abilities: Array[BaseDiceAbility]
 var bonus: ActionDiceBonus = ActionDiceBonus.new()
 
 
@@ -27,7 +27,7 @@ func get_min_value() -> int:
 	return max(1, default_min_value + bonus.min_value)
 
 func get_max_value() -> int:
-	return max(1, default_max_value + bonus.max_value)
+	return max(get_min_value(), default_max_value + bonus.max_value)
 
 func get_current_value() -> int:
 	if bonus.ignore_power:

@@ -2,7 +2,7 @@ class_name Character
 extends Node2D
 
 
-signal fraction_changed(new_fraction: BattleEnums.Fraction)
+#signal fraction_changed(new_fraction: BattleEnums.Fraction)
 signal died
 signal stunned
 signal came_out_of_stun
@@ -27,10 +27,9 @@ var is_active: bool:
 	get: return not (is_stunned or is_dead)
 var independently_arranges_skills : bool
 
+var team: BaseTeam
 var fraction: BattleEnums.Fraction :
-	set(new_fraction):
-		fraction = new_fraction
-		fraction_changed.emit(new_fraction)
+	get: return team.team_fraction
 var atp_slots_manager: ATPSlotsManager
 var character_fsm: CharacterFSM
 
@@ -48,9 +47,9 @@ var mental_resistance: BaseResistance :
 @onready var status_effects_manager := StatusEffectsManager.new(self)
 
 
-func init(character_stats: CharacterStats, character_fraction: BattleEnums.Fraction) -> void:
+func init(character_stats: CharacterStats, new_team: BaseTeam) -> void:
 	stats = character_stats
-	fraction = character_fraction
+	team = new_team
 	#_targets_setter = battle_parameters.auto_assault_setter
 
 
@@ -60,7 +59,7 @@ func _ready() -> void:
 	character_fsm = CharacterFSM.new(self)
 	atp_slots_manager = ATPSlotsManager.new(self, view_model.atp_slots_manager_ui)
 	_set_character_to_groups()
-	for ability: BaseCharacterPassiveAbility in stats.passive_abilities:
+	for ability: BaseCharacterAbility in stats.passive_abilities:
 		ability.init(self)
 
 

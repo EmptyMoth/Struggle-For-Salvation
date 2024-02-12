@@ -26,10 +26,10 @@ var color: Color :
 func _init(dice_stats: ActionDiceStats, skill: Skill) -> void:
 	wearer_skill = skill
 	stats = dice_stats
+	for ability: BaseDiceAbility in stats.abilities:
+		ability.init(wearer, wearer_skill, self)
 	values_model = ActionDiceValuesModel.new(self)
 	combat_model = _create_combat_dice()
-	for ability: BaseActionDiceAbility in stats.abilities:
-		ability.init(wearer)
 
 
 func _to_string() -> String:

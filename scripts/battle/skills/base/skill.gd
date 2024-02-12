@@ -24,7 +24,7 @@ func _init(character: Character, skill_stats: SkillStats) -> void:
 	actions_dice.assign(skill_stats.actions_dice_stats.map(
 			func(dice_stats: ActionDiceStats) -> ActionDice: return ActionDice.new(dice_stats, self)))
 	for ability: BaseSkillAbility in stats.abilities:
-		ability.init(wearer)
+		ability.init(wearer, self)
 
 
 func _to_string() -> String:

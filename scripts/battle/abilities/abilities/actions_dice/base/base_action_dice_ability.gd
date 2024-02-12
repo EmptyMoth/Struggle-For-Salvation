@@ -1,18 +1,19 @@
-class_name BaseActionDiceAbility
+class_name BaseDiceAbility
 extends AbstractAbility
 
 
-@warning_ignore("unused_private_class_variable")
-@export_enum(
-	"None", 
-	"On Clash",
-	"On One Side",
-	"Clash Win", 
-	"Clash Draw", 
-	"Clash Lose",
-	"On Roll Dice",
-	"On Hit",
-	"On BlockMotion",
-	"On EvadeMotion",
-	"After Area Attack", 
-	) var _condition_title: String = "None"
+@export var _dice_condition: AbstractDiceAbilityCondition
+
+var _wearer_skill: Skill
+var _wearer_dice: ActionDice
+
+
+func init(character: Character, skill: Skill, dice: ActionDice) -> void:
+	_wearer_dice = dice
+	_wearer_skill = skill
+	_condition = _dice_condition
+	super(character, skill, dice)
+
+
+func _connect_condition() -> void:
+	_condition.connect_condition(_effect.get("effect"), _wearer, _wearer_skill, _wearer_dice)

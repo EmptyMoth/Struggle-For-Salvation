@@ -7,7 +7,7 @@ extends Resource
 @export var icon: Texture
 
 @export var skills: Array[SkillStats] = []
-@export var passive_abilities: Array[BaseCharacterPassiveAbility] = []
+@export var passive_abilities: Array[BaseCharacterAbility] = []
 
 @export_group("Health")
 @export_range(1, 999, 1, "or_greater") var max_physical_health: int = 1

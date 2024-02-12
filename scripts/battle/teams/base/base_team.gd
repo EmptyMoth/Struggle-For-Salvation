@@ -15,7 +15,7 @@ func _ready() -> void:
 	_team_ui.connect_signals(team_fraction)
 	for character_parameter: CharacterBattleParameters in _characters_parameters:
 		var character: Character = character_parameter.character.instantiate()
-		character.init(character_parameter.stats, team_fraction)
+		character.init(character_parameter.stats, self)
 		add_child(character)
 
 

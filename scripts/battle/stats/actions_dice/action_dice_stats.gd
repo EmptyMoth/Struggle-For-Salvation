@@ -27,7 +27,7 @@ extends Resource
 
 @export_group("Additional")
 @export var action: Action = null
-@export var abilities: Array[BaseActionDiceAbility] = []
+@export var abilities: Array[BaseDiceAbility] = []
 
 
 func has_ability() -> bool:

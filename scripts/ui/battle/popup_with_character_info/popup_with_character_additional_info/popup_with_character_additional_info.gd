@@ -14,7 +14,7 @@ var _skill_selected_button_group: ButtonGroup = ButtonGroup.new()
 @onready var _skills_button: Button = $Panel/Margin/VBox/Options/TabsHeader/SkillsButton
 @onready var _passive_button: Button = $Panel/Margin/VBox/Options/TabsHeader/PassiveButton
 @onready var _skills_list: GridContainer = $Panel/Margin/VBox/SmoothScroll/Margin/Content/SkillsList
-@onready var _passive_abilities_list: RichTextLabel = $Panel/Margin/VBox/SmoothScroll/Margin/Content/PassiveAbilitiesList
+@onready var _passive_abilities_list: KeywordsRichTextLabel = $Panel/Margin/VBox/SmoothScroll/Margin/Content/PassiveAbilitiesList
 @onready var _scroll_container: Control = $Panel/Margin/VBox/SmoothScroll
 @onready var _content_container_parent: Control = $Panel/Margin/VBox/SmoothScroll/Margin
 
@@ -24,8 +24,7 @@ func _ready() -> void:
 	_minimize_popup()
 
 
-func set_info(skills: Array[Skill], 
-			passive_abilities: Array[BaseCharacterPassiveAbility]) -> void:
+func set_info(skills: Array[Skill], passive_abilities: Array[BaseCharacterAbility]) -> void:
 	_set_skills(skills)
 	_set_passive_abilities(passive_abilities)
 	_passive_button.visible = passive_abilities.size() > 0
@@ -47,7 +46,7 @@ func _minimize_popup() -> void:
 func _set_passive_abilities(passives_abilities: Array) -> void:
 	var passives_description: String = AbstractAbility.get_abilities_description(
 			passives_abilities, PRESSET_FOR_PASSIVE_DESCRIPTION)
-	_passive_abilities_list.text = PRESSET_FOR_PASSIVE_LIST % passives_description
+	_passive_abilities_list.set_keywords_text(PRESSET_FOR_PASSIVE_LIST % passives_description)
 
 
 func _set_skills(skills: Array[Skill]) -> void:

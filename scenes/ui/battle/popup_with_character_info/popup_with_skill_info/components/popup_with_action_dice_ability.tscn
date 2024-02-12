@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dxjdomt54u7mn"]
+[gd_scene load_steps=3 format=3 uid="uid://dxjdomt54u7mn"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/components/popup_with_action_dice_ability.gd" id="1_0d7h8"]
+[ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="2_2ascl"]
 
 [node name="PopupWithActionDiceAbility" type="MarginContainer"]
 offset_right = 500.0
@@ -42,14 +43,11 @@ localize_numeral_system = false
 horizontal_alignment = 2
 
 [node name="ActionDiceAbility" type="RichTextLabel" parent="Panel/Margin/HBox"]
-clip_contents = false
-custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
-mouse_filter = 2
+mouse_filter = 1
 bbcode_enabled = true
-text = "[b][Combat Start][/b] AD increase in min value and decrease in max value."
 fit_content = true
 scroll_active = false
-shortcut_keys_enabled = false
+autowrap_mode = 2
+script = ExtResource("2_2ascl")

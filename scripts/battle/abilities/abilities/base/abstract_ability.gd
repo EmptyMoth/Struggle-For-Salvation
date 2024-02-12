@@ -6,15 +6,14 @@ extends Resource
 
 var description: String = ""
 
-var _condition: AbstractAbilityCondition
 var _wearer: Character
+var _condition: AbstractAbilityCondition
 
 
-func init(wearer: Character) -> void:
-	_wearer = wearer
-	_effect._wearer = wearer
-	_condition = _create_condition(get("_condition_title"))
-	_condition.connect_condition(_wearer, _effect.get("effect"))
+func init(character: Character, skill: Skill, dice: ActionDice) -> void:
+	_wearer = character
+	_effect._wearer = character
+	_connect_condition()
 	description = _get_description()
 
 
@@ -25,9 +24,7 @@ static func get_abilities_description(abilities: Array, presset: String = "%s") 
 	return "\n".join(descriptions)
 
 
-static func _create_condition(condition_title: String) -> AbstractAbilityCondition:
-	condition_title = condition_title.to_snake_case()
-	return load("res://scripts/battle/abilities/conditions/%s.gd" % condition_title).new()
+func _connect_condition() -> void: pass
 
 
 func _get_description() -> String:

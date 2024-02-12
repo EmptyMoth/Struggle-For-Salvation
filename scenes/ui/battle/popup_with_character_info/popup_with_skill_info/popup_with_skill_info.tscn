@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bxmbtddt0ipts"]
+[gd_scene load_steps=14 format=3 uid="uid://bxmbtddt0ipts"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_with_character_info/popup_with_skill_info/popup_with_skill_info.gd" id="1_fup2d"]
 [ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="1_sovwk"]
@@ -11,6 +11,7 @@
 [ext_resource type="LabelSettings" uid="uid://bg1053ea44uyi" path="res://resources/ui/global/label_settings/default/large_bold.tres" id="5_vj04u"]
 [ext_resource type="Texture2D" uid="uid://frwtuvmfj2ct" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/hover.svg" id="6_5kikf"]
 [ext_resource type="LabelSettings" uid="uid://bcny06divfrey" path="res://resources/ui/global/label_settings/default/medium_bolt.tres" id="6_qwta2"]
+[ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="9_n8nq1"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_7lnsl"]
 frames = 2
@@ -159,12 +160,13 @@ vertical_alignment = 1
 
 [node name="SkillAbilityDescription" type="RichTextLabel" parent="HBox/VBox/MainPanel/Panel/Margin/VBox"]
 visible = false
-custom_minimum_size = Vector2(430, 0)
 layout_mode = 2
-mouse_filter = 2
+mouse_filter = 1
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
+autowrap_mode = 2
+script = ExtResource("9_n8nq1")
 
 [node name="ButtonHidingDiceAbilities" type="TextureButton" parent="HBox/VBox/MainPanel/Panel/Margin/VBox"]
 layout_mode = 2

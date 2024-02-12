@@ -13,7 +13,7 @@ const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/ba
 @onready var _type_icon: TextureRect = $HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes/RangeType/Icon
 @onready var _uses_type_label: Label = $HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes/UsesType/Type
 @onready var _uses_count_label: Label = $HBox/VBox/MainPanel/Panel/Margin/VBox/Header/SkillTypes/UsesType/Counter
-@onready var _skill_ability_label: RichTextLabel = $HBox/VBox/MainPanel/Panel/Margin/VBox/SkillAbilityDescription
+@onready var _skill_ability_label: KeywordsRichTextLabel = $HBox/VBox/MainPanel/Panel/Margin/VBox/SkillAbilityDescription
 @onready var _button_hiding_dice_abilities: TextureButton = $HBox/VBox/MainPanel/Panel/Margin/VBox/ButtonHidingDiceAbilities
 @onready var _dice_container: VBoxContainer = $HBox/ActionsDiceList/Panel/Margin/ActionsDice
 @onready var _dice_abilities_container: VBoxContainer = $HBox/VBox/AbilitiesVBox
@@ -62,7 +62,7 @@ func _set_base_skill_info(skill: SkillStats) -> void:
 func _set_skill_abilities_info(abilities: Array[BaseSkillAbility]) -> void:
 	_skill_ability_label.visible = abilities.size() > 0
 	if _skill_ability_label.visible:
-		_skill_ability_label.text = AbstractAbility.get_abilities_description(abilities)
+		_skill_ability_label.set_keywords_text(AbstractAbility.get_abilities_description(abilities))
 
 
 func _set_actions_dice_info(actions_dice_list: Array[ActionDice]) -> void:
