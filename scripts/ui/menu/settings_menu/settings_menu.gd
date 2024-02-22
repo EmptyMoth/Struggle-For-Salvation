@@ -11,21 +11,13 @@ const _DROP_DURATION: float = 0.5
 @onready var _button_moving: MovingContainer = $CenterContainer/VBoxContainer/ButtonMoving
 
 
-func _input(_event: InputEvent) -> void:
-	if visible and Input.is_action_just_released("ui_menu"):
-		_exit_menu()
-
-
 func open_menu() -> void:
 	show()
 	_display(true)
 
+
 func close_menu() -> void:
 	_display(false)
-
-
-func _exit_menu() -> void:
-	close_menu()
 	menu_closed.emit()
 
 
@@ -42,7 +34,7 @@ func _animate_drop(tween: Tween, moving: MovingContainer, is_displayed: bool, du
 
 func _on_save_and_exit_button_pressed() -> void:
 	Settings.save_settings()
-	_exit_menu()
+	close_menu()
 
 
 func _on_reset_button_pressed() -> void:

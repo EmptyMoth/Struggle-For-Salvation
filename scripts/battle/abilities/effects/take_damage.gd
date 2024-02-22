@@ -9,6 +9,6 @@ func get_description() -> String:
 	return "Takes %s damage" % _damage_count
 
 
-func effect(_target: Character) -> void:
-	_wearer.health_manager.take_physical_damage(DamageInfo.new(
-		_damage_count, _wearer, BattleEnums.DamageSourceType.ABILITY))
+func effect(character: Character = null, skill: Skill = null, dice: ActionDice = null) -> void:
+	character.health_manager.take_physical_damage(DamageInfo.new(
+		_damage_count, character, BattleEnums.DamageSourceType.ABILITY))

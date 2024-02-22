@@ -9,8 +9,8 @@ func get_description() -> String:
 	return "Inflict {%s}" % TestStatusEffect.get_keyword()
 
 
-func effect(_target: Variant = null) -> void:
+func effect(character: Character = null, skill: Skill = null, dice: ActionDice = null) -> void:
 	if count_effects >= 5:
 		return
-	_wearer.status_effects_manager.add_effect_by_tag(TestStatusEffect.get_tag(), 1)
+	character.status_effects_manager.add_effect_by_tag(TestStatusEffect.get_tag(), 1)
 	count_effects += 1

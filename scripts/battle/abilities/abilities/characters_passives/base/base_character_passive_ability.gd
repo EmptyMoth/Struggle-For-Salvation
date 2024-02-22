@@ -13,7 +13,3 @@ func init(character: Character, skill: Skill = null, dice: ActionDice = null) ->
 
 func _get_description() -> String:
 	return " - ".join([passive_title, _effect.get_description()])
-
-
-func _connect_condition() -> void:
-	_condition.connect_condition(_effect.get("effect"), _wearer)

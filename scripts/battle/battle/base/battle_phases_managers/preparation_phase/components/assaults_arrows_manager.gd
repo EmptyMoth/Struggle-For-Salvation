@@ -63,8 +63,6 @@ static func _get_related_arrows_list(atp_slot: ATPSlot) -> Array[BaseAssaultArro
 	var arrows: Array[BaseAssaultArrow] = _get_arrows_list(atp_slot).duplicate()
 	for targeting_assault: AssaultData in AssaultLog.get_assaults_targeting(atp_slot):
 		arrows.append_array(_get_arrows_list(targeting_assault.atp_slot))
-		if targeting_assault.is_clash():
-			arrows.append_array(_get_arrows_list(targeting_assault.targets.main))
 	return arrows
 
 

@@ -4,6 +4,8 @@ extends Node2D
 
 const _POPUP_WITH_ASSAULT_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_with_assault/base_popup_with_assault_info.tscn")
 
+@export var disease: BaseDisease
+
 @export var _packed_formation: PackedScene
 @export var _packed_location: PackedScene
 

@@ -26,7 +26,6 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	var loading_status: ResourceLoader.ThreadLoadStatus = \
 			ResourceLoader.load_threaded_get_status(target_scene_path, progress)
-	await get_tree().physics_frame
 	match loading_status:
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			_progress_label.text = "%s%%" % str(int(100 * progress[0]))

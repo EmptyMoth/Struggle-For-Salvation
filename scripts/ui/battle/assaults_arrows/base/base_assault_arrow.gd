@@ -55,8 +55,7 @@ static func create_arrow(assault: AssaultData, target_atp_slot: ATPSlot) -> Base
 
 
 func toggle_fix(display: bool) -> void:
-	_fixed_count += 1 if display else -1
-
+	_fixed_count = max(0, _fixed_count + (1 if display else -1))
 
 func hide_arrow() -> void:
 	if not is_fixed and not is_battle_setting_display:

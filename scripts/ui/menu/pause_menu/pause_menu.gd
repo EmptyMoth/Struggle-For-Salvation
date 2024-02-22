@@ -6,6 +6,8 @@ const _DROP_DURATION: float = 0.3
 
 var is_opened: bool = false
 
+var _current_open_popup: Control = null
+
 @onready var _menu: CenterContainer = $Menu
 @onready var _manual_menu: TrainingScreen = $TrainingScreen
 @onready var _settings_menu: SettingsMenu = $SettingsMenu
@@ -22,7 +24,11 @@ func _ready() -> void:
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("ui_menu"):
-		(close_menu if is_opened else open_menu).call()
+		if _current_open_popup == null:
+			(close_menu if is_opened else open_menu).call()
+		else:
+			_current_open_popup.close_menu()
+			_current_open_popup = null
 
 
 func open_menu() -> void:
@@ -69,6 +75,7 @@ func _on_restart_button_pressed() -> void: get_tree().reload_current_scene()
 func _on_manual_button_pressed() -> void:
 	_menu.hide()
 	_manual_menu.open_training()
+	_current_open_popup = _manual_menu
 
 
 func _on_manual_menu_closed() -> void:
@@ -78,6 +85,7 @@ func _on_manual_menu_closed() -> void:
 func _on_settings_button_pressed() -> void:
 	_menu.hide()
 	_settings_menu.open_menu()
+	_current_open_popup = _settings_menu
 
 
 func _on_settings_menu_closed() -> void:

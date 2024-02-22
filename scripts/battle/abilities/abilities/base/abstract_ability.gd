@@ -12,8 +12,7 @@ var _condition: AbstractAbilityCondition
 
 func init(character: Character, skill: Skill, dice: ActionDice) -> void:
 	_wearer = character
-	_effect._wearer = character
-	_connect_condition()
+	_connect_condition(character, skill, dice)
 	description = _get_description()
 
 
@@ -24,7 +23,9 @@ static func get_abilities_description(abilities: Array, presset: String = "%s") 
 	return "\n".join(descriptions)
 
 
-func _connect_condition() -> void: pass
+func _connect_condition(character: Character, skill: Skill, dice: ActionDice) -> void:
+	var effect: Callable = _effect.effect.bindv([character, skill, dice])
+	_condition.connect_condition(effect, character, skill, dice)
 
 
 func _get_description() -> String:

@@ -33,7 +33,7 @@ func open_training(from_id_slide: int = FIRST_ID_SLIDE, to_id_slide: int = LAST_
 	_swap_slide()
 
 
-func close_training() -> void:
+func close_menu() -> void:
 	_training_slide.texture = null
 	hide()
 	training_ended.emit()
@@ -51,7 +51,7 @@ func _swap_slide() -> void:
 func _on_next_button_pressed() -> void:
 	if _current_id_slide >= _to_id_slide:
 		if not _is_manual:
-			close_training()
+			close_menu()
 		return
 	_current_id_slide += 1
 	_swap_slide()
@@ -63,4 +63,4 @@ func _on_back_button_pressed() -> void:
 
 
 func _on_cancel_button_pressed() -> void:
-	close_training()
+	close_menu()

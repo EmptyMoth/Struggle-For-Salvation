@@ -19,6 +19,7 @@ offset_right = 70.0
 offset_bottom = 70.0
 size_flags_horizontal = 0
 size_flags_vertical = 0
+focus_mode = 0
 mouse_filter = 1
 theme_override_colors/icon_disabled_color = Color(0.666667, 0.666667, 0.666667, 1)
 action_mode = 0

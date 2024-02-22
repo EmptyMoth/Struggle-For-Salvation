@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://dwjc6as1n8qkm"]
+[gd_scene load_steps=7 format=3 uid="uid://dwjc6as1n8qkm"]
 
 [ext_resource type="PackedScene" uid="uid://bg14wxg4vcb1k" path="res://tests/battle/test_battle.tscn" id="1_qktaj"]
 [ext_resource type="Script" path="res://tests/battle/training_battle.gd" id="2_jjtpj"]
 [ext_resource type="PackedScene" uid="uid://dbwoaee5bxkap" path="res://scenes/ui/menu/training_screen/training_screen.tscn" id="2_p76l1"]
-[ext_resource type="AudioStream" uid="uid://oqtvktilj55x" path="res://music/battle/lungs/lungs_battle_1.mp3" id="4_5qktk"]
 
 [sub_resource type="Animation" id="Animation_3q248"]
 length = 0.001
@@ -46,7 +45,7 @@ _data = {
 [node name="TrainingBattle" instance=ExtResource("1_qktaj")]
 script = ExtResource("2_jjtpj")
 
-[node name="PopupsWithAssaultInfo" parent="EnvironmentUI" index="1"]
+[node name="PopupsWithAssaultInfo" parent="EnvironmentUI" index="2"]
 z_index = 2
 
 [node name="Tooltip" type="MarginContainer" parent="CanvasUI" index="0"]
@@ -75,10 +74,3 @@ autoplay = "label_tips"
 
 [node name="TrainingScreen" parent="CanvasUI" index="2" instance=ExtResource("2_p76l1")]
 visible = false
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="4"]
-process_mode = 3
-stream = ExtResource("4_5qktk")
-volume_db = -10.0
-autoplay = true
-bus = &"Music"
