@@ -4,22 +4,21 @@ extends Resource
 
 @export var _effect: AbstractAbilityEffect
 
-var description: String = ""
-
-var _wearer: Character
 var _condition: AbstractAbilityCondition
 
 
 func init(character: Character, skill: Skill, dice: ActionDice) -> void:
-	_wearer = character
 	_connect_condition(character, skill, dice)
-	description = _get_description()
+
+
+func _to_string() -> String:
+	return _get_description()
 
 
 static func get_abilities_description(abilities: Array, presset: String = "%s") -> String:
 	var descriptions: PackedStringArray = PackedStringArray()
 	for ability: AbstractAbility in abilities:
-		descriptions.append(presset % ability.description)
+		descriptions.append(presset % str(ability))
 	return "\n".join(descriptions)
 
 

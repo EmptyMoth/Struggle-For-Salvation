@@ -15,5 +15,5 @@ static func _get_condition(wearer: Character, wearer_skill: Skill, wearer_dice: 
 
 
 func connect_condition(effect: Callable, 
-		wearer: Character, wearer_skill: Skill = null, wearer_dice: ActionDice = null) -> void:
+		wearer: Character = null, wearer_skill: Skill = null, wearer_dice: ActionDice = null) -> void:
 	_get_condition(wearer, wearer_skill, wearer_dice).connect(effect)

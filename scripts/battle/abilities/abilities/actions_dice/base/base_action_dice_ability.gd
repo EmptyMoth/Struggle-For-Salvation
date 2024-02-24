@@ -4,6 +4,7 @@ extends AbstractAbility
 
 @export var _dice_condition: AbstractDiceAbilityCondition
 
+#var _wearer: Character
 #var _wearer_skill: Skill
 #var _wearer_dice: ActionDice
 

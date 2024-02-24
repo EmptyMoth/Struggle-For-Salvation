@@ -10,4 +10,4 @@ func develop(battle: BaseBattle) -> void:
 	for symptom: PotentialSymptom in symptoms:
 		symptom.try_develop()
 		if symptom.has_developed:
-			symptom.current_symptom.init(null, null, null, battle)
+			symptom.current_symptom.init()
