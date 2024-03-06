@@ -9,19 +9,19 @@
 resource_local_to_scene = true
 animations = [{
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack_2",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack_3",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [],
 "loop": false,
@@ -64,7 +64,7 @@ script = ExtResource("1_lshlj")
 [node name="Actions" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_moquk")
-animation = &"attack_1"
+animation = &"evade"
 
 [node name="ClickArea" type="Button" parent="Actions"]
 anchors_preset = 8

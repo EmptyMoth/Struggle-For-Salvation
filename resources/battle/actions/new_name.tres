@@ -1,0 +1,32 @@
+[gd_resource type="Resource" script_class="Action" load_steps=8 format=3 uid="uid://boysbgxu5y3gp"]
+
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/damage_motion.gd" id="1_3gisi"]
+[ext_resource type="Script" path="res://scripts/battle/actions/actions_parts/base/action_part.gd" id="2_urru1"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/default_attack_motion.gd" id="3_r800s"]
+[ext_resource type="Script" path="res://scripts/battle/actions/actions/base/action.gd" id="4_r7d6g"]
+
+[sub_resource type="Resource" id="Resource_lyfah"]
+script = ExtResource("1_3gisi")
+knockback_power = 3.0
+characters_motion = 0
+duration = 0.1
+is_update_direction = true
+tween_transition = 0
+tween_ease = 0
+
+[sub_resource type="Resource" id="Resource_1yyym"]
+script = ExtResource("3_r800s")
+characters_motion = 0
+duration = 0.1
+is_update_direction = true
+tween_transition = 0
+tween_ease = 0
+
+[sub_resource type="Resource" id="Resource_lojaj"]
+script = ExtResource("2_urru1")
+user_motion = SubResource("Resource_1yyym")
+opponent_motion = SubResource("Resource_lyfah")
+
+[resource]
+script = ExtResource("4_r7d6g")
+_action_parts = Array[ExtResource("2_urru1")]([SubResource("Resource_lojaj")])

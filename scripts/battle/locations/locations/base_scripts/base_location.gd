@@ -2,8 +2,8 @@ class_name BaseLocation
 extends Node2D
 
 
-@export var packed_background: PackedScene
-@export var packed_battlefield: PackedScene
+#@export var packed_background: PackedScene
+#@export var packed_battlefield: PackedScene
 
 var background: ParallaxBackground = null :
 	set(value): background = value
@@ -14,20 +14,21 @@ var battlefield: BaseBattlefield = null :
 
 
 func _ready() -> void:
-	_initialize_background()
-	_initialize_battlefield()
-	_initialize_camera()
+	battlefield = get_node("Battlefield/BattlefieldViewport/Battlefield")
+	#_initialize_background()
+	#_initialize_battlefield()
+	#_initialize_camera()
 
 
-func _initialize_background() -> void:
-	background = packed_background.instantiate()
-	background.name = "Background"
-	#add_child(background)
-
-func _initialize_battlefield() -> void:
-	battlefield = packed_battlefield.instantiate()
-	battlefield.name = "Battlefield"
-	($Battlefield/BattlefieldViewport as SubViewport).add_child(battlefield)
+#func _initialize_background() -> void:
+	#background = packed_background.instantiate()
+	#background.name = "Background"
+	##add_child(background)
+#
+#func _initialize_battlefield() -> void:
+	#battlefield = packed_battlefield.instantiate()
+	#battlefield.name = "Battlefield"
+	#$Battlefield/BattlefieldViewport.add_child(battlefield)
 
 func _initialize_camera() -> void:
 	pass

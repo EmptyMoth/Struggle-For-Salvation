@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1rmuktpwblgu"]
+
+[ext_resource type="Script" path="res://tests/characters_actions/items/character_actions.gd" id="1_thmne"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ptrru"]
+resource_local_to_scene = true
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"attack_1",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"attack_2",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"attack_3",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"block",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"evade",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"movement",
+"speed": 0.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"stun",
+"speed": 0.0
+}]
+
+[node name="CharacterActions" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ptrru")
+script = ExtResource("1_thmne")

@@ -46,8 +46,8 @@ static func _execute_draw_in_attack(opponent_1: Character, opponent_2: Character
 			DefaultAttackMotion.new(opponent_2.combat_model.current_action_dice.stats.motion)
 		),
 		ActionPart.new(
-			KnockbackMotion.new(3, AbstractMotion.DEFAULT_DURATION, opponent_1.combat_model.current_action_dice.stats.motion),
-			KnockbackMotion.new(3, AbstractMotion.DEFAULT_DURATION, opponent_2.combat_model.current_action_dice.stats.motion)
+			KnockbackMotion.new(3, opponent_1.combat_model.current_action_dice.stats.motion),
+			KnockbackMotion.new(3, opponent_2.combat_model.current_action_dice.stats.motion)
 		)
 	])
 	draw_in_attacks.execute(opponent_1, opponent_2)
@@ -85,6 +85,8 @@ static func _execute_attack(user: Character, opponents: Opponents) -> void:
 	var attack: Action = dice.stats.action \
 		if dice.stats.action != null \
 		else Action.new([ActionPart.new(
-			DefaultAttackMotion.new(user.combat_model.current_action_dice.stats.motion), DamageMotion.DEFAULT)])
+			DefaultAttackMotion.new(user.combat_model.current_action_dice.stats.motion), 
+			DamageMotion.DEFAULT
+			)])
 	attack.execute(user, opponents.main, opponents.sub_targets)
 	await attack.finished

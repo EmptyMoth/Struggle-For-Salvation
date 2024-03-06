@@ -1,0 +1,163 @@
+[gd_scene load_steps=33 format=3 uid="uid://dkavy0e4banqk"]
+
+[ext_resource type="Script" path="res://tests/characters_actions/items/polygon_for_character_animations.gd" id="1_tbtiy"]
+[ext_resource type="PackedScene" uid="uid://cjgc3boeini3p" path="res://scenes/battle/locations/locations/test_polygon/test_location.tscn" id="2_p4s0a"]
+[ext_resource type="PackedScene" uid="uid://dwgmdfmt5ibhk" path="res://scenes/battle/formations/test_formation.tscn" id="2_ymv6i"]
+[ext_resource type="PackedScene" uid="uid://ba1j5haj6xpwc" path="res://scenes/battle/characters/neut.tscn" id="3_4kehw"]
+[ext_resource type="Script" path="res://tests/characters_actions/action_button.gd" id="3_dyf11"]
+[ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="4_37wch"]
+[ext_resource type="Resource" uid="uid://b4a85ebktfnul" path="res://resources/battle/skills/neut/swift_dash.tres" id="5_yxhpd"]
+[ext_resource type="Resource" uid="uid://b6ca1adlckaia" path="res://resources/battle/skills/neut/lunge_from_block.tres" id="6_n73ni"]
+[ext_resource type="Resource" uid="uid://sro7jqxu5ot2" path="res://resources/battle/skills/neut/raise_shield.tres" id="7_irg3g"]
+[ext_resource type="PackedScene" uid="uid://51pyjdsyc75t" path="res://scenes/battle/characters/influenza_virus.tscn" id="8_p8t44"]
+[ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/battle/skills/test_skill.svg" id="10_2adk0"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/damage_motion.gd" id="11_mg2ja"]
+[ext_resource type="Script" path="res://scripts/battle/actions/actions_parts/base/action_part.gd" id="12_0faib"]
+[ext_resource type="Script" path="res://scripts/battle/actions/actions_parts/attack_part.gd" id="13_y16sg"]
+[ext_resource type="Script" path="res://scripts/battle/actions/actions/base/action.gd" id="14_m62ee"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/default_attack_motion.gd" id="14_ui7n8"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/nothing_motion.gd" id="15_e4m0r"]
+[ext_resource type="Texture2D" uid="uid://7477xiljt2cb" path="res://sprites/battle/skills/test_skill_3.svg" id="17_x7in1"]
+[ext_resource type="Script" path="res://scripts/battle/actions/motions/stop_motion.gd" id="18_amxrr"]
+
+[sub_resource type="Resource" id="Resource_fenhd"]
+resource_local_to_scene = true
+script = ExtResource("4_37wch")
+name = "Neut"
+type = 0
+skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("5_yxhpd"), ExtResource("6_n73ni"), ExtResource("7_irg3g")])
+passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+max_physical_health = 100
+max_mental_health = 50
+physical_resistance = 3
+mental_resistance = 3
+atp_slots_count = 3
+min_speed = 3
+max_speed = 5
+
+[sub_resource type="Resource" id="Resource_mu0u4"]
+script = ExtResource("11_mg2ja")
+_motion = -2
+knockback_power = 3.0
+is_update_direction = true
+tween_transition = 0
+tween_ease = 0
+
+[sub_resource type="Resource" id="Resource_ugxjh"]
+script = ExtResource("14_ui7n8")
+_attack = 5
+is_update_direction = true
+tween_transition = 0
+tween_ease = 0
+
+[sub_resource type="Resource" id="Resource_3x3n6"]
+script = ExtResource("13_y16sg")
+duration = 0.6
+user_motion = SubResource("Resource_ugxjh")
+opponent_motion = SubResource("Resource_mu0u4")
+
+[sub_resource type="Resource" id="Resource_7hvqo"]
+script = ExtResource("14_m62ee")
+_action_parts = Array[ExtResource("12_0faib")]([SubResource("Resource_3x3n6")])
+
+[sub_resource type="Resource" id="Resource_by4sw"]
+script = ExtResource("15_e4m0r")
+is_update_direction = true
+tween_transition = 0
+tween_ease = 0
+
+[sub_resource type="Resource" id="Resource_tgju3"]
+script = ExtResource("18_amxrr")
+_motion = 2
+is_update_direction = true
+tween_transition = 0
+tween_ease = 0
+
+[sub_resource type="Resource" id="Resource_7vg5b"]
+script = ExtResource("12_0faib")
+duration = 0.6
+user_motion = SubResource("Resource_tgju3")
+opponent_motion = SubResource("Resource_by4sw")
+
+[sub_resource type="Resource" id="Resource_4o5xx"]
+script = ExtResource("14_m62ee")
+_action_parts = Array[ExtResource("12_0faib")]([SubResource("Resource_7vg5b")])
+
+[sub_resource type="Resource" id="Resource_ilj47"]
+script = ExtResource("11_mg2ja")
+_motion = -2
+knockback_power = 5.0
+is_update_direction = true
+tween_transition = 0
+tween_ease = 1
+
+[sub_resource type="Resource" id="Resource_kfgvl"]
+script = ExtResource("11_mg2ja")
+_motion = -2
+knockback_power = 3.0
+is_update_direction = true
+tween_transition = 0
+tween_ease = 0
+
+[sub_resource type="Resource" id="Resource_pt5d7"]
+script = ExtResource("12_0faib")
+duration = 0.6
+user_motion = SubResource("Resource_kfgvl")
+opponent_motion = SubResource("Resource_ilj47")
+
+[sub_resource type="Resource" id="Resource_fudc7"]
+script = ExtResource("14_m62ee")
+_action_parts = Array[ExtResource("12_0faib")]([SubResource("Resource_pt5d7")])
+
+[node name="PolygonForCharacterAnimations" type="Node2D"]
+script = ExtResource("1_tbtiy")
+_packed_formation = ExtResource("2_ymv6i")
+
+[node name="TestLocation" parent="." instance=ExtResource("2_p4s0a")]
+metadata/_edit_lock_ = true
+
+[node name="Characters" type="Node2D" parent="."]
+
+[node name="Allies" type="Node2D" parent="Characters"]
+
+[node name="Neut" parent="Characters/Allies" instance=ExtResource("3_4kehw")]
+stats = SubResource("Resource_fenhd")
+
+[node name="Enemies" type="Node2D" parent="Characters"]
+
+[node name="InfluenzaVirus" parent="Characters/Enemies" instance=ExtResource("8_p8t44")]
+
+[node name="InfluenzaVirus2" parent="Characters/Enemies" instance=ExtResource("8_p8t44")]
+
+[node name="InfluenzaVirus3" parent="Characters/Enemies" instance=ExtResource("8_p8t44")]
+
+[node name="BackgroundControl" type="PanelContainer" parent="."]
+offset_left = 75.0
+offset_top = 75.0
+offset_right = 135.0
+offset_bottom = 135.0
+scale = Vector2(1.5, 1.5)
+
+[node name="Control" type="GridContainer" parent="BackgroundControl"]
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 10
+columns = 5
+
+[node name="ActionButton" type="TextureButton" parent="BackgroundControl/Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("10_2adk0")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_dyf11")
+_actions = Array[ExtResource("14_m62ee")]([SubResource("Resource_7hvqo"), SubResource("Resource_4o5xx")])
+
+[node name="ActionButton2" type="TextureButton" parent="BackgroundControl/Control"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+texture_normal = ExtResource("17_x7in1")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("3_dyf11")
+_actions = Array[ExtResource("14_m62ee")]([SubResource("Resource_fudc7")])

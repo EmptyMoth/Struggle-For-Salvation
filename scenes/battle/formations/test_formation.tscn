@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwgmdfmt5ibhk"]
+
+[ext_resource type="PackedScene" uid="uid://bgylwmmvsejd1" path="res://scenes/battle/formations/base/abstract_formation.tscn" id="1_e0d1l"]
+
+[node name="TestFormation" instance=ExtResource("1_e0d1l")]
+
+[node name="Character1" parent="AlliesMarkers" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5, 0, 0)
+
+[node name="Character4" parent="AlliesMarkers" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, -0.5)
+
+[node name="Character5" parent="AlliesMarkers" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5, 0, 0.5)
+
+[node name="Character1" parent="EnemiesMarkers" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
+
+[node name="Character2" type="Marker3D" parent="EnemiesMarkers" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, -1)
+
+[node name="Character3" type="Marker3D" parent="EnemiesMarkers" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 1)
+
+[node name="Character4" type="Marker3D" parent="EnemiesMarkers" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -0.5)
+
+[node name="Character5" type="Marker3D" parent="EnemiesMarkers" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, 0.5)

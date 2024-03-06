@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://b244n3810ichk"]
+[gd_scene load_steps=12 format=3 uid="uid://b244n3810ichk"]
 
 [ext_resource type="PackedScene" uid="uid://brldvuotlrlu7" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_k2tg2"]
+[ext_resource type="Resource" uid="uid://dsojpcsk1qora" path="res://resources/battle/characters/characters_stats/eosi_stats.tres" id="2_3nrms"]
 [ext_resource type="Texture2D" uid="uid://dtesmuwl6gtxx" path="res://sprites/battle/characters/immunocytes/eosi/attack_1.png" id="2_k6qqi"]
 [ext_resource type="Texture2D" uid="uid://pi8xw0ec6xiy" path="res://sprites/battle/characters/immunocytes/eosi/attack_2.png" id="3_8thx4"]
 [ext_resource type="Texture2D" uid="uid://dharqnti1vq37" path="res://sprites/battle/characters/immunocytes/eosi/attack_3.png" id="4_ki6i4"]
@@ -17,25 +18,25 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_k6qqi")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("3_8thx4")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_2",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("4_ki6i4")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_3",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -79,11 +80,12 @@ animations = [{
 }]
 
 [node name="Eosi" instance=ExtResource("1_k2tg2")]
+stats = ExtResource("2_3nrms")
 
 [node name="Actions" parent="." index="0"]
 position = Vector2(0, -60)
 sprite_frames = SubResource("SpriteFrames_8dair")
-animation = &"default"
+animation = &"block"
 
 [node name="ClickArea" parent="Actions" index="0"]
 offset_left = -107.5

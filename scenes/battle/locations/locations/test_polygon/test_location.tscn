@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjgc3boeini3p"]
+
+[ext_resource type="PackedScene" uid="uid://dg0cyfqq0hx38" path="res://scenes/battle/locations/locations/base/base_location.tscn" id="1_wwk5d"]
+[ext_resource type="PackedScene" uid="uid://coebjd1dglge7" path="res://scenes/battle/locations/location_elements/battlefields/test/test_battlefield.tscn" id="2_5brl7"]
+
+[node name="TestLocation" instance=ExtResource("1_wwk5d")]
+
+[node name="Battlefield" parent="Battlefield/BattlefieldViewport" index="0" instance=ExtResource("2_5brl7")]

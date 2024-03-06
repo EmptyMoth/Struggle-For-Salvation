@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://51pyjdsyc75t"]
+[gd_scene load_steps=8 format=3 uid="uid://51pyjdsyc75t"]
 
 [ext_resource type="PackedScene" uid="uid://brldvuotlrlu7" path="res://scenes/battle/characters/base/abstract_character.tscn" id="1_d4ig3"]
+[ext_resource type="Resource" uid="uid://p1xpow1ndxjp" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="2_s8y56"]
 [ext_resource type="Texture2D" uid="uid://dqfqm3a3rl4ek" path="res://sprites/battle/characters/pathogens/influenza_virus/attack.png" id="2_sduo3"]
 [ext_resource type="Texture2D" uid="uid://bwl554sw57say" path="res://sprites/battle/characters/pathogens/influenza_virus/default.png" id="3_u1pp8"]
 [ext_resource type="Texture2D" uid="uid://c0okktsv7udqw" path="res://sprites/battle/characters/pathogens/influenza_virus/movement.png" id="4_bvgnn"]
@@ -13,19 +14,19 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_sduo3")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack_1",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack_2",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [],
-"loop": true,
+"loop": false,
 "name": &"attack_3",
-"speed": 5.0
+"speed": 0.0
 }, {
 "frames": [],
 "loop": false,
@@ -63,6 +64,7 @@ animations = [{
 }]
 
 [node name="InfluenzaVirus" instance=ExtResource("1_d4ig3")]
+stats = ExtResource("2_s8y56")
 
 [node name="Actions" parent="." index="0"]
 position = Vector2(0, -39)

@@ -7,16 +7,20 @@ var sub_targets: Array[Character] = []
 var _targets: Targets
 
 
-func _init(targets: Targets) -> void:
+func _init(targets: Targets = null) -> void:
+	if targets == null:
+		return
 	_targets = targets
 	main = targets.main.wearer
 	for target: ATPSlot in targets.sub_targets:
 		sub_targets.append(target.wearer)
 
 
-func fast_init(main_opponents: Character, _sub_targets: Array[Character] = []) -> void:
-	main = main_opponents
-	sub_targets = _sub_targets
+static func fast_init(main_opponents: Character, _sub_targets: Array[Character] = []) -> Opponents:
+	var opponents: Opponents = Opponents.new()
+	opponents.main = main_opponents
+	opponents.sub_targets = _sub_targets
+	return opponents
 
 
 func copy() -> Opponents:

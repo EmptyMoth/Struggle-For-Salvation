@@ -12,7 +12,7 @@ signal taken_damage(damage_info: DamageInfo)
 signal taken_physical_damage(damage_info: DamageInfo)
 signal taken_mental_damage(damage_info: DamageInfo)
 
-var stats: CharacterStats
+@export var stats: CharacterStats
 var view_model: CharacterViewModel = CharacterViewModel.new(self)
 var combat_model: CharacterCombatModel = CharacterCombatModel.new(self)
 var movement_model: CharacterMovementModel = preload("res://scenes/battle/characters/base/character_movement_model.tscn").instantiate()
@@ -29,7 +29,7 @@ var independently_arranges_skills : bool
 
 var team: BaseTeam
 var fraction: BattleEnums.Fraction :
-	get: return team.team_fraction
+	get: return team.team_fraction if team != null else BattleEnums.Fraction.ALLY
 var atp_slots_manager: ATPSlotsManager
 var character_fsm: CharacterFSM
 

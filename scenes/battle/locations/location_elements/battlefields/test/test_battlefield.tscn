@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://coebjd1dglge7"]
+
+[ext_resource type="PackedScene" uid="uid://0ywdcjtv4m3x" path="res://scenes/battle/locations/location_elements/battlefields/base/abstract_battlefield.tscn" id="1_2vipp"]
+[ext_resource type="Texture2D" uid="uid://bfdq10ickbxd7" path="res://sprites/battle/locations/location_elements/battlefields/test/test_background.png" id="2_bjw74"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_csfjg"]
+vertices = PackedVector3Array(-28.7441, 0.5, -15.6245, -28.7441, 0.5, 15.6255, 28.7559, 0.5, 15.6255, 28.7559, 0.5, -15.6245)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+geometry_parsed_geometry_type = 1
+agent_radius = 0.0
+
+[node name="TestBattlefield" instance=ExtResource("1_2vipp")]
+
+[node name="UpSide" parent="VisualPart" index="0"]
+pixel_size = 0.01
+transparent = false
+no_depth_test = false
+texture = ExtResource("2_bjw74")
+
+[node name="UpSide2" type="Sprite3D" parent="VisualPart" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -3.11534)
+axis = 1
+transparent = false
+render_priority = -10
+texture = ExtResource("2_bjw74")
+
+[node name="RightSide" parent="VisualPart" index="2"]
+visible = false
+
+[node name="LeftSide" parent="VisualPart" index="3"]
+visible = false
+
+[node name="BottomSide" parent="VisualPart" index="4"]
+visible = false
+
+[node name="StaticBody3D" parent="StaticBorders" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15.7382)
+
+[node name="CollisionShape3D" parent="StaticBorders/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0380554, 0, 0)
+
+[node name="StaticBody3D2" parent="StaticBorders" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.6288)
+
+[node name="StaticBody3D3" parent="StaticBorders" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.236, 0, 0)
+
+[node name="StaticBody3D4" parent="StaticBorders" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1149, 0, 0)
+
+[node name="NavigationRegion3D" parent="." index="4"]
+navigation_mesh = SubResource("NavigationMesh_csfjg")
+
+[node name="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D" index="1"]
+visible = false
