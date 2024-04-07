@@ -10,11 +10,12 @@ var background: ParallaxBackground = null :
 	get: return background
 var battlefield: BaseBattlefield = null :
 	set(value): battlefield = value
-	get: return battlefield
+	get: return $Battlefield/BattlefieldViewport.get_child(0)
 
 
 func _ready() -> void:
-	battlefield = get_node("Battlefield/BattlefieldViewport/Battlefield")
+	pass
+	#battlefield = get_node("Battlefield/BattlefieldViewport/Battlefield")
 	#_initialize_background()
 	#_initialize_battlefield()
 	#_initialize_camera()

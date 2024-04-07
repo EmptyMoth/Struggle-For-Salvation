@@ -1,9 +1,24 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://cg53i625fwoc2"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=11 format=3 uid="uid://cg53i625fwoc2"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_nswmx"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/characters_passives/turn_start.gd" id="1_yy1o6"]
 [ext_resource type="Resource" uid="uid://b4a85ebktfnul" path="res://resources/battle/skills/neut/swift_dash.tres" id="2_cutus"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/effects/test_effect.gd" id="2_v0nx2"]
 [ext_resource type="Resource" uid="uid://b6ca1adlckaia" path="res://resources/battle/skills/neut/lunge_from_block.tres" id="3_8hfm7"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd" id="3_misra"]
 [ext_resource type="Resource" uid="uid://sro7jqxu5ot2" path="res://resources/battle/skills/neut/raise_shield.tres" id="4_uod3f"]
+
+[sub_resource type="Resource" id="Resource_n1uij"]
+script = ExtResource("1_yy1o6")
+
+[sub_resource type="Resource" id="Resource_bq4tp"]
+script = ExtResource("2_v0nx2")
+
+[sub_resource type="Resource" id="Resource_xubbe"]
+script = ExtResource("3_misra")
+passive_title = "Self-flagellation"
+_character_condition = SubResource("Resource_n1uij")
+_effect = SubResource("Resource_bq4tp")
 
 [resource]
 resource_local_to_scene = true
@@ -11,7 +26,7 @@ script = ExtResource("1_nswmx")
 name = "Neut"
 type = 0
 skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_cutus"), ExtResource("3_8hfm7"), ExtResource("4_uod3f")])
-passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+passive_abilities = Array[ExtResource("3_misra")]([SubResource("Resource_xubbe")])
 max_physical_health = 100
 max_mental_health = 50
 physical_resistance = 3

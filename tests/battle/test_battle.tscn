@@ -57,6 +57,7 @@ stats = ExtResource("9_ftf24")
 character = ExtResource("8_v0c3t")
 
 [node name="TestBattle" type="Node2D"]
+position = Vector2(-4, 7)
 script = ExtResource("1_h0jpa")
 _packed_formation = ExtResource("2_2fqru")
 _packed_location = ExtResource("3_8uel4")
