@@ -69,7 +69,7 @@ import/blender/enabled=false
 [gui]
 
 theme/custom="res://resources/ui/global/themes/main_theme.tres"
-theme/custom_font="res://fonts/ubuntu/ubuntu-regular.ttf"
+theme/custom_font="res://fonts/tilda_sans/tilda-sans_regular.ttf"
 
 [importer_defaults]
 

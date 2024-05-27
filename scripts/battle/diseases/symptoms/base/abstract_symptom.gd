@@ -10,5 +10,5 @@ func get_description() -> String:
 	return ""
 
 
-func effect(character: Character = null, skill: Skill = null, dice: ActionDice = null) -> void:
+func effect(c_haracter: Character = null, _skill: Skill = null, _dice: ActionDice = null) -> void:
 	pass

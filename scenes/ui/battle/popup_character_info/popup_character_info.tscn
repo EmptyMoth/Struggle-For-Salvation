@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://crs4e7g1xvbjw"]
+
+[ext_resource type="PackedScene" uid="uid://bxmbtddt0ipts" path="res://scenes/ui/battle/popup_character_info/popup_skill_info/popup_skill_info.tscn" id="1_7ld35"]
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_character_info.gd" id="1_rs253"]
+[ext_resource type="PackedScene" uid="uid://bhqmn5ggp8vji" path="res://scenes/ui/battle/popup_character_info/popup_character_base_info/popup_character_base_info.tscn" id="2_3l1jo"]
+[ext_resource type="PackedScene" uid="uid://bu1wimhkpbutk" path="res://scenes/ui/battle/popup_character_info/popup_character_additional_info/popup_character_additional_info.tscn" id="3_rc4un"]
+
+[node name="PopupCharacterInfo" type="HBoxContainer"]
+offset_right = 892.0
+offset_bottom = 286.0
+mouse_filter = 2
+theme_override_constants/separation = 8
+alignment = 2
+script = ExtResource("1_rs253")
+
+[node name="PopupSkillInfo" parent="." instance=ExtResource("1_7ld35")]
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(280, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="PopupCharacterBaseInfo" parent="VBox" instance=ExtResource("2_3l1jo")]
+layout_mode = 2
+
+[node name="PopupWithCharacterAdditionalInfo" parent="VBox" instance=ExtResource("3_rc4un")]
+layout_mode = 2

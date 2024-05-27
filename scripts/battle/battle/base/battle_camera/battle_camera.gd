@@ -56,7 +56,7 @@ func move_to(new_position: Vector2, new_zoom: Vector2) -> void:
 	_animate_zoom(new_zoom)
 
 
-func _change_zoom(event: InputEvent) -> void:
+func _change_zoom(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_zoom_up") or Input.is_action_pressed("ui_zoom_up"):
 		_zoom_level += _zoom_factor
 	elif Input.is_action_just_pressed("ui_zoom_down") or Input.is_action_pressed("ui_zoom_down"):

@@ -10,7 +10,7 @@ static func _get_title() -> String:
 	return ""
 
 
-static func _get_condition(wearer: Character, wearer_skill: Skill, wearer_dice: ActionDice) -> Signal:
+static func _get_condition(wearer: Character, _wearer_skill: Skill, _wearer_dice: ActionDice) -> Signal:
 	return wearer.changed
 
 

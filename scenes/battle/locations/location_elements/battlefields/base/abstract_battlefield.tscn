@@ -17,7 +17,6 @@ size = Vector3(0.5, 0.5, 2.74976)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_1x30t"]
 geometry_parsed_geometry_type = 1
-agent_radius = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tmf8v"]
 size = Vector3(13, 1, 3)

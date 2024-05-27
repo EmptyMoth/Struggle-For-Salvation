@@ -33,15 +33,29 @@ const GROUPS_BY_ASSAULT_ARROWS_TYPES: Dictionary = {
 }
 
 
+static func get_all_characters() -> Array[Character]:
+	var result: Array[Character] = []
+	result.assign(GlobalParameters.get_nodes_in_group(CHARACTERS_GROUP))
+	return result
+
+
+static func get_all_atp_slots() -> Array[BaseATPSlotUI]:
+	var result: Array[BaseATPSlotUI] = []
+	result.assign(GlobalParameters.get_nodes_in_group(ATP_SLOTS_GROUP))
+	return result
+
+
 static func get_fraction_group(fraction: BattleEnums.Fraction) -> Array[Character]:
 	var result: Array[Character] = []
 	result.assign(GlobalParameters.get_nodes_in_group(GROUPS_BY_FRACTIONS[fraction]))
 	return result
 
+
 static func get_atp_slots_fraction_group(fraction: BattleEnums.Fraction) -> Array[BaseATPSlotUI]:
 	var result: Array[BaseATPSlotUI] = []
 	result.assign(GlobalParameters.get_nodes_in_group(GROUPS_BY_ATP_SLOTS_FRACTIONS[fraction]))
 	return result
+
 
 static func get_assault_arrows_group(arrow_type: BaseAssaultArrow.AssaultArrowType) -> Array[BaseAssaultArrow]:
 	var result: Array[BaseAssaultArrow] = []

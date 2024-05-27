@@ -1,0 +1,103 @@
+[gd_scene load_steps=4 format=3 uid="uid://crnsr2tpplydd"]
+
+[ext_resource type="Script" path="res://scripts/story/base/base_story_scene.gd" id="1_kto3j"]
+[ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="1_ocijd"]
+[ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story/characters/neut.png" id="2_srxm2"]
+
+[node name="BaseStoryScene" type="Node2D"]
+script = ExtResource("1_kto3j")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(960, 540)
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Characters" type="Node" parent="."]
+
+[node name="Character1" type="Sprite2D" parent="Characters"]
+position = Vector2(420, 705)
+texture = ExtResource("2_srxm2")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Illustration" type="TextureRect" parent="UI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 91.0
+offset_top = -10.0
+offset_right = 91.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="LocationTitle" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 36
+text = "Location"
+horizontal_alignment = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="CharacterName" type="Label" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Name"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme_override_constants/separation = 24
+
+[node name="TextureButton" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+ignore_texture_size = true
+
+[node name="TextureButton2" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+ignore_texture_size = true
+
+[node name="TextureButton3" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+ignore_texture_size = true
+
+[node name="PanelContainer" type="PanelContainer" parent="UI/MarginContainer/VBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 256)
+layout_mode = 2
+
+[node name="KeywordsRichTextLabel" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 36
+theme_override_font_sizes/bold_font_size = 36
+theme_override_font_sizes/italics_font_size = 36
+theme_override_font_sizes/bold_italics_font_size = 36
+theme_override_font_sizes/mono_font_size = 36
+text = "text"
+script = ExtResource("1_ocijd")

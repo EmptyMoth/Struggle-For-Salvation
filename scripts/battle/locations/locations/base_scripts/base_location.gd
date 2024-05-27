@@ -12,6 +12,8 @@ var battlefield: BaseBattlefield = null :
 	set(value): battlefield = value
 	get: return $Battlefield/BattlefieldViewport.get_child(0)
 
+@onready var _darkening_screen: ColorRect = $DarkeningScreen
+
 
 func _ready() -> void:
 	pass
@@ -19,6 +21,11 @@ func _ready() -> void:
 	#_initialize_background()
 	#_initialize_battlefield()
 	#_initialize_camera()
+
+
+func darken(is_darken: bool) -> void:
+	get_tree().create_tween().tween_property(
+		_darkening_screen, "modulate", Color(1, 1, 1, 0 if is_darken else 1), 0.2)
 
 
 #func _initialize_background() -> void:

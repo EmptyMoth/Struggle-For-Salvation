@@ -11,7 +11,7 @@ var _current_open_popup: Control = null
 @onready var _menu: CenterContainer = $Menu
 @onready var _manual_menu: TrainingScreen = $TrainingScreen
 @onready var _settings_menu: SettingsMenu = $SettingsMenu
-@onready var _buttons_container: MovingContainer = $Menu/Moving
+#@onready var _buttons_container: MovingContainer = $Menu/Moving
 @onready var _animation_background: AnimationPlayer = $Background/Animation
 
 
@@ -42,9 +42,11 @@ func open_menu() -> void:
 
 func close_menu() -> void:
 	is_opened = false
-	_display(is_opened)
 	get_tree().paused = is_opened
 	_music_mute(false)
+	_display(is_opened)
+	await _animation_background.animation_finished
+	hide()
 
 
 func _music_mute(enable: bool) -> void:
@@ -54,12 +56,12 @@ func _music_mute(enable: bool) -> void:
 
 func _display(is_displayed: bool) -> void:
 	(_animation_background.play if is_displayed else _animation_background.play_backwards).call("show")
-	var tween: Tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)\
-		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
-	var to: float = 0.0 \
-			if is_displayed \
-			else -(10.0 + _buttons_container.get_child(0).size.y + get_viewport_rect().get_center().y)
-	_buttons_container.move_container_from_current(tween, SIDE_TOP, to, _DROP_DURATION)
+	#var tween: Tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)\
+		#.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
+	#var to: float = 0.0 \
+			#if is_displayed \
+			#else -(10.0 + _buttons_container.get_child(0).size.y + get_viewport_rect().get_center().y)
+	#_buttons_container.move_container_from_current(tween, SIDE_TOP, to, _DROP_DURATION)
 
 
 func _on_setting_play_music_on_pause_changed(new_value: bool) -> void:
@@ -94,6 +96,7 @@ func _on_settings_menu_closed() -> void:
 
 func _on_leave_button_pressed() -> void:
 	get_tree().paused = false
+	GlobalParameters.change_scene("res://scenes/ui/menu/main_menu/main_menu.tscn")
 
 
 func _on_exit_button_pressed() -> void:

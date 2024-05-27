@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=4 format=3 uid="uid://p1xpow1ndxjp"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://p1xpow1ndxjp"]
 
+[ext_resource type="Texture2D" uid="uid://dk48vucddalpd" path="res://sprites/ui/battle/character_icons/virus_icon.png" id="1_qr7t8"]
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_xqufp"]
 [ext_resource type="Resource" uid="uid://sgdy5bh6ygpq" path="res://resources/battle/skills/influenza_virus/tired_gait.tres" id="2_qxgqo"]
 [ext_resource type="Resource" uid="uid://c6xjtr7yhfetg" path="res://resources/battle/skills/influenza_virus/wave_of_hands.tres" id="3_5n2v4"]
@@ -8,6 +9,7 @@
 script = ExtResource("1_xqufp")
 name = "Influenza Virus"
 type = 1
+icon = ExtResource("1_qr7t8")
 skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_qxgqo"), ExtResource("3_5n2v4")])
 passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
 max_physical_health = 35

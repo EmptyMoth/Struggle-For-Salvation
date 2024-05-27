@@ -1,39 +1,10 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=22 format=3 uid="uid://b4a85ebktfnul"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=10 format=3 uid="uid://b4a85ebktfnul"]
 
-[ext_resource type="Script" path="res://scripts/battle/abilities/effects/test_effect.gd" id="1_ppasb"]
 [ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_ri5ff"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_e82o0"]
-[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/skills/clash_win.gd" id="2_uc0hu"]
-[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd" id="3_lvh4d"]
 [ext_resource type="Texture2D" uid="uid://crgq4koj1emym" path="res://sprites/battle/skills/test_skill.svg" id="3_vg1kw"]
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_mgf2w"]
-[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/actions_dice/on_hit.gd" id="4_u66qm"]
-[ext_resource type="Script" path="res://scripts/battle/abilities/effects/take_damage.gd" id="5_d0spn"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/cooldown_data.gd" id="5_krmjh"]
-[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd" id="6_5ala5"]
-
-[sub_resource type="Resource" id="Resource_onebx"]
-script = ExtResource("1_ppasb")
-
-[sub_resource type="Resource" id="Resource_ugxsk"]
-script = ExtResource("2_uc0hu")
-
-[sub_resource type="Resource" id="Resource_ikbk0"]
-script = ExtResource("3_lvh4d")
-_skill_condition = SubResource("Resource_ugxsk")
-_effect = SubResource("Resource_onebx")
-
-[sub_resource type="Resource" id="Resource_37q7w"]
-script = ExtResource("4_u66qm")
-
-[sub_resource type="Resource" id="Resource_p3dr4"]
-script = ExtResource("5_d0spn")
-_damage_count = 1
-
-[sub_resource type="Resource" id="Resource_qkpbx"]
-script = ExtResource("6_5ala5")
-_dice_condition = SubResource("Resource_37q7w")
-_effect = SubResource("Resource_p3dr4")
 
 [sub_resource type="Resource" id="Resource_rv4eh"]
 script = ExtResource("1_ri5ff")
@@ -41,7 +12,7 @@ dice_type = 0
 min_value = 3
 max_value = 5
 motion = 6
-abilities = Array[ExtResource("6_5ala5")]([SubResource("Resource_qkpbx")])
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
 
 [sub_resource type="Resource" id="Resource_s2kay"]
 script = ExtResource("1_ri5ff")
@@ -49,7 +20,7 @@ dice_type = 0
 min_value = 3
 max_value = 5
 motion = 6
-abilities = Array[ExtResource("6_5ala5")]([])
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
 
 [sub_resource type="Resource" id="Resource_g2ken"]
 script = ExtResource("2_e82o0")
@@ -67,5 +38,5 @@ use_type = SubResource("Resource_103xh")
 clash_type = SubResource("Resource_g2ken")
 actions_dice_stats = Array[ExtResource("1_ri5ff")]([SubResource("Resource_rv4eh"), SubResource("Resource_s2kay")])
 is_unclashable = false
-abilities = Array[ExtResource("3_lvh4d")]([SubResource("Resource_ikbk0")])
+abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
 priority = 0

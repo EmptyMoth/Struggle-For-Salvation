@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dqd6fy2ln2ek6"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_character_base_info/resistance_view.gd" id="1_ey2ua"]
+[ext_resource type="FontFile" uid="uid://cbxlj0cqngcrb" path="res://fonts/tilda_sans/tilda-sans_medium.ttf" id="1_phovl"]
+
+[node name="Resistance" type="HBoxContainer"]
+theme_override_constants/separation = 4
+script = ExtResource("1_ey2ua")
+
+[node name="Icon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+expand_mode = 1
+
+[node name="Value" type="Label" parent="."]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_phovl")
+text = "[x1.0]"

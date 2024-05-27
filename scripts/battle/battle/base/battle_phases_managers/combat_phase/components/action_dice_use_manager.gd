@@ -16,9 +16,9 @@ static func use_dice_in_one_side(info: CharacterAssaultInfo) -> void:
 
 
 static func use_dice_in_clash(info_1: CharacterAssaultInfo, info_2: CharacterAssaultInfo) -> void:
-	info_1.character.movement_model.move_to_clash(info_2.character)
-	info_2.character.movement_model.move_to_clash(info_1.character)
-	await info_1.character.movement_model.came_to_position
+	#info_1.character.movement_model.move_to_clash(info_2.character)
+	#info_2.character.movement_model.move_to_clash(info_1.character)
+	#await info_1.character.movement_model.came_to_position
 	
 	BattleSignals.clash_continued.emit(info_1.character, info_2.character)
 	var interaction: Callable = _get_action_dice_interaction(

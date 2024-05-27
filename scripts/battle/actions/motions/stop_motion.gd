@@ -19,7 +19,7 @@ func _init(
 	_motion = _characters_motion
 
 
-func execute(character: Character, main_opponent: Character, sub_targets: Array[Character] = []) -> void:
+func execute(character: Character, main_opponent: Character, _sub_targets: Array[Character] = []) -> void:
 	character.view_model.switch_motion(characters_motion)
 	if is_update_direction:
 		character.view_model.flip_to_specified_point(main_opponent.position)

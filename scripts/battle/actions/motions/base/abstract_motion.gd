@@ -27,5 +27,5 @@ func execute(character: Character, main_opponent: Character, sub_targets: Array[
 	await character.movement_model.animate_move_to(additional_position, duration, tween_ease, tween_transition)
 
 
-func _create_additional_position(character: Character, main_opponent: Character, sub_targets: Array[Character] = []) -> Vector3:
+func _create_additional_position(_character: Character, _main_opponent: Character, _sub_targets: Array[Character] = []) -> Vector3:
 	return Vector3.ZERO

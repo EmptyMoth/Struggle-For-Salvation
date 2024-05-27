@@ -9,6 +9,7 @@ func _execute() -> void:
 
 
 func _move_characters() -> void:
+	prints(_initiator_info.character.movement_model.position, _initiator_info.opponents.main.movement_model.position)
 	_initiator_info.character.movement_model.move_to_one_side(_initiator_info.opponents.main)
 	await _initiator_info.character.movement_model.came_to_position
 

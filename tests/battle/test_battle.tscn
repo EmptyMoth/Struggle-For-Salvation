@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bg14wxg4vcb1k"]
+[gd_scene load_steps=35 format=3 uid="uid://bg14wxg4vcb1k"]
 
 [ext_resource type="Script" path="res://scripts/battle/battle/base/base_battle.gd" id="1_h0jpa"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formation_1.tscn" id="2_2fqru"]
@@ -8,12 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://ba1j5haj6xpwc" path="res://scenes/battle/characters/neut.tscn" id="5_c4b6s"]
 [ext_resource type="Resource" uid="uid://cg53i625fwoc2" path="res://resources/battle/characters/characters_stats/neut_stats.tres" id="6_4l50c"]
 [ext_resource type="Resource" uid="uid://dsojpcsk1qora" path="res://resources/battle/characters/characters_stats/eosi_stats.tres" id="7_f5ryo"]
-[ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_with_character_info/right_popup_with_character_info.tscn" id="7_ft1fj"]
-[ext_resource type="PackedScene" uid="uid://ciro0ncgqiif4" path="res://scenes/ui/battle/popup_with_character_info/left_popup_with_character_info.tscn" id="8_0r3md"]
 [ext_resource type="PackedScene" uid="uid://51pyjdsyc75t" path="res://scenes/battle/characters/influenza_virus.tscn" id="8_v0c3t"]
 [ext_resource type="PackedScene" uid="uid://b244n3810ichk" path="res://scenes/battle/characters/eosi.tscn" id="8_xnua3"]
 [ext_resource type="Resource" uid="uid://p1xpow1ndxjp" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="9_ftf24"]
 [ext_resource type="PackedScene" uid="uid://b3ullwwdhlbfr" path="res://scenes/ui/menu/pause_menu/battle_pause_menu.tscn" id="9_lo4gb"]
+[ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_character_info/popup_character_info.tscn" id="12_xmr5s"]
 [ext_resource type="Script" path="res://scripts/battle/battle/base/battle_camera/battle_camera_controller.gd" id="15_1f2bs"]
 [ext_resource type="Texture2D" uid="uid://c12fkp8c47vb3" path="res://sprites/ui/menu/battle_end_screen/defeat_screen.png" id="15_abu68"]
 [ext_resource type="Texture2D" uid="uid://bwamkkupi333" path="res://sprites/ui/menu/battle_end_screen/victory_screen.png" id="16_et46r"]
@@ -57,7 +56,6 @@ stats = ExtResource("9_ftf24")
 character = ExtResource("8_v0c3t")
 
 [node name="TestBattle" type="Node2D"]
-position = Vector2(-4, 7)
 script = ExtResource("1_h0jpa")
 _packed_formation = ExtResource("2_2fqru")
 _packed_location = ExtResource("3_8uel4")
@@ -87,7 +85,7 @@ offset_bottom = 1080.0
 mouse_filter = 2
 
 [node name="DarkeningScreen" type="ColorRect" parent="EnvironmentUI"]
-visible = false
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -95,7 +93,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0, 0, 0, 0.7)
+color = Color(0, 0, 0, 0.501961)
 
 [node name="AssaultsArrows" type="Control" parent="EnvironmentUI"]
 z_index = 5
@@ -110,19 +108,29 @@ mouse_filter = 2
 
 [node name="CanvasUI" type="CanvasLayer" parent="."]
 
-[node name="PopupsWithCharacterInfo" type="Control" parent="CanvasUI"]
-custom_minimum_size = Vector2(1920, 1080)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="PopupsCharacterInfo" type="MarginContainer" parent="CanvasUI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 310.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+
+[node name="HBox" type="HBoxContainer" parent="CanvasUI/PopupsCharacterInfo"]
+layout_mode = 2
+size_flags_vertical = 0
 mouse_filter = 2
 
-[node name="Left" parent="CanvasUI/PopupsWithCharacterInfo" instance=ExtResource("8_0r3md")]
-layout_mode = 0
+[node name="Left" parent="CanvasUI/PopupsCharacterInfo/HBox" instance=ExtResource("12_xmr5s")]
+layout_mode = 2
+size_flags_horizontal = 2
+is_left = true
 
-[node name="Right" parent="CanvasUI/PopupsWithCharacterInfo" instance=ExtResource("7_ft1fj")]
-layout_mode = 1
+[node name="Right" parent="CanvasUI/PopupsCharacterInfo/HBox" instance=ExtResource("12_xmr5s")]
+layout_mode = 2
+size_flags_horizontal = 10
 
 [node name="BattlePauseMenu" parent="CanvasUI" instance=ExtResource("9_lo4gb")]
 visible = false

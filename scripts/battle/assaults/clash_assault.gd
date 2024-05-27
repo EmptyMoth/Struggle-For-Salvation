@@ -17,6 +17,7 @@ static func can_be_executed(data: AssaultData) -> bool:
 func _execute() -> void:
 	BattleSignals.clash_started.emit(_initiator_info.character, _defendant_info.character)
 	while _can_continue_assault():
+		await _move_characters()
 		await ActionDiceUseManager.use_dice_in_clash(_initiator_info, _defendant_info)
 	BattleSignals.clash_ended.emit(_initiator_info.character, _defendant_info.character)
 	

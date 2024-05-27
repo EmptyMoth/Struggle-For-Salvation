@@ -16,6 +16,10 @@ signal enemy_deselected(character: Character, atp_slot: ATPSlot)
 func _ready() -> void:
 	ally_picked.connect(PlayerArrangeAssaults._on_ally_picked)
 	enemy_picked.connect(PlayerArrangeAssaults._on_enemy_picked)
+	ally_selected.connect(PlayerArrangeAssaults._on_character_selected)
+	enemy_selected.connect(PlayerArrangeAssaults._on_character_selected)
+	ally_deselected.connect(PlayerArrangeAssaults._on_character_deselected)
+	enemy_deselected.connect(PlayerArrangeAssaults._on_character_deselected)
 	player_made_general_cancel.connect(PlayerArrangeAssaults._on_player_made_general_cancel)
 
 

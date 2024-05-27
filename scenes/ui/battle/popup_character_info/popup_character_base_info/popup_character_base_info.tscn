@@ -1,0 +1,218 @@
+[gd_scene load_steps=20 format=3 uid="uid://bhqmn5ggp8vji"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_character_base_info/popup_character_base_info.gd" id="1_68k8e"]
+[ext_resource type="Texture2D" uid="uid://cnisllos7rsh1" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/immunocyte.svg" id="1_wrv66"]
+[ext_resource type="Texture2D" uid="uid://c1nod30dak1gr" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/virus.svg" id="2_8g3pn"]
+[ext_resource type="Texture2D" uid="uid://0p7p8dvc7pcw" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/bacteria.svg" id="3_2003b"]
+[ext_resource type="Texture2D" uid="uid://cg8i31jmowonj" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/allergen.svg" id="4_o5pn4"]
+[ext_resource type="Texture2D" uid="uid://dojh8rty1j55i" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/fungus.svg" id="5_p4cuo"]
+[ext_resource type="Texture2D" uid="uid://hx57414bun23" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/parasite.svg" id="6_deqs4"]
+[ext_resource type="Texture2D" uid="uid://bdhk8pvh8y7nd" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/cancer_cell.svg" id="7_kmwl7"]
+[ext_resource type="FontFile" uid="uid://bjqnq75a7n1pr" path="res://fonts/jost/jost_regular.ttf" id="9_8gcon"]
+[ext_resource type="Texture2D" uid="uid://cn6mdylpcpvuw" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/health/hp/hp_icon.svg" id="10_lni84"]
+[ext_resource type="FontFile" uid="uid://eldf7ubk6g7i" path="res://fonts/tilda_sans/tilda-sans_semibold.ttf" id="11_8086m"]
+[ext_resource type="FontFile" uid="uid://pme1v4y6npdx" path="res://fonts/outfit/outfit_regular.ttf" id="12_u82f4"]
+[ext_resource type="PackedScene" uid="uid://dqd6fy2ln2ek6" path="res://scenes/ui/battle/popup_character_info/popup_character_base_info/resistance.tscn" id="13_vwx0e"]
+[ext_resource type="Texture2D" uid="uid://dlxrkrqd5q0mb" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/health/sp/sp_icon.svg" id="14_p4xim"]
+[ext_resource type="Texture2D" uid="uid://d16xm52tylp8g" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/speed/speed_icon.svg" id="15_nra34"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xukv"]
+
+[sub_resource type="Gradient" id="Gradient_hetdd"]
+colors = PackedColorArray(0.0117647, 0.0784314, 0.176471, 1, 0.0117647, 0.0784314, 0.176471, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x8e1h"]
+gradient = SubResource("Gradient_hetdd")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_34v1l"]
+frames = 7
+pause = true
+one_shot = true
+frame_0/texture = ExtResource("1_wrv66")
+frame_1/texture = ExtResource("2_8g3pn")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_2003b")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_o5pn4")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("5_p4cuo")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("6_deqs4")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("7_kmwl7")
+frame_6/duration = 1.0
+
+[node name="PopupCharacterBaseInfo" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_68k8e")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="CharacterIcon" type="PanelContainer" parent="Margin/VBox/HBox"]
+custom_minimum_size = Vector2(72, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_8xukv")
+
+[node name="Icon" type="TextureRect" parent="Margin/VBox/HBox/CharacterIcon"]
+layout_mode = 2
+expand_mode = 1
+flip_h = true
+
+[node name="Shadow" type="TextureRect" parent="Margin/VBox/HBox/CharacterIcon"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 8
+texture = SubResource("GradientTexture2D_x8e1h")
+expand_mode = 1
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/HBox"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="HBoxContainer" parent="Margin/VBox/HBox/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="CharacterTypeIcon" type="TextureRect" parent="Margin/VBox/HBox/VBox/Title"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+texture = SubResource("AnimatedTexture_34v1l")
+expand_mode = 1
+
+[node name="CharacterName" type="Label" parent="Margin/VBox/HBox/VBox/Title"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("9_8gcon")
+theme_override_font_sizes/font_size = 20
+text = "Name"
+
+[node name="MainContent" type="HBoxContainer" parent="Margin/VBox/HBox/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="HP" type="VBoxContainer" parent="Margin/VBox/HBox/VBox/MainContent"]
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Health" type="HBoxContainer" parent="Margin/VBox/HBox/VBox/MainContent/HP"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Icon" type="TextureRect" parent="Margin/VBox/HBox/VBox/MainContent/HP/Health"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("10_lni84")
+expand_mode = 1
+
+[node name="Counter" type="HBoxContainer" parent="Margin/VBox/HBox/VBox/MainContent/HP/Health"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Current" type="Label" parent="Margin/VBox/HBox/VBox/MainContent/HP/Health/Counter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.898039, 0.313726, 0.313726, 1)
+theme_override_fonts/font = ExtResource("11_8086m")
+theme_override_font_sizes/font_size = 20
+text = "999"
+
+[node name="Space" type="Label" parent="Margin/VBox/HBox/VBox/MainContent/HP/Health/Counter"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.486275, 0.580392, 0.74902, 1)
+theme_override_fonts/font = ExtResource("12_u82f4")
+theme_override_font_sizes/font_size = 14
+text = "/"
+
+[node name="Max" type="Label" parent="Margin/VBox/HBox/VBox/MainContent/HP/Health/Counter"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.486275, 0.580392, 0.74902, 1)
+theme_override_font_sizes/font_size = 14
+text = "999"
+
+[node name="Resistance" parent="Margin/VBox/HBox/VBox/MainContent/HP" instance=ExtResource("13_vwx0e")]
+layout_mode = 2
+
+[node name="SP" type="VBoxContainer" parent="Margin/VBox/HBox/VBox/MainContent"]
+custom_minimum_size = Vector2(92, 0)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Health" type="HBoxContainer" parent="Margin/VBox/HBox/VBox/MainContent/SP"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Icon" type="TextureRect" parent="Margin/VBox/HBox/VBox/MainContent/SP/Health"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+texture = ExtResource("14_p4xim")
+expand_mode = 1
+
+[node name="Counter" type="HBoxContainer" parent="Margin/VBox/HBox/VBox/MainContent/SP/Health"]
+layout_mode = 2
+theme_override_constants/separation = -1
+
+[node name="Current" type="Label" parent="Margin/VBox/HBox/VBox/MainContent/SP/Health/Counter"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.313726, 0.607843, 0.898039, 1)
+theme_override_fonts/font = ExtResource("11_8086m")
+theme_override_font_sizes/font_size = 20
+text = "999"
+
+[node name="Space" type="Label" parent="Margin/VBox/HBox/VBox/MainContent/SP/Health/Counter"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.486275, 0.580392, 0.74902, 1)
+theme_override_fonts/font = ExtResource("12_u82f4")
+theme_override_font_sizes/font_size = 14
+text = "/"
+
+[node name="Max" type="Label" parent="Margin/VBox/HBox/VBox/MainContent/SP/Health/Counter"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.486275, 0.580392, 0.74902, 1)
+theme_override_font_sizes/font_size = 14
+text = "999"
+
+[node name="Resistance" parent="Margin/VBox/HBox/VBox/MainContent/SP" instance=ExtResource("13_vwx0e")]
+layout_mode = 2
+is_sp = true
+
+[node name="Speed" type="VBoxContainer" parent="Margin/VBox/HBox/VBox/MainContent"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="Icon" type="TextureRect" parent="Margin/VBox/HBox/VBox/MainContent/Speed"]
+custom_minimum_size = Vector2(24, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("15_nra34")
+expand_mode = 1
+
+[node name="Range" type="Label" parent="Margin/VBox/HBox/VBox/MainContent/Speed"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.976471, 0.392157, 1)
+theme_override_fonts/font = ExtResource("11_8086m")
+text = "2-4"

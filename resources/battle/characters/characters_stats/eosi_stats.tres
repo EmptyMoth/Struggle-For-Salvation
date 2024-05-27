@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://dsojpcsk1qora"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://dsojpcsk1qora"]
 
+[ext_resource type="Texture2D" uid="uid://p6g4saw8vjau" path="res://sprites/ui/battle/character_icons/eosi_icon.png" id="1_t41a2"]
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_ynp4k"]
 [ext_resource type="Resource" uid="uid://hlvgkgtus0rv" path="res://resources/battle/skills/eosi/dance_of_blades.tres" id="2_qd057"]
 [ext_resource type="Resource" uid="uid://duocaa4dlgmy1" path="res://resources/battle/skills/eosi/hail_of_blows.tres" id="3_w2aop"]
@@ -9,6 +10,7 @@
 script = ExtResource("1_ynp4k")
 name = "Eosi"
 type = 0
+icon = ExtResource("1_t41a2")
 skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_qd057"), ExtResource("3_w2aop"), ExtResource("4_5sq70")])
 passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
 max_physical_health = 80

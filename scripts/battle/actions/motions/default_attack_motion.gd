@@ -26,7 +26,7 @@ func _init(
 	_attack = _characters_motion
 
 
-func _create_additional_position(character: Character, main_opponent: Character, sub_targets: Array[Character] = []) -> Vector3:
+func _create_additional_position(character: Character, main_opponent: Character, _sub_targets: Array[Character] = []) -> Vector3:
 	var moving_character: CharacterMovementModel = character.movement_model
 	var new_position: Vector3 = main_opponent.movement_model.position - moving_character.position
 	new_position = new_position.normalized() / 3

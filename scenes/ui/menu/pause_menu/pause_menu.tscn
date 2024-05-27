@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu/pause_menu.gd" id="1_mggr6"]
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_iks7v"]
 [ext_resource type="Shader" path="res://resources/ui/global/shaders/blur_background.gdshader" id="2_j2mv0"]
-[ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="3_10v1o"]
 [ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="3_23n23"]
+[ext_resource type="Script" path="res://scripts/ui/menu/pause_menu/buttons/pause_menu_button.gd" id="5_myc2h"]
 [ext_resource type="PackedScene" uid="uid://dbwoaee5bxkap" path="res://scenes/ui/menu/training_screen/training_screen.tscn" id="6_by3kj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rxdso"]
@@ -166,32 +166,31 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Moving" type="MarginContainer" parent="Menu"]
+[node name="VBox" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
-theme_override_constants/margin_top = 0
-script = ExtResource("3_10v1o")
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 12
 
-[node name="VBox" type="VBoxContainer" parent="Menu/Moving"]
-custom_minimum_size = Vector2(360, 0)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/separation = 16
-
-[node name="ResumeButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
+[node name="ResumeButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
 layout_mode = 2
 text = "RESUME"
+script = ExtResource("5_myc2h")
 
-[node name="ManualButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
+[node name="ManualButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
 layout_mode = 2
 text = "MANUAL"
+script = ExtResource("5_myc2h")
 
-[node name="SettingsButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
+[node name="SettingsButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
 layout_mode = 2
 text = "SETTINGS"
+script = ExtResource("5_myc2h")
 
-[node name="ExitButton" parent="Menu/Moving/VBox" instance=ExtResource("2_iks7v")]
+[node name="ExitButton" parent="Menu/VBox" instance=ExtResource("2_iks7v")]
 layout_mode = 2
 text = "EXIT"
+script = ExtResource("5_myc2h")
 
 [node name="SettingsMenu" parent="." instance=ExtResource("3_23n23")]
 visible = false
@@ -203,9 +202,9 @@ layout_mode = 1
 _is_manual = true
 
 [connection signal="animation_finished" from="Background/Animation" to="." method="_on_animation_animation_finished"]
-[connection signal="pressed" from="Menu/Moving/VBox/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="Menu/Moving/VBox/ManualButton" to="." method="_on_manual_button_pressed"]
-[connection signal="pressed" from="Menu/Moving/VBox/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Menu/Moving/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Menu/VBox/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Menu/VBox/ManualButton" to="." method="_on_manual_button_pressed"]
+[connection signal="pressed" from="Menu/VBox/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="Menu/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="menu_closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]
 [connection signal="training_ended" from="TrainingScreen" to="." method="_on_manual_menu_closed"]

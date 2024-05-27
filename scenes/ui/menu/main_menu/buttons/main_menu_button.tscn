@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dc8va7k7dhpvp"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/main_menu/buttons/main_menu_button.gd" id="1_vxo6h"]
+[ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_0ppm4"]
+[ext_resource type="Script" path="res://scripts/ui/menu/main_menu/buttons/selected_background.gd" id="2_1fv14"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3817y"]
+
+[node name="MainMenuButton" type="PanelContainer"]
+custom_minimum_size = Vector2(400, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_3817y")
+script = ExtResource("1_vxo6h")
+text = "CONTINUE"
+
+[node name="SelectedBackground" type="VBoxContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+script = ExtResource("2_1fv14")
+
+[node name="Line1" type="TextureRect" parent="SelectedBackground"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="MainBackground" type="TextureRect" parent="SelectedBackground"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Line2" type="TextureRect" parent="SelectedBackground"]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" parent="Margin" instance=ExtResource("2_0ppm4")]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_pressed_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_font_sizes/font_size = 24
+toggle_mode = true
+
+[connection signal="mouse_entered" from="Margin/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/Button" to="." method="_on_button_mouse_exited"]
+[connection signal="toggled" from="Margin/Button" to="." method="_on_button_toggled"]

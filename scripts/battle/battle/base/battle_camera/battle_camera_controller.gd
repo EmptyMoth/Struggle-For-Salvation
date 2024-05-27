@@ -25,7 +25,7 @@ func _input(event: InputEvent) -> void:
 	battlefielf_camera.player_moves_camera(event)
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if _character_1 == null and _character_2 == null:
 		return
 	var distance: float = (_character_1.position - _character_2.position).length()

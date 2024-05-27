@@ -53,7 +53,7 @@ func _input(_event: InputEvent) -> void:
 		BattleSettings.toggle_display_clashing_arrows()
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("ui_cancel"):
 		PlayerInputManager.player_made_general_cancel.emit()
 
@@ -98,10 +98,8 @@ func end() -> void:
 	end_screen.show()
 
 
-func highlight_nodes(nodes: Array[CanvasItem], is_highlight: bool) -> void:
-	_darkening_screen.visible = is_highlight
-	for node: CanvasItem in nodes:
-		node.z_index = 2 if is_highlight else 0
+func highlight_characters(is_highlight: bool) -> void:
+	_location.darken(not is_highlight)
 
 
 func _start_next_turn() -> void:
@@ -117,8 +115,8 @@ func _add_popup_with_assault_info(character: Character, is_left: bool) -> void:
 
 
 func _init_of_teams() -> void:
-	var left_popup: PopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Left
-	var right_popup: PopupWithCharacterInfo = $CanvasUI/PopupsWithCharacterInfo/Right
+	var left_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/HBox/Left
+	var right_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/HBox/Right
 	ally_team.set_popup_with_character_info(
 			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
 	enemy_team.set_popup_with_character_info(
@@ -155,10 +153,10 @@ func _on_combat_ended() -> void:
 
 
 func _on_assault_started(character: Character, target: Character) -> void:
-	highlight_nodes([character, target], true)
+	highlight_characters(true)
 
 func _on_assault_ended(character: Character, target: Character) -> void:
-	highlight_nodes([character, target], false)
+	highlight_characters(false)
 	for popup: Node in _popups_with_assault_info.get_children():
 		popup.queue_free()
 

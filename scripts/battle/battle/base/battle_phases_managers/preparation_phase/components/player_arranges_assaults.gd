@@ -56,28 +56,39 @@ static func _player_choose_targets(enemy_slot: ATPSlot) -> Targets:
 
 
 static func _turn_on_manager_mode(turn_on: bool) -> void:
-	for slot: BaseATPSlotUI in GlobalParameters.get_nodes_in_group(BattleGroups.ATP_SLOTS_GROUP):
+	for slot: BaseATPSlotUI in BattleGroups.get_atp_slots_fraction_group(BattleEnums.Fraction.ALLY):
 		slot.mouse_filter = Control.MOUSE_FILTER_IGNORE if turn_on else Control.MOUSE_FILTER_STOP
 	
-	var slots_potentially_involved_in_assaults: Array[BaseATPSlotUI] = \
-			BattleGroups.get_atp_slots_fraction_group(BattleEnums.Fraction.ENEMY)
-	slots_potentially_involved_in_assaults.append(selected_ally_slot.get_atp_slot_ui())
-	for slot: BaseATPSlotUI in slots_potentially_involved_in_assaults:
-		slot.mouse_filter = Control.MOUSE_FILTER_STOP
+	var characters_potentially_involved_in_assaults: Array[Character] = \
+			BattleGroups.get_fraction_group(BattleEnums.Fraction.ENEMY)
+	characters_potentially_involved_in_assaults.append(selected_ally_slot.wearer)
+	#var slots_potentially_involved_in_assaults: Array[BaseATPSlotUI] = \
+	#		BattleGroups.get_atp_slots_fraction_group(BattleEnums.Fraction.ENEMY)
+	#slots_potentially_involved_in_assaults.append(selected_ally_slot.get_atp_slot_ui())
+	#for slot: BaseATPSlotUI in slots_potentially_involved_in_assaults:
+	#	slot.mouse_filter = Control.MOUSE_FILTER_STOP
 	
-	var selected_stots: Array[CanvasItem] = []
-	selected_stots.assign(slots_potentially_involved_in_assaults)
-	BaseBattle.battle.highlight_nodes(selected_stots, turn_on)
+	#var selected_stots: Array[CanvasItem] = []
+	#selected_stots.assign(slots_potentially_involved_in_assaults)
+	BaseBattle.battle.highlight_characters(turn_on)
 
 
-static func _on_ally_picked(characte: Character, atp_slot: ATPSlot = null) -> void:
-	if characte.is_active and atp_slot != null and Input.is_action_just_released("ui_pick"):
+static func _on_ally_picked(character: Character, atp_slot: ATPSlot = null) -> void:
+	if character.is_active and atp_slot != null and Input.is_action_just_released("ui_pick"):
 		selected_ally_slot = atp_slot
 
 
-static func _on_enemy_picked(_characte: Character, atp_slot: ATPSlot = null) -> void:
+static func _on_enemy_picked(character: Character, atp_slot: ATPSlot = null) -> void:
 	if atp_slot != null and PlayerState.is_manager() and Input.is_action_just_released("ui_pick"):
 		_set_assault(atp_slot)
+
+
+static func _on_character_selected(character: Character, atp_slot: ATPSlot = null) -> void:
+	BaseBattle.battle.highlight_characters(true)
+
+static func _on_character_deselected(character: Character, atp_slot: ATPSlot = null) -> void:
+	BaseBattle.battle.highlight_characters(false)
+
 
 
 static func _on_player_made_general_cancel() -> void: _deselected()

@@ -1,7 +1,6 @@
-[gd_scene load_steps=13 format=3 uid="uid://bvughhmsw4fmq"]
+[gd_scene load_steps=12 format=3 uid="uid://bvughhmsw4fmq"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/settings_menu.gd" id="1_e8fqe"]
-[ext_resource type="Script" path="res://scripts/extension/containers/moving_container.gd" id="2_kkqwi"]
 [ext_resource type="PackedScene" uid="uid://dccvt6oohut1v" path="res://scenes/ui/menu/settings_menu/settings_list/settings_list.tscn" id="4_0fmdu"]
 [ext_resource type="PackedScene" uid="uid://bdrwcnuupffuw" path="res://scenes/ui/menu/settings_menu/settings_elements/option_button_setting_menu.tscn" id="5_4y2do"]
 [ext_resource type="PackedScene" uid="uid://bfwfo3q1hm38e" path="res://scenes/ui/menu/settings_menu/settings_elements/check_button_setting_menu.tscn" id="6_f4fnh"]
@@ -44,23 +43,13 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 24
 
-[node name="MainMoving" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
-layout_mode = 2
-mouse_filter = 2
-script = ExtResource("2_kkqwi")
-
-[node name="Panel" type="PanelContainer" parent="CenterContainer/VBoxContainer/MainMoving"]
-z_index = 1
+[node name="Panel" type="PanelContainer" parent="CenterContainer/VBoxContainer"]
 custom_minimum_size = Vector2(698, 539)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="CenterContainer/VBoxContainer/MainMoving/Panel"]
-position = Vector2(350.5, 268)
-scale = Vector2(34.75, 27)
-
-[node name="Margin" type="MarginContainer" parent="CenterContainer/VBoxContainer/MainMoving/Panel"]
+[node name="Margin" type="MarginContainer" parent="CenterContainer/VBoxContainer/Panel"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 40
@@ -68,42 +57,42 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 24
 
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Panel/Margin"]
 layout_mode = 2
 
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox"]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 48
 
-[node name="TabsHeader" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox" node_paths=PackedStringArray("tab_container") instance=ExtResource("6_vchef")]
+[node name="TabsHeader" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox" node_paths=PackedStringArray("tab_container") instance=ExtResource("6_vchef")]
 layout_mode = 2
 theme_override_constants/separation = 39
 alignment = 1
 tab_container = NodePath("../Content")
 
-[node name="GraphicsButton" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
+[node name="GraphicsButton" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2l3pb")
 button_pressed = true
 text = "GRAPHICS"
 
-[node name="GameplayButton" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
+[node name="GameplayButton" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2l3pb")
 text = "GAMEPLAY"
 metadata/content_index = 1
 
-[node name="AudioButton" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
+[node name="AudioButton" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2l3pb")
 text = "AUDIO"
 metadata/content_index = 2
 
-[node name="CustomRulesButton" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
+[node name="CustomRulesButton" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/TabsHeader" instance=ExtResource("7_p334f")]
 visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
@@ -111,7 +100,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_2l3pb")
 text = "CUSTOM_RULES"
 metadata/content_index = 3
 
-[node name="Content" type="TabContainer" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox"]
+[node name="Content" type="TabContainer" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
@@ -119,110 +108,109 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_erjt3")
 clip_tabs = false
 tabs_visible = false
 
-[node name="GraphicsSettings" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
+[node name="GraphicsSettings" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
 layout_mode = 2
 
-[node name="GraphicsQuality" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
+[node name="GraphicsQuality" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
 layout_mode = 2
 setting_name = "GRAPHICS_QUALITY"
 
-[node name="Resolution" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
+[node name="Resolution" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
 layout_mode = 2
 setting_name = "RESOLUTION"
 
-[node name="Display" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
+[node name="Display" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
 layout_mode = 2
 setting_name = "DISPLAY"
 
-[node name="MouseLocked" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("6_f4fnh")]
+[node name="MouseLocked" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("6_f4fnh")]
 layout_mode = 2
 setting_name = "MOUSE_LOCKED"
 
-[node name="LimitMaxFPS" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
+[node name="LimitMaxFPS" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("5_4y2do")]
 layout_mode = 2
 setting_name = "LIMIT_MAX_FPS"
 
-[node name="VSync" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("6_f4fnh")]
+[node name="VSync" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GraphicsSettings" instance=ExtResource("6_f4fnh")]
 visible = false
 layout_mode = 2
 setting_name = "VSync"
 
-[node name="GameplaySettings" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
+[node name="GameplaySettings" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
 visible = false
 layout_mode = 2
 settings_title = "Gameplay"
 
-[node name="Language" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("5_4y2do")]
+[node name="Language" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("5_4y2do")]
 layout_mode = 2
 setting_name = "LANGUAGE"
 setting_tooltip = " "
 
-[node name="AlliesPlacement" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("5_4y2do")]
+[node name="AlliesPlacement" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("5_4y2do")]
 visible = false
 layout_mode = 2
 setting_name = "ALLIES_PLACEMENT"
 
-[node name="ActionDiceTally" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("6_f4fnh")]
+[node name="ActionDiceTally" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("6_f4fnh")]
 visible = false
 layout_mode = 2
 setting_name = "ACTION_DICE_TALLY"
 
-[node name="CustomRules" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("6_f4fnh")]
+[node name="CustomRules" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/GameplaySettings" instance=ExtResource("6_f4fnh")]
 visible = false
 layout_mode = 2
 setting_name = "CUSTOM_RULES"
 
-[node name="AudioSettings" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
+[node name="AudioSettings" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
 visible = false
 layout_mode = 2
 settings_title = "Audio"
 
-[node name="GeneralVolume" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("7_nvp2c")]
+[node name="GeneralVolume" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("7_nvp2c")]
 layout_mode = 2
 setting_name = "GENERAL_VOLUME"
 setting_tooltip = " "
 
-[node name="MusicVolume" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("7_nvp2c")]
+[node name="MusicVolume" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("7_nvp2c")]
 layout_mode = 2
 setting_name = "MUSIC_VOLUM"
 setting_tooltip = " "
 
-[node name="SoundVolume" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("7_nvp2c")]
+[node name="SoundVolume" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("7_nvp2c")]
 layout_mode = 2
 setting_name = "SOUND_VOLUME"
 setting_tooltip = " "
 
-[node name="PlayMusicOnPause" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("6_f4fnh")]
+[node name="PlayMusicOnPause" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/AudioSettings" instance=ExtResource("6_f4fnh")]
 layout_mode = 2
 setting_name = "PLAY_MUSIC_ON_PAUSE"
 
-[node name="CustomRulesSettings" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
+[node name="CustomRulesSettings" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content" instance=ExtResource("4_0fmdu")]
 visible = false
 layout_mode = 2
 settings_title = "CustomRules"
 
-[node name="EnemyHealth" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/CustomRulesSettings" instance=ExtResource("7_nvp2c")]
+[node name="EnemyHealth" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/CustomRulesSettings" instance=ExtResource("7_nvp2c")]
 layout_mode = 2
 setting_name = "ENEMY_HEALTH"
 
-[node name="EnemyDamage" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content/CustomRulesSettings" instance=ExtResource("7_nvp2c")]
+[node name="EnemyDamage" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content/CustomRulesSettings" instance=ExtResource("7_nvp2c")]
 layout_mode = 2
 setting_name = "ENEMY_DAMAGE"
 
-[node name="ResetButton" parent="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox" instance=ExtResource("8_tm5d6")]
+[node name="ResetButton" parent="CenterContainer/VBoxContainer/Panel/Margin/VBox" instance=ExtResource("8_tm5d6")]
 layout_mode = 2
 text = "RESET"
 
-[node name="ButtonMoving" type="MarginContainer" parent="CenterContainer/VBoxContainer"]
+[node name="SaveAndExitButton" parent="CenterContainer/VBoxContainer" instance=ExtResource("9_4n53n")]
 layout_mode = 2
-mouse_filter = 2
-script = ExtResource("2_kkqwi")
-
-[node name="SaveAndExitButton" parent="CenterContainer/VBoxContainer/ButtonMoving" instance=ExtResource("9_4n53n")]
-layout_mode = 2
-size_flags_horizontal = 4
 text = "CLOSE"
+script = null
 
-[connection signal="screen_exited" from="CenterContainer/VBoxContainer/MainMoving/Panel/VisibleNotifier" to="." method="_on_visible_notifier_screen_exited"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/ButtonMoving/SaveAndExitButton" to="." method="_on_save_and_exit_button_pressed"]
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(964, 544.5)
+scale = Vector2(36.8, 32.45)
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Panel/Margin/VBox/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/SaveAndExitButton" to="." method="_on_save_and_exit_button_pressed"]
+[connection signal="screen_exited" from="VisibleNotifier" to="." method="_on_visible_notifier_screen_exited"]
