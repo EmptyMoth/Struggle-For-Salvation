@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl2mmqestp6h8"]
+
+[ext_resource type="Script" path="res://scripts/ui/base/tooltips/components/tooltip_side.gd" id="1_lw5s0"]
+[ext_resource type="Texture2D" uid="uid://b5klt3j1kx01" path="res://sprites/ui/base/selected_arrow/v_selected_arrow.svg" id="2_qlj3n"]
+
+[sub_resource type="Gradient" id="Gradient_mdy7l"]
+offsets = PackedFloat32Array(0, 0.15, 0.85, 1)
+colors = PackedColorArray(0.960784, 0.960784, 0.960784, 0, 0.960784, 0.960784, 0.960784, 1, 0.960784, 0.960784, 0.960784, 1, 0.960784, 0.960784, 0.960784, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jl57q"]
+gradient = SubResource("Gradient_mdy7l")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="VTooltipSide" type="HBoxContainer"]
+offset_right = 7.0
+offset_bottom = 12.0
+mouse_filter = 0
+theme_override_constants/separation = 0
+script = ExtResource("1_lw5s0")
+
+[node name="Line" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 0
+texture = SubResource("GradientTexture2D_jl57q")
+expand_mode = 1
+
+[node name="Arrow" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(6, 12)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 0
+texture = ExtResource("2_qlj3n")
+expand_mode = 1

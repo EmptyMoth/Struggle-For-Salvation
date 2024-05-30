@@ -21,8 +21,8 @@ frame_1/texture = ExtResource("5_l8m42")
 frame_1/duration = 1.0
 
 [node name="PopupSkillInfo" type="HBoxContainer"]
-offset_right = 582.0
-offset_bottom = 463.0
+offset_right = 521.0
+offset_bottom = 136.0
 mouse_filter = 2
 theme_override_constants/separation = 8
 script = ExtResource("1_f0gss")

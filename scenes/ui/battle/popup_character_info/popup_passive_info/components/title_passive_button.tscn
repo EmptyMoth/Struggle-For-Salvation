@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://c3jbk2p8nxcs4"]
+
+[ext_resource type="PackedScene" uid="uid://o8wytxug4rmg" path="res://scenes/ui/base/buttons_background/selected_background.tscn" id="1_1n01t"]
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_passive_info/components/title_passive_button.gd" id="1_4keul"]
+[ext_resource type="FontFile" uid="uid://ddej8n3b4q3j3" path="res://fonts/tilda_sans/tilda-sans_regular.ttf" id="2_gx71i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_myxfk"]
+
+[node name="TitlePassiveButton" type="PanelContainer"]
+offset_right = 62.0
+offset_bottom = 33.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_myxfk")
+script = ExtResource("1_4keul")
+
+[node name="SelectedBackground" parent="." instance=ExtResource("1_1n01t")]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Button" type="Button" parent="Margin"]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_pressed_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_colors/font_hover_pressed_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_fonts/font = ExtResource("2_gx71i")
+theme_override_font_sizes/font_size = 20
+toggle_mode = true
+alignment = 0
+
+[connection signal="mouse_entered" from="Margin/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/Button" to="." method="_on_button_mouse_exited"]
+[connection signal="toggled" from="Margin/Button" to="." method="_on_button_toggled"]

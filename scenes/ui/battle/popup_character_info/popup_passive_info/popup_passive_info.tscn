@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://dv7ppl4r46kg0"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_passive_info/popup_passive_info.gd" id="1_jiwgm"]
+
+[node name="PopupPassiveInfo" type="PanelContainer"]
+custom_minimum_size = Vector2(360, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+script = ExtResource("1_jiwgm")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 12
+
+[node name="HBox" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 7
+
+[node name="VBox" type="VBoxContainer" parent="Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_constants/separation = 0

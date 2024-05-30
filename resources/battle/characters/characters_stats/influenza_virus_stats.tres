@@ -1,9 +1,25 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=5 format=3 uid="uid://p1xpow1ndxjp"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=11 format=3 uid="uid://p1xpow1ndxjp"]
 
 [ext_resource type="Texture2D" uid="uid://dk48vucddalpd" path="res://sprites/ui/battle/character_icons/virus_icon.png" id="1_qr7t8"]
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_xqufp"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/characters_passives/clash_draw.gd" id="2_d834u"]
 [ext_resource type="Resource" uid="uid://sgdy5bh6ygpq" path="res://resources/battle/skills/influenza_virus/tired_gait.tres" id="2_qxgqo"]
 [ext_resource type="Resource" uid="uid://c6xjtr7yhfetg" path="res://resources/battle/skills/influenza_virus/wave_of_hands.tres" id="3_5n2v4"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/effects/take_damage.gd" id="3_jhhei"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd" id="4_0gmob"]
+
+[sub_resource type="Resource" id="Resource_sdbb4"]
+script = ExtResource("2_d834u")
+
+[sub_resource type="Resource" id="Resource_3r36b"]
+script = ExtResource("3_jhhei")
+_damage_count = 1
+
+[sub_resource type="Resource" id="Resource_4s3o0"]
+script = ExtResource("4_0gmob")
+passive_title = "123"
+_character_condition = SubResource("Resource_sdbb4")
+_effect = SubResource("Resource_3r36b")
 
 [resource]
 script = ExtResource("1_xqufp")
@@ -11,7 +27,7 @@ name = "Influenza Virus"
 type = 1
 icon = ExtResource("1_qr7t8")
 skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_qxgqo"), ExtResource("3_5n2v4")])
-passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+passive_abilities = Array[ExtResource("4_0gmob")]([SubResource("Resource_4s3o0")])
 max_physical_health = 35
 max_mental_health = 30
 physical_resistance = 3

@@ -20,7 +20,6 @@ var _battlefield: BaseBattlefield = null
 @onready var ally_team: BaseTeam = $Teams/AllyTeam
 @onready var enemy_team: BaseTeam = $Teams/EnemyTeam
 
-@onready var _darkening_screen: ColorRect = $EnvironmentUI/DarkeningScreen
 @onready var _assaults_arrows: Control = $EnvironmentUI/AssaultsArrows
 @onready var _popups_with_assault_info: Control = $EnvironmentUI/PopupsWithAssaultInfo
 

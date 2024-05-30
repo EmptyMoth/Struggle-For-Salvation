@@ -2,6 +2,8 @@ class_name PopupCharacterBaseInfo
 extends PanelContainer
 
 
+@onready var button_hinding_passive: TextureButton = $Margin/VBox/ButtonHidingPassive
+
 @onready var _character_icon: TextureRect = $Margin/VBox/HBox/CharacterIcon/Icon
 @onready var _character_type_icon: TextureRect = $Margin/VBox/HBox/VBox/Title/CharacterTypeIcon
 @onready var _character_name_label: Label = $Margin/VBox/HBox/VBox/Title/CharacterName

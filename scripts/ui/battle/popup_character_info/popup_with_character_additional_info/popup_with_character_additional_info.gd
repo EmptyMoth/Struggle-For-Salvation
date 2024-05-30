@@ -67,9 +67,9 @@ func _create_skill_selected_buttons(count: int) -> void:
 	for i: int in count:
 		var skill_selected_button: SkillSelectedButton = skill_selected_button_scene.instantiate()
 		skill_selected_button.button_group = _skill_selected_button_group
-		skill_selected_button.skill_shown.connect(_on_skill_selected_button_skill_shown)
-		skill_selected_button.skill_hidden.connect(_on_skill_selected_button_skill_hidden)
-		skill_selected_button.skill_pressed.connect(_on_skill_selected_button_skill_pressed)
+		#skill_selected_button.skill_shown.connect(_on_skill_selected_button_skill_shown)
+		#skill_selected_button.skill_hidden.connect(_on_skill_selected_button_skill_hidden)
+		#skill_selected_button.skill_pressed.connect(_on_skill_selected_button_skill_pressed)
 		_skills_list.add_child(skill_selected_button)
 
 

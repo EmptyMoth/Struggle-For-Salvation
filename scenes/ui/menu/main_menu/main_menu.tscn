@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://28rgyn3863sd" path="res://sprites/global/game_logo/game_logo.svg" id="4_fbhwm"]
 [ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="7_3g0qb"]
 [ext_resource type="PackedScene" uid="uid://dc8va7k7dhpvp" path="res://scenes/ui/menu/main_menu/buttons/main_menu_button.tscn" id="7_tnqy7"]
-[ext_resource type="Texture2D" uid="uid://b5klt3j1kx01" path="res://sprites/ui/base/selected_arrow/selected_arrow.svg" id="8_5d7et"]
+[ext_resource type="Texture2D" uid="uid://b5klt3j1kx01" path="res://sprites/ui/base/selected_arrow/v_selected_arrow.svg" id="8_5d7et"]
 [ext_resource type="AudioStream" uid="uid://c7d8f6gcv70rc" path="res://music/story/main_menu.mp3" id="8_cua4s"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j42ep"]

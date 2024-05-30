@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dco1gre55la5r"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/tooltips/tooltip_skills_set.gd" id="1_0irym"]
+[ext_resource type="PackedScene" uid="uid://bvj0ehvi6km6g" path="res://scenes/ui/base/tooltips/components/h_tooltip_side.tscn" id="1_mql3a"]
+
+[node name="TooltipSkillsSet" type="MarginContainer"]
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 24.0
+theme_override_constants/margin_bottom = 8
+script = ExtResource("1_0irym")
+metadata/_edit_group_ = true
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Margin" type="MarginContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_right = 12
+
+[node name="Panel" type="PanelContainer" parent="VBox/Margin"]
+layout_mode = 2
+
+[node name="Margin" type="MarginContainer" parent="VBox/Margin/Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 8
+
+[node name="GridContainer" type="GridContainer" parent="VBox/Margin/Panel/Margin"]
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 5
+
+[node name="HTooltipSide" parent="VBox" instance=ExtResource("1_mql3a")]
+layout_mode = 2

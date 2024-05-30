@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=63 format=3 uid="uid://ckjnsn1tc7ngw"]
+[gd_resource type="Theme" load_steps=64 format=3 uid="uid://ckjnsn1tc7ngw"]
 
 [ext_resource type="FontFile" uid="uid://cqgufl6eexceh" path="res://fonts/ubuntu/ubuntu-regular.ttf" id="1_3thyr"]
 [ext_resource type="Texture2D" uid="uid://c78nlfrr3meip" path="res://sprites/ui/menu/buttons/checkbox/checkbox_pressed.svg" id="1_sbfbs"]
@@ -195,6 +195,8 @@ corner_radius_bottom_left = 5
 color = Color(0.784314, 0.784314, 0.784314, 1)
 thickness = 2
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2sthp"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pt7xo"]
 content_margin_left = 8.0
 content_margin_top = 4.0
@@ -361,6 +363,7 @@ RichTextLabel/font_sizes/mono_font_size = 18
 RichTextLabel/font_sizes/normal_font_size = 18
 RichTextLabel/fonts/bold_font = ExtResource("26_u4qmk")
 RichTextLabel/fonts/normal_font = ExtResource("22_gpbvx")
+RichTextLabel/styles/focus = SubResource("StyleBoxEmpty_2sthp")
 TooltipPanel/styles/panel = SubResource("StyleBoxFlat_pt7xo")
 VScrollBar/styles/grabber = SubResource("StyleBoxFlat_ppdaq")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxFlat_k3oqk")

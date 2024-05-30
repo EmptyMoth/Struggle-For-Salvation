@@ -12,6 +12,10 @@ signal enemy_picked(character: Character, atp_slot: ATPSlot)
 signal enemy_selected(character: Character, atp_slot: ATPSlot)
 signal enemy_deselected(character: Character, atp_slot: ATPSlot)
 
+signal skill_picked(skill: Skill)
+signal skill_selected(skill: Skill)
+signal skill_deselected(skill: Skill)
+
 
 func _ready() -> void:
 	ally_picked.connect(PlayerArrangeAssaults._on_ally_picked)

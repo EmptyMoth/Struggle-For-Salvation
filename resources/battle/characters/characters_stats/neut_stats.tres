@@ -1,10 +1,38 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://cg53i625fwoc2"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=16 format=3 uid="uid://cg53i625fwoc2"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_nswmx"]
 [ext_resource type="Texture2D" uid="uid://ca0icursigiep" path="res://sprites/ui/battle/character_icons/neut_icon.png" id="1_rjpgq"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/characters_passives/clash_lose.gd" id="2_1rnw5"]
 [ext_resource type="Resource" uid="uid://b4a85ebktfnul" path="res://resources/battle/skills/neut/swift_dash.tres" id="2_cutus"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/effects/test_effect.gd" id="3_8c03c"]
 [ext_resource type="Resource" uid="uid://b6ca1adlckaia" path="res://resources/battle/skills/neut/lunge_from_block.tres" id="3_8hfm7"]
 [ext_resource type="Resource" uid="uid://sro7jqxu5ot2" path="res://resources/battle/skills/neut/raise_shield.tres" id="4_uod3f"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd" id="4_xr0pe"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/conditions/characters_passives/turn_start.gd" id="5_v4il1"]
+
+[sub_resource type="Resource" id="Resource_2eeaw"]
+script = ExtResource("2_1rnw5")
+
+[sub_resource type="Resource" id="Resource_6ijui"]
+script = ExtResource("3_8c03c")
+
+[sub_resource type="Resource" id="Resource_74tal"]
+script = ExtResource("4_xr0pe")
+passive_title = "Mega Power III"
+_character_condition = SubResource("Resource_2eeaw")
+_effect = SubResource("Resource_6ijui")
+
+[sub_resource type="Resource" id="Resource_58l0x"]
+script = ExtResource("5_v4il1")
+
+[sub_resource type="Resource" id="Resource_58h8o"]
+script = ExtResource("3_8c03c")
+
+[sub_resource type="Resource" id="Resource_3r6qp"]
+script = ExtResource("4_xr0pe")
+passive_title = "Depresion"
+_character_condition = SubResource("Resource_58l0x")
+_effect = SubResource("Resource_58h8o")
 
 [resource]
 resource_local_to_scene = true
@@ -13,7 +41,7 @@ name = "Neut"
 type = 0
 icon = ExtResource("1_rjpgq")
 skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_cutus"), ExtResource("3_8hfm7"), ExtResource("4_uod3f")])
-passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+passive_abilities = Array[ExtResource("4_xr0pe")]([SubResource("Resource_74tal"), SubResource("Resource_3r6qp")])
 max_physical_health = 100
 max_mental_health = 50
 physical_resistance = 3

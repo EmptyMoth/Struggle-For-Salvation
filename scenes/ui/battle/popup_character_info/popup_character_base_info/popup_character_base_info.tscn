@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bhqmn5ggp8vji"]
+[gd_scene load_steps=23 format=3 uid="uid://bhqmn5ggp8vji"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_character_base_info/popup_character_base_info.gd" id="1_68k8e"]
 [ext_resource type="Texture2D" uid="uid://cnisllos7rsh1" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/character_types_icons/immunocyte.svg" id="1_wrv66"]
@@ -15,6 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dqd6fy2ln2ek6" path="res://scenes/ui/battle/popup_character_info/popup_character_base_info/resistance.tscn" id="13_vwx0e"]
 [ext_resource type="Texture2D" uid="uid://dlxrkrqd5q0mb" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/health/sp/sp_icon.svg" id="14_p4xim"]
 [ext_resource type="Texture2D" uid="uid://d16xm52tylp8g" path="res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/speed/speed_icon.svg" id="15_nra34"]
+[ext_resource type="Texture2D" uid="uid://b5rnotvxes64o" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/default.svg" id="16_p162w"]
+[ext_resource type="Texture2D" uid="uid://ybkvgd3dgiv0" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/pressed.svg" id="17_ffqob"]
+[ext_resource type="Texture2D" uid="uid://frwtuvmfj2ct" path="res://sprites/ui/battle/popup_with_character_info/popup_with_skill_info/button_showing_dice_ability/hover.svg" id="18_7rl4n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8xukv"]
 
@@ -216,3 +219,14 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.976471, 0.392157, 1)
 theme_override_fonts/font = ExtResource("11_8086m")
 text = "2-4"
+
+[node name="ButtonHidingPassive" type="TextureButton" parent="Margin/VBox"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("16_p162w")
+texture_pressed = ExtResource("17_ffqob")
+texture_hover = ExtResource("18_7rl4n")
+ignore_texture_size = true
+stretch_mode = 0

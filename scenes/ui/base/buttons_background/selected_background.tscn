@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://o8wytxug4rmg"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/main_menu/buttons/selected_background.gd" id="1_uace4"]
+
+[node name="SelectedBackground" type="VBoxContainer"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 0
+script = ExtResource("1_uace4")
+
+[node name="Line1" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="MainBackground" type="TextureRect" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Line2" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2

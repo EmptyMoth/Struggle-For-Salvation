@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/menu/main_menu/buttons/main_menu_button.gd" id="1_vxo6h"]
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_0ppm4"]
-[ext_resource type="Script" path="res://scripts/ui/menu/main_menu/buttons/selected_background.gd" id="2_1fv14"]
+[ext_resource type="PackedScene" uid="uid://o8wytxug4rmg" path="res://scenes/ui/base/buttons_background/selected_background.tscn" id="2_8vowu"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3817y"]
 
@@ -15,28 +15,8 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_3817y")
 script = ExtResource("1_vxo6h")
 text = "CONTINUE"
 
-[node name="SelectedBackground" type="VBoxContainer" parent="."]
+[node name="SelectedBackground" parent="." instance=ExtResource("2_8vowu")]
 layout_mode = 2
-mouse_filter = 2
-theme_override_constants/separation = 0
-script = ExtResource("2_1fv14")
-
-[node name="Line1" type="TextureRect" parent="SelectedBackground"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-size_flags_vertical = 0
-mouse_filter = 2
-
-[node name="MainBackground" type="TextureRect" parent="SelectedBackground"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="Line2" type="TextureRect" parent="SelectedBackground"]
-custom_minimum_size = Vector2(0, 1)
-layout_mode = 2
-size_flags_vertical = 8
-mouse_filter = 2
 
 [node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 2
