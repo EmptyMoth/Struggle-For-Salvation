@@ -21,6 +21,8 @@ var selected_atp_slot: ATPSlot = null :
 
 var popup_with_character_info: PopupWithCharacterInfo = null
 
+var _tooltip_skill_set: TooltipSkillsSet = preload("res://scenes/ui/battle/tooltips/tooltip_skills_set.tscn").instantiate()
+
 
 func is_character_selected() -> bool:
 	return selected_character != null
@@ -61,19 +63,28 @@ func connect_signals(team_fraction: BattleEnums.Fraction) -> void:
 
 
 func _on_character_picked(character: Character, atp_slot: ATPSlot = null) -> void:
+	if atp_slot != null:
+		_tooltip_skill_set.is_fixed = true
 	if is_same_selected(character, atp_slot):
 		deselect_character()
+		_tooltip_skill_set.is_fixed = false
 	else:
 		select_character(character, atp_slot)
 
 
 func _on_character_selected(character: Character, atp_slot: ATPSlot = null) -> void:
+	if atp_slot != null:
+		_tooltip_skill_set.set_skills(character.skills_manager.get_all_skills())
+		_tooltip_skill_set.func_get_position = func(): return atp_slot.get_atp_slot_ui().global_position
+		_tooltip_skill_set.show()
 	set_character_info(character, atp_slot)
 	if atp_slot != null:
 		AssaultsArrowsManager.show_arrows_by_atp_slot(atp_slot)
 
 
 func _on_character_deselected(_character: Character, _atp_slot: ATPSlot = null) -> void:
+	if not _tooltip_skill_set.is_fixed:
+		_tooltip_skill_set.hide()
 	if _atp_slot != null:
 		AssaultsArrowsManager.hide_arrows_by_atp_slot(_atp_slot)
 	if is_character_selected():

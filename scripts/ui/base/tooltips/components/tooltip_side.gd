@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends BoxContainer
 
 
 func set_side(side: Side) -> void:

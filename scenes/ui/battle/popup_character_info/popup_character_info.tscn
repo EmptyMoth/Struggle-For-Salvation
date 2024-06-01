@@ -43,6 +43,3 @@ mouse_filter = 2
 
 [node name="Main" parent="TooltipsPassiveDescription" instance=ExtResource("5_t4nrs")]
 visible = false
-
-[node name="Added" parent="TooltipsPassiveDescription" instance=ExtResource("5_t4nrs")]
-visible = false

@@ -15,6 +15,7 @@ focus_mode = 0
 mouse_filter = 1
 theme_override_colors/icon_normal_color = Color(0.784314, 0.784314, 0.784314, 1)
 theme_override_colors/icon_disabled_color = Color(0.607843, 0.607843, 0.607843, 1)
+toggle_mode = true
 action_mode = 0
 icon = ExtResource("2_fve3c")
 flat = true

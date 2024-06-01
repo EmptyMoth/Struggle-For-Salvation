@@ -18,6 +18,10 @@ extends PanelContainer
 @onready var _sp_resistance_view: ResistanceView = $Margin/VBox/HBox/VBox/MainContent/SP/Resistance
 
 
+func make_left() -> void:
+	_character_icon.flip_h = false
+
+
 func set_info(character: Character) -> void:
 	_character_icon.texture = character.stats.icon
 	_character_type_icon.texture.current_frame = character.stats.type

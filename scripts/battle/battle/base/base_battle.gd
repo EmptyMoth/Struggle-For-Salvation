@@ -114,8 +114,14 @@ func _add_popup_with_assault_info(character: Character, is_left: bool) -> void:
 
 
 func _init_of_teams() -> void:
-	var left_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/HBox/Left
-	var right_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/HBox/Right
+	var skills_tooltips: Control = $EnvironmentUI/SkillsTooltips
+	skills_tooltips.add_child(ally_team._team_ui._tooltip_skill_set)
+	ally_team._team_ui._tooltip_skill_set.hide()
+	skills_tooltips.add_child(enemy_team._team_ui._tooltip_skill_set)
+	enemy_team._team_ui._tooltip_skill_set.hide()
+	
+	var left_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/Left
+	var right_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/Right
 	ally_team.set_popup_with_character_info(
 			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
 	enemy_team.set_popup_with_character_info(

@@ -8,13 +8,17 @@ extends Control
 
 
 func _ready() -> void:
-	MainMenuButton.button_group.pressed.connect(_on_button_group_pressed)
+	var button_group: ButtonGroup = ButtonGroup.new()
+	button_group.pressed.connect(_on_button_group_pressed)
+	$Main/Menu/VBox/ExitButton.button_group = button_group
+	$Main/Menu/VBox/SettingsButton.button_group = button_group
+	var play_button: BaseSelectButton = $Main/Menu/PlayButton
+	play_button.button_group = button_group
+	play_button.set_pressed_no_signal(true)
 	_settings_menu.close_menu()
 	_set_last_location()
-	$Main/Menu/PlayButton.to_press()
-	($Main/Menu/PlayButton/Margin/Button as Button).set_pressed_no_signal(true)
 	await get_tree().process_frame
-	_on_button_group_pressed($Main/Menu/PlayButton/Margin/Button)
+	_on_button_group_pressed(play_button)
 
 
 func _set_last_location() -> void:

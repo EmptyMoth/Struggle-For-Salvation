@@ -3,38 +3,49 @@
 [ext_resource type="Script" path="res://scripts/ui/battle/tooltips/tooltip_skills_set.gd" id="1_0irym"]
 [ext_resource type="PackedScene" uid="uid://bvj0ehvi6km6g" path="res://scenes/ui/base/tooltips/components/h_tooltip_side.tscn" id="1_mql3a"]
 
-[node name="TooltipSkillsSet" type="MarginContainer"]
+[node name="TooltipSkillsSet" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_0irym")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
 offset_left = -24.0
 offset_top = -31.0
 offset_right = 24.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_constants/margin_bottom = 8
-script = ExtResource("1_0irym")
-metadata/_edit_group_ = true
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="Margin"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Margin" type="MarginContainer" parent="VBox"]
+[node name="Margin" type="MarginContainer" parent="Margin/VBox"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_right = 12
 
-[node name="Panel" type="PanelContainer" parent="VBox/Margin"]
+[node name="Panel" type="PanelContainer" parent="Margin/VBox/Margin"]
 layout_mode = 2
 
-[node name="Margin" type="MarginContainer" parent="VBox/Margin/Panel"]
+[node name="Margin" type="MarginContainer" parent="Margin/VBox/Margin/Panel"]
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 12
 theme_override_constants/margin_bottom = 8
 
-[node name="GridContainer" type="GridContainer" parent="VBox/Margin/Panel/Margin"]
+[node name="GridContainer" type="GridContainer" parent="Margin/VBox/Margin/Panel/Margin"]
 layout_mode = 2
 theme_override_constants/h_separation = 4
 theme_override_constants/v_separation = 4
 columns = 5
 
-[node name="HTooltipSide" parent="VBox" instance=ExtResource("1_mql3a")]
+[node name="HTooltipSide" parent="Margin/VBox" instance=ExtResource("1_mql3a")]
 layout_mode = 2
