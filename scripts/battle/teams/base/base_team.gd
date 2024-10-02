@@ -12,15 +12,15 @@ extends Node2D
 
 
 func _ready() -> void:
-	_team_ui.connect_signals(team_fraction)
 	for character_parameter: CharacterBattleParameters in _characters_parameters:
 		var character: Character = character_parameter.character.instantiate()
 		character.init(character_parameter.stats, self)
 		add_child(character)
 
 
-func set_popup_with_character_info(popup: PopupWithCharacterInfo) -> void:
-	_team_ui.popup_with_character_info = popup
+func set_team_ui(popup: PopupWithCharacterInfo, tooltip: TooltipSkillsSet) -> void:
+	_team_ui.set_team_ui(popup, tooltip)
+	_team_ui.connect_signals(team_fraction)
 
 
 func is_defeated() -> bool:

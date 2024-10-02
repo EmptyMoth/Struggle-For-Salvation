@@ -13,8 +13,8 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 focus_mode = 0
 mouse_filter = 1
-theme_override_colors/icon_normal_color = Color(0.784314, 0.784314, 0.784314, 1)
-theme_override_colors/icon_disabled_color = Color(0.607843, 0.607843, 0.607843, 1)
+theme_override_colors/icon_normal_color = Color(0.686275, 0.686275, 0.686275, 1)
+theme_override_colors/icon_disabled_color = Color(0.490196, 0.490196, 0.490196, 1)
 toggle_mode = true
 action_mode = 0
 icon = ExtResource("2_fve3c")
@@ -68,4 +68,4 @@ metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
-[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

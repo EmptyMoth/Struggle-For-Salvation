@@ -17,7 +17,7 @@ func _init(character: Character) -> void:
 
 
 func _ready() -> void:
-	click_area.modulate.a = 0
+	#click_area.modulate.a = 0
 	model.died.connect(_on_character_died)
 	model.taken_damage.connect(_on_character_taken_damage)
 	model.status_effects_manager.added_status_effect.connect(status_effects_container.add_status_effect)
@@ -25,7 +25,7 @@ func _ready() -> void:
 	click_area.mouse_exited.connect(_on_character_mouse_exited)
 	click_area.mouse_entered.connect(_on_character_mouse_entered)
 	damage_label_position.global_position = click_area.global_position + click_area.size / 2.0
-	atp_slots_manager_ui.position.y = -click_area.size.y - 10
+	atp_slots_manager_ui.position.y = -click_area.get_global_rect().size.y - 10
 	subcharacter_bars.set_healths(
 			model.health_manager.physical_health, model.health_manager.mental_health)
 	switch_motion(BattleEnums.CharactersMotions.DEFAULT)

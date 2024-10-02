@@ -1,0 +1,84 @@
+[gd_scene load_steps=5 format=3 uid="uid://v3ejefq63bci"]
+
+[ext_resource type="Texture2D" uid="uid://blp8fs15lcvrr" path="res://sprites/ui/battle/atp_slots/atp_slot_body.svg" id="1_ucoyi"]
+[ext_resource type="Script" path="res://scripts/ui/battle/atp_slots/base/abstract_atp_slot_body.gd" id="2_huitp"]
+[ext_resource type="Texture2D" uid="uid://4ftrx6fv841k" path="res://sprites/ui/battle/atp_slots/characters_type_icons/abstract_icon.svg" id="3_af4d7"]
+[ext_resource type="Texture2D" uid="uid://25rq4x1r1thf" path="res://sprites/ui/battle/atp_slots/atp_slot_border.svg" id="4_myswi"]
+
+[node name="AbstractATPSlotBody" type="TextureRect"]
+self_modulate = Color(0.0470588, 0.176471, 0.356863, 0.9)
+custom_minimum_size = Vector2(44, 51)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -22.0
+offset_top = -25.5
+offset_right = 22.0
+offset_bottom = 25.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(22, 25.5)
+mouse_filter = 2
+texture = ExtResource("1_ucoyi")
+expand_mode = 1
+script = ExtResource("2_huitp")
+_body_color = Color(0.0470588, 0.176471, 0.356863, 0.9)
+_accent_default_color = Color(0.137255, 0.32549, 0.588235, 1)
+_accent_selected_color = Color(0.270588, 0.482353, 0.776471, 1)
+
+[node name="SkillIcon" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(34, 34)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.5
+offset_top = -16.5
+offset_right = 17.5
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="."]
+self_modulate = Color(0.137255, 0.32549, 0.588235, 1)
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -18.0
+offset_top = -18.0
+offset_right = 18.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_af4d7")
+expand_mode = 1
+
+[node name="Border" type="TextureRect" parent="."]
+self_modulate = Color(0.137255, 0.32549, 0.588235, 1)
+custom_minimum_size = Vector2(44, 51)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -23.0
+offset_top = -26.5
+offset_right = 23.0
+offset_bottom = 26.5
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_myswi")
+expand_mode = 1

@@ -1,18 +1,20 @@
-[gd_resource type="Resource" script_class="CharacterStats" load_steps=6 format=3 uid="uid://dsojpcsk1qora"]
+[gd_resource type="Resource" script_class="CharacterStats" load_steps=9 format=3 uid="uid://dsojpcsk1qora"]
 
-[ext_resource type="Texture2D" uid="uid://p6g4saw8vjau" path="res://sprites/ui/battle/character_icons/eosi_icon.png" id="1_t41a2"]
+[ext_resource type="Texture2D" uid="uid://br2ifyxg4y5es" path="res://sprites/ui/battle/character_icons/eosi/panel_icon.png" id="1_p6tfk"]
 [ext_resource type="Script" path="res://scripts/battle/stats/characters/character_stats.gd" id="1_ynp4k"]
 [ext_resource type="Resource" uid="uid://hlvgkgtus0rv" path="res://resources/battle/skills/eosi/dance_of_blades.tres" id="2_qd057"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd" id="2_qm81n"]
 [ext_resource type="Resource" uid="uid://duocaa4dlgmy1" path="res://resources/battle/skills/eosi/hail_of_blows.tres" id="3_w2aop"]
 [ext_resource type="Resource" uid="uid://df0fx3a2ageo7" path="res://resources/battle/skills/eosi/sharp_cross.tres" id="4_5sq70"]
+[ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_ida1n"]
+[ext_resource type="Texture2D" uid="uid://bi7lkunikj43o" path="res://sprites/ui/battle/character_icons/eosi/speedline_icon.png" id="6_7hew5"]
 
 [resource]
 script = ExtResource("1_ynp4k")
 name = "Eosi"
 type = 0
-icon = ExtResource("1_t41a2")
-skills = Array[Resource("res://scripts/battle/stats/skills/skill_stats.gd")]([ExtResource("2_qd057"), ExtResource("3_w2aop"), ExtResource("4_5sq70")])
-passive_abilities = Array[Resource("res://scripts/battle/abilities/abilities/characters_passives/base/base_character_passive_ability.gd")]([])
+skills = Array[ExtResource("4_ida1n")]([ExtResource("2_qd057"), ExtResource("3_w2aop"), ExtResource("4_5sq70")])
+passive_abilities = Array[ExtResource("2_qm81n")]([])
 max_physical_health = 80
 max_mental_health = 40
 physical_resistance = 4
@@ -20,3 +22,5 @@ mental_resistance = 3
 atp_slots_count = 1
 min_speed = 2
 max_speed = 4
+panel_info_icon = ExtResource("1_p6tfk")
+speedline_icon = ExtResource("6_7hew5")

@@ -17,16 +17,17 @@ var is_selected: bool :
 
 @onready var _speed_value_label: Label = $SpeedValue
 @onready var _body: TextureRect = $Body
-@onready var _icon: TextureRect = $Icon
-@onready var _skill_icon: TextureRect = $SkillIcon
+#@onready var _icon: TextureRect = $Body/Icon
+#@onready var _skill_icon: TextureRect = $Body/SkillIcon
 
 
 func _ready() -> void:
+	model.installed_skill_changed.connect(_body._on_installed_skill_changed)
 	add_to_group(BattleGroups.ATP_SLOTS_GROUP)
 	add_to_group(BattleGroups.GROUPS_BY_ATP_SLOTS_FRACTIONS[model.wearer.fraction])
 	if model.wearer.is_ally:
 		button_mask = MOUSE_BUTTON_MASK_LEFT | MOUSE_BUTTON_MASK_RIGHT
-
+	
 
 func _draw() -> void:
 	match get_draw_mode():
@@ -44,14 +45,24 @@ func _draw() -> void:
 
 
 static func create_atp_slot_ui(character_type: BattleEnums.CharacterType) -> BaseATPSlotUI:
-	return _ATP_SLOT_UI_BY_CHARACTER_TYPE.get(character_type,
-			preload("res://scenes/ui/battle/atp_slots/base/abstract_atp_slot.tscn")).instantiate()
+	var type_name: String = BattleEnums.CharacterType.find_key(character_type).to_snake_case()
+	var path: String = "res://scenes/ui/battle/atp_slots/body/%s_atp_slot_body.tscn" % type_name
+	var body: TextureRect = load(path).instantiate()
+	body.name = "Body"
+	var atp_slot: BaseATPSlotUI = preload("res://scenes/ui/battle/atp_slots/base/abstract_atp_slot.tscn").instantiate()
+	atp_slot.add_child(body)
+	return atp_slot
+	#return _ATP_SLOT_UI_BY_CHARACTER_TYPE.get(character_type,
+			#preload("res://scenes/ui/battle/atp_slots/base/abstract_atp_slot.tscn")).instantiate()
 
 
 func set_model(atp_slot: ATPSlot) -> void:
 	model = atp_slot
 	model.speed_changed.connect(_on_speed_changed)
-	model.installed_skill_changed.connect(_on_installed_skill_changed)
+	#model.installed_skill_changed.connect(_on_installed_skill_changed)
+
+
+func get_image_copy() -> TextureRect: return _body.duplicate()
 
 
 func highlight(is_highlight: bool) -> void:
@@ -63,23 +74,18 @@ func deselected() -> void:
 
 
 func _make_normal() -> void:
-	modulate = Color.WHITE
-	if not is_selected:
-		_animate_scale(Vector2.ONE)
-
+	_body.to_default()
+	_animate_scale(Vector2.ONE)
 
 func _make_hover() -> void:
-	if is_selected:
-		_animate_scale(1.2 * Vector2.ONE)
-
+	_body.to_selected()
+	_animate_scale(1.2 * Vector2.ONE)
 
 func _make_pressed() -> void:
-	modulate = Color.ROYAL_BLUE
-
+	_body.to_selected()
 
 func _make_broken() -> void:
 	pass
-
 
 func _make_blocked() -> void:
 	pass
@@ -95,13 +101,13 @@ func _on_speed_changed(new_speed: int) -> void:
 	_speed_value_label.text = str(new_speed)
 
 
-func _on_installed_skill_changed(new_skill: Skill) -> void:
-	var is_skill: bool = new_skill != null
-	_icon.visible = not is_skill
-	_skill_icon.visible = is_skill
-	_body.modulate = Color.MIDNIGHT_BLUE if is_skill else Color.WHITE
-	if is_skill:
-		_skill_icon.texture = new_skill.stats.icon
+#func _on_installed_skill_changed(new_skill: Skill) -> void:
+	#var is_skill: bool = new_skill != null
+	#_icon.visible = not is_skill
+	#_skill_icon.visible = is_skill
+	##_body.self_modulate = Color.MIDNIGHT_BLUE if is_skill else Color.WHITE
+	#if is_skill:
+		#_skill_icon.texture = new_skill.stats.icon
 
 
 func _on_atp_pressed() -> void:

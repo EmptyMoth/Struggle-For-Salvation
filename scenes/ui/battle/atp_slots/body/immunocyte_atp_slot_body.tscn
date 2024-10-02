@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://by0ini1f1umtt"]
+
+[ext_resource type="PackedScene" uid="uid://v3ejefq63bci" path="res://scenes/ui/battle/atp_slots/body/base/abstract_atp_slot_body.tscn" id="1_yup58"]
+[ext_resource type="Texture2D" uid="uid://cvrsbwahnderb" path="res://sprites/ui/battle/atp_slots/characters_type_icons/immunocyte_icon.svg" id="2_w5n4g"]
+
+[node name="ImmunocyteATPSlotBody" instance=ExtResource("1_yup58")]
+
+[node name="Icon" parent="." index="1"]
+texture = ExtResource("2_w5n4g")

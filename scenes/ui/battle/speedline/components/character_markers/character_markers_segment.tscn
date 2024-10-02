@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwcpgyy3qoe54"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/speedline/components/character_markers/character_markers_segment.gd" id="1_ye3yq"]
+
+[node name="CharactersMarkersSegment" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+alignment = 1
+script = ExtResource("1_ye3yq")

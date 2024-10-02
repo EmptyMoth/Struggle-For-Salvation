@@ -49,13 +49,13 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnt4r"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1gbb"]
 bg_color = Color(1, 1, 1, 0.556863)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sn2ax"]
 bg_color = Color(0.905882, 0.776471, 0.196078, 0.768627)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jnt4r"]
 
 [node name="AbstractCharacter" type="Node2D"]
 y_sort_enabled = true
@@ -63,6 +63,7 @@ script = ExtResource("1_lshlj")
 
 [node name="Actions" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(1.5, 1.5)
 sprite_frames = SubResource("SpriteFrames_moquk")
 animation = &"evade"
 
@@ -77,10 +78,10 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_m1gbb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_jnt4r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_m1gbb")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_sn2ax")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_jnt4r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_m1gbb")
 
 [node name="ATPSlotsContainer" type="HBoxContainer" parent="."]
 anchors_preset = 7

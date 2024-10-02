@@ -2,6 +2,10 @@ class_name SkillSelectedButton
 extends Button
 
 
+signal skill_picked(self_skill_button: SkillSelectedButton)
+signal skill_selected(self_skill_button: SkillSelectedButton)
+signal skill_deselected(self_skill_button: SkillSelectedButton)
+
 var setted_skill: Skill = null
 
 @onready var _cooldown_icon: TextureRect = $CooldownIcon
@@ -27,10 +31,14 @@ func _set_cost(use_type: AbstractSkillUseType, skill_is_available: bool) -> void
 
 
 func _on_mouse_entered() -> void:
+	skill_selected.emit(self)
 	PlayerInputManager.skill_selected.emit(setted_skill)
 
 func _on_mouse_exited() -> void:
+	skill_deselected.emit(self)
 	PlayerInputManager.skill_deselected.emit(setted_skill)
 
-func _on_pressed() -> void:
-	PlayerInputManager.skill_picked.emit(setted_skill)
+func _on_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		skill_picked.emit(self)
+		PlayerInputManager.skill_picked.emit(setted_skill)

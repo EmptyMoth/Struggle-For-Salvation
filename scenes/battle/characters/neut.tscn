@@ -83,12 +83,12 @@ animations = [{
 stats = ExtResource("2_m54u4")
 
 [node name="Actions" parent="." index="0"]
-position = Vector2(0, -27)
 sprite_frames = SubResource("SpriteFrames_b725x")
 animation = &"stun"
+offset = Vector2(0, -26.6667)
 
 [node name="ClickArea" parent="Actions" index="0"]
-offset_left = -97.0
-offset_top = -81.0
-offset_right = -73.0
-offset_bottom = -17.0
+offset_left = -97.6667
+offset_top = -106.667
+offset_right = -73.6667
+offset_bottom = -42.6667

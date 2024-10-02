@@ -23,7 +23,7 @@ func make_left() -> void:
 
 
 func set_info(character: Character) -> void:
-	_character_icon.texture = character.stats.icon
+	_character_icon.texture = character.stats.panel_info_icon
 	_character_type_icon.texture.current_frame = character.stats.type
 	_character_name_label.text = character.stats.name
 	_range_speed_label.text = "%s-%s" % [character.stats.min_speed, character.stats.max_speed]

@@ -22,21 +22,21 @@ colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 0.94902, 0.0392157, 0
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_rhdo6"]
 gradient = SubResource("Gradient_1p2tm")
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_1iust"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_4uyy5"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2hwfh"]
 font = ExtResource("6_tvb8g")
 font_size = 32
 shadow_size = 0
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_q0p4f"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_q48dp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_omkec"]
 font = ExtResource("6_tvb8g")
 font_size = 24
 shadow_size = 0
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_rx2kv"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_bd2g5"]
 
 [sub_resource type="Gradient" id="Gradient_fd8p4"]
 offsets = PackedFloat32Array(0, 0.2, 0.704268, 0.72561, 0.75, 0.777439, 0.8, 1)
@@ -150,7 +150,7 @@ theme_override_constants/separation = 20
 
 [node name="PlayButton" parent="Main/Menu" instance=ExtResource("5_113xr")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_1iust")
+button_group = SubResource("ButtonGroup_4uyy5")
 text = "PLAY"
 _label_setting = SubResource("LabelSettings_2hwfh")
 
@@ -161,13 +161,13 @@ theme_override_constants/separation = 0
 
 [node name="SettingsButton" parent="Main/Menu/VBox" instance=ExtResource("5_113xr")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_q0p4f")
+button_group = SubResource("ButtonGroup_q48dp")
 text = "SETTINGS"
 _label_setting = SubResource("LabelSettings_omkec")
 
 [node name="ExitButton" parent="Main/Menu/VBox" instance=ExtResource("5_113xr")]
 layout_mode = 2
-button_group = SubResource("ButtonGroup_rx2kv")
+button_group = SubResource("ButtonGroup_bd2g5")
 text = "EXIT"
 _label_setting = SubResource("LabelSettings_omkec")
 

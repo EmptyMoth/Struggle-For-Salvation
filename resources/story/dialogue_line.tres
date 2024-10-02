@@ -1,8 +1,6 @@
-[gd_resource type="Resource" script_class="DialogueLine" load_steps=3 format=3 uid="uid://cei63xs65wumf"]
+[gd_resource type="Resource" script_class="DialogueLine" load_steps=2 format=3 uid="uid://cei63xs65wumf"]
 
 [ext_resource type="Script" path="res://scripts/story/dialogue_line.gd" id="1_1fp1p"]
-[ext_resource type="Resource" uid="uid://bwh3dsln3xu1n" path="res://resources/story/speaker.tres" id="2_m1vju"]
 
 [resource]
 script = ExtResource("1_1fp1p")
-speakers = [ExtResource("2_m1vju")]

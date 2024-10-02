@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=10 format=3 uid="uid://c6xjtr7yhfetg"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=12 format=3 uid="uid://c6xjtr7yhfetg"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_8ynrq"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd" id="1_m6npl"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_3yitl"]
 [ext_resource type="Texture2D" uid="uid://bh6k1p2mpdcmv" path="res://sprites/battle/skills/influenza_virus/skill_icon=8.svg" id="3_hbwrs"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd" id="3_xtc21"]
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_vaoku"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/quantity_data.gd" id="5_oolgp"]
 
@@ -12,7 +14,7 @@ dice_type = 0
 min_value = 3
 max_value = 4
 motion = 5
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+abilities = Array[ExtResource("3_xtc21")]([])
 
 [sub_resource type="Resource" id="Resource_s2kay"]
 script = ExtResource("1_8ynrq")
@@ -20,7 +22,7 @@ dice_type = 0
 min_value = 2
 max_value = 3
 motion = 5
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+abilities = Array[ExtResource("3_xtc21")]([])
 
 [sub_resource type="Resource" id="Resource_wr0uu"]
 script = ExtResource("2_3yitl")
@@ -38,5 +40,5 @@ use_type = SubResource("Resource_3vcy6")
 clash_type = SubResource("Resource_wr0uu")
 actions_dice_stats = Array[ExtResource("1_8ynrq")]([SubResource("Resource_rv4eh"), SubResource("Resource_s2kay")])
 is_unclashable = false
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+abilities = Array[ExtResource("1_m6npl")]([])
 priority = 0

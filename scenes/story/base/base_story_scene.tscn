@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://crnsr2tpplydd"]
 
-[ext_resource type="Script" path="res://scripts/story/base/base_story_scene.gd" id="1_kto3j"]
+[ext_resource type="Script" path="res://scripts/story/base/base_story_screen.gd" id="1_kto3j"]
 [ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="1_ocijd"]
 [ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story/characters/neut.png" id="2_srxm2"]
 

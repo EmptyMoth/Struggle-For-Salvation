@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxa1gi1jb2yeu"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/stage_selection_menu/elements/panel_stage_info.gd" id="1_pcicr"]
+
+[node name="PanelStageInfo" type="PanelContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_pcicr")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 32
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Title" type="Label" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Title"
+
+[node name="StoryReplay" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 16
+
+[node name="Story" type="Label" parent="Margin/VBox/StoryReplay"]
+layout_mode = 2
+text = "Story:"
+
+[node name="StoryButtons" type="HBoxContainer" parent="Margin/VBox/StoryReplay"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 8
+
+[node name="PreStoryButton" type="Button" parent="Margin/VBox/StoryReplay/StoryButtons"]
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+text = "Pre"
+
+[node name="DuringStoryButton" type="Button" parent="Margin/VBox/StoryReplay/StoryButtons"]
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+text = "During"
+
+[node name="PostStoryButton" type="Button" parent="Margin/VBox/StoryReplay/StoryButtons"]
+custom_minimum_size = Vector2(120, 48)
+layout_mode = 2
+text = "Post"
+
+[node name="StartButton" type="Button" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start"

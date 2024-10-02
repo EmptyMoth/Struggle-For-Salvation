@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://c23yj7go8l2kl"]
+
+[ext_resource type="PackedScene" uid="uid://v3ejefq63bci" path="res://scenes/ui/battle/atp_slots/body/base/abstract_atp_slot_body.tscn" id="1_1f46m"]
+[ext_resource type="Texture2D" uid="uid://ccrc5ov1gtpgu" path="res://sprites/ui/battle/atp_slots/characters_type_icons/virus_icon.svg" id="2_nr8aq"]
+
+[node name="VirusATPSlotBody" instance=ExtResource("1_1f46m")]
+_body_color = Color(0.0352941, 0.294118, 0.152941, 0.9)
+_accent_default_color = Color(0.109804, 0.454902, 0.219608, 1)
+_accent_selected_color = Color(0.192157, 0.698039, 0.423529, 1)
+
+[node name="Icon" parent="." index="1"]
+texture = ExtResource("2_nr8aq")

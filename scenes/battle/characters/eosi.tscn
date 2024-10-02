@@ -83,12 +83,12 @@ animations = [{
 stats = ExtResource("2_3nrms")
 
 [node name="Actions" parent="." index="0"]
-position = Vector2(0, -60)
 sprite_frames = SubResource("SpriteFrames_8dair")
-animation = &"block"
+animation = &"default"
+offset = Vector2(0, -60)
 
 [node name="ClickArea" parent="Actions" index="0"]
-offset_left = -107.5
-offset_top = -76.0
-offset_right = -68.5
-offset_bottom = -9.0
+offset_left = -104.167
+offset_top = -136.333
+offset_right = -73.1667
+offset_bottom = -69.3333

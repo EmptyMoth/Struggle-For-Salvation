@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://bhbdfqpv0pyu2"]
+
+[ext_resource type="PackedScene" uid="uid://dqbj7drtc0yub" path="res://scenes/ui/battle/speedline/components/speedline/speedline_segment.tscn" id="1_ivodp"]
+[ext_resource type="Script" path="res://scripts/ui/battle/speedline/components/speedline/speedline.gd" id="1_q64lx"]
+[ext_resource type="Texture2D" uid="uid://jtof7quhya5f" path="res://sprites/ui/battle/speedline/components/arrow/speedline_arrow.svg" id="2_g7xg5"]
+
+[sub_resource type="Gradient" id="Gradient_syndf"]
+colors = PackedColorArray(0.960784, 0.960784, 0.960784, 1, 0.392157, 0.392157, 0.392157, 1)
+
+[sub_resource type="Gradient" id="Gradient_jjs3w"]
+colors = PackedColorArray(0.960784, 0.960784, 0.960784, 0, 0.960784, 0.960784, 0.960784, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_x808q"]
+gradient = SubResource("Gradient_jjs3w")
+
+[node name="Speedline" type="HBoxContainer"]
+custom_minimum_size = Vector2(1685, 0)
+offset_right = 1685.0
+offset_bottom = 20.0
+theme_override_constants/separation = -2
+script = ExtResource("1_q64lx")
+_line_gradient = SubResource("Gradient_syndf")
+
+[node name="StartLine" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 2)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = SubResource("GradientTexture1D_x808q")
+expand_mode = 1
+
+[node name="StartSegment" parent="." instance=ExtResource("1_ivodp")]
+layout_mode = 2
+is_start_segment = true
+
+[node name="Arrow" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(40, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("2_g7xg5")
+expand_mode = 1

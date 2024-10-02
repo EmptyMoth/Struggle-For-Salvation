@@ -1,0 +1,69 @@
+[gd_scene load_steps=10 format=3 uid="uid://djh7tqga2qcpr"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/stage_selection_menu/stage_selection_menu.gd" id="1_b43qq"]
+[ext_resource type="PackedScene" uid="uid://codkaktjkfldq" path="res://scenes/ui/menu/stage_selection_menu/elements/stage_selection_button.tscn" id="2_qul8m"]
+[ext_resource type="Texture2D" uid="uid://7dp5bo0ax741" path="res://sprites/ui/menu/story_stages/vaccine_icon.png" id="3_mys4u"]
+[ext_resource type="Script" path="res://scripts/story_stages/base/character_info.gd" id="3_o7v7s"]
+[ext_resource type="Script" path="res://scripts/story_stages/base/story_stage_info.gd" id="4_0kir7"]
+[ext_resource type="Script" path="res://scripts/story_stages/base/wave_info.gd" id="5_cu0ag"]
+[ext_resource type="PackedScene" uid="uid://cxa1gi1jb2yeu" path="res://scenes/ui/menu/stage_selection_menu/elements/panel_stage_info.tscn" id="6_c8cwk"]
+
+[sub_resource type="Resource" id="Resource_uan1n"]
+script = ExtResource("5_cu0ag")
+enemies = Array[ExtResource("3_o7v7s")]([])
+
+[sub_resource type="Resource" id="Resource_cen0a"]
+script = ExtResource("4_0kir7")
+title = "Vacine"
+icon = ExtResource("3_mys4u")
+start_story = ""
+end_story = ""
+location = ""
+waves = Array[ExtResource("5_cu0ag")]([SubResource("Resource_uan1n")])
+max_count_allies = 0
+fixed_allies = Array[ExtResource("3_o7v7s")]([])
+
+[node name="StageSelectionMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_b43qq")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.0807833, 0.0807833, 0.0807833, 1)
+
+[node name="StoryStages" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="StageSelectionButton" parent="StoryStages" instance=ExtResource("2_qul8m")]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 0
+offset_left = 790.0
+offset_top = 389.0
+offset_right = 990.0
+offset_bottom = 589.0
+ignore_texture_size = true
+stretch_mode = 5
+story_stage_info = SubResource("Resource_cen0a")
+
+[node name="PanelStageInfo" parent="." instance=ExtResource("6_c8cwk")]
+visible = false
+layout_mode = 0
+mouse_filter = 2

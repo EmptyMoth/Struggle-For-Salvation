@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpgvkpa678l7w"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/speedline/speedline_panel.gd" id="1_coj50"]
+[ext_resource type="PackedScene" uid="uid://bhbdfqpv0pyu2" path="res://scenes/ui/battle/speedline/components/speedline/speedline.tscn" id="1_ctnkw"]
+[ext_resource type="PackedScene" uid="uid://cwcpgyy3qoe54" path="res://scenes/ui/battle/speedline/components/character_markers/character_markers_segment.tscn" id="2_idqa4"]
+
+[node name="SpeedlinePanel" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_coj50")
+
+[node name="Speedline" parent="." instance=ExtResource("1_ctnkw")]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 11
+
+[node name="CharactersMarkers" type="HBoxContainer" parent="Margin"]
+layout_mode = 2
+
+[node name="CharacterMarkersSegment" parent="Margin/CharactersMarkers" instance=ExtResource("2_idqa4")]
+layout_mode = 2

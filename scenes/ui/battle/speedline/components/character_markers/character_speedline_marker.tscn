@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://cykfymuwtr5r5"]
+
+[ext_resource type="Script" path="res://scripts/ui/battle/speedline/components/character_markers/character_speedline_marker.gd" id="1_4shoe"]
+[ext_resource type="Texture2D" uid="uid://dnoxatis0mawk" path="res://sprites/ui/base/selected_arrow/h_selected_arrow.svg" id="1_vrct4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0gn7"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+
+[sub_resource type="Gradient" id="Gradient_uwgcb"]
+colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 0.6, 0.0392157, 0.0392157, 0.0392157, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_8ofvq"]
+gradient = SubResource("Gradient_uwgcb")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_k76vv"]
+colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 1, 0.0392157, 0.0392157, 0.0392157, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yr2aa"]
+gradient = SubResource("Gradient_k76vv")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[node name="CharacterSpeedlineMarker" type="MarginContainer"]
+offset_right = 40.0
+offset_bottom = 102.0
+size_flags_horizontal = 6
+size_flags_vertical = 8
+mouse_filter = 2
+script = ExtResource("1_4shoe")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_bottom = 12
+
+[node name="Main" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 4
+
+[node name="Character" type="PanelContainer" parent="Margin/Main"]
+clip_children = 1
+custom_minimum_size = Vector2(40, 80)
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_i0gn7")
+
+[node name="Background" type="TextureRect" parent="Margin/Main/Character"]
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_8ofvq")
+expand_mode = 1
+
+[node name="Icon" type="TextureButton" parent="Margin/Main/Character"]
+layout_mode = 2
+toggle_mode = true
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Foreground" type="TextureRect" parent="Margin/Main/Character"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_yr2aa")
+expand_mode = 1
+
+[node name="Arrow" type="TextureRect" parent="Margin/Main"]
+custom_minimum_size = Vector2(12, 6)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+texture = ExtResource("1_vrct4")
+expand_mode = 1
+
+[node name="APTSlot" type="Control" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+
+[connection signal="draw" from="Margin/Main/Character/Icon" to="." method="_on_icon_draw"]
+[connection signal="mouse_entered" from="Margin/Main/Character/Icon" to="." method="_on_icon_mouse_entered"]
+[connection signal="mouse_exited" from="Margin/Main/Character/Icon" to="." method="_on_icon_mouse_exited"]
+[connection signal="toggled" from="Margin/Main/Character/Icon" to="." method="_on_icon_toggled"]

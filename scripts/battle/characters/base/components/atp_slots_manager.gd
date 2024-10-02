@@ -38,7 +38,8 @@ func get_atp_slots_available_for_targeting() -> Array[ATPSlot]:
 func roll_atp_slots() -> void:
 	var speeds: PackedInt32Array = _get_sorted_speed()
 	for i: int in atp_slots_count:
-		_atp_slots[i].speed = speeds[i]
+		var atp_slot: ATPSlot = _atp_slots[i]
+		atp_slot.speed = speeds[i] if not atp_slot.is_broken() else -1
 
 
 func change_atp_slots_count(new_count: int) -> void:

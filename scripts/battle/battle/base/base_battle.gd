@@ -22,6 +22,7 @@ var _battlefield: BaseBattlefield = null
 
 @onready var _assaults_arrows: Control = $EnvironmentUI/AssaultsArrows
 @onready var _popups_with_assault_info: Control = $EnvironmentUI/PopupsWithAssaultInfo
+@onready var _speedline_panel: SpeedlinePanel = $CanvasUI/PanelContainer/SpeedlinePanel
 
 
 func _ready() -> void:
@@ -113,19 +114,15 @@ func _add_popup_with_assault_info(character: Character, is_left: bool) -> void:
 	popup.set_info(character)
 
 
-func _init_of_teams() -> void:
-	var skills_tooltips: Control = $EnvironmentUI/SkillsTooltips
-	skills_tooltips.add_child(ally_team._team_ui._tooltip_skill_set)
-	ally_team._team_ui._tooltip_skill_set.hide()
-	skills_tooltips.add_child(enemy_team._team_ui._tooltip_skill_set)
-	enemy_team._team_ui._tooltip_skill_set.hide()
-	
+func _init_of_teams() -> void:	
 	var left_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/Left
 	var right_popup: PopupWithCharacterInfo = $CanvasUI/PopupsCharacterInfo/Right
-	ally_team.set_popup_with_character_info(
-			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup)
-	enemy_team.set_popup_with_character_info(
-			left_popup if not Settings.gameplay_settings.allies_placement.is_left else right_popup)
+	ally_team.set_team_ui(
+			left_popup if Settings.gameplay_settings.allies_placement.is_left else right_popup,
+			$CanvasUI/SkillsTooltips/Ally)
+	enemy_team.set_team_ui(
+			left_popup if not Settings.gameplay_settings.allies_placement.is_left else right_popup,
+			$CanvasUI/SkillsTooltips/Enemy)
 
 
 func _connect_signals() -> void:
@@ -143,6 +140,7 @@ func _connect_signals() -> void:
 
 func _on_preparation_started() -> void:
 	current_phase = BattleEnums.BattlePhase.PREPARATION
+	_speedline_panel.set_atp_slots_by_speed(PreparationPhaseManager.SORTED_ATP_SLOTS_BY_SPEED)
 
 func _on_combat_started() -> void:
 	current_phase = BattleEnums.BattlePhase.COMBAT

@@ -64,6 +64,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
+	view_model.character_motions.scale = Vector2.ONE * (1.5 + movement_model.position.z / 5.0)
 	position = movement_model.get_current_position_on_camera()
 
 

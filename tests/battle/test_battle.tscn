@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bg14wxg4vcb1k"]
+[gd_scene load_steps=40 format=3 uid="uid://bg14wxg4vcb1k"]
 
 [ext_resource type="Script" path="res://scripts/battle/battle/base/base_battle.gd" id="1_h0jpa"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formation_1.tscn" id="2_2fqru"]
@@ -12,12 +12,14 @@
 [ext_resource type="PackedScene" uid="uid://b244n3810ichk" path="res://scenes/battle/characters/eosi.tscn" id="8_xnua3"]
 [ext_resource type="Resource" uid="uid://p1xpow1ndxjp" path="res://resources/battle/characters/characters_stats/influenza_virus_stats.tres" id="9_ftf24"]
 [ext_resource type="PackedScene" uid="uid://b3ullwwdhlbfr" path="res://scenes/ui/menu/pause_menu/battle_pause_menu.tscn" id="9_lo4gb"]
+[ext_resource type="PackedScene" uid="uid://dco1gre55la5r" path="res://scenes/ui/battle/tooltips/tooltip_skills_set.tscn" id="12_5tjmk"]
 [ext_resource type="PackedScene" uid="uid://crs4e7g1xvbjw" path="res://scenes/ui/battle/popup_character_info/popup_character_info.tscn" id="12_xmr5s"]
 [ext_resource type="Script" path="res://scripts/battle/battle/base/battle_camera/battle_camera_controller.gd" id="15_1f2bs"]
 [ext_resource type="Texture2D" uid="uid://c12fkp8c47vb3" path="res://sprites/ui/menu/battle_end_screen/defeat_screen.png" id="15_abu68"]
 [ext_resource type="Texture2D" uid="uid://bwamkkupi333" path="res://sprites/ui/menu/battle_end_screen/victory_screen.png" id="16_et46r"]
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="17_imps8"]
 [ext_resource type="Script" path="res://scripts/ui/menu/base/buttons/button_switch_scene.gd" id="18_lf6cq"]
+[ext_resource type="PackedScene" uid="uid://dpgvkpa678l7w" path="res://scenes/ui/battle/speedline/speedline_panel.tscn" id="19_851n1"]
 [ext_resource type="Script" path="res://scripts/battle/battle/base/player_handlers/player_state_in_battle.gd" id="20_a4dcj"]
 [ext_resource type="Script" path="res://scripts/battle/battle/base/battle_phases_managers/preparation_phase/preparation_phase_manager.gd" id="21_b5vba"]
 [ext_resource type="Script" path="res://scripts/battle/battle/base/battle_phases_managers/preparation_phase/components/assault_log.gd" id="22_3li1f"]
@@ -55,6 +57,17 @@ script = ExtResource("5_afr7i")
 stats = ExtResource("9_ftf24")
 character = ExtResource("8_v0c3t")
 
+[sub_resource type="Gradient" id="Gradient_dviee"]
+colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 1, 0.0392157, 0.0392157, 0.0392157, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_a5jsm"]
+gradient = SubResource("Gradient_dviee")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cos4d"]
+texture = SubResource("GradientTexture2D_a5jsm")
+
 [node name="TestBattle" type="Node2D"]
 script = ExtResource("1_h0jpa")
 _packed_formation = ExtResource("2_2fqru")
@@ -90,8 +103,15 @@ layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 
-[node name="SkillsTooltips" type="Control" parent="EnvironmentUI"]
-layout_mode = 1
+[node name="PopupsWithAssaultInfo" type="Control" parent="EnvironmentUI"]
+layout_mode = 3
+anchors_preset = 0
+mouse_filter = 2
+
+[node name="CanvasUI" type="CanvasLayer" parent="."]
+
+[node name="SkillsTooltips" type="Control" parent="CanvasUI"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -99,12 +119,11 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PopupsWithAssaultInfo" type="Control" parent="EnvironmentUI"]
-layout_mode = 3
-anchors_preset = 0
-mouse_filter = 2
+[node name="Ally" parent="CanvasUI/SkillsTooltips" instance=ExtResource("12_5tjmk")]
+visible = false
 
-[node name="CanvasUI" type="CanvasLayer" parent="."]
+[node name="Enemy" parent="CanvasUI/SkillsTooltips" instance=ExtResource("12_5tjmk")]
+visible = false
 
 [node name="PopupsCharacterInfo" type="HBoxContainer" parent="CanvasUI"]
 anchors_preset = 10
@@ -175,6 +194,23 @@ text = "LEAVE"
 script = ExtResource("18_lf6cq")
 scene_path = "res://scenes/ui/menu/main_menu/main_menu.tscn"
 with_scene_transition = false
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasUI"]
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -90.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cos4d")
+
+[node name="SpeedlinePanel" parent="CanvasUI/PanelContainer" instance=ExtResource("19_851n1")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 70
 
 [node name="Managers" type="Node" parent="."]
 

@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="SkillStats" load_steps=11 format=3 uid="uid://df0fx3a2ageo7"]
+[gd_resource type="Resource" script_class="SkillStats" load_steps=13 format=3 uid="uid://df0fx3a2ageo7"]
 
 [ext_resource type="Script" path="res://scripts/battle/stats/actions_dice/action_dice_stats.gd" id="1_2ioym"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd" id="1_133sv"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_clash_type/individual_skill_type.gd" id="2_bnk74"]
 [ext_resource type="Texture2D" uid="uid://c7ubmu73rd27x" path="res://sprites/battle/skills/eosi/skill_icon=6.svg" id="3_ndxej"]
+[ext_resource type="Script" path="res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd" id="3_t0a4f"]
 [ext_resource type="Script" path="res://scripts/battle/stats/skills/skill_stats.gd" id="4_3csjo"]
 [ext_resource type="Script" path="res://scripts/battle/skills/base/components/skill_use_type/data/quantity_data.gd" id="5_jrrku"]
 
@@ -12,7 +14,7 @@ dice_type = 0
 min_value = 3
 max_value = 4
 motion = 5
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+abilities = Array[ExtResource("3_t0a4f")]([])
 
 [sub_resource type="Resource" id="Resource_tujq6"]
 script = ExtResource("1_2ioym")
@@ -20,7 +22,7 @@ dice_type = 0
 min_value = 4
 max_value = 4
 motion = 7
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+abilities = Array[ExtResource("3_t0a4f")]([])
 
 [sub_resource type="Resource" id="Resource_s2kay"]
 script = ExtResource("1_2ioym")
@@ -28,7 +30,7 @@ dice_type = 2
 min_value = 3
 max_value = 5
 motion = 3
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/actions_dice/base/base_action_dice_ability.gd")]([])
+abilities = Array[ExtResource("3_t0a4f")]([])
 
 [sub_resource type="Resource" id="Resource_wr0uu"]
 script = ExtResource("2_bnk74")
@@ -46,5 +48,5 @@ use_type = SubResource("Resource_hbpr0")
 clash_type = SubResource("Resource_wr0uu")
 actions_dice_stats = Array[ExtResource("1_2ioym")]([SubResource("Resource_1iqnc"), SubResource("Resource_tujq6"), SubResource("Resource_s2kay")])
 is_unclashable = false
-abilities = Array[Resource("res://scripts/battle/abilities/abilities/skills/base/base_skill_ability.gd")]([])
+abilities = Array[ExtResource("1_133sv")]([])
 priority = 0
