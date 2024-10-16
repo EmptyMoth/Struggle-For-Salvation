@@ -9,6 +9,13 @@ extends PanelContainer
 @export var _background: TextureRect
 @export var _selected_marker: VBoxContainer
 
+static var _sound: SoundCommon
+
+
+func _init() -> void:
+	if _sound == null:
+		_sound = SoundCommon.new(SoundEvents.UISoundID.SETTINGS_TAB_BUTTON)
+
 
 func _ready() -> void:
 	$Margin/Title.text = title
@@ -25,3 +32,7 @@ func _on_button_draw() -> void:
 	_selected_marker.visible = is_pressed
 	
 	create_tween().tween_property(_background, "modulate:a", 0 if draw_mode == _button.DRAW_NORMAL else 1, 0.25)
+
+
+func _on_button_pressed() -> void:
+	_sound.play()

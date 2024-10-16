@@ -29,3 +29,4 @@ size_flags_vertical = 8
 texture = SubResource("GradientTexture1D_mvuw4")
 
 [connection signal="item_selected" from="." to="." method="_on_option_button_item_selected"]
+[connection signal="toggled" from="." to="." method="_on_toggled"]

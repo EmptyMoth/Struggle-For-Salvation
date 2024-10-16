@@ -91,3 +91,4 @@ theme_override_font_sizes/font_size = 32
 text = "Title"
 
 [connection signal="draw" from="Button" to="." method="_on_button_draw"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

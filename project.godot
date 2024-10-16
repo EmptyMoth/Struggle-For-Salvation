@@ -17,8 +17,8 @@ General/is_memory_tracking_enabled=false
 "Software Format/sample_rate"=48000
 "Software Format/speaker_mode"=3
 "Software Format/raw_speaker_count"=0
-General/default_listener_count=1
-General/banks_path="res://"
+General/default_listener_count=3
+General/banks_path="res://audio/banks"
 General/should_load_by_name=false
 DSP/dsp_buffer_size=512
 DSP/dsp_buffer_count=4
@@ -40,6 +40,7 @@ buses/default_bus_layout="res://resources/global/bus_layout/default_bus_layout.t
 
 [autoload]
 
+FmodManager="*res://addons/fmod/FmodManager.gd"
 GlobalParameters="*res://scripts/global/base/global_parameters.gd"
 Settings="*res://scripts/global/settings/settings.gd"
 Saves="*res://scripts/global/saves.gd"
@@ -47,7 +48,6 @@ SceneTransition="*res://scripts/global/scene_transition/scene_transition.gd"
 CustomMouseCursor="*res://scripts/global/custom_mouse_cursor.gd"
 BattleSignals="*res://scripts/battle/base/battle_signals.gd"
 PlayerInputManager="*res://scripts/battle/battle/base/battle_phases_managers/preparation_phase/components/player_input_manager.gd"
-FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [debug]
 
@@ -60,7 +60,7 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/resizable=false
 window/stretch/mode="canvas_items"
-mouse_cursor/custom_image="res://sprites/global/custom_mouse_cursor/arrow.png"
+mouse_cursor/custom_image_hotspot=Vector2(5, 5)
 mouse_cursor/tooltip_position_offset=Vector2(20, 20)
 window/size/fullscreen=true
 
@@ -75,10 +75,11 @@ enabled=PackedStringArray("res://addons/fmod/plugin.cfg", "res://addons/smooth_s
 [file_customization]
 
 folder_colors={
-"res://resources/": "pink",
+"res://audio/": "teal",
+"res://resources/": "orange",
 "res://scenes/": "purple",
 "res://scripts/": "blue",
-"res://sprites/": "teal"
+"res://sprites/": "pink"
 }
 
 [filesystem]

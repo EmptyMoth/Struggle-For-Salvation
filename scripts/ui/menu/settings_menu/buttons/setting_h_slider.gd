@@ -44,10 +44,17 @@ signal value_changed(value: float)
 @export var _max_value_label: Label
 @export var _current_value_label: Label
 
+static var _sound: SoundPeriod
+
 var _is_dragged: bool = false
 var _max_distance: int
 var _step: float
 var _mouse_capture_point_x: int = 0
+
+
+func _init() -> void:
+	if _sound == null:
+		_sound = SoundPeriod.new(SoundEvents.UISoundID.SCROLL_BUTTON, 0.25)
 
 
 func _ready() -> void:
@@ -62,6 +69,8 @@ func _process(_delta: float) -> void:
 	
 	var new_mouse_position_x: int = get_local_mouse_position().x - _mouse_capture_point_x
 	var correct_position: int = clampi(new_mouse_position_x, 0, _max_distance)
+	if _grabber.position.x != correct_position:
+		_sound.play()
 	_grabber.position.x = correct_position
 	value = correct_position / _step
 
