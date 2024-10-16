@@ -1,37 +1,30 @@
 class_name SettingsMenu
-extends Control
+extends AbstractMenu
 
 
 signal menu_closed
 
-const _DROP_DURATION: float = 0.5
+@export var _settings_content: TabContainer
+@export var _first_tab_button: SettingTabButton
+@export var _hebrew_label: Label
 
-@onready var settings: TabContainer = $CenterContainer/VBoxContainer/Panel/Margin/VBox/VBox/Content
-#@onready var settings: TabContainer = $CenterContainer/VBoxContainer/MainMoving/Panel/Margin/VBox/VBox/Content
-#@onready var _main_moving: MovingContainer = $CenterContainer/VBoxContainer/MainMoving
-#@onready var _button_moving: MovingContainer = $CenterContainer/VBoxContainer/ButtonMoving
+
+func _ready() -> void:
+	_update_hebrew_text()
+	open_menu()
 
 
 func open_menu() -> void:
+	_first_tab_button._button.button_pressed = true
 	show()
-	#_display(true)
-
 
 func close_menu() -> void:
-	#_display(false)
 	hide()
 	menu_closed.emit()
 
 
-func _display(is_displayed: bool) -> void:
-	var tween: Tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)\
-		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
-	#_animate_drop(tween, _main_moving, is_displayed, _DROP_DURATION)
-	#_animate_drop(tween, _button_moving, is_displayed, _DROP_DURATION + 0.2)
-
-#func _animate_drop(tween: Tween, moving: MovingContainer, is_displayed: bool, duration: float) -> void:
-	#var to: float = 0.0 if is_displayed else -(10.0 + moving.get_child(0).size.y + get_viewport_rect().get_center().y)
-	#moving.move_container_from_current(tween, SIDE_TOP, to, duration)
+func _update_hebrew_text() -> void:
+	_hebrew_label.text = _settings_content.get_current_tab_control().hebrew_text
 
 
 func _on_save_and_exit_button_pressed() -> void:
@@ -40,9 +33,8 @@ func _on_save_and_exit_button_pressed() -> void:
 
 
 func _on_reset_button_pressed() -> void:
-	var current_settings: SettingsList = settings.get_current_tab_control() as SettingsList
+	var current_settings: SettingsList = _settings_content.get_current_tab_control()
 	current_settings.reset_settings()
 
 
-func _on_visible_notifier_screen_exited() -> void:
-	hide()
+func _on_content_tab_changed(_tab: int) -> void: _update_hebrew_text()

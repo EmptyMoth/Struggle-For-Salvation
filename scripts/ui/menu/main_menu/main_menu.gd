@@ -2,9 +2,10 @@ class_name MainMenu
 extends Control
 
 
-@onready var _settings_menu: SettingsMenu = $SettingsMenu
-@onready var _location_texture: TextureRect = $LastLocation/Location
-@onready var _main_shadow: ColorRect = $MainShadow
+@export_group("Connections")
+@export var _settings_menu: SettingsMenu
+@export var _location_texture: TextureRect
+@export var _main_shadow: ColorRect
 
 
 func _ready() -> void:
@@ -50,13 +51,11 @@ func _on_button_group_pressed(button: BaseButton) -> void:
 
 func _on_settings_menu_closed() -> void:
 	_main_shadow.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	await get_tree().create_tween().tween_property(_main_shadow, "modulate:a", 0, 0.3).finished
 
 
 func _on_settings_button_pressed() -> void:
 	_settings_menu.open_menu()
 	_main_shadow.mouse_filter = Control.MOUSE_FILTER_STOP
-	get_tree().create_tween().tween_property(_main_shadow, "modulate:a", 0.8, 0.3)
 
 
 func _on_exit_button_pressed() -> void:
@@ -64,4 +63,4 @@ func _on_exit_button_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	GlobalParameters.change_scene_with_transition("res://tests/battle/test_battle.tscn")
+	GlobalParameters.change_scene_with_transition("res://scenes/story/base/base_story_scene.tscn")

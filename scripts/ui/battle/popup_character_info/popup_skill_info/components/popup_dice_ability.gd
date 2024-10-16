@@ -1,12 +1,13 @@
 class_name PopupActionDiceAbility
-extends MovingContainer
+extends PanelContainer
 
 
 const _ROMAN_SYMBOLS: Array[String] = ["X", "IX", "V", "IV", "I"]
 const _ARABIC_VALUES: Array[int] = [10, 9, 5, 4, 1]
 
-@onready var _dice_number_label: Label = $Panel/Margin/HBox/DiceNumber
-@onready var _dice_ability_label: KeywordsRichTextLabel = $Panel/Margin/HBox/DiceAbility
+@export_group("Connections")
+@export var _dice_number_label: Label
+@export var _dice_ability_label: KeywordsRichTextLabel
 
 
 func set_info(action_dice: ActionDice, dice_index: int) -> void:

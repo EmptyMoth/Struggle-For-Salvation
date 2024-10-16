@@ -12,6 +12,7 @@ func set_characters_markers_on_battlefield(allies: Array[Character], enemies: Ar
 
 
 func set_formation(formation: BaseFormation, allies: Array[Character], enemies: Array[Character]) -> void:
+	formation.position = $Characters.position
 	add_child(formation)
 	_set_characters_default_positions(
 			formation, allies, formation.get_ally_position_by_index)

@@ -1,0 +1,214 @@
+[gd_scene load_steps=10 format=3 uid="uid://dqwdfgp4egrux"]
+
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blur/blur_background.gdshader" id="1_jb2qq"]
+[ext_resource type="PackedScene" uid="uid://dccvt6oohut1v" path="res://scenes/ui/menu/settings_menu/settings_list/settings_list.tscn" id="2_7wvdf"]
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/settings_menu.gd" id="2_ijff2"]
+[ext_resource type="PackedScene" uid="uid://dpoin2naf3s4c" path="res://scenes/ui/menu/settings_menu/buttons/setting_tab_button.tscn" id="2_q550t"]
+[ext_resource type="FontFile" uid="uid://xs81ra8gjjnv" path="res://fonts/alef/alef-regular.ttf" id="2_yxjc8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ie7q"]
+shader = ExtResource("1_jb2qq")
+shader_parameter/blur_force = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vtueq"]
+bg_color = Color(0.039, 0.039, 0.039, 0.95)
+anti_aliasing = false
+
+[sub_resource type="GDScript" id="GDScript_mmwur"]
+resource_name = "tabs_header"
+script/source = "extends HBoxContainer
+
+
+@export var tab_container: TabContainer
+
+var _button_group: ButtonGroup = ButtonGroup.new()
+
+
+func _ready() -> void:
+	_button_group.pressed.connect(_on_option_button_group_pressed)
+	for tab: Node in get_children():
+		tab.set_button_group(_button_group)
+
+
+func _on_option_button_group_pressed(button: BaseButton) -> void:
+	tab_container.current_tab =  button.get_parent().get_meta(\"content_index\")
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_erjt3"]
+
+[node name="SettingsScreen" type="Control" node_paths=PackedStringArray("_settings_content", "_first_tab_button", "_hebrew_label")]
+material = SubResource("ShaderMaterial_2ie7q")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ijff2")
+_settings_content = NodePath("Panel/Margin/VBox/Main/VBox/Content")
+_first_tab_button = NodePath("Panel/Margin/VBox/Header/Margin/HBox/Tabs/SettingTabButton")
+_hebrew_label = NodePath("Panel/HebrewText/Label")
+
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_vtueq")
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 100
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 120
+
+[node name="Header" type="VBoxContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Margin" type="MarginContainer" parent="Panel/Margin/VBox/Header"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 80
+
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin/VBox/Header/Margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Tabs" type="HBoxContainer" parent="Panel/Margin/VBox/Header/Margin/HBox" node_paths=PackedStringArray("tab_container")]
+z_index = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/separation = 120
+script = SubResource("GDScript_mmwur")
+tab_container = NodePath("../../../../Main/VBox/Content")
+
+[node name="SettingTabButton" parent="Panel/Margin/VBox/Header/Margin/HBox/Tabs" instance=ExtResource("2_q550t")]
+layout_mode = 2
+title = "VIDEO"
+metadata/content_index = 0
+
+[node name="SettingTabButton2" parent="Panel/Margin/VBox/Header/Margin/HBox/Tabs" instance=ExtResource("2_q550t")]
+layout_mode = 2
+title = "AUDIO"
+metadata/content_index = 1
+
+[node name="SettingTabButton3" parent="Panel/Margin/VBox/Header/Margin/HBox/Tabs" instance=ExtResource("2_q550t")]
+layout_mode = 2
+title = "GAME"
+metadata/content_index = 2
+
+[node name="SettingTabButton4" parent="Panel/Margin/VBox/Header/Margin/HBox/Tabs" instance=ExtResource("2_q550t")]
+visible = false
+layout_mode = 2
+title = "CUSTOM_RULES"
+metadata/content_index = 3
+
+[node name="BackButton" type="Button" parent="Panel/Margin/VBox/Header/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+alignment = 2
+
+[node name="SeparatorLine" type="ColorRect" parent="Panel/Margin/VBox/Header"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.266667, 0.294118, 0.345098, 1)
+
+[node name="Main" type="MarginContainer" parent="Panel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_right = 80
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin/VBox/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Content" type="TabContainer" parent="Panel/Margin/VBox/Main/VBox"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_erjt3")
+current_tab = 0
+clip_tabs = false
+tabs_visible = false
+
+[node name="GraphicsSettings" parent="Panel/Margin/VBox/Main/VBox/Content" instance=ExtResource("2_7wvdf")]
+layout_mode = 2
+hebrew_text = &"ראייה"
+metadata/_tab_index = 0
+
+[node name="AudioSettings" parent="Panel/Margin/VBox/Main/VBox/Content" instance=ExtResource("2_7wvdf")]
+visible = false
+layout_mode = 2
+settings_title = "Audio"
+hebrew_text = &"שמועה"
+metadata/_tab_index = 1
+
+[node name="GameplaySettings" parent="Panel/Margin/VBox/Main/VBox/Content" instance=ExtResource("2_7wvdf")]
+visible = false
+layout_mode = 2
+settings_title = "Gameplay"
+hebrew_text = &"חוש המישוש"
+metadata/_tab_index = 2
+
+[node name="CustomRulesSettings" parent="Panel/Margin/VBox/Main/VBox/Content" instance=ExtResource("2_7wvdf")]
+visible = false
+layout_mode = 2
+settings_title = "CustomRules"
+hebrew_text = &"חוש הריח"
+metadata/_tab_index = 3
+
+[node name="ResetSettingsButton" type="Button" parent="Panel/Margin/VBox/Main/VBox"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+focus_mode = 0
+theme_override_font_sizes/font_size = 32
+text = "RESET"
+
+[node name="HebrewText" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 70
+
+[node name="Label" type="Label" parent="Panel/HebrewText"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.122, 0.122, 0.122, 0.9)
+theme_override_fonts/font = ExtResource("2_yxjc8")
+theme_override_font_sizes/font_size = 256
+text = "ראייה"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[connection signal="pressed" from="Panel/Margin/VBox/Header/Margin/HBox/BackButton" to="." method="_on_save_and_exit_button_pressed"]
+[connection signal="tab_changed" from="Panel/Margin/VBox/Main/VBox/Content" to="." method="_on_content_tab_changed"]
+[connection signal="pressed" from="Panel/Margin/VBox/Main/VBox/ResetSettingsButton" to="." method="_on_reset_button_pressed"]

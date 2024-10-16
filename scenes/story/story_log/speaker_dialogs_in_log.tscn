@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://1650pk65fn1g"]
+
+[ext_resource type="FontFile" uid="uid://cbxlj0cqngcrb" path="res://fonts/tilda_sans/tilda-sans_medium.ttf" id="1_mcy1w"]
+[ext_resource type="Script" path="res://scripts/story/story_log/speaker_dialogs_in_log.gd" id="1_ymifi"]
+[ext_resource type="FontFile" uid="uid://ddej8n3b4q3j3" path="res://fonts/tilda_sans/tilda-sans_regular.ttf" id="2_l8xsg"]
+[ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="3_p63eu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xqmot"]
+font = ExtResource("1_mcy1w")
+font_size = 36
+font_color = Color(0.67451, 0.764706, 0.823529, 1)
+shadow_size = 0
+
+[node name="SpeakerDialogsInLog" type="HBoxContainer"]
+offset_right = 1560.0
+offset_bottom = 44.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+script = ExtResource("1_ymifi")
+
+[node name="SpeakerName" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "dawd"
+label_settings = SubResource("LabelSettings_xqmot")
+autowrap_mode = 3
+
+[node name="Dialogs" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.803922, 0.858824, 0.894118, 1)
+theme_override_fonts/normal_font = ExtResource("2_l8xsg")
+theme_override_font_sizes/normal_font_size = 36
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+script = ExtResource("3_p63eu")

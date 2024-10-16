@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d3op6bt1c5kon" path="res://sprites/ui/battle/actions_dice/icons/attack_dice.svg" id="3_1uy8v"]
 [ext_resource type="Texture2D" uid="uid://dr0pt8402f60q" path="res://sprites/ui/battle/actions_dice/icons/block_dice.svg" id="4_bopu6"]
 [ext_resource type="Texture2D" uid="uid://m3jljc3axjbi" path="res://sprites/ui/battle/actions_dice/icons/evade_dice.svg" id="5_p37dq"]
-[ext_resource type="Texture2D" uid="uid://yjndvqstn00w" path="res://sprites/ui/battle/actions_dice/icons/counte_dice.svg" id="6_5g0ul"]
+[ext_resource type="Texture2D" uid="uid://yjndvqstn00w" path="res://sprites/ui/battle/actions_dice/icons/counter_dice.svg" id="6_5g0ul"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_mga6w"]
 resource_local_to_scene = true

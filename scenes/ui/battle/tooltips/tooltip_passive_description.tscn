@@ -1,14 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4f51uja1l3am"]
+[gd_scene load_steps=7 format=3 uid="uid://d4f51uja1l3am"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/tooltips/tooltip_passive_description.gd" id="1_g8x0l"]
 [ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="1_r2ycl"]
+[ext_resource type="Theme" uid="uid://76cupshqsok6" path="res://resources/ui/battle/styles/popup_chatacter_info.tres" id="1_xoy1s"]
 [ext_resource type="PackedScene" uid="uid://cl2mmqestp6h8" path="res://scenes/ui/base/tooltips/components/v_tooltip_side.tscn" id="2_3bad7"]
 
-[node name="TooltipPassiveDescription" type="Control"]
+[sub_resource type="Gradient" id="Gradient_wao0o"]
+colors = PackedColorArray(0.008, 0.063, 0.145, 0, 0.008, 0.063, 0.145, 0.9)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ksnm6"]
+gradient = SubResource("Gradient_wao0o")
+
+[node name="TooltipPassiveDescription" type="Control" node_paths=PackedStringArray("_description")]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
+theme = ExtResource("1_xoy1s")
 script = ExtResource("1_g8x0l")
+_description = NodePath("Margin/HBox/Margin/Panel/Margin/Description")
 
 [node name="Margin" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -38,6 +47,23 @@ mouse_filter = 2
 theme_override_constants/margin_top = 12
 theme_override_constants/margin_bottom = 12
 
+[node name="BorderLeft" type="Control" parent="Margin/HBox/Margin"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="Margin/HBox/Margin/BorderLeft"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = SubResource("GradientTexture1D_ksnm6")
+expand_mode = 1
+
 [node name="Panel" type="PanelContainer" parent="Margin/HBox/Margin"]
 layout_mode = 2
 mouse_filter = 2
@@ -53,16 +79,32 @@ theme_override_constants/margin_bottom = 8
 [node name="Description" type="RichTextLabel" parent="Margin/HBox/Margin/Panel/Margin"]
 layout_mode = 2
 mouse_filter = 1
+theme_override_font_sizes/bold_italics_font_size = 16
+theme_override_font_sizes/italics_font_size = 16
+theme_override_font_sizes/mono_font_size = 16
 theme_override_font_sizes/normal_font_size = 16
 theme_override_font_sizes/bold_font_size = 16
-theme_override_font_sizes/italics_font_size = 16
-theme_override_font_sizes/bold_italics_font_size = 16
-theme_override_font_sizes/mono_font_size = 16
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 script = ExtResource("1_r2ycl")
+
+[node name="BorderRight" type="Control" parent="Margin/HBox/Margin"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="TextureRect" type="TextureRect" parent="Margin/HBox/Margin/BorderRight"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+size_flags_horizontal = 0
+texture = SubResource("GradientTexture1D_ksnm6")
+expand_mode = 1
+flip_h = true
 
 [node name="VTooltipSide" parent="Margin/HBox" instance=ExtResource("2_3bad7")]
 layout_mode = 2

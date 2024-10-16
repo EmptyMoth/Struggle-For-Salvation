@@ -1,11 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://dco1gre55la5r"]
+[gd_scene load_steps=6 format=3 uid="uid://dco1gre55la5r"]
 
 [ext_resource type="Script" path="res://scripts/ui/battle/tooltips/tooltip_skills_set.gd" id="1_0irym"]
+[ext_resource type="Theme" uid="uid://76cupshqsok6" path="res://resources/ui/battle/styles/popup_chatacter_info.tres" id="1_06v4l"]
 [ext_resource type="PackedScene" uid="uid://bvj0ehvi6km6g" path="res://scenes/ui/base/tooltips/components/h_tooltip_side.tscn" id="1_mql3a"]
+
+[sub_resource type="Gradient" id="Gradient_k4tb2"]
+colors = PackedColorArray(0.008, 0.063, 0.145, 0, 0.008, 0.063, 0.145, 0.9)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0mxxn"]
+gradient = SubResource("Gradient_k4tb2")
+fill_to = Vector2(0, 1)
 
 [node name="TooltipSkillsSet" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("1_06v4l")
 script = ExtResource("1_0irym")
 
 [node name="Margin" type="MarginContainer" parent="."]
@@ -30,6 +39,22 @@ theme_override_constants/separation = 0
 layout_mode = 2
 theme_override_constants/margin_left = 12
 theme_override_constants/margin_right = 12
+
+[node name="BorderTop" type="Control" parent="Margin/VBox/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="Margin/VBox/Margin/BorderTop"]
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = SubResource("GradientTexture2D_0mxxn")
+expand_mode = 1
 
 [node name="Panel" type="PanelContainer" parent="Margin/VBox/Margin"]
 layout_mode = 2

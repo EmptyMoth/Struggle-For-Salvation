@@ -9,7 +9,7 @@ const VIEWING_ANGLE_IS_COMBAT: float = -PI/18/2
 const MAX_POSITION: Vector3 = Vector3(0, 7.0, 9)
 const DEFAULT_POSITION: Vector3 = Vector3(0, 6.0, 9)
 const MIN_POSITION: Vector3 = Vector3(0, 5.5, 9)
-const END_ROTAION_POSITION: Vector3 = Vector3(0, 1.7, 9)
+const END_ROTAION_POSITION: Vector3 = Vector3(0, 2, 9)
 
 var _drag: bool = false
 var _cursor_lock_position: Vector2 = Vector2.ZERO
@@ -21,7 +21,7 @@ func player_moves_camera(event: InputEvent) -> void:
 		return
 	if Input.is_action_just_pressed("ui_player_move_camera"):
 		_cursor_lock_position = event.position
-	elif Input.is_action_pressed("ui_player_move_camera"):
+	elif Input.is_action_pressed("ui_player_move_camera") and event is InputEventMouseMotion:
 		_move_camera_by_player(event)
 
 

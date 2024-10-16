@@ -9,7 +9,7 @@ static var _LOCATIONS_DATA_BY_LOCAIONS: Array[LocationData] = [
 	LocationData.new("LYMPH", Color("337D36")),
 	LocationData.new("MUCOUS", Color("89EBAA")),
 	LocationData.new("EPIDERMIS", Color("7D51DC")),
-	LocationData.new("BOWEL", Color("32AADA")),
+	LocationData.new("BOWELS", Color("32AADA")),
 	LocationData.new("STOMACH", Color("ED942B")),
 ]
 

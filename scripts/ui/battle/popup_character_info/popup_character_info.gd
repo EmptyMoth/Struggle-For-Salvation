@@ -27,8 +27,9 @@ func set_info(character: Character, atp_slot: ATPSlot = null) -> void:
 	_base_info.set_info(character)
 	if character.stats.has_ability():
 		_base_info.button_hinding_passive.show()
-		_passive_info.show()
 		_passive_info.set_passives(character.stats.passive_abilities)
+		if not _base_info.button_hinding_passive.button_pressed:
+			_passive_info.show()
 	if atp_slot != null and atp_slot.assaulting_skill != null:
 		_selected_skill = atp_slot.assaulting_skill
 		_on_skill_button_selected(atp_slot.assaulting_skill)
@@ -41,7 +42,7 @@ func _prepare() -> void:
 	_skill_info.hide()
 	_passive_info.hide()
 	_base_info.button_hinding_passive.hide()
-	_base_info.button_hinding_passive.set_pressed_no_signal(false)
+	#_base_info.button_hinding_passive.set_pressed_no_signal(false)
 	_tooltip_passive_description.hide()
 	_tooltip_passive_description.is_fixed = false
 
@@ -57,6 +58,10 @@ func _make_left() -> void:
 
 
 func _on_button_hinding_passive_toggled(on_toggle: bool) -> void:
+	if not _passive_info.visible:
+		_passive_info.show()
+	await create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)\
+		.tween_property(_passive_info, "modulate:a", 1.0 if not on_toggle else 0.0, 0.2).finished
 	_passive_info.visible = not on_toggle
 	if on_toggle:
 		_passive_info.close()

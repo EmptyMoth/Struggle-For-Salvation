@@ -1,25 +1,32 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxjdomt54u7mn"]
+[gd_scene load_steps=5 format=3 uid="uid://dxjdomt54u7mn"]
 
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blur/blur_background.gdshader" id="1_10pwd"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_skill_info/components/popup_dice_ability.gd" id="1_cuns3"]
 [ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="2_2ascl"]
 
-[node name="PopupDiceAbility" type="MarginContainer"]
-offset_right = 500.0
-offset_bottom = 82.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywhva"]
+shader = ExtResource("1_10pwd")
+shader_parameter/blur_force = 1.0
+
+[node name="PopupDiceAbility" type="PanelContainer" node_paths=PackedStringArray("_dice_number_label", "_dice_ability_label")]
+material = SubResource("ShaderMaterial_ywhva")
+offset_right = 39.0
+offset_bottom = 37.0
 mouse_filter = 2
 script = ExtResource("1_cuns3")
+_dice_number_label = NodePath("Panel/Margin/HBox/DiceNumber")
+_dice_ability_label = NodePath("Panel/Margin/HBox/DiceAbility")
 
 [node name="Panel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(500, 0)
+auto_translate_mode = 2
 layout_mode = 2
 size_flags_vertical = 0
-auto_translate = false
 localize_numeral_system = false
 mouse_filter = 2
 
 [node name="Margin" type="MarginContainer" parent="Panel"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 mouse_filter = 2
 theme_override_constants/margin_left = 4
@@ -28,18 +35,18 @@ theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 8
 
 [node name="HBox" type="HBoxContainer" parent="Panel/Margin"]
+auto_translate_mode = 2
 layout_mode = 2
-auto_translate = false
 localize_numeral_system = false
 mouse_filter = 2
 theme_override_constants/separation = 8
 
 [node name="DiceNumber" type="Label" parent="Panel/Margin/HBox"]
+auto_translate_mode = 2
 custom_minimum_size = Vector2(22, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-auto_translate = false
 localize_numeral_system = false
 horizontal_alignment = 2
 

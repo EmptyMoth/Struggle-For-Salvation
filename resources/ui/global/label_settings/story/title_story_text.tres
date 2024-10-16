@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://rufhc24vlkyw"]
+
+[ext_resource type="FontFile" uid="uid://cbxlj0cqngcrb" path="res://fonts/tilda_sans/tilda-sans_medium.ttf" id="1_0mpw3"]
+
+[resource]
+font = ExtResource("1_0mpw3")
+font_size = 40
+font_color = Color(0.729412, 0.870588, 0.968627, 1)
+shadow_size = 0

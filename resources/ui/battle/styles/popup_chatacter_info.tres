@@ -1,0 +1,16 @@
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://76cupshqsok6"]
+
+[sub_resource type="Gradient" id="Gradient_xo6ue"]
+colors = PackedColorArray(0.008, 0.063, 0.145, 0.3, 0.008, 0.063, 0.145, 0.9)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rhbnt"]
+gradient = SubResource("Gradient_xo6ue")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_s2k3w"]
+texture = SubResource("GradientTexture2D_rhbnt")
+
+[resource]
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_s2k3w")

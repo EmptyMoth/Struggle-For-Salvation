@@ -1,0 +1,135 @@
+[gd_scene load_steps=8 format=3 uid="uid://d2jl00ivg5jnc"]
+
+[ext_resource type="Texture2D" uid="uid://cuf0ispqwfbbw" path="res://sprites/ui/menu/buttons/slider/grabber_border.svg" id="1_fonj2"]
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/buttons/setting_h_slider.gd" id="1_lbt7d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bil67"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gy2v"]
+bg_color = Color(0.266667, 0.294118, 0.345098, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n8y12"]
+bg_color = Color(0.862745, 0.862745, 0.862745, 1)
+anti_aliasing = false
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4ex0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l674o"]
+content_margin_left = 4.0
+content_margin_right = 4.0
+bg_color = Color(0.960784, 0.960784, 0.960784, 1)
+anti_aliasing = false
+
+[node name="SettingHSlider" type="PanelContainer" node_paths=PackedStringArray("_progress_bar", "_grabber", "_max_value_label", "_current_value_label")]
+custom_minimum_size = Vector2(600, 0)
+offset_right = 600.0
+offset_bottom = 20.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_bil67")
+script = ExtResource("1_lbt7d")
+_progress_bar = NodePath("Margin/ProgressBar")
+_grabber = NodePath("MovePlace/Grabber")
+_max_value_label = NodePath("MovePlace/Grabber/HBox/Values/HBox/MaxValue")
+_current_value_label = NodePath("MovePlace/Grabber/HBox/Values/HBox/CurrentValue")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_right = 3
+
+[node name="ProgressBar" type="ProgressBar" parent="Margin"]
+custom_minimum_size = Vector2(0, 3)
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_1gy2v")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n8y12")
+step = 1.0
+value = 50.0
+rounded = true
+show_percentage = false
+
+[node name="MovePlace" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Grabber" type="PanelContainer" parent="MovePlace"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_right = -224.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_g4ex0")
+
+[node name="HBox" type="HBoxContainer" parent="MovePlace/Grabber"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MovePlace/Grabber/HBox"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_fonj2")
+expand_mode = 1
+
+[node name="Values" type="PanelContainer" parent="MovePlace/Grabber/HBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_l674o")
+
+[node name="HBox" type="HBoxContainer" parent="MovePlace/Grabber/HBox/Values"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="CurrentValue" type="Label" parent="MovePlace/Grabber/HBox/Values/HBox"]
+custom_minimum_size = Vector2(26, 0)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.0392157, 0.0392157, 0.0392157, 1)
+theme_override_font_sizes/font_size = 16
+text = "70"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Slash" type="Label" parent="MovePlace/Grabber/HBox/Values/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.266667, 0.294118, 0.345098, 1)
+theme_override_font_sizes/font_size = 12
+text = " / "
+
+[node name="MaxValue" type="Label" parent="MovePlace/Grabber/HBox/Values/HBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.266667, 0.294118, 0.345098, 1)
+theme_override_font_sizes/font_size = 16
+text = "100"
+horizontal_alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MovePlace/Grabber/HBox"]
+custom_minimum_size = Vector2(3, 0)
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("1_fonj2")
+expand_mode = 1
+flip_h = true
+
+[node name="Button" type="Button" parent="MovePlace/Grabber"]
+layout_mode = 2
+focus_mode = 0
+keep_pressed_outside = true
+
+[connection signal="sort_children" from="." to="." method="_on_sort_children"]
+[connection signal="button_down" from="MovePlace/Grabber/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="MovePlace/Grabber/Button" to="." method="_on_button_button_up"]

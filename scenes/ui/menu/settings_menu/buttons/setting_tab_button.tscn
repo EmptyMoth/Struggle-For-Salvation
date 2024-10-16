@@ -1,0 +1,93 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpoin2naf3s4c"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/buttons/setting_tab_button.gd" id="1_w4ppc"]
+[ext_resource type="Texture2D" uid="uid://bhp4f1d7insko" path="res://sprites/ui/base/buttons/selected_background_2/h_button_background.png" id="1_xbyhr"]
+[ext_resource type="Texture2D" uid="uid://dnoxatis0mawk" path="res://sprites/ui/base/selected_arrow/h_selected_arrow.svg" id="2_mf6ux"]
+[ext_resource type="FontFile" uid="uid://5w5bb2acc6pw" path="res://fonts/jost/jost-500-medium.ttf" id="3_yvovx"]
+
+[sub_resource type="Gradient" id="Gradient_us4b1"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.266667, 0.294118, 0.345098, 1, 0.960784, 0.960784, 0.960784, 1, 0.266667, 0.294118, 0.345098, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_40gn8"]
+gradient = SubResource("Gradient_us4b1")
+
+[node name="SettingTabButton" type="PanelContainer" node_paths=PackedStringArray("_button", "_background", "_selected_marker")]
+custom_minimum_size = Vector2(0, 54)
+offset_right = 139.0
+offset_bottom = 55.0
+script = ExtResource("1_w4ppc")
+_button = NodePath("Button")
+_background = NodePath("Control/Background")
+_selected_marker = NodePath("Control/SelectedMarker")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+focus_mode = 0
+theme_override_colors/font_pressed_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_font_sizes/font_size = 32
+toggle_mode = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+mouse_filter = 2
+
+[node name="Background" type="TextureRect" parent="Control"]
+modulate = Color(0.961, 0.961, 0.961, 0)
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -40.0
+offset_right = 6.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("1_xbyhr")
+expand_mode = 1
+
+[node name="SelectedMarker" type="VBoxContainer" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 8.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="Line" type="TextureRect" parent="Control/SelectedMarker"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_40gn8")
+expand_mode = 1
+
+[node name="Arrow" type="TextureRect" parent="Control/SelectedMarker"]
+custom_minimum_size = Vector2(12, 6)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+mouse_filter = 2
+texture = ExtResource("2_mf6ux")
+expand_mode = 1
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 8
+
+[node name="Title" type="Label" parent="Margin"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_yvovx")
+theme_override_font_sizes/font_size = 32
+text = "Title"
+
+[connection signal="draw" from="Button" to="." method="_on_button_draw"]

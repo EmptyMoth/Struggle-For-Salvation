@@ -1,32 +1,34 @@
 keys,en,ru
 CONTINUE,Continue,Продолжить
 NEW_GAME,New Game,Новая Игра
+PLAY,Play,Ирать
 SETTINGS,Settings,Настройки
 EXIT,Exit,Выйти
 RESET,Reset,Сбросить
 CLOSE,Close,Закрыть
-RESUME,Resum,Возобновить
-RESTART,Restart,Перезапустить
+RESUME,Resume,Продолжить
+RESTART,Restart,Рестарт
 MANUAL,Manual,Мануал
 LEAVE,Leave,Покинуть
 BACK,Back,Назад
 NEXT,Next,Далее
-GRAPHICS,Graphics,Графика
-GAMEPLAY,Gameplay,Геймплей
+VIDEO,Video,Видео
+GAME,Game,Игра
 AUDIO,Audio,Аудио
 CUSTOM_RULES,Own Rules,Свои Правила
 GRAPHICS_QUALITY,Graphics Quality,Качество Графики
 RESOLUTION,Resolution,Разрешение
 DISPLAY,Display,Дисплей
-MOUSE_LOCKED,Mouse Locked,Зафиксировать Мышь
-LIMIT_MAX_FPS,Limit Max FPS,Лимит Макс. FPS
+MOUSE_LOCKED,Mouse Locked in Window,Зафиксировать Мышь в Окне
+LIMIT_MAX_FPS,Max FPS,Макc. FPS
+VSYNC,VSync,VSync
 LANGUAGE,Language,Язык
 ALLIES_PLACEMENT,Allies Place,Размещение Союзников
 ACTION_DICE_TALLY,Action Dice Tally,Подсчет Кубиков Действий
-GENERAL_VOLUME,General Volume,Общая Громкость
-MUSIC_VOLUM,Music Volume,Музыка
-SOUND_VOLUME,Sound Volume,Звук
-PLAY_MUSIC_ON_PAUSE,Play Music on Pause,Слушать Музыку при Паузе
+GENERAL_VOLUME,General,Общий
+MUSIC_VOLUME,Music,Музыка
+SOUND_VOLUME,Sound,Звук
+PLAY_MUSIC_ON_PAUSE,Play Music on Pause,Играть Музыку при Паузе
 ENEMY_HEALTH,Enemy Health,Здоровье Противников
 ENEMY_DAMAGE,Enemy Damage,Урон Противников
 LOW,Low,Низкое
@@ -46,7 +48,7 @@ MOUSE_LOCKED_TOOLTIP,Fixes the mouse cursor inside the game window,Фиксир�
 LIMIT_MAX_FPS_TOOLTIP,"Maximum number of FPS.
 Impacts productivity!","Максимальное количество кадров в секунду.
 Влияет на производительность!"
-VSYNC_TOOLTIP_TOOLTIP,"VSync. Frame rate is limited by the refresh rate of the monitor.
+VSYNC_TOOLTIP,"VSync. Frame rate is limited by the refresh rate of the monitor.
 Impacts productivity!","Вертикальная синхронизация. Частота кадров ограничена частотой обновления монитора.
 Влияет на производительность!"
 LANGUAGE_TOOLTIP,,
@@ -58,7 +60,7 @@ The final value may be different from the one shown!","""При просмотр
 Итоговое значение может отличаться от показанного!"""
 CUSTOM_RULES_TOOLTIP,Enable Your Own Rules. Allows you to customize the game to suit yourself.,Включить Свои Правила. Позволяет настроить игру под себя.
 GENERAL_VOLUME_TOOLTIP,,
-MUSIC_VOLUM_TOOLTIP,,
+MUSIC_VOLUME_TOOLTIP,,
 SOUND_VOLUME_TOOLTIP,,
 PLAY_MUSIC_ON_PAUSE_TOOLTIP,Selects whether or not music will play during a pause.,Определяет будет ли играть музыка во время паузы.
 ENEMY_HEALTH_TOOLTIP,Changes the max health of enemies by the specified multiplier.,Изменяет максимальное здоровье врагов на указанный множитель.

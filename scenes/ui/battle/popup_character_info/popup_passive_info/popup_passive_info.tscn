@@ -1,15 +1,34 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv7ppl4r46kg0"]
+[gd_scene load_steps=5 format=3 uid="uid://dv7ppl4r46kg0"]
 
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blur/blur_background.gdshader" id="1_imjw3"]
 [ext_resource type="Script" path="res://scripts/ui/battle/popup_character_info/popup_passive_info/popup_passive_info.gd" id="1_jiwgm"]
+[ext_resource type="PackedScene" uid="uid://d0r0fixatd7fa" path="res://scenes/ui/battle/popup_character_info/components/popup_hebrew_text.tscn" id="2_n2fil"]
 
-[node name="PopupPassiveInfo" type="PanelContainer"]
-custom_minimum_size = Vector2(360, 0)
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywhva"]
+shader = ExtResource("1_imjw3")
+shader_parameter/blur_force = 1.0
+
+[node name="PopupPassiveInfo" type="PanelContainer" node_paths=PackedStringArray("_passive_abilities_list")]
+material = SubResource("ShaderMaterial_ywhva")
+offset_right = 360.0
+offset_bottom = 54.0
 mouse_filter = 2
 script = ExtResource("1_jiwgm")
+_passive_abilities_list = NodePath("Panel/Margin/HBox/VBox")
 
-[node name="Margin" type="MarginContainer" parent="."]
+[node name="Panel" type="PanelContainer" parent="."]
+layout_mode = 2
+
+[node name="PopupHebrewText" parent="Panel" instance=ExtResource("2_n2fil")]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_bottom = -55
+
+[node name="Label" parent="Panel/PopupHebrewText" index="0"]
+text = "נשמה"
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 20
@@ -17,13 +36,15 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 4
 theme_override_constants/margin_bottom = 12
 
-[node name="HBox" type="HBoxContainer" parent="Margin"]
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin"]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 7
 
-[node name="VBox" type="VBoxContainer" parent="Margin/HBox"]
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin/HBox"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_constants/separation = 0
+
+[editable path="Panel/PopupHebrewText"]

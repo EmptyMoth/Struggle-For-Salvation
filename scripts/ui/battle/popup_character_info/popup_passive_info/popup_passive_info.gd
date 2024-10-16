@@ -9,7 +9,7 @@ var _picked_passive_button: TitlePassiveButton = null
 var _passive_tooltip: TooltipPassiveDescription
 var _is_left: bool
 
-@onready var _passive_abilities_list: VBoxContainer = $Margin/HBox/VBox
+@export var _passive_abilities_list: VBoxContainer
 
 
 func init(passive_tooltip: TooltipPassiveDescription, is_left: bool) -> void:

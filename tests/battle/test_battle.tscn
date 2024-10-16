@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/battle/battle/base/base_battle.gd" id="1_h0jpa"]
 [ext_resource type="PackedScene" uid="uid://cglj1n7bhab8t" path="res://scenes/battle/formations/formation_1.tscn" id="2_2fqru"]
-[ext_resource type="PackedScene" uid="uid://cc2nij35uexsb" path="res://scenes/battle/locations/locations/test_location/test_location.tscn" id="3_8uel4"]
+[ext_resource type="PackedScene" uid="uid://dmcg2c4ibxph7" path="res://scenes/battle/locations/trachea/trachea.tscn" id="3_golht"]
 [ext_resource type="Script" path="res://scripts/battle/teams/base/base_team.gd" id="4_c0bj1"]
 [ext_resource type="Script" path="res://scripts/battle/characters/base/character_battle_parameters.gd" id="5_afr7i"]
 [ext_resource type="PackedScene" uid="uid://ba1j5haj6xpwc" path="res://scenes/battle/characters/neut.tscn" id="5_c4b6s"]
@@ -71,7 +71,7 @@ texture = SubResource("GradientTexture2D_a5jsm")
 [node name="TestBattle" type="Node2D"]
 script = ExtResource("1_h0jpa")
 _packed_formation = ExtResource("2_2fqru")
-_packed_location = ExtResource("3_8uel4")
+_packed_location = ExtResource("3_golht")
 
 [node name="Teams" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -109,6 +109,7 @@ anchors_preset = 0
 mouse_filter = 2
 
 [node name="CanvasUI" type="CanvasLayer" parent="."]
+layer = 100
 
 [node name="SkillsTooltips" type="Control" parent="CanvasUI"]
 layout_mode = 3
@@ -141,6 +142,23 @@ is_left = true
 [node name="Right" parent="CanvasUI/PopupsCharacterInfo" instance=ExtResource("12_xmr5s")]
 layout_mode = 2
 size_flags_horizontal = 10
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasUI"]
+custom_minimum_size = Vector2(0, 200)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_cos4d")
+
+[node name="SpeedlinePanel" parent="CanvasUI/PanelContainer" instance=ExtResource("19_851n1")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/margin_bottom = 70
 
 [node name="BattlePauseMenu" parent="CanvasUI" instance=ExtResource("9_lo4gb")]
 visible = false
@@ -194,23 +212,6 @@ text = "LEAVE"
 script = ExtResource("18_lf6cq")
 scene_path = "res://scenes/ui/menu/main_menu/main_menu.tscn"
 with_scene_transition = false
-
-[node name="PanelContainer" type="PanelContainer" parent="CanvasUI"]
-custom_minimum_size = Vector2(0, 200)
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -90.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxTexture_cos4d")
-
-[node name="SpeedlinePanel" parent="CanvasUI/PanelContainer" instance=ExtResource("19_851n1")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_constants/margin_bottom = 70
 
 [node name="Managers" type="Node" parent="."]
 

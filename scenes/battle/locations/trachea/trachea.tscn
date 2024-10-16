@@ -1,0 +1,57 @@
+[gd_scene load_steps=5 format=3 uid="uid://dmcg2c4ibxph7"]
+
+[ext_resource type="PackedScene" uid="uid://dg0cyfqq0hx38" path="res://scenes/battle/locations/locations/base/base_location.tscn" id="1_x24ma"]
+[ext_resource type="Texture2D" uid="uid://beackihwhbvlk" path="res://sprites/battle/locations/trachea/background.png" id="2_b7vuo"]
+[ext_resource type="PackedScene" uid="uid://k003ko6y1he1" path="res://scenes/battle/locations/trachea/trachea_battlefield.tscn" id="3_fmxaf"]
+[ext_resource type="Texture2D" uid="uid://fhougs8ukgfl" path="res://sprites/battle/locations/trachea/foreground.png" id="4_ioqao"]
+
+[node name="Trachea" instance=ExtResource("1_x24ma")]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." index="0"]
+follow_viewport_enabled = true
+follow_viewport_scale = 0.51
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground" index="0"]
+scroll_offset = Vector2(960, 270)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D" index="0"]
+texture = ExtResource("2_b7vuo")
+
+[node name="Battlefield" parent="." index="2"]
+custom_minimum_size = Vector2(2880, 1200)
+offset_left = -480.0
+offset_top = -60.0
+offset_right = 2400.0
+offset_bottom = 1140.0
+
+[node name="BattlefieldViewport" parent="Battlefield" index="0"]
+size = Vector2i(2880, 1200)
+size_2d_override = Vector2i(1920, 1080)
+
+[node name="TracheaBattlefield" parent="Battlefield/BattlefieldViewport" index="0" instance=ExtResource("3_fmxaf")]
+
+[node name="Camera" parent="." index="3"]
+max_shift = Vector2(150, 0)
+
+[node name="DarkeningScreen" parent="." index="4"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.0
+offset_left = -480.0
+offset_top = -270.0
+offset_right = 2400.0
+offset_bottom = 1350.0
+grow_vertical = 1
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="." index="5"]
+layer = 10
+follow_viewport_enabled = true
+follow_viewport_scale = 1.3
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxForeground" index="0"]
+scale = Vector2(0.427, 0.427)
+scroll_offset = Vector2(960, 540)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/Parallax2D" index="0"]
+texture = ExtResource("4_ioqao")

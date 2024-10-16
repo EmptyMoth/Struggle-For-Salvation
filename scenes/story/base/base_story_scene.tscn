@@ -1,103 +1,372 @@
-[gd_scene load_steps=4 format=3 uid="uid://crnsr2tpplydd"]
+[gd_scene load_steps=42 format=3 uid="uid://crnsr2tpplydd"]
 
 [ext_resource type="Script" path="res://scripts/story/base/base_story_screen.gd" id="1_kto3j"]
 [ext_resource type="Script" path="res://scripts/ui/base/keywords_rich_text_label.gd" id="1_ocijd"]
+[ext_resource type="Script" path="res://scripts/story/visual_scenario/dialogs/base_dialog.gd" id="2_dvjb5"]
 [ext_resource type="Texture2D" uid="uid://4jxxfu2olypl" path="res://sprites/ui/story/characters/neut.png" id="2_srxm2"]
+[ext_resource type="Script" path="res://scripts/story/visual_scenario/visual_scenario.gd" id="3_78d1m"]
+[ext_resource type="Script" path="res://scripts/story/visual_scenario/speaking_characters/speaker.gd" id="3_t2cfp"]
+[ext_resource type="Script" path="res://scripts/story/visual_scenario/speaking_characters/speaking_character.gd" id="4_kawc2"]
+[ext_resource type="Texture2D" uid="uid://c3dqnbcsh32ff" path="res://tests/story_screen.png" id="5_mrfjd"]
+[ext_resource type="Texture2D" uid="uid://bop8bhpl8dkjf" path="res://sprites/ui/story/characters/eosi.png" id="6_b65ay"]
+[ext_resource type="Script" path="res://scripts/story/visual_scenario/locations/story_location.gd" id="6_r440j"]
+[ext_resource type="Texture2D" uid="uid://ddspay8n0iq51" path="res://sprites/ui/base/ui_backgrounds/dark_gradient/dark_gradient_background.svg" id="9_4mfvo"]
+[ext_resource type="LabelSettings" uid="uid://rufhc24vlkyw" path="res://resources/ui/global/label_settings/story/title_story_text.tres" id="10_gpn8x"]
+[ext_resource type="Texture2D" uid="uid://dkf5psgkegat" path="res://sprites/ui/story/buttons/skip_button.svg" id="10_l7jaw"]
+[ext_resource type="Texture2D" uid="uid://ddo42ujd4x5ux" path="res://sprites/ui/story/buttons/log_button.svg" id="11_arpnl"]
+[ext_resource type="Texture2D" uid="uid://c0qxa23xk66bx" path="res://sprites/ui/story/buttons/view_button.svg" id="12_1ar8g"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/screen.gdshader" id="13_wswx0"]
+[ext_resource type="FontFile" uid="uid://ddej8n3b4q3j3" path="res://fonts/tilda_sans/tilda-sans_regular.ttf" id="14_aidjs"]
+[ext_resource type="FontFile" uid="uid://xs81ra8gjjnv" path="res://fonts/alef/alef-regular.ttf" id="14_v85ag"]
+[ext_resource type="PackedScene" uid="uid://cnjd80t4xaprf" path="res://scenes/story/story_log/story_log.tscn" id="17_u3ycv"]
 
-[node name="BaseStoryScene" type="Node2D"]
+[sub_resource type="Resource" id="Resource_rgbaf"]
+script = ExtResource("4_kawc2")
+name_character = "Neut"
+sprite = ExtResource("2_srxm2")
+emotions = Array[String](["NORMAL"])
+
+[sub_resource type="Resource" id="Resource_oxwtg"]
+script = ExtResource("6_r440j")
+title = &"Легкие | Трахея"
+background = ExtResource("5_mrfjd")
+
+[sub_resource type="Resource" id="Resource_4erb2"]
+script = ExtResource("3_t2cfp")
+action = 0
+speaker = SubResource("Resource_rgbaf")
+current_emotion = 0
+is_looks_to_right = true
+speaker_position_by_x = 30
+
+[sub_resource type="Resource" id="Resource_2fqsx"]
+script = ExtResource("2_dvjb5")
+id = 0
+location = SubResource("Resource_oxwtg")
+current_speaker = SubResource("Resource_rgbaf")
+speakers = Array[ExtResource("3_t2cfp")]([SubResource("Resource_4erb2")])
+applying_effect = 0
+
+[sub_resource type="Resource" id="Resource_ar8xt"]
+script = ExtResource("3_t2cfp")
+action = 1
+speaker = SubResource("Resource_rgbaf")
+current_emotion = 0
+is_looks_to_right = false
+speaker_position_by_x = 80
+
+[sub_resource type="Resource" id="Resource_owade"]
+script = ExtResource("4_kawc2")
+name_character = "Eosi"
+sprite = ExtResource("6_b65ay")
+emotions = Array[String](["NORMAL"])
+
+[sub_resource type="Resource" id="Resource_semag"]
+script = ExtResource("3_t2cfp")
+action = 0
+speaker = SubResource("Resource_owade")
+current_emotion = 0
+is_looks_to_right = true
+speaker_position_by_x = 40
+
+[sub_resource type="Resource" id="Resource_g3af4"]
+script = ExtResource("2_dvjb5")
+id = 10
+current_speaker = SubResource("Resource_rgbaf")
+speakers = Array[ExtResource("3_t2cfp")]([SubResource("Resource_ar8xt"), SubResource("Resource_semag")])
+applying_effect = 0
+
+[sub_resource type="Resource" id="Resource_f1emg"]
+script = ExtResource("3_t2cfp")
+action = 1
+speaker = SubResource("Resource_rgbaf")
+current_emotion = 0
+is_looks_to_right = false
+speaker_position_by_x = 80
+
+[sub_resource type="Resource" id="Resource_wopmd"]
+script = ExtResource("3_t2cfp")
+action = 0
+speaker = SubResource("Resource_owade")
+current_emotion = 0
+is_looks_to_right = true
+speaker_position_by_x = 40
+
+[sub_resource type="Resource" id="Resource_gt5xj"]
+script = ExtResource("2_dvjb5")
+id = 12
+current_speaker = SubResource("Resource_owade")
+speakers = Array[ExtResource("3_t2cfp")]([SubResource("Resource_f1emg"), SubResource("Resource_wopmd")])
+applying_effect = 0
+
+[sub_resource type="Resource" id="Resource_chse5"]
+script = ExtResource("3_78d1m")
+dialogs = Array[ExtResource("2_dvjb5")]([SubResource("Resource_2fqsx"), SubResource("Resource_g3af4"), SubResource("Resource_gt5xj")])
+
+[sub_resource type="Gradient" id="Gradient_retev"]
+colors = PackedColorArray(0.039, 0.039, 0.039, 0.4, 0.039, 0.039, 0.039, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wney3"]
+gradient = SubResource("Gradient_retev")
+fill_to = Vector2(0, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kfj8e"]
+texture = SubResource("GradientTexture2D_wney3")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vevna"]
+texture = ExtResource("9_4mfvo")
+region_rect = Rect2(0, 1, 372, 78)
+
+[sub_resource type="Gradient" id="Gradient_2y2p1"]
+offsets = PackedFloat32Array(0, 0.77, 1)
+colors = PackedColorArray(0.039, 0.039, 0.039, 0.8, 0.039, 0.039, 0.039, 0.8, 0.039, 0.039, 0.039, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tkk3i"]
+gradient = SubResource("Gradient_2y2p1")
+fill_from = Vector2(0, 1)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vcsaa"]
+texture = SubResource("GradientTexture2D_tkk3i")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ujbhd"]
+shader = ExtResource("13_wswx0")
+
+[sub_resource type="Gradient" id="Gradient_hooe5"]
+offsets = PackedFloat32Array(0, 0.996951)
+colors = PackedColorArray(0.960784, 0.960784, 0.960784, 1, 0.266667, 0.294118, 0.345098, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_i3k8e"]
+gradient = SubResource("Gradient_hooe5")
+
+[node name="BaseStoryScene" type="Node2D" node_paths=PackedStringArray("_background", "_location_label", "_speaker_name_label", "_dialog_label", "_story_ui", "_story_log")]
 script = ExtResource("1_kto3j")
+_visual_scenario = SubResource("Resource_chse5")
+_background = NodePath("Background")
+_location_label = NodePath("OnCamera/UI/Header/Margin/HBox/Location/Margin/LocationTitle")
+_speaker_name_label = NodePath("OnCamera/UI/DialogPanel/Margin/VBox/VBox/CharacterName")
+_dialog_label = NodePath("OnCamera/UI/DialogPanel/Margin/VBox/Margin/DialogLabel")
+_story_ui = NodePath("OnCamera/UI")
+_story_log = NodePath("OnCamera/StoryLog")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 offset = Vector2(960, 540)
 
 [node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
 
-[node name="Characters" type="Node" parent="."]
+[node name="Speakers" type="Node2D" parent="."]
 
-[node name="Character1" type="Sprite2D" parent="Characters"]
-position = Vector2(420, 705)
-texture = ExtResource("2_srxm2")
+[node name="OnCamera" type="CanvasLayer" parent="."]
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Illustration" type="TextureRect" parent="UI"]
+[node name="Illustration" type="TextureRect" parent="OnCamera"]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="UI"]
+[node name="ClickArea" type="Control" parent="OnCamera"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 91.0
-offset_top = -10.0
-offset_right = 91.0
-offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 48
-theme_override_constants/margin_top = 48
-theme_override_constants/margin_right = 48
-theme_override_constants/margin_bottom = 48
-metadata/_edit_group_ = true
-metadata/_edit_lock_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+[node name="UI" type="Control" parent="OnCamera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Header" type="PanelContainer" parent="OnCamera/UI"]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 113.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_kfj8e")
+
+[node name="Margin" type="MarginContainer" parent="OnCamera/UI/Header"]
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 16
 
-[node name="LocationTitle" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+[node name="HBox" type="HBoxContainer" parent="OnCamera/UI/Header/Margin"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Location" type="PanelContainer" parent="OnCamera/UI/Header/Margin/HBox"]
 layout_mode = 2
 size_flags_vertical = 0
-theme_override_font_sizes/font_size = 36
-text = "Location"
-horizontal_alignment = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vevna")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer/VBoxContainer"]
+[node name="Margin" type="MarginContainer" parent="OnCamera/UI/Header/Margin/HBox/Location"]
 layout_mode = 2
-size_flags_vertical = 10
-theme_override_constants/separation = 16
+mouse_filter = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 16
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="LocationTitle" type="Label" parent="OnCamera/UI/Header/Margin/HBox/Location/Margin"]
 layout_mode = 2
+text = "Легкие | Трахея"
+label_settings = ExtResource("10_gpn8x")
 
-[node name="CharacterName" type="Label" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Space" type="Control" parent="OnCamera/UI/Header/Margin/HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
-text = "Name"
+size_flags_horizontal = 3
+size_flags_vertical = 0
+mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Buttons" type="PanelContainer" parent="OnCamera/UI/Header/Margin/HBox"]
 layout_mode = 2
-size_flags_horizontal = 10
+size_flags_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vevna")
+
+[node name="Margin" type="MarginContainer" parent="OnCamera/UI/Header/Margin/HBox/Buttons"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 16
+
+[node name="HBox" type="HBoxContainer" parent="OnCamera/UI/Header/Margin/HBox/Buttons/Margin"]
+layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 24
 
-[node name="TextureButton" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="SkipButton" type="Button" parent="OnCamera/UI/Header/Margin/HBox/Buttons/Margin/HBox"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-ignore_texture_size = true
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(0.768627, 0.768627, 0.768627, 1)
+theme_override_colors/icon_pressed_color = Color(0.862745, 0.862745, 0.862745, 1)
+theme_override_colors/icon_hover_color = Color(0.960784, 0.960784, 0.960784, 1)
+icon = ExtResource("10_l7jaw")
+icon_alignment = 1
+expand_icon = true
 
-[node name="TextureButton2" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="LogButton" type="Button" parent="OnCamera/UI/Header/Margin/HBox/Buttons/Margin/HBox"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-ignore_texture_size = true
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(0.768627, 0.768627, 0.768627, 1)
+theme_override_colors/icon_pressed_color = Color(0.862745, 0.862745, 0.862745, 1)
+theme_override_colors/icon_hover_color = Color(0.960784, 0.960784, 0.960784, 1)
+icon = ExtResource("11_arpnl")
+icon_alignment = 1
+expand_icon = true
 
-[node name="TextureButton3" type="TextureButton" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/HBoxContainer"]
+[node name="ViewButton" type="Button" parent="OnCamera/UI/Header/Margin/HBox/Buttons/Margin/HBox"]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
-ignore_texture_size = true
+focus_mode = 0
+theme_override_colors/icon_normal_color = Color(0.768627, 0.768627, 0.768627, 1)
+theme_override_colors/icon_pressed_color = Color(0.862745, 0.862745, 0.862745, 1)
+theme_override_colors/icon_hover_color = Color(0.960784, 0.960784, 0.960784, 1)
+icon = ExtResource("12_1ar8g")
+icon_alignment = 1
+expand_icon = true
 
-[node name="PanelContainer" type="PanelContainer" parent="UI/MarginContainer/VBoxContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 256)
-layout_mode = 2
+[node name="DialogPanel" type="PanelContainer" parent="OnCamera/UI"]
+custom_minimum_size = Vector2(0, 340)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -207.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_vcsaa")
 
-[node name="KeywordsRichTextLabel" type="RichTextLabel" parent="UI/MarginContainer/VBoxContainer/VBoxContainer/PanelContainer"]
+[node name="MarginHebrew" type="MarginContainer" parent="OnCamera/UI/DialogPanel"]
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 2
+theme_override_constants/margin_right = 40
+
+[node name="HebrewText" type="Label" parent="OnCamera/UI/DialogPanel/MarginHebrew"]
+material = SubResource("ShaderMaterial_ujbhd")
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.0745098, 0.0745098, 0.0745098, 1)
+theme_override_fonts/font = ExtResource("14_v85ag")
+theme_override_font_sizes/font_size = 128
+text = "אל תשכח"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Margin" type="MarginContainer" parent="OnCamera/UI/DialogPanel"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 260
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 36
+
+[node name="VBox" type="VBoxContainer" parent="OnCamera/UI/DialogPanel/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 8
+
+[node name="VBox" type="VBoxContainer" parent="OnCamera/UI/DialogPanel/Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="CharacterName" type="Label" parent="OnCamera/UI/DialogPanel/Margin/VBox/VBox"]
+layout_mode = 2
+text = "Макрофаг-наставник"
+label_settings = ExtResource("10_gpn8x")
+
+[node name="Separator" type="TextureRect" parent="OnCamera/UI/DialogPanel/Margin/VBox/VBox"]
+self_modulate = Color(1, 1, 1, 0.5)
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_i3k8e")
+
+[node name="Margin" type="MarginContainer" parent="OnCamera/UI/DialogPanel/Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/margin_left = 40
+
+[node name="DialogLabel" type="RichTextLabel" parent="OnCamera/UI/DialogPanel/Margin/VBox/Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_colors/default_color = Color(0.803922, 0.858824, 0.894118, 1)
+theme_override_fonts/normal_font = ExtResource("14_aidjs")
 theme_override_font_sizes/normal_font_size = 36
-theme_override_font_sizes/bold_font_size = 36
-theme_override_font_sizes/italics_font_size = 36
-theme_override_font_sizes/bold_italics_font_size = 36
-theme_override_font_sizes/mono_font_size = 36
-text = "text"
+bbcode_enabled = true
+text = "Конечно, в организме важна работа каждой клетки, но для меня Нейтрофилы настоящие герои, что первыми бросаются на любые угрозы для нашего организма и побеждают врагов там, где не справился бы никто другой"
+scroll_active = false
 script = ExtResource("1_ocijd")
+
+[node name="StoryLog" parent="OnCamera" instance=ExtResource("17_u3ycv")]
+visible = false
+
+[connection signal="gui_input" from="OnCamera/ClickArea" to="." method="_on_ui_gui_input"]
+[connection signal="pressed" from="OnCamera/UI/Header/Margin/HBox/Buttons/Margin/HBox/SkipButton" to="." method="_on_skip_button_pressed"]
+[connection signal="pressed" from="OnCamera/UI/Header/Margin/HBox/Buttons/Margin/HBox/LogButton" to="." method="_on_log_button_pressed"]
+[connection signal="pressed" from="OnCamera/UI/Header/Margin/HBox/Buttons/Margin/HBox/ViewButton" to="." method="_on_view_button_pressed"]

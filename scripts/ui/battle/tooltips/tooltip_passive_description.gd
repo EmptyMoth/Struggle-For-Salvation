@@ -4,7 +4,7 @@ extends Control
 
 var is_fixed: bool = false
 
-@onready var _description: KeywordsRichTextLabel = $Margin/HBox/Margin/Panel/Margin/Description
+@export var _description: KeywordsRichTextLabel
 
 
 func make_left_sided() -> void:
@@ -13,6 +13,8 @@ func make_left_sided() -> void:
 	$Margin.add_theme_constant_override("margin_right", 0)
 	$Margin.add_theme_constant_override("margin_left", 8)
 	$Margin.position.x = 0
+	$Margin/HBox/Margin/BorderLeft.hide()
+	$Margin/HBox/Margin/BorderRight.show()
 
 
 func set_description(text: String) -> void:

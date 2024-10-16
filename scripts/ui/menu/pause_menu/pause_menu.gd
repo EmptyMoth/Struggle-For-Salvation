@@ -1,23 +1,20 @@
 class_name PauseMenu
-extends Control
+extends AbstractMenu
 
-
-const _DROP_DURATION: float = 0.3
 
 var is_opened: bool = false
 
-var _current_open_popup: Control = null
+var _current_open_popup: AbstractMenu = null
 
-@onready var _menu: CenterContainer = $Menu
-@onready var _manual_menu: TrainingScreen = $TrainingScreen
-@onready var _settings_menu: SettingsMenu = $SettingsMenu
-#@onready var _buttons_container: MovingContainer = $Menu/Moving
-@onready var _animation_background: AnimationPlayer = $Background/Animation
+@export_group("Connections")
+@export var _menu: CenterContainer
+@export var _manual_menu: TrainingScreen
+@export var _settings_menu: SettingsMenu
+@export var _animation_background: AnimationPlayer
 
 
 func _ready() -> void:
-	Settings.audio_settings.play_music_on_pause.setting_changed.connect(
-		_on_setting_play_music_on_pause_changed)
+	Settings.audio_settings.play_music_on_pause.setting_changed.connect(_on_setting_play_music_on_pause_changed)
 	_settings_menu.close_menu()
 	close_menu()
 
@@ -25,28 +22,30 @@ func _ready() -> void:
 func _input(_event: InputEvent) -> void:
 	if Input.is_action_just_released("ui_menu"):
 		if _current_open_popup == null:
-			(close_menu if is_opened else open_menu).call()
+			(close_menu if get_tree().paused else open_menu).call()
 		else:
 			_current_open_popup.close_menu()
-			_current_open_popup = null
 
 
 func open_menu() -> void:
-	is_opened = true
 	show()
-	_display(is_opened)
-	get_tree().paused = is_opened
-	if not Settings.audio_settings.play_music_on_pause.is_on:
-		_music_mute(true)
+	_display(true)
+	_animation_background.play("show")
 
 
 func close_menu() -> void:
-	is_opened = false
-	get_tree().paused = is_opened
-	_music_mute(false)
-	_display(is_opened)
+	_display(false)
+	_animation_background.play_backwards("show")
 	await _animation_background.animation_finished
 	hide()
+
+
+func _display(is_open: bool) -> void:
+	is_opened = is_open
+	_menu.visible = is_open
+	get_tree().paused = is_open
+	(_animation_background.play if is_open else _animation_background.play_backwards).call("show")
+	_music_mute(is_open and not Settings.audio_settings.play_music_on_pause.is_on)
 
 
 func _music_mute(enable: bool) -> void:
@@ -54,14 +53,15 @@ func _music_mute(enable: bool) -> void:
 	AudioServer.set_bus_mute(bus_index, enable)
 
 
-func _display(is_displayed: bool) -> void:
-	(_animation_background.play if is_displayed else _animation_background.play_backwards).call("show")
-	#var tween: Tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)\
-		#.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
-	#var to: float = 0.0 \
-			#if is_displayed \
-			#else -(10.0 + _buttons_container.get_child(0).size.y + get_viewport_rect().get_center().y)
-	#_buttons_container.move_container_from_current(tween, SIDE_TOP, to, _DROP_DURATION)
+func _open_popup_menu(popup_menu: AbstractMenu) -> void:
+	_menu.hide()
+	popup_menu.open_menu()
+	_current_open_popup = popup_menu
+
+
+func _on_popup_menu_closed() -> void:
+	_menu.show()
+	_current_open_popup = null
 
 
 func _on_setting_play_music_on_pause_changed(new_value: bool) -> void:
@@ -70,29 +70,11 @@ func _on_setting_play_music_on_pause_changed(new_value: bool) -> void:
 
 func _on_resume_button_pressed() -> void: close_menu()
 
-
 func _on_restart_button_pressed() -> void: get_tree().reload_current_scene()
 
+func _on_manual_button_pressed() -> void: _open_popup_menu(_manual_menu)
 
-func _on_manual_button_pressed() -> void:
-	_menu.hide()
-	_manual_menu.open_training()
-	_current_open_popup = _manual_menu
-
-
-func _on_manual_menu_closed() -> void:
-	_menu.show()
-
-
-func _on_settings_button_pressed() -> void:
-	_menu.hide()
-	_settings_menu.open_menu()
-	_current_open_popup = _settings_menu
-
-
-func _on_settings_menu_closed() -> void:
-	_menu.show()
-
+func _on_settings_button_pressed() -> void: _open_popup_menu(_settings_menu)
 
 func _on_leave_button_pressed() -> void:
 	get_tree().paused = false
@@ -102,7 +84,3 @@ func _on_leave_button_pressed() -> void:
 func _on_exit_button_pressed() -> void:
 	get_tree().paused = false
 	GlobalParameters.exit_game()
-
-
-func _on_animation_animation_finished(_anim_name: StringName) -> void:
-	visible = is_opened

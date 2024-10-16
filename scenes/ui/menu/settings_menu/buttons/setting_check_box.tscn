@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://beybaymojvl3t"]
+
+[ext_resource type="Texture2D" uid="uid://cbcuffdho32q2" path="res://sprites/ui/menu/buttons/checkbox/checkbox_form.svg" id="1_0xtao"]
+[ext_resource type="Texture2D" uid="uid://wygsnrxlnp56" path="res://sprites/ui/menu/buttons/checkbox/cross.svg" id="2_g8106"]
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/buttons/setting_check_box.gd" id="2_j2pw6"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blur/layer_blur.gdshader" id="4_fgh0f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_inb1q"]
+shader = ExtResource("4_fgh0f")
+shader_parameter/strength = 8
+
+[node name="SettingCheckBox" type="Button"]
+custom_minimum_size = Vector2(40, 40)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_colors/icon_normal_color = Color(0.768627, 0.768627, 0.768627, 1)
+theme_override_colors/icon_focus_color = Color(0.768627, 0.768627, 0.768627, 1)
+theme_override_colors/icon_pressed_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_colors/icon_hover_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_colors/icon_hover_pressed_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_colors/icon_disabled_color = Color(0.266667, 0.294118, 0.345098, 1)
+toggle_mode = true
+icon = ExtResource("1_0xtao")
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("2_j2pw6")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Cross" type="TextureRect" parent="CenterContainer"]
+visible = false
+material = SubResource("ShaderMaterial_inb1q")
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+texture = ExtResource("2_g8106")
+expand_mode = 1
+
+[connection signal="toggled" from="." to="." method="_on_toggled"]

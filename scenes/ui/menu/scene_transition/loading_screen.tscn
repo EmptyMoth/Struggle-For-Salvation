@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnq58jiikuj23"]
+[gd_scene load_steps=13 format=3 uid="uid://dnq58jiikuj23"]
 
 [ext_resource type="Script" path="res://scripts/global/scene_transition/loading_screen.gd" id="1_cwoj1"]
 [ext_resource type="Texture2D" uid="uid://d4fcmvqrftt7l" path="res://sprites/ui/menu/locations/brain_stem.png" id="2_dma34"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" path="res://resources/ui/global/shaders/vignettes/vignette.gdshader" id="3_e1kia"]
 [ext_resource type="Texture2D" uid="uid://tnvfnpulmivt" path="res://sprites/ui/menu/scene_transition/loading_icon_elements_1.svg" id="3_xt7ef"]
 [ext_resource type="Shader" path="res://resources/ui/global/shaders/blending_modes/difference.gdshader" id="4_g07bb"]
+[ext_resource type="FontFile" uid="uid://5w5bb2acc6pw" path="res://fonts/jost/jost-500-medium.ttf" id="5_5ljlj"]
 
 [sub_resource type="Animation" id="Animation_h105j"]
 length = 0.001
@@ -210,6 +211,7 @@ offset_right = 374.0
 offset_bottom = -44.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("5_5ljlj")
 theme_override_font_sizes/font_size = 128
 text = "LocationName"
 

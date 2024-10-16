@@ -5,15 +5,16 @@ extends HBoxContainer
 const _ACTION_DICE_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_character_info/popup_skill_info/components/action_dice_info.tscn")
 const _ACTION_DICE_ABILITY_INFO_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_character_info/popup_skill_info/components/popup_dice_ability.tscn")
 
-@onready var _skill_icon: TextureRect = $VBox/MainPanel/Margin/VBox/Header/SkillIcon
-@onready var _title_label: Label = $VBox/MainPanel/Margin/VBox/Header/SkillTitle
-@onready var _type_icon: TextureRect = $VBox/MainPanel/Margin/VBox/Header/SkillTypes/RangeType/Icon
-@onready var _uses_type_label: Label = $VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType/Type
-@onready var _uses_count_label: Label = $VBox/MainPanel/Margin/VBox/Header/SkillTypes/UsesType/Counter
-@onready var _skill_ability_label: KeywordsRichTextLabel = $VBox/MainPanel/Margin/VBox/SkillAbilityDescription
-@onready var _button_hiding_dice_abilities: TextureButton = $VBox/MainPanel/Margin/VBox/ButtonHidingDiceAbilities
-@onready var _dice_container: VBoxContainer = $ActionsDiceList/Margin/ActionsDice
-@onready var _dice_abilities_container: VBoxContainer = $VBox/DiceAbilitiesList
+@export_group("Connections")
+@export var _skill_icon: TextureRect
+@export var _title_label: Label
+@export var _type_icon: TextureRect
+@export var _uses_type_label: Label
+@export var _uses_count_label: Label
+@export var _skill_ability_label: KeywordsRichTextLabel
+@export var _button_hiding_dice_abilities: TextureButton
+@export var _dice_container: VBoxContainer
+@export var _dice_abilities_container: VBoxContainer
 
 
 func set_info(skill: Skill) -> void:
@@ -28,18 +29,6 @@ func remove_actions_dice_info() -> void:
 		_dice_container.remove_child(dice_info)
 	for dice_abilities_info: Node in _dice_abilities_container.get_children():
 		_dice_abilities_container.remove_child(dice_abilities_info)
-
-
-func display_dice_abilities_panel(tween: Tween, is_displayed: bool, duration: float) -> void:
-	if not is_visible_dice_abilities():
-		return
-	
-	tween.tween_property(_dice_abilities_container, "modulate:a", 1 if is_displayed else 0, 0.2)
-	var number: int = 0
-	for dice_abilities_info: Node in _dice_abilities_container.get_children():
-		number += 1
-		dice_abilities_info.move_container_from_current(tween, SIDE_TOP, 
-				0 if is_displayed else -50 * number, duration + 0.1 * number)
 
 
 func is_visible_dice_abilities() -> bool:
@@ -88,7 +77,9 @@ func _set_action_dice_ability_info(action_dice: ActionDice, dice_index: int) -> 
 	action_dice_ability_info.set_info(action_dice, dice_index)
 
 
-func _on_button_hiding_dice_abilities_toggled(button_pressed: bool) -> void:
-	var tween: Tween = get_tree().create_tween()\
-		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING).set_parallel()
-	display_dice_abilities_panel(tween, not button_pressed, 0.2)
+func _on_button_hiding_dice_abilities_toggled(on_toggle: bool) -> void:
+	if not _dice_abilities_container.visible:
+		_dice_abilities_container.show()
+	await create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)\
+		.tween_property(_dice_abilities_container, "modulate:a", 1.0 if not on_toggle else 0.0, 0.2).finished
+	_dice_abilities_container.visible = not on_toggle

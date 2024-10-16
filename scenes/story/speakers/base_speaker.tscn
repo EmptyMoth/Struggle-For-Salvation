@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cacvbpca1tn8c"]
+
+[ext_resource type="Script" path="res://scripts/story/speakers/base_speaker.gd" id="2_3i7po"]
+
+[node name="Speaker" type="Sprite2D"]
+centered = false
+script = ExtResource("2_3i7po")

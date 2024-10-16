@@ -2,23 +2,7 @@ class_name BaseSettingElementMenu
 extends HBoxContainer
 
 
-@onready var _setting_name_label: Label = $SettingName
-
-@export_multiline var setting_name: String = "" :
-	set(new_value):
-		setting_name = new_value
-		if is_node_ready():
-			_setting_name_label.text = new_value
-@export_multiline var setting_tooltip: String = ""
-
 var _setting: AbstractSetting
-
-
-func _ready() -> void:
-	_setting_name_label.text = setting_name
-	_setting_name_label.tooltip_text = setting_tooltip \
-			if setting_tooltip != "" \
-			else ("%s_TOOLTIP" % setting_name.to_upper())
 
 
 func get_setting_button() -> Node:
@@ -27,13 +11,20 @@ func get_setting_button() -> Node:
 
 func set_setting(setting: AbstractSetting) -> void:
 	_setting = setting
+	_set_title_and_tooltip(setting.name)
 	setting.setting_changed.connect(_on_setting_changed)
 	_initial_setup(setting)
 
 
 @warning_ignore("untyped_declaration")
 func _initial_setup(setting) -> void:
-	_setting = setting
+	pass
+
+
+func _set_title_and_tooltip(setting_title: String) -> void:
+	var setting_name_label: Label = $SettingName
+	setting_name_label.text = setting_title.to_upper()
+	setting_name_label.tooltip_text = "%s_TOOLTIP" % setting_name_label.text
 
 
 func _on_setting_changed(_value: Variant) -> void:

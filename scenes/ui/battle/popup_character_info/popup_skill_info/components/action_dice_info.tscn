@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d3op6bt1c5kon" path="res://sprites/ui/battle/actions_dice/icons/attack_dice.svg" id="3_men3b"]
 [ext_resource type="Texture2D" uid="uid://dr0pt8402f60q" path="res://sprites/ui/battle/actions_dice/icons/block_dice.svg" id="4_q62ud"]
 [ext_resource type="Texture2D" uid="uid://m3jljc3axjbi" path="res://sprites/ui/battle/actions_dice/icons/evade_dice.svg" id="5_6dfgr"]
-[ext_resource type="Texture2D" uid="uid://yjndvqstn00w" path="res://sprites/ui/battle/actions_dice/icons/counte_dice.svg" id="6_pl8wp"]
+[ext_resource type="Texture2D" uid="uid://yjndvqstn00w" path="res://sprites/ui/battle/actions_dice/icons/counter_dice.svg" id="6_pl8wp"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_mga6w"]
 resource_local_to_scene = true
@@ -36,7 +36,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DiceIcon" type="TextureRect" parent="."]
-custom_minimum_size = Vector2(25, 25)
+custom_minimum_size = Vector2(26, 26)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0

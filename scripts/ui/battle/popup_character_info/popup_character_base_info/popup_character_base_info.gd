@@ -2,20 +2,21 @@ class_name PopupCharacterBaseInfo
 extends PanelContainer
 
 
-@onready var button_hinding_passive: TextureButton = $Margin/VBox/ButtonHidingPassive
+@export_group("Connections")
+@export var button_hinding_passive: TextureButton
 
-@onready var _character_icon: TextureRect = $Margin/VBox/HBox/CharacterIcon/Icon
-@onready var _character_type_icon: TextureRect = $Margin/VBox/HBox/VBox/Title/CharacterTypeIcon
-@onready var _character_name_label: Label = $Margin/VBox/HBox/VBox/Title/CharacterName
-@onready var _range_speed_label: Label = $Margin/VBox/HBox/VBox/MainContent/Speed/Range
+@export var _character_icon: TextureRect
+@export var _character_type_icon: TextureRect
+@export var _character_name_label: Label
+@export var _range_speed_label: Label
 
-@onready var _current_hp_count_label: Label = $Margin/VBox/HBox/VBox/MainContent/HP/Health/Counter/Current
-@onready var _max_hp_count_label: Label = $Margin/VBox/HBox/VBox/MainContent/HP/Health/Counter/Max
-@onready var _current_sp_count_label: Label = $Margin/VBox/HBox/VBox/MainContent/SP/Health/Counter/Current
-@onready var _max_sp_count_label: Label = $Margin/VBox/HBox/VBox/MainContent/SP/Health/Counter/Max
+@export var _current_hp_count_label: Label
+@export var _max_hp_count_label: Label
+@export var _current_sp_count_label: Label
+@export var _max_sp_count_label: Label
 
-@onready var _hp_resistance_view: ResistanceView = $Margin/VBox/HBox/VBox/MainContent/HP/Resistance
-@onready var _sp_resistance_view: ResistanceView = $Margin/VBox/HBox/VBox/MainContent/SP/Resistance
+@export var _hp_resistance_view: ResistanceView
+@export var _sp_resistance_view: ResistanceView
 
 
 func make_left() -> void:

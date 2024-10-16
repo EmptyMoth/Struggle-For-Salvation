@@ -1,19 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://c8y6pdbfadeh8"]
+[gd_scene load_steps=4 format=3 uid="uid://c8y6pdbfadeh8"]
 
 [ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/settings_elements/base/base_setting_element_menu.gd" id="1_hdsnd"]
+[ext_resource type="FontFile" uid="uid://cbxlj0cqngcrb" path="res://fonts/tilda_sans/tilda-sans_medium.ttf" id="2_wi5tv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ggrrg"]
 
 [node name="AbstractSettingElement" type="HBoxContainer"]
+custom_minimum_size = Vector2(1000, 44)
 script = ExtResource("1_hdsnd")
 
 [node name="SettingName" type="Label" parent="."]
 layout_mode = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 7.0
 mouse_filter = 1
+theme_override_fonts/font = ExtResource("2_wi5tv")
+theme_override_font_sizes/font_size = 24
+text = "Title"
 vertical_alignment = 1
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(160, 0)
+[node name="CenterContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ggrrg")

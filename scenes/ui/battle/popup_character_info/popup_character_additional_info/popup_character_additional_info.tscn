@@ -76,6 +76,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_vm7g4")
+current_tab = 0
 clip_tabs = false
 tabs_visible = false
 
@@ -84,6 +85,7 @@ layout_mode = 2
 theme_override_constants/h_separation = 5
 theme_override_constants/v_separation = 5
 columns = 3
+metadata/_tab_index = 0
 
 [node name="PassiveAbilitiesList" type="RichTextLabel" parent="Panel/Margin/VBox/SmoothScroll/Margin/Content"]
 visible = false
@@ -94,6 +96,7 @@ fit_content = true
 scroll_active = false
 autowrap_mode = 2
 script = ExtResource("5_df1s1")
+metadata/_tab_index = 1
 
 [connection signal="tab_changed" from="Panel/Margin/VBox/Options/TabsHeader" to="." method="_on_tabs_header_tab_changed"]
 [connection signal="tab_collapse" from="Panel/Margin/VBox/Options/TabsHeader" to="." method="_on_tabs_header_tab_collapse"]

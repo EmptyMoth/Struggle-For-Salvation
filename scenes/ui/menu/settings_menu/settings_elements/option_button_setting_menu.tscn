@@ -1,17 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bdrwcnuupffuw"]
+[gd_scene load_steps=4 format=3 uid="uid://bdrwcnuupffuw"]
 
 [ext_resource type="PackedScene" uid="uid://c8y6pdbfadeh8" path="res://scenes/ui/menu/settings_menu/settings_elements/base/abstract_setting_element.tscn" id="1_70ykp"]
 [ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/settings_elements/option_button_setting_menu.gd" id="2_wfvea"]
+[ext_resource type="PackedScene" uid="uid://deuxp75bugjv5" path="res://scenes/ui/menu/settings_menu/buttons/setting_option_button.tscn" id="3_udocv"]
 
 [node name="OptionButtonSettingMenu" instance=ExtResource("1_70ykp")]
 script = ExtResource("2_wfvea")
 
 [node name="SettingName" parent="." index="0"]
 tooltip_text = "_TOOLTIP"
+text = ""
 
-[node name="OptionButton" type="OptionButton" parent="CenterContainer" index="0"]
-custom_minimum_size = Vector2(160, 0)
+[node name="OptionButton" parent="CenterContainer" index="0" instance=ExtResource("3_udocv")]
 layout_mode = 2
-alignment = 1
+size_flags_vertical = 4
 
 [connection signal="item_selected" from="CenterContainer/OptionButton" to="." method="_on_option_button_item_selected"]

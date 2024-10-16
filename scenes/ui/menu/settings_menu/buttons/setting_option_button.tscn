@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://deuxp75bugjv5"]
+
+[ext_resource type="Script" path="res://scripts/ui/menu/settings_menu/buttons/setting_option_button.gd" id="1_6acqw"]
+
+[sub_resource type="Gradient" id="Gradient_hjrnv"]
+offsets = PackedFloat32Array(0, 0.6, 1)
+colors = PackedColorArray(0.961, 0.961, 0.961, 0, 0.961, 0.961, 0.961, 0.8, 0.961, 0.961, 0.961, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mvuw4"]
+gradient = SubResource("Gradient_hjrnv")
+
+[node name="OptionButton" type="OptionButton"]
+custom_minimum_size = Vector2(0, 44)
+offset_right = 256.0
+offset_bottom = 44.0
+script = ExtResource("1_6acqw")
+
+[node name="BorderLine" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_vertical = 8
+texture = SubResource("GradientTexture1D_mvuw4")
+
+[connection signal="item_selected" from="." to="." method="_on_option_button_item_selected"]

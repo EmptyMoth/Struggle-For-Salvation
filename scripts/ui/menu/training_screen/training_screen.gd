@@ -1,5 +1,5 @@
 class_name TrainingScreen
-extends Control
+extends AbstractMenu
 
 
 signal training_ended
@@ -25,7 +25,7 @@ func _ready() -> void:
 	$Center/VBox/HBox/CloseButton.visible = _is_manual
 
 
-func open_training(from_id_slide: int = FIRST_ID_SLIDE, to_id_slide: int = LAST_ID_SLIDE) -> void:
+func open_menu(from_id_slide: int = FIRST_ID_SLIDE, to_id_slide: int = LAST_ID_SLIDE) -> void:
 	show()
 	_from_id_slide = from_id_slide
 	_to_id_slide = to_id_slide

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu/pause_menu.gd" id="1_mggr6"]
 [ext_resource type="PackedScene" uid="uid://co4w7x2mlpkjf" path="res://scenes/ui/menu/base/buttons/big_button.tscn" id="2_iks7v"]
-[ext_resource type="Shader" path="res://resources/ui/global/shaders/blur_background.gdshader" id="2_j2mv0"]
-[ext_resource type="PackedScene" uid="uid://bvughhmsw4fmq" path="res://scenes/ui/menu/settings_menu/settings_menu.tscn" id="3_23n23"]
+[ext_resource type="Shader" path="res://resources/ui/global/shaders/blur/blur_background.gdshader" id="2_j2mv0"]
+[ext_resource type="PackedScene" uid="uid://dqwdfgp4egrux" path="res://scenes/ui/menu/settings_menu/settings_screen.tscn" id="5_h7twr"]
 [ext_resource type="Script" path="res://scripts/ui/menu/pause_menu/buttons/pause_menu_button.gd" id="5_myc2h"]
 [ext_resource type="PackedScene" uid="uid://dbwoaee5bxkap" path="res://scenes/ui/menu/training_screen/training_screen.tscn" id="6_by3kj"]
 
@@ -12,8 +12,8 @@ shader = ExtResource("2_j2mv0")
 shader_parameter/blur_force = 1.0
 
 [sub_resource type="Gradient" id="Gradient_p5xbd"]
-offsets = PackedFloat32Array(0, 0.2, 0.5, 0.8, 1)
-colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 0.2, 0.0392157, 0.0392157, 0.0392157, 0.8, 0.0392157, 0.0392157, 0.0392157, 1, 0.0392157, 0.0392157, 0.0392157, 0.8, 0.0392157, 0.0392157, 0.0392157, 0.2)
+offsets = PackedFloat32Array(0, 0.3, 0.5, 0.7, 1)
+colors = PackedColorArray(0.0392157, 0.0392157, 0.0392157, 0.2, 0.039, 0.039, 0.039, 0.6, 0.039, 0.039, 0.039, 0.8, 0.039, 0.039, 0.039, 0.6, 0.0392157, 0.0392157, 0.0392157, 0.2)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mah5k"]
@@ -71,7 +71,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 1.0]
+"values": [0.0, 0.8]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -104,7 +104,7 @@ _data = {
 "show": SubResource("Animation_wo0lv")
 }
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("_menu", "_manual_menu", "_settings_menu", "_animation_background")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -113,6 +113,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_mggr6")
+_menu = NodePath("Menu")
+_manual_menu = NodePath("TrainingScreen")
+_settings_menu = NodePath("SettingsScreen")
+_animation_background = NodePath("Background/Animation")
 
 [node name="Background" type="Control" parent="."]
 layout_mode = 1
@@ -133,6 +137,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Background" type="ColorRect" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.039, 0.039, 0.039, 0.2)
+
 [node name="TextureRect" type="TextureRect" parent="Background"]
 layout_mode = 1
 anchors_preset = 15
@@ -142,16 +157,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture1D_mah5k")
-
-[node name="Background" type="ColorRect" parent="Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.0392157, 0.0392157, 0.0392157, 0.4)
+expand_mode = 1
 
 [node name="Animation" type="AnimationPlayer" parent="Background"]
 libraries = {
@@ -192,7 +198,7 @@ layout_mode = 2
 text = "EXIT"
 script = ExtResource("5_myc2h")
 
-[node name="SettingsMenu" parent="." instance=ExtResource("3_23n23")]
+[node name="SettingsScreen" parent="." instance=ExtResource("5_h7twr")]
 visible = false
 layout_mode = 1
 
@@ -201,10 +207,9 @@ visible = false
 layout_mode = 1
 _is_manual = true
 
-[connection signal="animation_finished" from="Background/Animation" to="." method="_on_animation_animation_finished"]
 [connection signal="pressed" from="Menu/VBox/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Menu/VBox/ManualButton" to="." method="_on_manual_button_pressed"]
 [connection signal="pressed" from="Menu/VBox/SettingsButton" to="." method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Menu/VBox/ExitButton" to="." method="_on_exit_button_pressed"]
-[connection signal="menu_closed" from="SettingsMenu" to="." method="_on_settings_menu_closed"]
-[connection signal="training_ended" from="TrainingScreen" to="." method="_on_manual_menu_closed"]
+[connection signal="menu_closed" from="SettingsScreen" to="." method="_on_popup_menu_closed"]
+[connection signal="training_ended" from="TrainingScreen" to="." method="_on_popup_menu_closed"]

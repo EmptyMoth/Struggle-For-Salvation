@@ -393,6 +393,10 @@ func scroll_y_to(y_pos: float, duration:float=0.5) -> void:
 	if not should_scroll_vertical(): return
 	velocity.y = 0.0
 	y_pos = clampf(y_pos, self.size.y-content_node.size.y, 0.0)
+	if duration == 0:
+		pos.y = y_pos
+		content_node.position.y = pos.y
+		return
 	var tween = create_tween()
 	var tweener = tween.tween_property(self, "pos:y", y_pos, duration)
 	tweener.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)

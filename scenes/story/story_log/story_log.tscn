@@ -1,0 +1,107 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnjd80t4xaprf"]
+
+[ext_resource type="FontFile" uid="uid://cbxlj0cqngcrb" path="res://fonts/tilda_sans/tilda-sans_medium.ttf" id="1_7go5e"]
+[ext_resource type="Script" path="res://scripts/story/story_log/story_log.gd" id="1_qlkne"]
+[ext_resource type="Script" path="res://addons/smooth_scroll/smooth_scroll_container.gd" id="2_ed0l7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jx816"]
+bg_color = Color(0.039, 0.039, 0.039, 0.75)
+anti_aliasing = false
+
+[sub_resource type="Gradient" id="Gradient_ixyv3"]
+offsets = PackedFloat32Array(0, 0.996951)
+colors = PackedColorArray(0.960784, 0.960784, 0.960784, 1, 0.266667, 0.294118, 0.345098, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4pk7n"]
+gradient = SubResource("Gradient_ixyv3")
+
+[node name="StoryLog" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+theme_override_styles/panel = SubResource("StyleBoxFlat_jx816")
+script = ExtResource("1_qlkne")
+
+[node name="Margin" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 160
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 157
+
+[node name="VBox" type="VBoxContainer" parent="Margin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 60
+
+[node name="Header" type="VBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 12
+
+[node name="Margin" type="MarginContainer" parent="Margin/VBox/Header"]
+layout_mode = 2
+theme_override_constants/margin_right = 80
+
+[node name="HBox" type="HBoxContainer" parent="Margin/VBox/Header/Margin"]
+layout_mode = 2
+
+[node name="TitleLog" type="Label" parent="Margin/VBox/Header/Margin/HBox"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.960784, 0.960784, 0.960784, 1)
+theme_override_fonts/font = ExtResource("1_7go5e")
+theme_override_font_sizes/font_size = 40
+text = "Лог"
+
+[node name="Space" type="Control" parent="Margin/VBox/Header/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 8
+
+[node name="BackButton" type="Button" parent="Margin/VBox/Header/Margin/HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "BACK"
+alignment = 2
+
+[node name="Separator" type="TextureRect" parent="Margin/VBox/Header"]
+self_modulate = Color(1, 1, 1, 0.5)
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture1D_4pk7n")
+
+[node name="Main" type="HBoxContainer" parent="Margin/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+theme_override_constants/separation = 80
+
+[node name="SmoothScroll" type="ScrollContainer" parent="Margin/VBox/Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+script = ExtResource("2_ed0l7")
+damping_scroll = 0.3
+damping_drag = 0.3
+follow_focus_ = false
+allow_horizontal_scroll = false
+friction_scroll = 0.5
+friction_drag = 0.5
+
+[node name="Margin" type="MarginContainer" parent="Margin/VBox/Main/SmoothScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_right = 80
+
+[node name="VBox" type="VBoxContainer" parent="Margin/VBox/Main/SmoothScroll/Margin"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 43
