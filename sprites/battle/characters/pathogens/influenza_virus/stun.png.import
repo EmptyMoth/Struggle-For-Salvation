@@ -16,9 +16,9 @@ dest_files=["res://.godot/imported/stun.png-d31e25418f6fc559d2aa1d6c508e087a.cte
 [params]
 
 compress/mode=0
+compress/high_quality=false
 compress/lossy_quality=1.0
 compress/hdr_compression=1
-compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true

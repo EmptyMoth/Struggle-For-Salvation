@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/ubuntu-regular.ttf-5108f126c34b9d1ed4965426c7
 Rendering=null
 antialiasing=2
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=true
 msdf_pixel_range=8
 msdf_size=48
