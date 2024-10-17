@@ -40,7 +40,7 @@ static func create_event(event_id: int) -> FmodEvent:
 #ЗВУКОВЫЕ ИВЕНТЫ
 static func get_audio_event_path(event_id: int) -> String:
 	match event_id:
-		SoundEvents.MOUSE_CLICK: return "event:/2d/Hit" #Это клик мыши
+		SoundEvents.MOUSE_CLICK: return "event:/2d/Hit" #Это клик мыши.
 		SoundEvents.RESET_SETTINGS: return "event:/2d/New Event 2"
 		SoundEvents.DROPDOWN_BUTTON_ON: return "event:/2d/New Event 2"
 		SoundEvents.DROPDOWN_BUTTON_OFF: return "event:/3d/Sword_hit"
