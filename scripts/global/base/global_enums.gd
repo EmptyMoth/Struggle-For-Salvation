@@ -9,6 +9,6 @@ enum Locations {
 	LYMPH,
 	MUCOUS,
 	EPIDERMIS,
-	BOWEL,
+	BOWELS,
 	STOMACH,
 }

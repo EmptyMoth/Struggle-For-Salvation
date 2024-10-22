@@ -45,6 +45,7 @@ signal value_changed(value: float)
 @export var _current_value_label: Label
 
 static var _sound: SoundPeriod
+var _sound123: SoundPeriod
 
 var _is_dragged: bool = false
 var _max_distance: int

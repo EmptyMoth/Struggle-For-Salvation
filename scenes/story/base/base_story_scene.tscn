@@ -28,7 +28,7 @@ emotions = Array[String](["NORMAL"])
 
 [sub_resource type="Resource" id="Resource_oxwtg"]
 script = ExtResource("6_r440j")
-title = &"Легкие | Трахея"
+title = &"Lungs | Trachea"
 background = ExtResource("5_mrfjd")
 
 [sub_resource type="Resource" id="Resource_4erb2"]
