@@ -2,10 +2,10 @@ class_name ResistanceView
 extends HBoxContainer
 
 
-const _HIGH_HP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/hp/high_resistance_icon.svg")
-const _LOW_HP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/hp/low_resistance_icon.svg")
-const _HIGH_SP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/sp/high_resistance_icon.svg")
-const _LOW_SP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_with_character_info/popup_with_character_base_info/resistances/sp/low_resistance_icon.svg")
+const _HIGH_HP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_character_info/popup_character_base_info/resistances/hp/high_resistance_icon.svg")
+const _LOW_HP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_character_info/popup_character_base_info/resistances/hp/low_resistance_icon.svg")
+const _HIGH_SP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_character_info/popup_character_base_info/resistances/sp/high_resistance_icon.svg")
+const _LOW_SP_RESISTANCE_ICON: Texture2D = preload("res://sprites/ui/battle/popup_character_info/popup_character_base_info/resistances/sp/low_resistance_icon.svg")
 
 const _COLOR_BY_RESISTANCE_TYPE: Dictionary = {
 	BaseResistance.ResistanceType.IMMUNITY : Color("000000"),

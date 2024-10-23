@@ -251,7 +251,7 @@ custom_minimum_size = Vector2(680, 0)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.486275, 0.580392, 0.74902, 1)
 theme_override_font_sizes/font_size = 24
-text = "Каждый день в Организме человека появляется несколько милионнов Раковых клеток"
+text = "Every day, several million Cancer cells appear in the human Organism"
 horizontal_alignment = 2
 autowrap_mode = 2
 

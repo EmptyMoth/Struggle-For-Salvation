@@ -45,6 +45,8 @@ signal value_changed(value: float)
 @export var _current_value_label: Label
 
 static var _sound: SoundPeriod
+var _sound2: SoundPeriod
+var _sound3: FmodEvent
 
 var _is_dragged: bool = false
 var _max_distance: int
@@ -58,6 +60,7 @@ func _init() -> void:
 
 
 func _ready() -> void:
+	_sound2 = SoundPeriod.new(SoundEvents.UISoundID.SCROLL_BUTTON, 0.25)
 	_max_distance = size.x - _grabber.size.x
 	_step = _max_distance / float(max_value - min_value)
 	_current_value_label.custom_minimum_size.x = _max_value_label.size.x
@@ -76,6 +79,7 @@ func _process(_delta: float) -> void:
 
 
 func _on_button_button_down() -> void:
+	_sound3 = SoundEvents.create_event(SoundEvents.UISoundID.SCROLL_BUTTON)
 	_is_dragged = true
 	_mouse_capture_point_x = _grabber.get_local_mouse_position().x
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cc2nij35uexsb"]
+
+[ext_resource type="PackedScene" uid="uid://dg0cyfqq0hx38" path="res://scenes/battle/locations/base/base_location.tscn" id="1_6c41e"]
+[ext_resource type="PackedScene" uid="uid://bc5822o53spvp" path="res://scenes/battle/locations/electrocardiogram/electrocardiogram.tscn" id="2_p62da"]
+[ext_resource type="Texture2D" uid="uid://c12ktw7dwg40v" path="res://sprites/battle/locations/base/vignette/vignette_battlefield.png" id="2_yycxy"]
+[ext_resource type="PackedScene" uid="uid://dbtcjc5yc3fct" path="res://scenes/battle/locations/electrocardiogram/glass.tscn" id="4_s2fme"]
+
+[node name="TestLocation" instance=ExtResource("1_6c41e")]
+
+[node name="Background" parent="." index="0" instance=ExtResource("2_p62da")]
+offset = Vector2(960, 540)
+transform = Transform2D(2, 0, 0, 2, 960, 540)
+
+[node name="BattlefieldVignette" parent="." index="1"]
+position = Vector2(-320, -180)
+texture = ExtResource("2_yycxy")
+
+[node name="Glass" parent="Battlefield/BattlefieldViewport" index="0" instance=ExtResource("4_s2fme")]

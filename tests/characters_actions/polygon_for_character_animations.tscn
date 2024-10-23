@@ -1,7 +1,7 @@
 [gd_scene load_steps=33 format=3 uid="uid://dkavy0e4banqk"]
 
 [ext_resource type="Script" path="res://tests/characters_actions/items/polygon_for_character_animations.gd" id="1_tbtiy"]
-[ext_resource type="PackedScene" uid="uid://cjgc3boeini3p" path="res://scenes/battle/locations/locations/test_polygon/test_location.tscn" id="2_p4s0a"]
+[ext_resource type="PackedScene" uid="uid://cjgc3boeini3p" path="res://scenes/battle/locations/test_polygon/test_location.tscn" id="2_p4s0a"]
 [ext_resource type="PackedScene" uid="uid://dwgmdfmt5ibhk" path="res://scenes/battle/formations/test_formation.tscn" id="2_ymv6i"]
 [ext_resource type="PackedScene" uid="uid://ba1j5haj6xpwc" path="res://scenes/battle/characters/neut.tscn" id="3_4kehw"]
 [ext_resource type="Script" path="res://tests/characters_actions/action_button.gd" id="3_dyf11"]

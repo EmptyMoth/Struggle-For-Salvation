@@ -46,6 +46,7 @@ func start_loading(scene_path: String) -> void:
 
 
 func _set_last_location() -> void:
+	#var last_location: GlobalEnums.Locations = GlobalEnums.Locations.VESSELS
 	var last_location: GlobalEnums.Locations = GlobalEnums.Locations.values().pick_random()
 	var location_name: String = GlobalEnums.Locations.find_key(last_location).to_lower()
 	location_name = GlobalParameters.FOLDER_WITH_LOCATION_TEXTURE + location_name + ".png"
