@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bc5822o53spvp"]
+
+[ext_resource type="PackedScene" uid="uid://b1aso2jwxvlu1" path="res://scenes/battle/locations/base/base_background.tscn" id="1_c7h3w"]
+[ext_resource type="Texture2D" uid="uid://cssnj7j12gone" path="res://sprites/battle/locations/electrocardiogram/cardiogram/cardiogram_display.png" id="1_eh52l"]
+[ext_resource type="PackedScene" uid="uid://dk3f8blo835ds" path="res://scenes/battle/locations/electrocardiogram/base/cardiogram.tscn" id="2_0tjlc"]
+[ext_resource type="Texture2D" uid="uid://cefl6tsqjf155" path="res://sprites/battle/locations/electrocardiogram/cardiogram/shading_v2.png" id="3_45jq7"]
+
+[node name="Electrocardiogram" instance=ExtResource("1_c7h3w")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+follow_viewport_scale = 0.7
+
+[node name="MainLayer" parent="." index="0"]
+motion_scale = Vector2(0.5, 0.5)
+
+[node name="CardiogramDisplay" type="Sprite2D" parent="MainLayer" index="0"]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_eh52l")
+
+[node name="Cardiogram" parent="MainLayer" index="1" instance=ExtResource("2_0tjlc")]
+
+[node name="Shading" type="Sprite2D" parent="MainLayer" index="2"]
+texture = ExtResource("3_45jq7")

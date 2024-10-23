@@ -6,7 +6,7 @@ signal skill_picked(skill: Skill)
 signal skill_selected(skill: Skill)
 signal skill_deselected(skill: Skill)
 
-var _SKILL_SELECTED_BUTTON_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_character_info/popup_character_additional_info/components/skill_selected_button.tscn")
+var _SKILL_SELECTED_BUTTON_SCENE: PackedScene = preload("res://scenes/ui/battle/popup_character_info/components/skill_selected_button.tscn")
 
 var is_fixed: bool = false
 var func_get_position: Callable

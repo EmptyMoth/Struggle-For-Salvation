@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dmcg2c4ibxph7"]
 
-[ext_resource type="PackedScene" uid="uid://dg0cyfqq0hx38" path="res://scenes/battle/locations/locations/base/base_location.tscn" id="1_x24ma"]
+[ext_resource type="PackedScene" uid="uid://dg0cyfqq0hx38" path="res://scenes/battle/locations/base/base_location.tscn" id="1_x24ma"]
 [ext_resource type="Texture2D" uid="uid://beackihwhbvlk" path="res://sprites/battle/locations/trachea/background.png" id="2_b7vuo"]
 [ext_resource type="PackedScene" uid="uid://k003ko6y1he1" path="res://scenes/battle/locations/trachea/trachea_battlefield.tscn" id="3_fmxaf"]
 [ext_resource type="Texture2D" uid="uid://fhougs8ukgfl" path="res://sprites/battle/locations/trachea/foreground.png" id="4_ioqao"]

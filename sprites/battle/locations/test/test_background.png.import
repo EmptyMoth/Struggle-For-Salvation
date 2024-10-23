@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0okktsv7udqw"
-path="res://.godot/imported/movement.png-4a778ce93971e28884da28a4b175b084.ctex"
+uid="uid://bfdq10ickbxd7"
+path="res://.godot/imported/test_background.png-3d5e98c6be70a335a8b2a9b67f150dee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/battle/characters/pathogens/influenza_virus/movement.png"
-dest_files=["res://.godot/imported/movement.png-4a778ce93971e28884da28a4b175b084.ctex"]
+source_file="res://sprites/battle/locations/test/test_background.png"
+dest_files=["res://.godot/imported/test_background.png-3d5e98c6be70a335a8b2a9b67f150dee.ctex"]
 
 [params]
 
